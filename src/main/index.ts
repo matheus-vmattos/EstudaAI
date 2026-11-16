@@ -3,6 +3,7 @@ import { join } from 'path'
 import { is } from '@electron-toolkit/utils'
 import { fazerBackup, lerDados, pastaDosDados, salvarDados } from './dados'
 import { iniciarAtualizador } from './atualizador'
+import { iniciarCaixa } from './caixa'
 import type { Dados } from '../shared/tipos'
 
 /** só link de verdade: fica de fora file:, javascript: e protocolos do
@@ -93,6 +94,7 @@ app.whenReady().then(() => {
   ipcMain.handle('dados:abrirPasta', () => shell.openPath(pastaDosDados()))
   ipcMain.handle('link:abrir', (_e, url: string) => abrirLinkExterno(url))
   iniciarAtualizador(() => principal)
+  iniciarCaixa()
 
   criarJanela()
   app.on('activate', () => {

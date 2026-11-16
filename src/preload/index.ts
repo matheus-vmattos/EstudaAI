@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron'
-import type { Dados, EstadoDaAtualizacao } from '../shared/tipos'
+import type { Dados, EstadoDaAtualizacao, ItemDaCaixa } from '../shared/tipos'
 
 const api = {
   lerDados: (): Promise<Dados> => ipcRenderer.invoke('dados:ler'),
@@ -19,6 +19,10 @@ const api = {
   procurarAtualizacao: (): Promise<void> => ipcRenderer.invoke('atualizacao:procurar'),
   fazerBackup: (dados: Dados): Promise<number> => ipcRenderer.invoke('dados:backup', dados),
   abrirPastaDosDados: (): Promise<string> => ipcRenderer.invoke('dados:abrirPasta'),
+  caixaListar: (): Promise<{ itens: ItemDaCaixa[] } | { erro: string }> =>
+    ipcRenderer.invoke('caixa:listar'),
+  caixaArquivo: (nome: string): Promise<{ texto: string } | { erro: string }> =>
+    ipcRenderer.invoke('caixa:arquivo', nome),
   reiniciarParaAtualizar: (): Promise<void> => ipcRenderer.invoke('atualizacao:reiniciar')
 }
 

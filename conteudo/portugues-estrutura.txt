@@ -1,0 +1,25 @@
+Português
+├─ Fonologia
+│  ├─ Fonema e letra
+│  ├─ Encontros vocálicos (ditongo, tritongo, hiato)
+│  ├─ Encontros consonantais e dígrafos
+│  ├─ Divisão silábica
+│  └─ Acentuação gráfica e ortografia
+├─ Morfologia
+│  ├─ Estrutura das palavras
+│  │  └─ Radical · Afixos · Desinências · Vogal temática
+│  ├─ Formação de palavras (derivação, composição)
+│  └─ Classes de palavras
+│     └─ Substantivo · Adjetivo · Artigo · Numeral · Pronome · Verbo · Advérbio · Preposição · Conjunção · Interjeição
+├─ Sintaxe
+│  ├─ Termos da oração (essenciais, integrantes, acessórios)
+│  ├─ Período composto (coordenação, subordinação)
+│  ├─ Concordância verbal e nominal
+│  ├─ Regência verbal e nominal
+│  ├─ Crase
+│  └─ Colocação pronominal
+├─ Pontuação
+├─ Semântica
+│  └─ Sinônimos e antônimos · Polissemia · Figuras de linguagem
+└─ Interpretação de texto
+   └─ Tipos textuais · Gêneros textuais · Coesão e coerência
