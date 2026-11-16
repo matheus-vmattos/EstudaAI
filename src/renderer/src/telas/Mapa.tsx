@@ -204,6 +204,11 @@ export function Mapa({
   const arrastar = (e: PointerEvent): void => {
     const a = arrasto.current
     if (!a) return
+    // soltou o botão fora do mapa antes de o arrasto começar: descarta
+    if ((e.buttons & 1) === 0) {
+      arrasto.current = null
+      return
+    }
     if (!a.movendo) {
       if (Math.hypot(e.clientX - a.x, e.clientY - a.y) < 5) return
       a.movendo = true
