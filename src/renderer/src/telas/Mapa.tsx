@@ -10,10 +10,15 @@ import {
 import { Icone } from '../Icone'
 import { Confirmar } from '../Confirmar'
 import { ColarEstrutura } from '../ColarEstrutura'
+import { LinksDoLugar } from '../LinksDoLugar'
 import { novoId, type Mudar } from '../useDados'
 import type { AlvoDaRevisao } from '../App'
 import {
   ALTURA_DO_NO,
+  limitarVista,
+  type Vista,
+  passoDoTeclado,
+  rolagemEmPixels,
   RECUO_EMPILHADO,
   caixaDos,
   deslocamentoParaMostrar,
@@ -60,7 +65,14 @@ export function Mapa({
   const [renomeando, setRenomeando] = useState<Id | null>(null)
   const [apagando, setApagando] = useState<Id | null>(null)
   const [colando, setColando] = useState(false)
-  const [vista, setVista] = useState({ x: MARGEM, y: MARGEM, zoom: 1 })
+  const [vista, setVistaLivre] = useState({ x: MARGEM, y: MARGEM, zoom: 1 })
+  // toda mudança de vista passa pelo limite: o mapa nunca some de vez
+  const limiteRef = useRef<((v: Vista) => Vista) | null>(null)
+  const setVista = (f: Vista | ((v: Vista) => Vista)): void =>
+    setVistaLivre((atual) => {
+      const nova = typeof f === 'function' ? f(atual) : f
+      return limiteRef.current ? limiteRef.current(nova) : nova
+    })
   const area = useRef<HTMLDivElement>(null)
   const arrasto = useRef<{ x: number; y: number; vx: number; vy: number; movendo: boolean } | null>(
     null
@@ -76,6 +88,10 @@ export function Mapa({
   const vertical = !!dados.mapaVertical
   const layout = useMemo(() => (raiz ? posicionar(raiz, vertical) : null), [raiz, vertical])
   const porId = useMemo(() => new Map(layout?.nos.map((n) => [n.no.id, n]) ?? []), [layout])
+  limiteRef.current = (v: Vista): Vista => {
+    const el = area.current
+    return el && layout ? limitarVista(v, caixaDos(layout.nos), el.clientWidth, el.clientHeight) : v
+  }
 
   // ao abrir, trocar de matéria ou de direção: o mapa inteiro cabe na tela
   useLayoutEffect(() => {
@@ -179,7 +195,21 @@ export function Mapa({
     // tela ou de uma janela aberta (ex.: Configurações) faz o que o botão faz
     if (document.querySelector('dialog[open]')) return
     if (alvo !== document.body && !alvo.closest('.area-mapa')) return
-    if (!sel || renomeando) return
+    if (renomeando) return
+    // setas e PageUp/PageDown andam pelo mapa; Home mostra tudo
+    const el = area.current
+    const passo = el ? passoDoTeclado(e.key, el.clientWidth, el.clientHeight) : null
+    if (passo) {
+      e.preventDefault()
+      setVista((v) => ({ ...v, x: v.x + passo.dx, y: v.y + passo.dy }))
+      return
+    }
+    if (e.key === 'Home') {
+      e.preventDefault()
+      ajustar()
+      return
+    }
+    if (!sel) return
     if (e.key === 'Tab') {
       e.preventDefault()
       novoFilho()
@@ -226,10 +256,11 @@ export function Mapa({
   const rolar = (e: WheelEvent): void => {
     const el = area.current
     if (!el) return
+    const emPx = (d: number): number => rolagemEmPixels(d, e.deltaMode, el.clientHeight)
     if (!e.ctrlKey) {
       // Shift + roda anda de lado
-      const dx = e.shiftKey ? e.deltaY : e.deltaX
-      const dy = e.shiftKey ? 0 : e.deltaY
+      const dx = e.shiftKey ? emPx(e.deltaY) : emPx(e.deltaX)
+      const dy = e.shiftKey ? 0 : emPx(e.deltaY)
       setVista((v) => ({ ...v, x: v.x - dx, y: v.y - dy }))
       return
     }
@@ -237,7 +268,10 @@ export function Mapa({
     const px = e.clientX - r.left
     const py = e.clientY - r.top
     setVista((v) => {
-      const zoom = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, v.zoom * Math.exp(-e.deltaY * 0.002)))
+      const zoom = Math.min(
+        ZOOM_MAX,
+        Math.max(ZOOM_MIN, v.zoom * Math.exp(-emPx(e.deltaY) * 0.002))
+      )
       const k = zoom / v.zoom
       return { zoom, x: px - (px - v.x) * k, y: py - (py - v.y) * k }
     })
@@ -301,7 +335,6 @@ export function Mapa({
   const lugar = sel && sel.no.tipo !== 'materia' ? acharNo(dados, sel.no.id) : null
   const abaixo = lugar ? new Set(idsAbaixo(dados, lugar.id)) : new Set<Id>()
   const cartoesDoAssunto = dados.cartoes.filter((c) => abaixo.has(c.assuntoId)).length
-  const linksDoAssunto = lugar ? dados.links.filter((l) => l.assuntoId === lugar.id).length : 0
 
   return (
     <div className="tela" style={{ flexDirection: 'column' }}>
@@ -386,7 +419,7 @@ export function Mapa({
           Colar estrutura
         </button>
         <span className="meta" style={{ marginLeft: 'auto' }}>
-          Arraste ou role para mover · Ctrl + roda: zoom · Tab filho · Enter irmão · F2 renomeia
+          Arraste, role ou use as setas · Ctrl + roda: zoom · Tab filho · Enter irmão · F2 renomeia
         </span>
       </div>
 
@@ -546,10 +579,16 @@ export function Mapa({
                   {textoSimples(lugar?.nota ?? '').slice(0, 280) || 'Ainda sem anotação.'}
                   {textoSimples(lugar?.nota ?? '').length > 280 && '…'}
                 </p>
-                <div className="chips meta">
-                  <span className="chip-meta">{linksDoAssunto} links</span>
-                  <span className="chip-meta">{cartoesDoAssunto} cartões</span>
-                </div>
+                {lugar && (
+                  <LinksDoLugar
+                    key={lugar.id}
+                    dados={dados}
+                    mudar={mudar}
+                    lugarId={lugar.id}
+                    materiaId={materia.id}
+                  />
+                )}
+                <span className="meta">{cartoesDoAssunto} cartões</span>
                 <button
                   type="button"
                   className="botao principal"

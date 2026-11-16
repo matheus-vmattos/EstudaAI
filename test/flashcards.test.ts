@@ -13,8 +13,11 @@ import {
 import {
   descendentes,
   deslocamentoParaMostrar,
+  limitarVista,
   montarArvore,
+  passoDoTeclado,
   posicionar,
+  rolagemEmPixels,
   vistaQueMostra
 } from '../src/shared/mapa'
 import {
@@ -324,5 +327,27 @@ describe('vertical empilha folhas', () => {
     const folhas = nos.filter((n) => n.empilhado)
     expect(folhas).toHaveLength(10)
     expect(new Set(folhas.map((f) => f.x)).size).toBe(1)
+  })
+})
+
+describe('rolagem e teclado do mapa (v0.1.9)', () => {
+  it('roda em linhas ou páginas vira pixels', () => {
+    expect(rolagemEmPixels(3, 1, 600)).toBe(120)
+    expect(rolagemEmPixels(1, 2, 600)).toBe(540)
+    expect(rolagemEmPixels(100, 0, 600)).toBe(100)
+  })
+  it('setas e PageDown andam; outra tecla não', () => {
+    expect(passoDoTeclado('ArrowDown', 800, 600)).toEqual({ dx: 0, dy: -80 })
+    expect(passoDoTeclado('PageDown', 800, 600)).toEqual({ dx: 0, dy: -480 })
+    expect(passoDoTeclado('a', 800, 600)).toBeNull()
+  })
+})
+
+describe('limite de rolagem', () => {
+  it('rolar demais encosta no limite e o mapa não some', () => {
+    const caixa = { x: 0, y: 0, largura: 1000, altura: 2000 }
+    const v = limitarVista({ x: 0, y: -5000, zoom: 1 }, caixa, 800, 600)
+    expect(v.y).toBe(120 - 2000) // sobram 120 px do fim do mapa no topo da área
+    expect(limitarVista({ x: 0, y: -300, zoom: 1 }, caixa, 800, 600).y).toBe(-300)
   })
 })
