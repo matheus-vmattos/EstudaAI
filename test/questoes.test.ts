@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest'
-import { acertos, formatarTempo, lerRespostaDaIa, montarPrompt } from '../src/shared/questoes'
+import {
+  acertos,
+  formatarTempo,
+  lerRespostaDaIa,
+  montarPrompt,
+  refazerEmbaralhado,
+  resolucaoPorLetra
+} from '../src/shared/questoes'
 import type { ConfigDoSimulado } from '../src/shared/tipos'
 
 const config: ConfigDoSimulado = {
@@ -158,5 +165,88 @@ describe('escape com aspa curva', () => {
     }).replace(/"/g, '“')
     const r = lerRespostaDaIa(json)
     expect(r.ok && r.questoes[0].resolucao).toBe('O "não" atrai.')
+  })
+})
+
+describe('gabarito organizado (v0.1.4)', () => {
+  it('o prompt pede comentários por letra e o conceito', () => {
+    const p = montarPrompt(config, 'gpt')
+    expect(p).toContain('"comentarios"')
+    expect(p).toContain('"conceito"')
+  })
+  it('lê comentários e conceito, ignorando letras que não existem', () => {
+    const r = lerRespostaDaIa(
+      JSON.stringify({
+        questoes: [
+          { ...questao, comentarios: { a: 'errada', B: 'certa', Z: 'x' }, conceito: 'Regra geral.' }
+        ]
+      })
+    )
+    expect(r.ok && r.questoes[0].comentarios).toEqual({ A: 'errada', B: 'certa' })
+    expect(r.ok && r.questoes[0].conceito).toBe('Regra geral.')
+  })
+  it('simulado antigo: quebra a resolução da captura por letra', () => {
+    const q = {
+      enunciado: 'x',
+      alternativas: ['A', 'B', 'C', 'D', 'E'].map((letra) => ({ letra, texto: letra })),
+      gabarito: 'E',
+      resolucao:
+        "E correta: na análise escolar, o 'n' nasaliza a vogal 'e' em 'enxame' e não representa consoante autônoma, formando dígrafo vocálico. A errada: não há duas consoantes nesse segmento. B errada: não há duas unidades vocálicas orais. C errada: não há três unidades vocálicas. D errada: não há vogais em sílabas distintas nesse segmento."
+    }
+    const { porLetra, resto } = resolucaoPorLetra(q)
+    expect(Object.keys(porLetra).sort()).toEqual(['A', 'B', 'C', 'D', 'E'])
+    expect(porLetra.A).toBe('não há duas consoantes nesse segmento.')
+    expect(porLetra.E).toMatch(/^na análise escolar.*dígrafo vocálico\.$/)
+    expect(resto).toBe('')
+  })
+  it('sem padrão reconhecível, não arrisca', () => {
+    const q = {
+      enunciado: 'x',
+      alternativas: ['A', 'B', 'C', 'D', 'E'].map((letra) => ({ letra, texto: letra })),
+      gabarito: 'B',
+      resolucao: 'A regra diz que a próclise é obrigatória com palavras atrativas.'
+    }
+    expect(resolucaoPorLetra(q)).toEqual({ porLetra: {}, resto: q.resolucao })
+  })
+  it('com comentários, o resumo vai para o gabarito se faltar', () => {
+    const q = {
+      ...questao,
+      gabarito: 'B',
+      resolucao: 'Resumo.',
+      alternativas: [],
+      comentarios: { A: 'a' }
+    }
+    expect(resolucaoPorLetra(q).porLetra).toEqual({ A: 'a', B: 'Resumo.' })
+  })
+})
+
+describe('refazer embaralhado', () => {
+  it('mesmas questões, outra ordem, tudo zerado', () => {
+    const r = lerRespostaDaIa(
+      JSON.stringify({
+        questoes: ['1', '2', '3', '4'].map((e) => ({ ...questao, enunciado: `Q${e}` }))
+      })
+    )
+    if (!r.ok) throw new Error()
+    const original = {
+      id: 's1',
+      config: { ...config, quantidade: 4 },
+      questoes: r.questoes,
+      respostas: ['B', 'A', null, 'B'],
+      revisar: [true, false, false, false],
+      tempoPorQuestao: [1, 2, 3, 4],
+      decorridoMs: 10,
+      atual: 3,
+      criadoEm: 1,
+      entregueEm: 2
+    }
+    let semente = 0.3
+    const novo = refazerEmbaralhado(original, 's2', 99, () => (semente = (semente * 7.3) % 1))
+    expect(novo.id).toBe('s2')
+    expect(novo.questoes.map((q) => q.enunciado).sort()).toEqual(['Q1', 'Q2', 'Q3', 'Q4'])
+    expect(novo.questoes.map((q) => q.enunciado)).not.toEqual(['Q1', 'Q2', 'Q3', 'Q4'])
+    expect(novo.respostas).toEqual([null, null, null, null])
+    expect(novo.entregueEm).toBeNull()
+    expect(original.questoes.map((q) => q.enunciado)).toEqual(['Q1', 'Q2', 'Q3', 'Q4'])
   })
 })

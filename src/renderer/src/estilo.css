@@ -1514,3 +1514,68 @@ dialog.config p {
   font-size: 26px;
   color: var(--texto-forte);
 }
+
+/* ---------- gabarito organizado (v0.1.4) ---------- */
+.bloco-alternativa {
+  border: 1px solid var(--linha-2);
+  background: var(--cartao);
+}
+.bloco-alternativa.certa {
+  border-color: var(--verde);
+  background: rgb(57 245 154 / 7%);
+}
+.bloco-alternativa.errada {
+  border-color: var(--vermelho-linha);
+  background: rgb(255 107 122 / 6%);
+}
+.cabeca-alternativa {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 52px;
+  padding: 10px 16px;
+  line-height: 1.45;
+}
+.cabeca-alternativa .letra {
+  font-family: var(--mono);
+  color: var(--texto-meta);
+  flex: none;
+  width: 18px;
+}
+.bloco-alternativa.certa .letra {
+  color: var(--verde);
+}
+.bloco-alternativa.errada .letra {
+  color: var(--vermelho);
+}
+.comentario {
+  margin: 0;
+  padding: 0 16px 14px 48px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--texto-fraco);
+}
+.bloco-alternativa.certa .comentario {
+  color: #bff5d8;
+}
+.bloco-alternativa.errada .comentario {
+  color: #e7b9bf;
+}
+.bloco-explicacao {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 20px;
+  border: 1px solid var(--linha-viva);
+  background: rgb(63 224 245 / 4%);
+}
+.bloco-explicacao p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+.bloco-explicacao.conceito {
+  background: rgb(63 224 245 / 5%);
+  box-shadow: inset 3px 0 0 var(--ciano);
+}

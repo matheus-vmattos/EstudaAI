@@ -1,4 +1,12 @@
-import type { Alternativa, ConfigDoSimulado, IaDestino, Questao, TipoDeQuestao } from './tipos'
+import type {
+  Alternativa,
+  ConfigDoSimulado,
+  IaDestino,
+  Id,
+  Questao,
+  Simulado,
+  TipoDeQuestao
+} from './tipos'
 
 const NOME_DO_NIVEL = { facil: 'FÁCIL', medio: 'MÉDIO', dificil: 'DIFÍCIL' } as const
 
@@ -19,14 +27,18 @@ export function montarPrompt(c: ConfigDoSimulado, ia: IaDestino): string {
   const exemploAlternativas = multipla
     ? '"alternativas": { "A": "...", "B": "...", "C": "...", "D": "...", "E": "..." },\n      "gabarito": "B",'
     : '"alternativas": { "C": "Certo", "E": "Errado" },\n      "gabarito": "E",'
-  const resolucao = multipla
-    ? 'explicando por que a correta está certa e por que cada uma das outras está errada'
-    : 'explicando por que o item está certo ou errado'
+  const exemploComentarios = multipla
+    ? '"comentarios": { "A": "por que está errada", "B": "por que está certa", "C": "...", "D": "...", "E": "..." },'
+    : '"comentarios": { "C": "por que não está certo", "E": "por que está errado" },'
 
   const pedido = [
     `Crie ${c.quantidade} questões inéditas de nível ${NOME_DO_NIVEL[c.nivel]} sobre "${c.tema.trim()}", ${estilo}.`,
     `Formato: ${formato}.`,
-    `Cada questão precisa de enunciado, alternativas, gabarito e resolução ${resolucao}.`,
+    'Cada questão precisa de:',
+    '- enunciado, alternativas e gabarito;',
+    '- resolucao: 1 a 2 frases dizendo por que o gabarito está certo;',
+    `- comentarios: para CADA ${multipla ? 'alternativa (A a E)' : 'opção (C e E)'}, 1 frase curta dizendo por que está certa ou errada;`,
+    '- conceito: 2 a 3 frases explicando o conceito ou a regra que a questão cobra, para o estudante fixar.',
     'Varie os aspectos cobrados do tema e não repita questões.',
     multipla ? 'Distribua o gabarito entre as letras, sem padrão previsível.' : ''
   ]
@@ -40,7 +52,9 @@ export function montarPrompt(c: ConfigDoSimulado, ia: IaDestino): string {
     {
       "enunciado": "...",
       ${exemploAlternativas}
-      "resolucao": "..."
+      "resolucao": "...",
+      ${exemploComentarios}
+      "conceito": "..."
     }
   ]
 }`
@@ -213,7 +227,8 @@ export function lerRespostaDaIa(texto: string): LeituraDaIa {
       enunciado: item.enunciado.trim(),
       alternativas,
       gabarito,
-      resolucao: item.resolucao.trim()
+      resolucao: item.resolucao.trim(),
+      ...lerExtras(item, alternativas)
     })
   }
   return {
@@ -236,4 +251,89 @@ export function formatarTempo(ms: number): string {
 
 export function acertos(questoes: Questao[], respostas: (string | null)[]): number {
   return questoes.reduce((soma, q, i) => soma + (respostas[i] === q.gabarito ? 1 : 0), 0)
+}
+
+/** comentários por letra e conceito: opcionais (arquivos antes da v0.1.4
+ *  não têm); o que vier fora do formato é ignorado, nunca inventado */
+function lerExtras(
+  item: Record<string, unknown>,
+  alternativas: Alternativa[]
+): Pick<Questao, 'comentarios' | 'conceito'> {
+  const extras: Pick<Questao, 'comentarios' | 'conceito'> = {}
+  const c = item.comentarios
+  if (c && typeof c === 'object' && !Array.isArray(c)) {
+    const letras = new Set(alternativas.map((a) => a.letra))
+    const comentarios: Record<string, string> = {}
+    for (const [k, v] of Object.entries(c as Record<string, unknown>)) {
+      const letra = k.trim().toUpperCase()
+      if (letras.has(letra) && textoValido(v)) comentarios[letra] = v.trim()
+    }
+    if (Object.keys(comentarios).length) extras.comentarios = comentarios
+  }
+  if (textoValido(item.conceito)) extras.conceito = item.conceito.trim()
+  return extras
+}
+
+/** Resolução já separada por alternativa. Se a questão veio com
+ *  `comentarios`, usa eles; senão (simulados antigos) tenta quebrar o texto
+ *  nos trechos "A errada: …", "E correta: …". Se não reconhecer o padrão em
+ *  pelo menos duas letras, não arrisca: devolve o texto inteiro em `resto`. */
+export function resolucaoPorLetra(q: Questao): { porLetra: Record<string, string>; resto: string } {
+  if (q.comentarios && Object.keys(q.comentarios).length) {
+    const porLetra = { ...q.comentarios }
+    // o resumo da resolução vai junto do gabarito quando ele não tem comentário
+    if (!porLetra[q.gabarito]) porLetra[q.gabarito] = q.resolucao
+    return { porLetra, resto: '' }
+  }
+  const letras = q.alternativas.map((a) => a.letra)
+  // certo/errado usa C e E, que confundem com "C errada"/"E correta": não quebra
+  if (letras.join('') !== 'ABCDE') return { porLetra: {}, resto: q.resolucao }
+  const marca =
+    /(?:^|(?<=[.;!?]\s+)|(?<=\n))\(?([A-E])\)?\s*(?:\)|-|–)?\s*(?:está\s+|é\s+)?(?:correta|certa|incorreta|errada)\b\s*[:.,\-–]?\s*/g
+  const achados = [...q.resolucao.matchAll(marca)]
+  const distintas = new Set(achados.map((m) => m[1]))
+  if (distintas.size < 2) return { porLetra: {}, resto: q.resolucao }
+  const porLetra: Record<string, string> = {}
+  achados.forEach((m, i) => {
+    const inicio = m.index! + m[0].length
+    const fim = i + 1 < achados.length ? achados[i + 1].index! : q.resolucao.length
+    const texto = q.resolucao.slice(inicio, fim).trim()
+    if (texto) porLetra[m[1]] = porLetra[m[1]] ? `${porLetra[m[1]]} ${texto}` : texto
+  })
+  const resto = q.resolucao.slice(0, achados[0].index).trim()
+  return { porLetra, resto }
+}
+
+/** Fisher–Yates: cada ordem tem a mesma chance */
+export function embaralhar<T>(lista: T[], aleatorio: () => number = Math.random): T[] {
+  const copia = [...lista]
+  for (let i = copia.length - 1; i > 0; i--) {
+    const j = Math.floor(aleatorio() * (i + 1))
+    ;[copia[i], copia[j]] = [copia[j], copia[i]]
+  }
+  return copia
+}
+
+/** Simulado novo com as mesmas questões em outra ordem, zerado.
+ *  ponytail: só a ordem das QUESTÕES muda. Embaralhar as alternativas
+ *  quebraria as do tipo "A e B estão corretas". */
+export function refazerEmbaralhado(
+  s: Simulado,
+  id: Id,
+  agora: number,
+  aleatorio: () => number = Math.random
+): Simulado {
+  const n = s.questoes.length
+  return {
+    id,
+    config: { ...s.config },
+    questoes: embaralhar(s.questoes, aleatorio),
+    respostas: Array(n).fill(null),
+    revisar: Array(n).fill(false),
+    tempoPorQuestao: Array(n).fill(0),
+    decorridoMs: 0,
+    atual: 0,
+    criadoEm: agora,
+    entregueEm: null
+  }
 }
