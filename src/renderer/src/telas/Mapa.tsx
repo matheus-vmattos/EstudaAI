@@ -581,6 +581,7 @@ export function Mapa({
                 </p>
                 {lugar && (
                   <LinksDoLugar
+                    key={lugar.id}
                     dados={dados}
                     mudar={mudar}
                     lugarId={lugar.id}
