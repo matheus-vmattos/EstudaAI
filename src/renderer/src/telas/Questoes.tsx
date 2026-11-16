@@ -1,4 +1,4 @@
-import { useMemo, useState, type DragEvent } from 'react'
+import { useEffect, useMemo, useState, type DragEvent } from 'react'
 import { Icone } from '../Icone'
 import { Confirmar } from '../Confirmar'
 import { novoId, type Mudar } from '../useDados'
@@ -35,7 +35,9 @@ export function Questoes({
   const [config, setConfig] = useState<ConfigDoSimulado>(CONFIG_INICIAL)
   const [ia, setIa] = useState<IaDestino>('claude')
   const [copiado, setCopiado] = useState(false)
+  // o texto da IA nunca aparece na tela: tem o gabarito
   const [resposta, setResposta] = useState('')
+  const [origem, setOrigem] = useState('')
   const [arrastando, setArrastando] = useState(false)
   const [apagando, setApagando] = useState<Simulado | null>(null)
 
@@ -49,13 +51,34 @@ export function Questoes({
   const leitura = useMemo(() => (resposta.trim() ? lerRespostaDaIa(resposta) : null), [resposta])
 
   const copiar = async (): Promise<void> => {
-    await navigator.clipboard.writeText(prompt)
+    await window.api.copiar(prompt)
     setCopiado(true)
   }
 
-  const lerArquivo = async (arquivo: File | undefined): Promise<void> => {
-    if (arquivo) setResposta(await arquivo.text())
+  const receber = (texto: string, de: string): void => {
+    setResposta(texto)
+    setOrigem(texto.trim() ? de : '')
   }
+  const lerArquivo = async (arquivo: File | undefined): Promise<void> => {
+    if (arquivo) receber(await arquivo.text(), arquivo.name)
+  }
+  const colar = async (): Promise<void> =>
+    receber(await window.api.lerAreaDeTransferencia(), 'área de transferência')
+
+  // Ctrl+V em qualquer lugar da tela (fora dos campos) também cola
+  useEffect(() => {
+    const aoColar = (e: ClipboardEvent): void => {
+      const alvo = e.target as HTMLElement | null
+      if (alvo?.closest('input, textarea, select')) return
+      const texto = e.clipboardData?.getData('text') ?? ''
+      if (texto.includes('{')) {
+        e.preventDefault()
+        receber(texto, 'área de transferência')
+      }
+    }
+    window.addEventListener('paste', aoColar)
+    return () => window.removeEventListener('paste', aoColar)
+  }, [])
   const soltar = (e: DragEvent): void => {
     e.preventDefault()
     setArrastando(false)
@@ -104,7 +127,7 @@ export function Questoes({
           <ol className="etapas" aria-label="Etapas">
             <li className={temaOk ? 'feita' : ''}>1 Configurar</li>
             <li className={copiado ? 'feita' : ''}>2 Copiar prompt</li>
-            <li className={leitura?.ok ? 'feita' : ''}>3 Colar resposta</li>
+            <li className={leitura?.ok ? 'feita' : ''}>3 Trazer questões</li>
           </ol>
         </header>
 
@@ -252,37 +275,46 @@ export function Questoes({
             </button>
 
             <h2 className="secao" style={{ marginTop: 14 }}>
-              Colar resposta da IA
+              Trazer as questões
             </h2>
-            <textarea
+            <div
               className={`colar ${arrastando ? 'arrastando' : ''}`}
-              aria-label="Resposta da IA"
-              placeholder="Cole aqui a resposta inteira (Ctrl+V) ou solte o arquivo .json"
-              value={resposta}
-              onChange={(e) => setResposta(e.target.value)}
               onDragOver={(e) => {
                 e.preventDefault()
                 setArrastando(true)
               }}
               onDragLeave={() => setArrastando(false)}
               onDrop={soltar}
-            />
-            <div style={{ display: 'flex', gap: 8 }}>
-              <label className="botao" style={{ cursor: 'pointer' }}>
-                <Icone nome="enviar" tamanho={16} />
-                Abrir arquivo
-                <input
-                  type="file"
-                  accept=".json,.txt,application/json,text/plain"
-                  style={{ display: 'none' }}
-                  onChange={(e) => void lerArquivo(e.target.files?.[0])}
-                />
-              </label>
-              {resposta && (
-                <button type="button" className="botao" onClick={() => setResposta('')}>
-                  Limpar
+            >
+              <span style={{ color: 'var(--ciano)', display: 'flex' }}>
+                <Icone nome="enviar" tamanho={22} />
+              </span>
+              <span>
+                {origem ? `Recebido: ${origem}` : 'Solte aqui o simulado.json que a IA gerou'}
+              </span>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center' }}>
+                <label className="botao" style={{ cursor: 'pointer' }}>
+                  Abrir arquivo
+                  <input
+                    type="file"
+                    accept=".json,.txt,application/json,text/plain"
+                    style={{ display: 'none' }}
+                    onChange={(e) => {
+                      void lerArquivo(e.target.files?.[0])
+                      e.target.value = ''
+                    }}
+                  />
+                </label>
+                <button type="button" className="botao" onClick={() => void colar()}>
+                  <Icone nome="copiar" tamanho={16} />
+                  Colar
                 </button>
-              )}
+                {origem && (
+                  <button type="button" className="botao" onClick={() => receber('', '')}>
+                    Limpar
+                  </button>
+                )}
+              </div>
             </div>
 
             {leitura && !leitura.ok && (

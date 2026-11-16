@@ -54,18 +54,31 @@ export function montarPrompt(c: ConfigDoSimulado, ia: IaDestino): string {
 ${pedido}
 </tarefa>
 
-<formato_da_resposta>
-Responda SOMENTE com um JSON válido, sem nenhum texto antes ou depois, exatamente neste formato:
+<formato_do_arquivo>
 ${json}
-</formato_da_resposta>`
+</formato_do_arquivo>
+
+<entrega>
+${ENTREGA}
+</entrega>`
   }
   return `Você é um elaborador experiente de questões de concurso público.
 
 ${pedido}
 
-Responda SOMENTE com um JSON válido, sem texto antes ou depois e sem comentários, exatamente neste formato:
-${json}`
+Formato do arquivo (JSON válido, sem comentários):
+${json}
+
+${ENTREGA}`
 }
+
+/** O estudante vai resolver as questões depois: ver o gabarito na conversa
+ *  estraga o estudo. Por isso o pedido é um arquivo para baixar; o bloco de
+ *  código é o plano B (tem botão de copiar, sem precisar ler). */
+const ENTREGA = `IMPORTANTE: o estudante vai resolver estas questões depois e NÃO pode ver as respostas antes.
+- Entregue o JSON como um ARQUIVO para download chamado simulado.json.
+- Na conversa, NÃO escreva as questões, as alternativas, o gabarito nem as resoluções. Escreva só uma linha com o link do arquivo.
+- Se você não puder criar arquivos, responda com UM ÚNICO bloco de código json contendo o JSON inteiro, sem nenhum texto antes ou depois do bloco.`
 
 export type LeituraDaIa =
   { ok: true; tema: string; tipo: TipoDeQuestao; questoes: Questao[] } | { ok: false; erro: string }
@@ -75,7 +88,65 @@ function extrairJson(texto: string): unknown {
   const inicio = texto.indexOf('{')
   const fim = texto.lastIndexOf('}')
   if (inicio < 0 || fim <= inicio) throw new Error('sem json')
-  return JSON.parse(texto.slice(inicio, fim + 1))
+  const bruto = texto.slice(inicio, fim + 1)
+  try {
+    return JSON.parse(bruto)
+  } catch {
+    return JSON.parse(consertarJsonCopiado(bruto))
+  }
+}
+
+const ASPAS_CURVAS = '\u201C\u201D\u201E\u201F'
+const SINAIS_DEPOIS_DO_TEXTO = ':,}]'
+
+/** Texto copiado da conversa (e não do bloco de código) às vezes chega com
+ *  aspas curvas no lugar das retas e vírgula sobrando antes de } ou ].
+ *  Conserta só a ESTRUTURA do JSON: anda caractere por caractere sabendo
+ *  onde cada texto começa e termina, então nada dentro de um enunciado,
+ *  alternativa ou resolução é alterado. */
+export function consertarJsonCopiado(json: string): string {
+  let saida = ''
+  let i = 0
+  const proximoSinal = (de: number): string => {
+    let j = de
+    while (j < json.length && /\s/.test(json[j])) j++
+    return json[j] ?? ''
+  }
+  while (i < json.length) {
+    const c = json[i]
+    if (c === '"' || ASPAS_CURVAS.includes(c)) {
+      // um texto: copia até a aspa que o fecha
+      const curva = c !== '"'
+      saida += '"'
+      i++
+      while (i < json.length) {
+        const d = json[i]
+        if (d === '\\') {
+          saida += d + (json[i + 1] ?? '')
+          i += 2
+          continue
+        }
+        const fecha = curva
+          ? ASPAS_CURVAS.includes(d) && SINAIS_DEPOIS_DO_TEXTO.includes(proximoSinal(i + 1))
+          : d === '"'
+        if (fecha) break
+        // aspa reta dentro de um texto aberto com aspa curva precisa de escape
+        saida += curva && d === '"' ? '\\"' : d
+        i++
+      }
+      saida += '"'
+      i++
+      continue
+    }
+    // vírgula sobrando antes de } ou ]
+    if (c === ',' && '}]'.includes(proximoSinal(i + 1))) {
+      i++
+      continue
+    }
+    saida += c
+    i++
+  }
+  return saida
 }
 
 const textoValido = (v: unknown): v is string => typeof v === 'string' && v.trim() !== ''
