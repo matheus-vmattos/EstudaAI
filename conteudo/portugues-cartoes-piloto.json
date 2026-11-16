@@ -1,0 +1,509 @@
+{
+ "materia": "Português",
+ "cartoes": [
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "Crase é a fusão da {{c1::preposição a}} com o {{c1::artigo feminino a}} (ou com o \"a\" de aquele, aquela, aquilo).",
+   "verso": ""
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "Teste rápido da crase: troque a palavra feminina por uma masculina. Se aparecer {{c1::\"ao\"}}, há crase.",
+   "verso": "Fui **à** praia → Fui **ao** clube."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "Começou {{c1::a::a/à}} chover.",
+   "verso": "**Nunca** há crase antes de verbo."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "Andou {{c1::a::a/à}} cavalo até a fazenda.",
+   "verso": "Antes de palavra masculina não há crase. Exceção: \"à moda de\" subentendido — sapato **à** Luís XV."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "Não compareci {{c1::a::a/à}} reuniões do conselho.",
+   "verso": "\"a\" no singular antes de plural = só preposição, sem crase. Com artigo seria \"**às** reuniões\"."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "Entreguei o relatório {{c1::a::a/à}} Vossa Senhoria.",
+   "verso": "Pronome de tratamento não aceita artigo → sem crase. Exceções: **senhora** e **senhorita** (à senhora)."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "Refiro-me {{c1::a::a/à}} esta situação.",
+   "verso": "\"Esta\" e \"essa\" não aceitam artigo → sem crase. Já \"aquela\" junta com a preposição: **àquela**."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "Refiro-me {{c1::àquele::aquele/àquele}} processo.",
+   "verso": "Referir-se **a** + **a**quele = **àquele**."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "Esta é a norma {{c1::à::a/à}} qual me referi.",
+   "verso": "Referir-se **a** + **a** qual = **à** qual. Teste: \"o decreto **ao** qual me referi\"."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "A sessão começa {{c1::às::as/às}} 14h e vai das 14h {{c1::às::as/às}} 18h.",
+   "verso": "Hora determinada leva crase. Mas: \"desde **as** 8h\", \"após **as** 10h\" (já há outra preposição)."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "\"De segunda à sexta\" está certo?",
+   "verso": "Não. O paralelismo manda: **de** segunda **a** sexta (sem artigo) ou **da** segunda **à** sexta (com artigo)."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "Vou {{c1::à::a/à}} Bahia e depois {{c1::a::a/à}} Curitiba.",
+   "verso": "Teste do \"volto\": volto **da** Bahia (crase) / volto **de** Curitiba (sem crase)."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "Vou {{c1::à::a/à}} Curitiba dos pinheirais.",
+   "verso": "Cidade com especificação ganha artigo → crase."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "Depois do expediente, voltei {{c1::a::a/à}} casa.",
+   "verso": "\"Casa\" = o próprio lar, sem especificação → sem crase. Com especificação: voltei **à** casa dos meus pais."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "Os marinheiros desceram {{c1::a::a/à}} terra.",
+   "verso": "\"Terra\" oposta a bordo → sem crase. O planeta leva: a nave voltou **à** Terra."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "Locuções femininas levam crase: {{c1::às}} pressas, {{c1::à}} noite, {{c1::à}} medida que, {{c1::à}} custa de.",
+   "verso": ""
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "Ficaram cara {{c1::a::a/à}} cara.",
+   "verso": "Entre palavras repetidas não há crase: gota **a** gota, frente **a** frente."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "Fez referência {{c1::a::a/à}} uma lei antiga.",
+   "verso": "Antes de artigo indefinido \"uma\" não há crase. Exceção: hora — \"**à** uma hora\"."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "Crase facultativa: antes de {{c1::pronome possessivo feminino}} no singular, de {{c1::nome próprio feminino}} de pessoa e depois de {{c1::\"até\"}}.",
+   "verso": "Fiz referência a/à sua proposta · Entreguei a/à Maria · Fui até a/à praia."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Crase"
+   ],
+   "frente": "Complete (estilo FCC): \"O diretor dirigiu-se ___ funcionárias e ___ elas entregou os prêmios.\"",
+   "verso": "**às** / **a** — dirigir-se a + as funcionárias; antes de pronome pessoal (elas) nunca há crase."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "{{c1::Faltam::Falta/Faltam}} três dias para a prova.",
+   "verso": "Sujeito depois do verbo continua mandando: \"três dias\" → plural."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "{{c1::Havia::Havia/Haviam}} muitos candidatos na sala.",
+   "verso": "**Haver** = existir é impessoal: sempre no singular."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "{{c1::Deve::Deve/Devem}} haver soluções para o caso.",
+   "verso": "O auxiliar acompanha o verbo impessoal: fica no singular."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "{{c1::Existem::Existe/Existem}} muitas dúvidas sobre o edital.",
+   "verso": "**Existir** é pessoal: concorda com o sujeito (muitas dúvidas)."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "{{c1::Faz::Faz/Fazem}} dez anos que trabalho aqui.",
+   "verso": "**Fazer** indicando tempo decorrido é impessoal: singular."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "{{c1::Vendem-se::Vende-se/Vendem-se}} casas.",
+   "verso": "\"se\" apassivador (VTD): \"casas **são vendidas**\" → plural."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "{{c1::Precisa-se::Precisa-se/Precisam-se}} de funcionários.",
+   "verso": "VTI + \"se\" = índice de indeterminação do sujeito → sempre singular."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "Ele é um dos candidatos que mais {{c1::estudam::estuda/estudam}}.",
+   "verso": "Com \"um dos que\", o plural é o preferido (concorda com \"candidatos\"); o singular também é aceito."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "\"A maioria dos alunos faltou\" ou \"faltaram\"?",
+   "verso": "As duas. Com expressão partitiva (a maioria de, grande parte de), o verbo concorda com o núcleo ou com o especificador."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "Com porcentagem, o verbo concorda com quem?",
+   "verso": "Com o número ou com o termo que vem depois: \"1% dos alunos faltou/faltaram\". Com determinante antes do número, concorda com ele: \"**Os** 30% faltaram\"."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "O diretor e o gerente {{c1::chegaram::chegou/chegaram}}.",
+   "verso": "Sujeito composto antes do verbo → plural."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "\"Chegou o diretor e o gerente\" está certo?",
+   "verso": "Sim. Sujeito composto depois do verbo: plural ou concordância com o mais próximo."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "{{c1::São::É/São}} duas horas; {{c1::é::é/são}} meio-dia.",
+   "verso": "Nas horas, o verbo **ser** concorda com o número: é uma hora, são duas horas."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "O problema {{c1::são::é/são}} as contas atrasadas.",
+   "verso": "Sujeito singular (coisa) e predicativo no plural: o verbo **ser** concorda preferencialmente com o plural."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "Seguem {{c1::anexas::anexo/anexas}} as planilhas.",
+   "verso": "**Anexo** é adjetivo e concorda. \"**Em anexo**\" não varia."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "Ela ficou {{c1::meio::meio/meia}} nervosa.",
+   "verso": "**Meio** = um pouco (advérbio) não varia. Numeral varia: meia garrafa."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "Havia {{c1::bastantes::bastante/bastantes}} provas para corrigir.",
+   "verso": "**Bastante** = muitos (adjetivo) varia. = muito (advérbio) não: estudaram **bastante**."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "É {{c1::proibido::proibido/proibida}} entrada. / É {{c1::proibida::proibido/proibida}} a entrada.",
+   "verso": "Sem artigo: não varia. Com artigo: concorda. Vale para é necessário, é bom, é preciso."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "Havia {{c1::menos::menos/menas}} pessoas na fila.",
+   "verso": "**Menos** é invariável: \"menas\" não existe."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "A servidora agradeceu: \"Muito {{c1::obrigada::obrigado/obrigada}}.\"",
+   "verso": "**Obrigado** concorda com quem fala: ela → obrigada."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "As próprias candidatas, elas {{c1::mesmas::mesmo/mesmas}}, corrigiram a prova.",
+   "verso": "**Mesmo** = próprio é adjetivo: concorda. = de fato (advérbio) não: \"elas fizeram **mesmo** a prova\"."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Concordância verbal e nominal"
+   ],
+   "frente": "Adjetivo depois de dois substantivos de gênero diferente: \"idioma e cultura ___\".",
+   "verso": "Concorda com o mais próximo (portuguesa) ou vai ao masculino plural (portugueses)."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "Assistimos {{c1::ao::o/ao}} jogo.",
+   "verso": "**Assistir** = ver, presenciar → VTI com \"a\". Não aceita \"lhe\": assistimos **a ele**."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "O médico assistiu {{c1::o::o/ao}} paciente.",
+   "verso": "**Assistir** = ajudar, dar assistência → VTD: assistiu-**o**."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "Esse direito assiste {{c1::ao::o/ao}} trabalhador.",
+   "verso": "**Assistir** = caber, pertencer → VTI com \"a\": assiste-**lhe**."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "Ele aspira {{c1::ao::o/ao}} cargo de analista.",
+   "verso": "**Aspirar** = desejar → VTI com \"a\" (aspira **a ele**). = sorver → VTD: aspirou **o** perfume."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "O curso visa {{c1::à::a/à}} aprovação.",
+   "verso": "**Visar** = ter como objetivo → VTI com \"a\" (é o que a banca cobra). = mirar ou dar visto → VTD."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "Prefiro estudar {{c1::a::a/do que}} sair.",
+   "verso": "**Preferir** uma coisa **a** outra. Erro: \"prefiro mais… do que\"."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "Obedeça {{c1::aos::os/aos}} prazos do edital.",
+   "verso": "**Obedecer** e **desobedecer** são VTI com \"a\": obedeça-**lhes**."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "Cheguei {{c1::a::em/a}} São Paulo e fui {{c1::ao::no/ao}} banco.",
+   "verso": "Verbos de movimento (chegar, ir, voltar) pedem \"a\" na norma culta, não \"em\"."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "\"A decisão implica em prejuízo\" está certo?",
+   "verso": "Não. **Implicar** = acarretar é VTD: \"implica prejuízo\". Com \"com\" = antipatizar: implica **com** o colega."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "Esqueci {{c1::o::o/do}} livro. / Esqueci-me {{c1::do::o/do}} livro.",
+   "verso": "Sem pronome: VTD. Pronominal (esquecer-**se**, lembrar-**se**) pede \"de\". Erro: \"Esqueci do livro\"."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "Paguei {{c1::o::o/ao}} aluguel {{c1::ao::o/ao}} proprietário.",
+   "verso": "**Pagar** e **perdoar**: coisa = objeto direto; pessoa = indireto (paguei-**lhe**)."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "Informar: \"Informei-{{c1::o::o/lhe}} do resultado\" ou \"Informei-{{c1::lhe::o/lhe}} o resultado\".",
+   "verso": "Pessoa e coisa: uma com preposição, outra sem. Errado: \"informei-o o resultado\"."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "A comissão procedeu {{c1::à::a/à}} análise dos recursos.",
+   "verso": "**Proceder** = realizar, dar início → VTI com \"a\"."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "Quero-{{c1::lhe::o/lhe}} muito bem.",
+   "verso": "**Querer** = estimar → VTI (quero-**lhe** bem). = desejar → VTD (quero-**o** aqui)."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "\"Ela namora com o João\" está na norma culta?",
+   "verso": "Não. **Namorar** é VTD: namora **o** João, namora-**o**."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "Simpatizei {{c1::com::me com/com}} a proposta.",
+   "verso": "**Simpatizar** não é pronominal: \"simpatizei-me\" é erro."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "Ele é residente {{c1::na::na/à}} Rua das Flores.",
+   "verso": "**Residente**, **situado** e **domiciliado** pedem \"em\"."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "O parecer foi favorável {{c1::ao::o/ao}} pedido.",
+   "verso": "**Favorável a**, **contrário a**, **apto a/para**, **compatível com**."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "Este é o cargo {{c1::a que::que/a que}} aspiro.",
+   "verso": "A preposição do verbo vai antes do relativo: aspirar **a** → **a que** / **ao qual**."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "Este é o livro {{c1::de que::que/de que}} gosto.",
+   "verso": "Gostar **de** → **de que** / **do qual**."
+  },
+  {
+   "lugar": [
+    "Sintaxe",
+    "Regência verbal e nominal"
+   ],
+   "frente": "Estilo FCC: \"O filme que assisti foi ótimo\" — certo ou errado?",
+   "verso": "Errado: \"o filme **a que** assisti\" (assistir = ver pede \"a\")."
+  }
+ ]
+}

@@ -118,10 +118,30 @@ export function filaDoDia(
   aprendendo.sort(porVencimento)
   revisoes.sort(porVencimento)
   novos.sort((a, b) => a.criadoEm - b.criadoEm)
+  // quem passou da hora vem antes; o resto reveza entre os tópicos, para não
+  // estudar cinco cartões de crase seguidos (prática intercalada)
+  const hoje = inicioDoDia(agora)
+  const atrasadas = revisoes.filter((c) => new Date(c.agenda.due).getTime() < hoje)
+  const deHoje = revisoes.filter((c) => new Date(c.agenda.due).getTime() >= hoje)
   return {
-    revisar: [...aprendendo, ...revisoes],
-    novos: novos.slice(0, Math.max(0, NOVOS_POR_DIA - novosHoje))
+    revisar: [...aprendendo, ...atrasadas, ...revezar(deHoje, (c) => c.assuntoId)],
+    novos: revezar(novos, (c) => c.assuntoId).slice(0, Math.max(0, NOVOS_POR_DIA - novosHoje))
   }
+}
+
+/** Um de cada grupo por vez, mantendo a ordem dentro de cada grupo:
+ *  [a1 a2 a3 b1 c1 c2] → [a1 b1 c1 a2 c2 a3] */
+export function revezar<T>(itens: T[], grupo: (x: T) => string): T[] {
+  const grupos = new Map<string, T[]>()
+  for (const x of itens) {
+    const g = grupo(x)
+    grupos.set(g, [...(grupos.get(g) ?? []), x])
+  }
+  const filas = [...grupos.values()]
+  const saida: T[] = []
+  for (let i = 0; saida.length < itens.length; i++)
+    for (const f of filas) if (i < f.length) saida.push(f[i])
+  return saida
 }
 
 /** o próximo cartão em aprendizado que vai vencer ainda hoje (para esperar) */

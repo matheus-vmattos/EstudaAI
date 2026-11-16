@@ -11,6 +11,7 @@ import { Icone } from '../Icone'
 import { Confirmar } from '../Confirmar'
 import { ColarEstrutura } from '../ColarEstrutura'
 import { LinksDoLugar } from '../LinksDoLugar'
+import { MoverPara } from '../MoverPara'
 import { novoId, type Mudar } from '../useDados'
 import type { AlvoDaRevisao } from '../App'
 import {
@@ -38,8 +39,11 @@ import {
   adicionarFilho,
   adicionarIrmao,
   apagarNo,
+  destinosPara,
   idsAbaixo,
-  renomearLugar
+  moverNo,
+  renomearLugar,
+  type TipoDoLugar
 } from '../../../shared/arvore'
 
 const MARGEM = 40
@@ -65,6 +69,9 @@ export function Mapa({
   const [renomeando, setRenomeando] = useState<Id | null>(null)
   const [apagando, setApagando] = useState<Id | null>(null)
   const [colando, setColando] = useState(false)
+  // "Mover para…" aberto no painel, e o nó guardado com Ctrl+X
+  const [movendo, setMovendo] = useState<Id | null>(null)
+  const [recortado, setRecortado] = useState<Id | null>(null)
   const [vista, setVistaLivre] = useState({ x: MARGEM, y: MARGEM, zoom: 1 })
   // toda mudança de vista passa pelo limite: o mapa nunca some de vez
   const limiteRef = useRef<((v: Vista) => Vista) | null>(null)
@@ -186,7 +193,23 @@ export function Mapa({
     mudar((d) => renomearLugar(d, id, nome))
   }
 
-  // teclado: Tab cria filho, Enter cria irmão, F2 renomeia, Delete apaga
+  /** muda o nó de lugar; se foi para outra matéria, o mapa vai junto */
+  const mover = (id: Id, destino: { tipo: TipoDoLugar; id: Id }): void => {
+    if (!destinosPara(dados, id).some((x) => x.id === destino.id)) return
+    const alvo =
+      destino.tipo === 'materia' ? destino.id : (acharNo(dados, destino.id)?.materia.id ?? null)
+    mudar((d) => {
+      moverNo(d, id, destino)
+    })
+    setMovendo(null)
+    setRecortado(null)
+    if (alvo && alvo !== materia?.id) setMateriaId(alvo)
+    else pedirMostrar.current = id
+    setSelecionado(id)
+  }
+
+  // teclado: Tab cria filho, Enter cria irmão, F2 renomeia, Delete apaga,
+  // Ctrl+X guarda o nó e Ctrl+V o põe abaixo do selecionado
   const teclado = useRef<(e: KeyboardEvent) => void>(() => {})
   teclado.current = (e) => {
     const alvo = e.target as HTMLElement
@@ -209,7 +232,22 @@ export function Mapa({
       ajustar()
       return
     }
+    if (e.key === 'Escape' && recortado) {
+      setRecortado(null)
+      return
+    }
     if (!sel) return
+    const ctrl = e.ctrlKey || e.metaKey
+    if (ctrl && e.key.toLowerCase() === 'x' && sel.no.tipo !== 'materia') {
+      e.preventDefault()
+      setRecortado(sel.no.id)
+      return
+    }
+    if (ctrl && e.key.toLowerCase() === 'v' && recortado) {
+      e.preventDefault()
+      mover(recortado, { tipo: sel.no.tipo, id: sel.no.id })
+      return
+    }
     if (e.key === 'Tab') {
       e.preventDefault()
       novoFilho()
@@ -419,7 +457,9 @@ export function Mapa({
           Colar estrutura
         </button>
         <span className="meta" style={{ marginLeft: 'auto' }}>
-          Arraste, role ou use as setas · Ctrl + roda: zoom · Tab filho · Enter irmão · F2 renomeia
+          {recortado
+            ? `Selecione o novo lugar de "${acharNo(dados, recortado)?.nome ?? ''}" e Ctrl+V · Esc desiste`
+            : 'Arraste, role ou use as setas · Ctrl + roda: zoom · Tab filho · Enter irmão · F2 renomeia · Ctrl+X/V muda de lugar'}
         </span>
       </div>
 
@@ -485,7 +525,7 @@ export function Mapa({
             {layout.nos.map((n) => (
               <div
                 key={n.no.id}
-                className={`no-mapa ${n.no.tipo} ${selecionado === n.no.id ? 'selecionado' : ''}`}
+                className={`no-mapa ${n.no.tipo} ${selecionado === n.no.id ? 'selecionado' : ''} ${recortado === n.no.id ? 'recortado' : ''}`}
                 style={{ left: n.x, top: n.y, width: LARGURA_DO_NO, height: ALTURA_DO_NO }}
               >
                 {renomeando === n.no.id ? (
@@ -575,6 +615,14 @@ export function Mapa({
                   {topico ? `Tópico · ${assunto.nome}` : `Assunto · ${materia.nome}`}
                 </span>
                 <h2>{lugar?.nome}</h2>
+                {lugar && movendo === lugar.id && (
+                  <MoverPara
+                    dados={dados}
+                    id={lugar.id}
+                    mover={(destino) => mover(lugar.id, destino)}
+                    fechar={() => setMovendo(null)}
+                  />
+                )}
                 <p className="previa">
                   {textoSimples(lugar?.nota ?? '').slice(0, 280) || 'Ainda sem anotação.'}
                   {textoSimples(lugar?.nota ?? '').length > 280 && '…'}
@@ -620,6 +668,17 @@ export function Mapa({
                 >
                   + {topico ? 'Subtópico' : 'Tópico'}
                 </button>
+                {lugar && movendo !== lugar.id && (
+                  <button
+                    type="button"
+                    className="botao"
+                    style={{ minHeight: 40 }}
+                    title="Ctrl+X no nó e Ctrl+V no novo lugar"
+                    onClick={() => setMovendo(lugar.id)}
+                  >
+                    Mover para…
+                  </button>
+                )}
                 {lugar && (
                   <button
                     type="button"

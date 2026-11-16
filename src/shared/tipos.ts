@@ -127,6 +127,8 @@ export interface Dados {
   /** nós do mapa mental recolhidos (matéria, assunto ou tópico) */
   mapaRecolhidos: Id[]
   mapaVertical?: boolean
+  /** baralhos com a seta ao contrário do padrão (matéria aberta, nós fechados) */
+  baralhosInvertidos?: Id[]
   /** itens da caixa "Do Claude" já importados */
   caixaImportados?: string[]
   ultimoBackup?: number
@@ -135,7 +137,7 @@ export interface Dados {
 /** Algo que o Claude preparou e publicou em conteudo/ do repositório */
 export interface ItemDaCaixa {
   id: string
-  tipo: 'estrutura' | 'simulado'
+  tipo: 'estrutura' | 'simulado' | 'cartoes'
   titulo: string
   descricao?: string
   arquivo: string
