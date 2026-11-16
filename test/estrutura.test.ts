@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import {
   importarEstrutura,
   lerEstrutura,
+  recolherAbaixoDosAssuntos,
   sobAMateria,
   type NoDoTexto
 } from '../src/shared/estrutura'
@@ -182,5 +183,21 @@ describe('matérias com o mesmo nome', () => {
     let n = 0
     importarEstrutura(d, sobAMateria(lerEstrutura('Crase'), 'Português'), () => `n${n++}`, 1, 'm2')
     expect(d.materias.map((m) => m.assuntos.length)).toEqual([0, 1])
+  })
+})
+
+describe('mapa enxuto depois de importar', () => {
+  it('recolhe assuntos e tópicos com filhos; matéria fica aberta', () => {
+    const d: Dados = { ...DADOS_VAZIOS }
+    let n = 0
+    const r = importarEstrutura(d, lerEstrutura(ARVORE), () => `n${n++}`, 1)
+    recolherAbaixoDosAssuntos(d, r.materias)
+    const nome = (id: string): string =>
+      d.materias[0].assuntos.find((a) => a.id === id)?.nome ??
+      d.topicos.find((t) => t.id === id)!.nome
+    expect(d.mapaRecolhidos.map(nome).sort()).toEqual(
+      ['Estrutura das palavras', 'Fonologia', 'Morfologia', 'Sintaxe'].sort()
+    )
+    expect(d.mapaRecolhidos).not.toContain(d.materias[0].id)
   })
 })

@@ -10,7 +10,13 @@ import {
   previsoes,
   responder
 } from '../src/shared/flashcards'
-import { descendentes, montarArvore, posicionar } from '../src/shared/mapa'
+import {
+  descendentes,
+  deslocamentoParaMostrar,
+  montarArvore,
+  posicionar,
+  vistaQueMostra
+} from '../src/shared/mapa'
 import {
   acharNo,
   adicionarFilho,
@@ -271,5 +277,52 @@ describe('criar no mapa em qualquer nível (v0.1.6)', () => {
       'Morfologia I',
       'Estrutura'
     ])
+  })
+})
+
+describe('ajustar a vista do mapa (v0.1.8)', () => {
+  it('mapa grande cabe na área, sem passar de 100%', () => {
+    const v = vistaQueMostra({ x: 0, y: 0, largura: 2000, altura: 1000 }, 826, 677)
+    expect(v.zoom).toBeCloseTo((826 - 64) / 2000)
+    // centro do mapa no centro da área
+    expect(v.x + 1000 * v.zoom).toBeCloseTo(413)
+    expect(vistaQueMostra({ x: 0, y: 0, largura: 200, altura: 50 }, 826, 677).zoom).toBe(1)
+  })
+  it('anda só o necessário para mostrar a caixa', () => {
+    const v = { x: 0, y: 0, zoom: 1 }
+    expect(
+      deslocamentoParaMostrar({ x: 100, y: 100, largura: 240, altura: 52 }, v, 826, 677)
+    ).toEqual({ dx: 0, dy: 0 })
+    expect(
+      deslocamentoParaMostrar({ x: 100, y: 844, largura: 240, altura: 52 }, v, 826, 677)
+    ).toEqual({ dx: 0, dy: 677 - 24 - 896 })
+  })
+})
+
+describe('vertical empilha folhas', () => {
+  it('10 folhas irmãs descem em coluna em vez de abrir 10 colunas', () => {
+    const dados: Dados = {
+      ...DADOS_VAZIOS,
+      materias: [
+        {
+          id: 'm',
+          nome: 'P',
+          aberta: true,
+          assuntos: [{ id: 'a', nome: 'Classes', nota: '', atualizadoEm: 0 }]
+        }
+      ],
+      topicos: Array.from({ length: 10 }, (_, i) => ({
+        id: `t${i}`,
+        assuntoId: 'a',
+        paiId: null,
+        nome: `C${i}`,
+        nota: ''
+      }))
+    }
+    const { nos, largura } = posicionar(montarArvore(dados, 'm')!, true)
+    expect(largura).toBeLessThan(400)
+    const folhas = nos.filter((n) => n.empilhado)
+    expect(folhas).toHaveLength(10)
+    expect(new Set(folhas.map((f) => f.x)).size).toBe(1)
   })
 })

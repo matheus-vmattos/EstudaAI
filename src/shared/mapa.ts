@@ -41,8 +41,9 @@ export function montarArvore(dados: Dados, materiaId: Id): NoDoMapa | null {
   )
 }
 
-export const LARGURA_DO_NO = 220
-export const ALTURA_DO_NO = 44
+// nó cabe nome de até 2 linhas (ex.: "Encontros vocálicos (ditongo, tritongo, hiato)")
+export const LARGURA_DO_NO = 240
+export const ALTURA_DO_NO = 52
 const ESPACO_X = 64
 const ESPACO_Y = 14
 
@@ -51,7 +52,14 @@ export interface NoPosicionado {
   x: number
   y: number
   paiId: Id | null
+  /** no vertical: folha empilhada em coluna embaixo do pai */
+  empilhado?: boolean
 }
+
+/** recuo da coluna de folhas empilhadas, no vertical */
+export const RECUO_EMPILHADO = 28
+/** a partir de quantas folhas irmãs o vertical empilha em coluna */
+const EMPILHAR_A_PARTIR_DE = 4
 
 const ESPACO_X_VERTICAL = 24
 const ESPACO_Y_VERTICAL = 64
@@ -72,7 +80,26 @@ export function posicionar(
   const passoNivel = vertical ? ALTURA_DO_NO + ESPACO_Y_VERTICAL : LARGURA_DO_NO + ESPACO_X
   const visitar = (no: NoDoMapa, nivel: number, paiId: Id | null): number => {
     let pos: number
-    if (no.filhos.length === 0) {
+    // vertical: muitas folhas irmãs lado a lado deixam o mapa larguíssimo;
+    // elas descem em coluna embaixo do pai, como num organograma
+    const empilhar =
+      vertical &&
+      no.filhos.length >= EMPILHAR_A_PARTIR_DE &&
+      no.filhos.every((f) => f.filhos.length === 0)
+    if (empilhar) {
+      pos = proximaFolha
+      proximaFolha += passoFolha + RECUO_EMPILHADO
+      const yPai = nivel * passoNivel
+      no.filhos.forEach((f, i) =>
+        nos.push({
+          no: f,
+          x: pos + RECUO_EMPILHADO,
+          y: yPai + (ALTURA_DO_NO + ESPACO_Y) * (i + 1),
+          paiId: no.id,
+          empilhado: true
+        })
+      )
+    } else if (no.filhos.length === 0) {
       pos = proximaFolha
       proximaFolha += passoFolha
     } else {
@@ -108,4 +135,76 @@ export function idsComFilhos(dados: Dados, materiaId: Id): Id[] {
 export function descendentes(dados: Dados, topicoId: Id): Id[] {
   const filhos = dados.topicos.filter((t) => t.paiId === topicoId)
   return [topicoId, ...filhos.flatMap((f) => descendentes(dados, f.id))]
+}
+
+export interface Vista {
+  x: number
+  y: number
+  zoom: number
+}
+export const ZOOM_MIN = 0.25
+export const ZOOM_MAX = 1.6
+
+/** Vista que mostra a caixa inteira (x, y, largura, altura no espaço do
+ *  mapa) centralizada na área, sem passar de 100% de zoom. */
+export function vistaQueMostra(
+  caixa: { x: number; y: number; largura: number; altura: number },
+  areaLargura: number,
+  areaAltura: number,
+  margem = 32
+): Vista {
+  const zoom = Math.max(
+    ZOOM_MIN,
+    Math.min(
+      1,
+      (areaLargura - 2 * margem) / caixa.largura,
+      (areaAltura - 2 * margem) / caixa.altura
+    )
+  )
+  return {
+    zoom,
+    x: areaLargura / 2 - (caixa.x + caixa.largura / 2) * zoom,
+    y: areaAltura / 2 - (caixa.y + caixa.altura / 2) * zoom
+  }
+}
+
+/** Menor deslocamento da vista para a caixa entrar na área (se ela for maior
+ *  que a área, alinha pelo começo: topo/esquerda ficam à vista). */
+export function deslocamentoParaMostrar(
+  caixa: { x: number; y: number; largura: number; altura: number },
+  v: Vista,
+  areaLargura: number,
+  areaAltura: number,
+  margem = 24
+): { dx: number; dy: number } {
+  const eixo = (inicio: number, tamanho: number, area: number): number => {
+    const a = inicio * v.zoom
+    const t = tamanho * v.zoom
+    if (t > area - 2 * margem || a < margem) return margem - a
+    if (a + t > area - margem) return area - margem - (a + t)
+    return 0
+  }
+  return {
+    dx: eixo(caixa.x + v.x / v.zoom, caixa.largura, areaLargura),
+    dy: eixo(caixa.y + v.y / v.zoom, caixa.altura, areaAltura)
+  }
+}
+
+/** a caixa que envolve os nós (para ajustar a vista) */
+export function caixaDos(nos: NoPosicionado[]): {
+  x: number
+  y: number
+  largura: number
+  altura: number
+} {
+  const xs = nos.map((n) => n.x)
+  const ys = nos.map((n) => n.y)
+  const x = Math.min(...xs)
+  const y = Math.min(...ys)
+  return {
+    x,
+    y,
+    largura: Math.max(...xs) + LARGURA_DO_NO - x,
+    altura: Math.max(...ys) + ALTURA_DO_NO - y
+  }
 }

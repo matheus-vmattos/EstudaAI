@@ -43,6 +43,8 @@ export function lerEstrutura(texto: string): NoDoTexto[] {
 export interface ResultadoDaImportacao {
   criados: number
   aproveitados: number
+  /** matérias que receberam algo (para recolher abaixo dos assuntos) */
+  materias: Id[]
 }
 
 const igual = (a: string, b: string): boolean => semAcento(a.trim()) === semAcento(b.trim())
@@ -59,7 +61,7 @@ export function importarEstrutura(
    *  duas matérias com o mesmo nome) */
   materiaAlvo?: Id
 ): ResultadoDaImportacao {
-  const r: ResultadoDaImportacao = { criados: 0, aproveitados: 0 }
+  const r: ResultadoDaImportacao = { criados: 0, aproveitados: 0, materias: [] }
   for (const raiz of raizes) {
     let m =
       materiaAlvo && raiz === raizes[0]
@@ -71,6 +73,7 @@ export function importarEstrutura(
       d.materias.push(m)
       r.criados++
     }
+    if (!r.materias.includes(m.id)) r.materias.push(m.id)
     for (const filho of raiz.filhos) {
       let a = m.assuntos.find((x) => igual(x.nome, filho.nome))
       if (a) r.aproveitados++
@@ -105,4 +108,19 @@ export function importarEstrutura(
 export function sobAMateria(raizes: NoDoTexto[], nomeDaMateria: string): NoDoTexto[] {
   if (raizes.length === 1 && igual(raizes[0].nome, nomeDaMateria)) return raizes
   return [{ nome: nomeDaMateria, filhos: raizes }]
+}
+
+/** Depois de importar: o mapa abre enxuto, com matéria e assuntos à vista e
+ *  o resto recolhido (clicar em "+N" abre cada um). */
+export function recolherAbaixoDosAssuntos(d: Dados, materias: Id[]): void {
+  const assuntos = new Set(
+    d.materias.filter((m) => materias.includes(m.id)).flatMap((m) => m.assuntos.map((a) => a.id))
+  )
+  const comFilhos = new Set(d.topicos.map((t) => t.paiId).filter(Boolean) as Id[])
+  const temTopico = new Set(d.topicos.map((t) => t.assuntoId))
+  const ids = [
+    ...[...assuntos].filter((a) => temTopico.has(a)),
+    ...d.topicos.filter((t) => assuntos.has(t.assuntoId) && comFilhos.has(t.id)).map((t) => t.id)
+  ]
+  d.mapaRecolhidos = [...new Set([...d.mapaRecolhidos, ...ids])]
 }
