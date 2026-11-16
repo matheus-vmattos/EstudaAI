@@ -54,18 +54,31 @@ export function montarPrompt(c: ConfigDoSimulado, ia: IaDestino): string {
 ${pedido}
 </tarefa>
 
-<formato_da_resposta>
-Responda SOMENTE com um JSON válido, sem nenhum texto antes ou depois, exatamente neste formato:
+<formato_do_arquivo>
 ${json}
-</formato_da_resposta>`
+</formato_do_arquivo>
+
+<entrega>
+${ENTREGA}
+</entrega>`
   }
   return `Você é um elaborador experiente de questões de concurso público.
 
 ${pedido}
 
-Responda SOMENTE com um JSON válido, sem texto antes ou depois e sem comentários, exatamente neste formato:
-${json}`
+Formato do arquivo (JSON válido, sem comentários):
+${json}
+
+${ENTREGA}`
 }
+
+/** O estudante vai resolver as questões depois: ver o gabarito na conversa
+ *  estraga o estudo. Por isso o pedido é um arquivo para baixar; o bloco de
+ *  código é o plano B (tem botão de copiar, sem precisar ler). */
+const ENTREGA = `IMPORTANTE: o estudante vai resolver estas questões depois e NÃO pode ver as respostas antes.
+- Entregue o JSON como um ARQUIVO para download chamado simulado.json.
+- Na conversa, NÃO escreva as questões, as alternativas, o gabarito nem as resoluções. Escreva só uma linha com o link do arquivo.
+- Se você não puder criar arquivos, responda com UM ÚNICO bloco de código json contendo o JSON inteiro, sem nenhum texto antes ou depois do bloco.`
 
 export type LeituraDaIa =
   { ok: true; tema: string; tipo: TipoDeQuestao; questoes: Questao[] } | { ok: false; erro: string }
@@ -75,7 +88,24 @@ function extrairJson(texto: string): unknown {
   const inicio = texto.indexOf('{')
   const fim = texto.lastIndexOf('}')
   if (inicio < 0 || fim <= inicio) throw new Error('sem json')
-  return JSON.parse(texto.slice(inicio, fim + 1))
+  const bruto = texto.slice(inicio, fim + 1)
+  // Texto copiado da conversa (e não do bloco de código) às vezes chega com
+  // aspas curvas ou vírgula sobrando no fim. Tenta do jeito que veio e, só
+  // se não der, com essas correções: uma aspa curva DENTRO de um texto
+  // válido nunca é trocada.
+  const tentativas = [
+    bruto,
+    bruto.replace(/[\u201C\u201D\u201E\u201F]/g, '"'),
+    bruto.replace(/[\u201C\u201D\u201E\u201F]/g, '"').replace(/,\s*([}\]])/g, '$1')
+  ]
+  for (const t of tentativas) {
+    try {
+      return JSON.parse(t)
+    } catch {
+      /* próxima tentativa */
+    }
+  }
+  throw new Error('json inválido')
 }
 
 const textoValido = (v: unknown): v is string => typeof v === 'string' && v.trim() !== ''

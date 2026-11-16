@@ -6,6 +6,8 @@ const api = {
   salvarDados: (dados: Dados): Promise<void> => ipcRenderer.invoke('dados:salvar', dados),
   /** síncrono: só para o fechamento da janela */
   salvarAgora: (dados: Dados): boolean => ipcRenderer.sendSync('dados:salvarAgora', dados),
+  lerAreaDeTransferencia: (): Promise<string> => ipcRenderer.invoke('clipboard:ler'),
+  copiar: (texto: string): Promise<void> => ipcRenderer.invoke('clipboard:escrever', texto),
   abrirLink: (url: string): Promise<boolean> => ipcRenderer.invoke('link:abrir', url),
   versao: (): Promise<string> => ipcRenderer.invoke('app:versao'),
   estadoDaAtualizacao: (): Promise<EstadoDaAtualizacao> => ipcRenderer.invoke('atualizacao:estado'),

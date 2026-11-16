@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, shell } from 'electron'
+import { app, BrowserWindow, clipboard, ipcMain, shell } from 'electron'
 import { join } from 'path'
 import { is } from '@electron-toolkit/utils'
 import { lerDados, salvarDados } from './dados'
@@ -82,6 +82,10 @@ app.whenReady().then(() => {
       e.returnValue = false
     }
   })
+  // área de transferência pelo processo principal: a do navegador pede
+  // permissão e falha sem foco
+  ipcMain.handle('clipboard:ler', () => clipboard.readText())
+  ipcMain.handle('clipboard:escrever', (_e, texto: string) => clipboard.writeText(String(texto)))
   ipcMain.handle('link:abrir', (_e, url: string) => abrirLinkExterno(url))
   iniciarAtualizador(() => principal)
 

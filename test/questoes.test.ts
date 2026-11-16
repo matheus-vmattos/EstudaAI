@@ -28,7 +28,7 @@ describe('montarPrompt', () => {
     expect(p).toContain('banca FGV')
   })
   it('usa tags XML para o Claude', () => {
-    expect(montarPrompt(config, 'claude')).toContain('<formato_da_resposta>')
+    expect(montarPrompt(config, 'claude')).toContain('<entrega>')
     expect(montarPrompt(config, 'gpt')).not.toContain('<tarefa>')
   })
   it('pede C/E no certo ou errado', () => {
@@ -97,5 +97,33 @@ describe('alternativas fora de ordem', () => {
       })
     )
     expect(ce.ok && ce.tipo).toBe('certoErrado')
+  })
+})
+
+describe('gabarito não aparece na conversa', () => {
+  it('pede arquivo para baixar e proíbe mostrar as respostas', () => {
+    for (const ia of ['claude', 'gpt'] as const) {
+      const p = montarPrompt(config, ia)
+      expect(p).toContain('simulado.json')
+      expect(p).toContain('NÃO escreva as questões')
+    }
+  })
+})
+
+describe('texto copiado da conversa', () => {
+  const json = JSON.stringify({ questoes: [questao] }, null, 2)
+  it('aceita aspas curvas', () => {
+    expect(lerRespostaDaIa(json.replace(/"/g, '“')).ok).toBe(true)
+  })
+  it('aceita vírgula sobrando no fim', () => {
+    expect(
+      lerRespostaDaIa(json.replace(/"resolucao": "Porque sim."/, '"resolucao": "Porque sim.",')).ok
+    ).toBe(true)
+  })
+  it('não estraga aspas curvas que estão dentro de um texto válido', () => {
+    const r = lerRespostaDaIa(
+      JSON.stringify({ questoes: [{ ...questao, enunciado: 'Na palavra “chuva”…' }] })
+    )
+    expect(r.ok && r.questoes[0].enunciado).toBe('Na palavra “chuva”…')
   })
 })
