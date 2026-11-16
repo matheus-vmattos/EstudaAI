@@ -144,3 +144,28 @@ describe('conteúdo publicado na caixa', () => {
     expect(classes).toHaveLength(11) // o tópico e as 10 classes
   })
 })
+
+describe('nível pelo recuo, não pelo marcador', () => {
+  it('"10." não fica mais fundo que "9."', () => {
+    expect(resumo(lerEstrutura('Português\n  9. Sintaxe\n  10. Pontuação'))).toEqual([
+      'Português',
+      '  Sintaxe',
+      '  Pontuação'
+    ])
+  })
+  it('linha com traço e linha sem traço no recuo maior: é filho', () => {
+    expect(resumo(lerEstrutura('Português\n  - Sintaxe\n    Crase'))).toEqual([
+      'Português',
+      '  Sintaxe',
+      '    Crase'
+    ])
+  })
+  it('árvore em ASCII (|--)', () => {
+    expect(resumo(lerEstrutura('Português\n|-- Sintaxe\n|   |-- Crase\n|-- Pontuação'))).toEqual([
+      'Português',
+      '  Sintaxe',
+      '    Crase',
+      '  Pontuação'
+    ])
+  })
+})

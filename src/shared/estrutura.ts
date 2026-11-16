@@ -7,8 +7,11 @@ export interface NoDoTexto {
   filhos: NoDoTexto[]
 }
 
-// tudo que vem antes do nome: espaços, desenho de árvore e marcadores
-const PREFIXO = /^[\s│├└┬┼─|*•·+-]*(?:\d+(?:\.\d+)*[.)]\s+)?/
+// o nível vem só do recuo: espaços e o desenho de árvore (├─ │ └─);
+// o marcador depois dele (-, *, •, 1., 10.) sai do nome mas não conta,
+// senão "10." pareceria mais fundo que "9." e "- A" diferente de "A"
+const RECUO = /^[\s│├└┬┼─|]*/
+const MARCADOR = /^(?:[-*•+]+\s+|\d+(?:\.\d+)*[.)]\s+)?/
 
 /** Lê uma árvore escrita em texto: recuo com espaços ou tab, traços,
  *  marcadores ou o desenho de árvore (├─ │ └─). "A · B · C" numa linha
@@ -19,10 +22,10 @@ export function lerEstrutura(texto: string): NoDoTexto[] {
   const pilha: { coluna: number; no: NoDoTexto }[] = []
   for (const bruta of texto.replace(/\t/g, '    ').split(/\r?\n/)) {
     if (!bruta.trim() || bruta.trim().startsWith('```')) continue
-    const prefixo = PREFIXO.exec(bruta)?.[0] ?? ''
-    const coluna = prefixo.length
-    const nomes = bruta
-      .slice(coluna)
+    const coluna = (RECUO.exec(bruta)?.[0] ?? '').length
+    const resto = bruta.slice(coluna)
+    const nomes = resto
+      .slice((MARCADOR.exec(resto)?.[0] ?? '').length)
       .split(/\s+·\s+/)
       .map((n) => n.trim().replace(/[:;,.]$/, ''))
       .filter(Boolean)
