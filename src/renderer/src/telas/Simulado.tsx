@@ -17,13 +17,16 @@ export function Simulado({
   simulado,
   mudar,
   sair,
-  abrir
+  abrir,
+  adaptar
 }: {
   simulado: TipoSimulado
   mudar: Mudar
   sair: () => void
   /** abre outro simulado (o refeito) no lugar deste */
   abrir: (id: Id) => void
+  /** vai para o gerador com o próximo simulado adaptado a este */
+  adaptar: () => void
 }) {
   const refazer = (): void => {
     const novo = refazerEmbaralhado(simulado, novoId(), Date.now())
@@ -33,7 +36,7 @@ export function Simulado({
     abrir(novo.id)
   }
   return simulado.entregueEm ? (
-    <Resultado simulado={simulado} sair={sair} refazer={refazer} />
+    <Resultado simulado={simulado} sair={sair} refazer={refazer} adaptar={adaptar} />
   ) : (
     <Prova simulado={simulado} mudar={mudar} sair={sair} />
   )
@@ -358,11 +361,13 @@ function Prova({
 function Resultado({
   simulado: s,
   sair,
-  refazer
+  refazer,
+  adaptar
 }: {
   simulado: TipoSimulado
   sair: () => void
   refazer: () => void
+  adaptar: () => void
 }) {
   const [atual, setAtual] = useState(0)
   const total = s.questoes.length
@@ -406,7 +411,15 @@ function Resultado({
             {s.config.tema}
           </span>
         </div>
-        <button type="button" className="botao" style={{ marginLeft: 'auto' }} onClick={refazer}>
+        <button
+          type="button"
+          className="botao principal"
+          style={{ marginLeft: 'auto' }}
+          onClick={adaptar}
+        >
+          Próximo adaptado
+        </button>
+        <button type="button" className="botao" onClick={refazer}>
           <Icone nome="atualizar" tamanho={16} />
           Refazer embaralhado
         </button>

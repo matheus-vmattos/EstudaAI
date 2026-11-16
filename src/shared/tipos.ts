@@ -43,6 +43,10 @@ export interface Questao {
   comentarios?: Record<string, string>
   /** 2–3 frases sobre o conceito cobrado (v0.1.4+) */
   conceito?: string
+  /** marcador do subtema, para o diagnóstico (v0.1.5+) */
+  topico?: string
+  /** o que a questão exige (lista fixa em questoes.ts) (v0.1.5+) */
+  habilidade?: string
 }
 
 export interface ConfigDoSimulado {
@@ -89,6 +93,7 @@ export interface Agenda {
 
 export interface Cartao {
   id: Id
+  /** assunto OU tópico (v0.1.5+) onde o cartão mora */
   assuntoId: Id
   tipo: TipoDeCartao
   /** básico: a pergunta; lacuna: o texto com {{c1::...}} */
@@ -107,7 +112,9 @@ export interface Topico {
   assuntoId: Id
   paiId: Id | null
   nome: string
+  /** anotação do tópico (Markdown), como a do assunto */
   nota: string
+  atualizadoEm?: number
 }
 
 export interface Dados {
@@ -119,6 +126,7 @@ export interface Dados {
   topicos: Topico[]
   /** nós do mapa mental recolhidos (matéria, assunto ou tópico) */
   mapaRecolhidos: Id[]
+  mapaVertical?: boolean
   ultimoBackup?: number
 }
 

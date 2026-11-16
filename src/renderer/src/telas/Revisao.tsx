@@ -15,6 +15,7 @@ import {
   type Nota
 } from '../../../shared/flashcards'
 import type { Cartao, Dados, Id } from '../../../shared/tipos'
+import { acharNo } from '../../../shared/arvore'
 
 const NOTAS: Nota[] = [1, 2, 3, 4]
 const CLASSE_DA_NOTA: Record<Nota, string> = { 1: 'errei', 2: 'dificil', 3: 'bom', 4: 'facil' }
@@ -54,11 +55,7 @@ export function Revisao({
     ? Math.min(...naFila.map((c) => new Date(c.agenda.due).getTime())) - agora.getTime()
     : 0
 
-  const assunto = atual
-    ? dados.materias
-        .flatMap((m) => m.assuntos.map((a) => ({ m, a })))
-        .find((x) => x.a.id === atual.assuntoId)
-    : null
+  const lugar = atual ? acharNo(dados, atual.assuntoId) : null
 
   const responderCom = (nota: Nota): void => {
     if (!atual || !revelado) return
@@ -130,7 +127,7 @@ export function Revisao({
         </button>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
           <span className="meta">
-            Revisão · {assunto ? `${assunto.m.nome} › ${assunto.a.nome}` : alvo.titulo}
+            Revisão · {lugar ? `${lugar.materia.nome} › ${lugar.caminho.join(' › ')}` : alvo.titulo}
           </span>
           <span
             style={{

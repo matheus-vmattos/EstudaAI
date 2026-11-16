@@ -53,31 +53,39 @@ export interface NoPosicionado {
   paiId: Id | null
 }
 
-/** Árvore horizontal: cada nível numa coluna, folhas empilhadas e o pai no
- *  meio dos filhos. */
-export function posicionar(raiz: NoDoMapa): {
+const ESPACO_X_VERTICAL = 24
+const ESPACO_Y_VERTICAL = 64
+
+/** Árvore horizontal (níveis em colunas) ou vertical (níveis em linhas, como
+ *  árvore genealógica): folhas lado a lado e o pai no meio dos filhos. */
+export function posicionar(
+  raiz: NoDoMapa,
+  vertical = false
+): {
   nos: NoPosicionado[]
   largura: number
   altura: number
 } {
   const nos: NoPosicionado[] = []
   let proximaFolha = 0
+  const passoFolha = vertical ? LARGURA_DO_NO + ESPACO_X_VERTICAL : ALTURA_DO_NO + ESPACO_Y
+  const passoNivel = vertical ? ALTURA_DO_NO + ESPACO_Y_VERTICAL : LARGURA_DO_NO + ESPACO_X
   const visitar = (no: NoDoMapa, nivel: number, paiId: Id | null): number => {
-    const x = nivel * (LARGURA_DO_NO + ESPACO_X)
-    let y: number
+    let pos: number
     if (no.filhos.length === 0) {
-      y = proximaFolha
-      proximaFolha += ALTURA_DO_NO + ESPACO_Y
+      pos = proximaFolha
+      proximaFolha += passoFolha
     } else {
-      const ys = no.filhos.map((f) => visitar(f, nivel + 1, no.id))
-      y = (ys[0] + ys[ys.length - 1]) / 2
+      const ps = no.filhos.map((f) => visitar(f, nivel + 1, no.id))
+      pos = (ps[0] + ps[ps.length - 1]) / 2
     }
-    nos.push({ no, x, y, paiId })
-    return y
+    const n = nivel * passoNivel
+    nos.push(vertical ? { no, x: pos, y: n, paiId } : { no, x: n, y: pos, paiId })
+    return pos
   }
   visitar(raiz, 0, null)
   const largura = Math.max(...nos.map((n) => n.x)) + LARGURA_DO_NO
-  const altura = Math.max(ALTURA_DO_NO, proximaFolha - ESPACO_Y)
+  const altura = Math.max(...nos.map((n) => n.y)) + ALTURA_DO_NO
   return { nos, largura, altura }
 }
 

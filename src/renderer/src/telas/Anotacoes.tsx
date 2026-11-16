@@ -6,9 +6,17 @@ import { agendaNova, lacunaDaAnotacao, mostrarLacuna } from '../../../shared/fla
 import { renderizarMarkdown } from '../markdown'
 import { haQuantoTempo, semAcento, tipoDoLink } from '../../../shared/texto'
 import type { Dados, Id } from '../../../shared/tipos'
+import {
+  acharNo,
+  apagarNo,
+  gravarNota,
+  idsAbaixo,
+  nosDaMateria,
+  type NoDeEstudo
+} from '../../../shared/arvore'
 
-type Editando = { tipo: 'materia' | 'assunto'; id: Id } | null
-type Apagando = { tipo: 'materia' | 'assunto'; id: Id; nome: string } | null
+type Editando = { tipo: 'materia' | 'assunto' | 'topico'; id: Id } | null
+type Apagando = { tipo: 'materia' | 'assunto' | 'topico'; id: Id; nome: string } | null
 
 export function Anotacoes({
   dados,
@@ -39,28 +47,26 @@ export function Anotacoes({
   }, [])
 
   const termo = semAcento(busca.trim())
+  // assuntos e tópicos juntos: a mesma árvore do mapa e dos flashcards
   const arvore = useMemo(() => {
-    if (!termo)
-      return dados.materias.map((m) => ({ materia: m, assuntos: m.assuntos, aberta: m.aberta }))
-    return dados.materias
-      .map((m) => ({
-        materia: m,
+    const comNos = dados.materias.map((m) => ({
+      materia: m,
+      nos: nosDaMateria(dados, m),
+      aberta: m.aberta
+    }))
+    if (!termo) return comNos
+    return comNos
+      .map((x) => ({
+        ...x,
         aberta: true,
-        assuntos: semAcento(m.nome).includes(termo)
-          ? m.assuntos
-          : m.assuntos.filter((a) => semAcento(a.nome + ' ' + a.nota).includes(termo))
+        nos: semAcento(x.materia.nome).includes(termo)
+          ? x.nos
+          : x.nos.filter((n) => semAcento(n.nome + ' ' + n.nota).includes(termo))
       }))
-      .filter((x) => x.assuntos.length > 0 || semAcento(x.materia.nome).includes(termo))
-  }, [dados.materias, termo])
+      .filter((x) => x.nos.length > 0 || semAcento(x.materia.nome).includes(termo))
+  }, [dados, termo])
 
-  let atual: {
-    materia: Dados['materias'][number]
-    assunto: Dados['materias'][number]['assuntos'][number]
-  } | null = null
-  for (const m of dados.materias) {
-    const a = m.assuntos.find((x) => x.id === assuntoId)
-    if (a) atual = { materia: m, assunto: a }
-  }
+  const atual = acharNo(dados, assuntoId)
 
   const novaMateria = (): void => {
     const id = novoId()
@@ -83,6 +89,23 @@ export function Anotacoes({
     setEditando({ tipo: 'assunto', id })
   }
 
+  const novoTopico = (pai: NoDeEstudo): void => {
+    const id = novoId()
+    mudar((d) => {
+      d.topicos.push({
+        id,
+        assuntoId: pai.assuntoId,
+        paiId: pai.tipo === 'topico' ? pai.id : null,
+        nome: 'Novo tópico',
+        nota: '',
+        atualizadoEm: Date.now()
+      })
+      d.mapaRecolhidos = d.mapaRecolhidos.filter((x) => x !== pai.id)
+    })
+    abrirAssunto(id)
+    setEditando({ tipo: 'topico', id })
+  }
+
   const renomear = (nome: string): void => {
     const alvo = editando
     setEditando(null)
@@ -94,6 +117,8 @@ export function Anotacoes({
         const a = m.assuntos.find((x) => x.id === alvo.id)
         if (alvo.tipo === 'assunto' && a) a.nome = limpo
       }
+      const t = d.topicos.find((x) => x.id === alvo.id)
+      if (alvo.tipo === 'topico' && t) t.nome = limpo
     })
   }
 
@@ -101,29 +126,29 @@ export function Anotacoes({
     const alvo = apagando
     setApagando(null)
     if (!alvo) return
+    // o nó aberto some junto? então a tela volta ao vazio
+    const somem = new Set(
+      alvo.tipo === 'materia'
+        ? (dados.materias.find((x) => x.id === alvo.id)?.assuntos ?? []).flatMap((a) =>
+            idsAbaixo(dados, a.id)
+          )
+        : idsAbaixo(dados, alvo.id)
+    )
     mudar((d) => {
-      // cartões e tópicos do mapa vivem dentro do assunto: saem junto
-      const assuntosQueSaem = new Set(
-        alvo.tipo === 'materia'
-          ? (d.materias.find((m) => m.id === alvo.id)?.assuntos.map((a) => a.id) ?? [])
-          : [alvo.id]
-      )
-      d.cartoes = d.cartoes.filter((c) => !assuntosQueSaem.has(c.assuntoId))
-      d.topicos = d.topicos.filter((t) => !assuntosQueSaem.has(t.assuntoId))
+      // cartões e tópicos vivem dentro do assunto: saem junto (arvore.ts)
       if (alvo.tipo === 'materia') {
-        d.materias = d.materias.filter((m) => m.id !== alvo.id)
+        const m = d.materias.find((x) => x.id === alvo.id)
+        for (const a of m?.assuntos ?? []) apagarNo(d, a.id)
+        d.materias = d.materias.filter((x) => x.id !== alvo.id)
         d.links.forEach((l) => {
           if (l.materiaId === alvo.id) {
             l.materiaId = null
             l.assuntoId = null
           }
         })
-      } else {
-        d.materias.forEach((m) => (m.assuntos = m.assuntos.filter((a) => a.id !== alvo.id)))
-        d.links.forEach((l) => l.assuntoId === alvo.id && (l.assuntoId = null))
-      }
+      } else apagarNo(d, alvo.id)
     })
-    if (alvo.id === assuntoId || atual?.materia.id === alvo.id) abrirAssunto(null)
+    if (assuntoId && somem.has(assuntoId)) abrirAssunto(null)
   }
 
   return (
@@ -143,7 +168,7 @@ export function Anotacoes({
         </label>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          {arvore.map(({ materia: m, assuntos, aberta }) => (
+          {arvore.map(({ materia: m, nos, aberta }) => (
             <div key={m.id}>
               {editando?.tipo === 'materia' && editando.id === m.id ? (
                 <CampoDeNome inicial={m.nome} rotulo="Nome da matéria" aoTerminar={renomear} />
@@ -204,30 +229,41 @@ export function Anotacoes({
                 </div>
               )}
               {aberta &&
-                assuntos.map((a) =>
-                  editando?.tipo === 'assunto' && editando.id === a.id ? (
-                    <div key={a.id} style={{ paddingLeft: 28 }}>
+                nos.map((n) =>
+                  editando?.id === n.id ? (
+                    <div key={n.id} style={{ paddingLeft: 28 + n.nivel * 16 }}>
                       <CampoDeNome
-                        inicial={a.nome}
-                        rotulo="Nome do assunto"
+                        inicial={n.nome}
+                        rotulo={n.tipo === 'assunto' ? 'Nome do assunto' : 'Nome do tópico'}
                         aoTerminar={renomear}
                       />
                     </div>
                   ) : (
-                    <div key={a.id} className="assunto">
+                    <div key={n.id} className={`assunto ${n.tipo}`}>
                       <button
                         type="button"
-                        aria-current={a.id === assuntoId ? 'true' : undefined}
-                        onClick={() => abrirAssunto(a.id)}
+                        aria-current={n.id === assuntoId ? 'true' : undefined}
+                        style={{ paddingLeft: 28 + n.nivel * 16 }}
+                        onClick={() => abrirAssunto(n.id)}
+                        onDoubleClick={() => setEditando({ tipo: n.tipo, id: n.id })}
                       >
-                        {a.nome}
+                        {n.nome}
                       </button>
                       <button
                         type="button"
                         className="botao-icone"
-                        aria-label={`Apagar ${a.nome}`}
+                        aria-label={`Novo tópico em ${n.nome}`}
+                        title="Novo tópico dentro"
+                        onClick={() => novoTopico(n)}
+                      >
+                        <Icone nome="mais" tamanho={14} />
+                      </button>
+                      <button
+                        type="button"
+                        className="botao-icone"
+                        aria-label={`Apagar ${n.nome}`}
                         title="Apagar"
-                        onClick={() => setApagando({ tipo: 'assunto', id: a.id, nome: a.nome })}
+                        onClick={() => setApagando({ tipo: n.tipo, id: n.id, nome: n.nome })}
                       >
                         <Icone nome="lixo" tamanho={14} />
                       </button>
@@ -260,13 +296,7 @@ export function Anotacoes({
       </aside>
 
       {atual ? (
-        <Editor
-          key={atual.assunto.id}
-          dados={dados}
-          mudar={mudar}
-          materia={atual.materia}
-          assunto={atual.assunto}
-        />
+        <Editor key={atual.id} dados={dados} mudar={mudar} no={atual} />
       ) : (
         <main className="conteudo">
           <div className="vazio">
@@ -294,7 +324,9 @@ export function Anotacoes({
           texto={
             apagando.tipo === 'materia'
               ? 'A matéria e todas as anotações, flashcards e tópicos do mapa dentro dela serão apagados. Os links continuam no quadro.'
-              : 'A anotação, os flashcards e os tópicos do mapa deste assunto serão apagados. Os links continuam no quadro.'
+              : apagando.tipo === 'topico'
+                ? 'A anotação, os flashcards e os subtópicos deste tópico serão apagados. Os links continuam no quadro.'
+                : 'A anotação, os flashcards e os tópicos deste assunto serão apagados. Os links continuam no quadro.'
           }
           botao="Apagar"
           aoConfirmar={apagar}
@@ -332,20 +364,14 @@ function CampoDeNome({
   )
 }
 
-type Materia = Dados['materias'][number]
-type Assunto = Materia['assuntos'][number]
-
-function Editor({
-  dados,
-  mudar,
-  materia,
-  assunto
-}: {
-  dados: Dados
-  mudar: Mudar
-  materia: Materia
-  assunto: Assunto
-}) {
+function Editor({ dados, mudar, no }: { dados: Dados; mudar: Mudar; no: NoDeEstudo }) {
+  // assunto ou tópico: os dois têm anotação, cartões e links
+  const assunto = no
+  const materia = no.materia
+  const editadoEm =
+    no.tipo === 'assunto'
+      ? no.materia.assuntos.find((a) => a.id === no.id)?.atualizadoEm
+      : dados.topicos.find((t) => t.id === no.id)?.atualizadoEm
   const [modo, setModo] = useState<'ler' | 'editar'>(assunto.nota.trim() ? 'ler' : 'editar')
   const area = useRef<HTMLTextAreaElement>(null)
   const links = dados.links.filter((l) => l.assuntoId === assunto.id)
@@ -387,11 +413,7 @@ function Editor({
 
   const salvarNota = (nota: string): void =>
     mudar((d) => {
-      const a = d.materias.flatMap((m) => m.assuntos).find((x) => x.id === assunto.id)
-      if (a) {
-        a.nota = nota
-        a.atualizadoEm = Date.now()
-      }
+      gravarNota(d, assunto.id, nota)
     })
 
   /** envolve a seleção (ou insere no começo da linha) e devolve o foco */
@@ -423,7 +445,10 @@ function Editor({
     <main className="conteudo">
       <header className="cabecalho">
         <div>
-          <div className="trilha">{materia.nome} / Assunto</div>
+          <div className="trilha">
+            {[materia.nome, ...assunto.caminho.slice(0, -1)].join(' / ')} /{' '}
+            {assunto.tipo === 'assunto' ? 'Assunto' : 'Tópico'}
+          </div>
           <h1 className="titulo">{assunto.nome}</h1>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
@@ -555,7 +580,7 @@ function Editor({
 
       <footer className="meta" style={{ marginTop: 'auto', display: 'flex', gap: 20 }}>
         <span>Salvo automaticamente</span>
-        <span>Editado {haQuantoTempo(assunto.atualizadoEm)}</span>
+        {editadoEm && <span>Editado {haQuantoTempo(editadoEm)}</span>}
       </footer>
     </main>
   )

@@ -9,6 +9,16 @@ import {
   montarPrompt,
   refazerEmbaralhado
 } from '../../../shared/questoes'
+import { acharNo, nosDaMateria } from '../../../shared/arvore'
+import {
+  ajusteSugerido,
+  blocoDeAdaptacao,
+  diagnosticar,
+  nivelAjustado,
+  type OpcoesAdaptadas
+} from '../../../shared/adaptado'
+import { semAcento } from '../../../shared/texto'
+import { PainelAdaptado } from './PainelAdaptado'
 import type {
   ConfigDoSimulado,
   Dados,
@@ -32,13 +42,34 @@ const CONFIG_INICIAL: ConfigDoSimulado = {
 export function Questoes({
   dados,
   mudar,
-  abrirSimulado
+  abrirSimulado,
+  adaptarDe,
+  adaptar
 }: {
   dados: Dados
   mudar: Mudar
   abrirSimulado: (id: Id) => void
+  /** simulado que serve de base para o próximo adaptado (null = gerador normal) */
+  adaptarDe: Id | null
+  adaptar: (id: Id | null) => void
 }) {
   const [config, setConfig] = useState<ConfigDoSimulado>(CONFIG_INICIAL)
+  const base = adaptarDe ? (dados.simulados.find((x) => x.id === adaptarDe) ?? null) : null
+  const diagnostico = useMemo(() => (base ? diagnosticar(base) : null), [base])
+  const [opcoes, setOpcoes] = useState<OpcoesAdaptadas | null>(null)
+  // ao entrar no modo adaptado, começa pela sugestão e pelo tamanho do último
+  useEffect(() => {
+    if (!base || !diagnostico) return setOpcoes(null)
+    setOpcoes({
+      quantidade: base.questoes.length,
+      insistir: true,
+      foco: 'equilibrado',
+      edital: '',
+      banca: base.config.banca,
+      ajuste: ajusteSugerido(diagnostico.pct)
+    })
+    setCopiado(false)
+  }, [base?.id]) // eslint-disable-line react-hooks/exhaustive-deps
   const [ia, setIa] = useState<IaDestino>('claude')
   const [copiado, setCopiado] = useState(false)
   // o texto da IA nunca aparece na tela: tem o gabarito
@@ -52,8 +83,30 @@ export function Questoes({
     setCopiado(false)
   }
 
-  const prompt = montarPrompt(config, ia)
-  const temaOk = config.tema.trim() !== '' && config.quantidade >= 1
+  // no modo adaptado, a configuração vem do simulado base + as opções
+  const configEfetiva: ConfigDoSimulado =
+    base && opcoes
+      ? {
+          ...base.config,
+          nivel: nivelAjustado(base.config.nivel, opcoes.ajuste),
+          quantidade: opcoes.quantidade,
+          banca: opcoes.banca
+        }
+      : config
+  const topicosConhecidos = base
+    ? [
+        ...new Set(
+          dados.simulados
+            .filter((x) => semAcento(x.config.tema) === semAcento(base.config.tema))
+            .flatMap((x) => x.questoes.map((q) => q.topico).filter(Boolean) as string[])
+        )
+      ]
+    : []
+  const prompt =
+    base && opcoes && diagnostico
+      ? montarPrompt(configEfetiva, ia, blocoDeAdaptacao(diagnostico, opcoes, topicosConhecidos))
+      : montarPrompt(config, ia)
+  const temaOk = configEfetiva.tema.trim() !== '' && configEfetiva.quantidade >= 1
   const leitura = useMemo(() => (resposta.trim() ? lerRespostaDaIa(resposta) : null), [resposta])
 
   const copiar = async (): Promise<void> => {
@@ -98,8 +151,8 @@ export function Questoes({
     const simulado: Simulado = {
       id,
       config: {
-        ...config,
-        tema: config.tema.trim() || leitura.tema || 'Simulado',
+        ...configEfetiva,
+        tema: configEfetiva.tema.trim() || leitura.tema || 'Simulado',
         tipo: leitura.tipo,
         quantidade: n
       },
@@ -117,6 +170,7 @@ export function Questoes({
     })
     setResposta('')
     setCopiado(false)
+    adaptar(null)
     abrirSimulado(id)
   }
 
@@ -127,9 +181,16 @@ export function Questoes({
       <main className="conteudo">
         <header className="cabecalho">
           <div>
-            <div className="trilha">Questões / Novo simulado</div>
-            <h1 className="titulo">Gerador de questões</h1>
+            <div className="trilha">
+              {base ? 'Questões / Próximo simulado adaptado' : 'Questões / Novo simulado'}
+            </div>
+            <h1 className="titulo">{base ? base.config.tema : 'Gerador de questões'}</h1>
           </div>
+          {base && (
+            <button type="button" className="botao" onClick={() => adaptar(null)}>
+              Voltar ao gerador normal
+            </button>
+          )}
           <ol className="etapas" aria-label="Etapas">
             <li className={temaOk ? 'feita' : ''}>1 Configurar</li>
             <li className={copiado ? 'feita' : ''}>2 Copiar prompt</li>
@@ -138,104 +199,120 @@ export function Questoes({
         </header>
 
         <div className="colunas">
-          <form
-            className="form-gerador"
-            aria-label="Configurar questões"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <label className="campo">
-              Tema
-              <input
-                type="text"
-                placeholder="Ex.: Colocação pronominal"
-                value={config.tema}
-                onChange={(e) => muda('tema', e.target.value)}
-                autoFocus
-              />
-            </label>
-            <label className="campo">
-              Ligar ao assunto (opcional)
-              <select
-                value={config.assuntoId ?? ''}
-                onChange={(e) => {
-                  const id = e.target.value || null
-                  muda('assuntoId', id)
-                  const a = dados.materias.flatMap((m) => m.assuntos).find((x) => x.id === id)
-                  if (a && !config.tema.trim()) muda('tema', a.nome)
-                }}
-              >
-                <option value="">Nenhum</option>
-                {dados.materias.map((m) => (
-                  <optgroup key={m.id} label={m.nome}>
-                    {m.assuntos.map((a) => (
-                      <option key={a.id} value={a.id}>
-                        {a.nome}
-                      </option>
-                    ))}
-                  </optgroup>
-                ))}
-              </select>
-            </label>
-
-            <Escolha<Nivel>
-              rotulo="Nível"
-              valor={config.nivel}
-              opcoes={[
-                ['facil', 'Fácil'],
-                ['medio', 'Médio'],
-                ['dificil', 'Difícil']
-              ]}
-              mudar={(v) => muda('nivel', v)}
+          {base && opcoes && diagnostico ? (
+            <PainelAdaptado
+              diagnostico={diagnostico}
+              opcoes={opcoes}
+              mudar={(o) => {
+                setOpcoes(o)
+                setCopiado(false)
+              }}
             />
-            <Escolha<TipoDeQuestao>
-              rotulo="Formato"
-              valor={config.tipo}
-              opcoes={[
-                ['multipla', 'Múltipla A–E'],
-                ['certoErrado', 'Certo / Errado']
-              ]}
-              mudar={(v) => muda('tipo', v)}
-            />
-
-            <div
-              style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 10 }}
+          ) : (
+            <form
+              className="form-gerador"
+              aria-label="Configurar questões"
+              onSubmit={(e) => e.preventDefault()}
             >
               <label className="campo">
-                Quantidade
+                Tema
                 <input
-                  type="number"
-                  min={1}
-                  max={100}
-                  value={config.quantidade}
-                  onChange={(e) =>
-                    muda('quantidade', Math.max(1, Math.min(100, Number(e.target.value) || 1)))
-                  }
+                  type="text"
+                  placeholder="Ex.: Colocação pronominal"
+                  value={config.tema}
+                  onChange={(e) => muda('tema', e.target.value)}
+                  autoFocus
                 />
               </label>
               <label className="campo">
-                Tempo (min)
+                Ligar ao assunto (opcional)
+                <select
+                  value={config.assuntoId ?? ''}
+                  onChange={(e) => {
+                    const id = e.target.value || null
+                    muda('assuntoId', id)
+                    const a = acharNo(dados, id)
+                    if (a && !config.tema.trim()) muda('tema', a.nome)
+                  }}
+                >
+                  <option value="">Nenhum</option>
+                  {dados.materias.map((m) => (
+                    <optgroup key={m.id} label={m.nome}>
+                      {nosDaMateria(dados, m).map((a) => (
+                        <option key={a.id} value={a.id}>
+                          {'\u2003'.repeat(a.nivel)}
+                          {a.nome}
+                        </option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </select>
+              </label>
+
+              <Escolha<Nivel>
+                rotulo="Nível"
+                valor={config.nivel}
+                opcoes={[
+                  ['facil', 'Fácil'],
+                  ['medio', 'Médio'],
+                  ['dificil', 'Difícil']
+                ]}
+                mudar={(v) => muda('nivel', v)}
+              />
+              <Escolha<TipoDeQuestao>
+                rotulo="Formato"
+                valor={config.tipo}
+                opcoes={[
+                  ['multipla', 'Múltipla A–E'],
+                  ['certoErrado', 'Certo / Errado']
+                ]}
+                mudar={(v) => muda('tipo', v)}
+              />
+
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                  gap: 10
+                }}
+              >
+                <label className="campo">
+                  Quantidade
+                  <input
+                    type="number"
+                    min={1}
+                    max={100}
+                    value={config.quantidade}
+                    onChange={(e) =>
+                      muda('quantidade', Math.max(1, Math.min(100, Number(e.target.value) || 1)))
+                    }
+                  />
+                </label>
+                <label className="campo">
+                  Tempo (min)
+                  <input
+                    type="number"
+                    min={0}
+                    max={600}
+                    value={config.tempoMin}
+                    onChange={(e) =>
+                      muda('tempoMin', Math.max(0, Math.min(600, Number(e.target.value) || 0)))
+                    }
+                    title="0 = sem limite (o cronômetro só conta)"
+                  />
+                </label>
+              </div>
+              <label className="campo">
+                Banca (opcional)
                 <input
-                  type="number"
-                  min={0}
-                  max={600}
-                  value={config.tempoMin}
-                  onChange={(e) =>
-                    muda('tempoMin', Math.max(0, Math.min(600, Number(e.target.value) || 0)))
-                  }
-                  title="0 = sem limite (o cronômetro só conta)"
+                  type="text"
+                  placeholder="Ex.: FGV, Cebraspe, FCC"
+                  value={config.banca}
+                  onChange={(e) => muda('banca', e.target.value)}
                 />
               </label>
-            </div>
-            <label className="campo">
-              Banca (opcional)
-              <input
-                type="text"
-                placeholder="Ex.: FGV, Cebraspe, FCC"
-                value={config.banca}
-                onChange={(e) => muda('banca', e.target.value)}
-              />
-            </label>
-          </form>
+            </form>
+          )}
 
           <section className="painel-prompt" aria-labelledby="titulo-prompt">
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 8 }}>
@@ -335,8 +412,8 @@ export function Questoes({
               >
                 <span>
                   ✓ {leitura.questoes.length} QUESTÕES VÁLIDAS · GABARITO E RESOLUÇÃO EM TODAS
-                  {leitura.questoes.length !== config.quantidade &&
-                    ` · VOCÊ PEDIU ${config.quantidade}`}
+                  {leitura.questoes.length !== configEfetiva.quantidade &&
+                    ` · VOCÊ PEDIU ${configEfetiva.quantidade}`}
                 </span>
                 <button
                   type="button"
@@ -344,7 +421,8 @@ export function Questoes({
                   style={{ marginLeft: 'auto' }}
                   onClick={iniciar}
                 >
-                  Iniciar simulado · {config.tempoMin ? `${config.tempoMin} min` : 'sem limite'}
+                  Iniciar simulado ·{' '}
+                  {configEfetiva.tempoMin ? `${configEfetiva.tempoMin} min` : 'sem limite'}
                 </button>
               </div>
             )}
@@ -382,6 +460,16 @@ export function Questoes({
                       <span className="meta" style={{ color: 'var(--ambar)' }}>
                         Em andamento
                       </span>
+                    )}
+                    {s.entregueEm && (
+                      <button
+                        type="button"
+                        className="botao"
+                        title="Gerar o próximo simulado com base neste desempenho"
+                        onClick={() => adaptar(s.id)}
+                      >
+                        Adaptar
+                      </button>
                     )}
                     <button type="button" className="botao" onClick={() => abrirSimulado(s.id)}>
                       {s.entregueEm ? 'Ver gabarito' : 'Continuar'}
