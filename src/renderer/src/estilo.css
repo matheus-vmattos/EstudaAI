@@ -1710,3 +1710,39 @@ dialog.config .acoes-dialogo {
 .zoom-mapa .ajustar:hover {
   color: var(--ciano);
 }
+
+/* ---------- links no lugar (v0.1.9) ---------- */
+.links-do-lugar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.chip.video {
+  border-color: var(--vermelho-linha);
+}
+.chip.video svg {
+  color: var(--vermelho);
+}
+.chip.adicionar {
+  border-style: dashed;
+  border-color: var(--linha-viva);
+  color: var(--ciano);
+  background: transparent;
+}
+.form-link-lugar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 420px;
+}
+.form-link-lugar input {
+  min-height: 38px;
+  padding: 0 10px;
+  border: 1px solid var(--linha-2);
+  background: var(--campo);
+  color: #e9f7fb;
+  outline: none;
+}
+.form-link-lugar input:focus {
+  border-color: var(--linha-viva);
+}

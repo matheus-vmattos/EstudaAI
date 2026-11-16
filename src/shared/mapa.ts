@@ -208,3 +208,56 @@ export function caixaDos(nos: NoPosicionado[]): {
     altura: Math.max(...ys) + ALTURA_DO_NO - y
   }
 }
+
+/** Rolagem em pixels: alguns mouses no Windows mandam a roda em linhas
+ *  (deltaMode 1) ou páginas (2); tratar como pixel fazia o mapa andar 3 px
+ *  por giro e parecer travado. */
+export function rolagemEmPixels(delta: number, deltaMode: number, pagina: number): number {
+  if (deltaMode === 1) return delta * 40
+  if (deltaMode === 2) return delta * pagina * 0.9
+  return delta
+}
+
+/** Quanto cada tecla move o mapa (dx, dy); null se a tecla não é de mover */
+export function passoDoTeclado(
+  tecla: string,
+  _largura: number,
+  altura: number
+): { dx: number; dy: number } | null {
+  const passo = 80
+  switch (tecla) {
+    case 'ArrowUp':
+      return { dx: 0, dy: passo }
+    case 'ArrowDown':
+      return { dx: 0, dy: -passo }
+    case 'ArrowLeft':
+      return { dx: passo, dy: 0 }
+    case 'ArrowRight':
+      return { dx: -passo, dy: 0 }
+    case 'PageUp':
+      return { dx: 0, dy: altura * 0.8 }
+    case 'PageDown':
+      return { dx: 0, dy: -altura * 0.8 }
+    default:
+      return null
+  }
+}
+
+/** Não deixa o mapa sumir de vez: ao mover, pelo menos `sobra` px dele
+ *  ficam dentro da área (rolar demais "encosta" no limite). */
+export function limitarVista(
+  v: Vista,
+  caixa: { x: number; y: number; largura: number; altura: number },
+  areaLargura: number,
+  areaAltura: number,
+  sobra = 120
+): Vista {
+  const esq = caixa.x * v.zoom
+  const dir = (caixa.x + caixa.largura) * v.zoom
+  const topo = caixa.y * v.zoom
+  const base = (caixa.y + caixa.altura) * v.zoom
+  const s = (tamanho: number): number => Math.min(sobra, tamanho)
+  const x = Math.min(areaLargura - s(dir - esq) - esq, Math.max(s(dir - esq) - dir, v.x))
+  const y = Math.min(areaAltura - s(base - topo) - topo, Math.max(s(base - topo) - base, v.y))
+  return { ...v, x, y }
+}

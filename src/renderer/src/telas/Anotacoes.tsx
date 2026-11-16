@@ -4,7 +4,8 @@ import { Confirmar } from '../Confirmar'
 import { novoId, type Mudar } from '../useDados'
 import { agendaNova, lacunaDaAnotacao, mostrarLacuna } from '../../../shared/flashcards'
 import { renderizarMarkdown } from '../markdown'
-import { haQuantoTempo, semAcento, tipoDoLink } from '../../../shared/texto'
+import { LinksDoLugar } from '../LinksDoLugar'
+import { haQuantoTempo, semAcento } from '../../../shared/texto'
 import type { Dados, Id } from '../../../shared/tipos'
 import {
   acharNo,
@@ -374,7 +375,6 @@ function Editor({ dados, mudar, no }: { dados: Dados; mudar: Mudar; no: NoDeEstu
       : dados.topicos.find((t) => t.id === no.id)?.atualizadoEm
   const [modo, setModo] = useState<'ler' | 'editar'>(assunto.nota.trim() ? 'ler' : 'editar')
   const area = useRef<HTMLTextAreaElement>(null)
-  const links = dados.links.filter((l) => l.assuntoId === assunto.id)
   const [aviso, setAviso] = useState<{ ok: boolean; texto: string } | null>(null)
   const nCartoes = dados.cartoes.filter((c) => c.assuntoId === assunto.id).length
 
@@ -481,33 +481,7 @@ function Editor({ dados, mudar, no }: { dados: Dados; mudar: Mudar; no: NoDeEstu
         </div>
       )}
 
-      {links.length > 0 && (
-        <div className="chips" aria-label="Links deste assunto">
-          <span className="meta">Links</span>
-          {links.map((l) => (
-            <button
-              key={l.id}
-              type="button"
-              className="chip"
-              title={l.url}
-              onClick={() => void window.api.abrirLink(l.url)}
-            >
-              <Icone
-                nome={
-                  tipoDoLink(l.url) === 'video'
-                    ? 'play'
-                    : tipoDoLink(l.url) === 'pdf'
-                      ? 'doc'
-                      : 'globo'
-                }
-                tamanho={14}
-                cheio={tipoDoLink(l.url) === 'video'}
-              />
-              {l.titulo}
-            </button>
-          ))}
-        </div>
-      )}
+      <LinksDoLugar dados={dados} mudar={mudar} lugarId={assunto.id} materiaId={materia.id} />
 
       {modo === 'editar' ? (
         <>
