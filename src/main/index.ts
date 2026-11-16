@@ -59,6 +59,16 @@ function criarJanela(): void {
   }
 }
 
+// Duas cópias abertas gravariam o mesmo arquivo uma por cima da outra e
+// apagariam o que a outra salvou: a segunda só traz a primeira para a frente.
+if (!app.requestSingleInstanceLock()) app.quit()
+app.on('second-instance', () => {
+  if (!principal) return
+  if (principal.isMinimized()) principal.restore()
+  principal.show()
+  principal.focus()
+})
+
 app.whenReady().then(() => {
   ipcMain.handle('dados:ler', () => lerDados())
   ipcMain.handle('dados:salvar', (_e, dados: Dados) => salvarDados(dados))

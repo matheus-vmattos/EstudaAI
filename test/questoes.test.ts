@@ -82,3 +82,20 @@ describe('utilitários', () => {
     expect(acertos(r.questoes, ['B', null])).toBe(1)
   })
 })
+
+describe('alternativas fora de ordem', () => {
+  it('aceita e ordena A→E e C/E', () => {
+    const r = lerRespostaDaIa(
+      JSON.stringify({
+        questoes: [{ ...questao, alternativas: { E: 'e', D: 'd', C: 'c', B: 'b', A: 'a' } }]
+      })
+    )
+    expect(r.ok && r.questoes[0].alternativas.map((a) => a.letra).join('')).toBe('ABCDE')
+    const ce = lerRespostaDaIa(
+      JSON.stringify({
+        questoes: [{ ...questao, alternativas: { E: 'Errado', C: 'Certo' }, gabarito: 'C' }]
+      })
+    )
+    expect(ce.ok && ce.tipo).toBe('certoErrado')
+  })
+})

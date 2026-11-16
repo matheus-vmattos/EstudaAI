@@ -113,6 +113,8 @@ export function lerRespostaDaIa(texto: string): LeituraDaIa {
     const alternativas: Alternativa[] = Object.entries(alts as Record<string, unknown>)
       .filter(([, t]) => textoValido(t))
       .map(([letra, t]) => ({ letra: letra.trim().toUpperCase(), texto: (t as string).trim() }))
+      // a ordem das chaves no JSON não muda a questão: mostra sempre A→E
+      .sort((a, b) => a.letra.localeCompare(b.letra))
     const letras = alternativas.map((a) => a.letra).join('')
     const tipoDaQuestao: TipoDeQuestao | null =
       letras === 'ABCDE' ? 'multipla' : letras === 'CE' ? 'certoErrado' : null
