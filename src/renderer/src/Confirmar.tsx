@@ -15,7 +15,9 @@ export function Confirmar({
   aoCancelar: () => void
 }) {
   const ref = useRef<HTMLDialogElement>(null)
-  useEffect(() => ref.current?.showModal(), [])
+  useEffect(() => {
+    ref.current?.showModal()
+  }, [])
   return (
     <dialog ref={ref} onClose={aoCancelar} aria-labelledby="confirmar-titulo">
       <h2 id="confirmar-titulo">{titulo}</h2>

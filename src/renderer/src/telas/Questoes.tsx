@@ -2,7 +2,13 @@ import { useEffect, useMemo, useState, type DragEvent } from 'react'
 import { Icone } from '../Icone'
 import { Confirmar } from '../Confirmar'
 import { novoId, type Mudar } from '../useDados'
-import { acertos, formatarTempo, lerRespostaDaIa, montarPrompt } from '../../../shared/questoes'
+import {
+  acertos,
+  formatarTempo,
+  lerRespostaDaIa,
+  montarPrompt,
+  refazerEmbaralhado
+} from '../../../shared/questoes'
 import type {
   ConfigDoSimulado,
   Dados,
@@ -380,6 +386,23 @@ export function Questoes({
                     <button type="button" className="botao" onClick={() => abrirSimulado(s.id)}>
                       {s.entregueEm ? 'Ver gabarito' : 'Continuar'}
                     </button>
+                    {s.entregueEm && (
+                      <button
+                        type="button"
+                        className="botao"
+                        title="Mesmas questões, em outra ordem"
+                        onClick={() => {
+                          const novo = refazerEmbaralhado(s, novoId(), Date.now())
+                          mudar((d) => {
+                            d.simulados.push(novo)
+                          })
+                          abrirSimulado(novo.id)
+                        }}
+                      >
+                        <Icone nome="atualizar" tamanho={15} />
+                        Refazer
+                      </button>
+                    )}
                     <button
                       type="button"
                       className="botao-icone"

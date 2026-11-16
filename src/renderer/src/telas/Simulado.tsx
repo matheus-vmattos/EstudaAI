@@ -1,9 +1,14 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Icone } from '../Icone'
 import { Confirmar } from '../Confirmar'
-import type { Mudar } from '../useDados'
-import { acertos, formatarTempo } from '../../../shared/questoes'
-import type { Simulado as TipoSimulado } from '../../../shared/tipos'
+import { novoId, type Mudar } from '../useDados'
+import {
+  acertos,
+  formatarTempo,
+  refazerEmbaralhado,
+  resolucaoPorLetra
+} from '../../../shared/questoes'
+import type { Id, Simulado as TipoSimulado } from '../../../shared/tipos'
 
 const NOME_DO_TIPO = { multipla: 'Múltipla escolha', certoErrado: 'Certo ou errado' }
 const SALVAR_A_CADA_MS = 5000
@@ -11,14 +16,24 @@ const SALVAR_A_CADA_MS = 5000
 export function Simulado({
   simulado,
   mudar,
-  sair
+  sair,
+  abrir
 }: {
   simulado: TipoSimulado
   mudar: Mudar
   sair: () => void
+  /** abre outro simulado (o refeito) no lugar deste */
+  abrir: (id: Id) => void
 }) {
+  const refazer = (): void => {
+    const novo = refazerEmbaralhado(simulado, novoId(), Date.now())
+    mudar((d) => {
+      d.simulados.push(novo)
+    })
+    abrir(novo.id)
+  }
   return simulado.entregueEm ? (
-    <Resultado simulado={simulado} sair={sair} />
+    <Resultado simulado={simulado} sair={sair} refazer={refazer} />
   ) : (
     <Prova simulado={simulado} mudar={mudar} sair={sair} />
   )
@@ -340,7 +355,15 @@ function Prova({
   )
 }
 
-function Resultado({ simulado: s, sair }: { simulado: TipoSimulado; sair: () => void }) {
+function Resultado({
+  simulado: s,
+  sair,
+  refazer
+}: {
+  simulado: TipoSimulado
+  sair: () => void
+  refazer: () => void
+}) {
   const [atual, setAtual] = useState(0)
   const total = s.questoes.length
   const certas = acertos(s.questoes, s.respostas)
@@ -348,6 +371,13 @@ function Resultado({ simulado: s, sair }: { simulado: TipoSimulado; sair: () => 
   const pct = Math.round((certas / total) * 100)
   const q = s.questoes[atual]
   const minha = s.respostas[atual]
+  const { porLetra, resto } = resolucaoPorLetra(q)
+  const separada = Object.keys(porLetra).length > 0
+  // ao trocar de questão, volta para o topo (a tela rola)
+  const corpo = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    corpo.current?.scrollTo({ top: 0 })
+  }, [atual])
 
   return (
     <div className="prova">
@@ -376,7 +406,11 @@ function Resultado({ simulado: s, sair }: { simulado: TipoSimulado; sair: () => 
             {s.config.tema}
           </span>
         </div>
-        <div className="placar" style={{ marginLeft: 'auto' }}>
+        <button type="button" className="botao" style={{ marginLeft: 'auto' }} onClick={refazer}>
+          <Icone nome="atualizar" tamanho={16} />
+          Refazer embaralhado
+        </button>
+        <div className="placar">
           <div>
             <span className="meta">Acertos</span>
             <span
@@ -400,7 +434,7 @@ function Resultado({ simulado: s, sair }: { simulado: TipoSimulado; sair: () => 
         </div>
       </header>
 
-      <div className="corpo-prova">
+      <div className="corpo-prova" ref={corpo}>
         <main className="questao">
           <div className="meta">
             Questão {atual + 1} de {total} ·{' '}
@@ -410,27 +444,47 @@ function Resultado({ simulado: s, sair }: { simulado: TipoSimulado; sair: () => 
           <p className="enunciado">{q.enunciado}</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {q.alternativas.map((a) => {
-              const classe = a.letra === q.gabarito ? 'certa' : a.letra === minha ? 'errada' : ''
+              const certa = a.letra === q.gabarito
+              const classe = certa ? 'certa' : a.letra === minha ? 'errada' : ''
+              const comentario = porLetra[a.letra]
               return (
-                <button key={a.letra} type="button" disabled className={`alternativa ${classe}`}>
-                  <span className="letra">{a.letra}</span>
-                  <span style={{ flex: 1 }}>{a.texto}</span>
-                  {a.letra === q.gabarito && (
-                    <span className="meta" style={{ color: 'var(--verde)' }}>
-                      Gabarito
-                    </span>
+                <div key={a.letra} className={`bloco-alternativa ${classe}`}>
+                  <div className="cabeca-alternativa">
+                    <span className="letra">{a.letra}</span>
+                    <span style={{ flex: 1 }}>{a.texto}</span>
+                    {certa && (
+                      <span className="meta" style={{ color: 'var(--verde)' }}>
+                        Gabarito
+                      </span>
+                    )}
+                    {a.letra === minha && !certa && (
+                      <span className="meta" style={{ color: 'var(--vermelho)' }}>
+                        Sua resposta
+                      </span>
+                    )}
+                  </div>
+                  {comentario && (
+                    <p className="comentario">
+                      {certa ? '✓ ' : a.letra === minha ? '✗ ' : ''}
+                      {comentario}
+                    </p>
                   )}
-                  {a.letra === minha && a.letra !== q.gabarito && (
-                    <span className="meta" style={{ color: 'var(--vermelho)' }}>
-                      Sua resposta
-                    </span>
-                  )}
-                </button>
+                </div>
               )
             })}
           </div>
-          <h2 className="secao">Resolução</h2>
-          <div className="resolucao">{q.resolucao}</div>
+          {(!separada || resto) && (
+            <section className="bloco-explicacao">
+              <h2 className="secao">Resolução</h2>
+              <p>{separada ? resto : q.resolucao}</p>
+            </section>
+          )}
+          {q.conceito && (
+            <section className="bloco-explicacao conceito">
+              <h2 className="secao">Conceito</h2>
+              <p>{q.conceito}</p>
+            </section>
+          )}
           <div style={{ display: 'flex', gap: 10 }}>
             <button
               type="button"

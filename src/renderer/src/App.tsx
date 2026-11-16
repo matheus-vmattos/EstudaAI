@@ -46,7 +46,14 @@ export function App() {
   const simulado = dados.simulados.find((s) => s.id === simuladoAberto)
   // simulado e revisão ocupam a tela toda: modo foco, sem menu
   if (simulado) {
-    return <Simulado simulado={simulado} mudar={mudar} sair={() => setSimuladoAberto(null)} />
+    return (
+      <Simulado
+        simulado={simulado}
+        mudar={mudar}
+        sair={() => setSimuladoAberto(null)}
+        abrir={setSimuladoAberto}
+      />
+    )
   }
   if (revisao) {
     return <Revisao dados={dados} mudar={mudar} alvo={revisao} sair={() => setRevisao(null)} />

@@ -25,7 +25,9 @@ export function Configuracoes({
   fechar: () => void
 }) {
   const ref = useRef<HTMLDialogElement>(null)
-  useEffect(() => ref.current?.showModal(), [])
+  useEffect(() => {
+    ref.current?.showModal()
+  }, [])
   const { versao, estado } = useAtualizacao()
   const [backup, setBackup] = useState<'parado' | 'salvando' | 'erro'>('parado')
 

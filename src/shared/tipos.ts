@@ -37,7 +37,12 @@ export interface Questao {
   enunciado: string
   alternativas: Alternativa[]
   gabarito: string
+  /** resumo de por que o gabarito está certo */
   resolucao: string
+  /** por letra: por que cada alternativa está certa ou errada (v0.1.4+) */
+  comentarios?: Record<string, string>
+  /** 2–3 frases sobre o conceito cobrado (v0.1.4+) */
+  conceito?: string
 }
 
 export interface ConfigDoSimulado {
