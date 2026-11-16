@@ -1735,7 +1735,8 @@ dialog.config .acoes-dialogo {
   gap: 6px;
   max-width: 420px;
 }
-.form-link-lugar input {
+.form-link-lugar input,
+.mover-para input {
   min-height: 38px;
   padding: 0 10px;
   border: 1px solid var(--linha-2);
@@ -1743,6 +1744,87 @@ dialog.config .acoes-dialogo {
   color: #e9f7fb;
   outline: none;
 }
-.form-link-lugar input:focus {
+.form-link-lugar input:focus,
+.mover-para input:focus {
   border-color: var(--linha-viva);
+}
+
+/* ---------- baralhos enxutos e caixa de cartões (v0.1.10) ---------- */
+.nome-baralho {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.seta-baralho {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--texto-meta);
+  cursor: pointer;
+}
+.seta-baralho:hover {
+  color: var(--ciano);
+}
+.selo-tipo.cartoes {
+  border-color: var(--ambar-linha);
+  color: var(--ambar);
+}
+.mover-para {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--linha-viva);
+  background: var(--campo);
+  box-shadow: 0 0 24px rgb(63 224 245 / 12%);
+}
+.mover-para .titulo-mover {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: var(--ciano);
+  text-transform: uppercase;
+}
+.mover-para [role='listbox'] {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.mover-para [role='option'] {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 7px 10px;
+  border: 1px solid transparent;
+  background: none;
+  color: #e9f7fb;
+  text-align: left;
+  cursor: pointer;
+}
+.mover-para [role='option'][aria-selected='true'] {
+  border-color: var(--ciano);
+  background: rgb(63 224 245 / 10%);
+}
+.mover-para .acima {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--texto-meta);
+  text-transform: uppercase;
+}
+.no-mapa.recortado {
+  opacity: 0.5;
+  border-style: dashed;
 }

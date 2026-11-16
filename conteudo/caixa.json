@@ -7,6 +7,14 @@
       "descricao": "Fonologia, Morfologia, Sintaxe, Pontuação, Semântica e Interpretação, com os tópicos de edital. Antes de importar, renomeie no mapa (F2): Fonema → Fonologia, Radical → Estrutura das palavras, Novo assunto → Sintaxe. O que tiver o mesmo nome é aproveitado.",
       "arquivo": "portugues-estrutura.txt",
       "data": "2026-11-16"
+    },
+    {
+      "id": "portugues-cartoes-piloto-v1",
+      "tipo": "cartoes",
+      "titulo": "Flashcards: crase, concordância e regência",
+      "descricao": "63 cartões no estilo FCC, um fato por cartão. Entram em Português › Sintaxe; o que já existir não duplica. Entram 20 novos por dia, revezando os três tópicos.",
+      "arquivo": "portugues-cartoes-piloto.json",
+      "data": "2026-11-16"
     }
   ]
 }

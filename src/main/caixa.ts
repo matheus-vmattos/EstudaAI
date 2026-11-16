@@ -1,7 +1,7 @@
 import { ipcMain, net } from 'electron'
 import type { ItemDaCaixa } from '../shared/tipos'
 
-/** Conteúdo que o Claude prepara (mapas, simulados) fica na pasta
+/** Conteúdo que o Claude prepara (mapas, simulados, cartões) fica na pasta
  *  conteudo/ do repositório público; o app só lê. */
 // ESTUDAAI_CAIXA_URL: só para os testes apontarem para uma pasta local
 const BASE =
@@ -9,7 +9,7 @@ const BASE =
   'https://raw.githubusercontent.com/matheus-vmattos/EstudaAI/main/conteudo/'
 // só nome simples de arquivo: nada de ../ nem endereço de fora
 const NOME_VALIDO = /^[a-z0-9][a-z0-9-]*\.(txt|json)$/
-const TIPOS = new Set(['estrutura', 'simulado'])
+const TIPOS = new Set(['estrutura', 'simulado', 'cartoes'])
 
 async function baixar(nome: string): Promise<string> {
   const r = await net.fetch(BASE + nome + `?t=${Date.now()}`, { cache: 'no-store' })

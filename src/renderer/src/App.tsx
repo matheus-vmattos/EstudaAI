@@ -174,6 +174,7 @@ export function App() {
           atualizar={buscarCaixa}
           abrirMapa={() => setTela('mapa')}
           abrirSimulado={setSimuladoAberto}
+          abrirFlashcards={() => setTela('flashcards')}
         />
       )}
       {tela === 'questoes' && (

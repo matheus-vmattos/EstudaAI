@@ -1,3 +1,4 @@
+import { semAcento } from './texto'
 import type { Dados, Id, Materia } from './tipos'
 
 /** Um lugar da árvore de estudo: assunto ou tópico (em qualquer nível).
@@ -13,6 +14,8 @@ export interface NoDeEstudo {
   /** nomes do assunto até o nó, sem a matéria */
   caminho: string[]
   nivel: number
+  /** nó de cima (assunto ou tópico); null no assunto */
+  paiId: Id | null
 }
 
 /** todos os nós de uma matéria, na ordem de leitura (pai antes dos filhos) */
@@ -29,7 +32,8 @@ export function nosDaMateria(dados: Dados, m: Materia): NoDeEstudo[] {
         materia: m,
         assuntoId,
         caminho: c,
-        nivel
+        nivel,
+        paiId: t.paiId ?? assuntoId
       })
       topicos(assuntoId, t.id, c, nivel + 1)
     }
@@ -43,7 +47,8 @@ export function nosDaMateria(dados: Dados, m: Materia): NoDeEstudo[] {
       materia: m,
       assuntoId: a.id,
       caminho: [a.nome],
-      nivel: 0
+      nivel: 0,
+      paiId: null
     })
     topicos(a.id, null, [a.nome], 1)
   }
@@ -160,4 +165,115 @@ export function renomearLugar(d: Dados, id: Id, nome: string): void {
   if (a) a.nome = limpo
   const t = d.topicos.find((x) => x.id === id)
   if (t) t.nome = limpo
+}
+
+/** Um lugar para onde o nó pode ir: matéria (vira assunto dela) ou
+ *  assunto/tópico (vira tópico abaixo dele). */
+export interface Destino {
+  tipo: TipoDoLugar
+  id: Id
+  nome: string
+  /** matéria › ... › pai do destino (sem o próprio destino) */
+  acima: string[]
+}
+
+/** Para onde o nó pode ir: tudo menos ele mesmo, o que está abaixo dele
+ *  (daria um laço) e o lugar onde ele já está. */
+export function destinosPara(d: Dados, id: Id): Destino[] {
+  const proibidos = new Set(idsAbaixo(d, id))
+  const t = d.topicos.find((x) => x.id === id)
+  const paiAtual = t
+    ? (t.paiId ?? t.assuntoId)
+    : d.materias.find((m) => m.assuntos.some((a) => a.id === id))?.id
+  const saida: Destino[] = []
+  for (const m of d.materias) {
+    if (m.id !== paiAtual) saida.push({ tipo: 'materia', id: m.id, nome: m.nome, acima: [] })
+    for (const n of nosDaMateria(d, m)) {
+      if (proibidos.has(n.id) || n.id === paiAtual) continue
+      saida.push({
+        tipo: n.tipo,
+        id: n.id,
+        nome: n.nome,
+        acima: [m.nome, ...n.caminho.slice(0, -1)]
+      })
+    }
+  }
+  return saida
+}
+
+/** Filtra os destinos pelo que a pessoa digitou: todas as palavras têm de
+ *  aparecer no caminho; quem tem a palavra no próprio nome vem antes. */
+export function procurarDestino(destinos: Destino[], busca: string): Destino[] {
+  const palavras = semAcento(busca).split(/\s+/).filter(Boolean)
+  if (!palavras.length) return destinos
+  const achados = destinos.filter((x) => {
+    const tudo = semAcento([...x.acima, x.nome].join(' '))
+    return palavras.every((p) => tudo.includes(p))
+  })
+  const noNome = (x: Destino): number =>
+    palavras.every((p) => semAcento(x.nome).includes(p)) ? 0 : 1
+  return achados.sort((a, b) => noNome(a) - noNome(b))
+}
+
+/** Muda o nó de lugar levando tudo junto: subtópicos, anotação, cartões e
+ *  links continuam presos a ele pelo id. Para uma matéria ele vira assunto;
+ *  para um assunto ou tópico, vira tópico. Devolve false se não mudou. */
+export function moverNo(d: Dados, id: Id, destino: { tipo: TipoDoLugar; id: Id }): boolean {
+  if (!destinosPara(d, id).some((x) => x.id === destino.id && x.tipo === destino.tipo)) return false
+  const t = d.topicos.find((x) => x.id === id)
+  const mOrigem = t ? null : d.materias.find((m) => m.assuntos.some((a) => a.id === id))
+  const a = mOrigem?.assuntos.find((x) => x.id === id)
+  const no = t ?? a
+  if (!no) return false
+  const abaixo = new Set(idsAbaixo(d, id))
+  abaixo.delete(id)
+  // os filhos diretos: num assunto são os tópicos de cima; num tópico, quem aponta para ele
+  const filhos = d.topicos.filter((x) => (t ? x.paiId === id : x.assuntoId === id && !x.paiId))
+
+  let materiaDestino: Id
+  let assuntoNovo: Id
+  if (destino.tipo === 'materia') {
+    materiaDestino = destino.id
+    assuntoNovo = id
+  } else {
+    const dt = d.topicos.find((x) => x.id === destino.id)
+    assuntoNovo = dt ? dt.assuntoId : destino.id
+    materiaDestino = d.materias.find((m) => m.assuntos.some((x) => x.id === assuntoNovo))!.id
+  }
+
+  // sai de onde estava
+  if (t) d.topicos = d.topicos.filter((x) => x.id !== id)
+  else if (mOrigem) mOrigem.assuntos = mOrigem.assuntos.filter((x) => x.id !== id)
+
+  // entra no fim dos irmãos novos
+  const quando = no.atualizadoEm ?? Date.now()
+  if (destino.tipo === 'materia') {
+    d.materias
+      .find((m) => m.id === materiaDestino)!
+      .assuntos.push({ id, nome: no.nome, nota: no.nota, atualizadoEm: quando })
+    filhos.forEach((f) => (f.paiId = null))
+  } else {
+    d.topicos.push({
+      id,
+      assuntoId: assuntoNovo,
+      paiId: destino.tipo === 'topico' ? destino.id : null,
+      nome: no.nome,
+      nota: no.nota,
+      atualizadoEm: quando
+    })
+    if (!t) filhos.forEach((f) => (f.paiId = id))
+  }
+  d.topicos.forEach((x) => {
+    if (abaixo.has(x.id)) x.assuntoId = assuntoNovo
+  })
+  // o link guarda a matéria também
+  d.links.forEach((l) => {
+    if (l.assuntoId && (l.assuntoId === id || abaixo.has(l.assuntoId))) l.materiaId = materiaDestino
+  })
+  // o destino e quem está acima dele abrem, para o nó aparecer no mapa
+  const abrir = new Set<Id>([materiaDestino, assuntoNovo])
+  for (let p: Id | null = destino.id; p; p = d.topicos.find((x) => x.id === p)?.paiId ?? null)
+    abrir.add(p)
+  d.mapaRecolhidos = d.mapaRecolhidos.filter((x) => !abrir.has(x))
+  return true
 }

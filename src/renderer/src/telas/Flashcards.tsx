@@ -55,6 +55,15 @@ export function Flashcards({
       total: cs.length
     }
   }
+  // seta ao contrário do padrão (matéria aberta; assunto e tópico fechados)
+  const invertidos = new Set(dados.baralhosInvertidos ?? [])
+  const alternar = (id: Id): void =>
+    mudar((d) => {
+      const atual = new Set(d.baralhosInvertidos ?? [])
+      if (atual.has(id)) atual.delete(id)
+      else atual.add(id)
+      d.baralhosInvertidos = [...atual]
+    })
   const proximo = paraHoje === 0 ? proximoAprendendo(dados.cartoes, agora) : null
 
   const muda = <K extends keyof Rascunho>(k: K, v: Rascunho[K]): void => {
@@ -151,10 +160,8 @@ export function Flashcards({
             <h2 id="titulo-baralhos" className="secao">
               Baralhos
             </h2>
-            {dados.materias.length === 0 ? (
-              <p className="meta">
-                Crie matérias e assuntos em Anotações: cada assunto vira um baralho.
-              </p>
+            {dados.cartoes.length === 0 ? (
+              <p className="meta">Nenhum cartão ainda.</p>
             ) : (
               <div className="baralhos" role="table" aria-label="Baralhos">
                 <div role="row" className="cabeca">
@@ -168,10 +175,38 @@ export function Flashcards({
                   const nos = nosDaMateria(dados, m)
                   const ids = new Set(nos.map((n) => n.id))
                   const t = contar(ids)
+                  if (t.total === 0) return null
+                  // cada linha conta o nó e o que está abaixo dele; nó sem
+                  // cartão não aparece (cria-se cartão nele pelo formulário)
+                  const contas = new Map(
+                    nos.map((n) => {
+                      const abaixo = idsAbaixo(dados, n.id)
+                      return [n.id, { abaixo, ...contar(new Set(abaixo)) }]
+                    })
+                  )
+                  const temFilhoComCartao = new Set(
+                    nos.filter((n) => n.paiId && contas.get(n.id)!.total > 0).map((n) => n.paiId!)
+                  )
+                  const materiaAberta = !invertidos.has(m.id)
+                  const visivel = new Map<Id, boolean>()
+                  for (const n of nos)
+                    visivel.set(
+                      n.id,
+                      n.paiId === null
+                        ? materiaAberta
+                        : !!visivel.get(n.paiId) && invertidos.has(n.paiId)
+                    )
                   return (
                     <div key={m.id} role="rowgroup">
                       <div role="row" className="materia-linha">
-                        <span role="cell">{m.nome}</span>
+                        <span role="cell" className="nome-baralho">
+                          <SetaDoBaralho
+                            aberta={materiaAberta}
+                            nome={m.nome}
+                            alternar={() => alternar(m.id)}
+                          />
+                          {m.nome}
+                        </span>
                         <span role="cell" className="n-novo">
                           {t.novos}
                         </span>
@@ -182,30 +217,36 @@ export function Flashcards({
                           {t.total}
                         </span>
                         <span role="cell">
-                          {t.total > 0 && (
-                            <button
-                              type="button"
-                              className="link-botao"
-                              onClick={() => estudar({ assuntos: [...ids], titulo: m.nome })}
-                            >
-                              Estudar
-                            </button>
-                          )}
+                          <button
+                            type="button"
+                            className="link-botao"
+                            onClick={() => estudar({ assuntos: [...ids], titulo: m.nome })}
+                          >
+                            Estudar
+                          </button>
                         </span>
                       </div>
                       {nos.map((a) => {
-                        // a linha conta o nó e o que está abaixo dele
-                        const abaixo = idsAbaixo(dados, a.id)
-                        const c = contar(new Set(abaixo))
+                        const c = contas.get(a.id)!
+                        if (c.total === 0 || !visivel.get(a.id)) return null
                         return (
                           <div
                             key={a.id}
                             role="row"
                             className="assunto-linha"
                             aria-current={aberto === a.id ? 'true' : undefined}
-                            style={{ marginLeft: 20 + a.nivel * 16 }}
+                            style={{ marginLeft: 20 + a.nivel * 18 }}
                           >
-                            <span role="cell">
+                            <span role="cell" className="nome-baralho">
+                              {temFilhoComCartao.has(a.id) ? (
+                                <SetaDoBaralho
+                                  aberta={invertidos.has(a.id)}
+                                  nome={a.nome}
+                                  alternar={() => alternar(a.id)}
+                                />
+                              ) : (
+                                <span className="seta-baralho" aria-hidden="true" />
+                              )}
                               <button
                                 type="button"
                                 className="link-botao texto"
@@ -225,20 +266,18 @@ export function Flashcards({
                               {c.total}
                             </span>
                             <span role="cell">
-                              {c.total > 0 && (
-                                <button
-                                  type="button"
-                                  className="link-botao"
-                                  onClick={() =>
-                                    estudar({
-                                      assuntos: abaixo,
-                                      titulo: `${m.nome} › ${a.caminho.join(' › ')}`
-                                    })
-                                  }
-                                >
-                                  Estudar
-                                </button>
-                              )}
+                              <button
+                                type="button"
+                                className="link-botao"
+                                onClick={() =>
+                                  estudar({
+                                    assuntos: c.abaixo,
+                                    titulo: `${m.nome} › ${a.caminho.join(' › ')}`
+                                  })
+                                }
+                              >
+                                Estudar
+                              </button>
                             </span>
                           </div>
                         )
@@ -425,5 +464,27 @@ export function Flashcards({
         />
       )}
     </div>
+  )
+}
+
+function SetaDoBaralho({
+  aberta,
+  nome,
+  alternar
+}: {
+  aberta: boolean
+  nome: string
+  alternar: () => void
+}) {
+  return (
+    <button
+      type="button"
+      className="seta-baralho"
+      aria-expanded={aberta}
+      aria-label={`${aberta ? 'Recolher' : 'Abrir'} ${nome}`}
+      onClick={alternar}
+    >
+      <Icone nome={aberta ? 'abaixo' : 'direita'} tamanho={14} />
+    </button>
   )
 }
