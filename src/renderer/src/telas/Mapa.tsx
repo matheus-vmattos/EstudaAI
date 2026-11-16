@@ -21,7 +21,14 @@ import {
   type NoPosicionado
 } from '../../../shared/mapa'
 import type { Dados, Id } from '../../../shared/tipos'
-import { acharNo, apagarNo, idsAbaixo } from '../../../shared/arvore'
+import {
+  acharNo,
+  adicionarFilho,
+  adicionarIrmao,
+  apagarNo,
+  idsAbaixo,
+  renomearLugar
+} from '../../../shared/arvore'
 
 const MARGEM = 40
 const textoSimples = (md: string): string =>
@@ -69,6 +76,28 @@ export function Mapa({
   }, [materia?.id, vertical]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const sel = selecionado ? porId.get(selecionado) : undefined
+
+  useEffect(() => {
+    const el = area.current
+    const n = selecionado ? porId.get(selecionado) : undefined
+    if (!el || !n) return
+    const margem = 24
+    const x = vista.x + n.x * vista.zoom
+    const y = vista.y + n.y * vista.zoom
+    const w = LARGURA_DO_NO * vista.zoom
+    const h = ALTURA_DO_NO * vista.zoom
+    const fora =
+      x < margem ||
+      y < margem ||
+      x + w > el.clientWidth - margem ||
+      y + h > el.clientHeight - margem
+    if (fora)
+      setVista((v) => ({
+        ...v,
+        x: el.clientWidth / 2 - (n.x + LARGURA_DO_NO / 2) * v.zoom,
+        y: el.clientHeight / 2 - (n.y + ALTURA_DO_NO / 2) * v.zoom
+      }))
+  }, [selecionado, layout]) // eslint-disable-line react-hooks/exhaustive-deps
   const assuntoDoNo = (no: NoPosicionado | undefined): Id | null => {
     if (!no) return null
     if (no.no.tipo === 'assunto') return no.no.id
@@ -84,45 +113,50 @@ export function Mapa({
         : [...d.mapaRecolhidos, id]
     })
 
-  const novoTopico = (): void => {
-    const no = sel
-    const assuntoId = assuntoDoNo(no)
-    if (!no || !assuntoId) return
+  /** filho do nó selecionado: matéria → assunto; assunto/tópico → tópico */
+  const novoFilho = (): void => {
+    if (!sel) return
     const id = novoId()
+    const no = { tipo: sel.no.tipo, id: sel.no.id }
     mudar((d) => {
-      d.topicos.push({
-        id,
-        assuntoId,
-        paiId: no.no.tipo === 'topico' ? no.no.id : null,
-        nome: 'Novo tópico',
-        nota: ''
-      })
-      d.mapaRecolhidos = d.mapaRecolhidos.filter((x) => x !== no.no.id)
+      adicionarFilho(d, no, id)
     })
     setSelecionado(id)
     setRenomeando(id)
   }
+  /** irmão do nó selecionado (mesmo pai) */
+  const novoIrmao = (): void => {
+    if (!sel || sel.no.tipo === 'materia') return
+    const id = novoId()
+    const no = { tipo: sel.no.tipo, id: sel.no.id }
+    mudar((d) => {
+      adicionarIrmao(d, no, id)
+    })
+    setSelecionado(id)
+    setRenomeando(id)
+  }
+  // compatível com os botões que já chamavam "novo tópico"
+  const novoTopico = novoFilho
 
   const renomear = (id: Id, nome: string): void => {
     setRenomeando(null)
-    const limpo = nome.trim()
-    if (!limpo) return
-    mudar((d) => {
-      const t = d.topicos.find((x) => x.id === id)
-      if (t) t.nome = limpo
-    })
+    mudar((d) => renomearLugar(d, id, nome))
   }
 
-  // teclado: Tab cria filho, F2 renomeia, Delete apaga o tópico selecionado
+  // teclado: Tab cria filho, Enter cria irmão, F2 renomeia, Delete apaga
   const teclado = useRef<(e: KeyboardEvent) => void>(() => {})
   teclado.current = (e) => {
     const alvo = e.target as HTMLElement
     if (alvo.closest('input, textarea, select') || apagando) return
-    if (e.key === 'Tab' && sel && sel.no.tipo !== 'materia') {
+    if (!sel || renomeando) return
+    if (e.key === 'Tab') {
       e.preventDefault()
-      novoTopico()
-    } else if (e.key === 'F2' && sel?.no.tipo === 'topico') setRenomeando(sel.no.id)
-    else if (e.key === 'Delete' && sel?.no.tipo === 'topico') setApagando(sel.no.id)
+      novoFilho()
+    } else if (e.key === 'Enter' && sel.no.tipo !== 'materia') {
+      e.preventDefault()
+      novoIrmao()
+    } else if (e.key === 'F2') setRenomeando(sel.no.id)
+    else if (e.key === 'Delete' && sel.no.tipo !== 'materia') setApagando(sel.no.id)
   }
   useEffect(() => {
     const ouvir = (e: KeyboardEvent): void => teclado.current(e)
@@ -161,10 +195,22 @@ export function Mapa({
         <main className="conteudo">
           <div className="vazio">
             <Icone nome="mapa" tamanho={40} />
-            <p>
-              O mapa é montado a partir das suas matérias e assuntos. Crie uma matéria em Anotações
-              para começar.
-            </p>
+            <p>O mapa é montado a partir das suas matérias, assuntos e tópicos.</p>
+            <button
+              type="button"
+              className="botao principal"
+              onClick={() => {
+                const id = novoId()
+                mudar((d) => {
+                  d.materias.push({ id, nome: 'Nova matéria', aberta: true, assuntos: [] })
+                })
+                setMateriaId(id)
+                setSelecionado(id)
+                setRenomeando(id)
+              }}
+            >
+              + Nova matéria
+            </button>
           </div>
         </main>
       </div>
@@ -247,14 +293,14 @@ export function Mapa({
         <button
           type="button"
           className="botao tracejado"
-          disabled={!sel || sel.no.tipo === 'materia'}
-          title={!sel || sel.no.tipo === 'materia' ? 'Selecione um assunto ou tópico' : 'Tab'}
-          onClick={novoTopico}
+          disabled={!sel}
+          title={sel ? 'Tab' : 'Selecione um nó do mapa'}
+          onClick={novoFilho}
         >
-          + Tópico
+          {sel?.no.tipo === 'materia' ? '+ Assunto' : '+ Tópico'}
         </button>
         <span className="meta" style={{ marginLeft: 'auto' }}>
-          Arraste para mover · roda para zoom · Tab cria filho · F2 renomeia
+          Tab cria filho · Enter cria irmão · F2 renomeia · Del apaga · arraste e roda movem
         </span>
       </div>
 
@@ -314,7 +360,7 @@ export function Mapa({
                 {renomeando === n.no.id ? (
                   <input
                     className="renomear"
-                    aria-label="Nome do tópico"
+                    aria-label="Nome"
                     autoFocus
                     defaultValue={n.no.nome}
                     onFocus={(e) => e.target.select()}
@@ -329,7 +375,7 @@ export function Mapa({
                     type="button"
                     className="nome-no"
                     onClick={() => setSelecionado(n.no.id)}
-                    onDoubleClick={() => n.no.tipo === 'topico' && setRenomeando(n.no.id)}
+                    onDoubleClick={() => setRenomeando(n.no.id)}
                   >
                     {n.no.nome}
                   </button>
@@ -373,6 +419,14 @@ export function Mapa({
                 }{' '}
                 tópicos
               </p>
+              <button
+                type="button"
+                className="botao tracejado"
+                style={{ minHeight: 40 }}
+                onClick={novoFilho}
+              >
+                + Assunto
+              </button>
             </>
           )}
           {assunto && sel && sel.no.tipo !== 'materia' && (
@@ -420,15 +474,15 @@ export function Mapa({
               >
                 + {topico ? 'Subtópico' : 'Tópico'}
               </button>
-              {topico && (
+              {lugar && (
                 <button
                   type="button"
                   className="botao perigo"
                   style={{ minHeight: 40 }}
-                  onClick={() => setApagando(topico.id)}
+                  onClick={() => setApagando(lugar.id)}
                 >
                   <Icone nome="lixo" tamanho={15} />
-                  Apagar tópico
+                  {lugar.tipo === 'assunto' ? 'Apagar assunto' : 'Apagar tópico'}
                 </button>
               )}
             </>
@@ -438,11 +492,17 @@ export function Mapa({
 
       {apagando && (
         <Confirmar
-          titulo="Apagar este tópico?"
+          titulo={
+            dados.topicos.some((t) => t.id === apagando)
+              ? 'Apagar este tópico?'
+              : 'Apagar este assunto?'
+          }
           texto={
-            descendentes(dados, apagando).length > 1
-              ? `O tópico e os ${descendentes(dados, apagando).length - 1} subtópicos dentro dele saem, com anotações e flashcards.`
-              : 'O tópico, a anotação e os flashcards dele saem.'
+            !dados.topicos.some((t) => t.id === apagando)
+              ? 'O assunto e tudo dentro dele (tópicos, anotações e flashcards) saem. Os links continuam no quadro.'
+              : descendentes(dados, apagando).length > 1
+                ? `O tópico e os ${descendentes(dados, apagando).length - 1} subtópicos dentro dele saem, com anotações e flashcards.`
+                : 'O tópico, a anotação e os flashcards dele saem.'
           }
           botao="Apagar"
           aoConfirmar={() => {

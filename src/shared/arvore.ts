@@ -92,3 +92,72 @@ export function apagarNo(d: Dados, id: Id): void {
   })
   d.materias.forEach((m) => (m.assuntos = m.assuntos.filter((a) => a.id !== id)))
 }
+
+export type TipoDoLugar = 'materia' | 'assunto' | 'topico'
+
+/** Cria um filho do nó: matéria → assunto; assunto ou tópico → tópico.
+ *  Devolve o tipo do que foi criado (null se o pai não existe). */
+export function adicionarFilho(
+  d: Dados,
+  pai: { tipo: TipoDoLugar; id: Id },
+  id: Id,
+  quando = Date.now()
+): 'assunto' | 'topico' | null {
+  if (pai.tipo === 'materia') {
+    const m = d.materias.find((x) => x.id === pai.id)
+    if (!m) return null
+    m.assuntos.push({ id, nome: 'Novo assunto', nota: '', atualizadoEm: quando })
+    m.aberta = true
+    d.mapaRecolhidos = d.mapaRecolhidos.filter((x) => x !== m.id)
+    return 'assunto'
+  }
+  const assuntoId =
+    pai.tipo === 'assunto' ? pai.id : d.topicos.find((t) => t.id === pai.id)?.assuntoId
+  if (!assuntoId || !d.materias.some((m) => m.assuntos.some((a) => a.id === assuntoId))) return null
+  d.topicos.push({
+    id,
+    assuntoId,
+    paiId: pai.tipo === 'topico' ? pai.id : null,
+    nome: 'Novo tópico',
+    nota: '',
+    atualizadoEm: quando
+  })
+  d.mapaRecolhidos = d.mapaRecolhidos.filter((x) => x !== pai.id)
+  return 'topico'
+}
+
+/** Cria um irmão do nó (mesmo pai). Matéria não tem irmão no mapa: null. */
+export function adicionarIrmao(
+  d: Dados,
+  no: { tipo: TipoDoLugar; id: Id },
+  id: Id,
+  quando = Date.now()
+): 'assunto' | 'topico' | null {
+  if (no.tipo === 'assunto') {
+    const m = d.materias.find((x) => x.assuntos.some((a) => a.id === no.id))
+    return m ? adicionarFilho(d, { tipo: 'materia', id: m.id }, id, quando) : null
+  }
+  if (no.tipo === 'topico') {
+    const t = d.topicos.find((x) => x.id === no.id)
+    if (!t) return null
+    return adicionarFilho(
+      d,
+      t.paiId ? { tipo: 'topico', id: t.paiId } : { tipo: 'assunto', id: t.assuntoId },
+      id,
+      quando
+    )
+  }
+  return null
+}
+
+/** renomeia matéria, assunto ou tópico; nome vazio não muda nada */
+export function renomearLugar(d: Dados, id: Id, nome: string): void {
+  const limpo = nome.trim()
+  if (!limpo) return
+  const m = d.materias.find((x) => x.id === id)
+  if (m) m.nome = limpo
+  const a = d.materias.flatMap((x) => x.assuntos).find((x) => x.id === id)
+  if (a) a.nome = limpo
+  const t = d.topicos.find((x) => x.id === id)
+  if (t) t.nome = limpo
+}

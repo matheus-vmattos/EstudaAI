@@ -11,7 +11,15 @@ import {
   responder
 } from '../src/shared/flashcards'
 import { descendentes, montarArvore, posicionar } from '../src/shared/mapa'
-import { acharNo, apagarNo, gravarNota, nosDaMateria } from '../src/shared/arvore'
+import {
+  acharNo,
+  adicionarFilho,
+  adicionarIrmao,
+  apagarNo,
+  gravarNota,
+  nosDaMateria,
+  renomearLugar
+} from '../src/shared/arvore'
 import { DADOS_VAZIOS, type Cartao, type Dados } from '../src/shared/tipos'
 
 const agora = new Date('2026-11-16T10:00:00')
@@ -215,5 +223,53 @@ describe('mapa vertical', () => {
     expect(p('a1').y).toBe(p('a2').y)
     expect(p('a1').y).toBeGreaterThan(p('m').y)
     expect(p('m').x).toBe((p('a1').x + p('a2').x) / 2)
+  })
+})
+
+describe('criar no mapa em qualquer nível (v0.1.6)', () => {
+  const base = (): Dados => ({
+    ...DADOS_VAZIOS,
+    materias: [
+      {
+        id: 'm',
+        nome: 'Português',
+        aberta: false,
+        assuntos: [{ id: 'a1', nome: 'Morfologia', nota: '', atualizadoEm: 0 }]
+      }
+    ],
+    topicos: [{ id: 't1', assuntoId: 'a1', paiId: null, nome: 'Estrutura', nota: '' }],
+    mapaRecolhidos: ['m', 't1']
+  })
+  it('filho da matéria vira assunto e a matéria se abre', () => {
+    const d = base()
+    expect(adicionarFilho(d, { tipo: 'materia', id: 'm' }, 'a2', 1)).toBe('assunto')
+    expect(d.materias[0].assuntos.map((a) => a.id)).toEqual(['a1', 'a2'])
+    expect(d.mapaRecolhidos).not.toContain('m')
+  })
+  it('filho de assunto e de tópico vira tópico no lugar certo', () => {
+    const d = base()
+    expect(adicionarFilho(d, { tipo: 'assunto', id: 'a1' }, 't2', 1)).toBe('topico')
+    expect(adicionarFilho(d, { tipo: 'topico', id: 't1' }, 't3', 1)).toBe('topico')
+    expect(d.topicos.find((t) => t.id === 't2')).toMatchObject({ assuntoId: 'a1', paiId: null })
+    expect(d.topicos.find((t) => t.id === 't3')).toMatchObject({ assuntoId: 'a1', paiId: 't1' })
+    expect(d.mapaRecolhidos).not.toContain('t1')
+  })
+  it('irmão fica no mesmo pai; matéria não tem irmão', () => {
+    const d = base()
+    expect(adicionarIrmao(d, { tipo: 'assunto', id: 'a1' }, 'a2', 1)).toBe('assunto')
+    expect(adicionarIrmao(d, { tipo: 'topico', id: 't1' }, 't2', 1)).toBe('topico')
+    expect(d.topicos.find((t) => t.id === 't2')).toMatchObject({ assuntoId: 'a1', paiId: null })
+    expect(adicionarIrmao(d, { tipo: 'materia', id: 'm' }, 'x', 1)).toBeNull()
+  })
+  it('renomeia qualquer nível e ignora nome vazio', () => {
+    const d = base()
+    renomearLugar(d, 'm', 'Língua Portuguesa')
+    renomearLugar(d, 'a1', 'Morfologia I')
+    renomearLugar(d, 't1', '  ')
+    expect([d.materias[0].nome, d.materias[0].assuntos[0].nome, d.topicos[0].nome]).toEqual([
+      'Língua Portuguesa',
+      'Morfologia I',
+      'Estrutura'
+    ])
   })
 })
