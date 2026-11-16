@@ -151,6 +151,10 @@ export function Mapa({
   teclado.current = (e) => {
     const alvo = e.target as HTMLElement
     if (alvo.closest('input, textarea, select') || apagando) return
+    // só vale no próprio mapa (ou sem foco em nada): Enter num botão de outra
+    // tela ou de uma janela aberta (ex.: Configurações) faz o que o botão faz
+    if (document.querySelector('dialog[open]')) return
+    if (alvo !== document.body && !alvo.closest('.area-mapa')) return
     if (!sel || renomeando) return
     if (e.key === 'Tab') {
       e.preventDefault()
