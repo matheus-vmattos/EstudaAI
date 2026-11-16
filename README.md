@@ -21,5 +21,10 @@ Tudo fica num arquivo só no PC: `%APPDATA%/EstudaAI/estudaai.json`. A cada aber
 npm install
 npm run dev        # abre o app em modo desenvolvimento
 npm test           # testes
-npm run build:win  # instalador Windows (em dist/)
+npm run build:win  # instalador Windows local (em dist/)
 ```
+
+## Baixar e atualizar
+
+- Instalador da última versão: https://github.com/matheus-vmattos/EstudaAI/releases/latest/download/EstudaAI-Setup.exe
+- **Publicar versão nova:** aumente `version` no `package.json` e leve para o `main`. A ação "Release" gera o instalador e publica. O app instalado baixa sozinho (ao abrir e a cada 4 h) e mostra "vX pronta · Reiniciar" no rodapé do menu. Se você não clicar, a atualização instala quando o app fechar.
