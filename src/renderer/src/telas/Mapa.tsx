@@ -21,6 +21,7 @@ import {
   type NoPosicionado
 } from '../../../shared/mapa'
 import type { Dados, Id } from '../../../shared/tipos'
+import { acharNo, apagarNo, idsAbaixo } from '../../../shared/arvore'
 
 const MARGEM = 40
 const textoSimples = (md: string): string =>
@@ -50,7 +51,8 @@ export function Mapa({
 
   const materia = dados.materias.find((m) => m.id === materiaId) ?? dados.materias[0] ?? null
   const raiz = useMemo(() => (materia ? montarArvore(dados, materia.id) : null), [dados, materia])
-  const layout = useMemo(() => (raiz ? posicionar(raiz) : null), [raiz])
+  const vertical = !!dados.mapaVertical
+  const layout = useMemo(() => (raiz ? posicionar(raiz, vertical) : null), [raiz, vertical])
   const porId = useMemo(() => new Map(layout?.nos.map((n) => [n.no.id, n]) ?? []), [layout])
 
   // ao trocar de matéria: raiz à esquerda, centralizada na altura
@@ -58,9 +60,13 @@ export function Mapa({
     const el = area.current
     const r = layout?.nos.find((n) => !n.paiId)
     if (!el || !r) return
-    setVista({ x: MARGEM, y: el.clientHeight / 2 - r.y - ALTURA_DO_NO / 2, zoom: 1 })
-    setSelecionado(null)
-  }, [materia?.id]) // eslint-disable-line react-hooks/exhaustive-deps
+    // horizontal: raiz à esquerda, no meio da altura; vertical: raiz no topo, no meio da largura
+    setVista(
+      vertical
+        ? { x: el.clientWidth / 2 - r.x - LARGURA_DO_NO / 2, y: MARGEM, zoom: 1 }
+        : { x: MARGEM, y: el.clientHeight / 2 - r.y - ALTURA_DO_NO / 2, zoom: 1 }
+    )
+  }, [materia?.id, vertical]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const sel = selecionado ? porId.get(selecionado) : undefined
   const assuntoDoNo = (no: NoPosicionado | undefined): Id | null => {
@@ -169,12 +175,11 @@ export function Mapa({
   const assunto = assuntoSel ? materia.assuntos.find((a) => a.id === assuntoSel) : undefined
   const topico =
     sel?.no.tipo === 'topico' ? dados.topicos.find((t) => t.id === sel.no.id) : undefined
-  const cartoesDoAssunto = assuntoSel
-    ? dados.cartoes.filter((c) => c.assuntoId === assuntoSel).length
-    : 0
-  const linksDoAssunto = assuntoSel
-    ? dados.links.filter((l) => l.assuntoId === assuntoSel).length
-    : 0
+  // assunto ou tópico: a anotação, os cartões e os links são do próprio nó
+  const lugar = sel && sel.no.tipo !== 'materia' ? acharNo(dados, sel.no.id) : null
+  const abaixo = lugar ? new Set(idsAbaixo(dados, lugar.id)) : new Set<Id>()
+  const cartoesDoAssunto = dados.cartoes.filter((c) => abaixo.has(c.assuntoId)).length
+  const linksDoAssunto = lugar ? dados.links.filter((l) => l.assuntoId === lugar.id).length : 0
 
   return (
     <div className="tela" style={{ flexDirection: 'column' }}>
@@ -190,6 +195,30 @@ export function Mapa({
             </option>
           ))}
         </select>
+        <div
+          role="radiogroup"
+          aria-label="Direção do mapa"
+          className="opcoes"
+          style={{ gridTemplateColumns: 'repeat(2, auto)' }}
+        >
+          {([false, true] as const).map((v) => (
+            <button
+              key={String(v)}
+              type="button"
+              role="radio"
+              aria-checked={vertical === v}
+              className="opcao"
+              style={{ minHeight: 40, padding: '0 14px' }}
+              onClick={() =>
+                mudar((d) => {
+                  d.mapaVertical = v
+                })
+              }
+            >
+              {v ? '↓ Vertical' : '⟶ Horizontal'}
+            </button>
+          ))}
+        </div>
         <button
           type="button"
           className="botao"
@@ -253,19 +282,27 @@ export function Mapa({
                 .filter((n) => n.paiId)
                 .map((n) => {
                   const pai = porId.get(n.paiId!)!
-                  const x1 = pai.x + LARGURA_DO_NO
-                  const y1 = pai.y + ALTURA_DO_NO / 2
-                  const x2 = n.x
-                  const y2 = n.y + ALTURA_DO_NO / 2
-                  const meio = (x1 + x2) / 2
                   const ativa = selecionado === n.no.id || selecionado === pai.no.id
-                  return (
-                    <path
-                      key={n.no.id}
-                      d={`M${x1} ${y1} C ${meio} ${y1}, ${meio} ${y2}, ${x2} ${y2}`}
-                      className={ativa ? 'ativa' : ''}
-                    />
-                  )
+                  // horizontal: da direita do pai à esquerda do filho;
+                  // vertical: de baixo do pai ao topo do filho
+                  const d = vertical
+                    ? (() => {
+                        const x1 = pai.x + LARGURA_DO_NO / 2
+                        const y1 = pai.y + ALTURA_DO_NO
+                        const x2 = n.x + LARGURA_DO_NO / 2
+                        const y2 = n.y
+                        const meio = (y1 + y2) / 2
+                        return `M${x1} ${y1} C ${x1} ${meio}, ${x2} ${meio}, ${x2} ${y2}`
+                      })()
+                    : (() => {
+                        const x1 = pai.x + LARGURA_DO_NO
+                        const y1 = pai.y + ALTURA_DO_NO / 2
+                        const x2 = n.x
+                        const y2 = n.y + ALTURA_DO_NO / 2
+                        const meio = (x1 + x2) / 2
+                        return `M${x1} ${y1} C ${meio} ${y1}, ${meio} ${y2}, ${x2} ${y2}`
+                      })()
+                  return <path key={n.no.id} d={d} className={ativa ? 'ativa' : ''} />
                 })}
             </svg>
             {layout.nos.map((n) => (
@@ -343,33 +380,11 @@ export function Mapa({
               <span className="meta">
                 {topico ? `Tópico · ${assunto.nome}` : `Assunto · ${materia.nome}`}
               </span>
-              {topico ? (
-                <>
-                  <h2>{topico.nome}</h2>
-                  <label className="campo">
-                    Nota do tópico
-                    <textarea
-                      rows={4}
-                      value={topico.nota}
-                      placeholder="Um lembrete curto deste tópico"
-                      onChange={(e) =>
-                        mudar((d) => {
-                          const t = d.topicos.find((x) => x.id === topico.id)
-                          if (t) t.nota = e.target.value
-                        })
-                      }
-                    />
-                  </label>
-                </>
-              ) : (
-                <>
-                  <h2>{assunto.nome}</h2>
-                  <p className="previa">
-                    {textoSimples(assunto.nota).slice(0, 280) || 'Ainda sem anotação.'}
-                    {textoSimples(assunto.nota).length > 280 && '…'}
-                  </p>
-                </>
-              )}
+              <h2>{lugar?.nome}</h2>
+              <p className="previa">
+                {textoSimples(lugar?.nota ?? '').slice(0, 280) || 'Ainda sem anotação.'}
+                {textoSimples(lugar?.nota ?? '').length > 280 && '…'}
+              </p>
               <div className="chips meta">
                 <span className="chip-meta">{linksDoAssunto} links</span>
                 <span className="chip-meta">{cartoesDoAssunto} cartões</span>
@@ -377,7 +392,7 @@ export function Mapa({
               <button
                 type="button"
                 className="botao principal"
-                onClick={() => abrirAnotacao(assunto.id)}
+                onClick={() => lugar && abrirAnotacao(lugar.id)}
               >
                 Abrir anotação
               </button>
@@ -387,7 +402,11 @@ export function Mapa({
                   className="botao"
                   style={{ minHeight: 44 }}
                   onClick={() =>
-                    estudar({ assuntos: [assunto.id], titulo: `${materia.nome} › ${assunto.nome}` })
+                    lugar &&
+                    estudar({
+                      assuntos: [...abaixo],
+                      titulo: `${materia.nome} › ${lugar.caminho.join(' › ')}`
+                    })
                   }
                 >
                   Revisar cartões
@@ -422,18 +441,15 @@ export function Mapa({
           titulo="Apagar este tópico?"
           texto={
             descendentes(dados, apagando).length > 1
-              ? `Os ${descendentes(dados, apagando).length - 1} subtópicos dentro dele também saem.`
-              : 'O tópico sai do mapa. A anotação do assunto continua.'
+              ? `O tópico e os ${descendentes(dados, apagando).length - 1} subtópicos dentro dele saem, com anotações e flashcards.`
+              : 'O tópico, a anotação e os flashcards dele saem.'
           }
           botao="Apagar"
           aoConfirmar={() => {
-            const ids = new Set(descendentes(dados, apagando))
+            const id = apagando
             setApagando(null)
             setSelecionado(null)
-            mudar((d) => {
-              d.topicos = d.topicos.filter((t) => !ids.has(t.id))
-              d.mapaRecolhidos = d.mapaRecolhidos.filter((x) => !ids.has(x))
-            })
+            mudar((d) => apagarNo(d, id))
           }}
           aoCancelar={() => setApagando(null)}
         />

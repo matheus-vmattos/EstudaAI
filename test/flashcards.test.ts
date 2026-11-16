@@ -11,6 +11,7 @@ import {
   responder
 } from '../src/shared/flashcards'
 import { descendentes, montarArvore, posicionar } from '../src/shared/mapa'
+import { acharNo, apagarNo, gravarNota, nosDaMateria } from '../src/shared/arvore'
 import { DADOS_VAZIOS, type Cartao, type Dados } from '../src/shared/tipos'
 
 const agora = new Date('2026-11-16T10:00:00')
@@ -144,5 +145,75 @@ describe('achados da revisão', () => {
     const novosEmB = Array.from({ length: 5 }, (_, i) => cartao(`b${i}`, { assuntoId: 'a2' }))
     const f = filaDoDia([...feitosEmA, ...novosEmB], agora, new Set(['a2']))
     expect(f.novos).toHaveLength(0)
+  })
+})
+
+describe('árvore única (v0.1.5)', () => {
+  const dados: Dados = {
+    ...DADOS_VAZIOS,
+    materias: [
+      {
+        id: 'm',
+        nome: 'Português',
+        aberta: true,
+        assuntos: [{ id: 'a1', nome: 'Morfologia', nota: '', atualizadoEm: 0 }]
+      }
+    ],
+    topicos: [
+      { id: 't1', assuntoId: 'a1', paiId: null, nome: 'Estrutura', nota: '' },
+      { id: 't2', assuntoId: 'a1', paiId: 't1', nome: 'Radicais', nota: 'nota dos radicais' }
+    ],
+    cartoes: [cartao('c1', { assuntoId: 't2' }), cartao('c2', { assuntoId: 'a1' })],
+    links: [
+      { id: 'l', titulo: 'x', url: 'https://x.com', materiaId: 'm', assuntoId: 't2', criadoEm: 0 }
+    ]
+  }
+  it('lista assunto e tópicos em ordem, com caminho e nível', () => {
+    expect(
+      nosDaMateria(dados, dados.materias[0]).map((n) => `${n.nivel}:${n.caminho.join(' › ')}`)
+    ).toEqual(['0:Morfologia', '1:Morfologia › Estrutura', '2:Morfologia › Estrutura › Radicais'])
+  })
+  it('acha o tópico com a nota e o assunto dele', () => {
+    const n = acharNo(dados, 't2')!
+    expect([n.tipo, n.nota, n.assuntoId]).toEqual(['topico', 'nota dos radicais', 'a1'])
+  })
+  it('apagar o assunto leva tópicos e cartões, e o link perde só o lugar', () => {
+    const d = structuredClone(dados)
+    apagarNo(d, 'a1')
+    expect([
+      d.topicos.length,
+      d.cartoes.length,
+      d.links[0].assuntoId,
+      d.materias[0].assuntos.length
+    ]).toEqual([0, 0, null, 0])
+  })
+  it('grava a nota no tópico', () => {
+    const d = structuredClone(dados)
+    gravarNota(d, 't2', 'nova', 5)
+    expect(d.topicos[1]).toMatchObject({ nota: 'nova', atualizadoEm: 5 })
+  })
+})
+
+describe('mapa vertical', () => {
+  it('níveis viram linhas e o pai fica no meio dos filhos na horizontal', () => {
+    const dados: Dados = {
+      ...DADOS_VAZIOS,
+      materias: [
+        {
+          id: 'm',
+          nome: 'P',
+          aberta: true,
+          assuntos: [
+            { id: 'a1', nome: 'A', nota: '', atualizadoEm: 0 },
+            { id: 'a2', nome: 'B', nota: '', atualizadoEm: 0 }
+          ]
+        }
+      ]
+    }
+    const { nos } = posicionar(montarArvore(dados, 'm')!, true)
+    const p = (id: string) => nos.find((n) => n.no.id === id)!
+    expect(p('a1').y).toBe(p('a2').y)
+    expect(p('a1').y).toBeGreaterThan(p('m').y)
+    expect(p('m').x).toBe((p('a1').x + p('a2').x) / 2)
   })
 })

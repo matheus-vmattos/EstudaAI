@@ -1579,3 +1579,44 @@ dialog.config p {
   background: rgb(63 224 245 / 5%);
   box-shadow: inset 3px 0 0 var(--ciano);
 }
+
+/* ---------- simulado adaptado (v0.1.5) ---------- */
+.lista-erros {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+.linha-erro {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.linha-erro .erros {
+  font-family: var(--mono);
+  color: var(--vermelho);
+  white-space: nowrap;
+}
+.marcar-insistir {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 0 14px;
+  cursor: pointer;
+  border: 1px solid var(--ambar-linha);
+  background: rgb(255 181 71 / 6%);
+  color: var(--ambar);
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.marcar-insistir input {
+  accent-color: var(--ambar);
+  width: 18px;
+  height: 18px;
+}
+.assunto.topico > button:first-child {
+  font-size: 15px;
+}

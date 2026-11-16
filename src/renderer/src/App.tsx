@@ -31,6 +31,7 @@ export function App() {
   const [tela, setTela] = useState<Tela>('anotacoes')
   const [assuntoAberto, setAssuntoAberto] = useState<Id | null>(null)
   const [simuladoAberto, setSimuladoAberto] = useState<Id | null>(null)
+  const [adaptarDe, setAdaptarDe] = useState<Id | null>(null)
   const [revisao, setRevisao] = useState<AlvoDaRevisao | null>(null)
   const [config, setConfig] = useState(false)
   // a contagem "para hoje" do menu acompanha o relógio (cartão em
@@ -52,6 +53,11 @@ export function App() {
         mudar={mudar}
         sair={() => setSimuladoAberto(null)}
         abrir={setSimuladoAberto}
+        adaptar={() => {
+          setAdaptarDe(simulado.id)
+          setSimuladoAberto(null)
+          setTela('questoes')
+        }}
       />
     )
   }
@@ -133,7 +139,13 @@ export function App() {
       )}
       {tela === 'links' && <Links dados={dados} mudar={mudar} />}
       {tela === 'questoes' && (
-        <Questoes dados={dados} mudar={mudar} abrirSimulado={setSimuladoAberto} />
+        <Questoes
+          dados={dados}
+          mudar={mudar}
+          abrirSimulado={setSimuladoAberto}
+          adaptarDe={adaptarDe}
+          adaptar={setAdaptarDe}
+        />
       )}
 
       {config && <Configuracoes dados={dados} mudar={mudar} fechar={() => setConfig(false)} />}

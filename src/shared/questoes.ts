@@ -17,7 +17,19 @@ export const LETRAS: Record<TipoDeQuestao, string[]> = {
 
 /** O prompt que o usuário cola no Claude ou no ChatGPT. O formato do JSON é
  *  o contrato com `lerRespostaDaIa`: mudou um, muda o outro. */
-export function montarPrompt(c: ConfigDoSimulado, ia: IaDestino): string {
+export const HABILIDADES = [
+  'lembrar conceito',
+  'aplicar regra',
+  'interpretar texto',
+  'identificar exceção ou pegadinha'
+] as const
+
+export function montarPrompt(
+  c: ConfigDoSimulado,
+  ia: IaDestino,
+  /** bloco extra do simulado adaptado (adaptado.ts) */
+  adaptacao = ''
+): string {
   const banca = c.banca.trim()
   const multipla = c.tipo === 'multipla'
   const estilo = banca ? `no estilo da banca ${banca}` : 'no estilo de prova de concurso público'
@@ -38,7 +50,9 @@ export function montarPrompt(c: ConfigDoSimulado, ia: IaDestino): string {
     '- enunciado, alternativas e gabarito;',
     '- resolucao: 1 a 2 frases dizendo por que o gabarito está certo;',
     `- comentarios: para CADA ${multipla ? 'alternativa (A a E)' : 'opção (C e E)'}, 1 frase curta dizendo por que está certa ou errada;`,
-    '- conceito: 2 a 3 frases explicando o conceito ou a regra que a questão cobra, para o estudante fixar.',
+    '- conceito: 2 a 3 frases explicando o conceito ou a regra que a questão cobra, para o estudante fixar;',
+    '- topico: o subtema exato da questão, em poucas palavras (ex.: "Juros compostos"), sempre com o mesmo nome para o mesmo subtema;',
+    `- habilidade: o que a questão exige, uma destas: ${HABILIDADES.join('; ')}.`,
     'Varie os aspectos cobrados do tema e não repita questões.',
     multipla ? 'Distribua o gabarito entre as letras, sem padrão previsível.' : ''
   ]
@@ -54,7 +68,9 @@ export function montarPrompt(c: ConfigDoSimulado, ia: IaDestino): string {
       ${exemploAlternativas}
       "resolucao": "...",
       ${exemploComentarios}
-      "conceito": "..."
+      "conceito": "...",
+      "topico": "...",
+      "habilidade": "${HABILIDADES[1]}"
     }
   ]
 }`
@@ -67,7 +83,7 @@ export function montarPrompt(c: ConfigDoSimulado, ia: IaDestino): string {
 <tarefa>
 ${pedido}
 </tarefa>
-
+${adaptacao ? `\n<adaptacao>\n${adaptacao}\n</adaptacao>\n` : ''}
 <formato_do_arquivo>
 ${json}
 </formato_do_arquivo>
@@ -78,7 +94,7 @@ ${ENTREGA}
   }
   return `Você é um elaborador experiente de questões de concurso público.
 
-${pedido}
+${pedido}${adaptacao ? `\n\n${adaptacao}` : ''}
 
 Formato do arquivo (JSON válido, sem comentários):
 ${json}
@@ -258,8 +274,8 @@ export function acertos(questoes: Questao[], respostas: (string | null)[]): numb
 function lerExtras(
   item: Record<string, unknown>,
   alternativas: Alternativa[]
-): Pick<Questao, 'comentarios' | 'conceito'> {
-  const extras: Pick<Questao, 'comentarios' | 'conceito'> = {}
+): Pick<Questao, 'comentarios' | 'conceito' | 'topico' | 'habilidade'> {
+  const extras: Pick<Questao, 'comentarios' | 'conceito' | 'topico' | 'habilidade'> = {}
   const c = item.comentarios
   if (c && typeof c === 'object' && !Array.isArray(c)) {
     const letras = new Set(alternativas.map((a) => a.letra))
@@ -271,6 +287,8 @@ function lerExtras(
     if (Object.keys(comentarios).length) extras.comentarios = comentarios
   }
   if (textoValido(item.conceito)) extras.conceito = item.conceito.trim()
+  if (textoValido(item.topico)) extras.topico = item.topico.trim()
+  if (textoValido(item.habilidade)) extras.habilidade = item.habilidade.trim().toLowerCase()
   return extras
 }
 

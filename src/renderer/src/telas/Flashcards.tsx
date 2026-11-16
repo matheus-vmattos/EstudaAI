@@ -13,6 +13,7 @@ import {
   temLacuna
 } from '../../../shared/flashcards'
 import type { Cartao, Dados, Id, TipoDeCartao } from '../../../shared/tipos'
+import { idsAbaixo, nosDaMateria, todosOsNos } from '../../../shared/arvore'
 
 type Rascunho = { id: Id | null; tipo: TipoDeCartao; frente: string; verso: string; assuntoId: Id }
 
@@ -27,7 +28,8 @@ export function Flashcards({
   agora: Date
   estudar: (alvo: AlvoDaRevisao) => void
 }) {
-  const assuntos = dados.materias.flatMap((m) => m.assuntos.map((a) => ({ ...a, materia: m.nome })))
+  // assuntos e tópicos: todo lugar da árvore pode ter cartões
+  const assuntos = todosOsNos(dados)
   const vazio = (assuntoId = assuntos[0]?.id ?? ''): Rascunho => ({
     id: null,
     tipo: 'basico',
@@ -163,7 +165,8 @@ export function Flashcards({
                   <span role="columnheader" />
                 </div>
                 {dados.materias.map((m) => {
-                  const ids = new Set(m.assuntos.map((a) => a.id))
+                  const nos = nosDaMateria(dados, m)
+                  const ids = new Set(nos.map((n) => n.id))
                   const t = contar(ids)
                   return (
                     <div key={m.id} role="rowgroup">
@@ -190,14 +193,17 @@ export function Flashcards({
                           )}
                         </span>
                       </div>
-                      {m.assuntos.map((a) => {
-                        const c = contar(new Set([a.id]))
+                      {nos.map((a) => {
+                        // a linha conta o nó e o que está abaixo dele
+                        const abaixo = idsAbaixo(dados, a.id)
+                        const c = contar(new Set(abaixo))
                         return (
                           <div
                             key={a.id}
                             role="row"
                             className="assunto-linha"
                             aria-current={aberto === a.id ? 'true' : undefined}
+                            style={{ marginLeft: 20 + a.nivel * 16 }}
                           >
                             <span role="cell">
                               <button
@@ -224,7 +230,10 @@ export function Flashcards({
                                   type="button"
                                   className="link-botao"
                                   onClick={() =>
-                                    estudar({ assuntos: [a.id], titulo: `${m.nome} › ${a.nome}` })
+                                    estudar({
+                                      assuntos: abaixo,
+                                      titulo: `${m.nome} › ${a.caminho.join(' › ')}`
+                                    })
                                   }
                                 >
                                   Estudar
@@ -356,8 +365,9 @@ export function Flashcards({
                 {assuntos.length === 0 && <option value="">Crie um assunto em Anotações</option>}
                 {dados.materias.map((m) => (
                   <optgroup key={m.id} label={m.nome}>
-                    {m.assuntos.map((a) => (
+                    {nosDaMateria(dados, m).map((a) => (
                       <option key={a.id} value={a.id}>
+                        {'\u2003'.repeat(a.nivel)}
                         {a.nome}
                       </option>
                     ))}

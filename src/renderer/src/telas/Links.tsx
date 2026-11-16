@@ -4,6 +4,7 @@ import { Confirmar } from '../Confirmar'
 import { novoId, type Mudar } from '../useDados'
 import { normalizarUrl, tipoDoLink } from '../../../shared/texto'
 import type { Dados, Id, LinkGuardado } from '../../../shared/tipos'
+import { acharNo, nosDaMateria } from '../../../shared/arvore'
 
 /** "materiaId" ou "materiaId/assuntoId" no <select> */
 const valorDoDestino = (l: Pick<LinkGuardado, 'materiaId' | 'assuntoId'>): string =>
@@ -73,7 +74,7 @@ export function Links({ dados, mudar }: { dados: Dados; mudar: Mudar }) {
   ].filter((g) => g.links.length > 0)
 
   const nomeDoAssunto = (id: Id | null): string | undefined =>
-    id ? dados.materias.flatMap((m) => m.assuntos).find((a) => a.id === id)?.nome : undefined
+    acharNo(dados, id)?.caminho.join(' › ')
 
   return (
     <div className="tela">
@@ -114,9 +115,9 @@ export function Links({ dados, mudar }: { dados: Dados; mudar: Mudar }) {
                   <option key={m.id} value={m.id}>
                     {m.nome}
                   </option>,
-                  ...m.assuntos.map((a) => (
+                  ...nosDaMateria(dados, m).map((a) => (
                     <option key={a.id} value={`${m.id}/${a.id}`}>
-                      {m.nome} › {a.nome}
+                      {m.nome} › {a.caminho.join(' › ')}
                     </option>
                   ))
                 ])}
