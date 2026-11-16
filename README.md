@@ -9,7 +9,11 @@ App de estudos para concurso, para uso individual, que roda no PC (Electron).
 - **Gerador de questões**: você escolhe tema, nível, formato (A–E ou certo/errado), quantidade, tempo e banca. O app monta o prompt para Claude ou GPT, você cola a resposta (ou o arquivo `.json`) e ele confere tudo antes de liberar o simulado.
 - **Simulado com cronômetro**: mostra tempo restante e tempo gasto na questão. Tem pausa (que esconde as questões), marcação para revisar, atalhos de teclado (letra responde, ← → navega, espaço pausa), entrega automática quando o tempo acaba e gabarito com resolução e histórico.
 
-Próximas fases: flashcards (FSRS), mapa mental e backup na nuvem.
+- **Flashcards** (v0.1.3): baralhos por Matéria → Assunto, frente/verso e lacuna (`{{c1::texto}}`), agendamento FSRS (o do Anki), revisão em modo foco (espaço mostra, 1–4 responde) e "Virar flashcard" a partir de um trecho da anotação.
+- **Mapa mental** (v0.1.3): montado da árvore de matérias, com tópicos e subtópicos (Tab cria, F2 renomeia), recolher/expandir, arrastar e zoom; o painel mostra a anotação e abre a revisão dos cartões.
+- **Configurações** (engrenagem): procurar atualização na hora, fazer backup e abrir a pasta dos dados.
+
+Próximas fases: backup na nuvem.
 
 ## Dados
 

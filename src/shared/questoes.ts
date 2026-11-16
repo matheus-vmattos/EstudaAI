@@ -122,7 +122,9 @@ export function consertarJsonCopiado(json: string): string {
       while (i < json.length) {
         const d = json[i]
         if (d === '\\') {
-          saida += d + (json[i + 1] ?? '')
+          // \“ (escape com aspa curva) vira \" — senão é escape inválido
+          const proximo = json[i + 1] ?? ''
+          saida += d + (ASPAS_CURVAS.includes(proximo) ? '"' : proximo)
           i += 2
           continue
         }

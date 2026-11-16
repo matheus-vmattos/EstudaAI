@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Icone } from '../Icone'
 import { Confirmar } from '../Confirmar'
 import { novoId, type Mudar } from '../useDados'
+import { agendaNova, lacunaDaAnotacao, mostrarLacuna } from '../../../shared/flashcards'
 import { renderizarMarkdown } from '../markdown'
 import { haQuantoTempo, semAcento, tipoDoLink } from '../../../shared/texto'
 import type { Dados, Id } from '../../../shared/tipos'
@@ -101,6 +102,14 @@ export function Anotacoes({
     setApagando(null)
     if (!alvo) return
     mudar((d) => {
+      // cartões e tópicos do mapa vivem dentro do assunto: saem junto
+      const assuntosQueSaem = new Set(
+        alvo.tipo === 'materia'
+          ? (d.materias.find((m) => m.id === alvo.id)?.assuntos.map((a) => a.id) ?? [])
+          : [alvo.id]
+      )
+      d.cartoes = d.cartoes.filter((c) => !assuntosQueSaem.has(c.assuntoId))
+      d.topicos = d.topicos.filter((t) => !assuntosQueSaem.has(t.assuntoId))
       if (alvo.tipo === 'materia') {
         d.materias = d.materias.filter((m) => m.id !== alvo.id)
         d.links.forEach((l) => {
@@ -284,8 +293,8 @@ export function Anotacoes({
           titulo={`Apagar “${apagando.nome}”?`}
           texto={
             apagando.tipo === 'materia'
-              ? 'A matéria e todas as anotações dentro dela serão apagadas. Os links continuam no quadro.'
-              : 'A anotação deste assunto será apagada. Os links continuam no quadro.'
+              ? 'A matéria e todas as anotações, flashcards e tópicos do mapa dentro dela serão apagados. Os links continuam no quadro.'
+              : 'A anotação, os flashcards e os tópicos do mapa deste assunto serão apagados. Os links continuam no quadro.'
           }
           botao="Apagar"
           aoConfirmar={apagar}
@@ -340,6 +349,41 @@ function Editor({
   const [modo, setModo] = useState<'ler' | 'editar'>(assunto.nota.trim() ? 'ler' : 'editar')
   const area = useRef<HTMLTextAreaElement>(null)
   const links = dados.links.filter((l) => l.assuntoId === assunto.id)
+  const [aviso, setAviso] = useState<{ ok: boolean; texto: string } | null>(null)
+  const nCartoes = dados.cartoes.filter((c) => c.assuntoId === assunto.id).length
+
+  /** o trecho selecionado vira lacuna: a linha inteira é o cartão */
+  const virarFlashcard = (): void => {
+    const el = area.current
+    const trecho =
+      modo === 'editar' && el
+        ? el.value.slice(el.selectionStart, el.selectionEnd)
+        : (window.getSelection()?.toString() ?? '')
+    if (!trecho.trim()) {
+      setAviso({
+        ok: false,
+        texto: 'Selecione na anotação o trecho que vai ficar escondido no cartão.'
+      })
+      return
+    }
+    const frente = lacunaDaAnotacao(assunto.nota, trecho)
+    if (!frente) {
+      setAviso({ ok: false, texto: 'Selecione um trecho dentro de uma linha só.' })
+      return
+    }
+    mudar((d) => {
+      d.cartoes.push({
+        id: novoId(),
+        assuntoId: assunto.id,
+        tipo: 'lacuna',
+        frente,
+        verso: '',
+        agenda: agendaNova(),
+        criadoEm: Date.now()
+      })
+    })
+    setAviso({ ok: true, texto: `✓ Flashcard criado: ${mostrarLacuna(frente).frente}` })
+  }
 
   const salvarNota = (nota: string): void =>
     mudar((d) => {
@@ -382,7 +426,18 @@ function Editor({
           <div className="trilha">{materia.nome} / Assunto</div>
           <h1 className="titulo">{assunto.nome}</h1>
         </div>
-        <div style={{ display: 'flex', gap: 8 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+          <button
+            type="button"
+            className="botao"
+            title="Selecione um trecho da anotação: ele vira a lacuna do cartão"
+            // sem roubar a seleção do texto
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={virarFlashcard}
+          >
+            <Icone nome="cartas" tamanho={16} />
+            Virar flashcard{nCartoes > 0 && ` · ${nCartoes}`}
+          </button>
           <button
             type="button"
             className="botao"
@@ -394,6 +449,12 @@ function Editor({
           </button>
         </div>
       </header>
+
+      {aviso && (
+        <div className={`aviso ${aviso.ok ? 'ok' : 'erro'}`} role={aviso.ok ? 'status' : 'alert'}>
+          {aviso.texto}
+        </div>
+      )}
 
       {links.length > 0 && (
         <div className="chips" aria-label="Links deste assunto">
