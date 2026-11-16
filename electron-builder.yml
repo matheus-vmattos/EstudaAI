@@ -18,4 +18,5 @@ publish:
   provider: github
   owner: matheus-vmattos
   repo: EstudaAI
-  releaseType: release
+  # a ação cria o rascunho e publica depois de conferir os arquivos
+  releaseType: draft

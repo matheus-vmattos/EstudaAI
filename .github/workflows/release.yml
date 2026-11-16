@@ -12,6 +12,12 @@ on:
 permissions:
   contents: write
 
+# uma publicação por vez: duas execuções da mesma versão apagariam o
+# rascunho uma da outra
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 jobs:
   windows:
     runs-on: windows-latest
@@ -25,9 +31,13 @@ jobs:
         run: |
           v="v$(node -p "require('./package.json').version")"
           echo "tag=$v" >> "$GITHUB_OUTPUT"
-          if gh release view "$v" >/dev/null 2>&1; then
+          rascunho=$(gh release view "$v" --json isDraft --jq .isDraft 2>/dev/null || echo nenhuma)
+          if [ "$rascunho" = false ]; then
             echo "publicada=sim" >> "$GITHUB_OUTPUT"
             echo "$v já tem Release: nada a fazer."
+          elif [ "$rascunho" = true ]; then
+            # sobra de uma execução que falhou no meio: recomeça do zero
+            gh release delete "$v" --yes
           fi
       - if: steps.versao.outputs.publicada != 'sim'
         uses: actions/setup-node@v4
@@ -38,7 +48,29 @@ jobs:
         run: npm ci
       - if: steps.versao.outputs.publicada != 'sim'
         run: npm run build
+      # A Release nasce aqui, uma vez, como rascunho: o electron-builder
+      # sobe o instalador, o .blockmap e o latest.yml em paralelo e, sem
+      # ela, cada envio tentava criar a mesma Release (o segundo dava 422).
+      - if: steps.versao.outputs.publicada != 'sim'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create "${{ steps.versao.outputs.tag }}" --draft --target "$GITHUB_SHA" --title "${{ steps.versao.outputs.tag }}" --notes ""
       - if: steps.versao.outputs.publicada != 'sim'
         run: npx electron-builder --win --publish always
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # só publica com os três arquivos lá: os apps instalados leem o latest.yml
+      - if: steps.versao.outputs.publicada != 'sim'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          v="${{ steps.versao.outputs.tag }}"
+          gh release view "$v" --json assets --jq '.assets[].name' | sort > enviados.txt
+          cat enviados.txt
+          # cada conferência para o script sozinha: dentro de um "a && b" o
+          # bash -e não para quando "a" falha, e publicaria sem o latest.yml
+          grep -qx latest.yml enviados.txt || { echo "faltou latest.yml"; exit 1; }
+          grep -qx EstudaAI-Setup.exe enviados.txt || { echo "faltou o instalador"; exit 1; }
+          gh release edit "$v" --draft=false --latest
