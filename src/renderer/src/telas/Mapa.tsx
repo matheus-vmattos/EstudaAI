@@ -86,17 +86,20 @@ export function Mapa({
     const y = vista.y + n.y * vista.zoom
     const w = LARGURA_DO_NO * vista.zoom
     const h = ALTURA_DO_NO * vista.zoom
-    const fora =
-      x < margem ||
-      y < margem ||
-      x + w > el.clientWidth - margem ||
-      y + h > el.clientHeight - margem
-    if (fora)
-      setVista((v) => ({
-        ...v,
-        x: el.clientWidth / 2 - (n.x + LARGURA_DO_NO / 2) * v.zoom,
-        y: el.clientHeight / 2 - (n.y + ALTURA_DO_NO / 2) * v.zoom
-      }))
+    // anda só o necessário (centralizar escondia o pai atrás do menu)
+    const dx =
+      x < margem
+        ? margem - x
+        : x + w > el.clientWidth - margem
+          ? el.clientWidth - margem - (x + w)
+          : 0
+    const dy =
+      y < margem
+        ? margem - y
+        : y + h > el.clientHeight - margem
+          ? el.clientHeight - margem - (y + h)
+          : 0
+    if (dx || dy) setVista((v) => ({ ...v, x: v.x + dx, y: v.y + dy }))
   }, [selecionado, layout]) // eslint-disable-line react-hooks/exhaustive-deps
   const assuntoDoNo = (no: NoPosicionado | undefined): Id | null => {
     if (!no) return null
