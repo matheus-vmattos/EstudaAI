@@ -2,11 +2,16 @@ import { marked } from 'marked'
 import DOMPurify from 'dompurify'
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
-import { formulaNoInicio, inicioDeFormula, separarFormulas } from '../../shared/formulas'
+import {
+  devolverFormulas,
+  separarFormulas,
+  trocarFormulasPorMarcas,
+  type Formula
+} from '../../shared/formulas'
 
 // ponytail: KaTeX desenha a fórmula em HTML e CSS, sem internet e sem
 // esperar; um erro de digitação aparece em vermelho no lugar, não quebra a tela
-const desenhar = (tex: string, bloco: boolean): string =>
+const desenhar = ({ tex, bloco }: Formula): string =>
   `<span class="formula${bloco ? ' bloco' : ''}" role="math" aria-label="${escapar(tex)}">${katex.renderToString(
     tex,
     { throwOnError: false, displayMode: bloco, output: 'html', strict: false }
@@ -14,9 +19,9 @@ const desenhar = (tex: string, bloco: boolean): string =>
 
 const escapar = (s: string): string => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`)
 
+// ==texto== vira <mark>: o "marca-texto" da barra de ferramentas
 marked.use({
   extensions: [
-    // ==texto== vira <mark>: o "marca-texto" da barra de ferramentas
     {
       name: 'marcado',
       level: 'inline',
@@ -27,38 +32,24 @@ marked.use({
         return undefined
       },
       renderer: (token) => `<mark>${marked.parseInline(token['text'] as string)}</mark>`
-    },
-    // $fórmula$ e $$fórmula$$ (R$ 10 continua sendo dinheiro)
-    {
-      name: 'formula',
-      level: 'inline',
-      start: (src: string) => {
-        const i = inicioDeFormula(src)
-        return i >= 0 ? i : undefined
-      },
-      tokenizer(src: string) {
-        const f = formulaNoInicio(src)
-        return f ? { type: 'formula', raw: f.raw, tex: f.tex, bloco: f.bloco } : undefined
-      },
-      renderer: (token) => desenhar(token['tex'] as string, token['bloco'] as boolean)
     }
   ]
 })
 
-/** Markdown → HTML limpo. A anotação é do próprio usuário, mas texto colado
- *  da internet pode trazer script: o DOMPurify tira. */
+/** Markdown → HTML limpo, com $fórmulas$ desenhadas. A anotação é do
+ *  próprio usuário, mas texto colado da internet pode trazer script: o
+ *  DOMPurify tira. */
 export function renderizarMarkdown(md: string): string {
-  const html = marked.parse(md, { async: false, gfm: true, breaks: true })
-  return DOMPurify.sanitize(html)
+  const { texto, formulas } = trocarFormulasPorMarcas(md)
+  const html = marked.parse(texto, { async: false, gfm: true, breaks: true })
+  return DOMPurify.sanitize(devolverFormulas(html, formulas, desenhar))
 }
 
 /** Texto comum (enunciado, alternativa, resolução) com as fórmulas
  *  desenhadas; o resto sai como está, com as quebras de linha. */
 export function textoComFormulas(texto: string): string {
   const html = separarFormulas(texto)
-    .map((p) =>
-      typeof p === 'string' ? escapar(p).replace(/\n/g, '<br>') : desenhar(p.tex, p.bloco)
-    )
+    .map((p) => (typeof p === 'string' ? escapar(p).replace(/\n/g, '<br>') : desenhar(p)))
     .join('')
   return DOMPurify.sanitize(html)
 }

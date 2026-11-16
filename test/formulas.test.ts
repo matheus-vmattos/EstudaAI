@@ -83,3 +83,25 @@ describe('passo a passo no gabarito', () => {
     })
   })
 })
+
+describe('fórmulas dentro do Markdown (anotação e flashcard)', () => {
+  // o mesmo caminho do renderizarMarkdown, com a fórmula desenhada como [tex]
+  const md = async (texto: string): Promise<string> => {
+    const { marked } = await import('marked')
+    const { trocarFormulasPorMarcas, devolverFormulas } = await import('../src/shared/formulas')
+    const t = trocarFormulasPorMarcas(texto)
+    const html = marked.parse(t.texto, { async: false, gfm: true, breaks: true })
+    return devolverFormulas(html, t.formulas, (f) => `[${f.tex}]`).trim()
+  }
+
+  it('dinheiro no começo da linha continua dinheiro', async () => {
+    expect(await md('R$100 e R$ 200')).toBe('<p>R$100 e R$ 200</p>')
+    expect(await md('**R**$1 e $x$')).toBe('<p><strong>R</strong>$1 e [x]</p>')
+  })
+
+  it('fórmula com _ e * não vira itálico', async () => {
+    expect(await md('Taxa $i_a = i_m * 12$ e *nota*')).toBe(
+      '<p>Taxa [i_a = i_m * 12] e <em>nota</em></p>'
+    )
+  })
+})

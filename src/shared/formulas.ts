@@ -69,3 +69,34 @@ export function dobrarBarrasDoLatex(json: string): string {
   }
   return saida
 }
+
+// caractere de uso privado do Unicode: não aparece em texto de verdade
+const MARCA = ''
+
+/** Tira as fórmulas do texto antes do Markdown, deixando uma marca no
+ *  lugar. Assim quem decide o que é fórmula vê o texto inteiro (o "R"
+ *  de "R$100"); o Markdown, que lê aos pedaços, não via.
+ *  ponytail: a marca também entra em bloco de código (`$x$` vira fórmula
+ *  lá dentro); para anotação de estudo, tanto faz. */
+export function trocarFormulasPorMarcas(texto: string): { texto: string; formulas: Formula[] } {
+  const formulas: Formula[] = []
+  const comMarcas = separarFormulas(texto)
+    .map((p) => {
+      if (typeof p === 'string') return p
+      formulas.push(p)
+      return `${MARCA}${formulas.length - 1}${MARCA}`
+    })
+    .join('')
+  return { texto: comMarcas, formulas }
+}
+
+/** põe cada fórmula desenhada de volta no lugar da marca */
+export function devolverFormulas(
+  html: string,
+  formulas: Formula[],
+  desenhar: (f: Formula) => string
+): string {
+  return html.replace(new RegExp(`${MARCA}(\\d+)${MARCA}`, 'g'), (_, i: string) =>
+    formulas[Number(i)] ? desenhar(formulas[Number(i)]) : ''
+  )
+}
