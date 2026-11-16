@@ -192,6 +192,22 @@ describe('pacote de cartões da caixa', () => {
     ]
   })
 
+  it('frentes que só diferem no acento são cartões diferentes', () => {
+    const { d } = montar()
+    const r = lerPacoteDeCartoes(
+      JSON.stringify({
+        materia: 'Português',
+        cartoes: [
+          { lugar: ['Sintaxe', 'Crase'], frente: 'Explique o uso de "por".', verso: 'Preposição.' },
+          { lugar: ['Sintaxe', 'Crase'], frente: 'Explique o uso de "pôr".', verso: 'Verbo.' }
+        ]
+      })
+    )
+    if (!r.ok) throw new Error(r.erro)
+    let n = 0
+    expect(importarCartoes(d, r.pacote, () => `y${++n}`, 1).novos).toBe(2)
+  })
+
   it('lê lacuna e frente/verso; recusa cartão incompleto', () => {
     const r = lerPacoteDeCartoes(PACOTE)
     expect(r.ok && r.pacote.cartoes.map((c) => c.tipo)).toEqual(['lacuna', 'basico', 'basico'])

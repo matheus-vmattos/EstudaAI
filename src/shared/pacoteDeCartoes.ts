@@ -89,9 +89,8 @@ export function importarCartoes(
   for (const c of pacote.cartoes) {
     const lugarId = acharLugar(c.lugar)
     if (!lugarId) continue
-    const igual = d.cartoes.some(
-      (x) => x.assuntoId === lugarId && semAcento(x.frente) === semAcento(c.frente)
-    )
+    // com acento: "por" e "pôr" são cartões diferentes (só o lugar ignora acento)
+    const igual = d.cartoes.some((x) => x.assuntoId === lugarId && x.frente.trim() === c.frente)
     if (igual) {
       repetidos++
       continue
