@@ -12,6 +12,12 @@ on:
 permissions:
   contents: write
 
+# uma publicação por vez: duas execuções da mesma versão apagariam o
+# rascunho uma da outra
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 jobs:
   windows:
     runs-on: windows-latest
@@ -63,5 +69,8 @@ jobs:
           v="${{ steps.versao.outputs.tag }}"
           gh release view "$v" --json assets --jq '.assets[].name' | sort > enviados.txt
           cat enviados.txt
-          grep -qx latest.yml enviados.txt && grep -qx EstudaAI-Setup.exe enviados.txt
+          # cada conferência para o script sozinha: dentro de um "a && b" o
+          # bash -e não para quando "a" falha, e publicaria sem o latest.yml
+          grep -qx latest.yml enviados.txt || { echo "faltou latest.yml"; exit 1; }
+          grep -qx EstudaAI-Setup.exe enviados.txt || { echo "faltou o instalador"; exit 1; }
           gh release edit "$v" --draft=false --latest
