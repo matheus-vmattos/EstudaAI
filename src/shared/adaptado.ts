@@ -20,6 +20,9 @@ export interface Diagnostico {
   erradasSemTopico: Questao[]
 }
 
+/** nome do grupo das questões sem marcador num simulado misto */
+export const SEM_MARCADOR = 'Pontos das questões sem marcador listadas abaixo'
+
 /** chave para juntar "Juros compostos" e "juros  compostos" */
 const chave = (t: string): string => t.trim().replace(/\s+/g, ' ').toLowerCase()
 
@@ -50,6 +53,18 @@ export function diagnosticar(s: Simulado): Diagnostico {
     }
     grupos.set(k, g)
   })
+  // simulado misto (parte com marcador, parte sem): as sem marcador viram um
+  // grupo próprio, para os erros delas também entrarem no reforço
+  const semMarcador = s.questoes.filter((q) => !q.topico).length
+  if (grupos.size && semMarcador) {
+    grupos.set(chave(SEM_MARCADOR), {
+      topico: SEM_MARCADOR,
+      total: semMarcador,
+      erros: erradasSemTopico.length,
+      habilidades: [],
+      contagem: new Map()
+    })
+  }
   const porTopico = [...grupos.values()]
     .map(({ contagem, ...g }) => ({
       ...g,
@@ -195,18 +210,25 @@ export function blocoDeAdaptacao(
       'Nelas, faça o "conceito" mais completo: 4 a 5 frases e um exemplo concreto.'
     )
   }
-  if (o.insistir && !plano.length && d.erradasSemTopico.length) {
-    const n = Math.round(o.quantidade * PARTE_DE_REFORCO)
-    linhas.push(
-      '',
-      `Faça cerca de ${n} das ${o.quantidade} questões sobre os mesmos pontos destas que ele errou (parecidas, nunca iguais), com o "conceito" mais completo (4 a 5 frases e um exemplo). As demais, sobre o restante do tema:`
-    )
+  const listarErradas = (): void => {
     for (const q of d.erradasSemTopico.slice(0, 15)) {
       const resumo = q.enunciado.replace(/\s+/g, ' ').slice(0, 180)
       linhas.push(
         `- "${resumo}${q.enunciado.length > 180 ? '…' : ''}"${q.conceito ? ` (conceito: ${q.conceito.slice(0, 160)})` : ''}`
       )
     }
+  }
+  if (reforco.some((p) => p.topico === SEM_MARCADOR)) {
+    linhas.push('', 'Questões sem marcador que ele errou (base do reforço acima):')
+    listarErradas()
+  }
+  if (o.insistir && !plano.length && d.erradasSemTopico.length) {
+    const n = Math.round(o.quantidade * PARTE_DE_REFORCO)
+    linhas.push(
+      '',
+      `Faça cerca de ${n} das ${o.quantidade} questões sobre os mesmos pontos destas que ele errou (parecidas, nunca iguais), com o "conceito" mais completo (4 a 5 frases e um exemplo). As demais, sobre o restante do tema:`
+    )
+    listarErradas()
   }
 
   linhas.push(
@@ -236,7 +258,9 @@ export function blocoDeAdaptacao(
     )
   }
 
-  const nomes = [...new Set([...d.porTopico.map((t) => t.topico), ...topicosConhecidos])]
+  const nomes = [...new Set([...d.porTopico.map((t) => t.topico), ...topicosConhecidos])].filter(
+    (n) => n !== SEM_MARCADOR
+  )
   if (nomes.length) {
     linhas.push(
       '',

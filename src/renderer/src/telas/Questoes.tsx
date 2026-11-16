@@ -412,8 +412,8 @@ export function Questoes({
               >
                 <span>
                   ✓ {leitura.questoes.length} QUESTÕES VÁLIDAS · GABARITO E RESOLUÇÃO EM TODAS
-                  {leitura.questoes.length !== config.quantidade &&
-                    ` · VOCÊ PEDIU ${config.quantidade}`}
+                  {leitura.questoes.length !== configEfetiva.quantidade &&
+                    ` · VOCÊ PEDIU ${configEfetiva.quantidade}`}
                 </span>
                 <button
                   type="button"
@@ -421,7 +421,8 @@ export function Questoes({
                   style={{ marginLeft: 'auto' }}
                   onClick={iniciar}
                 >
-                  Iniciar simulado · {config.tempoMin ? `${config.tempoMin} min` : 'sem limite'}
+                  Iniciar simulado ·{' '}
+                  {configEfetiva.tempoMin ? `${configEfetiva.tempoMin} min` : 'sem limite'}
                 </button>
               </div>
             )}

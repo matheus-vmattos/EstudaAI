@@ -147,3 +147,35 @@ describe('casos de borda', () => {
     expect(bloco).toContain('aumente a dificuldade')
   })
 })
+
+describe('simulado misto (com e sem marcador)', () => {
+  it('erros sem marcador entram no reforço mesmo havendo tópicos marcados', () => {
+    const s = cenario()
+    // a única marcada foi acertada; as 9 sem marcador, erradas
+    s.questoes = s.questoes
+      .slice(0, 10)
+      .map((q, i) => (i === 0 ? q : { ...q, topico: undefined, habilidade: undefined }))
+    s.respostas = s.questoes.map((_, i) => (i === 0 ? 'A' : 'B'))
+    const d = diagnosticar(s)
+    const plano = planejar(d, 10, true)
+    const reforco = plano.filter((p) => p.reforco)
+    expect(reforco).toHaveLength(1)
+    expect(reforco[0].quantidade).toBe(6)
+    const bloco = blocoDeAdaptacao(
+      d,
+      {
+        quantidade: 10,
+        insistir: true,
+        foco: 'equilibrado',
+        edital: '',
+        banca: '',
+        ajuste: 'manter'
+      },
+      []
+    )
+    expect(bloco).toContain('Questões sem marcador que ele errou')
+    // o enunciado da questão de teste continua o original (só o marcador foi tirado)
+    expect(bloco).toContain('"Q1 sobre Títulos de renda fixa"')
+    expect(bloco).not.toMatch(/Use em "topico".*sem marcador/)
+  })
+})
