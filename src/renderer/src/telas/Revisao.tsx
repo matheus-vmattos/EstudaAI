@@ -9,6 +9,7 @@ import {
   formatarIntervalo,
   mostrarLacuna,
   NOMES_DAS_NOTAS,
+  podeMostrar,
   previsoes,
   responder,
   type Nota
@@ -32,8 +33,8 @@ export function Revisao({
   // a fila é montada uma vez, ao entrar; quem volta em minutos (aprendendo)
   // entra de novo no fim
   const [fila, setFila] = useState<Id[]>(() => {
-    const doAlvo = alvo.assuntos ? new Set(alvo.assuntos) : null
-    const f = filaDoDia(dados.cartoes.filter((c) => !doAlvo || doAlvo.has(c.assuntoId)))
+    // o limite de novos do dia conta todos os assuntos, não só o aberto
+    const f = filaDoDia(dados.cartoes, new Date(), alvo.assuntos ? new Set(alvo.assuntos) : null)
     return [...f.revisar, ...f.novos].map((c) => c.id)
   })
   const [feitos, setFeitos] = useState(0)
@@ -47,7 +48,7 @@ export function Revisao({
   const porId = useMemo(() => new Map(dados.cartoes.map((c) => [c.id, c])), [dados.cartoes])
   const naFila = fila.map((id) => porId.get(id)).filter(Boolean) as Cartao[]
   // o primeiro que já pode ser mostrado (aprendendo só quando o minuto chegar)
-  const atual = naFila.find((c) => ehNovo(c) || new Date(c.agenda.due) <= agora) ?? null
+  const atual = naFila.find((c) => podeMostrar(c, agora)) ?? null
   const esperando = !atual && naFila.length > 0
   const proximoEm = esperando
     ? Math.min(...naFila.map((c) => new Date(c.agenda.due).getTime())) - agora.getTime()

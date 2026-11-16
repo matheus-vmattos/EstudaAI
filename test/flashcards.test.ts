@@ -6,6 +6,7 @@ import {
   lacunaDaAnotacao,
   mostrarLacuna,
   NOVOS_POR_DIA,
+  podeMostrar,
   previsoes,
   responder
 } from '../src/shared/flashcards'
@@ -120,5 +121,28 @@ describe('mapa mental', () => {
   })
   it('apagar tópico leva os descendentes', () => {
     expect(descendentes(dados, 't1').sort()).toEqual(['t1', 't2'])
+  })
+})
+
+describe('achados da revisão', () => {
+  it('revisão marcada para mais tarde hoje já pode ser mostrada', () => {
+    const revisado = responder(responder(agendaNova(agora), 4, agora), 4, agora)
+    const c = cartao('c1', {
+      agenda: { ...revisado, due: new Date('2026-11-16T22:00:00').toISOString() }
+    })
+    expect(podeMostrar(c, agora)).toBe(true)
+    const aprendendo = cartao('c2', { agenda: responder(agendaNova(agora), 1, agora) })
+    expect(podeMostrar(aprendendo, agora)).toBe(false)
+  })
+  it('limite de novos conta todos os assuntos, mesmo filtrando um', () => {
+    const feitosEmA = Array.from({ length: NOVOS_POR_DIA }, (_, i) =>
+      cartao(`a${i}`, {
+        agenda: responder(agendaNova(agora), 3, agora),
+        primeiraRevisao: agora.getTime()
+      })
+    )
+    const novosEmB = Array.from({ length: 5 }, (_, i) => cartao(`b${i}`, { assuntoId: 'a2' }))
+    const f = filaDoDia([...feitosEmA, ...novosEmB], agora, new Set(['a2']))
+    expect(f.novos).toHaveLength(0)
   })
 })

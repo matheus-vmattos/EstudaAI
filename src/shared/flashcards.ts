@@ -1,5 +1,5 @@
 import { createEmptyCard, fsrs, generatorParameters, State, type Card, type Grade } from 'ts-fsrs'
-import type { Agenda, Cartao } from './tipos'
+import type { Agenda, Cartao, Id } from './tipos'
 
 // ponytail: o FSRS é o agendador que o Anki usa hoje; a biblioteca ts-fsrs
 // faz a conta. Parâmetros padrão: com centenas de revisões dá para treinar
@@ -84,9 +84,21 @@ export interface FilaDoDia {
   novos: Cartao[]
 }
 
+/** cartão que pode ser mostrado agora: novo e revisão valem o dia todo;
+ *  em aprendizado, só quando o minuto chega */
+export const podeMostrar = (c: Cartao, agora = new Date()): boolean =>
+  c.agenda.state === State.New ||
+  c.agenda.state === State.Review ||
+  new Date(c.agenda.due).getTime() <= agora.getTime()
+
 /** O que estudar hoje. Revisão vale o dia inteiro; cartão em aprendizado só
  *  quando o minuto chegar; novos até o limite diário. */
-export function filaDoDia(cartoes: Cartao[], agora = new Date()): FilaDoDia {
+export function filaDoDia(
+  cartoes: Cartao[],
+  agora = new Date(),
+  /** só estes assuntos entram na fila; o limite de novos conta TODOS */
+  assuntos: Set<Id> | null = null
+): FilaDoDia {
   const limite = fimDoDia(agora)
   const aprendendo: Cartao[] = []
   const revisoes: Cartao[] = []
@@ -95,6 +107,7 @@ export function filaDoDia(cartoes: Cartao[], agora = new Date()): FilaDoDia {
   for (const c of cartoes) {
     const due = new Date(c.agenda.due).getTime()
     if (c.primeiraRevisao && c.primeiraRevisao >= inicioDoDia(agora)) novosHoje++
+    if (assuntos && !assuntos.has(c.assuntoId)) continue
     if (c.agenda.state === State.New) novos.push(c)
     else if (c.agenda.state === State.Review) {
       if (due <= limite) revisoes.push(c)
