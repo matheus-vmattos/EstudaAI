@@ -15,6 +15,22 @@
       "descricao": "63 cartões no estilo FCC, um fato por cartão. Entram em Português › Sintaxe; o que já existir não duplica. Entram 20 novos por dia, revezando os três tópicos.",
       "arquivo": "portugues-cartoes-piloto.json",
       "data": "2026-11-16"
+    },
+    {
+      "id": "matematica-financeira-estrutura-v1",
+      "tipo": "estrutura",
+      "titulo": "Mapa de Matemática Financeira",
+      "descricao": "Juros, taxas, descontos, séries, amortização (SAC, Price, SAM) e análise de investimentos, pelo que os editais bancários cobram.",
+      "arquivo": "matematica-financeira-estrutura.txt",
+      "data": "2026-11-16"
+    },
+    {
+      "id": "matematica-financeira-cartoes-v1",
+      "tipo": "cartoes",
+      "titulo": "Flashcards: fórmulas de Matemática Financeira",
+      "descricao": "33 cartões: a fórmula montada no verso e quando usar. Entram no mapa de Matemática Financeira; o que já existir não duplica.",
+      "arquivo": "matematica-financeira-cartoes-piloto.json",
+      "data": "2026-11-16"
     }
   ]
 }
