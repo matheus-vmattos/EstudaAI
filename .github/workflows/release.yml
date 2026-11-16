@@ -1,0 +1,44 @@
+# Publicar versão nova: mude "version" no package.json e leve para o main.
+# Se ainda não existe Release dessa versão, esta ação gera o instalador no
+# Windows e publica a Release (com a tag vX.Y.Z); os apps instalados se
+# atualizam sozinhos a partir dela.
+name: Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Versão já publicada?
+        id: versao
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          v="v$(node -p "require('./package.json').version")"
+          echo "tag=$v" >> "$GITHUB_OUTPUT"
+          if gh release view "$v" >/dev/null 2>&1; then
+            echo "publicada=sim" >> "$GITHUB_OUTPUT"
+            echo "$v já tem Release: nada a fazer."
+          fi
+      - if: steps.versao.outputs.publicada != 'sim'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - if: steps.versao.outputs.publicada != 'sim'
+        run: npm ci
+      - if: steps.versao.outputs.publicada != 'sim'
+        run: npm run build
+      - if: steps.versao.outputs.publicada != 'sim'
+        run: npx electron-builder --win --publish always
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

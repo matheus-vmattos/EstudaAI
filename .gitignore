@@ -1,0 +1,16 @@
+node_modules
+dist
+out
+.DS_Store
+.eslintcache
+*.log*
+
+# cópia das regras usada só pelos testes e2e -- o watcher do emulador
+# derruba o processo se o arquivo real mudar durante uma rodada
+.e2e-emulator/
+
+# lixo do tsc --noEmit incremental
+*.tsbuildinfo
+
+# Binário whisper compilado; modelo fica somente no userData.
+resources/whisper/
