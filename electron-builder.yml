@@ -1,0 +1,13 @@
+appId: com.matheusvmattos.estudaai
+productName: EstudaAI
+directories:
+  buildResources: build
+  output: dist
+files:
+  - out/**
+  - package.json
+win:
+  target: nsis
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
