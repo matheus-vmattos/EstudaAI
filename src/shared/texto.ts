@@ -1,5 +1,9 @@
 /** "Crase É" → "crase e": para buscar sem se importar com acento e maiúscula */
-export const semAcento = (s: string): string => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+export const semAcento = (s: string): string =>
+  s
+    .normalize('NFD')
+    .replace(/\p{M}/gu, '')
+    .toLowerCase()
 
 /** "youtube.com/x" → "https://youtube.com/x"; devolve null se não for link web */
 export function normalizarUrl(bruto: string): string | null {

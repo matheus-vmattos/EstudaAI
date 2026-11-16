@@ -1,0 +1,30 @@
+# Publicar versão nova: mude "version" no package.json, faça commit e
+# envie uma tag igual (ex.: git tag v0.2.0 && git push origin v0.2.0).
+# Esta ação gera o instalador no Windows e cria a Release; os apps
+# instalados se atualizam sozinhos a partir dela.
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Versão da tag confere com o package.json
+        shell: bash
+        run: test "v$(node -p "require('./package.json').version")" = "${GITHUB_REF_NAME}"
+      - run: npm run build
+      - run: npx electron-builder --win --publish always
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

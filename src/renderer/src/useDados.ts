@@ -26,10 +26,19 @@ export function useDados(): { dados: Dados | null; mudar: Mudar; erroAoSalvar: b
     )
   }, [])
 
+  // ao fechar (ou reiniciar para atualizar) grava síncrono: um envio
+  // assíncrono podia se perder no meio do fechamento
   useEffect(() => {
-    window.addEventListener('beforeunload', gravar)
-    return () => window.removeEventListener('beforeunload', gravar)
-  }, [gravar])
+    const gravarAgora = (): void => {
+      window.clearTimeout(timer.current)
+      const d = pendente.current
+      if (!d) return
+      pendente.current = null
+      window.api.salvarAgora(d)
+    }
+    window.addEventListener('beforeunload', gravarAgora)
+    return () => window.removeEventListener('beforeunload', gravarAgora)
+  }, [])
 
   const mudar = useCallback<Mudar>(
     (receita) => {

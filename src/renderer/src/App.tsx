@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Icone, type NomeDoIcone } from './Icone'
 import { useDados } from './useDados'
+import { Atualizacao } from './Atualizacao'
 import { Anotacoes } from './telas/Anotacoes'
 import { Links } from './telas/Links'
 import { Questoes } from './telas/Questoes'
@@ -62,6 +63,7 @@ export function App() {
           ) : (
             <div>SALVO NO PC</div>
           )}
+          <Atualizacao />
         </div>
       </nav>
 

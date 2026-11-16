@@ -11,3 +11,11 @@ win:
 nsis:
   oneClick: false
   allowToChangeInstallationDirectory: true
+  # nome fixo: o link de download "latest" nunca muda
+  artifactName: EstudaAI-Setup.${ext}
+# a atualização automática lê as Releases deste repositório (público)
+publish:
+  provider: github
+  owner: matheus-vmattos
+  repo: EstudaAI
+  releaseType: release

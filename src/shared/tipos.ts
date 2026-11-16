@@ -73,4 +73,9 @@ export interface Dados {
   simulados: Simulado[]
 }
 
+export type EstadoDaAtualizacao =
+  | { estado: 'parado' }
+  | { estado: 'baixando'; versao: string; porcento: number }
+  | { estado: 'pronta'; versao: string }
+
 export const DADOS_VAZIOS: Dados = { versao: 1, materias: [], links: [], simulados: [] }

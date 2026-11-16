@@ -2,6 +2,7 @@ import { app, BrowserWindow, ipcMain, shell } from 'electron'
 import { join } from 'path'
 import { is } from '@electron-toolkit/utils'
 import { lerDados, salvarDados } from './dados'
+import { iniciarAtualizador } from './atualizador'
 import type { Dados } from '../shared/tipos'
 
 /** só link de verdade: fica de fora file:, javascript: e protocolos do
@@ -16,6 +17,8 @@ function abrirLinkExterno(url: string): boolean {
     return false
   }
 }
+
+let principal: BrowserWindow | null = null
 
 function criarJanela(): void {
   const janela = new BrowserWindow({
@@ -33,6 +36,8 @@ function criarJanela(): void {
       contextIsolation: true
     }
   })
+  principal = janela
+  janela.on('closed', () => (principal = null))
   janela.once('ready-to-show', () => janela.show())
 
   // nenhum link troca a tela do app nem abre janela nova: vai pro navegador
@@ -57,7 +62,18 @@ function criarJanela(): void {
 app.whenReady().then(() => {
   ipcMain.handle('dados:ler', () => lerDados())
   ipcMain.handle('dados:salvar', (_e, dados: Dados) => salvarDados(dados))
+  // ao fechar (ou reiniciar para atualizar) a tela grava de forma síncrona:
+  // um invoke assíncrono podia se perder no meio do fechamento
+  ipcMain.on('dados:salvarAgora', (e, dados: Dados) => {
+    try {
+      salvarDados(dados)
+      e.returnValue = true
+    } catch {
+      e.returnValue = false
+    }
+  })
   ipcMain.handle('link:abrir', (_e, url: string) => abrirLinkExterno(url))
+  iniciarAtualizador(() => principal)
 
   criarJanela()
   app.on('activate', () => {
