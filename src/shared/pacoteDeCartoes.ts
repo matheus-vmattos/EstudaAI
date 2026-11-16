@@ -1,6 +1,7 @@
 import { agendaNova, temLacuna } from './flashcards'
 import { importarEstrutura, type NoDoTexto } from './estrutura'
 import { semAcento } from './texto'
+import { dobrarBarrasDoLatex } from './formulas'
 import type { Dados, Id, TipoDeCartao } from './tipos'
 
 /** Um cartão pronto, com o lugar dele no mapa pelo nome
@@ -24,7 +25,7 @@ export function lerPacoteDeCartoes(
 ): { ok: true; pacote: PacoteDeCartoes } | { ok: false; erro: string } {
   let bruto: unknown
   try {
-    bruto = JSON.parse(texto)
+    bruto = JSON.parse(dobrarBarrasDoLatex(texto))
   } catch {
     return { ok: false, erro: 'O arquivo de cartões veio quebrado.' }
   }

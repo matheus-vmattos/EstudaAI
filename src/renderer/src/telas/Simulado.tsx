@@ -1,3 +1,4 @@
+import { Texto } from '../Texto'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Icone } from '../Icone'
 import { Confirmar } from '../Confirmar'
@@ -233,7 +234,9 @@ function Prova({
         ) : (
           <>
             <main className="questao">
-              <p className="enunciado">{q.enunciado}</p>
+              <p className="enunciado">
+                <Texto texto={q.enunciado} />
+              </p>
               <div
                 role="radiogroup"
                 aria-label="Alternativas"
@@ -249,7 +252,9 @@ function Prova({
                     onClick={() => responder(a.letra)}
                   >
                     <span className="letra">{a.letra}</span>
-                    <span>{a.texto}</span>
+                    <span>
+                      <Texto texto={a.texto} />
+                    </span>
                   </button>
                 ))}
               </div>
@@ -454,7 +459,9 @@ function Resultado({
             {minha === null ? 'em branco' : minha === q.gabarito ? 'você acertou' : 'você errou'} ·{' '}
             {formatarTempo(s.tempoPorQuestao[atual])} nela
           </div>
-          <p className="enunciado">{q.enunciado}</p>
+          <p className="enunciado">
+            <Texto texto={q.enunciado} />
+          </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {q.alternativas.map((a) => {
               const certa = a.letra === q.gabarito
@@ -464,7 +471,9 @@ function Resultado({
                 <div key={a.letra} className={`bloco-alternativa ${classe}`}>
                   <div className="cabeca-alternativa">
                     <span className="letra">{a.letra}</span>
-                    <span style={{ flex: 1 }}>{a.texto}</span>
+                    <span style={{ flex: 1 }}>
+                      <Texto texto={a.texto} />
+                    </span>
                     {certa && (
                       <span className="meta" style={{ color: 'var(--verde)' }}>
                         Gabarito
@@ -479,7 +488,7 @@ function Resultado({
                   {comentario && (
                     <p className="comentario">
                       {certa ? '✓ ' : a.letra === minha ? '✗ ' : ''}
-                      {comentario}
+                      <Texto texto={comentario} />
                     </p>
                   )}
                 </div>
@@ -489,13 +498,17 @@ function Resultado({
           {(!separada || resto) && (
             <section className="bloco-explicacao">
               <h2 className="secao">Resolução</h2>
-              <p>{separada ? resto : q.resolucao}</p>
+              <p>
+                <Texto texto={separada ? resto : q.resolucao} />
+              </p>
             </section>
           )}
           {q.conceito && (
             <section className="bloco-explicacao conceito">
               <h2 className="secao">Conceito</h2>
-              <p>{q.conceito}</p>
+              <p>
+                <Texto texto={q.conceito} />
+              </p>
             </section>
           )}
           <div style={{ display: 'flex', gap: 10 }}>

@@ -1,3 +1,4 @@
+import { dobrarBarrasDoLatex } from './formulas'
 import type {
   Alternativa,
   ConfigDoSimulado,
@@ -48,11 +49,12 @@ export function montarPrompt(
     `Formato: ${formato}.`,
     'Cada questão precisa de:',
     '- enunciado, alternativas e gabarito;',
-    '- resolucao: 1 a 2 frases dizendo por que o gabarito está certo;',
+    '- resolucao: 1 a 2 frases dizendo por que o gabarito está certo; se a questão tiver cálculo, o passo a passo, uma etapa por linha (fórmula → valores no lugar das letras → resultado);',
     `- comentarios: para CADA ${multipla ? 'alternativa (A a E)' : 'opção (C e E)'}, 1 frase curta dizendo por que está certa ou errada;`,
     '- conceito: 2 a 3 frases explicando o conceito ou a regra que a questão cobra, para o estudante fixar;',
     '- topico: o subtema exato da questão, em poucas palavras (ex.: "Juros compostos"), sempre com o mesmo nome para o mesmo subtema;',
     `- habilidade: o que a questão exige, uma destas: ${HABILIDADES.join('; ')}.`,
+    'Fórmulas em LaTeX entre cifrões, ex.: $M = C(1+i)^n$ — no JSON, com a barra invertida dobrada (\\\\frac, \\\\cdot). Dinheiro como "R$ 1.000,00", com espaço depois do R$.',
     'Varie os aspectos cobrados do tema e não repita questões.',
     multipla ? 'Distribua o gabarito entre as letras, sem padrão previsível.' : ''
   ]
@@ -118,7 +120,7 @@ function extrairJson(texto: string): unknown {
   const inicio = texto.indexOf('{')
   const fim = texto.lastIndexOf('}')
   if (inicio < 0 || fim <= inicio) throw new Error('sem json')
-  const bruto = texto.slice(inicio, fim + 1)
+  const bruto = dobrarBarrasDoLatex(texto.slice(inicio, fim + 1))
   try {
     return JSON.parse(bruto)
   } catch {
@@ -299,8 +301,10 @@ function lerExtras(
 export function resolucaoPorLetra(q: Questao): { porLetra: Record<string, string>; resto: string } {
   if (q.comentarios && Object.keys(q.comentarios).length) {
     const porLetra = { ...q.comentarios }
-    // o resumo da resolução vai junto do gabarito quando ele não tem comentário
-    if (!porLetra[q.gabarito]) porLetra[q.gabarito] = q.resolucao
+    // a resolução vai junto do gabarito quando ele não tem comentário; se
+    // tem, ela fica no bloco próprio (é onde está o passo a passo da conta)
+    if (porLetra[q.gabarito]) return { porLetra, resto: q.resolucao }
+    porLetra[q.gabarito] = q.resolucao
     return { porLetra, resto: '' }
   }
   const letras = q.alternativas.map((a) => a.letra)

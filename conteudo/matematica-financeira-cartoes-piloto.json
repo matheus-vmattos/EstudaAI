@@ -1,0 +1,268 @@
+{
+ "materia": "Matemática Financeira",
+ "cartoes": [
+  {
+   "lugar": [
+    "Fundamentos",
+    "Porcentagem"
+   ],
+   "frente": "Aumentos sucessivos de 10% e 20% equivalem a quanto?",
+   "verso": "$1{,}10 \\cdot 1{,}20 = 1{,}32$ → aumento de **32%** (não 30%): multiplique os fatores."
+  },
+  {
+   "lugar": [
+    "Fundamentos",
+    "Porcentagem"
+   ],
+   "frente": "Aumento de 25% seguido de desconto de 20%: o que acontece com o preço?",
+   "verso": "$1{,}25 \\cdot 0{,}80 = 1$ → volta ao valor inicial."
+  },
+  {
+   "lugar": [
+    "Juros simples",
+    "Juros e montante"
+   ],
+   "frente": "Juros simples: fórmula dos juros",
+   "verso": "$$J = C \\cdot i \\cdot n$$ C = capital · i = taxa em decimal · n = tempo **na mesma unidade da taxa**."
+  },
+  {
+   "lugar": [
+    "Juros simples",
+    "Juros e montante"
+   ],
+   "frente": "Juros simples: montante",
+   "verso": "$$M = C\\,(1 + i \\cdot n)$$"
+  },
+  {
+   "lugar": [
+    "Juros simples",
+    "Juros e montante"
+   ],
+   "frente": "Juros simples: como cresce o montante?",
+   "verso": "Em linha reta (progressão aritmética): os juros de todo período são iguais, sempre sobre o capital inicial."
+  },
+  {
+   "lugar": [
+    "Juros simples",
+    "Taxas proporcionais"
+   ],
+   "frente": "Juros simples: 12% a.a. equivale a quanto ao mês?",
+   "verso": "**1% a.m.** No regime simples, a taxa é proporcional: $i_m = \\dfrac{i_a}{12}$."
+  },
+  {
+   "lugar": [
+    "Juros simples",
+    "Juros comercial e exato"
+   ],
+   "frente": "Juros comercial x juros exato",
+   "verso": "Comercial (ordinário): ano de **360** dias, mês de 30. Exato: ano civil, **365** dias (366 no bissexto)."
+  },
+  {
+   "lugar": [
+    "Juros compostos",
+    "Montante"
+   ],
+   "frente": "Juros compostos: montante",
+   "verso": "$$M = C\\,(1+i)^n$$ Juros: $J = M - C$."
+  },
+  {
+   "lugar": [
+    "Juros compostos",
+    "Montante"
+   ],
+   "frente": "Juros compostos: como cresce o montante?",
+   "verso": "Em progressão geométrica de razão $(1+i)$: juros sobre juros."
+  },
+  {
+   "lugar": [
+    "Juros compostos",
+    "Montante"
+   ],
+   "frente": "Em quanto tempo o capital dobra a juros compostos?",
+   "verso": "$(1+i)^n = 2 \\Rightarrow n = \\dfrac{\\ln 2}{\\ln(1+i)}$. Regra prática: $n \\approx \\dfrac{70}{\\text{taxa em \\%}}$."
+  },
+  {
+   "lugar": [
+    "Juros compostos",
+    "Simples x compostos"
+   ],
+   "frente": "Simples x compostos: qual rende mais?",
+   "verso": "$n < 1$ período: **simples** rende mais · $n = 1$: iguais · $n > 1$: **compostos** rendem mais."
+  },
+  {
+   "lugar": [
+    "Taxas",
+    "Taxas equivalentes"
+   ],
+   "frente": "Juros compostos: taxa mensal → anual equivalente",
+   "verso": "$$(1+i_a) = (1+i_m)^{12}$$ Ex.: 1% a.m. → $1{,}01^{12} - 1 \\approx 12{,}68\\%$ a.a."
+  },
+  {
+   "lugar": [
+    "Taxas",
+    "Nominal e efetiva"
+   ],
+   "frente": "Taxa nominal x taxa efetiva",
+   "verso": "Nominal: o período da taxa é diferente do da capitalização (ex.: 12% a.a. capitalizados mês a mês). Para a efetiva: divida pelo número de períodos e capitalize — $1{,}01^{12} - 1 \\approx 12{,}68\\%$ a.a."
+  },
+  {
+   "lugar": [
+    "Taxas",
+    "Taxa real e inflação"
+   ],
+   "frente": "Taxa real (equação de Fisher)",
+   "verso": "$$(1 + i_{ap}) = (1 + i_r)\\,(1 + i_{inf})$$ Ex.: rendeu 10% com inflação de 5% → $i_r = \\dfrac{1{,}10}{1{,}05} - 1 \\approx 4{,}76\\%$."
+  },
+  {
+   "lugar": [
+    "Taxas",
+    "Taxa real e inflação"
+   ],
+   "frente": "Rendeu 10% com inflação de 5%. A taxa real é 5%?",
+   "verso": "**Não.** Subtrair é o erro clássico; divida os fatores: $\\dfrac{1{,}10}{1{,}05} - 1 \\approx 4{,}76\\%$."
+  },
+  {
+   "lugar": [
+    "Descontos",
+    "Desconto simples"
+   ],
+   "frente": "Desconto comercial simples (por fora)",
+   "verso": "$$D_c = N \\cdot d \\cdot n \\qquad A = N\\,(1 - d \\cdot n)$$ Incide sobre o valor **nominal** (N)."
+  },
+  {
+   "lugar": [
+    "Descontos",
+    "Desconto simples"
+   ],
+   "frente": "Desconto racional simples (por dentro)",
+   "verso": "$$A = \\dfrac{N}{1 + i \\cdot n} \\qquad D_r = \\dfrac{N \\cdot i \\cdot n}{1 + i \\cdot n}$$ Incide sobre o valor **atual** (A)."
+  },
+  {
+   "lugar": [
+    "Descontos",
+    "Desconto simples"
+   ],
+   "frente": "Desconto comercial x racional simples: qual é maior?",
+   "verso": "O **comercial** (por fora), sempre: $D_c = D_r\\,(1 + i \\cdot n)$."
+  },
+  {
+   "lugar": [
+    "Descontos",
+    "Desconto simples"
+   ],
+   "frente": "Taxa efetiva de um desconto comercial simples",
+   "verso": "$$i_{ef} = \\dfrac{d}{1 - d \\cdot n}$$ Sempre maior que a taxa de desconto $d$."
+  },
+  {
+   "lugar": [
+    "Descontos",
+    "Desconto composto"
+   ],
+   "frente": "Desconto racional composto",
+   "verso": "$$A = \\dfrac{N}{(1+i)^n} \\qquad D = N - A$$"
+  },
+  {
+   "lugar": [
+    "Descontos",
+    "Desconto composto"
+   ],
+   "frente": "Desconto comercial composto",
+   "verso": "$$A = N\\,(1 - d)^n \\qquad D = N - A$$"
+  },
+  {
+   "lugar": [
+    "Séries de pagamentos",
+    "Valor presente e futuro"
+   ],
+   "frente": "Valor presente de uma série uniforme (postecipada)",
+   "verso": "$$PV = PMT \\cdot \\dfrac{1 - (1+i)^{-n}}{i}$$ 1ª parcela um período depois."
+  },
+  {
+   "lugar": [
+    "Séries de pagamentos",
+    "Valor presente e futuro"
+   ],
+   "frente": "Valor futuro de uma série uniforme",
+   "verso": "$$FV = PMT \\cdot \\dfrac{(1+i)^n - 1}{i}$$"
+  },
+  {
+   "lugar": [
+    "Séries de pagamentos",
+    "Antecipada e postecipada"
+   ],
+   "frente": "Série antecipada (1ª parcela no ato): como calcular?",
+   "verso": "A postecipada vezes $(1+i)$: $PV_{ant} = PV_{post} \\cdot (1+i)$."
+  },
+  {
+   "lugar": [
+    "Séries de pagamentos",
+    "Perpetuidade"
+   ],
+   "frente": "Valor presente de uma perpetuidade",
+   "verso": "$$PV = \\dfrac{PMT}{i}$$"
+  },
+  {
+   "lugar": [
+    "Amortização",
+    "SAC"
+   ],
+   "frente": "SAC: o que é constante?",
+   "verso": "A **amortização**: $A = \\dfrac{SD_0}{n}$. Juros e prestações caem (prestações em PA decrescente)."
+  },
+  {
+   "lugar": [
+    "Amortização",
+    "SAC"
+   ],
+   "frente": "SAC: prestação do período k",
+   "verso": "$P_k = A + J_k$, com $J_k = i \\cdot SD_{k-1}$. Cada prestação cai $A \\cdot i$ em relação à anterior."
+  },
+  {
+   "lugar": [
+    "Amortização",
+    "Price"
+   ],
+   "frente": "Price (francês): o que é constante?",
+   "verso": "A **prestação**: $$P = SD_0 \\cdot \\dfrac{i}{1 - (1+i)^{-n}}$$ Juros caem e amortizações crescem (em PG de razão $1+i$)."
+  },
+  {
+   "lugar": [
+    "Amortização"
+   ],
+   "frente": "SAC x Price: 1ª prestação e total de juros",
+   "verso": "SAC: 1ª prestação **maior** e **menos juros** no total. Price: prestações iguais e mais juros no total."
+  },
+  {
+   "lugar": [
+    "Amortização",
+    "SAM"
+   ],
+   "frente": "Sistema de Amortização Misto (SAM)",
+   "verso": "A prestação é a **média aritmética** das prestações do SAC e da Price no mesmo período."
+  },
+  {
+   "lugar": [
+    "Análise de investimentos",
+    "VPL"
+   ],
+   "frente": "Valor presente líquido (VPL)",
+   "verso": "$$VPL = -I_0 + \\sum_{t=1}^{n} \\dfrac{FC_t}{(1+i)^t}$$ VPL > 0 com a taxa mínima (TMA): o projeto vale a pena."
+  },
+  {
+   "lugar": [
+    "Análise de investimentos",
+    "TIR"
+   ],
+   "frente": "Taxa interna de retorno (TIR)",
+   "verso": "A taxa que **zera o VPL**. TIR > TMA: aceitar o projeto."
+  },
+  {
+   "lugar": [
+    "Análise de investimentos",
+    "Payback"
+   ],
+   "frente": "Payback simples x descontado",
+   "verso": "Simples: tempo para os fluxos somados pagarem o investimento. Descontado: o mesmo, com os fluxos trazidos a valor presente — é sempre maior ou igual ao simples."
+  }
+ ]
+}

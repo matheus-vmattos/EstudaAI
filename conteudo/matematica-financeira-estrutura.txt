@@ -1,0 +1,17 @@
+Matemática Financeira
+├─ Fundamentos
+│  └─ Razão e proporção · Porcentagem · Regra de três
+├─ Juros simples
+│  └─ Juros e montante · Taxas proporcionais · Juros comercial e exato
+├─ Juros compostos
+│  └─ Montante · Simples x compostos
+├─ Taxas
+│  └─ Taxas equivalentes · Nominal e efetiva · Taxa real e inflação
+├─ Descontos
+│  └─ Desconto simples · Desconto composto
+├─ Séries de pagamentos
+│  └─ Valor presente e futuro · Antecipada e postecipada · Perpetuidade
+├─ Amortização
+│  └─ SAC · Price · SAM
+└─ Análise de investimentos
+   └─ VPL · TIR · Payback
