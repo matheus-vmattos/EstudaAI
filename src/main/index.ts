@@ -1,7 +1,7 @@
 import { app, BrowserWindow, clipboard, ipcMain, shell } from 'electron'
 import { join } from 'path'
 import { is } from '@electron-toolkit/utils'
-import { lerDados, salvarDados } from './dados'
+import { fazerBackup, lerDados, pastaDosDados, salvarDados } from './dados'
 import { iniciarAtualizador } from './atualizador'
 import type { Dados } from '../shared/tipos'
 
@@ -86,6 +86,11 @@ app.whenReady().then(() => {
   // permissão e falha sem foco
   ipcMain.handle('clipboard:ler', () => clipboard.readText())
   ipcMain.handle('clipboard:escrever', (_e, texto: string) => clipboard.writeText(String(texto)))
+  ipcMain.handle('dados:backup', (_e, dados: Dados) => {
+    salvarDados(dados)
+    return fazerBackup()
+  })
+  ipcMain.handle('dados:abrirPasta', () => shell.openPath(pastaDosDados()))
   ipcMain.handle('link:abrir', (_e, url: string) => abrirLinkExterno(url))
   iniciarAtualizador(() => principal)
 

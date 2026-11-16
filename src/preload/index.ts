@@ -16,6 +16,9 @@ const api = {
     ipcRenderer.on('atualizacao:estado', ouvir)
     return () => ipcRenderer.removeListener('atualizacao:estado', ouvir)
   },
+  procurarAtualizacao: (): Promise<void> => ipcRenderer.invoke('atualizacao:procurar'),
+  fazerBackup: (dados: Dados): Promise<number> => ipcRenderer.invoke('dados:backup', dados),
+  abrirPastaDosDados: (): Promise<string> => ipcRenderer.invoke('dados:abrirPasta'),
   reiniciarParaAtualizar: (): Promise<void> => ipcRenderer.invoke('atualizacao:reiniciar')
 }
 

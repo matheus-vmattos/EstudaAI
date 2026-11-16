@@ -1,18 +1,22 @@
 import { useEffect, useState } from 'react'
 import type { EstadoDaAtualizacao } from '../../shared/tipos'
 
-/** Versão do app e, quando houver, a atualização baixada. Fica no rodapé do
- *  menu: o simulado esconde o menu, então nunca interrompe uma prova. */
-export function Atualizacao() {
+/** versão do app e estado da atualização, vindos do processo principal */
+export function useAtualizacao(): { versao: string; estado: EstadoDaAtualizacao } {
   const [versao, setVersao] = useState('')
   const [estado, setEstado] = useState<EstadoDaAtualizacao>({ estado: 'parado' })
-
   useEffect(() => {
     void window.api.versao().then(setVersao)
     void window.api.estadoDaAtualizacao().then(setEstado)
     return window.api.aoMudarAtualizacao(setEstado)
   }, [])
+  return { versao, estado }
+}
 
+/** Rodapé do menu: a versão e, quando houver, a atualização baixada. O
+ *  simulado e a revisão escondem o menu, então nunca interrompem o estudo. */
+export function Atualizacao() {
+  const { versao, estado } = useAtualizacao()
   if (estado.estado === 'pronta') {
     return (
       <button
@@ -28,7 +32,7 @@ export function Atualizacao() {
   return (
     <div>
       v{versao}
-      {estado.estado === 'baixando' && ` · baixando v${estado.versao} ${estado.porcento}%`}
+      {estado.estado === 'baixando' && ` · baixando ${estado.porcento}%`}
     </div>
   )
 }

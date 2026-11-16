@@ -150,3 +150,13 @@ describe('conserto do JSON não mexe no texto das questões', () => {
     expect(r.ok && r.questoes[0].enunciado).toBe('O trecho [,] e {,} ficam "como" estão.')
   })
 })
+
+describe('escape com aspa curva', () => {
+  it('\\" que virou \\“ na conversa continua sendo aspa dentro do texto', () => {
+    const json = JSON.stringify({
+      questoes: [{ ...questao, resolucao: 'O "não" atrai.' }]
+    }).replace(/"/g, '“')
+    const r = lerRespostaDaIa(json)
+    expect(r.ok && r.questoes[0].resolucao).toBe('O "não" atrai.')
+  })
+})

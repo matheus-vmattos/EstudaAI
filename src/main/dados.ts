@@ -1,5 +1,14 @@
 import { app } from 'electron'
-import { copyFileSync, existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'fs'
+import {
+  copyFileSync,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  renameSync,
+  unlinkSync,
+  writeFileSync
+} from 'fs'
 import { join } from 'path'
 import { DADOS_VAZIOS, type Dados } from '../shared/tipos'
 
@@ -33,4 +42,24 @@ export function salvarDados(dados: Dados): void {
   const caminho = arquivo()
   writeFileSync(`${caminho}.tmp`, JSON.stringify(dados), 'utf-8')
   renameSync(`${caminho}.tmp`, caminho)
+}
+
+export const pastaDosDados = pasta
+
+const BACKUPS_GUARDADOS = 30
+
+/** cópia datada do arquivo em userData/backups; guarda as 30 mais novas */
+export function fazerBackup(): number {
+  const destino = join(pasta(), 'backups')
+  mkdirSync(destino, { recursive: true })
+  const agora = new Date()
+  const carimbo = agora.toISOString().slice(0, 19).replace(/[:T]/g, '-')
+  copyFileSync(arquivo(), join(destino, `estudaai-${carimbo}.json`))
+  const antigos = readdirSync(destino)
+    .filter((n) => /^estudaai-.*\.json$/.test(n))
+    .sort()
+    .reverse()
+    .slice(BACKUPS_GUARDADOS)
+  for (const n of antigos) unlinkSync(join(destino, n))
+  return agora.getTime()
 }
