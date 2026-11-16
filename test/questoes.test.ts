@@ -127,3 +127,26 @@ describe('texto copiado da conversa', () => {
     expect(r.ok && r.questoes[0].enunciado).toBe('Na palavra “chuva”…')
   })
 })
+
+describe('conserto do JSON não mexe no texto das questões', () => {
+  const base = { questoes: [{ ...questao, enunciado: 'O trecho [,] e {,} ficam como estão.' }] }
+  it('vírgula sobrando: tira só a da estrutura', () => {
+    const json = JSON.stringify(base, null, 2).replace(/\n}$/, ',\n}')
+    const r = lerRespostaDaIa(json)
+    expect(r.ok && r.questoes[0].enunciado).toBe('O trecho [,] e {,} ficam como estão.')
+  })
+  it('aspas curvas válidas dentro do texto + vírgula sobrando', () => {
+    const json = JSON.stringify({
+      questoes: [{ ...questao, enunciado: 'Na palavra “chuva”, há dígrafo.' }]
+    }).replace(/}]}$/, '},]}')
+    const r = lerRespostaDaIa(json)
+    expect(r.ok && r.questoes[0].enunciado).toBe('Na palavra “chuva”, há dígrafo.')
+  })
+  it('tudo com aspas curvas e aspa reta dentro do texto', () => {
+    const json = JSON.stringify(base)
+      .replace(/"/g, '“')
+      .replace('ficam como estão.', 'ficam "como" estão.')
+    const r = lerRespostaDaIa(json)
+    expect(r.ok && r.questoes[0].enunciado).toBe('O trecho [,] e {,} ficam "como" estão.')
+  })
+})

@@ -89,23 +89,64 @@ function extrairJson(texto: string): unknown {
   const fim = texto.lastIndexOf('}')
   if (inicio < 0 || fim <= inicio) throw new Error('sem json')
   const bruto = texto.slice(inicio, fim + 1)
-  // Texto copiado da conversa (e não do bloco de código) às vezes chega com
-  // aspas curvas ou vírgula sobrando no fim. Tenta do jeito que veio e, só
-  // se não der, com essas correções: uma aspa curva DENTRO de um texto
-  // válido nunca é trocada.
-  const tentativas = [
-    bruto,
-    bruto.replace(/[\u201C\u201D\u201E\u201F]/g, '"'),
-    bruto.replace(/[\u201C\u201D\u201E\u201F]/g, '"').replace(/,\s*([}\]])/g, '$1')
-  ]
-  for (const t of tentativas) {
-    try {
-      return JSON.parse(t)
-    } catch {
-      /* próxima tentativa */
-    }
+  try {
+    return JSON.parse(bruto)
+  } catch {
+    return JSON.parse(consertarJsonCopiado(bruto))
   }
-  throw new Error('json inválido')
+}
+
+const ASPAS_CURVAS = '\u201C\u201D\u201E\u201F'
+const SINAIS_DEPOIS_DO_TEXTO = ':,}]'
+
+/** Texto copiado da conversa (e não do bloco de código) às vezes chega com
+ *  aspas curvas no lugar das retas e vírgula sobrando antes de } ou ].
+ *  Conserta só a ESTRUTURA do JSON: anda caractere por caractere sabendo
+ *  onde cada texto começa e termina, então nada dentro de um enunciado,
+ *  alternativa ou resolução é alterado. */
+export function consertarJsonCopiado(json: string): string {
+  let saida = ''
+  let i = 0
+  const proximoSinal = (de: number): string => {
+    let j = de
+    while (j < json.length && /\s/.test(json[j])) j++
+    return json[j] ?? ''
+  }
+  while (i < json.length) {
+    const c = json[i]
+    if (c === '"' || ASPAS_CURVAS.includes(c)) {
+      // um texto: copia até a aspa que o fecha
+      const curva = c !== '"'
+      saida += '"'
+      i++
+      while (i < json.length) {
+        const d = json[i]
+        if (d === '\\') {
+          saida += d + (json[i + 1] ?? '')
+          i += 2
+          continue
+        }
+        const fecha = curva
+          ? ASPAS_CURVAS.includes(d) && SINAIS_DEPOIS_DO_TEXTO.includes(proximoSinal(i + 1))
+          : d === '"'
+        if (fecha) break
+        // aspa reta dentro de um texto aberto com aspa curva precisa de escape
+        saida += curva && d === '"' ? '\\"' : d
+        i++
+      }
+      saida += '"'
+      i++
+      continue
+    }
+    // vírgula sobrando antes de } ou ]
+    if (c === ',' && '}]'.includes(proximoSinal(i + 1))) {
+      i++
+      continue
+    }
+    saida += c
+    i++
+  }
+  return saida
 }
 
 const textoValido = (v: unknown): v is string => typeof v === 'string' && v.trim() !== ''
