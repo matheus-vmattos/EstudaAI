@@ -3,6 +3,7 @@ import { Icone } from './Icone'
 import { novoId, type Mudar } from './useDados'
 import {
   importarEstrutura,
+  recolherAbaixoDosAssuntos,
   lerEstrutura,
   sobAMateria,
   type ResultadoDaImportacao
@@ -42,7 +43,8 @@ export function ColarEstrutura({
     const quando = Date.now()
     setFeito(importarEstrutura(structuredClone(dados), raizes, novoId, quando, materiaId))
     mudar((d) => {
-      importarEstrutura(d, raizes, novoId, quando, materiaId)
+      const r = importarEstrutura(d, raizes, novoId, quando, materiaId)
+      recolherAbaixoDosAssuntos(d, r.materias)
     })
   }
 

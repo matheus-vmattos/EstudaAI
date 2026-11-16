@@ -1,7 +1,11 @@
 import { useState } from 'react'
 import { Icone } from '../Icone'
 import { novoId, type Mudar } from '../useDados'
-import { importarEstrutura, lerEstrutura } from '../../../shared/estrutura'
+import {
+  importarEstrutura,
+  lerEstrutura,
+  recolherAbaixoDosAssuntos
+} from '../../../shared/estrutura'
 import { lerRespostaDaIa } from '../../../shared/questoes'
 import type { Dados, Id, ItemDaCaixa, Simulado } from '../../../shared/tipos'
 
@@ -45,7 +49,7 @@ export function Caixa({
       // a contagem sai de uma cópia: o mudar do React pode rodar depois
       const res = importarEstrutura(structuredClone(dados), raizes, novoId)
       mudar((d) => {
-        importarEstrutura(d, raizes, novoId)
+        recolherAbaixoDosAssuntos(d, importarEstrutura(d, raizes, novoId).materias)
         d.caixaImportados = [...new Set([...(d.caixaImportados ?? []), item.id])]
       })
       setResultado((x) => ({

@@ -1682,3 +1682,31 @@ dialog.config .acoes-dialogo {
   border-color: var(--verde-linha);
   color: var(--verde);
 }
+
+/* ---------- mapa mais fácil de usar (v0.1.8) ---------- */
+.no-mapa .nome-no {
+  white-space: normal;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: clip;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+.area-mapa {
+  cursor: grab;
+}
+.zoom-mapa .ajustar {
+  width: auto;
+  padding: 0 12px;
+  border-left: 1px solid var(--linha-2);
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.zoom-mapa .ajustar:hover {
+  color: var(--ciano);
+}

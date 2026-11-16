@@ -14,6 +14,12 @@ import { novoId, type Mudar } from '../useDados'
 import type { AlvoDaRevisao } from '../App'
 import {
   ALTURA_DO_NO,
+  RECUO_EMPILHADO,
+  caixaDos,
+  deslocamentoParaMostrar,
+  vistaQueMostra,
+  ZOOM_MAX,
+  ZOOM_MIN,
   descendentes,
   idsComFilhos,
   LARGURA_DO_NO,
@@ -56,7 +62,14 @@ export function Mapa({
   const [colando, setColando] = useState(false)
   const [vista, setVista] = useState({ x: MARGEM, y: MARGEM, zoom: 1 })
   const area = useRef<HTMLDivElement>(null)
-  const arrasto = useRef<{ x: number; y: number; vx: number; vy: number } | null>(null)
+  const arrasto = useRef<{ x: number; y: number; vx: number; vy: number; movendo: boolean } | null>(
+    null
+  )
+  // depois de arrastar, o clique que o navegador solta no fim não seleciona nada
+  const suprimirClique = useRef(false)
+  // pedidos para a próxima arrumação do layout: ajustar tudo ou mostrar um nó e seus filhos
+  const pedirAjuste = useRef(true)
+  const pedirMostrar = useRef<Id | null>(null)
 
   const materia = dados.materias.find((m) => m.id === materiaId) ?? dados.materias[0] ?? null
   const raiz = useMemo(() => (materia ? montarArvore(dados, materia.id) : null), [dados, materia])
@@ -64,18 +77,39 @@ export function Mapa({
   const layout = useMemo(() => (raiz ? posicionar(raiz, vertical) : null), [raiz, vertical])
   const porId = useMemo(() => new Map(layout?.nos.map((n) => [n.no.id, n]) ?? []), [layout])
 
-  // ao trocar de matéria: raiz à esquerda, centralizada na altura
+  // ao abrir, trocar de matéria ou de direção: o mapa inteiro cabe na tela
+  useLayoutEffect(() => {
+    pedirAjuste.current = true
+  }, [materia?.id, vertical])
   useLayoutEffect(() => {
     const el = area.current
-    const r = layout?.nos.find((n) => !n.paiId)
-    if (!el || !r) return
-    // horizontal: raiz à esquerda, no meio da altura; vertical: raiz no topo, no meio da largura
-    setVista(
-      vertical
-        ? { x: el.clientWidth / 2 - r.x - LARGURA_DO_NO / 2, y: MARGEM, zoom: 1 }
-        : { x: MARGEM, y: el.clientHeight / 2 - r.y - ALTURA_DO_NO / 2, zoom: 1 }
-    )
-  }, [materia?.id, vertical]) // eslint-disable-line react-hooks/exhaustive-deps
+    if (!el || !layout) return
+    if (pedirAjuste.current) {
+      pedirAjuste.current = false
+      setVista(vistaQueMostra(caixaDos(layout.nos), el.clientWidth, el.clientHeight))
+      return
+    }
+    // expandiu um nó: ele e os filhos entram na tela, andando o mínimo
+    const id = pedirMostrar.current
+    pedirMostrar.current = null
+    const n = id ? layout.nos.find((x) => x.no.id === id) : undefined
+    if (!n) return
+    const grupo = [n, ...layout.nos.filter((x) => x.paiId === n.no.id)]
+    setVista((v) => {
+      const { dx, dy } = deslocamentoParaMostrar(
+        caixaDos(grupo),
+        v,
+        el.clientWidth,
+        el.clientHeight
+      )
+      return dx || dy ? { ...v, x: v.x + dx, y: v.y + dy } : v
+    })
+  }, [layout])
+  const ajustar = (): void => {
+    const el = area.current
+    if (el && layout)
+      setVista(vistaQueMostra(caixaDos(layout.nos), el.clientWidth, el.clientHeight))
+  }
 
   const sel = selecionado ? porId.get(selecionado) : undefined
 
@@ -83,25 +117,11 @@ export function Mapa({
     const el = area.current
     const n = selecionado ? porId.get(selecionado) : undefined
     if (!el || !n) return
-    const margem = 24
-    const x = vista.x + n.x * vista.zoom
-    const y = vista.y + n.y * vista.zoom
-    const w = LARGURA_DO_NO * vista.zoom
-    const h = ALTURA_DO_NO * vista.zoom
-    // anda só o necessário (centralizar escondia o pai atrás do menu)
-    const dx =
-      x < margem
-        ? margem - x
-        : x + w > el.clientWidth - margem
-          ? el.clientWidth - margem - (x + w)
-          : 0
-    const dy =
-      y < margem
-        ? margem - y
-        : y + h > el.clientHeight - margem
-          ? el.clientHeight - margem - (y + h)
-          : 0
-    if (dx || dy) setVista((v) => ({ ...v, x: v.x + dx, y: v.y + dy }))
+    // usa a vista atual (a do ajuste à tela pode ter acabado de mudar)
+    setVista((v) => {
+      const { dx, dy } = deslocamentoParaMostrar(caixaDos([n]), v, el.clientWidth, el.clientHeight)
+      return dx || dy ? { ...v, x: v.x + dx, y: v.y + dy } : v
+    })
   }, [selecionado, layout]) // eslint-disable-line react-hooks/exhaustive-deps
   const assuntoDoNo = (no: NoPosicionado | undefined): Id | null => {
     if (!no) return null
@@ -111,12 +131,14 @@ export function Mapa({
     return null
   }
 
-  const alternar = (id: Id): void =>
+  const alternar = (id: Id): void => {
+    if (dados.mapaRecolhidos.includes(id)) pedirMostrar.current = id
     mudar((d) => {
       d.mapaRecolhidos = d.mapaRecolhidos.includes(id)
         ? d.mapaRecolhidos.filter((x) => x !== id)
         : [...d.mapaRecolhidos, id]
     })
+  }
 
   /** filho do nó selecionado: matéria → assunto; assunto/tópico → tópico */
   const novoFilho = (): void => {
@@ -173,30 +195,59 @@ export function Mapa({
     return () => window.removeEventListener('keydown', ouvir)
   }, [])
 
-  // arrastar o fundo move o mapa; a roda dá zoom no ponto do mouse
+  // arrastar em qualquer lugar (até em cima de um nó) move o mapa; clique sem
+  // arrastar seleciona. A roda rola; Ctrl + roda (ou a pinça) dá zoom.
   const comecarArrasto = (e: PointerEvent): void => {
-    if ((e.target as HTMLElement).closest('button, input')) return
-    arrasto.current = { x: e.clientX, y: e.clientY, vx: vista.x, vy: vista.y }
-    ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
+    if (e.button !== 0 || (e.target as HTMLElement).closest('input, .zoom-mapa')) return
+    arrasto.current = { x: e.clientX, y: e.clientY, vx: vista.x, vy: vista.y, movendo: false }
   }
   const arrastar = (e: PointerEvent): void => {
     const a = arrasto.current
-    if (a) setVista((v) => ({ ...v, x: a.vx + e.clientX - a.x, y: a.vy + e.clientY - a.y }))
+    if (!a) return
+    if (!a.movendo) {
+      if (Math.hypot(e.clientX - a.x, e.clientY - a.y) < 5) return
+      a.movendo = true
+      ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
+    }
+    setVista((v) => ({ ...v, x: a.vx + e.clientX - a.x, y: a.vy + e.clientY - a.y }))
   }
-  const zoomar = (e: WheelEvent): void => {
+  const soltar = (): void => {
+    if (arrasto.current?.movendo) {
+      suprimirClique.current = true
+      setTimeout(() => (suprimirClique.current = false), 0)
+    }
+    arrasto.current = null
+  }
+  const rolar = (e: WheelEvent): void => {
     const el = area.current
     if (!el) return
+    if (!e.ctrlKey) {
+      // Shift + roda anda de lado
+      const dx = e.shiftKey ? e.deltaY : e.deltaX
+      const dy = e.shiftKey ? 0 : e.deltaY
+      setVista((v) => ({ ...v, x: v.x - dx, y: v.y - dy }))
+      return
+    }
     const r = el.getBoundingClientRect()
     const px = e.clientX - r.left
     const py = e.clientY - r.top
     setVista((v) => {
-      const zoom = Math.min(2, Math.max(0.3, v.zoom * (e.deltaY < 0 ? 1.1 : 1 / 1.1)))
+      const zoom = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, v.zoom * Math.exp(-e.deltaY * 0.002)))
       const k = zoom / v.zoom
       return { zoom, x: px - (px - v.x) * k, y: py - (py - v.y) * k }
     })
   }
   const zoomBotao = (fator: number): void =>
-    setVista((v) => ({ ...v, zoom: Math.min(2, Math.max(0.3, v.zoom * fator)) }))
+    setVista((v) => {
+      const el = area.current
+      const zoom = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, v.zoom * fator))
+      if (!el) return { ...v, zoom }
+      // zoom pelo centro da área
+      const cx = el.clientWidth / 2
+      const cy = el.clientHeight / 2
+      const k = zoom / v.zoom
+      return { zoom, x: cx - (cx - v.x) * k, y: cy - (cy - v.y) * k }
+    })
 
   if (!materia || !layout) {
     return (
@@ -290,6 +341,7 @@ export function Mapa({
           className="botao"
           onClick={() => {
             const ids = new Set(idsComFilhos(dados, materia.id))
+            pedirAjuste.current = true
             mudar((d) => {
               d.mapaRecolhidos = d.mapaRecolhidos.filter((x) => !ids.has(x))
             })
@@ -303,6 +355,7 @@ export function Mapa({
           onClick={() => {
             // recolhe tudo abaixo dos assuntos: a matéria e os assuntos continuam à vista
             const ids = idsComFilhos(dados, materia.id).filter((x) => x !== materia.id)
+            pedirAjuste.current = true
             mudar((d) => {
               d.mapaRecolhidos = [...new Set([...d.mapaRecolhidos, ...ids])]
             })
@@ -328,7 +381,7 @@ export function Mapa({
           Colar estrutura
         </button>
         <span className="meta" style={{ marginLeft: 'auto' }}>
-          Tab cria filho · Enter cria irmão · F2 renomeia · Del apaga · arraste e roda movem
+          Arraste ou role para mover · Ctrl + roda: zoom · Tab filho · Enter irmão · F2 renomeia
         </span>
       </div>
 
@@ -338,9 +391,13 @@ export function Mapa({
           className="area-mapa"
           onPointerDown={comecarArrasto}
           onPointerMove={arrastar}
-          onPointerUp={() => (arrasto.current = null)}
-          onWheel={zoomar}
-          onClick={(e) => e.target === e.currentTarget && setSelecionado(null)}
+          onPointerUp={soltar}
+          onPointerCancel={soltar}
+          onWheel={rolar}
+          onClick={(e) =>
+            !suprimirClique.current && e.target === e.currentTarget && setSelecionado(null)
+          }
+          onDoubleClick={(e) => e.target === e.currentTarget && ajustar()}
         >
           <div
             className="camada-mapa"
@@ -359,23 +416,31 @@ export function Mapa({
                   const ativa = selecionado === n.no.id || selecionado === pai.no.id
                   // horizontal: da direita do pai à esquerda do filho;
                   // vertical: de baixo do pai ao topo do filho
-                  const d = vertical
+                  const d = n.empilhado
                     ? (() => {
-                        const x1 = pai.x + LARGURA_DO_NO / 2
+                        // desce pela esquerda do pai e entra pelo lado do filho
+                        const x1 = pai.x + RECUO_EMPILHADO / 2
                         const y1 = pai.y + ALTURA_DO_NO
-                        const x2 = n.x + LARGURA_DO_NO / 2
-                        const y2 = n.y
-                        const meio = (y1 + y2) / 2
-                        return `M${x1} ${y1} C ${x1} ${meio}, ${x2} ${meio}, ${x2} ${y2}`
-                      })()
-                    : (() => {
-                        const x1 = pai.x + LARGURA_DO_NO
-                        const y1 = pai.y + ALTURA_DO_NO / 2
-                        const x2 = n.x
                         const y2 = n.y + ALTURA_DO_NO / 2
-                        const meio = (x1 + x2) / 2
-                        return `M${x1} ${y1} C ${meio} ${y1}, ${meio} ${y2}, ${x2} ${y2}`
+                        return `M${x1} ${y1} L ${x1} ${y2} L ${n.x} ${y2}`
                       })()
+                    : vertical
+                      ? (() => {
+                          const x1 = pai.x + LARGURA_DO_NO / 2
+                          const y1 = pai.y + ALTURA_DO_NO
+                          const x2 = n.x + LARGURA_DO_NO / 2
+                          const y2 = n.y
+                          const meio = (y1 + y2) / 2
+                          return `M${x1} ${y1} C ${x1} ${meio}, ${x2} ${meio}, ${x2} ${y2}`
+                        })()
+                      : (() => {
+                          const x1 = pai.x + LARGURA_DO_NO
+                          const y1 = pai.y + ALTURA_DO_NO / 2
+                          const x2 = n.x
+                          const y2 = n.y + ALTURA_DO_NO / 2
+                          const meio = (x1 + x2) / 2
+                          return `M${x1} ${y1} C ${meio} ${y1}, ${meio} ${y2}, ${x2} ${y2}`
+                        })()
                   return <path key={n.no.id} d={d} className={ativa ? 'ativa' : ''} />
                 })}
             </svg>
@@ -402,7 +467,8 @@ export function Mapa({
                   <button
                     type="button"
                     className="nome-no"
-                    onClick={() => setSelecionado(n.no.id)}
+                    title={n.no.nome}
+                    onClick={() => !suprimirClique.current && setSelecionado(n.no.id)}
                     onDoubleClick={() => setRenomeando(n.no.id)}
                   >
                     {n.no.nome}
@@ -414,7 +480,7 @@ export function Mapa({
                     className="recolher-no"
                     aria-label={n.no.recolhido ? `Expandir ${n.no.nome}` : `Recolher ${n.no.nome}`}
                     aria-expanded={!n.no.recolhido}
-                    onClick={() => alternar(n.no.id)}
+                    onClick={() => !suprimirClique.current && alternar(n.no.id)}
                   >
                     {n.no.recolhido ? `+${n.no.totalFilhos}` : '−'}
                   </button>
@@ -430,92 +496,101 @@ export function Mapa({
             <button type="button" aria-label="Aumentar" onClick={() => zoomBotao(1.2)}>
               +
             </button>
+            <button
+              type="button"
+              className="ajustar"
+              onClick={ajustar}
+              title="Mostrar o mapa inteiro (ou duplo clique no fundo)"
+            >
+              Ajustar
+            </button>
           </div>
         </div>
 
-        <aside className="painel-mapa" aria-label="Nó selecionado">
-          {!sel && <p className="meta">Clique num assunto ou tópico para ver a anotação.</p>}
-          {sel?.no.tipo === 'materia' && (
-            <>
-              <span className="meta">Matéria</span>
-              <h2>{materia.nome}</h2>
-              <p className="meta">
-                {materia.assuntos.length} assuntos ·{' '}
-                {
-                  dados.topicos.filter((t) => materia.assuntos.some((a) => a.id === t.assuntoId))
-                    .length
-                }{' '}
-                tópicos
-              </p>
-              <button
-                type="button"
-                className="botao tracejado"
-                style={{ minHeight: 40 }}
-                onClick={novoFilho}
-              >
-                + Assunto
-              </button>
-            </>
-          )}
-          {assunto && sel && sel.no.tipo !== 'materia' && (
-            <>
-              <span className="meta">
-                {topico ? `Tópico · ${assunto.nome}` : `Assunto · ${materia.nome}`}
-              </span>
-              <h2>{lugar?.nome}</h2>
-              <p className="previa">
-                {textoSimples(lugar?.nota ?? '').slice(0, 280) || 'Ainda sem anotação.'}
-                {textoSimples(lugar?.nota ?? '').length > 280 && '…'}
-              </p>
-              <div className="chips meta">
-                <span className="chip-meta">{linksDoAssunto} links</span>
-                <span className="chip-meta">{cartoesDoAssunto} cartões</span>
-              </div>
-              <button
-                type="button"
-                className="botao principal"
-                onClick={() => lugar && abrirAnotacao(lugar.id)}
-              >
-                Abrir anotação
-              </button>
-              {cartoesDoAssunto > 0 && (
+        {sel && (
+          <aside className="painel-mapa" aria-label="Nó selecionado">
+            {sel?.no.tipo === 'materia' && (
+              <>
+                <span className="meta">Matéria</span>
+                <h2>{materia.nome}</h2>
+                <p className="meta">
+                  {materia.assuntos.length} assuntos ·{' '}
+                  {
+                    dados.topicos.filter((t) => materia.assuntos.some((a) => a.id === t.assuntoId))
+                      .length
+                  }{' '}
+                  tópicos
+                </p>
                 <button
                   type="button"
-                  className="botao"
-                  style={{ minHeight: 44 }}
-                  onClick={() =>
-                    lugar &&
-                    estudar({
-                      assuntos: [...abaixo],
-                      titulo: `${materia.nome} › ${lugar.caminho.join(' › ')}`
-                    })
-                  }
-                >
-                  Revisar cartões
-                </button>
-              )}
-              <button
-                type="button"
-                className="botao tracejado"
-                style={{ minHeight: 40 }}
-                onClick={novoTopico}
-              >
-                + {topico ? 'Subtópico' : 'Tópico'}
-              </button>
-              {lugar && (
-                <button
-                  type="button"
-                  className="botao perigo"
+                  className="botao tracejado"
                   style={{ minHeight: 40 }}
-                  onClick={() => setApagando(lugar.id)}
+                  onClick={novoFilho}
                 >
-                  <Icone nome="lixo" tamanho={15} />
-                  {lugar.tipo === 'assunto' ? 'Apagar assunto' : 'Apagar tópico'}
+                  + Assunto
                 </button>
-              )}
-            </>
-          )}
-        </aside>
+              </>
+            )}
+            {assunto && sel && sel.no.tipo !== 'materia' && (
+              <>
+                <span className="meta">
+                  {topico ? `Tópico · ${assunto.nome}` : `Assunto · ${materia.nome}`}
+                </span>
+                <h2>{lugar?.nome}</h2>
+                <p className="previa">
+                  {textoSimples(lugar?.nota ?? '').slice(0, 280) || 'Ainda sem anotação.'}
+                  {textoSimples(lugar?.nota ?? '').length > 280 && '…'}
+                </p>
+                <div className="chips meta">
+                  <span className="chip-meta">{linksDoAssunto} links</span>
+                  <span className="chip-meta">{cartoesDoAssunto} cartões</span>
+                </div>
+                <button
+                  type="button"
+                  className="botao principal"
+                  onClick={() => lugar && abrirAnotacao(lugar.id)}
+                >
+                  Abrir anotação
+                </button>
+                {cartoesDoAssunto > 0 && (
+                  <button
+                    type="button"
+                    className="botao"
+                    style={{ minHeight: 44 }}
+                    onClick={() =>
+                      lugar &&
+                      estudar({
+                        assuntos: [...abaixo],
+                        titulo: `${materia.nome} › ${lugar.caminho.join(' › ')}`
+                      })
+                    }
+                  >
+                    Revisar cartões
+                  </button>
+                )}
+                <button
+                  type="button"
+                  className="botao tracejado"
+                  style={{ minHeight: 40 }}
+                  onClick={novoTopico}
+                >
+                  + {topico ? 'Subtópico' : 'Tópico'}
+                </button>
+                {lugar && (
+                  <button
+                    type="button"
+                    className="botao perigo"
+                    style={{ minHeight: 40 }}
+                    onClick={() => setApagando(lugar.id)}
+                  >
+                    <Icone nome="lixo" tamanho={15} />
+                    {lugar.tipo === 'assunto' ? 'Apagar assunto' : 'Apagar tópico'}
+                  </button>
+                )}
+              </>
+            )}
+          </aside>
+        )}
       </div>
 
       {colando && (
