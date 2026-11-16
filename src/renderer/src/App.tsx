@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Icone, type NomeDoIcone } from './Icone'
 import { useDados } from './useDados'
 import { Atualizacao } from './Atualizacao'
@@ -10,17 +10,19 @@ import { Simulado } from './telas/Simulado'
 import { Flashcards } from './telas/Flashcards'
 import { Revisao } from './telas/Revisao'
 import { Mapa } from './telas/Mapa'
+import { Caixa, type EstadoDaCaixa } from './telas/Caixa'
 import { filaDoDia } from '../../shared/flashcards'
 import type { Id } from '../../shared/tipos'
 
-export type Tela = 'anotacoes' | 'flashcards' | 'mapa' | 'links' | 'questoes'
+export type Tela = 'anotacoes' | 'flashcards' | 'mapa' | 'links' | 'questoes' | 'caixa'
 
 const MENU: { tela: Tela; nome: string; icone: NomeDoIcone }[] = [
   { tela: 'anotacoes', nome: 'Anotações', icone: 'nota' },
   { tela: 'flashcards', nome: 'Flashcards', icone: 'cartas' },
   { tela: 'mapa', nome: 'Mapa mental', icone: 'mapa' },
   { tela: 'links', nome: 'Links', icone: 'link' },
-  { tela: 'questoes', nome: 'Questões', icone: 'relogio' }
+  { tela: 'questoes', nome: 'Questões', icone: 'relogio' },
+  { tela: 'caixa', nome: 'Do Claude', icone: 'enviar' }
 ]
 
 /** quais assuntos a revisão cobre (null = todos) */
@@ -41,6 +43,26 @@ export function App() {
     const id = window.setInterval(() => setAgora(new Date()), 60000)
     return () => window.clearInterval(id)
   }, [])
+
+  // caixa "Do Claude": busca ao abrir e a cada 30 min
+  const [caixa, setCaixa] = useState<EstadoDaCaixa>({ carregando: false, itens: [], erro: '' })
+  const buscarCaixa = useCallback(() => {
+    setCaixa((c) => ({ ...c, carregando: true }))
+    void window.api
+      .caixaListar()
+      .then((r) =>
+        setCaixa(
+          'erro' in r
+            ? { carregando: false, itens: [], erro: r.erro }
+            : { carregando: false, itens: r.itens, erro: '' }
+        )
+      )
+  }, [])
+  useEffect(() => {
+    buscarCaixa()
+    const id = window.setInterval(buscarCaixa, 30 * 60000)
+    return () => window.clearInterval(id)
+  }, [buscarCaixa])
 
   if (!dados) return null
 
@@ -65,6 +87,7 @@ export function App() {
     return <Revisao dados={dados} mudar={mudar} alvo={revisao} sair={() => setRevisao(null)} />
   }
 
+  const novidades = caixa.itens.filter((i) => !(dados.caixaImportados ?? []).includes(i.id)).length
   const fila = filaDoDia(dados.cartoes, agora)
   const paraHoje = fila.revisar.length + fila.novos.length
   const abrirAnotacao = (assuntoId: Id): void => {
@@ -93,6 +116,11 @@ export function App() {
           >
             <Icone nome={m.icone} />
             {m.nome.toUpperCase()}
+            {m.tela === 'caixa' && novidades > 0 && (
+              <span className="contador" aria-label={`${novidades} novidades`}>
+                {novidades}
+              </span>
+            )}
             {m.tela === 'flashcards' && paraHoje > 0 && (
               <span className="contador" aria-label={`${paraHoje} para hoje`}>
                 {paraHoje}
@@ -138,6 +166,16 @@ export function App() {
         <Mapa dados={dados} mudar={mudar} abrirAnotacao={abrirAnotacao} estudar={setRevisao} />
       )}
       {tela === 'links' && <Links dados={dados} mudar={mudar} />}
+      {tela === 'caixa' && (
+        <Caixa
+          dados={dados}
+          mudar={mudar}
+          caixa={caixa}
+          atualizar={buscarCaixa}
+          abrirMapa={() => setTela('mapa')}
+          abrirSimulado={setSimuladoAberto}
+        />
+      )}
       {tela === 'questoes' && (
         <Questoes
           dados={dados}

@@ -127,7 +127,19 @@ export interface Dados {
   /** nós do mapa mental recolhidos (matéria, assunto ou tópico) */
   mapaRecolhidos: Id[]
   mapaVertical?: boolean
+  /** itens da caixa "Do Claude" já importados */
+  caixaImportados?: string[]
   ultimoBackup?: number
+}
+
+/** Algo que o Claude preparou e publicou em conteudo/ do repositório */
+export interface ItemDaCaixa {
+  id: string
+  tipo: 'estrutura' | 'simulado'
+  titulo: string
+  descricao?: string
+  arquivo: string
+  data?: string
 }
 
 export type EstadoDaAtualizacao =

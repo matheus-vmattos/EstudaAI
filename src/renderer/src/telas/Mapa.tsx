@@ -9,6 +9,7 @@ import {
 } from 'react'
 import { Icone } from '../Icone'
 import { Confirmar } from '../Confirmar'
+import { ColarEstrutura } from '../ColarEstrutura'
 import { novoId, type Mudar } from '../useDados'
 import type { AlvoDaRevisao } from '../App'
 import {
@@ -52,6 +53,7 @@ export function Mapa({
   const [selecionado, setSelecionado] = useState<Id | null>(null)
   const [renomeando, setRenomeando] = useState<Id | null>(null)
   const [apagando, setApagando] = useState<Id | null>(null)
+  const [colando, setColando] = useState(false)
   const [vista, setVista] = useState({ x: MARGEM, y: MARGEM, zoom: 1 })
   const area = useRef<HTMLDivElement>(null)
   const arrasto = useRef<{ x: number; y: number; vx: number; vy: number } | null>(null)
@@ -218,6 +220,17 @@ export function Mapa({
             >
               + Nova matéria
             </button>
+            <button type="button" className="botao" onClick={() => setColando(true)}>
+              Colar estrutura
+            </button>
+            {colando && (
+              <ColarEstrutura
+                dados={dados}
+                materia={null}
+                mudar={mudar}
+                fechar={() => setColando(false)}
+              />
+            )}
           </div>
         </main>
       </div>
@@ -305,6 +318,14 @@ export function Mapa({
           onClick={novoFilho}
         >
           {sel?.no.tipo === 'materia' ? '+ Assunto' : '+ Tópico'}
+        </button>
+        <button
+          type="button"
+          className="botao"
+          onClick={() => setColando(true)}
+          title="Cole uma árvore em texto e crie tudo de uma vez"
+        >
+          Colar estrutura
         </button>
         <span className="meta" style={{ marginLeft: 'auto' }}>
           Tab cria filho · Enter cria irmão · F2 renomeia · Del apaga · arraste e roda movem
@@ -497,6 +518,15 @@ export function Mapa({
         </aside>
       </div>
 
+      {colando && (
+        <ColarEstrutura
+          dados={dados}
+          materia={materia.nome}
+          materiaId={materia.id}
+          mudar={mudar}
+          fechar={() => setColando(false)}
+        />
+      )}
       {apagando && (
         <Confirmar
           titulo={

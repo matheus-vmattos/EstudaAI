@@ -1,0 +1,12 @@
+{
+  "itens": [
+    {
+      "id": "portugues-estrutura-v1",
+      "tipo": "estrutura",
+      "titulo": "Mapa de Português para concursos",
+      "descricao": "Fonologia, Morfologia, Sintaxe, Pontuação, Semântica e Interpretação, com os tópicos de edital. Antes de importar, renomeie no mapa (F2): Fonema → Fonologia, Radical → Estrutura das palavras, Novo assunto → Sintaxe. O que tiver o mesmo nome é aproveitado.",
+      "arquivo": "portugues-estrutura.txt",
+      "data": "2026-11-16"
+    }
+  ]
+}
