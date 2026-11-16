@@ -522,6 +522,7 @@ export function Mapa({
         <ColarEstrutura
           dados={dados}
           materia={materia.nome}
+          materiaId={materia.id}
           mudar={mudar}
           fechar={() => setColando(false)}
         />

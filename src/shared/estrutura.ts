@@ -54,11 +54,17 @@ export function importarEstrutura(
   d: Dados,
   raizes: NoDoTexto[],
   novoId: () => Id,
-  quando = Date.now()
+  quando = Date.now(),
+  /** matéria aberta no mapa: o 1º nó entra nela pelo id (pode haver
+   *  duas matérias com o mesmo nome) */
+  materiaAlvo?: Id
 ): ResultadoDaImportacao {
   const r: ResultadoDaImportacao = { criados: 0, aproveitados: 0 }
   for (const raiz of raizes) {
-    let m = d.materias.find((x) => igual(x.nome, raiz.nome))
+    let m =
+      materiaAlvo && raiz === raizes[0]
+        ? d.materias.find((x) => x.id === materiaAlvo)
+        : d.materias.find((x) => igual(x.nome, raiz.nome))
     if (m) r.aproveitados++
     else {
       m = { id: novoId(), nome: raiz.nome, aberta: true, assuntos: [] }

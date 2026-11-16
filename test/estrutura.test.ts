@@ -169,3 +169,18 @@ describe('nível pelo recuo, não pelo marcador', () => {
     ])
   })
 })
+
+describe('matérias com o mesmo nome', () => {
+  it('colar no mapa aberto entra na matéria escolhida pelo id', () => {
+    const d: Dados = {
+      ...DADOS_VAZIOS,
+      materias: [
+        { id: 'm1', nome: 'Português', aberta: true, assuntos: [] },
+        { id: 'm2', nome: 'Português', aberta: true, assuntos: [] }
+      ]
+    }
+    let n = 0
+    importarEstrutura(d, sobAMateria(lerEstrutura('Crase'), 'Português'), () => `n${n++}`, 1, 'm2')
+    expect(d.materias.map((m) => m.assuntos.length)).toEqual([0, 1])
+  })
+})

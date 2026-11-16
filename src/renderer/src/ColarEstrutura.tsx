@@ -14,11 +14,14 @@ import type { Dados } from '../../shared/tipos'
 export function ColarEstrutura({
   dados,
   materia,
+  materiaId,
   mudar,
   fechar
 }: {
   dados: Dados
   materia: string | null
+  /** id da matéria aberta no mapa: é nela que o texto entra */
+  materiaId?: string
   mudar: Mudar
   fechar: () => void
 }) {
@@ -36,9 +39,10 @@ export function ColarEstrutura({
 
   const importar = (): void => {
     // a contagem sai de uma cópia: o mudar do React pode rodar depois
-    setFeito(importarEstrutura(structuredClone(dados), raizes, novoId))
+    const quando = Date.now()
+    setFeito(importarEstrutura(structuredClone(dados), raizes, novoId, quando, materiaId))
     mudar((d) => {
-      importarEstrutura(d, raizes, novoId)
+      importarEstrutura(d, raizes, novoId, quando, materiaId)
     })
   }
 
