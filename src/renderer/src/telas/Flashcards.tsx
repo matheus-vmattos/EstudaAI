@@ -1,6 +1,7 @@
 import { useRef, useState, type FormEvent } from 'react'
 import { Icone } from '../Icone'
 import { Confirmar } from '../Confirmar'
+import { EscolherLugar } from '../EscolherLugar'
 import { novoId, type Mudar } from '../useDados'
 import type { AlvoDaRevisao } from '../App'
 import {
@@ -250,7 +251,12 @@ export function Flashcards({
                               <button
                                 type="button"
                                 className="link-botao texto"
-                                onClick={() => setAberto(aberto === a.id ? null : a.id)}
+                                onClick={() => {
+                                  setAberto(aberto === a.id ? null : a.id)
+                                  // o cartão novo vai para o baralho que você está vendo
+                                  if (!rascunho.id && aberto !== a.id)
+                                    setRascunho((r) => ({ ...r, assuntoId: a.id }))
+                                }}
                                 aria-expanded={aberto === a.id}
                               >
                                 {a.nome}
@@ -395,25 +401,12 @@ export function Flashcards({
                 onChange={(e) => muda('verso', e.target.value)}
               />
             </label>
-            <label className="campo">
-              Assunto
-              <select
-                value={rascunho.assuntoId}
-                onChange={(e) => muda('assuntoId', e.target.value)}
-              >
-                {assuntos.length === 0 && <option value="">Crie um assunto em Anotações</option>}
-                {dados.materias.map((m) => (
-                  <optgroup key={m.id} label={m.nome}>
-                    {nosDaMateria(dados, m).map((a) => (
-                      <option key={a.id} value={a.id}>
-                        {'\u2003'.repeat(a.nivel)}
-                        {a.nome}
-                      </option>
-                    ))}
-                  </optgroup>
-                ))}
-              </select>
-            </label>
+            <EscolherLugar
+              dados={dados}
+              rotulo="Onde guardar"
+              valor={rascunho.assuntoId}
+              aoEscolher={(id) => muda('assuntoId', id)}
+            />
             {erro && (
               <div className="aviso erro" role="alert">
                 {erro}

@@ -73,6 +73,7 @@ export function App() {
     return (
       <Simulado
         simulado={simulado}
+        dados={dados}
         mudar={mudar}
         sair={() => setSimuladoAberto(null)}
         abrir={setSimuladoAberto}
@@ -80,6 +81,11 @@ export function App() {
           setAdaptarDe(simulado.id)
           setSimuladoAberto(null)
           setTela('questoes')
+        }}
+        abrirAnotacao={(id) => {
+          setSimuladoAberto(null)
+          setAssuntoAberto(id)
+          setTela('anotacoes')
         }}
       />
     )

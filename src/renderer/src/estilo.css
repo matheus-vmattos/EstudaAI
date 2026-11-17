@@ -1864,3 +1864,163 @@ dialog.config .acoes-dialogo {
   background: var(--ciano-fundo);
   color: var(--ciano);
 }
+
+/* ---------- escolher lugar com busca (v0.1.13) ---------- */
+.escolher-lugar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.escolher-lugar .rotulo-campo {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--texto-meta);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.lugar-escolhido {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 10px;
+  min-height: 44px;
+  padding: 6px 12px;
+  border: 1px solid var(--linha-2);
+  background: var(--campo);
+  color: #e9f7fb;
+  text-align: left;
+  cursor: pointer;
+}
+.lugar-escolhido:hover,
+.lugar-escolhido:focus-visible {
+  border-color: var(--linha-viva);
+}
+.lugar-escolhido .acima {
+  grid-column: 1;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--texto-meta);
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.lugar-escolhido .nome {
+  grid-column: 1;
+  font-size: 15px;
+}
+.lugar-escolhido svg {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  color: var(--texto-meta);
+}
+.escolher-lugar input {
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--ciano);
+  background: var(--campo);
+  color: #e9f7fb;
+  font: 15px var(--sans);
+  outline: none;
+}
+.lista-lugares {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px;
+  border: 1px solid var(--linha-viva);
+  background: var(--campo);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 50%);
+}
+.lista-lugares [role='option'] {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 7px 10px;
+  border: 1px solid transparent;
+  background: none;
+  color: #e9f7fb;
+  text-align: left;
+  cursor: pointer;
+}
+.lista-lugares [role='option'][aria-selected='true'],
+.lista-lugares [role='option']:hover {
+  border-color: var(--ciano);
+  background: rgb(63 224 245 / 10%);
+}
+.lista-lugares .acima {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--texto-meta);
+  text-transform: uppercase;
+}
+
+/* ---------- estudar meus erros e vídeo-aulas (v0.1.13) ---------- */
+.numero-ambar {
+  font-family: var(--mono);
+  color: var(--ambar);
+}
+.mapa-grade button.marcada {
+  position: relative;
+}
+.mapa-grade button.marcada::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 6px;
+  height: 6px;
+  background: var(--ambar);
+}
+.videoaulas .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.passo-estudo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.painel-estudo {
+  gap: 24px;
+}
+.painel-estudo textarea {
+  padding: 10px 12px;
+  border: 1px solid var(--linha-2);
+  background: var(--campo);
+  color: #e9f7fb;
+  font: 14px var(--sans);
+  resize: vertical;
+}
+.item-estudo {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border: 1px solid var(--linha-2);
+  background: var(--cartao);
+  cursor: pointer;
+}
+.item-estudo input {
+  margin-top: 4px;
+  accent-color: var(--ciano);
+}
+.corpo-item-estudo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.enunciado-curto {
+  font-size: 15px;
+  color: #e3eef3;
+}

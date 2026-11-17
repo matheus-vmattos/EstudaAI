@@ -5,6 +5,8 @@ export interface DesempenhoDoTopico {
   topico: string
   total: number
   erros: number
+  /** acertou, mas marcou "p/ revisar": acerto com dúvida (v0.1.13+) */
+  duvidas: number
   /** habilidades das questões erradas, da mais frequente para a menos */
   habilidades: string[]
 }
@@ -18,6 +20,8 @@ export interface Diagnostico {
   porTopico: DesempenhoDoTopico[]
   /** questões erradas (ou em branco) sem marcador: simulados antigos */
   erradasSemTopico: Questao[]
+  /** acertadas com dúvida (marcadas) sem marcador */
+  duvidasSemTopico: Questao[]
 }
 
 /** nome do grupo das questões sem marcador num simulado misto */
@@ -30,12 +34,16 @@ export function diagnosticar(s: Simulado): Diagnostico {
   const total = s.questoes.length
   const grupos = new Map<string, DesempenhoDoTopico & { contagem: Map<string, number> }>()
   const erradasSemTopico: Questao[] = []
+  const duvidasSemTopico: Questao[] = []
   let acertos = 0
   s.questoes.forEach((q, i) => {
     const certa = s.respostas[i] === q.gabarito
+    // marcar "p/ revisar" e acertar = acerto com dúvida (ou chute): também reforça
+    const duvida = certa && !!s.revisar[i]
     if (certa) acertos++
     if (!q.topico) {
       if (!certa) erradasSemTopico.push(q)
+      if (duvida) duvidasSemTopico.push(q)
       return
     }
     const k = chave(q.topico)
@@ -43,10 +51,12 @@ export function diagnosticar(s: Simulado): Diagnostico {
       topico: q.topico.trim(),
       total: 0,
       erros: 0,
+      duvidas: 0,
       habilidades: [],
       contagem: new Map()
     }
     g.total++
+    if (duvida) g.duvidas++
     if (!certa) {
       g.erros++
       if (q.habilidade) g.contagem.set(q.habilidade, (g.contagem.get(q.habilidade) ?? 0) + 1)
@@ -61,6 +71,7 @@ export function diagnosticar(s: Simulado): Diagnostico {
       topico: SEM_MARCADOR,
       total: semMarcador,
       erros: erradasSemTopico.length,
+      duvidas: duvidasSemTopico.length,
       habilidades: [],
       contagem: new Map()
     })
@@ -70,14 +81,15 @@ export function diagnosticar(s: Simulado): Diagnostico {
       ...g,
       habilidades: [...contagem.entries()].sort((a, b) => b[1] - a[1]).map(([h]) => h)
     }))
-    .sort((a, b) => b.erros - a.erros || b.total - a.total)
+    .sort((a, b) => b.erros - a.erros || b.duvidas - a.duvidas || b.total - a.total)
   return {
     total,
     acertos,
     pct: total ? Math.round((acertos / total) * 100) : 0,
     mediaMs: total ? s.decorridoMs / total : 0,
     porTopico,
-    erradasSemTopico
+    erradasSemTopico,
+    duvidasSemTopico
   }
 }
 
@@ -101,6 +113,7 @@ export interface ItemDoPlano {
   quantidade: number
   reforco: boolean
   erros: number
+  duvidas: number
 }
 
 /** Reparte n proporcionalmente aos pesos, somando exatamente n (maiores restos). */
@@ -123,8 +136,10 @@ export function repartir(n: number, pesos: number[]): number[] {
  *  (na proporção dos erros) e 40% para manter os outros (na proporção de
  *  quantas questões tinham). Sem erros ou sem os outros, tudo vai para um lado. */
 export function planejar(d: Diagnostico, quantidade: number, insistir: boolean): ItemDoPlano[] {
-  const fracos = d.porTopico.filter((t) => t.erros > 0)
-  const fortes = d.porTopico.filter((t) => t.erros === 0)
+  // acerto com dúvida pesa metade de um erro
+  const peso = (t: DesempenhoDoTopico): number => t.erros + t.duvidas / 2
+  const fracos = d.porTopico.filter((t) => peso(t) > 0)
+  const fortes = d.porTopico.filter((t) => peso(t) === 0)
   if (!d.porTopico.length) return []
   const usarReforco = insistir && fracos.length > 0
   const nReforco = !usarReforco
@@ -133,12 +148,7 @@ export function planejar(d: Diagnostico, quantidade: number, insistir: boolean):
       ? Math.round(quantidade * PARTE_DE_REFORCO)
       : quantidade
   const nManter = quantidade - nReforco
-  const reforco = usarReforco
-    ? repartir(
-        nReforco,
-        fracos.map((t) => t.erros)
-      )
-    : []
+  const reforco = usarReforco ? repartir(nReforco, fracos.map(peso)) : []
   // sem reforço, todos os tópicos repartem a quantidade inteira
   const paraManter = usarReforco ? fortes : d.porTopico
   const manter = repartir(
@@ -151,13 +161,15 @@ export function planejar(d: Diagnostico, quantidade: number, insistir: boolean):
         topico: t.topico,
         quantidade: reforco[i] ?? 0,
         reforco: true,
-        erros: t.erros
+        erros: t.erros,
+        duvidas: t.duvidas
       })),
       ...paraManter.map((t, i) => ({
         topico: t.topico,
         quantidade: manter[i],
         reforco: false,
-        erros: t.erros
+        erros: t.erros,
+        duvidas: t.duvidas
       }))
     ]
       .filter((x) => x.quantidade > 0)
@@ -198,7 +210,13 @@ export function blocoDeAdaptacao(
     linhas.push('', `Distribua as ${o.quantidade} questões assim:`)
     for (const p of plano) {
       const info = p.reforco
-        ? ` — REFORÇO: ele errou ${plural(p.erros, 'questão', 'questões')}${habilidadesDe(d, p.topico)}`
+        ? ` — REFORÇO: ${[
+            p.erros && `ele errou ${plural(p.erros, 'questão', 'questões')}`,
+            p.duvidas &&
+              `acertou ${plural(p.duvidas, 'questão', 'questões')} com dúvida (marcou para revisar)`
+          ]
+            .filter(Boolean)
+            .join(' e ')}${habilidadesDe(d, p.topico)}`
         : ''
       linhas.push(`- ${p.topico}: ${plural(p.quantidade, 'questão', 'questões')}${info}`)
     }
@@ -211,10 +229,14 @@ export function blocoDeAdaptacao(
     )
   }
   const listarErradas = (): void => {
-    for (const q of d.erradasSemTopico.slice(0, 15)) {
+    const lista = [
+      ...d.erradasSemTopico.map((q) => ({ q, nota: '' })),
+      ...d.duvidasSemTopico.map((q) => ({ q, nota: ' [acertou com dúvida]' }))
+    ]
+    for (const { q, nota } of lista.slice(0, 15)) {
       const resumo = q.enunciado.replace(/\s+/g, ' ').slice(0, 180)
       linhas.push(
-        `- "${resumo}${q.enunciado.length > 180 ? '…' : ''}"${q.conceito ? ` (conceito: ${q.conceito.slice(0, 160)})` : ''}`
+        `- "${resumo}${q.enunciado.length > 180 ? '…' : ''}"${nota}${q.conceito ? ` (conceito: ${q.conceito.slice(0, 160)})` : ''}`
       )
     }
   }
@@ -222,7 +244,7 @@ export function blocoDeAdaptacao(
     linhas.push('', 'Questões sem marcador que ele errou (base do reforço acima):')
     listarErradas()
   }
-  if (o.insistir && !plano.length && d.erradasSemTopico.length) {
+  if (o.insistir && !plano.length && d.erradasSemTopico.length + d.duvidasSemTopico.length) {
     const n = Math.round(o.quantidade * PARTE_DE_REFORCO)
     linhas.push(
       '',

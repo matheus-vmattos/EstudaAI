@@ -54,6 +54,7 @@ export function montarPrompt(
     '- conceito: 2 a 3 frases explicando o conceito ou a regra que a questão cobra, para o estudante fixar;',
     '- topico: o subtema exato da questão, em poucas palavras (ex.: "Juros compostos"), sempre com o mesmo nome para o mesmo subtema;',
     `- habilidade: o que a questão exige, uma destas: ${HABILIDADES.join('; ')}.`,
+    '- videoaula: "busca" com os termos para achar uma boa aula disso no YouTube (ex.: "juros compostos montante concurso") e "canais" com até 2 canais conhecidos de concurso que ensinam esse ponto; não escreva links.',
     'Fórmulas em LaTeX entre cifrões, ex.: $M = C(1+i)^n$ — no JSON, com a barra invertida dobrada (\\\\frac, \\\\cdot). Dinheiro como "R$ 1.000,00", com espaço depois do R$.',
     'Varie os aspectos cobrados do tema e não repita questões.',
     multipla ? 'Distribua o gabarito entre as letras, sem padrão previsível.' : ''
@@ -72,7 +73,8 @@ export function montarPrompt(
       ${exemploComentarios}
       "conceito": "...",
       "topico": "...",
-      "habilidade": "${HABILIDADES[1]}"
+      "habilidade": "${HABILIDADES[1]}",
+      "videoaula": { "busca": "...", "canais": ["..."] }
     }
   ]
 }`
@@ -276,8 +278,9 @@ export function acertos(questoes: Questao[], respostas: (string | null)[]): numb
 function lerExtras(
   item: Record<string, unknown>,
   alternativas: Alternativa[]
-): Pick<Questao, 'comentarios' | 'conceito' | 'topico' | 'habilidade'> {
-  const extras: Pick<Questao, 'comentarios' | 'conceito' | 'topico' | 'habilidade'> = {}
+): Pick<Questao, 'comentarios' | 'conceito' | 'topico' | 'habilidade' | 'videoaula'> {
+  const extras: Pick<Questao, 'comentarios' | 'conceito' | 'topico' | 'habilidade' | 'videoaula'> =
+    {}
   const c = item.comentarios
   if (c && typeof c === 'object' && !Array.isArray(c)) {
     const letras = new Set(alternativas.map((a) => a.letra))
@@ -291,6 +294,15 @@ function lerExtras(
   if (textoValido(item.conceito)) extras.conceito = item.conceito.trim()
   if (textoValido(item.topico)) extras.topico = item.topico.trim()
   if (textoValido(item.habilidade)) extras.habilidade = item.habilidade.trim().toLowerCase()
+  const v = item.videoaula as { busca?: unknown; canais?: unknown } | undefined
+  if (v && typeof v === 'object' && textoValido(v.busca))
+    extras.videoaula = {
+      busca: v.busca.trim().slice(0, 120),
+      canais: (Array.isArray(v.canais) ? v.canais : [])
+        .filter(textoValido)
+        .map((c) => c.trim().slice(0, 60))
+        .slice(0, 3)
+    }
   return extras
 }
 

@@ -9,25 +9,36 @@ import {
   refazerEmbaralhado,
   resolucaoPorLetra
 } from '../../../shared/questoes'
-import type { Id, Simulado as TipoSimulado } from '../../../shared/tipos'
+import type { Dados, Id, Simulado as TipoSimulado } from '../../../shared/tipos'
+import { EstudarErros } from './EstudarErros'
+import { idsAbaixo } from '../../../shared/arvore'
+import {
+  buscaNoYoutube,
+  questoesParaEstudar,
+  termosDaVideoaula
+} from '../../../shared/estudarErros'
 
 const NOME_DO_TIPO = { multipla: 'Múltipla escolha', certoErrado: 'Certo ou errado' }
 const SALVAR_A_CADA_MS = 5000
 
 export function Simulado({
   simulado,
+  dados,
   mudar,
   sair,
   abrir,
-  adaptar
+  adaptar,
+  abrirAnotacao
 }: {
   simulado: TipoSimulado
+  dados: Dados
   mudar: Mudar
   sair: () => void
   /** abre outro simulado (o refeito) no lugar deste */
   abrir: (id: Id) => void
   /** vai para o gerador com o próximo simulado adaptado a este */
   adaptar: () => void
+  abrirAnotacao: (id: Id) => void
 }) {
   const refazer = (): void => {
     const novo = refazerEmbaralhado(simulado, novoId(), Date.now())
@@ -37,7 +48,15 @@ export function Simulado({
     abrir(novo.id)
   }
   return simulado.entregueEm ? (
-    <Resultado simulado={simulado} sair={sair} refazer={refazer} adaptar={adaptar} />
+    <Resultado
+      simulado={simulado}
+      dados={dados}
+      mudar={mudar}
+      sair={sair}
+      refazer={refazer}
+      adaptar={adaptar}
+      abrirAnotacao={abrirAnotacao}
+    />
   ) : (
     <Prova simulado={simulado} mudar={mudar} sair={sair} />
   )
@@ -365,16 +384,32 @@ function Prova({
 
 function Resultado({
   simulado: s,
+  dados,
+  mudar,
   sair,
   refazer,
-  adaptar
+  adaptar,
+  abrirAnotacao
 }: {
   simulado: TipoSimulado
+  dados: Dados
+  mudar: Mudar
   sair: () => void
   refazer: () => void
   adaptar: () => void
+  abrirAnotacao: (id: Id) => void
 }) {
   const [atual, setAtual] = useState(0)
+  const [filtro, setFiltro] = useState<'todas' | 'estudar'>('todas')
+  const [estudando, setEstudando] = useState(false)
+  const paraEstudar = questoesParaEstudar(s).map((x) => x.indice)
+  const visiveis = filtro === 'todas' ? s.questoes.map((_, i) => i) : paraEstudar
+  const posicao = visiveis.indexOf(atual)
+  // links que você já guardou no assunto do simulado (e abaixo dele)
+  const doAssunto = s.config.assuntoId ? new Set(idsAbaixo(dados, s.config.assuntoId)) : null
+  const seusLinks = doAssunto
+    ? dados.links.filter((l) => l.assuntoId && doAssunto.has(l.assuntoId)).slice(0, 4)
+    : []
   const total = s.questoes.length
   const certas = acertos(s.questoes, s.respostas)
   const emBranco = s.respostas.filter((r) => r === null).length
@@ -424,6 +459,17 @@ function Resultado({
         >
           Próximo adaptado
         </button>
+        {paraEstudar.length > 0 && (
+          <button
+            type="button"
+            className="botao"
+            aria-pressed={estudando}
+            onClick={() => setEstudando(!estudando)}
+          >
+            Estudar meus erros
+            <span className="numero-ambar">{paraEstudar.length}</span>
+          </button>
+        )}
         <button type="button" className="botao" onClick={refazer}>
           <Icone nome="atualizar" tamanho={16} />
           Refazer embaralhado
@@ -452,119 +498,219 @@ function Resultado({
         </div>
       </header>
 
-      <div className="corpo-prova" ref={corpo}>
-        <main className="questao">
-          <div className="meta">
-            Questão {atual + 1} de {total} ·{' '}
-            {minha === null ? 'em branco' : minha === q.gabarito ? 'você acertou' : 'você errou'} ·{' '}
-            {formatarTempo(s.tempoPorQuestao[atual])} nela
-          </div>
-          <p className="enunciado">
-            <Texto texto={q.enunciado} />
-          </p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {q.alternativas.map((a) => {
-              const certa = a.letra === q.gabarito
-              const classe = certa ? 'certa' : a.letra === minha ? 'errada' : ''
-              const comentario = porLetra[a.letra]
-              return (
-                <div key={a.letra} className={`bloco-alternativa ${classe}`}>
-                  <div className="cabeca-alternativa">
-                    <span className="letra">{a.letra}</span>
-                    <span style={{ flex: 1 }}>
-                      <Texto texto={a.texto} />
-                    </span>
-                    {certa && (
-                      <span className="meta" style={{ color: 'var(--verde)' }}>
-                        Gabarito
+      {estudando ? (
+        <EstudarErros
+          simulado={s}
+          dados={dados}
+          mudar={mudar}
+          voltar={() => setEstudando(false)}
+          abrirAnotacao={abrirAnotacao}
+        />
+      ) : (
+        <div className="corpo-prova" ref={corpo}>
+          <main className="questao">
+            <div className="meta">
+              Questão {atual + 1} de {total} ·{' '}
+              {minha === null ? 'em branco' : minha === q.gabarito ? 'você acertou' : 'você errou'}
+              {s.revisar[atual] && (
+                <span style={{ color: 'var(--ambar)' }}> · ■ marcada p/ revisar</span>
+              )}{' '}
+              · {formatarTempo(s.tempoPorQuestao[atual])} nela
+            </div>
+            <p className="enunciado">
+              <Texto texto={q.enunciado} />
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {q.alternativas.map((a) => {
+                const certa = a.letra === q.gabarito
+                const classe = certa ? 'certa' : a.letra === minha ? 'errada' : ''
+                const comentario = porLetra[a.letra]
+                return (
+                  <div key={a.letra} className={`bloco-alternativa ${classe}`}>
+                    <div className="cabeca-alternativa">
+                      <span className="letra">{a.letra}</span>
+                      <span style={{ flex: 1 }}>
+                        <Texto texto={a.texto} />
                       </span>
-                    )}
-                    {a.letra === minha && !certa && (
-                      <span className="meta" style={{ color: 'var(--vermelho)' }}>
-                        Sua resposta
-                      </span>
+                      {certa && (
+                        <span className="meta" style={{ color: 'var(--verde)' }}>
+                          Gabarito
+                        </span>
+                      )}
+                      {a.letra === minha && !certa && (
+                        <span className="meta" style={{ color: 'var(--vermelho)' }}>
+                          Sua resposta
+                        </span>
+                      )}
+                    </div>
+                    {comentario && (
+                      <p className="comentario">
+                        {certa ? '✓ ' : a.letra === minha ? '✗ ' : ''}
+                        <Texto texto={comentario} />
+                      </p>
                     )}
                   </div>
-                  {comentario && (
-                    <p className="comentario">
-                      {certa ? '✓ ' : a.letra === minha ? '✗ ' : ''}
-                      <Texto texto={comentario} />
-                    </p>
-                  )}
-                </div>
-              )
-            })}
-          </div>
-          {(!separada || resto) && (
-            <section className="bloco-explicacao">
-              <h2 className="secao">Resolução</h2>
-              <p>
-                <Texto texto={separada ? resto : q.resolucao} />
-              </p>
+                )
+              })}
+            </div>
+            {(!separada || resto) && (
+              <section className="bloco-explicacao">
+                <h2 className="secao">Resolução</h2>
+                <p>
+                  <Texto texto={separada ? resto : q.resolucao} />
+                </p>
+              </section>
+            )}
+            {q.conceito && (
+              <section className="bloco-explicacao conceito">
+                <h2 className="secao">Conceito</h2>
+                <p>
+                  <Texto texto={q.conceito} />
+                </p>
+              </section>
+            )}
+            <section className="bloco-explicacao videoaulas" aria-labelledby="t-videos">
+              <h2 id="t-videos" className="secao">
+                Vídeo-aulas
+              </h2>
+              <div className="chips">
+                <button
+                  type="button"
+                  className="chip video"
+                  onClick={() =>
+                    void window.api.abrirLink(buscaNoYoutube(termosDaVideoaula(q, s.config.tema)))
+                  }
+                >
+                  <Icone nome="play" tamanho={14} cheio />
+                  Buscar no YouTube: “{termosDaVideoaula(q, s.config.tema)}”
+                </button>
+                {q.videoaula?.canais.map((c) => (
+                  <button
+                    key={c}
+                    type="button"
+                    className="chip video"
+                    onClick={() =>
+                      void window.api.abrirLink(
+                        buscaNoYoutube(`${c} ${termosDaVideoaula(q, s.config.tema)}`)
+                      )
+                    }
+                  >
+                    <Icone nome="play" tamanho={14} cheio />
+                    {c}
+                  </button>
+                ))}
+                {seusLinks.map((l) => (
+                  <button
+                    key={l.id}
+                    type="button"
+                    className="chip"
+                    title={l.url}
+                    onClick={() => void window.api.abrirLink(l.url)}
+                  >
+                    <Icone nome="play" tamanho={14} />
+                    Seu link: {l.titulo}
+                  </button>
+                ))}
+              </div>
             </section>
-          )}
-          {q.conceito && (
-            <section className="bloco-explicacao conceito">
-              <h2 className="secao">Conceito</h2>
-              <p>
-                <Texto texto={q.conceito} />
-              </p>
-            </section>
-          )}
-          <div style={{ display: 'flex', gap: 10 }}>
-            <button
-              type="button"
-              className="botao"
-              style={{ minHeight: 44 }}
-              disabled={atual === 0}
-              onClick={() => setAtual(atual - 1)}
-            >
-              Anterior
-            </button>
-            <button
-              type="button"
-              className="botao principal"
-              style={{ marginLeft: 'auto' }}
-              disabled={atual === total - 1}
-              onClick={() => setAtual(atual + 1)}
-            >
-              Próxima
-            </button>
-          </div>
-        </main>
-
-        <aside className="mapa" aria-label="Mapa do resultado">
-          <h2 className="secao" style={{ fontSize: 14 }}>
-            Questões
-          </h2>
-          <div className="mapa-grade">
-            {s.questoes.map((x, i) => (
+            <div style={{ display: 'flex', gap: 10 }}>
               <button
-                key={i}
                 type="button"
-                aria-label={`Questão ${i + 1}`}
-                aria-current={i === atual ? 'step' : undefined}
-                className={
-                  s.respostas[i] === null ? '' : s.respostas[i] === x.gabarito ? 'certa' : 'errada'
-                }
-                onClick={() => setAtual(i)}
+                className="botao"
+                style={{ minHeight: 44 }}
+                disabled={posicao <= 0}
+                onClick={() => setAtual(visiveis[posicao - 1])}
               >
-                {i + 1}
+                Anterior
               </button>
-            ))}
-          </div>
-          <div className="legenda meta">
-            <span>
-              <span style={{ color: 'var(--verde)' }}>■</span> Certa ({certas})
-            </span>
-            <span>
-              <span style={{ color: 'var(--vermelho)' }}>■</span> Errada (
-              {total - certas - emBranco})
-            </span>
-            <span>□ Em branco ({emBranco})</span>
-          </div>
-        </aside>
-      </div>
+              <button
+                type="button"
+                className="botao principal"
+                style={{ marginLeft: 'auto' }}
+                disabled={posicao === -1 || posicao >= visiveis.length - 1}
+                onClick={() => setAtual(visiveis[posicao + 1])}
+              >
+                Próxima
+              </button>
+            </div>
+          </main>
+
+          <aside className="mapa" aria-label="Mapa do resultado">
+            <h2 className="secao" style={{ fontSize: 14 }}>
+              Questões
+            </h2>
+            {paraEstudar.length > 0 && (
+              <div
+                role="radiogroup"
+                aria-label="Mostrar"
+                className="opcoes"
+                style={{ gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' }}
+              >
+                {(
+                  [
+                    ['todas', `Todas · ${total}`],
+                    ['estudar', `Erros + marcadas · ${paraEstudar.length}`]
+                  ] as const
+                ).map(([v, nome]) => (
+                  <button
+                    key={v}
+                    type="button"
+                    role="radio"
+                    aria-checked={filtro === v}
+                    className="opcao"
+                    style={{ minHeight: 36, fontSize: 12 }}
+                    onClick={() => {
+                      setFiltro(v)
+                      if (v === 'estudar' && !paraEstudar.includes(atual)) setAtual(paraEstudar[0])
+                    }}
+                  >
+                    {nome}
+                  </button>
+                ))}
+              </div>
+            )}
+            <div className="mapa-grade">
+              {visiveis.map((i) => {
+                const x = s.questoes[i]
+                return (
+                  <button
+                    key={i}
+                    type="button"
+                    aria-label={`Questão ${i + 1}${s.revisar[i] ? ', marcada para revisar' : ''}`}
+                    aria-current={i === atual ? 'step' : undefined}
+                    className={`${
+                      s.respostas[i] === null
+                        ? ''
+                        : s.respostas[i] === x.gabarito
+                          ? 'certa'
+                          : 'errada'
+                    } ${s.revisar[i] ? 'marcada' : ''}`}
+                    onClick={() => setAtual(i)}
+                  >
+                    {i + 1}
+                  </button>
+                )
+              })}
+            </div>
+            <div className="legenda meta">
+              <span>
+                <span style={{ color: 'var(--verde)' }}>■</span> Certa ({certas})
+              </span>
+              <span>
+                <span style={{ color: 'var(--vermelho)' }}>■</span> Errada (
+                {total - certas - emBranco})
+              </span>
+              <span>□ Em branco ({emBranco})</span>
+              {s.revisar.some(Boolean) && (
+                <span>
+                  <span style={{ color: 'var(--ambar)' }}>■</span> Marcada p/ revisar (
+                  {s.revisar.filter(Boolean).length}) · conta no adaptado
+                </span>
+              )}
+            </div>
+          </aside>
+        </div>
+      )}
     </div>
   )
 }
