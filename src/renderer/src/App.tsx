@@ -3,7 +3,7 @@ import { Icone, type NomeDoIcone } from './Icone'
 import { useDados } from './useDados'
 import { Atualizacao } from './Atualizacao'
 import { Configuracoes } from './Configuracoes'
-import { ConflitoDaNuvem, OndeEstaSalvo } from './Sincronizar'
+import { OndeEstaSalvo } from './Sincronizar'
 import { Anotacoes } from './telas/Anotacoes'
 import { Links } from './telas/Links'
 import { Questoes } from './telas/Questoes'
@@ -184,7 +184,6 @@ export function App() {
         />
       )}
 
-      <ConflitoDaNuvem />
       {config && <Configuracoes dados={dados} mudar={mudar} fechar={() => setConfig(false)} />}
     </div>
   )

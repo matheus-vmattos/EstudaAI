@@ -233,12 +233,16 @@ async function umCiclo(): Promise<void> {
 }
 
 let fila: Promise<void> = Promise.resolve()
+// a tela pede a primeira sincronização quando já tem os dados e ouve as
+// perguntas; antes disso, ninguém responderia a um conflito
+let telaPronta = false
 let ultimaTentativa = 0
 
 /** um ciclo por vez; conflito de versão (alguém gravou no meio) tenta de novo */
 export function sincronizar(): Promise<void> {
   fila = fila.then(async () => {
     if (!memoria?.renovar) return emitir({ situacao: 'desconectado', email: '' })
+    if (!telaPronta) return
     ultimaTentativa = Date.now()
     emitir({ situacao: 'sincronizando', email: memoria.email, mensagem: '' })
     try {
@@ -283,14 +287,16 @@ const agendar = (ms: number): void => {
   timer = setTimeout(() => void sincronizar(), ms)
 }
 
-/** o PC salvou: marca e manda em 3 s (junta uma rajada de edições) */
+/** o PC salvou: marca e manda em 3 s (junta uma rajada de edições).
+ *  Marca mesmo com a sessão vencida: ao entrar de novo na mesma conta, a
+ *  mudança daqui não pode ser tratada como se não existisse. */
 export function salvouNoPc(): void {
   edicoes++
-  if (!memoria?.renovar) return
+  if (!memoria?.userId) return
   memoria.alterado = true
   memoria.mudouEm = Date.now()
   gravarMemoria()
-  agendar(3000)
+  if (memoria.renovar) agendar(3000)
 }
 
 export const precisaSubir = (): boolean => !!memoria?.renovar && memoria.alterado
@@ -305,10 +311,20 @@ export async function antesDeFechar(): Promise<void> {
 export function iniciarNuvem(obterJanela: () => BrowserWindow | null): void {
   janela = obterJanela
   lerMemoria()
-  if (memoria?.renovar) estado = { ...estado, email: memoria.email, ultimaSync: memoria.ultimaSync }
+  // conectado: até a primeira sincronização, mostra "sincronizando" (não o login)
+  if (memoria?.renovar)
+    estado = {
+      ...estado,
+      situacao: 'sincronizando',
+      email: memoria.email,
+      ultimaSync: memoria.ultimaSync
+    }
 
   ipcMain.handle('nuvem:estado', () => estado)
-  ipcMain.handle('nuvem:sincronizar', () => sincronizar())
+  ipcMain.handle('nuvem:sincronizar', () => {
+    telaPronta = true
+    return sincronizar()
+  })
   ipcMain.on('nuvem:resposta', (_e, id: number, resposta: string | null) => {
     respostas.get(id)?.(resposta)
     respostas.delete(id)
