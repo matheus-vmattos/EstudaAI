@@ -3,6 +3,7 @@ import { Icone, type NomeDoIcone } from './Icone'
 import { useDados } from './useDados'
 import { Atualizacao } from './Atualizacao'
 import { Configuracoes } from './Configuracoes'
+import { ConflitoDaNuvem, OndeEstaSalvo } from './Sincronizar'
 import { Anotacoes } from './telas/Anotacoes'
 import { Links } from './telas/Links'
 import { Questoes } from './telas/Questoes'
@@ -131,11 +132,7 @@ export function App() {
         <div className="rodape-menu">
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <div style={{ flex: 1 }}>
-              {erroAoSalvar ? (
-                <div style={{ color: 'var(--vermelho)' }}>NÃO CONSEGUI SALVAR</div>
-              ) : (
-                <div>SALVO NO PC</div>
-              )}
+              <OndeEstaSalvo erroAoSalvar={erroAoSalvar} />
               <Atualizacao />
             </div>
             <button
@@ -187,6 +184,7 @@ export function App() {
         />
       )}
 
+      <ConflitoDaNuvem />
       {config && <Configuracoes dados={dados} mudar={mudar} fechar={() => setConfig(false)} />}
     </div>
   )

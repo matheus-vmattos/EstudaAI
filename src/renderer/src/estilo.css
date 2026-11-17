@@ -1828,3 +1828,39 @@ dialog.config .acoes-dialogo {
   opacity: 0.5;
   border-style: dashed;
 }
+
+/* ---------- sincronizar entre PCs (v0.1.12) ---------- */
+.form-nuvem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.form-nuvem label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--texto-meta);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.form-nuvem input {
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--linha-2);
+  background: var(--campo);
+  color: #e9f7fb;
+  font: 15px var(--sans);
+  text-transform: none;
+  letter-spacing: 0;
+  outline: none;
+}
+.form-nuvem input:focus {
+  border-color: var(--linha-viva);
+}
+.aviso.info {
+  border-color: var(--linha-viva);
+  background: var(--ciano-fundo);
+  color: var(--ciano);
+}

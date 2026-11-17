@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Icone } from './Icone'
 import { useAtualizacao } from './Atualizacao'
+import { SecaoSincronizar, useNuvem } from './Sincronizar'
 import type { Mudar } from './useDados'
 import type { Dados } from '../../shared/tipos'
 
@@ -29,6 +30,7 @@ export function Configuracoes({
     ref.current?.showModal()
   }, [])
   const { versao, estado } = useAtualizacao()
+  const nuvem = useNuvem()
   const [backup, setBackup] = useState<'parado' | 'salvando' | 'erro'>('parado')
 
   const fazerBackup = async (): Promise<void> => {
@@ -94,12 +96,14 @@ export function Configuracoes({
         )}
       </section>
 
+      <SecaoSincronizar />
+
       <section aria-labelledby="titulo-dados">
         <h3 id="titulo-dados" className="secao">
           Meus dados
         </h3>
         <p>
-          Tudo fica neste PC.{' '}
+          {nuvem.situacao === 'desconectado' ? 'Tudo fica neste PC.' : 'Neste PC e na nuvem.'}{' '}
           {dados.ultimoBackup
             ? `Último backup: ${dataEHora(dados.ultimoBackup)}.`
             : 'Nenhum backup feito ainda.'}
