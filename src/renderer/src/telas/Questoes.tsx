@@ -9,7 +9,8 @@ import {
   montarPrompt,
   refazerEmbaralhado
 } from '../../../shared/questoes'
-import { acharNo, nosDaMateria } from '../../../shared/arvore'
+import { acharNo } from '../../../shared/arvore'
+import { EscolherLugar } from '../EscolherLugar'
 import {
   ajusteSugerido,
   blocoDeAdaptacao,
@@ -224,30 +225,18 @@ export function Questoes({
                   autoFocus
                 />
               </label>
-              <label className="campo">
-                Ligar ao assunto (opcional)
-                <select
-                  value={config.assuntoId ?? ''}
-                  onChange={(e) => {
-                    const id = e.target.value || null
-                    muda('assuntoId', id)
-                    const a = acharNo(dados, id)
-                    if (a && !config.tema.trim()) muda('tema', a.nome)
-                  }}
-                >
-                  <option value="">Nenhum</option>
-                  {dados.materias.map((m) => (
-                    <optgroup key={m.id} label={m.nome}>
-                      {nosDaMateria(dados, m).map((a) => (
-                        <option key={a.id} value={a.id}>
-                          {'\u2003'.repeat(a.nivel)}
-                          {a.nome}
-                        </option>
-                      ))}
-                    </optgroup>
-                  ))}
-                </select>
-              </label>
+              <EscolherLugar
+                dados={dados}
+                rotulo="Ligar ao assunto (opcional)"
+                nenhum="Nenhum"
+                valor={config.assuntoId ?? ''}
+                aoEscolher={(valor) => {
+                  const id = valor || null
+                  muda('assuntoId', id)
+                  const a = acharNo(dados, id)
+                  if (a && !config.tema.trim()) muda('tema', a.nome)
+                }}
+              />
 
               <Escolha<Nivel>
                 rotulo="Nível"

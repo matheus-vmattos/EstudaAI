@@ -35,8 +35,13 @@ export function PainelAdaptado({
 }) {
   const muda = <K extends keyof OpcoesAdaptadas>(k: K, v: OpcoesAdaptadas[K]): void =>
     mudar({ ...o, [k]: v })
-  const errados = d.porTopico.filter((t) => t.erros > 0)
+  // erro ou acerto com dúvida (marcou "p/ revisar"): os dois entram no reforço
+  const errados = d.porTopico.filter((t) => t.erros > 0 || t.duvidas > 0)
   const nErradas = d.total - d.acertos
+  const nDuvidas =
+    d.porTopico.reduce((n, t) => n + t.duvidas, 0) +
+    (d.porTopico.length ? 0 : d.duvidasSemTopico.length)
+  const paraReforcar = nErradas + nDuvidas
   const corDaNota = d.pct >= 70 ? 'nota-boa' : d.pct >= 50 ? 'nota-media' : 'nota-ruim'
 
   return (
@@ -61,12 +66,17 @@ export function PainelAdaptado({
         </div>
         {errados.length > 0 && (
           <div className="lista-erros">
-            <span className="meta">Onde você errou</span>
+            <span className="meta">Onde você errou ou ficou na dúvida</span>
             {errados.map((t) => (
               <span key={t.topico} className="linha-erro">
                 <span>{t.topico}</span>
                 <span className="erros">
-                  {t.erros} {t.erros === 1 ? 'erro' : 'erros'}
+                  {[
+                    t.erros > 0 && `${t.erros} ${t.erros === 1 ? 'erro' : 'erros'}`,
+                    t.duvidas > 0 && `${t.duvidas} com dúvida`
+                  ]
+                    .filter(Boolean)
+                    .join(' · ')}
                 </span>
               </span>
             ))}
@@ -104,14 +114,16 @@ export function PainelAdaptado({
         <span className="meta">{POR_QUE[ajusteSugerido(d.pct)]}</span>
       </div>
 
-      {nErradas > 0 && (
+      {paraReforcar > 0 && (
         <label className="marcar-insistir">
           <input
             type="checkbox"
             checked={o.insistir}
             onChange={(e) => muda('insistir', e.target.checked)}
           />
-          Insistir no que errei ({nErradas} {nErradas === 1 ? 'questão' : 'questões'})
+          {nDuvidas > 0
+            ? `Insistir no que errei ou marquei (${paraReforcar} ${paraReforcar === 1 ? 'questão' : 'questões'})`
+            : `Insistir no que errei (${nErradas} ${nErradas === 1 ? 'questão' : 'questões'})`}
         </label>
       )}
 

@@ -47,6 +47,8 @@ export interface Questao {
   topico?: string
   /** o que a questão exige (lista fixa em questoes.ts) (v0.1.5+) */
   habilidade?: string
+  /** termos para buscar a vídeo-aula no YouTube e canais sugeridos (v0.1.13+) */
+  videoaula?: { busca: string; canais: string[] }
 }
 
 export interface ConfigDoSimulado {
