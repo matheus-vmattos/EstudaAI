@@ -1,5 +1,8 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import type { Dados, EstadoDaAtualizacao, ItemDaCaixa } from '../shared/tipos'
+import type { EstadoDaNuvem } from '../shared/sincronizar'
+
+type Resposta = { ok?: true; confirmar?: true; erro?: string }
 
 const api = {
   lerDados: (): Promise<Dados> => ipcRenderer.invoke('dados:ler'),
@@ -23,7 +26,31 @@ const api = {
     ipcRenderer.invoke('caixa:listar'),
   caixaArquivo: (nome: string): Promise<{ texto: string } | { erro: string }> =>
     ipcRenderer.invoke('caixa:arquivo', nome),
-  reiniciarParaAtualizar: (): Promise<void> => ipcRenderer.invoke('atualizacao:reiniciar')
+  reiniciarParaAtualizar: (): Promise<void> => ipcRenderer.invoke('atualizacao:reiniciar'),
+  nuvemEstado: (): Promise<EstadoDaNuvem> => ipcRenderer.invoke('nuvem:estado'),
+  aoMudarNuvem: (fn: (e: EstadoDaNuvem) => void): (() => void) => {
+    const ouvir = (_: unknown, e: EstadoDaNuvem): void => fn(e)
+    ipcRenderer.on('nuvem:estado', ouvir)
+    return () => ipcRenderer.removeListener('nuvem:estado', ouvir)
+  },
+  nuvemEntrar: (email: string, senha: string): Promise<Resposta> =>
+    ipcRenderer.invoke('nuvem:entrar', email, senha),
+  nuvemCriarConta: (email: string, senha: string): Promise<Resposta> =>
+    ipcRenderer.invoke('nuvem:criarConta', email, senha),
+  nuvemSair: (): Promise<void> => ipcRenderer.invoke('nuvem:sair'),
+  nuvemSincronizar: (): Promise<void> => ipcRenderer.invoke('nuvem:sincronizar'),
+  /** a nuvem pergunta à tela: trocar os dados ("nuvem:trocar") ou qual
+   *  versão fica ("nuvem:conflito"); a tela responde com o id */
+  aoPerguntarNuvem: <T>(
+    canal: 'nuvem:trocar' | 'nuvem:conflito',
+    fn: (p: T & { id: number }) => void
+  ): (() => void) => {
+    const ouvir = (_: unknown, p: T & { id: number }): void => fn(p)
+    ipcRenderer.on(canal, ouvir)
+    return () => ipcRenderer.removeListener(canal, ouvir)
+  },
+  responderNuvem: (id: number, resposta: string | null): void =>
+    ipcRenderer.send('nuvem:resposta', id, resposta)
 }
 
 export type Api = typeof api

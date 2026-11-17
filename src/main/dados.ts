@@ -38,9 +38,12 @@ export function lerDados(): Dados {
 /** grava num temporário e troca o nome: desligar no meio nunca deixa o
  *  arquivo pela metade */
 export function salvarDados(dados: Dados): void {
+  gravarArquivoSeguro(arquivo(), JSON.stringify(dados))
+}
+
+export function gravarArquivoSeguro(caminho: string, texto: string): void {
   mkdirSync(pasta(), { recursive: true })
-  const caminho = arquivo()
-  writeFileSync(`${caminho}.tmp`, JSON.stringify(dados), 'utf-8')
+  writeFileSync(`${caminho}.tmp`, texto, 'utf-8')
   renameSync(`${caminho}.tmp`, caminho)
 }
 
@@ -48,13 +51,26 @@ export const pastaDosDados = pasta
 
 const BACKUPS_GUARDADOS = 30
 
+const carimbo = (agora: Date): string => agora.toISOString().slice(0, 19).replace(/[:T]/g, '-')
+
+/** guarda uma versão que vai ser trocada (a deste PC ou a da nuvem) junto
+ *  dos backups, com um rótulo dizendo de onde veio */
+export function guardarCopia(dados: Dados, rotulo: string): void {
+  const destino = join(pasta(), 'backups')
+  mkdirSync(destino, { recursive: true })
+  writeFileSync(
+    join(destino, `estudaai-${carimbo(new Date())}-${rotulo}.json`),
+    JSON.stringify(dados),
+    'utf-8'
+  )
+}
+
 /** cópia datada do arquivo em userData/backups; guarda as 30 mais novas */
 export function fazerBackup(): number {
   const destino = join(pasta(), 'backups')
   mkdirSync(destino, { recursive: true })
   const agora = new Date()
-  const carimbo = agora.toISOString().slice(0, 19).replace(/[:T]/g, '-')
-  copyFileSync(arquivo(), join(destino, `estudaai-${carimbo}.json`))
+  copyFileSync(arquivo(), join(destino, `estudaai-${carimbo(agora)}.json`))
   const antigos = readdirSync(destino)
     .filter((n) => /^estudaai-.*\.json$/.test(n))
     .sort()

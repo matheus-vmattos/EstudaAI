@@ -4,6 +4,7 @@ import { is } from '@electron-toolkit/utils'
 import { fazerBackup, lerDados, pastaDosDados, salvarDados } from './dados'
 import { iniciarAtualizador } from './atualizador'
 import { iniciarCaixa } from './caixa'
+import { antesDeFechar, iniciarNuvem, precisaSubir, salvouNoPc } from './nuvem'
 import type { Dados } from '../shared/tipos'
 
 /** só link de verdade: fica de fora file:, javascript: e protocolos do
@@ -72,12 +73,16 @@ app.on('second-instance', () => {
 
 app.whenReady().then(() => {
   ipcMain.handle('dados:ler', () => lerDados())
-  ipcMain.handle('dados:salvar', (_e, dados: Dados) => salvarDados(dados))
+  ipcMain.handle('dados:salvar', (_e, dados: Dados) => {
+    salvarDados(dados)
+    salvouNoPc()
+  })
   // ao fechar (ou reiniciar para atualizar) a tela grava de forma síncrona:
   // um invoke assíncrono podia se perder no meio do fechamento
   ipcMain.on('dados:salvarAgora', (e, dados: Dados) => {
     try {
       salvarDados(dados)
+      salvouNoPc()
       e.returnValue = true
     } catch {
       e.returnValue = false
@@ -95,6 +100,7 @@ app.whenReady().then(() => {
   ipcMain.handle('link:abrir', (_e, url: string) => abrirLinkExterno(url))
   iniciarAtualizador(() => principal)
   iniciarCaixa()
+  iniciarNuvem(() => principal)
 
   criarJanela()
   app.on('activate', () => {
@@ -104,4 +110,17 @@ app.whenReady().then(() => {
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit()
+})
+
+// antes de sair (fechar a janela, atualizar ou desligar), sobe o que mudou.
+// will-quit vem depois de a janela fechar, então a última edição já está
+// salva no PC. Sem internet, sobe na próxima abertura.
+let jaSubiu = false
+app.on('will-quit', (e) => {
+  if (jaSubiu || !precisaSubir()) return
+  e.preventDefault()
+  void antesDeFechar().finally(() => {
+    jaSubiu = true
+    app.quit()
+  })
 })

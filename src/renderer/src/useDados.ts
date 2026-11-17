@@ -12,7 +12,11 @@ export function useDados(): { dados: Dados | null; mudar: Mudar; erroAoSalvar: b
   const timer = useRef<number | undefined>(undefined)
 
   useEffect(() => {
-    void window.api.lerDados().then(setDados)
+    void window.api.lerDados().then((d) => {
+      setDados(d)
+      // só depois de a tela ter os dados: se a nuvem tiver coisa mais nova, ela pede a troca
+      void window.api.nuvemSincronizar()
+    })
   }, [])
 
   const gravar = useCallback(function gravar() {
@@ -45,6 +49,22 @@ export function useDados(): { dados: Dados | null; mudar: Mudar; erroAoSalvar: b
     window.addEventListener('beforeunload', gravarAgora)
     return () => window.removeEventListener('beforeunload', gravarAgora)
   }, [])
+
+  // a nuvem tem dados mais novos (do outro PC): troca, a menos que haja
+  // mudança daqui ainda não salva -- aí salva e a nuvem pergunta qual fica
+  useEffect(
+    () =>
+      window.api.aoPerguntarNuvem<{ dados: Dados }>('nuvem:trocar', ({ id, dados: novos }) => {
+        if (pendente.current) {
+          gravar()
+          window.api.responderNuvem(id, 'recusou')
+          return
+        }
+        setDados(novos)
+        window.api.responderNuvem(id, 'aceitou')
+      }),
+    [gravar]
+  )
 
   const mudar = useCallback<Mudar>(
     (receita) => {
