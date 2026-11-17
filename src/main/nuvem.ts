@@ -134,11 +134,23 @@ async function token(): Promise<string> {
   return acesso!.token
 }
 
-async function puxar(): Promise<Remoto | null> {
-  const r = await pedir('/rest/v1/estudaai_dados?select=dados,versao,aparelho,atualizado_em')
+// O plano grátis do Supabase conta o tráfego de SAÍDA (5 GB/mês, dividido
+// com o painelfin). Por isso a conferência pede só a versão (bytes), os
+// dados inteiros (~centenas de KB) só descem quando o outro PC mudou, e o
+// envio não pede o arquivo de volta.
+type Versao = Omit<Remoto, 'dados'>
+
+async function puxar<T>(campos: string): Promise<T | null> {
+  const r = await pedir(`/rest/v1/estudaai_dados?select=${campos}`)
   if (!r.ok) throw new Error(`HTTP ${r.status}`)
-  const linhas = (await r.json()) as Remoto[]
+  const linhas = (await r.json()) as T[]
   return linhas[0] ?? null
+}
+const puxarVersao = (): Promise<Versao | null> => puxar<Versao>('versao,aparelho,atualizado_em')
+async function puxarDados(): Promise<Remoto> {
+  const r = await puxar<Remoto>('dados,versao,aparelho,atualizado_em')
+  if (!r) throw new Conflito() // sumiu entre as duas leituras: o ciclo recomeça
+  return r
 }
 
 /** grava na nuvem só se ela ainda estiver na versão que este PC conhece */
@@ -153,12 +165,12 @@ async function enviar(dados: Dados, versaoDaNuvem: number | null): Promise<void>
   })
   const r =
     versaoDaNuvem === null
-      ? await pedir('/rest/v1/estudaai_dados', {
+      ? await pedir('/rest/v1/estudaai_dados?select=versao', {
           method: 'POST',
           body: corpo,
           headers: { Prefer: 'return=representation' }
         })
-      : await pedir(`/rest/v1/estudaai_dados?versao=eq.${versaoDaNuvem}`, {
+      : await pedir(`/rest/v1/estudaai_dados?versao=eq.${versaoDaNuvem}&select=versao`, {
           method: 'PATCH',
           body: corpo,
           headers: { Prefer: 'return=representation' }
@@ -196,50 +208,78 @@ function perguntar(canal: string, dados: unknown, esperaMs?: number): Promise<st
 /** troca os dados deste PC pelos da nuvem. A tela confirma primeiro: se
  *  ela tem uma mudança ainda não salva, recusa, salva e o próximo ciclo
  *  vê os dois lados mudados (e pergunta) */
-async function baixar(remoto: Remoto): Promise<boolean> {
-  const r = await perguntar('nuvem:trocar', { dados: remoto.dados }, 15_000)
-  if (r !== 'aceitou') return false
+// A troca é atômica: a tela pergunta "posso?" por uma chamada SÍNCRONA, e
+// aqui, dentro dela, o arquivo só é trocado se nenhuma edição chegou desde
+// que o ciclo decidiu baixar (contagem). Na mesma tarefa a tela troca o
+// estado, então nenhuma edição cai entre um e outro.
+let trocaPendente: { remoto: Remoto; contagem: number } | null = null
+
+/** grava os dados da nuvem no PC (chamado de dentro do pedido síncrono) */
+function aplicarTroca(): boolean {
+  const t = trocaPendente
+  trocaPendente = null
+  if (!t || !memoria || edicoes !== t.contagem) return false
   const local = lerDados()
   if (!dadosVazios(local)) guardarCopia(local, 'antes-da-nuvem')
-  salvarDados(remoto.dados)
-  memoria!.base = remoto.versao
-  memoria!.alterado = false
+  salvarDados(t.remoto.dados)
+  memoria.base = t.remoto.versao
+  memoria.alterado = false
   gravarMemoria()
   return true
 }
 
-async function umCiclo(): Promise<void> {
+/** devolve false se a tela recusou (edição não salva) ou se o PC salvou
+ *  algo depois da decisão: aí o ciclo recomeça e pergunta qual fica */
+async function baixar(remoto: Remoto, contagem: number): Promise<boolean> {
+  if (edicoes !== contagem) throw new Conflito()
+  trocaPendente = { remoto, contagem }
+  const r = await perguntar('nuvem:trocar', { dados: remoto.dados }, 15_000)
+  trocaPendente = null
+  if (r === 'aceitou') return true
+  if (edicoes !== contagem) throw new Conflito()
+  return false
+}
+
+/** soConferir: só olha se o outro PC mudou (ao voltar para a janela);
+ *  o envio fica para o ciclo de 5 em 5 min ou para o fechamento */
+async function umCiclo(soConferir: boolean): Promise<void> {
   if (!memoria) return
-  const remoto = await puxar()
-  const decisao = decidir(memoria, dadosVazios(lerDados()), remoto)
-  if (decisao === 'enviar') return enviar(lerDados(), remoto?.versao ?? null)
+  // edições do PC daqui em diante invalidam um "baixar" (ver aplicarTroca)
+  const contagem = edicoes
+  const versao = await puxarVersao()
+  const decisao = decidir(memoria, dadosVazios(lerDados()), versao)
+  if (decisao === 'enviar')
+    return soConferir ? undefined : enviar(lerDados(), versao?.versao ?? null)
+  if (decisao === 'nada') return
+  const remoto = await puxarDados()
   if (decisao === 'baixar') {
-    await baixar(remoto!)
+    await baixar(remoto, contagem)
     return
   }
-  if (decisao === 'conflito') {
-    const escolha = await perguntar('nuvem:conflito', {
-      esteMudouEm: memoria.mudouEm,
-      outroMudouEm: Date.parse(remoto!.atualizado_em),
-      outroAparelho: remoto!.aparelho
-    })
-    if (escolha === 'este') {
-      guardarCopia(remoto!.dados, 'da-nuvem')
-      return enviar(lerDados(), remoto!.versao)
-    }
-    if (escolha === 'outro' && (await baixar(remoto!))) return
-    throw new Error('escolha')
+  const escolha = await perguntar('nuvem:conflito', {
+    esteMudouEm: memoria.mudouEm,
+    outroMudouEm: Date.parse(remoto.atualizado_em),
+    outroAparelho: remoto.aparelho
+  })
+  if (escolha === 'este') {
+    guardarCopia(remoto.dados, 'da-nuvem')
+    return enviar(lerDados(), remoto.versao)
   }
+  // escolheu o outro PC: vale o que estava aqui no momento da escolha
+  if (escolha === 'outro' && (await baixar(remoto, edicoes))) return
+  throw new Error('escolha')
 }
 
 let fila: Promise<void> = Promise.resolve()
+// ESTUDAAI_NUVEM_CICLO_MS: só para os testes não esperarem 5 minutos
+const CICLO_MS = Number(process.env['ESTUDAAI_NUVEM_CICLO_MS']) || 5 * 60_000
 // a tela pede a primeira sincronização quando já tem os dados e ouve as
 // perguntas; antes disso, ninguém responderia a um conflito
 let telaPronta = false
 let ultimaTentativa = 0
 
 /** um ciclo por vez; conflito de versão (alguém gravou no meio) tenta de novo */
-export function sincronizar(): Promise<void> {
+export function sincronizar(soConferir = false): Promise<void> {
   fila = fila.then(async () => {
     if (!memoria?.renovar) return emitir({ situacao: 'desconectado', email: '' })
     if (!telaPronta) return
@@ -247,10 +287,10 @@ export function sincronizar(): Promise<void> {
     emitir({ situacao: 'sincronizando', email: memoria.email, mensagem: '' })
     try {
       try {
-        await umCiclo()
+        await umCiclo(soConferir)
       } catch (e) {
         if (!(e instanceof Conflito)) throw e
-        await umCiclo()
+        await umCiclo(soConferir)
       }
       memoria.ultimaSync = Date.now()
       gravarMemoria()
@@ -281,13 +321,8 @@ export function sincronizar(): Promise<void> {
   return fila
 }
 
-let timer: NodeJS.Timeout | undefined
-const agendar = (ms: number): void => {
-  clearTimeout(timer)
-  timer = setTimeout(() => void sincronizar(), ms)
-}
-
-/** o PC salvou: marca e manda em 3 s (junta uma rajada de edições).
+/** o PC salvou: só marca. Sobe no ciclo de 5 em 5 min (junta as edições
+ *  num envio só), ao fechar ou em "Sincronizar agora".
  *  Marca mesmo com a sessão vencida: ao entrar de novo na mesma conta, a
  *  mudança daqui não pode ser tratada como se não existisse. */
 export function salvouNoPc(): void {
@@ -296,7 +331,6 @@ export function salvouNoPc(): void {
   memoria.alterado = true
   memoria.mudouEm = Date.now()
   gravarMemoria()
-  if (memoria.renovar) agendar(3000)
 }
 
 export const precisaSubir = (): boolean => !!memoria?.renovar && memoria.alterado
@@ -304,7 +338,6 @@ export const precisaSubir = (): boolean => !!memoria?.renovar && memoria.alterad
 /** ao fechar: se ficou mudança sem subir, tenta uma vez (até 5 s) */
 export async function antesDeFechar(): Promise<void> {
   if (!precisaSubir()) return
-  clearTimeout(timer)
   await Promise.race([sincronizar(), new Promise((r) => setTimeout(r, 5000))])
 }
 
@@ -324,6 +357,9 @@ export function iniciarNuvem(obterJanela: () => BrowserWindow | null): void {
   ipcMain.handle('nuvem:sincronizar', () => {
     telaPronta = true
     return sincronizar()
+  })
+  ipcMain.on('nuvem:aplicarTroca', (e) => {
+    e.returnValue = aplicarTroca()
   })
   ipcMain.on('nuvem:resposta', (_e, id: number, resposta: string | null) => {
     respostas.get(id)?.(resposta)
@@ -383,9 +419,10 @@ export function iniciarNuvem(obterJanela: () => BrowserWindow | null): void {
     emitir({ situacao: 'desconectado', email: '', ultimaSync: 0, mensagem: '' })
   })
 
-  // de tempos em tempos e ao voltar para a janela: o outro PC pode ter mudado
-  setInterval(() => void sincronizar(), 5 * 60_000)
+  // de 5 em 5 min: sobe o que mudou aqui e vê se o outro PC mudou
+  setInterval(() => void sincronizar(), CICLO_MS)
+  // ao voltar para a janela: só confere (bytes); não sobe nada fora do ciclo
   app.on('browser-window-focus', () => {
-    if (Date.now() - ultimaTentativa > 60_000) agendar(0)
+    if (Date.now() - ultimaTentativa > 60_000) void sincronizar(true)
   })
 }

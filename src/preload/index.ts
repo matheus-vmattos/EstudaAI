@@ -49,6 +49,9 @@ const api = {
     ipcRenderer.on(canal, ouvir)
     return () => ipcRenderer.removeListener(canal, ouvir)
   },
+  /** síncrono: troca o arquivo pelos dados da nuvem se nada mudou aqui
+   *  desde a decisão; devolve se trocou */
+  aplicarTrocaDaNuvem: (): boolean => ipcRenderer.sendSync('nuvem:aplicarTroca'),
   responderNuvem: (id: number, resposta: string | null): void =>
     ipcRenderer.send('nuvem:resposta', id, resposta)
 }
