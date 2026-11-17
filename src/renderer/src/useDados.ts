@@ -9,6 +9,8 @@ export function useDados(): { dados: Dados | null; mudar: Mudar; erroAoSalvar: b
   const [dados, setDados] = useState<Dados | null>(null)
   const [erroAoSalvar, setErro] = useState(false)
   const pendente = useRef<Dados | null>(null)
+  // gravações a caminho do PC: a nuvem não pode trocar os dados no meio
+  const salvando = useRef(0)
   const timer = useRef<number | undefined>(undefined)
 
   useEffect(() => {
@@ -24,9 +26,14 @@ export function useDados(): { dados: Dados | null; mudar: Mudar; erroAoSalvar: b
     const d = pendente.current
     if (!d) return
     pendente.current = null
+    salvando.current++
     window.api.salvarDados(d).then(
-      () => setErro(false),
       () => {
+        salvando.current--
+        setErro(false)
+      },
+      () => {
+        salvando.current--
         setErro(true)
         // devolve para a fila (sem passar por cima de mudança mais nova) e
         // tenta de novo: na próxima edição, em 5 s ou ao fechar
@@ -55,13 +62,16 @@ export function useDados(): { dados: Dados | null; mudar: Mudar; erroAoSalvar: b
   useEffect(
     () =>
       window.api.aoPerguntarNuvem<{ dados: Dados }>('nuvem:trocar', ({ id, dados: novos }) => {
-        if (pendente.current) {
+        if (pendente.current || salvando.current) {
           gravar()
           window.api.responderNuvem(id, 'recusou')
           return
         }
-        setDados(novos)
-        window.api.responderNuvem(id, 'aceitou')
+        // síncrono: o processo principal só troca o arquivo se nada mudou
+        // aqui desde a decisão; na mesma tarefa a tela troca o estado
+        const trocou = window.api.aplicarTrocaDaNuvem()
+        if (trocou) setDados(novos)
+        window.api.responderNuvem(id, trocou ? 'aceitou' : 'recusou')
       }),
     [gravar]
   )
