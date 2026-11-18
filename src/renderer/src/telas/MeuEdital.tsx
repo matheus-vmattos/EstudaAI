@@ -1,3 +1,4 @@
+import { montagemDaProva } from '../../../shared/provaCompleta'
 import { useEffect, useRef, useState } from 'react'
 import { Icone } from '../Icone'
 import { novoId, type Mudar } from '../useDados'
@@ -16,7 +17,15 @@ import {
   type MateriaLida,
   type SituacaoDaMateria
 } from '../../../shared/edital'
-import type { Dados, Id } from '../../../shared/tipos'
+import {
+  planoDeHoje,
+  planoDoDia,
+  diaDe,
+  sequenciaDeDias,
+  tarefaFeita
+} from '../../../shared/estudoDoDia'
+import { ProvaCompleta } from './ProvaCompleta'
+import type { Dados, Id, TarefaDoDia } from '../../../shared/tipos'
 
 const pct = (x: number): string => `${Math.round(x * 100)}%`
 
@@ -29,17 +38,49 @@ export function MeuEdital({
   estudar,
   gerarSimulado,
   adaptar,
-  abrirCaixa
+  abrirCaixa,
+  abrirSimulado,
+  abrirAnotacao
 }: {
   dados: Dados
   mudar: Mudar
   agora: Date
   estudar: (alvo: AlvoDaRevisao) => void
-  gerarSimulado: (materiaId: Id) => void
+  /** curto: o simulado do estudo do dia (10 questões, 20 min) */
+  gerarSimulado: (materiaId: Id, curto?: boolean) => void
   adaptar: (simuladoId: Id) => void
   abrirCaixa: () => void
+  abrirSimulado: (id: Id) => void
+  abrirAnotacao: (id: Id) => void
 }) {
   const [colando, setColando] = useState(false)
+  const [naProva, setNaProva] = useState(false)
+  // o plano do dia é fixado na primeira vez que a tela abre no dia
+  const hoje = diaDe(agora)
+  useEffect(() => {
+    if (!dados.edital || dados.planoDoDia?.dia === hoje) return
+    mudar((d) => {
+      d.planoDoDia = planoDoDia(d, agora)
+    })
+  }, [hoje, !!dados.edital]) // eslint-disable-line react-hooks/exhaustive-deps
+  const plano = planoDeHoje(dados, agora)
+  const feitas = plano.tarefas.filter((t) => tarefaFeita(dados, plano, t, agora))
+  const minutos = plano.tarefas.reduce((n, t) => n + t.minutos, 0)
+  const sequencia = sequenciaDeDias(dados, agora)
+  const fazerTarefa = (t: TarefaDoDia): void => {
+    if (t.tipo === 'revisar') estudar({ assuntos: null, titulo: 'Estudo de hoje' })
+    else if (t.tipo === 'simulado')
+      t.simuladoId ? adaptar(t.simuladoId) : gerarSimulado(t.materiaId, true)
+    else abrirAnotacao(t.lugarId)
+  }
+  const marcar = (t: TarefaDoDia): void =>
+    mudar((d) => {
+      const p = d.planoDoDia?.dia === hoje ? d.planoDoDia : planoDoDia(d, agora)
+      p.marcadas = p.marcadas.includes(t.chave)
+        ? p.marcadas.filter((x) => x !== t.chave)
+        : [...p.marcadas, t.chave]
+      d.planoDoDia = p
+    })
   const e = dados.edital
   const situacao = situacaoDoEdital(dados, agora)
   const dias = e ? diasAte(e.dataProva, agora) : null
@@ -52,6 +93,17 @@ export function MeuEdital({
     } else if (p.tipo === 'adaptar') adaptar(p.simuladoId)
     else gerarSimulado(s.materiaId)
   }
+
+  if (e && naProva)
+    return (
+      <ProvaCompleta
+        dados={dados}
+        edital={e}
+        mudar={mudar}
+        voltar={() => setNaProva(false)}
+        abrirSimulado={abrirSimulado}
+      />
+    )
 
   return (
     <div className="tela">
@@ -102,6 +154,76 @@ export function MeuEdital({
                 Trocar edital
               </button>
             </header>
+
+            {plano.tarefas.length > 0 && (
+              <section aria-labelledby="t-hoje" className="estudo-do-dia">
+                <div className="cabeca-dia">
+                  <h2 id="t-hoje" className="secao">
+                    Estudo de hoje
+                  </h2>
+                  <span className="meta">
+                    {feitas.length} de {plano.tarefas.length} feito · ~{minutos} min
+                  </span>
+                  {sequencia > 0 && (
+                    <span className="meta sequencia">
+                      Sequência: {sequencia} {sequencia === 1 ? 'dia' : 'dias'}
+                    </span>
+                  )}
+                </div>
+                {plano.tarefas.map((t) => {
+                  const feita = feitas.includes(t)
+                  return (
+                    <div key={t.chave} className={`tarefa-dia ${feita ? 'feita' : ''}`}>
+                      <button
+                        type="button"
+                        className="marca-tarefa"
+                        aria-pressed={feita}
+                        aria-label={
+                          feita ? `Desmarcar: ${t.titulo}` : `Marcar como feito: ${t.titulo}`
+                        }
+                        onClick={() => marcar(t)}
+                      >
+                        {feita && <Icone nome="check" tamanho={14} />}
+                      </button>
+                      <span className="corpo-tarefa">
+                        <span className="titulo-tarefa">{t.titulo}</span>
+                        <span className="meta">{t.detalhe}</span>
+                      </span>
+                      {!feita && (
+                        <button
+                          type="button"
+                          className="botao passo"
+                          onClick={() => fazerTarefa(t)}
+                        >
+                          {t.tipo === 'revisar'
+                            ? 'Começar'
+                            : t.tipo === 'simulado'
+                              ? t.simuladoId
+                                ? 'Adaptar'
+                                : 'Gerar prompt'
+                              : 'Abrir'}
+                          <Icone nome="direita" tamanho={14} />
+                        </button>
+                      )}
+                    </div>
+                  )
+                })}
+              </section>
+            )}
+
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <button
+                type="button"
+                className="botao passo pendente"
+                onClick={() => setNaProva(true)}
+              >
+                {dados.provaEmMontagem && montagemDaProva(dados, e) === dados.provaEmMontagem
+                  ? 'Continuar prova completa'
+                  : 'Prova completa'}{' '}
+                · {e.materias.reduce((n, m) => n + m.questoes, 0)} questões
+                <Icone nome="direita" tamanho={14} />
+              </button>
+            </div>
 
             <section aria-labelledby="t-prioridade" className="lista-edital">
               <h2 id="t-prioridade" className="secao">

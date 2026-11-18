@@ -222,6 +222,7 @@ export interface PacoteDeEdital {
   banca: string
   dataProva: string
   notaMinima?: number
+  duracaoMin?: number
   materias: { nome: string; questoes: number; peso: number; texto: string }[]
 }
 
@@ -255,6 +256,7 @@ export function lerPacoteDeEdital(
       banca: typeof b.banca === 'string' ? b.banca.trim() : '',
       dataProva: typeof b.dataProva === 'string' ? dataDoEdital(b.dataProva) : '',
       notaMinima: Number.isFinite(b.notaMinima) ? b.notaMinima : undefined,
+      duracaoMin: Number.isFinite(b.duracaoMin) ? b.duracaoMin : undefined,
       materias: materias.map((m) => ({
         nome: m.nome.trim(),
         questoes: Math.round(m.questoes),
@@ -287,6 +289,7 @@ export function importarEdital(
     banca: p.banca,
     dataProva: p.dataProva,
     notaMinima: p.notaMinima,
+    duracaoMin: p.duracaoMin,
     materias
   }
   return { materias: materias.length, criadas }

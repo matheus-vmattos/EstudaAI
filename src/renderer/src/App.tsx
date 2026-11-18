@@ -39,9 +39,11 @@ export function App() {
   const [simuladoAberto, setSimuladoAberto] = useState<Id | null>(null)
   const [adaptarDe, setAdaptarDe] = useState<Id | null>(null)
   // "Gerar 1º simulado" do Meu edital: o gerador abre já com a matéria
-  const [pedidoDeSimulado, setPedidoDeSimulado] = useState<{ materiaId: Id; chave: number } | null>(
-    null
-  )
+  const [pedidoDeSimulado, setPedidoDeSimulado] = useState<{
+    materiaId: Id
+    chave: number
+    curto?: boolean
+  } | null>(null)
   const [revisao, setRevisao] = useState<AlvoDaRevisao | null>(null)
   const [config, setConfig] = useState(false)
   // a contagem "para hoje" do menu acompanha o relógio (cartão em
@@ -196,8 +198,8 @@ export function App() {
           mudar={mudar}
           agora={agora}
           estudar={setRevisao}
-          gerarSimulado={(materiaId) => {
-            setPedidoDeSimulado({ materiaId, chave: Date.now() })
+          gerarSimulado={(materiaId, curto) => {
+            setPedidoDeSimulado({ materiaId, chave: Date.now(), curto })
             setAdaptarDe(null)
             setTela('questoes')
           }}
@@ -206,6 +208,8 @@ export function App() {
             setTela('questoes')
           }}
           abrirCaixa={() => setTela('caixa')}
+          abrirSimulado={setSimuladoAberto}
+          abrirAnotacao={abrirAnotacao}
         />
       )}
       {tela === 'caixa' && (

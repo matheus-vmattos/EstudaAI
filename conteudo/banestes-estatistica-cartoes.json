@@ -1,0 +1,138 @@
+{
+ "materia": "Probabilidade e Estatística",
+ "cartoes": [
+  {
+   "lugar": [
+    "Fundamentos",
+    "População e amostra"
+   ],
+   "frente": "População x amostra",
+   "verso": "**População**: todos os elementos que interessam ao estudo. **Amostra**: a parte observada, que deve representar a população."
+  },
+  {
+   "lugar": [
+    "Fundamentos",
+    "Técnicas de amostragem"
+   ],
+   "frente": "Tipos de amostragem probabilística",
+   "verso": "**Aleatória simples** (todos com a mesma chance), **sistemática** (de k em k), **estratificada** (sorteio dentro de cada grupo homogêneo) e **por conglomerados** (sorteia grupos inteiros)."
+  },
+  {
+   "lugar": [
+    "Medidas de tendência central",
+    "Mediana"
+   ],
+   "frente": "Como achar a mediana?",
+   "verso": "Ordene os dados. Com n ímpar, é o valor do meio; com n par, a **média dos dois do meio**. Ex.: 2, 4, 7, 9 → (4 + 7)/2 = 5,5."
+  },
+  {
+   "lugar": [
+    "Medidas de tendência central",
+    "Moda"
+   ],
+   "frente": "Moda",
+   "verso": "O valor que mais se repete. Pode não existir (amodal) ou haver mais de uma (bimodal, multimodal)."
+  },
+  {
+   "lugar": [
+    "Medidas de tendência central",
+    "Média"
+   ],
+   "frente": "Média com valores extremos: o que acontece?",
+   "verso": "A média é **puxada pelos extremos**; a mediana não. Com renda, por exemplo, a mediana representa melhor o \"típico\"."
+  },
+  {
+   "lugar": [
+    "Medidas de dispersão",
+    "Amplitude"
+   ],
+   "frente": "Amplitude total",
+   "verso": "$$A = x_{\\text{máx}} - x_{\\text{mín}}$$ Simples, mas só olha os extremos."
+  },
+  {
+   "lugar": [
+    "Medidas de dispersão",
+    "Variância"
+   ],
+   "frente": "Variância populacional x amostral",
+   "verso": "$$\\sigma^2 = \\dfrac{\\sum (x - \\mu)^2}{N} \\qquad s^2 = \\dfrac{\\sum (x - \\bar{x})^2}{n - 1}$$ Na amostra, divide por **n − 1**."
+  },
+  {
+   "lugar": [
+    "Medidas de dispersão",
+    "Desvio padrão"
+   ],
+   "frente": "Desvio padrão",
+   "verso": "A raiz da variância: $\\sigma = \\sqrt{\\sigma^2}$. Fica **na mesma unidade dos dados**, por isso é mais fácil de interpretar."
+  },
+  {
+   "lugar": [
+    "Medidas de dispersão",
+    "Coeficiente de variação"
+   ],
+   "frente": "Coeficiente de variação (CV)",
+   "verso": "$$CV = \\dfrac{s}{\\bar{x}} \\times 100\\%$$ Dispersão **relativa**: compara séries com médias ou unidades diferentes. Menor CV = mais homogêneo."
+  },
+  {
+   "lugar": [
+    "Medidas de dispersão",
+    "Desvio padrão"
+   ],
+   "frente": "Somar ou multiplicar todos os dados por uma constante",
+   "verso": "Somar k: a média soma k, o **desvio padrão não muda**. Multiplicar por k: média e desvio padrão ficam ×k, a **variância ×k²**."
+  },
+  {
+   "lugar": [
+    "Probabilidade",
+    "Espaço amostral e eventos"
+   ],
+   "frente": "Probabilidade clássica e complementar",
+   "verso": "$P(A) = \\dfrac{\\text{casos favoráveis}}{\\text{casos possíveis}}$ (resultados equiprováveis). Complementar: $P(\\bar{A}) = 1 - P(A)$."
+  },
+  {
+   "lugar": [
+    "Probabilidade",
+    "Espaço amostral e eventos"
+   ],
+   "frente": "Probabilidade da união",
+   "verso": "$$P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$$ Se forem mutuamente exclusivos, $P(A \\cap B) = 0$."
+  },
+  {
+   "lugar": [
+    "Probabilidade",
+    "Probabilidade condicional"
+   ],
+   "frente": "Probabilidade condicional",
+   "verso": "$$P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)}$$ A chance de A **sabendo que** B ocorreu."
+  },
+  {
+   "lugar": [
+    "Probabilidade",
+    "Eventos independentes"
+   ],
+   "frente": "Eventos independentes",
+   "verso": "Um não muda a chance do outro: $P(A \\cap B) = P(A) \\cdot P(B)$. Ex.: duas caras seguidas = $\\tfrac{1}{2} \\cdot \\tfrac{1}{2} = \\tfrac{1}{4}$."
+  },
+  {
+   "lugar": [
+    "Distribuição normal"
+   ],
+   "frente": "Distribuição normal: forma e regra 68–95–99,7",
+   "verso": "Simétrica em sino, com **média = mediana = moda**. Cerca de **68%** dos dados ficam a 1 desvio padrão da média, **95%** a 2 e **99,7%** a 3."
+  },
+  {
+   "lugar": [
+    "Distribuição normal"
+   ],
+   "frente": "Padronização (escore z)",
+   "verso": "$$z = \\dfrac{x - \\mu}{\\sigma}$$ Quantos desvios padrão o valor está acima (+) ou abaixo (−) da média."
+  },
+  {
+   "lugar": [
+    "Aplicações e indicadores"
+   ],
+   "frente": "Média maior que a mediana indica…",
+   "verso": "Distribuição **assimétrica à direita** (positiva): poucos valores altos puxam a média para cima."
+  }
+ ]
+}

@@ -2163,3 +2163,128 @@ dialog.colar-edital section {
 .campos-edital input:focus {
   border-color: var(--linha-viva);
 }
+
+/* ---------- estudo do dia e prova completa (v0.1.16) ---------- */
+.estudo-do-dia {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 20px;
+  border: 1px solid var(--linha-viva);
+  background: rgb(63 224 245 / 4%);
+  box-shadow: inset 3px 0 0 var(--ciano);
+}
+.cabeca-dia {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+.cabeca-dia .sequencia {
+  margin-left: auto;
+  color: var(--ambar);
+}
+.tarefa-dia {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  min-height: 58px;
+  padding: 0 16px;
+  border: 1px solid var(--linha-2);
+  background: var(--cartao);
+}
+.tarefa-dia.feita {
+  border-color: var(--verde-linha);
+  opacity: 0.65;
+}
+.tarefa-dia.feita .titulo-tarefa {
+  text-decoration: line-through;
+}
+.marca-tarefa {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid var(--linha-viva);
+  background: none;
+  color: var(--verde);
+  cursor: pointer;
+}
+.tarefa-dia.feita .marca-tarefa {
+  border-color: var(--verde);
+  background: rgb(57 245 154 / 12%);
+}
+.corpo-tarefa {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.titulo-tarefa {
+  color: #e9f7fb;
+  font-size: 16px;
+}
+.blocos-prova {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.bloco-prova {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1px solid var(--linha-2);
+  background: var(--cartao);
+}
+.bloco-prova.pronto {
+  border-color: var(--verde-linha);
+}
+.cabeca-bloco {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.titulo-bloco {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: var(--texto-forte);
+  text-transform: uppercase;
+}
+.cabeca-bloco .estado {
+  margin-left: auto;
+}
+.materias-bloco {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  color: var(--texto-medio);
+  font-size: 14px;
+}
+.materias-bloco b {
+  font-family: var(--mono);
+  font-weight: 400;
+  color: var(--ciano);
+}
+.resumo-prova {
+  gap: 24px;
+}
+.linha-resumo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 70px 160px 60px;
+  align-items: center;
+  gap: 14px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--linha-2);
+  background: var(--cartao);
+}
+.linha-resumo .nome {
+  color: #e9f7fb;
+}
+.linha-resumo > :nth-child(2),
+.linha-resumo > :nth-child(4) {
+  text-align: right;
+}
