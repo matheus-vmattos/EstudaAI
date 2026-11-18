@@ -11,6 +11,7 @@ import {
 } from '../../../shared/questoes'
 import type { Dados, Id, Simulado as TipoSimulado } from '../../../shared/tipos'
 import { EstudarErros } from './EstudarErros'
+import { notaDaProva, type NotaDaProva } from '../../../shared/provaCompleta'
 import { idsAbaixo } from '../../../shared/arvore'
 import {
   buscaNoYoutube,
@@ -400,6 +401,9 @@ function Resultado({
   abrirAnotacao: (id: Id) => void
 }) {
   const [atual, setAtual] = useState(0)
+  // prova completa abre no resumo (notas como a banca calcula)
+  const nota = notaDaProva(s)
+  const [verResumo, setVerResumo] = useState(!!nota)
   const [filtro, setFiltro] = useState<'todas' | 'estudar'>('todas')
   const [estudando, setEstudando] = useState(false)
   const paraEstudar = questoesParaEstudar(s).map((x) => x.indice)
@@ -470,6 +474,19 @@ function Resultado({
             <span className="numero-ambar">{paraEstudar.length}</span>
           </button>
         )}
+        {nota && (
+          <button
+            type="button"
+            className="botao"
+            aria-pressed={!verResumo}
+            onClick={() => {
+              setVerResumo(!verResumo)
+              setEstudando(false)
+            }}
+          >
+            {verResumo ? 'Ver gabarito' : 'Ver resumo'}
+          </button>
+        )}
         <button type="button" className="botao" onClick={refazer}>
           <Icone nome="atualizar" tamanho={16} />
           Refazer embaralhado
@@ -498,7 +515,9 @@ function Resultado({
         </div>
       </header>
 
-      {estudando ? (
+      {nota && verResumo && !estudando ? (
+        <ResumoDaProva nota={nota} />
+      ) : estudando ? (
         <EstudarErros
           simulado={s}
           dados={dados}
@@ -711,6 +730,76 @@ function Resultado({
           </aside>
         </div>
       )}
+    </div>
+  )
+}
+
+const nota10 = (x: number): string =>
+  x.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
+
+/** Prova completa: as notas como a banca calcula e o acerto por matéria,
+ *  da que mais custou nota para a que menos */
+function ResumoDaProva({ nota }: { nota: NotaDaProva }) {
+  return (
+    <div className="corpo-prova">
+      <main className="questao resumo-prova">
+        <div className="placar">
+          {nota.provas.map((p) => (
+            <div key={p.peso}>
+              <span className="meta">
+                {nota.provas.length > 1 ? `Prova peso ${p.peso}` : 'Nota'}
+              </span>
+              <span className="numero">{nota10(p.nota)}</span>
+              <span className="meta">
+                {p.acertos} de {p.total}
+              </span>
+            </div>
+          ))}
+          <div>
+            <span className="meta">Nota final</span>
+            <span className={`numero ${nota.passaria === false ? 'nota-ruim' : 'nota-boa'}`}>
+              {nota10(nota.final)}
+            </span>
+            {nota.passaria !== null && (
+              <span className="meta">{nota.passaria ? 'Passaria' : 'Abaixo do mínimo'}</span>
+            )}
+          </div>
+        </div>
+        <section aria-labelledby="t-por-materia" className="lista-edital">
+          <h2 id="t-por-materia" className="secao">
+            Por matéria · do que mais custou nota
+          </h2>
+          {nota.porMateria.map((m) => {
+            const pct = m.total ? m.acertos / m.total : 0
+            return (
+              <div key={m.materiaId} className="linha-resumo">
+                <span className="nome">{m.nome}</span>
+                <span className="numero-pequeno">
+                  {m.acertos}/{m.total}
+                </span>
+                <span className="barra">
+                  <span
+                    style={{
+                      width: `${pct * 100}%`,
+                      background:
+                        pct >= 0.7
+                          ? 'var(--verde)'
+                          : pct >= 0.5
+                            ? 'var(--ambar)'
+                            : 'var(--vermelho)'
+                    }}
+                  />
+                </span>
+                <span
+                  className={`numero-pequeno ${pct >= 0.7 ? 'nota-boa' : pct >= 0.5 ? 'nota-media' : 'nota-ruim'}`}
+                >
+                  {Math.round(pct * 100)}%
+                </span>
+              </div>
+            )
+          })}
+        </section>
+      </main>
     </div>
   )
 }

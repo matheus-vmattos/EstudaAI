@@ -49,7 +49,52 @@ export interface Questao {
   habilidade?: string
   /** termos para buscar a vídeo-aula no YouTube e canais sugeridos (v0.1.13+) */
   videoaula?: { busca: string; canais: string[] }
+  /** matéria do edital (prova completa, v0.1.16+): o nome que a IA escreveu */
+  materia?: string
 }
+
+/** Uma matéria dentro da prova completa: as questões de..ate (fim exclusivo) */
+export interface MateriaNaProva {
+  materiaId: Id
+  nome: string
+  /** peso da prova dela no edital (Gerais ×1, Específicos ×2) */
+  peso: number
+  de: number
+  ate: number
+}
+
+/** A prova completa sendo montada bloco a bloco (cada bloco é um pedido à IA) */
+export interface ProvaEmMontagem {
+  criadoEm: number
+  blocos: {
+    materias: { materiaId: Id; nome: string; questoes: number; peso: number }[]
+    /** as questões que já chegaram, na ordem das matérias do bloco */
+    questoes: Questao[] | null
+  }[]
+}
+
+/** O plano de estudo de um dia, fixado ao abrir (assim não muda no meio do dia) */
+export interface PlanoDoDia {
+  /** AAAA-MM-DD */
+  dia: string
+  tarefas: TarefaDoDia[]
+  /** chaves marcadas à mão como feitas */
+  marcadas: string[]
+}
+
+export type TarefaDoDia =
+  | { chave: string; tipo: 'revisar'; titulo: string; detalhe: string; minutos: number }
+  | {
+      chave: string
+      tipo: 'simulado'
+      titulo: string
+      detalhe: string
+      minutos: number
+      materiaId: Id
+      /** existe se for o próximo adaptado de um simulado que já foi feito */
+      simuladoId?: Id
+    }
+  | { chave: string; tipo: 'topico'; titulo: string; detalhe: string; minutos: number; lugarId: Id }
 
 export interface ConfigDoSimulado {
   tema: string
@@ -77,6 +122,8 @@ export interface Simulado {
   atual: number
   criadoEm: number
   entregueEm: number | null
+  /** prova completa no formato do edital (v0.1.16+): onde está cada matéria */
+  prova?: { materias: MateriaNaProva[]; notaMinima?: number }
 }
 
 export type TipoDeCartao = 'basico' | 'lacuna'
@@ -133,6 +180,8 @@ export interface Dados {
   mapaVertical?: boolean
   /** o concurso: matérias, número de questões e peso (v0.1.15+) */
   edital?: Edital
+  planoDoDia?: PlanoDoDia
+  provaEmMontagem?: ProvaEmMontagem
   /** baralhos com a seta ao contrário do padrão (matéria aberta, nós fechados) */
   baralhosInvertidos?: Id[]
   /** itens da caixa "Do Claude" já importados */
@@ -155,6 +204,8 @@ export interface Edital {
   /** AAAA-MM-DD; '' se ainda não tem */
   dataProva: string
   notaMinima?: number
+  /** duração da prova em minutos (v0.1.16+) */
+  duracaoMin?: number
   materias: MateriaDoEdital[]
 }
 

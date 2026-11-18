@@ -55,7 +55,7 @@ export function Questoes({
   adaptarDe: Id | null
   adaptar: (id: Id | null) => void
   /** "Gerar 1º simulado" do Meu edital: já vem com a matéria (chave muda a cada pedido) */
-  pedido?: { materiaId: Id; chave: number } | null
+  pedido?: { materiaId: Id; chave: number; curto?: boolean } | null
 }) {
   // a banca do edital já vem preenchida
   const [config, setConfig] = useState<ConfigDoSimulado>(() => ({
@@ -71,7 +71,9 @@ export function Questoes({
       tema: m.nome,
       assuntoId: null,
       materiaId: m.id,
-      banca: dados.edital?.banca || c.banca
+      banca: dados.edital?.banca || c.banca,
+      // o simulado curto do estudo do dia
+      ...(pedido.curto ? { quantidade: 10, tempoMin: 20 } : {})
     }))
   }, [pedido?.chave]) // eslint-disable-line react-hooks/exhaustive-deps
   const base = adaptarDe ? (dados.simulados.find((x) => x.id === adaptarDe) ?? null) : null
