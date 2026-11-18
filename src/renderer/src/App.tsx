@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Icone, type NomeDoIcone } from './Icone'
 import { useDados } from './useDados'
 import { Atualizacao } from './Atualizacao'
@@ -13,11 +13,14 @@ import { Revisao } from './telas/Revisao'
 import { Mapa } from './telas/Mapa'
 import { Caixa, type EstadoDaCaixa } from './telas/Caixa'
 import { filaDoDia } from '../../shared/flashcards'
+import { diasAte } from '../../shared/edital'
+import { MeuEdital } from './telas/MeuEdital'
 import type { Id } from '../../shared/tipos'
 
-export type Tela = 'anotacoes' | 'flashcards' | 'mapa' | 'links' | 'questoes' | 'caixa'
+export type Tela = 'edital' | 'anotacoes' | 'flashcards' | 'mapa' | 'links' | 'questoes' | 'caixa'
 
 const MENU: { tela: Tela; nome: string; icone: NomeDoIcone }[] = [
+  { tela: 'edital', nome: 'Meu edital', icone: 'alvo' },
   { tela: 'anotacoes', nome: 'Anotações', icone: 'nota' },
   { tela: 'flashcards', nome: 'Flashcards', icone: 'cartas' },
   { tela: 'mapa', nome: 'Mapa mental', icone: 'mapa' },
@@ -35,6 +38,10 @@ export function App() {
   const [assuntoAberto, setAssuntoAberto] = useState<Id | null>(null)
   const [simuladoAberto, setSimuladoAberto] = useState<Id | null>(null)
   const [adaptarDe, setAdaptarDe] = useState<Id | null>(null)
+  // "Gerar 1º simulado" do Meu edital: o gerador abre já com a matéria
+  const [pedidoDeSimulado, setPedidoDeSimulado] = useState<{ materiaId: Id; chave: number } | null>(
+    null
+  )
   const [revisao, setRevisao] = useState<AlvoDaRevisao | null>(null)
   const [config, setConfig] = useState(false)
   // a contagem "para hoje" do menu acompanha o relógio (cartão em
@@ -64,6 +71,14 @@ export function App() {
     const id = window.setInterval(buscarCaixa, 30 * 60000)
     return () => window.clearInterval(id)
   }, [buscarCaixa])
+
+  // com edital, o app abre nele: é o "por onde começo hoje"
+  const abriuNoEdital = useRef(false)
+  useEffect(() => {
+    if (!dados || abriuNoEdital.current) return
+    abriuNoEdital.current = true
+    if (dados.edital) setTela('edital')
+  }, [dados])
 
   if (!dados) return null
 
@@ -97,6 +112,7 @@ export function App() {
   const novidades = caixa.itens.filter((i) => !(dados.caixaImportados ?? []).includes(i.id)).length
   const fila = filaDoDia(dados.cartoes, agora)
   const paraHoje = fila.revisar.length + fila.novos.length
+  const diasParaProva = dados.edital ? diasAte(dados.edital.dataProva, agora) : null
   const abrirAnotacao = (assuntoId: Id): void => {
     setAssuntoAberto(assuntoId)
     setTela('anotacoes')
@@ -126,6 +142,11 @@ export function App() {
             {m.tela === 'caixa' && novidades > 0 && (
               <span className="contador" aria-label={`${novidades} novidades`}>
                 {novidades}
+              </span>
+            )}
+            {m.tela === 'edital' && diasParaProva !== null && diasParaProva >= 0 && (
+              <span className="dias-menu" aria-label={`${diasParaProva} dias para a prova`}>
+                {diasParaProva} D
               </span>
             )}
             {m.tela === 'flashcards' && paraHoje > 0 && (
@@ -169,6 +190,24 @@ export function App() {
         <Mapa dados={dados} mudar={mudar} abrirAnotacao={abrirAnotacao} estudar={setRevisao} />
       )}
       {tela === 'links' && <Links dados={dados} mudar={mudar} />}
+      {tela === 'edital' && (
+        <MeuEdital
+          dados={dados}
+          mudar={mudar}
+          agora={agora}
+          estudar={setRevisao}
+          gerarSimulado={(materiaId) => {
+            setPedidoDeSimulado({ materiaId, chave: Date.now() })
+            setAdaptarDe(null)
+            setTela('questoes')
+          }}
+          adaptar={(id) => {
+            setAdaptarDe(id)
+            setTela('questoes')
+          }}
+          abrirCaixa={() => setTela('caixa')}
+        />
+      )}
       {tela === 'caixa' && (
         <Caixa
           dados={dados}
@@ -178,6 +217,7 @@ export function App() {
           abrirMapa={() => setTela('mapa')}
           abrirSimulado={setSimuladoAberto}
           abrirFlashcards={() => setTela('flashcards')}
+          abrirEdital={() => setTela('edital')}
         />
       )}
       {tela === 'questoes' && (
@@ -187,6 +227,7 @@ export function App() {
           abrirSimulado={setSimuladoAberto}
           adaptarDe={adaptarDe}
           adaptar={setAdaptarDe}
+          pedido={pedidoDeSimulado}
         />
       )}
 

@@ -39,6 +39,38 @@
       "descricao": "As 9 matérias da prova de 24/01/2027 no formato do edital. Peso na nota final: Conhecimentos Bancários 25% · Vendas e Atendimento 17% · Português 11% · Matemática/RL 11% · Mat. Financeira, Estatística e Informática 8% cada · Atualidades e Ética 6% cada. O que você já tem é aproveitado.",
       "arquivo": "banestes-tb-estrutura.txt",
       "data": "2026-11-18"
+    },
+    {
+      "id": "banestes-tb-edital-v1",
+      "tipo": "edital",
+      "titulo": "Edital Banestes — Técnico Bancário: questões e pesos",
+      "descricao": "Liga o painel Meu edital: prova em 24/01/2027, FCC, nota mínima 6, as 9 matérias com o número de questões e o peso (Gerais ×1, Específicos ×2) e o conteúdo programático de cada uma para o foco no edital. Importe também o mapa do edital.",
+      "arquivo": "banestes-tb-edital.json",
+      "data": "2026-11-18"
+    },
+    {
+      "id": "banestes-etica-cartoes-v1",
+      "tipo": "cartoes",
+      "titulo": "Flashcards: Guia de Conduta do Banestes e Ética/Compliance/ESG",
+      "descricao": "30 cartões. Cartões do Guia de Conduta Ética do Sistema Financeiro Banestes (lido do PDF publicado no site do banco) e de ética, governança, compliance, anticorrupção e ESG. Entram no mapa do edital; o que já existir não duplica.",
+      "arquivo": "banestes-etica-cartoes.json",
+      "data": "2026-11-18"
+    },
+    {
+      "id": "banestes-bancarios-cartoes-v1",
+      "tipo": "cartoes",
+      "titulo": "Flashcards: Conhecimentos Bancários (25% da nota)",
+      "descricao": "25 cartões. SFN, Copom e meta de inflação, Pix, Open Finance, PLD/COAF, previdência, seguros, consórcio, FGC, portabilidade, suitability e Resolução CMN 4.966/2021. Entram no mapa do edital; o que já existir não duplica.",
+      "arquivo": "banestes-bancarios-cartoes.json",
+      "data": "2026-11-18"
+    },
+    {
+      "id": "banestes-lgpd-cartoes-v1",
+      "tipo": "cartoes",
+      "titulo": "Flashcards: LGPD",
+      "descricao": "8 cartões. Conceitos, dados sensíveis, agentes, bases legais, direitos do titular, sanções e decisões automatizadas no banco. Entram no mapa do edital; o que já existir não duplica.",
+      "arquivo": "banestes-lgpd-cartoes.json",
+      "data": "2026-11-18"
     }
   ]
 }

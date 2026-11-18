@@ -54,6 +54,8 @@ export interface Questao {
 export interface ConfigDoSimulado {
   tema: string
   assuntoId: Id | null
+  /** matéria do edital, quando o simulado é da matéria inteira (v0.1.15+) */
+  materiaId?: Id
   nivel: Nivel
   tipo: TipoDeQuestao
   quantidade: number
@@ -129,6 +131,8 @@ export interface Dados {
   /** nós do mapa mental recolhidos (matéria, assunto ou tópico) */
   mapaRecolhidos: Id[]
   mapaVertical?: boolean
+  /** o concurso: matérias, número de questões e peso (v0.1.15+) */
+  edital?: Edital
   /** baralhos com a seta ao contrário do padrão (matéria aberta, nós fechados) */
   baralhosInvertidos?: Id[]
   /** itens da caixa "Do Claude" já importados */
@@ -136,10 +140,28 @@ export interface Dados {
   ultimoBackup?: number
 }
 
+export interface MateriaDoEdital {
+  materiaId: Id
+  questoes: number
+  /** peso da prova a que a matéria pertence (Gerais ×1, Específicos ×2) */
+  peso: number
+  /** o conteúdo programático da matéria, como está no edital */
+  texto: string
+}
+
+export interface Edital {
+  nome: string
+  banca: string
+  /** AAAA-MM-DD; '' se ainda não tem */
+  dataProva: string
+  notaMinima?: number
+  materias: MateriaDoEdital[]
+}
+
 /** Algo que o Claude preparou e publicou em conteudo/ do repositório */
 export interface ItemDaCaixa {
   id: string
-  tipo: 'estrutura' | 'simulado' | 'cartoes'
+  tipo: 'estrutura' | 'simulado' | 'cartoes' | 'edital'
   titulo: string
   descricao?: string
   arquivo: string

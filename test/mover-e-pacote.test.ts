@@ -3,6 +3,7 @@ import { importarEstrutura, lerEstrutura } from '../src/shared/estrutura'
 import { destinosPara, moverNo, nosDaMateria, procurarDestino } from '../src/shared/arvore'
 import { agendaNova, filaDoDia, revezar } from '../src/shared/flashcards'
 import { importarCartoes, lerPacoteDeCartoes } from '../src/shared/pacoteDeCartoes'
+import { lerPacoteDeEdital } from '../src/shared/edital'
 import { DADOS_VAZIOS, type Cartao, type Dados } from '../src/shared/tipos'
 
 // a árvore do print do Matheus: Pronome e Variáveis são irmãos
@@ -254,6 +255,7 @@ describe('o que está publicado na caixa', () => {
         const r = lerPacoteDeCartoes(texto)
         expect(r.ok, item.arquivo).toBe(true)
       } else if (item.tipo === 'estrutura') expect(lerEstrutura(texto).length).toBeGreaterThan(0)
+      else if (item.tipo === 'edital') expect(lerPacoteDeEdital(texto).ok, item.arquivo).toBe(true)
     }
   })
 })
