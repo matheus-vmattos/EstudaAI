@@ -71,6 +71,14 @@
       "descricao": "8 cartões. Conceitos, dados sensíveis, agentes, bases legais, direitos do titular, sanções e decisões automatizadas no banco. Entram no mapa do edital; o que já existir não duplica.",
       "arquivo": "banestes-lgpd-cartoes.json",
       "data": "2026-11-18"
+    },
+    {
+      "id": "banestes-vendas-cartoes-v1",
+      "tipo": "cartoes",
+      "titulo": "Flashcards: Vendas, Negociação e Atendimento (17% da nota)",
+      "descricao": "33 cartões: qualidade em serviços, satisfação e valor, comunicação, comportamento do consumidor, etapas de venda, SPIN, negociação (Harvard, BATNA, ZOPA), CRM, NPS, reclamações e ouvidoria. Entram no mapa do edital; o que já existir não duplica.",
+      "arquivo": "banestes-vendas-cartoes.json",
+      "data": "2026-11-18"
     }
   ]
 }
