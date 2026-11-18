@@ -9,7 +9,7 @@ const BASE =
   'https://raw.githubusercontent.com/matheus-vmattos/EstudaAI/main/conteudo/'
 // só nome simples de arquivo: nada de ../ nem endereço de fora
 const NOME_VALIDO = /^[a-z0-9][a-z0-9-]*\.(txt|json)$/
-const TIPOS = new Set(['estrutura', 'simulado', 'cartoes'])
+const TIPOS = new Set(['estrutura', 'simulado', 'cartoes', 'edital'])
 
 async function baixar(nome: string): Promise<string> {
   const r = await net.fetch(BASE + nome + `?t=${Date.now()}`, { cache: 'no-store' })

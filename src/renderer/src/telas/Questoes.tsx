@@ -45,7 +45,8 @@ export function Questoes({
   mudar,
   abrirSimulado,
   adaptarDe,
-  adaptar
+  adaptar,
+  pedido
 }: {
   dados: Dados
   mudar: Mudar
@@ -53,19 +54,41 @@ export function Questoes({
   /** simulado que serve de base para o próximo adaptado (null = gerador normal) */
   adaptarDe: Id | null
   adaptar: (id: Id | null) => void
+  /** "Gerar 1º simulado" do Meu edital: já vem com a matéria (chave muda a cada pedido) */
+  pedido?: { materiaId: Id; chave: number } | null
 }) {
-  const [config, setConfig] = useState<ConfigDoSimulado>(CONFIG_INICIAL)
+  // a banca do edital já vem preenchida
+  const [config, setConfig] = useState<ConfigDoSimulado>(() => ({
+    ...CONFIG_INICIAL,
+    banca: dados.edital?.banca ?? ''
+  }))
+  useEffect(() => {
+    if (!pedido) return
+    const m = dados.materias.find((x) => x.id === pedido.materiaId)
+    if (!m) return
+    setConfig((c) => ({
+      ...c,
+      tema: m.nome,
+      assuntoId: null,
+      materiaId: m.id,
+      banca: dados.edital?.banca || c.banca
+    }))
+  }, [pedido?.chave]) // eslint-disable-line react-hooks/exhaustive-deps
   const base = adaptarDe ? (dados.simulados.find((x) => x.id === adaptarDe) ?? null) : null
   const diagnostico = useMemo(() => (base ? diagnosticar(base) : null), [base])
   const [opcoes, setOpcoes] = useState<OpcoesAdaptadas | null>(null)
   // ao entrar no modo adaptado, começa pela sugestão e pelo tamanho do último
   useEffect(() => {
     if (!base || !diagnostico) return setOpcoes(null)
+    // o conteúdo do edital daquela matéria já vem no "foco no edital"
+    const materiaDaBase =
+      base.config.materiaId ?? acharNo(dados, base.config.assuntoId)?.materia.id ?? null
+    const doEdital = dados.edital?.materias.find((m) => m.materiaId === materiaDaBase)?.texto ?? ''
     setOpcoes({
       quantidade: base.questoes.length,
       insistir: true,
       foco: 'equilibrado',
-      edital: '',
+      edital: doEdital,
       banca: base.config.banca,
       ajuste: ajusteSugerido(diagnostico.pct)
     })
@@ -228,12 +251,17 @@ export function Questoes({
               <EscolherLugar
                 dados={dados}
                 rotulo="Ligar ao assunto (opcional)"
-                nenhum="Nenhum"
+                nenhum={
+                  config.materiaId && !config.assuntoId
+                    ? `${dados.materias.find((m) => m.id === config.materiaId)?.nome ?? ''} (matéria inteira)`
+                    : 'Nenhum'
+                }
                 valor={config.assuntoId ?? ''}
                 aoEscolher={(valor) => {
                   const id = valor || null
                   muda('assuntoId', id)
                   const a = acharNo(dados, id)
+                  muda('materiaId', a?.materia.id)
                   if (a && !config.tema.trim()) muda('tema', a.nome)
                 }}
               />

@@ -1,0 +1,203 @@
+{
+ "materia": "Conhecimentos Bancários",
+ "cartoes": [
+  {
+   "lugar": [
+    "Sistema Financeiro Nacional",
+    "Órgãos normativos (CMN, CNSP, CNPC)"
+   ],
+   "frente": "Quem compõe o Conselho Monetário Nacional (CMN)?",
+   "verso": "**Ministro da Fazenda** (presidente), **Ministro do Planejamento e Orçamento** e **Presidente do Banco Central**. É o órgão normativo máximo do SFN."
+  },
+  {
+   "lugar": [
+    "Sistema Financeiro Nacional",
+    "Órgãos normativos (CMN, CNSP, CNPC)"
+   ],
+   "frente": "CNSP e CNPC: o que cada um normatiza?",
+   "verso": "**CNSP**: seguros privados, previdência complementar **aberta** e capitalização (supervisor: **Susep**). **CNPC**: previdência complementar **fechada**, os fundos de pensão (supervisor: **Previc**)."
+  },
+  {
+   "lugar": [
+    "Sistema Financeiro Nacional",
+    "Supervisores (Bacen, CVM, Susep, Previc)"
+   ],
+   "frente": "Bacen x CVM: quem supervisiona o quê?",
+   "verso": "**Bacen**: instituições financeiras e de pagamento, e executa a política monetária. **CVM**: mercado de valores mobiliários (ações, debêntures, fundos), protegendo o investidor."
+  },
+  {
+   "lugar": [
+    "Mercado financeiro e de capitais",
+    "Política monetária e Copom"
+   ],
+   "frente": "O que o Copom decide e quantas vezes por ano se reúne?",
+   "verso": "Define a **meta da taxa Selic**, em **8 reuniões ordinárias por ano** (cerca de 45 em 45 dias). É formado pela diretoria colegiada do Banco Central."
+  },
+  {
+   "lugar": [
+    "Mercado financeiro e de capitais",
+    "Juros, inflação e indicadores"
+   ],
+   "frente": "Quem fixa a meta de inflação e qual o índice?",
+   "verso": "O **CMN** fixa a meta; o índice é o **IPCA** (IBGE). Desde 2025 a meta é **contínua de 3%**, com tolerância de 1,5 ponto; ela é descumprida se a inflação ficar fora do intervalo por **6 meses seguidos**."
+  },
+  {
+   "lugar": [
+    "Mercado financeiro e de capitais",
+    "Política monetária e Copom"
+   ],
+   "frente": "Instrumentos clássicos de política monetária",
+   "verso": "**Open market** (compra e venda de títulos públicos), **recolhimento compulsório** e **redesconto**. Exemplo: aumentar o compulsório tira dinheiro de circulação, uma política **contracionista**."
+  },
+  {
+   "lugar": [
+    "Mercado financeiro e de capitais",
+    "Política monetária e Copom"
+   ],
+   "frente": "Subir a Selic esfria ou aquece a economia?",
+   "verso": "**Esfria**: crédito mais caro, menos consumo e investimento, menos pressão sobre os preços. É usado para **conter a inflação**."
+  },
+  {
+   "lugar": [
+    "Instituições financeiras e de pagamento",
+    "Instituições de pagamento"
+   ],
+   "frente": "Instituição de pagamento (Lei 12.865/2013) pode conceder empréstimo?",
+   "verso": "**Não**: ela não é instituição financeira. Oferece contas de pagamento, cartões e credenciamento, sob regulação do **Bacen**. Tipos: emissor de moeda eletrônica, emissor de instrumento pós-pago, credenciador."
+  },
+  {
+   "lugar": [
+    "Inovação nos pagamentos",
+    "Pix"
+   ],
+   "frente": "Pix: chaves possíveis e quantas por conta",
+   "verso": "CPF/CNPJ, e-mail, celular ou chave aleatória. Até **5 chaves por conta** para pessoa física e **20** para pessoa jurídica."
+  },
+  {
+   "lugar": [
+    "Inovação nos pagamentos",
+    "Pix"
+   ],
+   "frente": "O que é o MED do Pix?",
+   "verso": "**Mecanismo Especial de Devolução**: permite bloquear e devolver valores em caso de **fraude** ou falha operacional, a pedido do pagador à sua instituição."
+  },
+  {
+   "lugar": [
+    "Inovação nos pagamentos",
+    "Open Finance"
+   ],
+   "frente": "Open Finance: o que é e o que exige?",
+   "verso": "Compartilhamento padronizado de **dados e serviços** entre instituições, **sempre com o consentimento do cliente**, que pode revogar a qualquer momento. Regulado pelo Bacen e pelo CMN."
+  },
+  {
+   "lugar": [
+    "Prevenção à lavagem de dinheiro (PLD/FT)",
+    "COAF"
+   ],
+   "frente": "O que é o COAF e a quem está vinculado?",
+   "verso": "Unidade de inteligência financeira do Brasil: recebe e analisa as comunicações de operações suspeitas. Está **vinculado administrativamente ao Banco Central** (Lei 13.974/2020)."
+  },
+  {
+   "lugar": [
+    "Prevenção à lavagem de dinheiro (PLD/FT)",
+    "Lavagem de dinheiro e financiamento do terrorismo"
+   ],
+   "frente": "Lei de lavagem de dinheiro e a política \"Conheça seu cliente\"",
+   "verso": "A **Lei 9.613/1998** obriga as instituições a identificar clientes, manter registros e **comunicar ao COAF** operações suspeitas, **sem avisar o cliente**. O \"Conheça seu cliente\" (KYC) é a base disso."
+  },
+  {
+   "lugar": [
+    "Prevenção à lavagem de dinheiro (PLD/FT)",
+    "Lavagem de dinheiro e financiamento do terrorismo"
+   ],
+   "frente": "Operação em espécie de R$ 50 mil ou mais (Circular Bacen 3.978/2020)",
+   "verso": "Deve ser **comunicada ao COAF**, independentemente de suspeita. O saque desse valor precisa de **provisionamento** com antecedência."
+  },
+  {
+   "lugar": [
+    "Seguros, previdência e capitalização",
+    "Previdência complementar aberta"
+   ],
+   "frente": "PGBL x VGBL",
+   "verso": "**PGBL**: as contribuições podem ser deduzidas do IR até **12% da renda bruta** (declaração completa); o IR do resgate incide sobre o **total**. **VGBL**: não deduz; o IR incide só sobre os **rendimentos**."
+  },
+  {
+   "lugar": [
+    "Seguros, previdência e capitalização",
+    "Previdência complementar aberta"
+   ],
+   "frente": "Tabela regressiva de IR na previdência",
+   "verso": "Começa em **35%** (até 2 anos) e cai 5 pontos a cada 2 anos, até **10% após 10 anos**. É boa para prazo longo; a progressiva segue a tabela do IR."
+  },
+  {
+   "lugar": [
+    "Seguros, previdência e capitalização",
+    "Noções de seguros"
+   ],
+   "frente": "Prêmio, indenização e franquia",
+   "verso": "**Prêmio**: o que o segurado paga. **Indenização**: o que a seguradora paga no sinistro. **Franquia**: a parte do prejuízo que fica com o segurado."
+  },
+  {
+   "lugar": [
+    "Seguros, previdência e capitalização",
+    "Títulos de capitalização"
+   ],
+   "frente": "Título de capitalização é investimento?",
+   "verso": "Não deve ser tratado como investimento: parte do pagamento forma a **provisão para resgate**, e o resto paga **sorteios** e despesas. Regulado pelo **CNSP/Susep**."
+  },
+  {
+   "lugar": [
+    "Seguros, previdência e capitalização",
+    "Consórcio"
+   ],
+   "frente": "Consórcio: quem regula e como se recebe o bem?",
+   "verso": "Regulado pelo **Banco Central** (Lei 11.795/2008). Não tem juros, mas tem **taxa de administração**. A contemplação é por **sorteio ou lance**."
+  },
+  {
+   "lugar": [
+    "Seguros, previdência e capitalização",
+    "Bancassurance"
+   ],
+   "frente": "O que é bancassurance?",
+   "verso": "Venda de **seguros, previdência e capitalização pela rede do banco**, integrando os serviços bancários e securitários (no SFB, via Banestes Seguros e corretora)."
+  },
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Portabilidade"
+   ],
+   "frente": "Portabilidade de crédito: o que o cliente paga?",
+   "verso": "Nada: a transferência da dívida para outra instituição é **sem tarifa**. O banco original pode fazer uma **contraproposta** antes de liquidar a operação."
+  },
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Investimentos"
+   ],
+   "frente": "Garantia do FGC",
+   "verso": "Até **R$ 250 mil por CPF/CNPJ por instituição** (ou conglomerado), com teto de **R$ 1 milhão a cada 4 anos**. Cobre poupança, CDB, LCI, LCA, entre outros. **Não** cobre fundos, ações nem títulos públicos."
+  },
+  {
+   "lugar": [
+    "Regulação e consumidor",
+    "Adequação ao perfil do cliente"
+   ],
+   "frente": "O que é suitability (Resolução CVM 30/2021)?",
+   "verso": "O dever de **verificar se o produto é adequado ao perfil do cliente** (objetivos, situação financeira e conhecimento) antes de recomendar."
+  },
+  {
+   "lugar": [
+    "Resolução CMN 4.966/2021"
+   ],
+   "frente": "Resolução CMN 4.966/2021: do que trata e desde quando vale?",
+   "verso": "Critérios contábeis para **instrumentos financeiros**, alinhados à **IFRS 9**. Vigora desde **1º/01/2025**. Troca a perda incorrida pela **perda esperada** de crédito, em 3 estágios."
+  },
+  {
+   "lugar": [
+    "Resolução CMN 4.966/2021"
+   ],
+   "frente": "Pela 4.966, em quais categorias se classificam os ativos financeiros?",
+   "verso": "**Custo amortizado**, **valor justo em outros resultados abrangentes** e **valor justo no resultado**, conforme o modelo de negócios e as características do fluxo de caixa."
+  }
+ ]
+}

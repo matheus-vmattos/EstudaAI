@@ -1,0 +1,62 @@
+{
+ "nome": "Banestes · Técnico Bancário",
+ "banca": "FCC",
+ "dataProva": "2027-01-24",
+ "notaMinima": 6,
+ "materias": [
+  {
+   "nome": "Português",
+   "questoes": 10,
+   "peso": 1,
+   "texto": "Ortografia e acentuação. Emprego do sinal indicativo de crase. Compreensão e interpretação de textos de gêneros variados. Relação do texto com seu contexto histórico. Denotação e conotação. Discurso direto, discurso indireto e discurso indireto livre. Intertextualidade. Figuras de linguagem. Morfossintaxe. Elementos estruturais e processos de formação de palavras. Sinonímia e antonímia. Pontuação. Pronomes. Concordância nominal e concordância verbal. Flexão nominal e flexão verbal. Vozes do verbo. Correlação de tempos e modos verbais. Regência nominal e regência verbal. Coordenação e subordinação. Conectivos. Redação (confronto e reconhecimento de frases corretas e incorretas; organização e reorganização de orações e períodos; equivalência e transformação de estruturas)."
+  },
+  {
+   "nome": "Matemática e Raciocínio Lógico",
+   "questoes": 10,
+   "peso": 1,
+   "texto": "Estrutura lógica de relações arbitrárias entre pessoas, lugares, objetos ou eventos fictícios; deduzir novas informações das relações fornecidas e avaliar as condições usadas para estabelecer a estrutura daquelas relações. Compreensão e elaboração da lógica das situações por meio de: raciocínio verbal, raciocínio matemático, raciocínio sequencial, orientação espacial e temporal, formação de conceitos, discriminação de elementos. Compreensão do processo lógico que, a partir de um conjunto de hipóteses, conduz, de forma válida, a conclusões determinadas. Números inteiros e racionais: operações (adição, subtração, multiplicação, divisão, potenciação); expressões numéricas; múltiplos e divisores de números naturais; problemas. Frações e operações com frações. Números e grandezas proporcionais: razões e proporções; divisão em partes proporcionais; regra de três; porcentagem e problemas envolvendo regra de três simples, cálculos de porcentagem, acréscimos e descontos. Noções de Estatística: medidas de tendência central (moda, mediana, média aritmética simples e ponderada) e de dispersão (desvio médio, amplitude, variância, desvio padrão); leitura e interpretação de gráficos (histogramas, setores, infográficos) e tabelas. Contagem: princípio multiplicativo e aditivo, permutações e combinações simples."
+  },
+  {
+   "nome": "Atualidades do Mercado Financeiro",
+   "questoes": 5,
+   "peso": 1,
+   "texto": "Sistema Financeiro Nacional: estrutura, órgãos normativos, supervisores e operadores. Política monetária, Comitê de Política Monetária (Copom) do Banco Central do Brasil, taxa Selic, inflação, taxas de juros e seus impactos na economia. Mercado financeiro e de capitais: conceitos, produtos, serviços e principais indicadores. Open Finance, Pix, moedas digitais, inovação e transformação digital no sistema financeiro. Fintechs, bancos digitais, instituições de pagamento e tendências do setor bancário. Educação financeira, inclusão financeira e proteção do consumidor financeiro. Sustentabilidade, finanças sustentáveis e ESG no mercado financeiro. Cenários econômico e geopolítico nacional e internacional e seus reflexos no sistema financeiro. Atualidades e tendências do mercado financeiro brasileiro."
+  },
+  {
+   "nome": "Ética, Compliance e ESG",
+   "questoes": 5,
+   "peso": 1,
+   "texto": "Ética e moral: conceitos, princípios e aplicação no ambiente organizacional. Ética no serviço público e nas instituições financeiras. Integridade, transparência, responsabilidade e conflitos de interesse. Governança corporativa: conceitos, princípios e boas práticas. Compliance: conceito, objetivos, controles internos, gestão de riscos, canais de denúncia e programas de integridade. Prevenção e combate à corrupção, fraudes e lavagem de dinheiro. Proteção de dados pessoais e privacidade. Noções da Lei Geral de Proteção de Dados Pessoais (LGPD). ESG (Environmental, Social and Governance): conceitos, fundamentos e aplicação nas organizações. Sustentabilidade e responsabilidade socioambiental corporativa. Aspectos ambientais, sociais e de governança (ESG) aplicados ao setor financeiro. Desenvolvimento sustentável, Agenda 2030 e Objetivos de Desenvolvimento Sustentável (ODS). Guia de Conduta Ética do Banestes – Disponível em: https://www.banestes.com.br/institucional/pdf/guia_de_conduta_etica.pdf"
+  },
+  {
+   "nome": "Conhecimentos Bancários",
+   "questoes": 15,
+   "peso": 2,
+   "texto": "Sistema Financeiro Nacional: estrutura, órgãos normativos, supervisores e operadores. Instituições financeiras e Instituições de Pagamento: conceitos, tipos, funções e operações. Produtos e serviços bancários: contas, meios de pagamento, crédito, investimentos, cartões e canais de atendimento. Captação, intermediação e aplicação de recursos financeiros. Mercado financeiro e de capitais: conceitos básicos e principais instrumentos. Política monetária, Comitê de Política Monetária (Copom) do Banco Central do Brasil, taxas de juros, inflação e indicadores econômicos. Open Finance, Pix, meios eletrônicos de pagamento e inovação no sistema financeiro. Prevenção à lavagem de dinheiro e ao financiamento do terrorismo. Conselho de Controle de Atividades Financeiras (COAF). Educação financeira e proteção do consumidor de produtos e serviços financeiros. Noções de seguros: conceitos, princípios, participantes e modalidades de seguros pessoais e empresariais. Previdência complementar aberta: conceitos, características e modalidades. Títulos de capitalização: conceitos, características e funcionamento. Produtos bancassurance: integração entre serviços bancários, seguros, previdência e capitalização. Consórcio. Regulação e supervisão dos mercados financeiro e securitário. Atendimento, comercialização e adequação de produtos financeiros e securitários ao perfil do cliente. Portabilidade. Resolução CMN nº 4.966/2021."
+  },
+  {
+   "nome": "Matemática Financeira",
+   "questoes": 5,
+   "peso": 2,
+   "texto": "Razão, proporção, porcentagem e variação percentual. Juros simples e juros compostos. Taxas de juros: nominal, efetiva, proporcional, equivalente e real. Capitalização e desconto simples e composto. Valor presente e valor futuro. Séries de pagamentos (anuidades) e sistemas de amortização. Fluxo de caixa e equivalência de capitais. Cálculo financeiro aplicado a operações de crédito e investimentos. Análise de financiamentos e empréstimos. Matemática financeira aplicada ao mercado financeiro e bancário."
+  },
+  {
+   "nome": "Probabilidade e Estatística",
+   "questoes": 5,
+   "peso": 2,
+   "texto": "Conceitos básicos de estatística e análise de dados. População, amostra e técnicas de amostragem. Organização, representação e interpretação de dados em tabelas e gráficos. Medidas de tendência central: média, mediana e moda. Medidas de dispersão: amplitude, variância, desvio padrão e coeficiente de variação. Probabilidade: conceitos fundamentais, eventos, espaço amostral e cálculo de probabilidades. Probabilidade condicional e independência de eventos. Distribuições de frequência e distribuição normal. Análise e interpretação de indicadores estatísticos. Aplicações de probabilidade e estatística em contextos financeiros, econômicos e organizacionais."
+  },
+  {
+   "nome": "Informática e Comportamentos Digitais",
+   "questoes": 5,
+   "peso": 2,
+   "texto": "Lei Geral de Proteção de Dados Pessoais (LGPD): fundamentos, conceitos, princípios, bases legais, direitos dos titulares, tratamento de dados sensíveis, agentes de tratamento, encarregado, segurança, boas práticas, responsabilidade e sanções. Aplicações da LGPD ao setor bancário: cadastro de clientes, análise de crédito, prevenção à fraude, compartilhamento de dados, proteção do crédito e decisões automatizadas. Noções de Informática, Google Workspace e segurança digital: conceitos básicos de informática, hardware, software, sistemas operacionais ( Windows e Linux básico, em suas últimas versões), internet, intranet, navegadores, mecanismos de busca, correio eletrônico, computação em nuvem, redes de computadores, aplicativos de escritório, ferramentas de colaboração digital, segurança da informação, senhas, autenticação, vírus, malware, phishing, engenharia social, privacidade, proteção de dados e boas práticas de uso corporativo. Google Workspace: Gmail, Drive, Docs, Sheets, Slides, Forms, Calendar, Meet e Chat. Inteligência Artificial e novas tecnologias: conceitos básicos de inteligência artificial, aprendizado de máquina, IA generativa, automação, chatbots, processamento de linguagem natural, Gemini no Google Workspace, aplicações bancárias da IA, análise de crédito, prevenção à fraude, atendimento ao cliente, riscos, vieses, explicabilidade, governança, segurança da informação, LGPD e decisões automatizadas."
+  },
+  {
+   "nome": "Vendas, Negociação e Atendimento",
+   "questoes": 10,
+   "peso": 2,
+   "texto": "Atendimento ao cliente: conceitos, princípios, qualidade, excelência e satisfação do cliente. Comunicação interpessoal, relacionamento com clientes e técnicas de atendimento presencial e digital. Perfil, necessidades e comportamento do consumidor de produtos e serviços financeiros. Técnicas de vendas e pós-venda. Prospecção, fidelização e retenção de clientes. Negociação: conceitos, etapas, estratégias e técnicas de negociação. Gestão do relacionamento com clientes (CRM). Marketing de relacionamento e experiência do cliente. Produtos e serviços bancários: características, benefícios e adequação ao perfil do cliente. Ética, transparência e responsabilidade no atendimento e na oferta de produtos e serviços financeiros. Resolução de conflitos, tratamento de reclamações e mediação de situações de atendimento. Canais de atendimento e transformação digital no setor bancário. Educação financeira e orientação ao cliente na utilização de produtos e serviços financeiros."
+  }
+ ]
+}

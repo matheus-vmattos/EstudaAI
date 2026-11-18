@@ -1,0 +1,69 @@
+{
+ "materia": "Informática e Comportamentos Digitais",
+ "cartoes": [
+  {
+   "lugar": [
+    "LGPD",
+    "Fundamentos e princípios"
+   ],
+   "frente": "LGPD: número da lei e o que protege",
+   "verso": "**Lei 13.709/2018.** Protege os direitos fundamentais de liberdade e privacidade no tratamento de **dados pessoais**, inclusive nos meios digitais, por pessoa natural ou jurídica."
+  },
+  {
+   "lugar": [
+    "LGPD",
+    "Dados sensíveis"
+   ],
+   "frente": "O que é dado pessoal sensível na LGPD?",
+   "verso": "Origem racial ou étnica, convicção religiosa, opinião política, filiação a sindicato ou organização religiosa, filosófica ou política, dado de **saúde ou vida sexual**, **genético ou biométrico**."
+  },
+  {
+   "lugar": [
+    "LGPD",
+    "Agentes de tratamento e encarregado"
+   ],
+   "frente": "Controlador, operador e encarregado",
+   "verso": "**Controlador**: decide sobre o tratamento. **Operador**: trata em nome do controlador. **Encarregado (DPO)**: canal entre controlador, titulares e ANPD."
+  },
+  {
+   "lugar": [
+    "LGPD",
+    "Bases legais"
+   ],
+   "frente": "Consentimento é a única base legal da LGPD?",
+   "verso": "**Não.** São 10 hipóteses (art. 7º), entre elas: cumprimento de obrigação legal, execução de contrato, exercício de direitos, **proteção do crédito**, legítimo interesse e consentimento."
+  },
+  {
+   "lugar": [
+    "LGPD",
+    "Direitos dos titulares"
+   ],
+   "frente": "Direitos do titular (exemplos do art. 18)",
+   "verso": "Confirmação e **acesso**, **correção**, anonimização, bloqueio ou eliminação, **portabilidade**, informação sobre compartilhamento, revogação do consentimento."
+  },
+  {
+   "lugar": [
+    "LGPD",
+    "Segurança, responsabilidade e sanções"
+   ],
+   "frente": "Multa máxima da LGPD",
+   "verso": "**2% do faturamento** no Brasil no último exercício, limitada a **R$ 50 milhões por infração**. Quem aplica é a **ANPD**."
+  },
+  {
+   "lugar": [
+    "LGPD",
+    "LGPD no setor bancário"
+   ],
+   "frente": "Decisão automatizada (ex.: análise de crédito por algoritmo): o que a LGPD garante?",
+   "verso": "O direito de **solicitar a revisão** de decisões tomadas só com base em tratamento automatizado que afetem os interesses do titular, e de receber informações sobre os critérios usados (art. 20)."
+  },
+  {
+   "lugar": [
+    "LGPD",
+    "Fundamentos e princípios"
+   ],
+   "frente": "Princípios da LGPD (art. 6º)",
+   "verso": "Finalidade, adequação, **necessidade**, livre acesso, qualidade dos dados, transparência, segurança, prevenção, não discriminação e **responsabilização e prestação de contas**."
+  }
+ ]
+}

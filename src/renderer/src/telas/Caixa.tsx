@@ -8,11 +8,17 @@ import {
 } from '../../../shared/estrutura'
 import { lerRespostaDaIa } from '../../../shared/questoes'
 import { importarCartoes, lerPacoteDeCartoes } from '../../../shared/pacoteDeCartoes'
+import { importarEdital, lerPacoteDeEdital } from '../../../shared/edital'
 import type { Dados, Id, ItemDaCaixa, Simulado } from '../../../shared/tipos'
 
 export type EstadoDaCaixa = { carregando: boolean; itens: ItemDaCaixa[]; erro: string }
 
-const NOME_DO_TIPO = { estrutura: 'Mapa', simulado: 'Simulado', cartoes: 'Flashcards' }
+const NOME_DO_TIPO = {
+  estrutura: 'Mapa',
+  simulado: 'Simulado',
+  cartoes: 'Flashcards',
+  edital: 'Edital'
+}
 
 /** O que o Claude preparou para você: mapas e simulados prontos para importar */
 export function Caixa({
@@ -22,7 +28,8 @@ export function Caixa({
   atualizar,
   abrirMapa,
   abrirSimulado,
-  abrirFlashcards
+  abrirFlashcards,
+  abrirEdital
 }: {
   dados: Dados
   mudar: Mudar
@@ -31,6 +38,7 @@ export function Caixa({
   abrirMapa: () => void
   abrirSimulado: (id: Id) => void
   abrirFlashcards: () => void
+  abrirEdital: () => void
 }) {
   const [trabalhando, setTrabalhando] = useState<string | null>(null)
   const [resultado, setResultado] = useState<
@@ -58,6 +66,28 @@ export function Caixa({
       setResultado((x) => ({
         ...x,
         [item.id]: { ok: true, texto: `✓ ${res.criados} criados · ${res.aproveitados} já existiam` }
+      }))
+      return
+    }
+    if (item.tipo === 'edital') {
+      const lido = lerPacoteDeEdital(r.texto)
+      if (!lido.ok) {
+        setResultado((x) => ({ ...x, [item.id]: { ok: false, texto: lido.erro } }))
+        return
+      }
+      const res = importarEdital(structuredClone(dados), lido.pacote, novoId)
+      mudar((d) => {
+        importarEdital(d, lido.pacote, novoId)
+        d.caixaImportados = [...new Set([...(d.caixaImportados ?? []), item.id])]
+      })
+      setResultado((x) => ({
+        ...x,
+        [item.id]: {
+          ok: true,
+          texto:
+            `✓ Edital ligado: ${res.materias} matérias` +
+            (res.criadas ? ` (${res.criadas} novas, importe também o mapa)` : '')
+        }
       }))
       return
     }
@@ -170,6 +200,11 @@ export function Caixa({
                 {res?.ok && item.tipo === 'estrutura' && (
                   <button type="button" className="botao" onClick={abrirMapa}>
                     Ver no mapa
+                  </button>
+                )}
+                {res?.ok && item.tipo === 'edital' && (
+                  <button type="button" className="botao sucesso" onClick={abrirEdital}>
+                    Ver meu edital
                   </button>
                 )}
                 {res?.ok && item.tipo === 'cartoes' && (
