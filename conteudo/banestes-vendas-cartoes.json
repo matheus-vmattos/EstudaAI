@@ -1,0 +1,265 @@
+{
+ "materia": "Vendas, Negociação e Atendimento",
+ "cartoes": [
+  {
+   "lugar": [
+    "Atendimento",
+    "Qualidade e excelência"
+   ],
+   "frente": "As 4 características dos serviços (e por que o atendimento importa)",
+   "verso": "**Intangibilidade** (não se toca), **inseparabilidade** (produzido e consumido ao mesmo tempo, com o atendente), **variabilidade** (depende de quem atende) e **perecibilidade** (não se estoca)."
+  },
+  {
+   "lugar": [
+    "Atendimento",
+    "Qualidade e excelência"
+   ],
+   "frente": "As 5 dimensões da qualidade em serviços (SERVQUAL)",
+   "verso": "**Confiabilidade** (fazer o prometido), **responsividade** (presteza), **segurança** (competência e cortesia que passam confiança), **empatia** (atenção individual) e **tangíveis** (instalações, aparência, materiais)."
+  },
+  {
+   "lugar": [
+    "Atendimento",
+    "Qualidade e excelência"
+   ],
+   "frente": "O que é \"momento da verdade\" no atendimento?",
+   "verso": "Cada contato do cliente com a empresa em que ele forma uma impressão do serviço (Jan Carlzon, SAS). Somados, definem a imagem da empresa."
+  },
+  {
+   "lugar": [
+    "Atendimento",
+    "Satisfação do cliente"
+   ],
+   "frente": "Satisfação do cliente, segundo Kotler",
+   "verso": "É a comparação entre o **desempenho percebido** e as **expectativas**: abaixo, insatisfeito; igual, satisfeito; acima, encantado."
+  },
+  {
+   "lugar": [
+    "Atendimento",
+    "Satisfação do cliente"
+   ],
+   "frente": "Valor percebido pelo cliente",
+   "verso": "A diferença entre os **benefícios** que ele percebe (produto, serviço, imagem, atendimento) e os **custos** totais (dinheiro, tempo, esforço, desgaste)."
+  },
+  {
+   "lugar": [
+    "Atendimento",
+    "Comunicação interpessoal"
+   ],
+   "frente": "O que é escuta ativa?",
+   "verso": "Ouvir com atenção total, sem interromper, **confirmando o que entendeu** (parafrasear, perguntar) antes de responder. Mostra interesse real e evita mal-entendidos."
+  },
+  {
+   "lugar": [
+    "Atendimento",
+    "Comunicação interpessoal"
+   ],
+   "frente": "Comunicação assertiva x passiva x agressiva",
+   "verso": "**Assertiva**: expressa opiniões e limites com clareza e respeito. **Passiva**: evita se posicionar. **Agressiva**: impõe sem respeitar o outro."
+  },
+  {
+   "lugar": [
+    "Atendimento",
+    "Comunicação interpessoal"
+   ],
+   "frente": "O que é rapport?",
+   "verso": "Sintonia e confiança criadas com o cliente (atenção, linguagem próxima, empatia), que facilita a conversa e a venda."
+  },
+  {
+   "lugar": [
+    "Atendimento",
+    "Canais e transformação digital"
+   ],
+   "frente": "Multicanal x omnichannel",
+   "verso": "**Multicanal**: vários canais que funcionam separados. **Omnichannel**: canais integrados; o cliente começa no app e termina na agência sem repetir a história."
+  },
+  {
+   "lugar": [
+    "Comportamento do consumidor",
+    "Perfil e necessidades"
+   ],
+   "frente": "Etapas do processo de decisão de compra (Kotler)",
+   "verso": "Reconhecimento da necessidade → busca de informações → avaliação de alternativas → decisão de compra → **comportamento pós-compra**."
+  },
+  {
+   "lugar": [
+    "Comportamento do consumidor",
+    "Perfil e necessidades"
+   ],
+   "frente": "Fatores que influenciam o comportamento do consumidor (Kotler)",
+   "verso": "**Culturais**, **sociais** (grupos, família, papéis), **pessoais** (idade, ocupação, situação financeira, estilo de vida) e **psicológicos** (motivação, percepção, aprendizagem, crenças)."
+  },
+  {
+   "lugar": [
+    "Comportamento do consumidor",
+    "Perfil e necessidades"
+   ],
+   "frente": "O que é dissonância cognitiva no pós-compra?",
+   "verso": "O desconforto do cliente que duvida se fez a escolha certa. O pós-venda reduz a dissonância confirmando o valor do que ele comprou."
+  },
+  {
+   "lugar": [
+    "Comportamento do consumidor",
+    "Adequação de produtos ao perfil"
+   ],
+   "frente": "Por que oferecer produto adequado ao perfil?",
+   "verso": "É dever de **suitability** e de conduta: a oferta deve casar com objetivos, situação financeira e tolerância a risco do cliente. Vender o que não serve gera reclamação e perda do cliente."
+  },
+  {
+   "lugar": [
+    "Vendas",
+    "Técnicas de vendas"
+   ],
+   "frente": "Etapas do processo de venda pessoal (Kotler)",
+   "verso": "**Prospecção e qualificação** → pré-abordagem → abordagem → apresentação e demonstração → **superação de objeções** → fechamento → **acompanhamento** (pós-venda)."
+  },
+  {
+   "lugar": [
+    "Vendas",
+    "Técnicas de vendas"
+   ],
+   "frente": "Venda consultiva",
+   "verso": "O vendedor atua como consultor: primeiro **entende a necessidade** do cliente com perguntas, depois oferece a solução certa. Foco no relacionamento, não na venda única."
+  },
+  {
+   "lugar": [
+    "Vendas",
+    "Técnicas de vendas"
+   ],
+   "frente": "SPIN Selling: o que cada letra pergunta?",
+   "verso": "**S**ituação (o contexto), **P**roblema (a dificuldade), **I**mplicação (as consequências do problema), **N**ecessidade de solução (o valor de resolvê-lo)."
+  },
+  {
+   "lugar": [
+    "Vendas",
+    "Técnicas de vendas"
+   ],
+   "frente": "Cross-selling x up-selling",
+   "verso": "**Cross-selling**: oferecer produto complementar (quem abre conta leva um seguro). **Up-selling**: oferecer versão superior do mesmo produto (cartão de categoria mais alta)."
+  },
+  {
+   "lugar": [
+    "Vendas",
+    "Prospecção"
+   ],
+   "frente": "Prospecção e qualificação",
+   "verso": "Identificar clientes potenciais (*leads*) e **qualificar** quem tem necessidade, capacidade de compra e poder de decisão, para não gastar esforço com quem não vai comprar."
+  },
+  {
+   "lugar": [
+    "Vendas",
+    "Fidelização e retenção"
+   ],
+   "frente": "Por que reter clientes compensa?",
+   "verso": "Conquistar um cliente novo custa **bem mais** (Kotler fala em até 5 vezes) do que manter um atual, e o cliente fiel compra mais e indica."
+  },
+  {
+   "lugar": [
+    "Vendas",
+    "Fidelização e retenção"
+   ],
+   "frente": "NPS (Net Promoter Score)",
+   "verso": "Pergunta: \"de 0 a 10, quanto recomendaria?\". **NPS = % promotores (9–10) − % detratores (0–6)**; quem dá 7–8 é neutro."
+  },
+  {
+   "lugar": [
+    "Vendas",
+    "Pós-venda"
+   ],
+   "frente": "Para que serve o pós-venda?",
+   "verso": "Acompanhar a satisfação, resolver problemas, reduzir a dissonância e abrir caminho para **recompra e indicação**. Fecha o ciclo da venda."
+  },
+  {
+   "lugar": [
+    "Negociação",
+    "Conceitos e etapas"
+   ],
+   "frente": "Negociação distributiva x integrativa",
+   "verso": "**Distributiva**: disputa por um valor fixo, ganha-perde. **Integrativa**: busca ampliar o valor e atender aos interesses dos dois lados, ganha-ganha."
+  },
+  {
+   "lugar": [
+    "Negociação",
+    "Conceitos e etapas"
+   ],
+   "frente": "Etapas de uma negociação",
+   "verso": "**Preparação** (a mais importante) → abertura → exploração das necessidades → apresentação das propostas → clarificação e concessões → **fechamento** → controle e avaliação."
+  },
+  {
+   "lugar": [
+    "Negociação",
+    "Estratégias e técnicas"
+   ],
+   "frente": "Os 4 princípios do método de Harvard (\"Como chegar ao sim\")",
+   "verso": "Separar **as pessoas do problema**; focar nos **interesses, não nas posições**; criar **opções de ganho mútuo**; usar **critérios objetivos**."
+  },
+  {
+   "lugar": [
+    "Negociação",
+    "Estratégias e técnicas"
+   ],
+   "frente": "O que é BATNA (MAPAN)?",
+   "verso": "**Melhor Alternativa à Negociação de um Acordo**: o que você faz se não fechar. Conhecê-la dá poder e mostra até onde ceder."
+  },
+  {
+   "lugar": [
+    "Negociação",
+    "Estratégias e técnicas"
+   ],
+   "frente": "O que é ZOPA?",
+   "verso": "**Zona de Possível Acordo**: a faixa entre o mínimo que um lado aceita e o máximo que o outro topa. Sem ZOPA, não há acordo possível."
+  },
+  {
+   "lugar": [
+    "Relacionamento com o cliente",
+    "CRM"
+   ],
+   "frente": "O que é CRM e seus tipos",
+   "verso": "Gestão do relacionamento com o cliente (estratégia + tecnologia + processos). **Operacional** (atendimento, vendas), **analítico** (dados para entender o cliente) e **colaborativo** (integra canais e áreas)."
+  },
+  {
+   "lugar": [
+    "Relacionamento com o cliente",
+    "Marketing de relacionamento"
+   ],
+   "frente": "Marketing de relacionamento",
+   "verso": "Foco em construir **relações de longo prazo** e lucrativas com o cliente, em vez de só vender uma vez: conhecer, personalizar, fidelizar."
+  },
+  {
+   "lugar": [
+    "Relacionamento com o cliente",
+    "Experiência do cliente"
+   ],
+   "frente": "O que é jornada do cliente?",
+   "verso": "O caminho inteiro do cliente com a empresa (descoberta, contratação, uso, suporte, renovação), com todos os pontos de contato. Melhorar a experiência é cuidar de cada etapa."
+  },
+  {
+   "lugar": [
+    "Conflitos e reclamações"
+   ],
+   "frente": "Reclamação: ameaça ou oportunidade?",
+   "verso": "**Oportunidade**: cliente que reclama e é bem atendido tende a ficar mais fiel. Ouvir com empatia, pedir desculpas, resolver rápido e acompanhar (**recuperação do serviço**)."
+  },
+  {
+   "lugar": [
+    "Conflitos e reclamações"
+   ],
+   "frente": "Ouvidoria bancária: qual o papel e o prazo?",
+   "verso": "É a **2ª instância**: atua quando o atendimento habitual (agência, SAC) não resolveu. Regida pela Resolução CMN 4.860/2020, responde em até **10 dias úteis**."
+  },
+  {
+   "lugar": [
+    "Ética e educação financeira no atendimento"
+   ],
+   "frente": "O Código de Defesa do Consumidor vale para bancos?",
+   "verso": "**Sim** (Súmula 297 do STJ). E **venda casada** é proibida: condicionar um produto à compra de outro (CDC, art. 39, I)."
+  },
+  {
+   "lugar": [
+    "Ética e educação financeira no atendimento"
+   ],
+   "frente": "Princípios no relacionamento com clientes (Resolução CMN 4.949/2021)",
+   "verso": "Ética, responsabilidade, **transparência** e **diligência**: informação clara, oferta adequada ao perfil, tratamento justo e sem práticas abusivas."
+  }
+ ]
+}
