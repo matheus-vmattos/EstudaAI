@@ -31,6 +31,14 @@
       "descricao": "33 cartões: a fórmula montada no verso e quando usar. Entram no mapa de Matemática Financeira; o que já existir não duplica.",
       "arquivo": "matematica-financeira-cartoes-piloto.json",
       "data": "2026-11-16"
+    },
+    {
+      "id": "banestes-tb-estrutura-v1",
+      "tipo": "estrutura",
+      "titulo": "Mapa do edital Banestes — Técnico Bancário (FCC)",
+      "descricao": "As 9 matérias da prova de 24/01/2027 no formato do edital. Peso na nota final: Conhecimentos Bancários 25% · Vendas e Atendimento 17% · Português 11% · Matemática/RL 11% · Mat. Financeira, Estatística e Informática 8% cada · Atualidades e Ética 6% cada. O que você já tem é aproveitado.",
+      "arquivo": "banestes-tb-estrutura.txt",
+      "data": "2026-11-18"
     }
   ]
 }

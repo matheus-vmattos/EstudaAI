@@ -1,0 +1,125 @@
+Português
+├─ Fonologia
+│  └─ Acentuação gráfica e ortografia
+├─ Morfologia
+│  ├─ Estrutura das palavras
+│  ├─ Formação de palavras (derivação, composição)
+│  ├─ Classes de palavras
+│  │  └─ Pronome
+│  └─ Flexão nominal e verbal · Vozes do verbo · Correlação de tempos e modos verbais
+├─ Sintaxe
+│  └─ Morfossintaxe · Período composto (coordenação, subordinação) · Conectivos · Concordância verbal e nominal · Regência verbal e nominal · Crase
+├─ Pontuação
+├─ Semântica
+│  └─ Sinônimos e antônimos · Figuras de linguagem
+├─ Interpretação de texto
+│  └─ Gêneros textuais · Relação com o contexto histórico · Denotação e conotação · Discurso direto, indireto e indireto livre · Intertextualidade
+└─ Reescrita de frases
+   └─ Frases corretas e incorretas · Organização e reorganização de orações e períodos · Equivalência e transformação de estruturas
+Matemática e Raciocínio Lógico
+├─ Raciocínio lógico
+│  └─ Relações arbitrárias (pessoas, lugares, objetos) · Raciocínio verbal · Raciocínio sequencial · Orientação espacial e temporal · Hipóteses e conclusões válidas
+├─ Números
+│  └─ Inteiros e racionais · Expressões numéricas · Múltiplos e divisores · Frações
+├─ Proporcionalidade
+│  └─ Razão e proporção · Divisão em partes proporcionais · Regra de três · Porcentagem, acréscimos e descontos
+├─ Noções de estatística
+│  └─ Média, moda e mediana · Média ponderada · Dispersão (desvio médio, amplitude, variância, desvio padrão) · Gráficos e tabelas
+└─ Contagem
+   └─ Princípio multiplicativo e aditivo · Permutações · Combinações simples
+Atualidades do Mercado Financeiro
+├─ Sistema Financeiro Nacional
+│  └─ Estrutura · Órgãos normativos · Supervisores · Operadores
+├─ Política monetária
+│  └─ Copom e taxa Selic · Inflação · Juros e impactos na economia
+├─ Mercado financeiro e de capitais
+│  └─ Produtos e serviços · Principais indicadores
+├─ Inovação financeira
+│  └─ Pix · Open Finance · Moedas digitais · Fintechs e bancos digitais · Instituições de pagamento
+├─ Cidadania financeira
+│  └─ Educação financeira · Inclusão financeira · Proteção do consumidor
+├─ Finanças sustentáveis e ESG
+└─ Cenário econômico e geopolítico
+Ética, Compliance e ESG
+├─ Ética e moral
+│  └─ Conceitos e princípios · Ética nas organizações · Ética no serviço público e nas instituições financeiras · Integridade, transparência e responsabilidade · Conflito de interesses
+├─ Governança corporativa
+│  └─ Conceitos e princípios · Boas práticas
+├─ Compliance
+│  └─ Conceito e objetivos · Controles internos · Gestão de riscos · Canais de denúncia · Programas de integridade
+├─ Prevenção a ilícitos
+│  └─ Corrupção · Fraudes · Lavagem de dinheiro
+├─ Proteção de dados e LGPD
+├─ ESG e sustentabilidade
+│  └─ Conceitos e fundamentos · ESG no setor financeiro · Responsabilidade socioambiental · Agenda 2030 e ODS
+└─ Guia de Conduta Ética do Banestes
+Conhecimentos Bancários
+├─ Sistema Financeiro Nacional
+│  └─ Estrutura · Órgãos normativos (CMN, CNSP, CNPC) · Supervisores (Bacen, CVM, Susep, Previc) · Operadores
+├─ Instituições financeiras e de pagamento
+│  └─ Tipos e funções · Instituições de pagamento · Captação, intermediação e aplicação de recursos
+├─ Produtos e serviços bancários
+│  └─ Contas · Meios de pagamento · Crédito · Investimentos · Cartões · Canais de atendimento · Portabilidade
+├─ Mercado financeiro e de capitais
+│  └─ Conceitos e instrumentos · Política monetária e Copom · Juros, inflação e indicadores
+├─ Inovação nos pagamentos
+│  └─ Pix · Open Finance · Meios eletrônicos de pagamento
+├─ Prevenção à lavagem de dinheiro (PLD/FT)
+│  └─ Lavagem de dinheiro e financiamento do terrorismo · COAF
+├─ Seguros, previdência e capitalização
+│  └─ Noções de seguros · Previdência complementar aberta · Títulos de capitalização · Bancassurance · Consórcio
+├─ Regulação e consumidor
+│  └─ Regulação dos mercados financeiro e securitário · Educação financeira e proteção do consumidor · Adequação ao perfil do cliente
+└─ Resolução CMN 4.966/2021
+Matemática Financeira
+├─ Fundamentos
+│  └─ Razão e proporção · Porcentagem · Variação percentual
+├─ Juros simples
+├─ Juros compostos
+├─ Taxas
+│  └─ Taxas equivalentes · Nominal e efetiva · Taxa real e inflação
+├─ Descontos
+│  └─ Desconto simples · Desconto composto
+├─ Séries de pagamentos
+│  └─ Valor presente e futuro
+├─ Amortização
+│  └─ SAC · Price
+├─ Fluxo de caixa
+│  └─ Equivalência de capitais
+└─ Aplicações bancárias
+   └─ Operações de crédito · Investimentos · Financiamentos e empréstimos
+Probabilidade e Estatística
+├─ Fundamentos
+│  └─ População e amostra · Técnicas de amostragem · Tabelas e gráficos · Distribuição de frequências
+├─ Medidas de tendência central
+│  └─ Média · Mediana · Moda
+├─ Medidas de dispersão
+│  └─ Amplitude · Variância · Desvio padrão · Coeficiente de variação
+├─ Probabilidade
+│  └─ Espaço amostral e eventos · Probabilidade condicional · Eventos independentes
+├─ Distribuição normal
+└─ Aplicações e indicadores
+Informática e Comportamentos Digitais
+├─ LGPD
+│  └─ Fundamentos e princípios · Bases legais · Direitos dos titulares · Dados sensíveis · Agentes de tratamento e encarregado · Segurança, responsabilidade e sanções · LGPD no setor bancário
+├─ Fundamentos de informática
+│  └─ Hardware e software · Windows e Linux · Internet, intranet e navegadores · Correio eletrônico · Computação em nuvem · Redes de computadores
+├─ Segurança da informação
+│  └─ Senhas e autenticação · Malware e vírus · Phishing e engenharia social · Boas práticas corporativas
+├─ Google Workspace
+│  └─ Gmail · Drive · Docs · Sheets · Slides · Forms · Calendar · Meet e Chat · Gemini no Workspace
+└─ Inteligência artificial
+   └─ Aprendizado de máquina · IA generativa e chatbots · Processamento de linguagem natural · IA no banco (crédito, fraude, atendimento) · Riscos, vieses e explicabilidade · Governança e decisões automatizadas
+Vendas, Negociação e Atendimento
+├─ Atendimento
+│  └─ Qualidade e excelência · Satisfação do cliente · Comunicação interpessoal · Presencial e digital · Canais e transformação digital
+├─ Comportamento do consumidor
+│  └─ Perfil e necessidades · Adequação de produtos ao perfil
+├─ Vendas
+│  └─ Técnicas de vendas · Pós-venda · Prospecção · Fidelização e retenção
+├─ Negociação
+│  └─ Conceitos e etapas · Estratégias e técnicas
+├─ Relacionamento com o cliente
+│  └─ CRM · Marketing de relacionamento · Experiência do cliente
+├─ Conflitos e reclamações
+└─ Ética e educação financeira no atendimento
