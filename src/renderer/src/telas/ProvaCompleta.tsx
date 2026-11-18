@@ -3,7 +3,7 @@ import { Icone } from '../Icone'
 import { novoId, type Mudar } from '../useDados'
 import { lerRespostaDaIa } from '../../../shared/questoes'
 import {
-  blocosDaProva,
+  montagemDaProva,
   ordenarBloco,
   promptDoBloco,
   simuladoDaProva
@@ -29,7 +29,9 @@ export function ProvaCompleta({
   const [copiado, setCopiado] = useState<number | null>(null)
   const [erro, setErro] = useState<{ bloco: number; texto: string } | null>(null)
   // a montagem fica guardada: dá para pedir um bloco hoje e outro amanhã
-  const montagem = dados.provaEmMontagem ?? { criadoEm: 0, blocos: blocosDaProva(dados, e) }
+  // (se o edital mudou desde então, recomeça)
+  const montagem = montagemDaProva(dados, e)
+  const salva = montagem === dados.provaEmMontagem
   const recebidas = montagem.blocos.reduce((n, b) => n + (b.questoes?.length ?? 0), 0)
   const total = montagem.blocos.reduce(
     (n, b) => n + b.materias.reduce((k, m) => k + m.questoes, 0),
@@ -39,7 +41,8 @@ export function ProvaCompleta({
 
   const guardar = (f: (blocos: typeof montagem.blocos) => void): void =>
     mudar((d) => {
-      const m = d.provaEmMontagem ?? { criadoEm: Date.now(), blocos: blocosDaProva(d, e) }
+      const m = montagemDaProva(d, e)
+      if (!m.criadoEm) m.criadoEm = Date.now()
       f(m.blocos)
       d.provaEmMontagem = m
     })
@@ -207,7 +210,7 @@ export function ProvaCompleta({
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
-          {dados.provaEmMontagem && (
+          {salva && (
             <button
               type="button"
               className="botao"

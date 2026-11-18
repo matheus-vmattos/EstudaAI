@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { registrarDiaDeEstudo } from '../../shared/estudoDoDia'
 import type { Dados } from '../../shared/tipos'
 
 export type Mudar = (receita: (rascunho: Dados) => void) => void
@@ -84,6 +85,7 @@ export function useDados(): { dados: Dados | null; mudar: Mudar; erroAoSalvar: b
         // uso individual e evita mutar o estado do React por engano
         const novo = structuredClone(atual)
         receita(novo)
+        registrarDiaDeEstudo(novo)
         pendente.current = novo
         window.clearTimeout(timer.current)
         timer.current = window.setTimeout(gravar, 500)

@@ -182,6 +182,8 @@ export interface Dados {
   edital?: Edital
   planoDoDia?: PlanoDoDia
   provaEmMontagem?: ProvaEmMontagem
+  /** AAAA-MM-DD dos dias com estudo, para a sequência (v0.1.16+) */
+  diasDeEstudo?: string[]
   /** baralhos com a seta ao contrário do padrão (matéria aberta, nós fechados) */
   baralhosInvertidos?: Id[]
   /** itens da caixa "Do Claude" já importados */

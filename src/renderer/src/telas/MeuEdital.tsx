@@ -1,3 +1,4 @@
+import { montagemDaProva } from '../../../shared/provaCompleta'
 import { useEffect, useRef, useState } from 'react'
 import { Icone } from '../Icone'
 import { novoId, type Mudar } from '../useDados'
@@ -216,8 +217,10 @@ export function MeuEdital({
                 className="botao passo pendente"
                 onClick={() => setNaProva(true)}
               >
-                {dados.provaEmMontagem ? 'Continuar prova completa' : 'Prova completa'} ·{' '}
-                {e.materias.reduce((n, m) => n + m.questoes, 0)} questões
+                {dados.provaEmMontagem && montagemDaProva(dados, e) === dados.provaEmMontagem
+                  ? 'Continuar prova completa'
+                  : 'Prova completa'}{' '}
+                · {e.materias.reduce((n, m) => n + m.questoes, 0)} questões
                 <Icone nome="direita" tamanho={14} />
               </button>
             </div>

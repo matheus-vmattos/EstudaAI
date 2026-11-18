@@ -1,12 +1,19 @@
 import { describe, expect, it } from 'vitest'
 import {
   blocosDaProva,
+  montagemDaProva,
   notaDaProva,
   ordenarBloco,
   promptDoBloco,
   simuladoDaProva
 } from '../src/shared/provaCompleta'
-import { diaDe, planoDoDia, sequenciaDeDias, tarefaFeita } from '../src/shared/estudoDoDia'
+import {
+  diaDe,
+  planoDoDia,
+  registrarDiaDeEstudo,
+  sequenciaDeDias,
+  tarefaFeita
+} from '../src/shared/estudoDoDia'
 import { agendaNova } from '../src/shared/flashcards'
 import { DADOS_VAZIOS, type Dados, type Edital, type Questao } from '../src/shared/tipos'
 
@@ -101,6 +108,42 @@ describe('prova completa: ordenar o que a IA mandou', () => {
       erro: 'Vieram 2 questões sem dizer a matéria; o bloco pede 3. Peça de novo à IA.'
     })
     expect(ordenarBloco(materias, [q('Conhecimentos Bancários')]).ok).toBe(false)
+  })
+  it('com o campo, cada matéria precisa vir com a quantidade pedida (a mais, sobra fora)', () => {
+    // 1 + 1 num bloco que pede 2 + 1: mudaria o tamanho e o peso da prova
+    expect(
+      ordenarBloco(materias, [q('Conhecimentos Bancários'), q('Matemática Financeira')])
+    ).toEqual({
+      ok: false,
+      erro: 'Conhecimentos Bancários: vieram 1 de 2 questões. Peça de novo à IA.'
+    })
+    const r = ordenarBloco(materias, [
+      q('Conhecimentos Bancários'),
+      q('Conhecimentos Bancários'),
+      q('Conhecimentos Bancários'),
+      q('Matemática Financeira'),
+      q('Matemática Financeira')
+    ])
+    expect(r.ok && r.porMateria).toEqual([2, 1])
+  })
+})
+
+describe('prova completa: montagem salva', () => {
+  it('vale só para o edital em que foi montada', () => {
+    const { d, e } = montar()
+    d.provaEmMontagem = { criadoEm: 1, blocos: blocosDaProva(d, e) }
+    d.provaEmMontagem.blocos[0].questoes = [q('Português')]
+    expect(montagemDaProva(d, e)).toBe(d.provaEmMontagem)
+    // trocou o edital (outras matérias e quantidades): começa do zero
+    const outro: Edital = {
+      ...e,
+      nome: 'Outro',
+      materias: e.materias.slice(0, 2).map((m) => ({ ...m, questoes: 20 }))
+    }
+    const m = montagemDaProva(d, outro)
+    // 40 questões de um peso só passam de 30: dois blocos de 20
+    expect(m.blocos.map((b) => b.materias.map((x) => x.questoes))).toEqual([[20], [20]])
+    expect(m.blocos.every((b) => b.questoes === null)).toBe(true)
   })
 })
 
@@ -217,5 +260,25 @@ describe('estudo do dia', () => {
     )
     expect(sequenciaDeDias(d, agora)).toBe(3)
     expect(diaDe(new Date(dia(0)))).toBe('2026-11-18')
+  })
+  it('não perde os dias do meio quando o mesmo cartão é revisado de novo', () => {
+    const d: Dados = structuredClone(DADOS_VAZIOS)
+    const c = {
+      id: 'c',
+      assuntoId: 'x',
+      frente: 'f',
+      verso: 'v',
+      agenda: agendaNova(new Date(2026, 10, 16)),
+      primeiraRevisao: 0
+    }
+    d.cartoes.push(c as Dados['cartoes'][number])
+    // revisado seg, ter e qua; o app registra o dia a cada mudança
+    for (const dia of [16, 17, 18]) {
+      const quando = new Date(2026, 10, dia, 20)
+      if (!c.primeiraRevisao) c.primeiraRevisao = quando.getTime()
+      c.agenda = { ...c.agenda, last_review: quando.toISOString() } as typeof c.agenda
+      registrarDiaDeEstudo(d, quando)
+    }
+    expect(sequenciaDeDias(d, new Date(2026, 10, 18, 21))).toBe(3)
   })
 })

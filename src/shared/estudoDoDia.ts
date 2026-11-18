@@ -127,10 +127,10 @@ export function tarefaFeita(
   return !!no && (!!no.nota.trim() || d.cartoes.some((c) => c.assuntoId === t.lugarId))
 }
 
-/** Quantos dias seguidos com estudo (cartão respondido, simulado entregue
- *  ou anotação mexida), contando até hoje; se hoje ainda não teve, conta
- *  até ontem, para a sequência não "zerar" de manhã. */
-export function sequenciaDeDias(d: Dados, agora = new Date()): number {
+/** Os dias com estudo que dá para ver nos dados de agora. Só o mais recente
+ *  de cada coisa fica (o cartão guarda a última revisão), por isso os dias
+ *  já passados são guardados em `diasDeEstudo` por registrarDiaDeEstudo. */
+function diasVisiveis(d: Dados): Set<string> {
   const dias = new Set<string>()
   const marcar = (ms: number | undefined | null): void => {
     if (ms) dias.add(diaDe(new Date(ms)))
@@ -140,6 +140,24 @@ export function sequenciaDeDias(d: Dados, agora = new Date()): number {
   for (const s of d.simulados) marcar(s.entregueEm)
   for (const t of d.topicos) marcar(t.atualizadoEm)
   for (const m of d.materias) for (const a of m.assuntos) if (a.nota.trim()) marcar(a.atualizadoEm)
+  return dias
+}
+
+/** Guarda hoje como dia de estudo, se hoje teve estudo. Roda a cada mudança
+ *  (useDados), então o dia fica salvo antes que uma revisão nova apague o
+ *  rastro dele. Guarda os últimos 400 dias. */
+export function registrarDiaDeEstudo(d: Dados, agora = new Date()): void {
+  const hoje = diaDe(agora)
+  if (d.diasDeEstudo?.includes(hoje) || !diasVisiveis(d).has(hoje)) return
+  d.diasDeEstudo = [...(d.diasDeEstudo ?? []), hoje].slice(-400)
+}
+
+/** Quantos dias seguidos com estudo (cartão respondido, simulado entregue
+ *  ou anotação mexida), contando até hoje; se hoje ainda não teve, conta
+ *  até ontem, para a sequência não "zerar" de manhã. */
+export function sequenciaDeDias(d: Dados, agora = new Date()): number {
+  const dias = diasVisiveis(d)
+  for (const x of d.diasDeEstudo ?? []) dias.add(x)
   const dia = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate())
   if (!dias.has(diaDe(dia))) dia.setDate(dia.getDate() - 1)
   let n = 0

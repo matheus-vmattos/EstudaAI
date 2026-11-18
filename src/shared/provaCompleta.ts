@@ -92,10 +92,17 @@ export function ordenarBloco(
     q.materia ? materias.findIndex((m) => semAcento(m.nome) === semAcento(q.materia!)) : -1
   const todasMarcadas = questoes.every((q) => indice(q) >= 0)
   if (todasMarcadas) {
+    // cada matéria com a quantidade pedida: a menos mudaria o tamanho e o
+    // peso da prova; a mais, as primeiras valem e o resto fica de fora
     const grupos = materias.map((_, i) => questoes.filter((q) => indice(q) === i))
-    if (grupos.some((g) => !g.length))
-      return { ok: false, erro: 'Faltou matéria neste bloco. Peça de novo à IA.' }
-    return { ok: true, questoes: grupos.flat(), porMateria: grupos.map((g) => g.length) }
+    const curta = materias.findIndex((m, i) => grupos[i].length < m.questoes)
+    if (curta >= 0)
+      return {
+        ok: false,
+        erro: `${materias[curta].nome}: vieram ${grupos[curta].length} de ${materias[curta].questoes} questões. Peça de novo à IA.`
+      }
+    const certas = grupos.map((g, i) => g.slice(0, materias[i].questoes))
+    return { ok: true, questoes: certas.flat(), porMateria: certas.map((g) => g.length) }
   }
   // sem o campo: confia na ordem, se a quantidade bater
   const esperadas = materias.reduce((n, m) => n + m.questoes, 0)
@@ -105,6 +112,16 @@ export function ordenarBloco(
       erro: `Vieram ${questoes.length} questões sem dizer a matéria; o bloco pede ${esperadas}. Peça de novo à IA.`
     }
   return { ok: true, questoes, porMateria: materias.map((m) => m.questoes) }
+}
+
+/** A montagem salva, se ainda for deste edital (mesmas matérias, quantidades
+ *  e pesos); se o edital mudou, uma nova, do zero. */
+export function montagemDaProva(d: Dados, e: Edital): ProvaEmMontagem {
+  const blocos = blocosDaProva(d, e)
+  const forma = (b: ProvaEmMontagem['blocos']): string =>
+    JSON.stringify(b.map((x) => x.materias.map((m) => [m.materiaId, m.questoes, m.peso])))
+  const salva = d.provaEmMontagem
+  return salva && forma(salva.blocos) === forma(blocos) ? salva : { criadoEm: 0, blocos }
 }
 
 /** a prova pronta para fazer, com as questões na ordem do edital */
