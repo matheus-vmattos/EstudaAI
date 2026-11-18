@@ -41,7 +41,9 @@ export function dataDoEdital(texto: string): string {
   return m ? `${m[3]}-${m[2].padStart(2, '0')}-${m[1].padStart(2, '0')}` : ''
 }
 
-/** simulados entregues ligados à matéria (a um nó dela ou a ela mesma) */
+/** simulados entregues da matéria. Ligado a um assunto, vale onde o assunto
+ *  está AGORA (ele pode ter sido movido de matéria); materiaId só conta no
+ *  simulado da matéria inteira, sem assunto. */
 export function simuladosDaMateria(d: Dados, materiaId: Id): Simulado[] {
   const m = d.materias.find((x) => x.id === materiaId)
   if (!m) return []
@@ -49,7 +51,7 @@ export function simuladosDaMateria(d: Dados, materiaId: Id): Simulado[] {
   return d.simulados.filter(
     (s) =>
       s.entregueEm &&
-      (s.config.materiaId === materiaId || (s.config.assuntoId && nos.has(s.config.assuntoId)))
+      (s.config.assuntoId ? nos.has(s.config.assuntoId) : s.config.materiaId === materiaId)
   )
 }
 

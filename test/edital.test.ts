@@ -161,6 +161,47 @@ describe('situação do edital', () => {
   })
 })
 
+describe('simulado conta na matéria certa', () => {
+  it('ligado a um assunto que mudou de matéria, conta só onde o assunto está agora', async () => {
+    const { simuladosDaMateria } = await import('../src/shared/edital')
+    const d: Dados = structuredClone(DADOS_VAZIOS)
+    d.materias.push(
+      { id: 'A', nome: 'A', aberta: true, assuntos: [] },
+      {
+        id: 'B',
+        nome: 'B',
+        aberta: true,
+        assuntos: [{ id: 'x', nome: 'X', nota: '', atualizadoEm: 0 }]
+      }
+    )
+    const sim = (id: string, assuntoId: string | null, materiaId?: string) => ({
+      id,
+      config: {
+        tema: 't',
+        assuntoId,
+        materiaId,
+        nivel: 'medio' as const,
+        tipo: 'multipla' as const,
+        quantidade: 1,
+        tempoMin: 1,
+        banca: ''
+      },
+      questoes: [],
+      respostas: [],
+      revisar: [],
+      tempoPorQuestao: [],
+      decorridoMs: 0,
+      atual: 0,
+      criadoEm: 1,
+      entregueEm: 2
+    })
+    // 'velho' foi criado quando X estava em A (materiaId ficou 'A'); X agora está em B
+    d.simulados.push(sim('velho', 'x', 'A'), sim('materia', null, 'A'))
+    expect(simuladosDaMateria(d, 'A').map((s) => s.id)).toEqual(['materia'])
+    expect(simuladosDaMateria(d, 'B').map((s) => s.id)).toEqual(['velho'])
+  })
+})
+
 describe('edital pela caixa', () => {
   it('o do Banestes publicado é lido e liga as matérias pelo nome', () => {
     const r = lerPacoteDeEdital(readFileSync('conteudo/banestes-tb-edital.json', 'utf-8'))

@@ -81,8 +81,10 @@ export function Questoes({
   useEffect(() => {
     if (!base || !diagnostico) return setOpcoes(null)
     // o conteúdo do edital daquela matéria já vem no "foco no edital"
-    const materiaDaBase =
-      base.config.materiaId ?? acharNo(dados, base.config.assuntoId)?.materia.id ?? null
+    // o assunto vale onde está agora; materiaId só no simulado da matéria inteira
+    const materiaDaBase = base.config.assuntoId
+      ? (acharNo(dados, base.config.assuntoId)?.materia.id ?? null)
+      : (base.config.materiaId ?? null)
     const doEdital = dados.edital?.materias.find((m) => m.materiaId === materiaDaBase)?.texto ?? ''
     setOpcoes({
       quantidade: base.questoes.length,
@@ -261,7 +263,8 @@ export function Questoes({
                   const id = valor || null
                   muda('assuntoId', id)
                   const a = acharNo(dados, id)
-                  muda('materiaId', a?.materia.id)
+                  // com assunto, a matéria sai dele (e acompanha se ele mudar de lugar)
+                  muda('materiaId', undefined)
                   if (a && !config.tema.trim()) muda('tema', a.nome)
                 }}
               />
