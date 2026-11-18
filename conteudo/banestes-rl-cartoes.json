@@ -1,0 +1,125 @@
+{
+ "materia": "Matemática e Raciocínio Lógico",
+ "cartoes": [
+  {
+   "lugar": [
+    "Contagem",
+    "Princípio multiplicativo e aditivo"
+   ],
+   "frente": "Princípio multiplicativo x aditivo",
+   "verso": "Etapas sucessivas (\"**e**\"): **multiplica** as possibilidades. Casos que se excluem (\"**ou**\"): **soma**. Ex.: 3 camisas e 2 calças = 6 combinações de roupa."
+  },
+  {
+   "lugar": [
+    "Contagem",
+    "Permutações"
+   ],
+   "frente": "Permutação simples e com repetição",
+   "verso": "Simples: $P_n = n!$ (ordenar n itens distintos). Com repetição: $\\dfrac{n!}{a!\\,b!\\,\\cdots}$. Ex.: anagramas de ARARA = $\\dfrac{5!}{3!\\,2!} = 10$."
+  },
+  {
+   "lugar": [
+    "Contagem",
+    "Combinações simples"
+   ],
+   "frente": "Arranjo x combinação: como decidir?",
+   "verso": "**A ordem importa** (pódio, senha): arranjo $A_{n,p} = \\dfrac{n!}{(n-p)!}$. **Não importa** (comissão, grupo): combinação $C_{n,p} = \\dfrac{n!}{p!\\,(n-p)!}$."
+  },
+  {
+   "lugar": [
+    "Números",
+    "Múltiplos e divisores"
+   ],
+   "frente": "MMC ou MDC no problema?",
+   "verso": "**MMC**: quando as coisas **voltam a coincidir** (ônibus que saem juntos de novo). **MDC**: quando é para **dividir no maior pedaço igual** possível."
+  },
+  {
+   "lugar": [
+    "Números",
+    "Frações"
+   ],
+   "frente": "Divisão de frações",
+   "verso": "Mantém a primeira e multiplica pelo inverso da segunda: $\\dfrac{a}{b} \\div \\dfrac{c}{d} = \\dfrac{a}{b} \\cdot \\dfrac{d}{c}$."
+  },
+  {
+   "lugar": [
+    "Proporcionalidade",
+    "Divisão em partes proporcionais"
+   ],
+   "frente": "Dividir R$ 900 em partes diretamente proporcionais a 2, 3 e 4",
+   "verso": "Constante: $k = \\dfrac{900}{2+3+4} = 100$ → partes de **R$ 200, R$ 300 e R$ 400**."
+  },
+  {
+   "lugar": [
+    "Proporcionalidade",
+    "Regra de três"
+   ],
+   "frente": "Regra de três: direta ou inversa?",
+   "verso": "**Direta**: as duas grandezas crescem juntas (mais horas, mais peças). **Inversa**: uma cresce e a outra cai (mais operários, menos dias). Na inversa, inverta a razão antes de multiplicar em cruz."
+  },
+  {
+   "lugar": [
+    "Proporcionalidade",
+    "Porcentagem, acréscimos e descontos"
+   ],
+   "frente": "Aumento e desconto pelo fator",
+   "verso": "Aumento de p%: multiplique por $(1 + p)$. Desconto de p%: por $(1 - p)$. Ex.: +20% → ×1,20; −15% → ×0,85."
+  },
+  {
+   "lugar": [
+    "Raciocínio lógico",
+    "Hipóteses e conclusões válidas"
+   ],
+   "frente": "Negação de \"Todo A é B\"",
+   "verso": "**\"Algum A não é B\"** (basta um contraexemplo). Errado: \"Nenhum A é B\"."
+  },
+  {
+   "lugar": [
+    "Raciocínio lógico",
+    "Hipóteses e conclusões válidas"
+   ],
+   "frente": "Negação de \"Nenhum A é B\"",
+   "verso": "**\"Algum A é B\"**."
+  },
+  {
+   "lugar": [
+    "Raciocínio lógico",
+    "Hipóteses e conclusões válidas"
+   ],
+   "frente": "Leis de De Morgan",
+   "verso": "$\\neg(p \\wedge q) \\equiv \\neg p \\vee \\neg q$ e $\\neg(p \\vee q) \\equiv \\neg p \\wedge \\neg q$. Ex.: a negação de \"estudo **e** trabalho\" é \"não estudo **ou** não trabalho\"."
+  },
+  {
+   "lugar": [
+    "Raciocínio lógico",
+    "Hipóteses e conclusões válidas"
+   ],
+   "frente": "Quando \"se p, então q\" é falsa?",
+   "verso": "Só quando **p é verdadeira e q é falsa** (V → F). Nos outros três casos, a condicional é verdadeira."
+  },
+  {
+   "lugar": [
+    "Raciocínio lógico",
+    "Hipóteses e conclusões válidas"
+   ],
+   "frente": "Equivalências e negação da condicional",
+   "verso": "$p \\to q \\equiv \\neg q \\to \\neg p \\equiv \\neg p \\vee q$. A **negação** de $p \\to q$ é $p \\wedge \\neg q$ (\"p e não q\")."
+  },
+  {
+   "lugar": [
+    "Raciocínio lógico",
+    "Relações arbitrárias (pessoas, lugares, objetos)"
+   ],
+   "frente": "Como atacar questão de associação lógica (quem é quem)?",
+   "verso": "Monte uma **tabela** pessoas × atributos, marque as afirmações diretas (sim/não), elimine por linha e coluna e só então deduza o que sobrou."
+  },
+  {
+   "lugar": [
+    "Noções de estatística",
+    "Média ponderada"
+   ],
+   "frente": "Média ponderada",
+   "verso": "$$\\bar{x} = \\dfrac{\\sum x_i\\, p_i}{\\sum p_i}$$ Ex.: notas 6 (peso 1) e 9 (peso 2) → $\\dfrac{6 + 18}{3} = 8$."
+  }
+ ]
+}

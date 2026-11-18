@@ -79,6 +79,38 @@
       "descricao": "33 cartões: qualidade em serviços, satisfação e valor, comunicação, comportamento do consumidor, etapas de venda, SPIN, negociação (Harvard, BATNA, ZOPA), CRM, NPS, reclamações e ouvidoria. Entram no mapa do edital; o que já existir não duplica.",
       "arquivo": "banestes-vendas-cartoes.json",
       "data": "2026-11-18"
+    },
+    {
+      "id": "banestes-estatistica-cartoes-v1",
+      "tipo": "cartoes",
+      "titulo": "Flashcards: Probabilidade e Estatística",
+      "descricao": "17 cartões: amostragem, média, mediana e moda, dispersão (variância, desvio padrão, CV), probabilidade (união, condicional, independência) e distribuição normal, com as fórmulas montadas. Entram no mapa do edital; o que já existir não duplica.",
+      "arquivo": "banestes-estatistica-cartoes.json",
+      "data": "2026-11-19"
+    },
+    {
+      "id": "banestes-rl-cartoes-v1",
+      "tipo": "cartoes",
+      "titulo": "Flashcards: Matemática e Raciocínio Lógico",
+      "descricao": "15 cartões: contagem (arranjo x combinação), MMC e MDC, frações, divisão proporcional, regra de três, porcentagem e lógica (negações, De Morgan, condicional). Entram no mapa do edital; o que já existir não duplica.",
+      "arquivo": "banestes-rl-cartoes.json",
+      "data": "2026-11-19"
+    },
+    {
+      "id": "banestes-atualidades-cartoes-v1",
+      "tipo": "cartoes",
+      "titulo": "Flashcards: Atualidades do Mercado Financeiro",
+      "descricao": "12 cartões: Pix e Pix Automático, Drex, criptoativos, fintechs (SCD e SEP), Open Finance, IPCA x IGP-M, CDI, Ibovespa, inclusão financeira e finanças sustentáveis. Sem números que mudam toda semana (como a Selic do dia). Entram no mapa do edital; o que já existir não duplica.",
+      "arquivo": "banestes-atualidades-cartoes.json",
+      "data": "2026-11-19"
+    },
+    {
+      "id": "banestes-informatica-cartoes-v1",
+      "tipo": "cartoes",
+      "titulo": "Flashcards: Informática, segurança digital e IA",
+      "descricao": "15 cartões: malware, phishing, MFA, backup, os pilares da segurança, nuvem, intranet, HTTPS, Google Drive e Sheets, Gemini e IA no banco (aprendizado de máquina, alucinação, viés e explicabilidade). Entram no mapa do edital; o que já existir não duplica.",
+      "arquivo": "banestes-informatica-cartoes.json",
+      "data": "2026-11-19"
     }
   ]
 }

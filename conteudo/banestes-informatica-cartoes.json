@@ -1,0 +1,125 @@
+{
+ "materia": "Informática e Comportamentos Digitais",
+ "cartoes": [
+  {
+   "lugar": [
+    "Segurança da informação",
+    "Malware e vírus"
+   ],
+   "frente": "Vírus, worm e cavalo de Troia",
+   "verso": "**Vírus**: precisa de um arquivo hospedeiro e de execução. **Worm**: se espalha **sozinho** pela rede. **Cavalo de Troia**: parece legítimo e esconde a função maliciosa."
+  },
+  {
+   "lugar": [
+    "Segurança da informação",
+    "Malware e vírus"
+   ],
+   "frente": "Ransomware, spyware e keylogger",
+   "verso": "**Ransomware**: criptografa os dados e pede **resgate**. **Spyware**: espiona e envia informações. **Keylogger**: grava o que é digitado (senhas)."
+  },
+  {
+   "lugar": [
+    "Segurança da informação",
+    "Phishing e engenharia social"
+   ],
+   "frente": "Phishing e engenharia social",
+   "verso": "Golpe que **engana a pessoa** (não a máquina): e-mail, SMS ou ligação falsa que se passa pelo banco para roubar senha ou dados. O banco **nunca** pede senha ou código por mensagem."
+  },
+  {
+   "lugar": [
+    "Segurança da informação",
+    "Senhas e autenticação"
+   ],
+   "frente": "Autenticação multifator (MFA)",
+   "verso": "Combina fatores de tipos diferentes: algo que você **sabe** (senha), algo que você **tem** (celular, token) e algo que você **é** (biometria)."
+  },
+  {
+   "lugar": [
+    "Segurança da informação",
+    "Boas práticas corporativas"
+   ],
+   "frente": "Backup completo, incremental e diferencial",
+   "verso": "**Completo**: copia tudo. **Incremental**: só o que mudou desde o **último backup de qualquer tipo**. **Diferencial**: o que mudou desde o **último completo**."
+  },
+  {
+   "lugar": [
+    "Segurança da informação",
+    "Boas práticas corporativas"
+   ],
+   "frente": "Os três pilares da segurança da informação",
+   "verso": "**Confidencialidade** (só quem pode vê), **integridade** (não é alterada indevidamente) e **disponibilidade** (está acessível quando precisa)."
+  },
+  {
+   "lugar": [
+    "Fundamentos de informática",
+    "Computação em nuvem"
+   ],
+   "frente": "IaaS, PaaS e SaaS",
+   "verso": "**IaaS**: infraestrutura (servidores virtuais). **PaaS**: plataforma para desenvolver. **SaaS**: o software pronto pelo navegador, como o **Google Workspace**."
+  },
+  {
+   "lugar": [
+    "Fundamentos de informática",
+    "Internet, intranet e navegadores"
+   ],
+   "frente": "Internet, intranet e extranet",
+   "verso": "**Internet**: rede pública mundial. **Intranet**: rede **interna** da empresa, com as mesmas tecnologias. **Extranet**: parte da intranet aberta a parceiros autorizados."
+  },
+  {
+   "lugar": [
+    "Fundamentos de informática",
+    "Internet, intranet e navegadores"
+   ],
+   "frente": "HTTPS e o cadeado",
+   "verso": "O HTTPS **criptografa** a comunicação (TLS) entre o navegador e o site. O cadeado indica conexão cifrada, mas **não garante** que o site seja legítimo."
+  },
+  {
+   "lugar": [
+    "Google Workspace",
+    "Drive"
+   ],
+   "frente": "Níveis de permissão ao compartilhar no Google Drive",
+   "verso": "**Leitor** (só vê), **comentarista** (vê e comenta) e **editor** (altera e pode compartilhar)."
+  },
+  {
+   "lugar": [
+    "Google Workspace",
+    "Sheets"
+   ],
+   "frente": "Google Sheets: SOMA e PROCV",
+   "verso": "`=SOMA(A1:A10)` soma o intervalo. `=PROCV(valor; intervalo; coluna; FALSO)` procura o valor na 1ª coluna e devolve o da coluna indicada (FALSO = correspondência exata)."
+  },
+  {
+   "lugar": [
+    "Google Workspace",
+    "Gemini no Workspace"
+   ],
+   "frente": "Gemini no Google Workspace",
+   "verso": "Assistente de IA generativa integrado ao Gmail, Docs, Sheets, Slides e Meet: resume, redige, organiza dados e gera conteúdo a partir de comandos em linguagem natural."
+  },
+  {
+   "lugar": [
+    "Inteligência artificial",
+    "Aprendizado de máquina"
+   ],
+   "frente": "Aprendizado supervisionado, não supervisionado e por reforço",
+   "verso": "**Supervisionado**: aprende com exemplos **rotulados** (crédito aprovado ou não). **Não supervisionado**: acha padrões sem rótulo (segmentar clientes). **Por reforço**: aprende por tentativa, com recompensa."
+  },
+  {
+   "lugar": [
+    "Inteligência artificial",
+    "IA generativa e chatbots"
+   ],
+   "frente": "O que é \"alucinação\" em IA generativa?",
+   "verso": "Quando o modelo **inventa** informação com aparência de verdade. Por isso a resposta da IA precisa ser **conferida** antes de ser usada com o cliente."
+  },
+  {
+   "lugar": [
+    "Inteligência artificial",
+    "Riscos, vieses e explicabilidade"
+   ],
+   "frente": "Viés e explicabilidade na IA do banco",
+   "verso": "**Viés**: o modelo repete distorções dos dados (pode discriminar). **Explicabilidade**: conseguir explicar **por que** a IA decidiu, como negar um crédito, o que a LGPD exige ao permitir pedir revisão."
+  }
+ ]
+}

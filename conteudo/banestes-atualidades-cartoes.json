@@ -1,0 +1,99 @@
+{
+ "materia": "Atualidades do Mercado Financeiro",
+ "cartoes": [
+  {
+   "lugar": [
+    "Inovação financeira",
+    "Pix"
+   ],
+   "frente": "Quando o Pix começou e o que é o Pix Automático?",
+   "verso": "O Pix começou a funcionar para todos em **novembro de 2020**. O **Pix Automático** (2025) permite pagamentos recorrentes, como contas e assinaturas, com autorização prévia do pagador."
+  },
+  {
+   "lugar": [
+    "Inovação financeira",
+    "Moedas digitais"
+   ],
+   "frente": "Drex",
+   "verso": "É o nome do projeto do **Banco Central** para uma plataforma de **real digital**, com operações tokenizadas no sistema financeiro. É diferente das criptomoedas privadas."
+  },
+  {
+   "lugar": [
+    "Inovação financeira",
+    "Moedas digitais"
+   ],
+   "frente": "Marco legal dos criptoativos",
+   "verso": "A **Lei 14.478/2022** regula os prestadores de serviços de ativos virtuais. O **Banco Central** foi designado o órgão regulador."
+  },
+  {
+   "lugar": [
+    "Inovação financeira",
+    "Fintechs e bancos digitais"
+   ],
+   "frente": "SCD e SEP (fintechs de crédito)",
+   "verso": "**SCD** (Sociedade de Crédito Direto): empresta com **capital próprio**. **SEP** (Sociedade de Empréstimo entre Pessoas): conecta quem empresta a quem toma (*peer-to-peer*). Criadas pela Resolução CMN 4.656/2018."
+  },
+  {
+   "lugar": [
+    "Inovação financeira",
+    "Open Finance"
+   ],
+   "frente": "Para o cliente, qual a vantagem do Open Finance?",
+   "verso": "Levar seu histórico para outra instituição e conseguir **ofertas melhores** de crédito e investimento, além de iniciar pagamentos por outros apps, sempre com o **seu consentimento**."
+  },
+  {
+   "lugar": [
+    "Política monetária",
+    "Inflação"
+   ],
+   "frente": "IPCA x IGP-M",
+   "verso": "**IPCA** (IBGE): índice **oficial** da inflação, usado na meta. **IGP-M** (FGV): mais sensível a preços no atacado e ao câmbio, usado em muitos contratos de aluguel."
+  },
+  {
+   "lugar": [
+    "Política monetária",
+    "Juros e impactos na economia"
+   ],
+   "frente": "Como os juros altos afetam o banco e o cliente?",
+   "verso": "Crédito mais caro e menos demanda por empréstimo. Renda fixa paga mais e a inadimplência tende a subir, o que exige mais cuidado na concessão de crédito."
+  },
+  {
+   "lugar": [
+    "Mercado financeiro e de capitais",
+    "Principais indicadores"
+   ],
+   "frente": "CDI",
+   "verso": "Taxa dos empréstimos de um dia entre bancos, muito próxima da Selic. É a **referência da renda fixa**: um CDB que paga \"100% do CDI\" acompanha essa taxa."
+  },
+  {
+   "lugar": [
+    "Mercado financeiro e de capitais",
+    "Principais indicadores"
+   ],
+   "frente": "Ibovespa",
+   "verso": "O principal índice da bolsa brasileira (B3): mostra o desempenho médio das ações mais negociadas."
+  },
+  {
+   "lugar": [
+    "Cidadania financeira",
+    "Inclusão financeira"
+   ],
+   "frente": "O que é inclusão financeira?",
+   "verso": "Acesso e **uso adequado** de serviços financeiros (conta, pagamento, crédito, seguro), com informação e proteção, por toda a população. O Pix acelerou essa inclusão."
+  },
+  {
+   "lugar": [
+    "Finanças sustentáveis e ESG"
+   ],
+   "frente": "PRSAC (Resolução CMN 4.945/2021)",
+   "verso": "Política de **Responsabilidade Social, Ambiental e Climática** que as instituições financeiras devem ter, integrando esses riscos à gestão e ao negócio."
+  },
+  {
+   "lugar": [
+    "Finanças sustentáveis e ESG"
+   ],
+   "frente": "Títulos verdes (green bonds)",
+   "verso": "Títulos de dívida cujos recursos financiam **projetos com benefício ambiental**, como energia renovável e eficiência energética."
+  }
+ ]
+}
