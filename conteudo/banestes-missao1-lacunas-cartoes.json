@@ -31,7 +31,7 @@
     "Meios de pagamento"
    ],
    "frente": "Cheque cruzado",
-   "verso": "Dois traços paralelos na frente: só pode ser pago **a um banco ou cliente de banco**, ou seja, precisa ser depositado (art. 44). Com o nome de um banco entre os traços, é cruzamento em preto (especial)."
+   "verso": "Dois traços paralelos na frente. **Geral** (traços em branco): só pode ser pago a um banco ou a cliente do banco sacado, **mediante crédito em conta**. **Especial** (nome de um banco entre os traços): só ao banco indicado (Lei 7.357/1985, arts. 44 e 45)."
   },
   {
    "lugar": [
@@ -39,7 +39,7 @@
     "Crédito"
    ],
    "frente": "Aval x fiança",
-   "verso": "**Aval**: garantia de **título de crédito** (cheque, nota promissória); o avalista responde **solidariamente**, sem benefício de ordem. **Fiança**: **contrato** acessório; o fiador pode exigir que primeiro se cobre o devedor (**benefício de ordem**), salvo se renunciou (Código Civil, art. 827)."
+   "verso": "**Aval**: garantia de **título de crédito** (cheque, nota promissória); o avalista responde **solidariamente**, sem benefício de ordem. **Fiança**: **contrato** acessório; o fiador pode exigir que primeiro se executem os bens do devedor (**benefício de ordem**, Código Civil, art. 827). Perde esse benefício se renunciou, se se obrigou como principal pagador ou devedor solidário, ou se o devedor é insolvente ou falido (art. 828)."
   },
   {
    "lugar": [
@@ -56,22 +56,10 @@
    ],
    "frente": "Garantias reais: hipoteca, penhor e alienação fiduciária",
    "verso": "**Hipoteca**: imóvel (o bem fica com o devedor). **Penhor**: bem móvel, em regra entregue ao credor. **Alienação fiduciária**: a propriedade fica com o credor até a quitação (comum em veículos e imóveis financiados)."
-  },
-  {
-   "lugar": [
-    "Produtos e serviços bancários",
-    "Investimentos"
-   ],
-   "frente": "Títulos públicos: prefixados e pós-fixados",
-   "verso": "**LTN**: prefixado, sem cupom (paga tudo no vencimento). **NTN-F**: prefixado, com juros semestrais. **LFT**: pós-fixado à **Selic**."
-  },
-  {
-   "lugar": [
-    "Produtos e serviços bancários",
-    "Investimentos"
-   ],
-   "frente": "NTN-B x NTN-B Principal",
-   "verso": "As duas pagam **IPCA + juros**. A **NTN-B** paga **cupom semestral** de juros; a **NTN-B Principal** paga **tudo no vencimento** (sem cupom)."
   }
+ ],
+ "fontes": [
+  "Lei 7.357/1985 (Lei do Cheque), arts. 32, 33, 44, 45 e 59 — planalto.gov.br",
+  "Código Civil (Lei 10.406/2002), arts. 827, 828 e 1.647, III — planalto.gov.br, compilado"
  ]
 }

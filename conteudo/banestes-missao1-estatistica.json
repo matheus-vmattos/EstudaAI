@@ -153,5 +153,8 @@
    "conceito": "Normal: ±1 desvio ≈ 68%, ±2 ≈ 95%, ±3 ≈ 99,7% dos dados.",
    "habilidade": "aplicar regra"
   }
+ ],
+ "fontes": [
+  "Cálculos conferidos à mão (mediana, moda, variância, CV, probabilidades); regra empírica 68–95–99,7 da distribuição normal"
  ]
 }
