@@ -111,6 +111,30 @@
       "descricao": "15 cartões: malware, phishing, MFA, backup, os pilares da segurança, nuvem, intranet, HTTPS, Google Drive e Sheets, Gemini e IA no banco (aprendizado de máquina, alucinação, viés e explicabilidade). Entram no mapa do edital; o que já existir não duplica.",
       "arquivo": "banestes-informatica-cartoes.json",
       "data": "2026-11-19"
+    },
+    {
+      "id": "banestes-missao1-informatica-v1",
+      "tipo": "simulado",
+      "titulo": "Simulado: primeiro contato com Informática",
+      "descricao": "10 questões no estilo FCC para medir a matéria pela primeira vez (peso 2): LGPD (sensíveis, bases legais, decisões automatizadas, encarregado), phishing, MFA, backup, Drive, Sheets e aprendizado de máquina.",
+      "arquivo": "banestes-missao1-informatica.json",
+      "data": "2026-11-20"
+    },
+    {
+      "id": "banestes-missao1-estatistica-v1",
+      "tipo": "simulado",
+      "titulo": "Simulado: primeiro contato com Estatística",
+      "descricao": "10 questões no estilo FCC para medir a matéria pela primeira vez (peso 2): mediana, moda, variância, coeficiente de variação, probabilidade (sem reposição, união, condicional, independência) e distribuição normal.",
+      "arquivo": "banestes-missao1-estatistica.json",
+      "data": "2026-11-20"
+    },
+    {
+      "id": "banestes-missao1-lacunas-v1",
+      "tipo": "cartoes",
+      "titulo": "Flashcards: as lacunas do seu simulado de Bancários",
+      "descricao": "9 cartões sobre o que você errou ou acertou com dúvida em 19/11: cheque (prazos, pré-datado, cruzado), aval x fiança, garantias reais e títulos públicos (NTN-B x NTN-B Principal).",
+      "arquivo": "banestes-missao1-lacunas-cartoes.json",
+      "data": "2026-11-20"
     }
   ]
 }

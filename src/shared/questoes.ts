@@ -116,7 +116,16 @@ const ENTREGA = `IMPORTANTE: o estudante vai resolver estas questões depois e N
 - Se você não puder criar arquivos, responda com UM ÚNICO bloco de código json contendo o JSON inteiro, sem nenhum texto antes ou depois do bloco.`
 
 export type LeituraDaIa =
-  { ok: true; tema: string; tipo: TipoDeQuestao; questoes: Questao[] } | { ok: false; erro: string }
+  | {
+      ok: true
+      tema: string
+      tipo: TipoDeQuestao
+      questoes: Questao[]
+      /** matéria e banca, quando o simulado vem pronto (caixa "Do Claude") */
+      materia?: string
+      banca?: string
+    }
+  | { ok: false; erro: string }
 
 /** pega o JSON mesmo que venha dentro de ```json ... ``` ou com texto em volta */
 function extrairJson(texto: string): unknown {
@@ -200,7 +209,7 @@ export function lerRespostaDaIa(texto: string): LeituraDaIa {
       erro: 'Não encontrei um JSON válido na resposta. Copie a resposta inteira da IA.'
     }
   }
-  const raiz = bruto as { tema?: unknown; questoes?: unknown }
+  const raiz = bruto as { tema?: unknown; questoes?: unknown; materia?: unknown; banca?: unknown }
   if (!Array.isArray(raiz.questoes) || raiz.questoes.length === 0) {
     return { ok: false, erro: 'A resposta não tem a lista "questoes".' }
   }
@@ -256,7 +265,9 @@ export function lerRespostaDaIa(texto: string): LeituraDaIa {
     ok: true,
     tema: textoValido(raiz.tema) ? raiz.tema.trim() : '',
     tipo: tipo ?? 'multipla',
-    questoes
+    questoes,
+    ...(textoValido(raiz.materia) ? { materia: raiz.materia.trim() } : {}),
+    ...(textoValido(raiz.banca) ? { banca: raiz.banca.trim() } : {})
   }
 }
 
