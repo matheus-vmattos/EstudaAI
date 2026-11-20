@@ -10,8 +10,8 @@ export type ResultadoDaCaixa = {
   ok: boolean
   texto: string
   simulado?: Id
-  /** criadoEm dos cartões importados (a missão usa para saber quando terminou) */
-  cartoesEm?: number
+  /** a frente dos cartões do pacote (a missão usa para saber quando terminou) */
+  frentes?: string[]
 }
 
 /** Baixa um item da caixa "Do Claude" e põe nos dados. Serve à tela Do Claude
@@ -63,7 +63,7 @@ export async function importarDaCaixa(
     })
     return {
       ok: true,
-      cartoesEm: quando,
+      frentes: lido.pacote.cartoes.map((c) => c.frente.trim()),
       texto:
         `✓ ${res.novos} cartões novos` +
         (res.repetidos ? ` · ${res.repetidos} já existiam` : '') +

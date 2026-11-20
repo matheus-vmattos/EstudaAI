@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { raioX } from '../src/shared/raioX'
-import { chanceDeAprovacao, respostasDaMateria } from '../src/shared/chance'
+import { chanceDeAprovacao, fraseDaChance, respostasDaMateria } from '../src/shared/chance'
 import {
   feitaPelosDados,
   lerPacoteDeMissao,
@@ -290,8 +290,8 @@ describe('Missão da semana', () => {
       config: { ...daMateria('info', 5, 10).config, tema: 'Primeiro contato com Informática' }
     })
     expect(feitaPelosDados(d, m, inf)).toBe(true)
-    // cartões: importados juntos (criadoEm a partir de cartoesEm) e todos vistos
-    m.cartoesEm = { lac: 5000 }
+    // cartões: os do pacote (pela frente) todos vistos
+    m.cartoesFrentes = { lac: ['a', 'b'] }
     d.cartoes.push(
       {
         id: 'a',
@@ -316,7 +316,9 @@ describe('Missão da semana', () => {
     expect(feitaPelosDados(d, m, lac)).toBe(false)
     d.cartoes[1].primeiraRevisao = 2
     expect(feitaPelosDados(d, m, lac)).toBe(true)
-    expect(feitaPelosDados(d, m, atr)).toBe(true) // nenhum cartão novo nem vencido
+    // os cartões acima têm agenda de cartão novo (contam como "de hoje"); sem
+    // cartão nenhum para hoje, a tarefa de zerar está feita
+    expect(feitaPelosDados(dadosDoEdital(), m, atr)).toBe(true)
     expect(feitaPelosDados(d, m, exp)).toBe(false)
     d.explicacoes = [
       { id: 'x', criadoEm: 50, topico: 'Tributação de investimentos', pergunta: 'p', texto: 't' }
@@ -354,5 +356,66 @@ describe('Raio-X: frase com engano e nível com pouca evidência', () => {
     expect(chanceDeAprovacao(d, EDITAL).materias.find((m) => m.materiaId === 'info')!.nivel).toBe(
       'firmando'
     )
+  })
+})
+
+describe('revisão do Codex (PR 22)', () => {
+  it('sem nota mínima no edital, não diz que passaria', () => {
+    const d = dadosDoEdital()
+    const semMinimo: Edital = { ...EDITAL, notaMinima: undefined }
+    for (const m of EDITAL.materias) d.simulados.push(daMateria(m.materiaId, 0, 10))
+    const c = chanceDeAprovacao(d, semMinimo)
+    expect(c.nota).toBe(0)
+    expect(fraseDaChance(c)).not.toContain('passaria')
+  })
+  it('"zerar os cartões de hoje" espera também os novos do dia', () => {
+    const r = lerPacoteDeMissao(
+      JSON.stringify({
+        de: 'a',
+        ate: 'b',
+        tarefas: [{ id: 'atr', tipo: 'atrasados', titulo: 'Zerar', pontos: 1 }]
+      }),
+      'm',
+      0
+    )
+    if (!r.ok) throw new Error(r.erro)
+    const d = dadosDoEdital()
+    d.cartoes.push({
+      id: 'n',
+      assuntoId: 'banc-a',
+      tipo: 'basico',
+      frente: 'nova',
+      verso: '',
+      agenda: agendaNova(new Date()),
+      criadoEm: 1
+    })
+    expect(feitaPelosDados(d, r.missao, r.missao.tarefas[0])).toBe(false)
+  })
+  it('cartões já importados antes pela caixa contam na tarefa', () => {
+    const r = lerPacoteDeMissao(
+      JSON.stringify({
+        de: 'a',
+        ate: 'b',
+        tarefas: [{ id: 'lac', tipo: 'cartoes', titulo: 'L', pontos: 1, item: 'i2' }]
+      }),
+      'm',
+      0
+    )
+    if (!r.ok) throw new Error(r.erro)
+    const d = dadosDoEdital()
+    // importados pela tela Do Claude (criadoEm 5000) e todos revisados...
+    d.cartoes.push({
+      id: 'a',
+      assuntoId: 'banc-a',
+      tipo: 'basico',
+      frente: 'Cheque: prazo',
+      verso: '',
+      agenda: agendaNova(new Date()),
+      criadoEm: 5000,
+      primeiraRevisao: 6000
+    })
+    // ...e depois a missão "importa" de novo: nada novo, mas guarda as frentes
+    r.missao.cartoesFrentes = { lac: ['Cheque: prazo'] }
+    expect(feitaPelosDados(d, r.missao, r.missao.tarefas[0])).toBe(true)
   })
 })

@@ -109,3 +109,17 @@ export function chanceDeAprovacao(d: Dados, e: Edital): Chance {
     materias
   }
 }
+
+/** A frase da chance. Sem nota mínima no edital, não há "passaria": fica só
+ *  a nota projetada. */
+export function fraseDaChance(c: Chance): string {
+  if (c.nota === null)
+    return 'Ainda não sei: nenhuma matéria foi medida em simulado. O primeiro simulado de cada matéria já dá o número.'
+  if (c.faltaMedir > 0.001)
+    return `Ainda não dá para dizer se passa: o que falta medir vale ${Math.round(c.faltaMedir * 100)}% da nota.`
+  if (c.notaMinima === null)
+    return 'O edital não diz a nota mínima: sem ela, dá para ver a nota, não se passa.'
+  return c.nota >= c.notaMinima
+    ? 'No ritmo de hoje, você passaria.'
+    : 'Hoje, abaixo do mínimo: a lista abaixo mostra onde subir.'
+}

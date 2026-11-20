@@ -50,8 +50,8 @@ export function lerPacoteDeMissao(
 }
 
 /** A tarefa está feita pelos dados (sem precisar marcar):
- *  simulado entregue com o tema dela; cartões importados e todos já vistos;
- *  nenhum cartão para hoje; explicação escrita sobre o tópico depois que a
+ *  simulado entregue com o tema dela; cartões do pacote todos já vistos;
+ *  nenhum cartão para hoje (vencido ou novo); explicação escrita sobre o tópico depois que a
  *  missão chegou. */
 export function feitaPelosDados(
   d: Dados,
@@ -62,12 +62,17 @@ export function feitaPelosDados(
   if (t.tipo === 'simulado')
     return d.simulados.some((s) => s.entregueEm && semAcento(s.config.tema) === semAcento(t.tema))
   if (t.tipo === 'cartoes') {
-    const quando = m.cartoesEm?.[t.id]
-    if (!quando) return false
-    const doPacote = d.cartoes.filter((c) => c.criadoEm >= quando && c.criadoEm < quando + 10000)
+    // os cartões do pacote, pela frente: vale também para os que você já
+    // tinha importado antes pela tela Do Claude (a importação não duplica)
+    const frentes = new Set(m.cartoesFrentes?.[t.id] ?? [])
+    const doPacote = d.cartoes.filter((c) => frentes.has(c.frente.trim()))
     return doPacote.length > 0 && doPacote.every((c) => c.primeiraRevisao)
   }
-  if (t.tipo === 'atrasados') return filaDoDia(d.cartoes, agora).revisar.length === 0
+  if (t.tipo === 'atrasados') {
+    // "os cartões de hoje" = os vencidos e os novos do dia, como no menu
+    const f = filaDoDia(d.cartoes, agora)
+    return f.revisar.length + f.novos.length === 0
+  }
   return (d.explicacoes ?? []).some(
     (x) => x.criadoEm >= m.recebidaEm && semAcento(x.topico) === semAcento(t.topico)
   )

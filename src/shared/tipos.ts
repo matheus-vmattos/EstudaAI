@@ -270,8 +270,9 @@ export interface Missao {
   tarefas: TarefaDaMissao[]
   /** ids das tarefas feitas (marcadas à mão ou vistas feitas) */
   feitas: string[]
-  /** quando os cartões de cada tarefa foram importados (o criadoEm deles) */
-  cartoesEm?: Record<string, number>
+  /** a frente dos cartões de cada tarefa de cartões (para saber quando
+   *  todos foram vistos, mesmo os que já existiam antes) */
+  cartoesFrentes?: Record<string, string[]>
 }
 
 export const DADOS_VAZIOS: Dados = {

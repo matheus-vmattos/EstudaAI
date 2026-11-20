@@ -28,7 +28,7 @@ import { ProvaCompleta } from './ProvaCompleta'
 import { Explique } from '../Explique'
 import { semAcento } from '../../../shared/texto'
 import { importarDaCaixa } from '../importarDaCaixa'
-import { chanceDeAprovacao, NOME_DO_NIVEL } from '../../../shared/chance'
+import { chanceDeAprovacao, fraseDaChance, NOME_DO_NIVEL } from '../../../shared/chance'
 import {
   feitaPelosDados,
   pontosDaMissao,
@@ -135,7 +135,7 @@ export function MeuEdital({
       )
       if (aberto) return abrirSimulado(aberto.id)
     }
-    if (t.tipo === 'cartoes' && missao?.cartoesEm?.[t.id])
+    if (t.tipo === 'cartoes' && missao?.cartoesFrentes?.[t.id])
       return estudar({ assuntos: null, titulo: t.titulo })
     const item = caixa.find((i) => i.id === t.item)
     if (!item)
@@ -145,10 +145,10 @@ export function MeuEdital({
     const r = await importarDaCaixa(item, dados, mudar)
     if (!r.ok) return setAvisoMissao(r.texto)
     if (r.simulado) return abrirSimulado(r.simulado)
-    if (r.cartoesEm) {
-      const quando = r.cartoesEm
+    if (r.frentes) {
+      const frentes = r.frentes
       mudar((d) => {
-        if (d.missao) d.missao.cartoesEm = { ...d.missao.cartoesEm, [t.id]: quando }
+        if (d.missao) d.missao.cartoesFrentes = { ...d.missao.cartoesFrentes, [t.id]: frentes }
       })
       estudar({ assuntos: null, titulo: t.titulo })
     }
@@ -242,7 +242,7 @@ export function MeuEdital({
                   <>
                     <div className="nota-chance">
                       <span
-                        className={`numero ${chance.notaMinima !== null && chance.nota < chance.notaMinima ? 'nota-ruim' : 'nota-boa'}`}
+                        className={`numero ${chance.notaMinima === null ? '' : chance.nota < chance.notaMinima ? 'nota-ruim' : 'nota-boa'}`}
                       >
                         {chance.nota.toLocaleString('pt-BR', {
                           minimumFractionDigits: 1,
@@ -263,13 +263,7 @@ export function MeuEdital({
                       {chance.faltaMedir > 0.001 &&
                         ` · faltam ${chance.materias.filter((m) => m.acerto === null).length} matérias`}
                     </span>
-                    <span className="frase-chance">
-                      {chance.faltaMedir > 0.001
-                        ? `Ainda não dá para dizer se passa: o que falta medir vale ${pct(chance.faltaMedir)} da nota.`
-                        : chance.notaMinima === null || chance.nota >= chance.notaMinima
-                          ? 'No ritmo de hoje, você passaria.'
-                          : 'Hoje, abaixo do mínimo: a lista abaixo mostra onde subir.'}
-                    </span>
+                    <span className="frase-chance">{fraseDaChance(chance)}</span>
                   </>
                 )}
               </section>
