@@ -49,7 +49,7 @@
    "habilidade": "interpretar"
   },
   {
-   "enunciado": "Na LGPD, a pessoa indicada pelo controlador e pelo operador para atuar como canal de comunicação entre o controlador, os titulares dos dados e a Autoridade Nacional de Proteção de Dados (ANPD) é o",
+   "enunciado": "Na LGPD, a pessoa indicada pelo controlador e pelo operador para atuar como canal de comunicação entre o controlador, os titulares dos dados e a Agência Nacional de Proteção de Dados (ANPD) é o",
    "alternativas": {
     "A": "operador.",
     "B": "titular.",
@@ -153,5 +153,8 @@
    "conceito": "Supervisionado = dados com rótulo (a resposta certa); não supervisionado = acha padrões sem rótulo; reforço = tentativa e recompensa.",
    "habilidade": "interpretar"
   }
+ ],
+ "fontes": [
+  "Lei 13.709/2018 (LGPD), arts. 5º II e VIII, 7º X e 20 — planalto.gov.br, texto compilado (redação da Lei 15.352/2026 no art. 5º VIII)"
  ]
 }
