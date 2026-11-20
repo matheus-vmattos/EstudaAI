@@ -230,7 +230,8 @@ describe('pacote de cartões da caixa', () => {
     let n = 0
     const novoId = (): string => `x${++n}`
     const res = importarCartoes(d, r.pacote, novoId, 1000)
-    expect(res).toEqual({ novos: 3, repetidos: 0, lugaresCriados: 1 })
+    // corrigidos: errata (v0.1.19); este pacote não traz nenhuma
+    expect(res).toEqual({ novos: 3, repetidos: 0, lugaresCriados: 1, corrigidos: 0 })
     expect(d.materias).toHaveLength(1)
     const daCrase = d.cartoes.filter((c) => c.assuntoId === id('Crase'))
     expect(daCrase.map((c) => c.criadoEm)).toEqual([1000, 1001])
@@ -239,7 +240,8 @@ describe('pacote de cartões da caixa', () => {
     expect(importarCartoes(d, r.pacote, novoId, 2000)).toEqual({
       novos: 0,
       repetidos: 3,
-      lugaresCriados: 0
+      lugaresCriados: 0,
+      corrigidos: 0
     })
   })
 })

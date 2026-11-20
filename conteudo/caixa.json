@@ -143,6 +143,47 @@
       "descricao": "Medir Informática e Estatística (peso 2, nunca medidas), fechar Cheque e Garantias, zerar os cartões e explicar dois conceitos. Aparece no Meu edital.",
       "arquivo": "banestes-missao1.json",
       "data": "2026-11-20"
+    },
+    {
+      "id": "banestes-estatistica-anotacoes-v1",
+      "tipo": "anotacoes",
+      "titulo": "Anotações: Estatística do zero",
+      "descricao": "19 anotações para o mapa de Estatística: fórmula, exemplo resolvido e a pegadinha da FCC de cada ponto. Entram só onde a anotação está vazia; as suas ficam como estão.",
+      "arquivo": "banestes-estatistica-anotacoes.json",
+      "data": "2026-11-21",
+      "versaoMinima": "0.1.19"
+    },
+    {
+      "id": "banestes-estatistica-cartoes-v2",
+      "tipo": "cartoes",
+      "titulo": "Flashcards: Estatística (correção)",
+      "descricao": "Os mesmos 17 cartões, com o de \"multiplicar por uma constante\" corrigido (o desvio padrão fica ×|k|). Se você não editou o cartão, ele é corrigido; nada duplica.",
+      "arquivo": "banestes-estatistica-cartoes.json",
+      "data": "2026-11-21"
+    },
+    {
+      "id": "banestes-informatica-cartoes-v2",
+      "tipo": "cartoes",
+      "titulo": "Flashcards: Informática (correção)",
+      "descricao": "Os mesmos 15 cartões, com o do Google Drive corrigido: o papel se chama Comentador. Conferido na Ajuda do Google. Nada duplica.",
+      "arquivo": "banestes-informatica-cartoes.json",
+      "data": "2026-11-21"
+    },
+    {
+      "id": "banestes-missao2-estatistica-v1",
+      "tipo": "simulado",
+      "titulo": "Simulado: Estatística do básico ao FCC",
+      "descricao": "13 questões em ordem de dificuldade, com a resolução passo a passo: amostragem, média, mediana, moda, variância, CV, probabilidade, condicional, independência, normal e assimetria.",
+      "arquivo": "banestes-missao2-estatistica.json",
+      "data": "2026-11-21"
+    },
+    {
+      "id": "banestes-missao2-v1",
+      "tipo": "missao",
+      "titulo": "Missão da semana: 21 a 27/11",
+      "descricao": "Estatística do zero (explicar, fixar e medir), os enganos de Informática e LGPD e as lacunas de Bancários. Aparece no Meu edital.",
+      "arquivo": "banestes-missao2.json",
+      "data": "2026-11-21"
     }
   ]
 }

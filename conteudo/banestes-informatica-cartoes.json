@@ -79,7 +79,10 @@
     "Drive"
    ],
    "frente": "Níveis de permissão ao compartilhar no Google Drive",
-   "verso": "**Leitor** (só vê), **comentarista** (vê e comenta) e **editor** (altera e pode compartilhar)."
+   "verso": "**Leitor** (só vê), **Comentador** (vê, comenta e sugere) e **Editor** (altera e, por padrão, pode compartilhar; o proprietário pode tirar isso em \"Permitir que os editores mudem as permissões e compartilhem\").",
+   "antes": [
+    "**Leitor** (só vê), **comentarista** (vê e comenta) e **editor** (altera e pode compartilhar)."
+   ]
   },
   {
    "lugar": [
@@ -121,5 +124,8 @@
    "frente": "Viés e explicabilidade na IA do banco",
    "verso": "**Viés**: o modelo repete distorções dos dados (pode discriminar). **Explicabilidade**: conseguir explicar **por que** a IA decidiu, como negar um crédito, o que a LGPD exige ao permitir pedir revisão."
   }
+ ],
+ "fontes": [
+  "Ajuda do Google: PROCV (support.google.com/docs/answer/3093318) e compartilhamento no Drive (support.google.com/drive/answer/2494822), lidas em 20/11/2026"
  ]
 }

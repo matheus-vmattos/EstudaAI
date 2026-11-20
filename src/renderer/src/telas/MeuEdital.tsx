@@ -135,8 +135,7 @@ export function MeuEdital({
       )
       if (aberto) return abrirSimulado(aberto.id)
     }
-    if (t.tipo === 'cartoes' && missao?.cartoesFrentes?.[t.id])
-      return estudar({ assuntos: null, titulo: t.titulo })
+    // cartões: importa sempre (não duplica e aplica a errata, se houver)
     const item = caixa.find((i) => i.id === t.item)
     if (!item)
       return setAvisoMissao(
@@ -145,6 +144,7 @@ export function MeuEdital({
     const r = await importarDaCaixa(item, dados, mudar)
     if (!r.ok) return setAvisoMissao(r.texto)
     if (r.simulado) return abrirSimulado(r.simulado)
+    if (r.nos?.[0]) return abrirAnotacao(r.nos[0])
     if (r.frentes) {
       const frentes = r.frentes
       mudar((d) => {
@@ -378,7 +378,9 @@ export function MeuEdital({
                             ? 'Explicar'
                             : t.tipo === 'simulado'
                               ? 'Começar'
-                              : 'Abrir'}
+                              : t.tipo === 'anotacoes'
+                                ? 'Ler'
+                                : 'Abrir'}
                           <Icone nome="direita" tamanho={14} />
                         </button>
                       ) : (

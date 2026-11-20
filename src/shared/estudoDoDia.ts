@@ -1,6 +1,7 @@
 import { filaDoDia } from './flashcards'
 import { nosDaMateria } from './arvore'
 import { situacaoDoEdital, proximoPasso } from './edital'
+import { temNotaPropria } from './anotacoesDoClaude'
 import type { Dados, Id, PlanoDoDia, TarefaDoDia } from './tipos'
 
 /** AAAA-MM-DD do dia local */
@@ -75,7 +76,7 @@ export function planoDoDia(d: Dados, agora = new Date()): PlanoDoDia {
     const nos = nosDaMateria(d, m)
     const comFilho = new Set(nos.map((n) => n.paiId).filter(Boolean) as Id[])
     const comCartao = new Set(d.cartoes.map((c) => c.assuntoId))
-    const livres = nos.filter((n) => !n.nota.trim() && !comCartao.has(n.id))
+    const livres = nos.filter((n) => !temNotaPropria(d, n.id, n.nota) && !comCartao.has(n.id))
     const no = livres.find((n) => !comFilho.has(n.id)) ?? livres[0]
     if (no) {
       tarefas.push({
@@ -124,7 +125,9 @@ export function tarefaFeita(
   const no =
     d.topicos.find((x) => x.id === t.lugarId) ??
     d.materias.flatMap((m) => m.assuntos).find((a) => a.id === t.lugarId)
-  return !!no && (!!no.nota.trim() || d.cartoes.some((c) => c.assuntoId === t.lugarId))
+  return (
+    !!no && (temNotaPropria(d, no.id, no.nota) || d.cartoes.some((c) => c.assuntoId === t.lugarId))
+  )
 }
 
 /** Os dias com estudo que dá para ver nos dados de agora. Só o mais recente
@@ -138,8 +141,10 @@ function diasVisiveis(d: Dados): Set<string> {
   for (const c of d.cartoes) if (c.agenda.last_review) marcar(Date.parse(c.agenda.last_review))
   for (const c of d.cartoes) marcar(c.primeiraRevisao)
   for (const s of d.simulados) marcar(s.entregueEm)
-  for (const t of d.topicos) marcar(t.atualizadoEm)
-  for (const m of d.materias) for (const a of m.assuntos) if (a.nota.trim()) marcar(a.atualizadoEm)
+  // tópico só conta pela anotação sua (criar no mapa ou receber a do Claude não é estudo)
+  for (const t of d.topicos) if (temNotaPropria(d, t.id, t.nota)) marcar(t.atualizadoEm)
+  for (const m of d.materias)
+    for (const a of m.assuntos) if (temNotaPropria(d, a.id, a.nota)) marcar(a.atualizadoEm)
   return dias
 }
 

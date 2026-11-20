@@ -79,7 +79,10 @@
     "Desvio padrão"
    ],
    "frente": "Somar ou multiplicar todos os dados por uma constante",
-   "verso": "Somar k: a média soma k, o **desvio padrão não muda**. Multiplicar por k: média e desvio padrão ficam ×k, a **variância ×k²**."
+   "verso": "Somar k: a média soma k, o **desvio padrão não muda**. Multiplicar por k: a média fica ×k, o desvio padrão ×|k| e a **variância ×k²**.",
+   "antes": [
+    "Somar k: a média soma k, o **desvio padrão não muda**. Multiplicar por k: média e desvio padrão ficam ×k, a **variância ×k²**."
+   ]
   },
   {
    "lugar": [
@@ -134,5 +137,8 @@
    "frente": "Média maior que a mediana indica…",
    "verso": "Distribuição **assimétrica à direita** (positiva): poucos valores altos puxam a média para cima."
   }
+ ],
+ "fontes": [
+  "Definições e propriedades conferidas com cálculo (desvio padrão de k·X = |k|·σ)"
  ]
 }

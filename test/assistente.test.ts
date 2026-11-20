@@ -419,3 +419,115 @@ describe('revisão do Codex (PR 22)', () => {
     expect(feitaPelosDados(d, r.missao, r.missao.tarefas[0])).toBe(true)
   })
 })
+
+describe('Anotações do Claude e errata de cartões', () => {
+  const pacote = (texto: string): string =>
+    JSON.stringify({
+      materia: 'est',
+      notas: [
+        { lugar: ['a'], texto },
+        { lugar: ['a', 'Mediana'], texto: 'Mediana: o **meio** da lista ordenada.' }
+      ]
+    })
+  it('escreve só em anotação vazia, não conta como estudo e não apaga a sua', async () => {
+    const { lerPacoteDeAnotacoes, importarAnotacoes, temNotaPropria } =
+      await import('../src/shared/anotacoesDoClaude')
+    const { situacaoDoEdital } = await import('../src/shared/edital')
+    const d = dadosDoEdital()
+    const port = d.materias.find((m) => m.id === 'port')!
+    port.assuntos[0].nota = 'minha nota'
+    const r = lerPacoteDeAnotacoes(pacote('Resumo v1'))
+    if (!r.ok) throw new Error(r.erro)
+    let n = 0
+    const res = importarAnotacoes(d, r.pacote, () => `n${++n}`, 5)
+    expect(res.escritas).toBe(2)
+    expect(res.lugaresCriados).toBe(1) // o tópico Mediana
+    const a = d.materias.find((m) => m.id === 'est')!.assuntos[0]
+    expect(a.nota).toBe('Resumo v1')
+    expect(a.atualizadoEm).toBe(0) // não vira dia de estudo
+    expect(temNotaPropria(d, a.id, a.nota)).toBe(false)
+    const est = situacaoDoEdital(d, new Date()).find((s) => s.materiaId === 'est')!
+    expect(est.estudado).toBe(0)
+    // a sua continua sua
+    expect(port.assuntos[0].nota).toBe('minha nota')
+    // versão corrigida chega enquanto você não editou...
+    const v2 = lerPacoteDeAnotacoes(pacote('Resumo v2'))
+    if (!v2.ok) throw new Error(v2.erro)
+    importarAnotacoes(d, v2.pacote, () => `m${++n}`, 6)
+    expect(a.nota).toBe('Resumo v2')
+    // ...e não chega depois que você editou
+    a.nota = 'Resumo v2 + o que eu entendi'
+    expect(temNotaPropria(d, a.id, a.nota)).toBe(true)
+    const v3 = lerPacoteDeAnotacoes(pacote('Resumo v3'))
+    if (!v3.ok) throw new Error(v3.erro)
+    expect(importarAnotacoes(d, v3.pacote, () => `k${++n}`, 7).suas).toBe(1)
+    expect(a.nota).toBe('Resumo v2 + o que eu entendi')
+  })
+  it('errata: corrige o verso só se ainda for o antigo exato', async () => {
+    const { lerPacoteDeCartoes, importarCartoes } = await import('../src/shared/pacoteDeCartoes')
+    const d = dadosDoEdital()
+    const v1 = lerPacoteDeCartoes(
+      JSON.stringify({
+        materia: 'info',
+        cartoes: [{ lugar: ['a'], frente: 'Drive', verso: 'Comentarista' }]
+      })
+    )
+    if (!v1.ok) throw new Error(v1.erro)
+    let n = 0
+    importarCartoes(d, v1.pacote, () => `c${++n}`, 1)
+    const v2 = lerPacoteDeCartoes(
+      JSON.stringify({
+        materia: 'info',
+        cartoes: [{ lugar: ['a'], frente: 'Drive', verso: 'Comentador', antes: ['Comentarista'] }]
+      })
+    )
+    if (!v2.ok) throw new Error(v2.erro)
+    expect(importarCartoes(d, v2.pacote, () => `c${++n}`, 2).corrigidos).toBe(1)
+    expect(d.cartoes.find((c) => c.frente === 'Drive')!.verso).toBe('Comentador')
+    // editado por você: a errata não mexe
+    d.cartoes.find((c) => c.frente === 'Drive')!.verso = 'Comentarista (anotei errado)'
+    expect(importarCartoes(d, v2.pacote, () => `c${++n}`, 3).corrigidos).toBe(0)
+  })
+})
+
+describe('compatibilidade: missão nova em app antigo', () => {
+  it('tarefa de tipo desconhecido é pulada; o resto da missão vale', () => {
+    const r = lerPacoteDeMissao(
+      JSON.stringify({
+        de: 'a',
+        ate: 'b',
+        tarefas: [
+          { id: 'x', tipo: 'algo-do-futuro', titulo: 'Novidade', pontos: 10 },
+          { id: 'atr', tipo: 'atrasados', titulo: 'Zerar', pontos: 5 }
+        ]
+      }),
+      'm',
+      0
+    )
+    expect(r.ok && r.missao.tarefas.map((t) => t.id)).toEqual(['atr'])
+  })
+  it('versão mínima do item da caixa', async () => {
+    const { versaoAtende } = await import('../src/shared/versao')
+    expect(versaoAtende('0.1.19', '0.1.9')).toBe(true)
+    expect(versaoAtende('0.1.18', '0.1.19')).toBe(false)
+    expect(versaoAtende('0.2.0', '0.1.19')).toBe(true)
+    expect(versaoAtende('0.1.18')).toBe(true)
+  })
+})
+
+describe('revisão do Codex (PR 23)', () => {
+  it('importar anotações (que criam tópicos) não vira dia de estudo', async () => {
+    const { lerPacoteDeAnotacoes, importarAnotacoes } =
+      await import('../src/shared/anotacoesDoClaude')
+    const { sequenciaDeDias } = await import('../src/shared/estudoDoDia')
+    const d = dadosDoEdital()
+    const r = lerPacoteDeAnotacoes(
+      JSON.stringify({ materia: 'est', notas: [{ lugar: ['a', 'Mediana'], texto: 'meio' }] })
+    )
+    if (!r.ok) throw new Error(r.erro)
+    const hoje = new Date(2026, 10, 21, 10)
+    importarAnotacoes(d, r.pacote, () => 'novo', hoje.getTime())
+    expect(d.topicos.find((t) => t.nome === 'Mediana')).toBeTruthy()
+    expect(sequenciaDeDias(d, hoje)).toBe(0)
+  })
+})

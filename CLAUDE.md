@@ -54,6 +54,14 @@ Todo conteúdo que o Claude cria (questões, cartões, missões, resumos) segue:
 4. Gabaritos distribuídos entre A e E; alternativas numéricas em ordem
    crescente.
 5. Cada arquivo de conteúdo lista as fontes conferidas no campo `fontes`.
+6. **Errou? Corrige o que já chegou nele.** Cartão: o verso novo leva os
+   versos antigos em `antes` (errata; só troca se ele não editou) e entra
+   como item novo na caixa (`...-v2`, mesmo arquivo). Anotação do Claude
+   (tipo `anotacoes`) se atualiza sozinha enquanto ele não editou; editou,
+   é dele. Simulado já feito não muda: diga no resumo.
+7. `test/conteudo.test.ts` é o portão: todo item da caixa lê no app, toda
+   fórmula renderiza no KaTeX estrito, toda tarefa de missão aponta para um
+   item que existe. Contas de questão conferidas em Python antes.
 
 ## Como trabalhar
 

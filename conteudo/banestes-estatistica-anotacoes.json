@@ -1,0 +1,136 @@
+{
+ "materia": "Probabilidade e Estatística",
+ "notas": [
+  {
+   "lugar": [
+    "Medidas de tendência central"
+   ],
+   "texto": "## Média, mediana e moda — o mapa\n\n| | O que é | Puxada por extremos? |\n|---|---|---|\n| **Média** | a soma ÷ a quantidade | **sim** |\n| **Mediana** | o valor do **meio** da lista ordenada | não |\n| **Moda** | o valor que **mais se repete** | não |\n\n==Mediana é o meio; média é a conta.==\n\n> **PEGADINHA** A FCC põe a média entre as alternativas de uma questão que pede a mediana (e vice-versa). Leia o que o enunciado pede antes de calcular.\n\n**Assimetria** (cai em prova):\n- simétrica: média = mediana = moda;\n- **à direita** (positiva, poucos valores muito altos): moda < mediana < **média**;\n- **à esquerda** (negativa): **média** < mediana < moda."
+  },
+  {
+   "lugar": [
+    "Medidas de tendência central",
+    "Média"
+   ],
+   "texto": "## Média aritmética\n\n$$\\bar{x} = \\frac{\\sum x_i}{n}$$\n\n**Exemplo:** 4, 6, 8, 10, 12 → soma 40 ÷ 5 = **8**.\n\n**Média ponderada** (cada valor com seu peso):\n$$\\bar{x} = \\frac{\\sum x_i\\,p_i}{\\sum p_i}$$\nNotas 6 (peso 1) e 9 (peso 2): $\\frac{6 + 18}{3} = 8$.\n\n**Propriedades que a FCC cobra:**\n- somar uma constante a todos os valores soma essa constante à média;\n- multiplicar todos por k multiplica a média por k;\n- a soma dos desvios em relação à média é **zero**.\n\n> **PEGADINHA** A média é **puxada pelos extremos**. Com salários (poucos muito altos), a média fica acima do \"típico\"; a mediana representa melhor."
+  },
+  {
+   "lugar": [
+    "Medidas de tendência central",
+    "Mediana"
+   ],
+   "texto": "## Mediana: o valor do meio\n\n1. **Ordene** os dados (sempre!).\n2. n **ímpar**: é o valor na posição $\\frac{n+1}{2}$.\n3. n **par**: é a **média dos dois do meio**.\n\n**Exemplo ímpar** (n = 9): 5, 6, 6, 7, **8**, 9, 9, 9, 10 → posição 5 → **8**.\nA média dessa lista é 69 ÷ 9 ≈ 7,67: ==não confunda==.\n\n**Exemplo par** (n = 6): 1, 3, **5, 7**, 9, 17 → $\\frac{5 + 7}{2} =$ **6** (a média seria 42 ÷ 6 = 7).\n\n> **PEGADINHA** Esquecer de ordenar. Em 3, 9, 1, 7, 5, 17 o \"do meio\" não é 1 nem 7: ordene primeiro.\n\nDados em tabela de frequência: a mediana está na classe que contém a posição n/2 (use a frequência acumulada)."
+  },
+  {
+   "lugar": [
+    "Medidas de tendência central",
+    "Moda"
+   ],
+   "texto": "## Moda: o que mais se repete\n\n- 2, 3, 3, 5, 7, 7, 8 → o 3 e o 7 aparecem duas vezes: **bimodal** (moda = 3 e 7).\n- 1, 2, 3, 4 → ninguém se repete: **amodal** (não há moda).\n- Em tabela de frequência: a **classe modal** é a de maior frequência.\n\n> **PEGADINHA** \"Não há moda\" é diferente de \"moda = 0\". E pode haver mais de uma moda."
+  },
+  {
+   "lugar": [
+    "Medidas de dispersão"
+   ],
+   "texto": "## Dispersão: o quanto os dados se espalham\n\nDuas turmas com média 7 podem ser muito diferentes: uma com todos tirando 7, outra com metade 4 e metade 10. A **média é igual**; a **dispersão**, não.\n\n| Medida | Fórmula | Unidade |\n|---|---|---|\n| Amplitude | máx − mín | a dos dados |\n| Variância | média dos quadrados dos desvios | **ao quadrado** |\n| Desvio padrão | $\\sqrt{\\text{variância}}$ | a dos dados |\n| Coeficiente de variação | $\\frac{s}{\\bar{x}}$ | **sem unidade (%)** |\n\n**O que acontece quando muda todo mundo:**\n- **somar** k a todos: média + k; variância e desvio padrão **não mudam**;\n- **multiplicar** por k: média × k; desvio padrão × |k|; variância × k².\n\n> **PEGADINHA** Bônus fixo para todos os funcionários não muda o desvio padrão dos salários. Reajuste percentual muda."
+  },
+  {
+   "lugar": [
+    "Medidas de dispersão",
+    "Amplitude"
+   ],
+   "texto": "## Amplitude total\n\n$$A = x_{\\text{máx}} - x_{\\text{mín}}$$\n\n10, 12, 15, 30 → 30 − 10 = **20**.\n\nÉ a medida mais simples, mas só olha os **dois extremos**: um único valor fora da curva muda tudo."
+  },
+  {
+   "lugar": [
+    "Medidas de dispersão",
+    "Variância"
+   ],
+   "texto": "## Variância\n\n**População** (todos os dados) e **amostra** (parte deles):\n$$\\sigma^2 = \\frac{\\sum (x_i - \\mu)^2}{N} \\qquad s^2 = \\frac{\\sum (x_i - \\bar{x})^2}{n - 1}$$\n\n**Passo a passo** com 2, 4, 6, 8:\n1. média = 20 ÷ 4 = 5;\n2. desvios: −3, −1, 1, 3;\n3. quadrados: 9, 1, 1, 9 → soma **20**;\n4. população: 20 ÷ 4 = **5**; amostra: 20 ÷ 3 ≈ **6,67**.\n\nAtalho (população): $\\sigma^2 = \\overline{x^2} - \\bar{x}^2$ → (4 + 16 + 36 + 64) ÷ 4 − 5² = 30 − 25 = **5**.\n\n> **PEGADINHA** Amostra divide por **n − 1**. Se o enunciado diz \"amostra\", não use N."
+  },
+  {
+   "lugar": [
+    "Medidas de dispersão",
+    "Desvio padrão"
+   ],
+   "texto": "## Desvio padrão\n\n$$\\sigma = \\sqrt{\\sigma^2}$$\n\nÉ a raiz da variância, e por isso volta para a **unidade dos dados** (reais, minutos, pontos). É a medida de dispersão mais usada.\n\nNa lista 2, 4, 6, 8: variância 5 → desvio padrão $\\sqrt{5} \\approx 2{,}24$.\n\n**Constantes:**\n- salários com desvio de R$ 300; **reajuste de 10%** → desvio R$ 330;\n- depois, **bônus de R$ 100** para todos → o desvio continua R$ 330.\n\nNo mercado financeiro, o desvio padrão dos retornos é a medida clássica de **risco** (volatilidade)."
+  },
+  {
+   "lugar": [
+    "Medidas de dispersão",
+    "Coeficiente de variação"
+   ],
+   "texto": "## Coeficiente de variação (CV)\n\n$$CV = \\frac{s}{\\bar{x}} \\times 100\\%$$\n\nDispersão **relativa**: serve para comparar séries com médias (ou unidades) diferentes. **Menor CV = mais homogênea** (ou menos risco por unidade de retorno).\n\n**Exemplo:**\n- agência A: média R$ 2.000, desvio R$ 400 → CV = **20%**;\n- agência B: média R$ 5.000, desvio R$ 750 → CV = **15%**.\n\nB tem desvio **maior**, mas é **mais homogênea**.\n\n> **PEGADINHA** Comparar o desvio padrão sozinho quando as médias são diferentes. Use o CV."
+  },
+  {
+   "lugar": [
+    "Probabilidade"
+   ],
+   "texto": "## Probabilidade — o mapa\n\n| Situação | Conta |\n|---|---|\n| chance de A | favoráveis ÷ possíveis |\n| **não** A | $1 - P(A)$ |\n| A **ou** B | $P(A) + P(B) - P(A \\cap B)$ |\n| A **e** B, independentes | $P(A) \\cdot P(B)$ |\n| A **sabendo que** B | $\\frac{P(A \\cap B)}{P(B)}$ |\n| **pelo menos um** | $1 - P(\\text{nenhum})$ |\n\n> **PEGADINHA** \"Pelo menos um\" quase sempre sai mais fácil pelo complementar: 1 − P(nenhum).\n\n> **PEGADINHA** **Sem reposição**, o total diminui a cada retirada: os eventos deixam de ser independentes."
+  },
+  {
+   "lugar": [
+    "Probabilidade",
+    "Espaço amostral e eventos"
+   ],
+   "texto": "## Espaço amostral e eventos\n\n- **Espaço amostral**: todos os resultados possíveis. Um dado: {1, 2, 3, 4, 5, 6}.\n- **Evento**: o pedaço que interessa. \"Sair primo\": {2, 3, 5}.\n- Com resultados igualmente prováveis:\n$$P(A) = \\frac{\\text{casos favoráveis}}{\\text{casos possíveis}} = \\frac{3}{6} = \\frac{1}{2}$$\n- Sempre $0 \\le P \\le 1$.\n\n**União** (A ou B): $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$.\n60% têm conta-corrente, 40% poupança, 25% os dois → pelo menos um: 60 + 40 − 25 = **75%**; nenhum: **25%**.\n\n**Mutuamente exclusivos**: não acontecem juntos ($P(A \\cap B) = 0$). Ex.: no mesmo lançamento, sair 2 e sair 5.\n\n**Pelo menos um**: 3 lançamentos de moeda → P(nenhuma cara) = $\\left(\\frac{1}{2}\\right)^3 = \\frac{1}{8}$ → pelo menos uma cara = $\\frac{7}{8}$."
+  },
+  {
+   "lugar": [
+    "Probabilidade",
+    "Probabilidade condicional"
+   ],
+   "texto": "## Probabilidade condicional\n\n$$P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}$$\n\n==O \"sabendo que\" vira o novo total.==\n\n**Exemplo com tabela** (o mais cobrado):\n\n| | Inadimplente | Em dia | Total |\n|---|---|---|---|\n| Com cartão | 20 | 60 | 80 |\n| Sem cartão | 12 | 108 | 120 |\n| **Total** | **32** | 168 | 200 |\n\nSorteado um **inadimplente**, a chance de ter cartão: o total agora são os 32 inadimplentes → $\\frac{20}{32} =$ **62,5%**.\n\n> **PEGADINHA** $\\frac{20}{80} = 25\\%$ responde **outra** pergunta: a chance de ser inadimplente **entre quem tem cartão**. Veja qual grupo vem depois do \"sabendo que\"."
+  },
+  {
+   "lugar": [
+    "Probabilidade",
+    "Eventos independentes"
+   ],
+   "texto": "## Eventos independentes\n\nUm não muda a chance do outro:\n$$P(A \\cap B) = P(A) \\cdot P(B) \\quad\\Longleftrightarrow\\quad P(A \\mid B) = P(A)$$\n\n**Como testar:** P(A) = 0,4, P(B) = 0,5 e P(A ∩ B) = 0,2 → 0,4 × 0,5 = 0,2 → **independentes**. Daí:\n- $P(A \\cup B) = 0{,}4 + 0{,}5 - 0{,}2 = 0{,}7$;\n- $P(A \\mid B) = 0{,}2 \\div 0{,}5 = 0{,}4$ (igual a P(A), como deve ser).\n\n**Com e sem reposição** (urna com 5 azuis em 10):\n- com reposição: duas azuis = $\\frac{5}{10} \\cdot \\frac{5}{10} = \\frac{1}{4}$;\n- sem reposição: $\\frac{5}{10} \\cdot \\frac{4}{9} = \\frac{2}{9}$ (dependentes).\n\n> **PEGADINHA** Mutuamente exclusivos **não** são independentes: se um acontece, o outro fica impossível (a chance mudou)."
+  },
+  {
+   "lugar": [
+    "Distribuição normal"
+   ],
+   "texto": "## Distribuição normal\n\nCurva em **sino**, simétrica: **média = mediana = moda** no centro.\n\n**Regra 68–95–99,7** (cai muito):\n- entre μ − σ e μ + σ: cerca de **68%**;\n- entre μ − 2σ e μ + 2σ: cerca de **95%**;\n- entre μ − 3σ e μ + 3σ: cerca de **99,7%**.\n\n**Escore z** (quantos desvios da média):\n$$z = \\frac{x - \\mu}{\\sigma}$$\n\n**Exemplo:** atendimento com média 12 min e desvio 2 min.\n- De 8 a 16 min = ±2σ → **95%**.\n- Acima de 16 min: o que sobra (5%) se divide nas duas pontas → **2,5%**.\n\n> **PEGADINHA** \"Acima de\" pega **uma** ponta só: divida o que sobra por 2."
+  },
+  {
+   "lugar": [
+    "Fundamentos",
+    "População e amostra"
+   ],
+   "texto": "## População e amostra\n\n- **População**: todos os elementos que interessam (todos os clientes do banco).\n- **Amostra**: a parte observada, que precisa **representar** a população.\n- **Censo**: pesquisar a população inteira.\n- **Parâmetro** descreve a população (μ, σ); **estatística** descreve a amostra ($\\bar{x}$, s).\n\nEstatística **descritiva** resume os dados (tabelas, médias); **inferencial** tira conclusões sobre a população a partir da amostra."
+  },
+  {
+   "lugar": [
+    "Fundamentos",
+    "Técnicas de amostragem"
+   ],
+   "texto": "## Técnicas de amostragem\n\n**Probabilísticas** (todo elemento tem chance conhecida):\n- **aleatória simples**: sorteio, todos com a mesma chance;\n- **sistemática**: de k em k (k = N ÷ n), com o início sorteado;\n- **estratificada**: divide em grupos **homogêneos** (faixa de renda) e sorteia **dentro de cada** grupo, em geral proporcional ao tamanho;\n- **por conglomerados**: sorteia **grupos inteiros** (agências) e pesquisa todos de dentro.\n\n**Não probabilísticas**: por conveniência, por julgamento (intencional), por cotas.\n\n> **PEGADINHA** Estratificada × conglomerados: na estratificada **todos os grupos** entram (sorteia dentro deles); nos conglomerados, **alguns grupos** são sorteados e entram inteiros."
+  },
+  {
+   "lugar": [
+    "Fundamentos",
+    "Tabelas e gráficos"
+   ],
+   "texto": "## Tabelas e gráficos: qual usar\n\n- **Colunas ou barras**: comparar categorias (vendas por agência).\n- **Setores (pizza)**: partes de um todo, somando 100%.\n- **Linhas**: evolução no **tempo** (inflação mês a mês).\n- **Histograma**: frequência de **classes de valores contínuos**, barras **encostadas**.\n- **Boxplot**: mediana, quartis e valores fora da curva.\n\n> **PEGADINHA** Histograma não é gráfico de barras: no histograma as classes são intervalos contínuos e as barras ficam juntas."
+  },
+  {
+   "lugar": [
+    "Fundamentos",
+    "Distribuição de frequências"
+   ],
+   "texto": "## Distribuição de frequências\n\n- **Frequência absoluta** (fᵢ): quantas vezes aparece.\n- **Relativa**: $\\frac{f_i}{n}$ (em %).\n- **Acumulada**: soma das frequências até aquela linha (ajuda a achar a mediana).\n- **Classes**: intervalos, como 20 ⊢ 30; amplitude da classe = 30 − 20 = 10; **ponto médio** = 25.\n\n**Média de dados agrupados:** use o ponto médio de cada classe.\n$$\\bar{x} = \\frac{\\sum x_i\\,f_i}{n}$$\nClasses 0 ⊢ 10 (3 pessoas) e 10 ⊢ 20 (1 pessoa): $\\frac{5 \\cdot 3 + 15 \\cdot 1}{4} = 7{,}5$."
+  },
+  {
+   "lugar": [
+    "Aplicações e indicadores"
+   ],
+   "texto": "## Estatística no banco (como a FCC contextualiza)\n\n- **Risco de um investimento** = desvio padrão dos retornos. Para comparar investimentos com retornos médios diferentes, use o **CV** (risco por unidade de retorno).\n- **Renda e salários**: com poucos valores muito altos, a **mediana** representa melhor o cliente típico. Média maior que a mediana indica assimetria **à direita**.\n- **Inadimplência** é uma probabilidade: inadimplentes ÷ total da carteira. Recortes (\"entre os clientes com cartão\") são **probabilidade condicional**.\n- **Pesquisa de satisfação** com amostra: precisa ser representativa (amostragem probabilística, de preferência estratificada por perfil).\n\n> **PEGADINHA** Fundo com maior desvio padrão nem sempre é o \"mais arriscado\" em termos relativos: compare os CVs."
+  }
+ ],
+ "fontes": [
+  "Definições e fórmulas clássicas de estatística descritiva e probabilidade; todos os exemplos calculados e conferidos em Python (statistics, fractions)"
+ ]
+}

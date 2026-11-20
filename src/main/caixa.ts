@@ -1,4 +1,5 @@
-import { ipcMain, net } from 'electron'
+import { app, ipcMain, net } from 'electron'
+import { versaoAtende } from '../shared/versao'
 import type { ItemDaCaixa } from '../shared/tipos'
 
 /** Conteúdo que o Claude prepara (mapas, simulados, cartões) fica na pasta
@@ -9,7 +10,7 @@ const BASE =
   'https://raw.githubusercontent.com/matheus-vmattos/EstudaAI/main/conteudo/'
 // só nome simples de arquivo: nada de ../ nem endereço de fora
 const NOME_VALIDO = /^[a-z0-9][a-z0-9-]*\.(txt|json)$/
-const TIPOS = new Set(['estrutura', 'simulado', 'cartoes', 'edital', 'missao'])
+const TIPOS = new Set(['estrutura', 'simulado', 'cartoes', 'edital', 'missao', 'anotacoes'])
 
 async function baixar(nome: string): Promise<string> {
   const r = await net.fetch(BASE + nome + `?t=${Date.now()}`, { cache: 'no-store' })
@@ -33,7 +34,8 @@ export function iniciarCaixa(): void {
           typeof (i as ItemDaCaixa).id === 'string' &&
           typeof (i as ItemDaCaixa).titulo === 'string' &&
           TIPOS.has((i as ItemDaCaixa).tipo) &&
-          NOME_VALIDO.test(String((i as ItemDaCaixa).arquivo))
+          NOME_VALIDO.test(String((i as ItemDaCaixa).arquivo)) &&
+          versaoAtende(app.getVersion(), (i as ItemDaCaixa).versaoMinima)
       )
       return { itens }
     } catch (e) {

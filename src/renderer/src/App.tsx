@@ -223,6 +223,7 @@ export function App() {
           abrirSimulado={setSimuladoAberto}
           abrirFlashcards={() => setTela('flashcards')}
           abrirEdital={() => setTela('edital')}
+          abrirAnotacao={abrirAnotacao}
         />
       )}
       {tela === 'questoes' && (
