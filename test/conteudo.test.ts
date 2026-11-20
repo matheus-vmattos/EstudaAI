@@ -64,6 +64,15 @@ describe('conteúdo publicado na caixa', () => {
         const existentes = new Set(caixa.itens.map((i) => i.id))
         for (const t of r.missao.tarefas)
           if ('item' in t) expect(existentes.has(t.item), `${t.id} → ${t.item}`).toBe(true)
+        // missão sem versão mínima é lida por todo app instalado: só os tipos
+        // de tarefa que existem desde a v0.1.18 (tipo novo recusa a missão lá)
+        const comVersao = caixa.itens.find((i) => i.id === item.id) as { versaoMinima?: string }
+        if (!comVersao.versaoMinima)
+          for (const t of r.missao.tarefas)
+            expect(
+              ['simulado', 'cartoes', 'atrasados', 'explicar'],
+              `${t.id}: ${t.tipo}`
+            ).toContain(t.tipo)
       }
       for (const t of textos) for (const tex of formulasDe(t)) renderiza(tex)
     })

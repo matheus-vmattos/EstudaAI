@@ -181,10 +181,9 @@
       "id": "banestes-missao2-v1",
       "tipo": "missao",
       "titulo": "Missão da semana: 21 a 27/11",
-      "descricao": "Estatística do zero (ler, explicar, fixar e medir), os enganos de Informática e LGPD e as lacunas de Bancários. Aparece no Meu edital.",
+      "descricao": "Estatística do zero (explicar, fixar e medir), os enganos de Informática e LGPD e as lacunas de Bancários. Aparece no Meu edital.",
       "arquivo": "banestes-missao2.json",
-      "data": "2026-11-21",
-      "versaoMinima": "0.1.19"
+      "data": "2026-11-21"
     }
   ]
 }

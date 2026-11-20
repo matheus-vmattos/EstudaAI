@@ -135,8 +135,7 @@ export function MeuEdital({
       )
       if (aberto) return abrirSimulado(aberto.id)
     }
-    if (t.tipo === 'cartoes' && missao?.cartoesFrentes?.[t.id])
-      return estudar({ assuntos: null, titulo: t.titulo })
+    // cartões: importa sempre (não duplica e aplica a errata, se houver)
     const item = caixa.find((i) => i.id === t.item)
     if (!item)
       return setAvisoMissao(

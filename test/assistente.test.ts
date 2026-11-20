@@ -514,3 +514,20 @@ describe('compatibilidade: missão nova em app antigo', () => {
     expect(versaoAtende('0.1.18')).toBe(true)
   })
 })
+
+describe('revisão do Codex (PR 23)', () => {
+  it('importar anotações (que criam tópicos) não vira dia de estudo', async () => {
+    const { lerPacoteDeAnotacoes, importarAnotacoes } =
+      await import('../src/shared/anotacoesDoClaude')
+    const { sequenciaDeDias } = await import('../src/shared/estudoDoDia')
+    const d = dadosDoEdital()
+    const r = lerPacoteDeAnotacoes(
+      JSON.stringify({ materia: 'est', notas: [{ lugar: ['a', 'Mediana'], texto: 'meio' }] })
+    )
+    if (!r.ok) throw new Error(r.erro)
+    const hoje = new Date(2026, 10, 21, 10)
+    importarAnotacoes(d, r.pacote, () => 'novo', hoje.getTime())
+    expect(d.topicos.find((t) => t.nome === 'Mediana')).toBeTruthy()
+    expect(sequenciaDeDias(d, hoje)).toBe(0)
+  })
+})

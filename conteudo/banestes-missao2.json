@@ -1,16 +1,8 @@
 {
  "de": "2026-11-21",
  "ate": "2026-11-27",
- "frase": "Estatística ficou em 1 de 10: é a lacuna que mais pesa hoje (0,83 ponto da nota). Primeiro entender (anotações), depois fixar (cartões) e só então medir de novo, do básico ao estilo FCC. Informática foi bem (7 de 10): falta revisar os cartões dos 3 enganos.",
+ "frase": "Estatística ficou em 1 de 10: é a lacuna que mais pesa hoje (0,83 ponto da nota). Primeiro entender (as anotações de Estatística chegaram em Do Claude e no mapa), depois fixar (cartões) e só então medir de novo, do básico ao estilo FCC. Informática foi bem (7 de 10): falta revisar os cartões dos 3 enganos.",
  "tarefas": [
-  {
-   "id": "ler-est",
-   "tipo": "anotacoes",
-   "titulo": "Ler: Estatística do zero",
-   "detalhe": "19 anotações com fórmula, exemplo resolvido e pegadinha FCC",
-   "pontos": 60,
-   "item": "banestes-estatistica-anotacoes-v1"
-  },
   {
    "id": "media-mediana",
    "tipo": "explicar",
@@ -24,7 +16,7 @@
    "id": "cartoes-est",
    "tipo": "cartoes",
    "titulo": "Revisar os cartões de Estatística",
-   "detalhe": "17 cartões, nunca revisados · um deles corrigido",
+   "detalhe": "17 cartões, nunca revisados · as anotações de Estatística (Do Claude) explicam cada um",
    "pontos": 100,
    "item": "banestes-estatistica-cartoes-v2"
   },
