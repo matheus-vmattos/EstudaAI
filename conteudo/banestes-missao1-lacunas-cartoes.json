@@ -1,0 +1,77 @@
+{
+ "materia": "Conhecimentos Bancários",
+ "cartoes": [
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Meios de pagamento"
+   ],
+   "frente": "Cheque: prazo de apresentação",
+   "verso": "**30 dias** se for da mesma praça de pagamento; **60 dias** se for de outra praça, contados da emissão (Lei 7.357/1985, art. 33)."
+  },
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Meios de pagamento"
+   ],
+   "frente": "Cheque: prazo de prescrição",
+   "verso": "**6 meses** contados do **fim do prazo de apresentação** (art. 59). Depois disso, o credor ainda pode cobrar por outras ações, como a de enriquecimento sem causa."
+  },
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Meios de pagamento"
+   ],
+   "frente": "Cheque pré-datado (pós-datado): o banco pode pagar antes da data?",
+   "verso": "Sim. O cheque é **ordem de pagamento à vista**: apresentado antes da data indicada, é pago no dia da apresentação (art. 32). Apresentar antes pode gerar dano moral (Súmula 370 do STJ), mas o banco paga."
+  },
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Meios de pagamento"
+   ],
+   "frente": "Cheque cruzado",
+   "verso": "Dois traços paralelos na frente: só pode ser pago **a um banco ou cliente de banco**, ou seja, precisa ser depositado (art. 44). Com o nome de um banco entre os traços, é cruzamento em preto (especial)."
+  },
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Crédito"
+   ],
+   "frente": "Aval x fiança",
+   "verso": "**Aval**: garantia de **título de crédito** (cheque, nota promissória); o avalista responde **solidariamente**, sem benefício de ordem. **Fiança**: **contrato** acessório; o fiador pode exigir que primeiro se cobre o devedor (**benefício de ordem**), salvo se renunciou (Código Civil, art. 827)."
+  },
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Crédito"
+   ],
+   "frente": "Aval e fiança: precisa da autorização do cônjuge?",
+   "verso": "Sim, nos dois casos (**outorga conjugal**, Código Civil, art. 1.647, III), exceto no regime de **separação absoluta** de bens."
+  },
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Crédito"
+   ],
+   "frente": "Garantias reais: hipoteca, penhor e alienação fiduciária",
+   "verso": "**Hipoteca**: imóvel (o bem fica com o devedor). **Penhor**: bem móvel, em regra entregue ao credor. **Alienação fiduciária**: a propriedade fica com o credor até a quitação (comum em veículos e imóveis financiados)."
+  },
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Investimentos"
+   ],
+   "frente": "Títulos públicos: prefixados e pós-fixados",
+   "verso": "**LTN**: prefixado, sem cupom (paga tudo no vencimento). **NTN-F**: prefixado, com juros semestrais. **LFT**: pós-fixado à **Selic**."
+  },
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Investimentos"
+   ],
+   "frente": "NTN-B x NTN-B Principal",
+   "verso": "As duas pagam **IPCA + juros**. A **NTN-B** paga **cupom semestral** de juros; a **NTN-B Principal** paga **tudo no vencimento** (sem cupom)."
+  }
+ ]
+}

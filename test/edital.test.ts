@@ -10,6 +10,8 @@ import {
   lerPacoteDeEdital,
   pesoNaNota,
   proximoPasso,
+  simuladoDaCaixa,
+  simuladosDaMateria,
   situacaoDoEdital
 } from '../src/shared/edital'
 import { agendaNova } from '../src/shared/flashcards'
@@ -224,5 +226,29 @@ describe('edital pela caixa', () => {
       lerPacoteDeEdital('{"nome":"x","materias":[{"nome":"a","questoes":0,"peso":1}]}').ok
     ).toBe(false)
     expect(lerPacoteDeEdital('{').ok).toBe(false)
+  })
+})
+
+describe('simulado pronto da caixa', () => {
+  it('entra na matéria que o arquivo diz, com a banca', async () => {
+    const { lerRespostaDaIa } = await import('../src/shared/questoes')
+    const d: Dados = structuredClone(DADOS_VAZIOS)
+    d.materias.push({
+      id: 'inf',
+      nome: 'Informática e Comportamentos Digitais',
+      aberta: true,
+      assuntos: []
+    })
+    const leitura = lerRespostaDaIa(
+      readFileSync('conteudo/banestes-missao1-informatica.json', 'utf-8')
+    )
+    if (!leitura.ok) throw new Error(leitura.erro)
+    const s = simuladoDaCaixa(d, leitura, 'Simulado', 's1', 1)
+    expect(s.config.materiaId).toBe('inf')
+    expect(s.config.banca).toBe('FCC')
+    expect(s.questoes).toHaveLength(10)
+    // só simulado entregue conta na matéria
+    d.simulados.push({ ...s, entregueEm: 2 })
+    expect(simuladosDaMateria(d, 'inf').map((x) => x.id)).toEqual(['s1'])
   })
 })

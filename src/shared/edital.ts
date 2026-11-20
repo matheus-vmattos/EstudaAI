@@ -1,6 +1,7 @@
 import { filaDoDia } from './flashcards'
 import { nosDaMateria } from './arvore'
 import { semAcento } from './texto'
+import type { LeituraDaIa } from './questoes'
 import type { Dados, Edital, Id, Simulado } from './tipos'
 
 /** Quanto cada matéria vale na nota final (0 a 1).
@@ -213,6 +214,42 @@ export function acharMateria(d: Dados, nome: string): Id | null {
     return n === alvo || n === semAcento(nome) || (alvo === 'portuguesa' && n === 'portugues')
   })
   return m?.id ?? null
+}
+
+/** O simulado pronto que veio da caixa "Do Claude". Entra na matéria que o
+ *  arquivo indica (conta no Meu edital) e com a banca dele; sem matéria
+ *  reconhecida, fica solto como antes. */
+export function simuladoDaCaixa(
+  d: Dados,
+  leitura: Extract<LeituraDaIa, { ok: true }>,
+  titulo: string,
+  id: Id,
+  agora: number
+): Simulado {
+  const n = leitura.questoes.length
+  const materiaId = leitura.materia ? acharMateria(d, leitura.materia) : null
+  return {
+    id,
+    config: {
+      tema: leitura.tema || titulo,
+      assuntoId: null,
+      ...(materiaId ? { materiaId } : {}),
+      nivel: 'medio',
+      tipo: leitura.tipo,
+      quantidade: n,
+      // padrão de prova: 3 min por questão
+      tempoMin: n * 3,
+      banca: leitura.banca ?? ''
+    },
+    questoes: leitura.questoes,
+    respostas: Array(n).fill(null),
+    revisar: Array(n).fill(false),
+    tempoPorQuestao: Array(n).fill(0),
+    decorridoMs: 0,
+    atual: 0,
+    criadoEm: agora,
+    entregueEm: null
+  }
 }
 
 // ---------- edital pela caixa "Do Claude" ----------

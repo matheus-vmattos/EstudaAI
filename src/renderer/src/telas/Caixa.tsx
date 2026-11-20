@@ -8,8 +8,8 @@ import {
 } from '../../../shared/estrutura'
 import { lerRespostaDaIa } from '../../../shared/questoes'
 import { importarCartoes, lerPacoteDeCartoes } from '../../../shared/pacoteDeCartoes'
-import { importarEdital, lerPacoteDeEdital } from '../../../shared/edital'
-import type { Dados, Id, ItemDaCaixa, Simulado } from '../../../shared/tipos'
+import { importarEdital, lerPacoteDeEdital, simuladoDaCaixa } from '../../../shared/edital'
+import type { Dados, Id, ItemDaCaixa } from '../../../shared/tipos'
 
 export type EstadoDaCaixa = { carregando: boolean; itens: ItemDaCaixa[]; erro: string }
 
@@ -122,27 +122,7 @@ export function Caixa({
     }
     const n = leitura.questoes.length
     const id = novoId()
-    const simulado: Simulado = {
-      id,
-      config: {
-        tema: leitura.tema || item.titulo,
-        assuntoId: null,
-        nivel: 'medio',
-        tipo: leitura.tipo,
-        quantidade: n,
-        // padrão de prova: 3 min por questão
-        tempoMin: n * 3,
-        banca: ''
-      },
-      questoes: leitura.questoes,
-      respostas: Array(n).fill(null),
-      revisar: Array(n).fill(false),
-      tempoPorQuestao: Array(n).fill(0),
-      decorridoMs: 0,
-      atual: 0,
-      criadoEm: Date.now(),
-      entregueEm: null
-    }
+    const simulado = simuladoDaCaixa(dados, leitura, item.titulo, id, Date.now())
     mudar((d) => {
       d.simulados.push(simulado)
       d.caixaImportados = [...new Set([...(d.caixaImportados ?? []), item.id])]

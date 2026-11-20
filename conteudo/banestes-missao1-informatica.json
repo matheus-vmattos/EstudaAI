@@ -1,0 +1,157 @@
+{
+ "tema": "Primeiro contato com informática",
+ "materia": "Informática e Comportamentos Digitais",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "Nos termos da Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018), é considerado dado pessoal sensível o dado",
+   "alternativas": {
+    "A": "do número de inscrição no CPF.",
+    "B": "do endereço residencial do titular.",
+    "C": "referente à saúde ou à vida sexual.",
+    "D": "da renda mensal declarada ao banco.",
+    "E": "do e-mail corporativo do empregado."
+   },
+   "gabarito": "C",
+   "resolucao": "O art. 5º, II, lista como sensíveis: origem racial ou étnica, convicção religiosa, opinião política, filiação a sindicato ou a organização religiosa, filosófica ou política, dado referente à saúde ou à vida sexual, dado genético ou biométrico. CPF, endereço, renda e e-mail são dados pessoais comuns.",
+   "topico": "LGPD: dados sensíveis",
+   "conceito": "Dado sensível é o que pode gerar discriminação: raça, religião, política, sindicato, saúde, vida sexual, genético e biométrico.",
+   "habilidade": "lembrar"
+  },
+  {
+   "enunciado": "Para decidir sobre um empréstimo, um banco consulta o histórico de pagamentos do cliente em birôs de crédito. Entre as hipóteses do art. 7º da LGPD, a que ampara diretamente esse tratamento, mesmo sem consentimento, é a",
+   "alternativas": {
+    "A": "proteção do crédito.",
+    "B": "tutela da saúde.",
+    "C": "realização de estudos por órgão de pesquisa.",
+    "D": "proteção da vida do titular.",
+    "E": "execução de políticas públicas pela administração."
+   },
+   "gabarito": "A",
+   "resolucao": "O art. 7º, X, prevê a \"proteção do crédito\" como base legal autônoma. É ela que permite consultas e análises de crédito sem depender do consentimento do titular.",
+   "topico": "LGPD: bases legais",
+   "conceito": "Proteção do crédito é base legal própria (art. 7º, X): a análise de crédito não depende de consentimento.",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Um cliente teve o limite de crédito negado por um sistema que decide sozinho, sem participação humana. De acordo com a LGPD, esse cliente tem direito a",
+   "alternativas": {
+    "A": "receber o código-fonte do algoritmo utilizado.",
+    "B": "solicitar a revisão da decisão tomada unicamente com base em tratamento automatizado.",
+    "C": "indenização automática, independentemente de dano.",
+    "D": "que todos os seus dados sejam apagados do banco imediatamente.",
+    "E": "que a decisão seja refeita, obrigatoriamente, pela diretoria do banco."
+   },
+   "gabarito": "B",
+   "resolucao": "O art. 20 garante ao titular o direito de solicitar a revisão de decisões tomadas unicamente com base em tratamento automatizado. O controlador deve informar os critérios usados, mas respeitando os segredos comercial e industrial (não precisa entregar o código).",
+   "topico": "LGPD: decisões automatizadas",
+   "conceito": "Decisão só da máquina: o titular pode pedir revisão e saber os critérios, sem direito ao código-fonte.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Na LGPD, a pessoa indicada pelo controlador e pelo operador para atuar como canal de comunicação entre o controlador, os titulares dos dados e a Autoridade Nacional de Proteção de Dados (ANPD) é o",
+   "alternativas": {
+    "A": "operador.",
+    "B": "titular.",
+    "C": "controlador conjunto.",
+    "D": "encarregado.",
+    "E": "auditor independente."
+   },
+   "gabarito": "D",
+   "resolucao": "Art. 5º, VIII: o encarregado (DPO) é o canal de comunicação entre controlador, titulares e ANPD. Controlador decide sobre o tratamento; operador trata em nome do controlador.",
+   "topico": "LGPD: agentes e encarregado",
+   "conceito": "Controlador decide, operador executa, encarregado (DPO) é o canal com titulares e ANPD.",
+   "habilidade": "lembrar"
+  },
+  {
+   "enunciado": "Um empregado recebe e-mail com a logomarca do banco, avisando que sua senha \"expira hoje\" e pedindo que clique em um link para \"revalidar o acesso\". O link leva a uma página idêntica à do banco, em outro endereço. Trata-se de",
+   "alternativas": {
+    "A": "ransomware.",
+    "B": "worm.",
+    "C": "spyware instalado por pendrive.",
+    "D": "ataque de negação de serviço (DDoS).",
+    "E": "phishing."
+   },
+   "gabarito": "E",
+   "resolucao": "Phishing é a fraude que imita uma fonte confiável para enganar a pessoa e capturar dados (senha, cartão). Usa urgência e página falsa. É engenharia social: o ataque mira a pessoa, não a máquina.",
+   "topico": "Segurança: phishing e engenharia social",
+   "conceito": "Phishing: mensagem falsa com urgência e link para página clonada. A defesa é conferir o endereço e nunca digitar senha por link.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Ao acessar o sistema do banco, o empregado digita a senha e, em seguida, um código de seis dígitos gerado por aplicativo no celular. Esse procedimento caracteriza autenticação",
+   "alternativas": {
+    "A": "de fator único, por combinar duas senhas.",
+    "B": "de dois fatores, combinando algo que o usuário sabe com algo que ele possui.",
+    "C": "biométrica, pois o celular é pessoal.",
+    "D": "por certificado digital do tipo A3.",
+    "E": "de dois fatores, combinando algo que o usuário é com algo que ele sabe."
+   },
+   "gabarito": "B",
+   "resolucao": "Senha = algo que você sabe; código do aplicativo no celular = algo que você possui. Dois fatores de tipos diferentes: autenticação de dois fatores (MFA). Biometria seria \"algo que você é\".",
+   "topico": "Segurança: autenticação",
+   "conceito": "MFA combina tipos diferentes: sabe (senha), possui (celular, token), é (biometria).",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Uma empresa faz backup completo no domingo e, nos demais dias, copia apenas os arquivos alterados desde o último backup completo. Para restaurar os dados na quinta-feira, ela precisará do backup completo de domingo e",
+   "alternativas": {
+    "A": "apenas do backup da quarta-feira.",
+    "B": "de todos os backups de segunda a quarta.",
+    "C": "do backup da segunda-feira.",
+    "D": "de nenhum outro backup.",
+    "E": "do backup incremental de cada dia, na ordem inversa."
+   },
+   "gabarito": "A",
+   "resolucao": "Copiar o que mudou desde o último COMPLETO é o backup diferencial: cada dia acumula as mudanças desde domingo. Basta o completo + o diferencial mais recente (quarta). No incremental (desde o último backup de qualquer tipo), seriam necessários todos.",
+   "topico": "Segurança: backup",
+   "conceito": "Diferencial: desde o último completo (restaura com 2 arquivos). Incremental: desde o último backup qualquer (restaura com todos).",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Ao compartilhar um arquivo do Google Drive com a permissão de \"Comentarista\", o destinatário poderá",
+   "alternativas": {
+    "A": "editar o conteúdo e compartilhar com outras pessoas.",
+    "B": "excluir o arquivo da pasta compartilhada.",
+    "C": "apenas ver o nome do arquivo na lista.",
+    "D": "ver o arquivo e adicionar comentários, sem alterar o conteúdo.",
+    "E": "alterar o conteúdo, mas sem comentar."
+   },
+   "gabarito": "D",
+   "resolucao": "No Drive há três níveis: Leitor (só vê), Comentarista (vê e comenta/sugere) e Editor (altera e pode compartilhar, se o proprietário permitir).",
+   "topico": "Google Workspace: Drive",
+   "conceito": "Drive: Leitor vê, Comentarista vê e comenta, Editor altera.",
+   "habilidade": "lembrar"
+  },
+  {
+   "enunciado": "Em uma planilha do Google Sheets, a fórmula =PROCV(A2;D2:F100;3;FALSO) retorna",
+   "alternativas": {
+    "A": "a soma dos valores da coluna F.",
+    "B": "o valor da coluna D na terceira linha do intervalo.",
+    "C": "o valor da coluna C correspondente a A2.",
+    "D": "o terceiro maior valor do intervalo D2:F100.",
+    "E": "o valor da coluna F na linha em que o conteúdo de A2 for encontrado exatamente na coluna D."
+   },
+   "gabarito": "E",
+   "resolucao": "PROCV procura o valor (A2) na PRIMEIRA coluna do intervalo (D) e devolve o da coluna indicada pelo índice: 3ª coluna de D:F = F. FALSO pede correspondência exata.",
+   "topico": "Google Workspace: Sheets",
+   "conceito": "PROCV(valor; intervalo; índice; FALSO): procura na 1ª coluna do intervalo e devolve a coluna do índice, com correspondência exata.",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Um banco treina um modelo de análise de crédito com o histórico de milhares de clientes, cada um marcado como \"pagou\" ou \"não pagou\". Esse tipo de aprendizado de máquina é chamado de",
+   "alternativas": {
+    "A": "aprendizado por reforço.",
+    "B": "aprendizado não supervisionado.",
+    "C": "aprendizado supervisionado.",
+    "D": "IA generativa.",
+    "E": "processamento de linguagem natural."
+   },
+   "gabarito": "C",
+   "resolucao": "Aprender com exemplos ROTULADOS (cada cliente com a resposta certa) é aprendizado supervisionado. Não supervisionado acha grupos sem rótulo; por reforço aprende por tentativa e recompensa.",
+   "topico": "Inteligência artificial: aprendizado de máquina",
+   "conceito": "Supervisionado = dados com rótulo (a resposta certa); não supervisionado = acha padrões sem rótulo; reforço = tentativa e recompensa.",
+   "habilidade": "interpretar"
+  }
+ ]
+}
