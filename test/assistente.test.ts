@@ -489,3 +489,28 @@ describe('Anotações do Claude e errata de cartões', () => {
     expect(importarCartoes(d, v2.pacote, () => `c${++n}`, 3).corrigidos).toBe(0)
   })
 })
+
+describe('compatibilidade: missão nova em app antigo', () => {
+  it('tarefa de tipo desconhecido é pulada; o resto da missão vale', () => {
+    const r = lerPacoteDeMissao(
+      JSON.stringify({
+        de: 'a',
+        ate: 'b',
+        tarefas: [
+          { id: 'x', tipo: 'algo-do-futuro', titulo: 'Novidade', pontos: 10 },
+          { id: 'atr', tipo: 'atrasados', titulo: 'Zerar', pontos: 5 }
+        ]
+      }),
+      'm',
+      0
+    )
+    expect(r.ok && r.missao.tarefas.map((t) => t.id)).toEqual(['atr'])
+  })
+  it('versão mínima do item da caixa', async () => {
+    const { versaoAtende } = await import('../src/shared/versao')
+    expect(versaoAtende('0.1.19', '0.1.9')).toBe(true)
+    expect(versaoAtende('0.1.18', '0.1.19')).toBe(false)
+    expect(versaoAtende('0.2.0', '0.1.19')).toBe(true)
+    expect(versaoAtende('0.1.18')).toBe(true)
+  })
+})

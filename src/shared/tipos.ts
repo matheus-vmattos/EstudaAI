@@ -227,6 +227,9 @@ export interface ItemDaCaixa {
   descricao?: string
   arquivo: string
   data?: string
+  /** versão mínima do app para abrir o item (v0.1.19+): app mais antigo
+   *  não o mostra */
+  versaoMinima?: string
 }
 
 export type EstadoDaAtualizacao =

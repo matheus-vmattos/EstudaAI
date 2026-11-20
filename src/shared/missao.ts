@@ -2,7 +2,10 @@ import { filaDoDia } from './flashcards'
 import { semAcento } from './texto'
 import type { Dados, Edital, Missao, Questao, TarefaDaMissao } from './tipos'
 
-/** Lê o arquivo de missão da caixa "Do Claude". */
+const TIPOS_DE_TAREFA = new Set(['simulado', 'cartoes', 'atrasados', 'explicar', 'anotacoes'])
+
+/** Lê o arquivo de missão da caixa "Do Claude". Tarefa de um tipo que esta
+ *  versão não conhece é pulada (missão nova num app antigo). */
 export function lerPacoteDeMissao(
   texto: string,
   itemId: string,
@@ -35,8 +38,11 @@ export function lerPacoteDeMissao(
       tarefas.push({ ...base, tipo: 'anotacoes', item: x.item })
     else if (x.tipo === 'explicar' && txt(x.topico) && txt(x.pergunta))
       tarefas.push({ ...base, tipo: 'explicar', topico: x.topico, pergunta: x.pergunta })
-    else return { ok: false, erro: `Tarefa ${i + 1}: tipo "${String(x.tipo)}" incompleto.` }
+    else if (TIPOS_DE_TAREFA.has(String(x.tipo)))
+      return { ok: false, erro: `Tarefa ${i + 1}: tipo "${String(x.tipo)}" incompleto.` }
+    // tipo que esta versão ainda não conhece: fica de fora, o resto da missão vale
   }
+  if (!tarefas.length) return { ok: false, erro: 'Nenhuma tarefa desta missão abre nesta versão.' }
   return {
     ok: true,
     missao: {

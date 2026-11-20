@@ -150,7 +150,8 @@
       "titulo": "Anotações: Estatística do zero",
       "descricao": "19 anotações para o mapa de Estatística: fórmula, exemplo resolvido e a pegadinha da FCC de cada ponto. Entram só onde a anotação está vazia; as suas ficam como estão.",
       "arquivo": "banestes-estatistica-anotacoes.json",
-      "data": "2026-11-21"
+      "data": "2026-11-21",
+      "versaoMinima": "0.1.19"
     },
     {
       "id": "banestes-estatistica-cartoes-v2",
@@ -182,7 +183,8 @@
       "titulo": "Missão da semana: 21 a 27/11",
       "descricao": "Estatística do zero (ler, explicar, fixar e medir), os enganos de Informática e LGPD e as lacunas de Bancários. Aparece no Meu edital.",
       "arquivo": "banestes-missao2.json",
-      "data": "2026-11-21"
+      "data": "2026-11-21",
+      "versaoMinima": "0.1.19"
     }
   ]
 }

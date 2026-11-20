@@ -1,4 +1,5 @@
-import { ipcMain, net } from 'electron'
+import { app, ipcMain, net } from 'electron'
+import { versaoAtende } from '../shared/versao'
 import type { ItemDaCaixa } from '../shared/tipos'
 
 /** Conteúdo que o Claude prepara (mapas, simulados, cartões) fica na pasta
@@ -33,7 +34,8 @@ export function iniciarCaixa(): void {
           typeof (i as ItemDaCaixa).id === 'string' &&
           typeof (i as ItemDaCaixa).titulo === 'string' &&
           TIPOS.has((i as ItemDaCaixa).tipo) &&
-          NOME_VALIDO.test(String((i as ItemDaCaixa).arquivo))
+          NOME_VALIDO.test(String((i as ItemDaCaixa).arquivo)) &&
+          versaoAtende(app.getVersion(), (i as ItemDaCaixa).versaoMinima)
       )
       return { itens }
     } catch (e) {
