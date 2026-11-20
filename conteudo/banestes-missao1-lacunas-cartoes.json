@@ -31,7 +31,7 @@
     "Meios de pagamento"
    ],
    "frente": "Cheque cruzado",
-   "verso": "Dois traços paralelos na frente. **Geral** (traços em branco): só pode ser pago a um banco ou a cliente do banco sacado, **mediante crédito em conta**. **Especial** (nome de um banco entre os traços): só ao banco indicado (Lei 7.357/1985, arts. 44 e 45)."
+   "verso": "Dois traços paralelos na frente. **Geral** (traços em branco): só pode ser pago a um banco ou a cliente do banco sacado, **mediante crédito em conta**. **Especial** (nome de um banco entre os traços): só ao banco indicado ou, se o indicado for o próprio sacado, a cliente dele, mediante crédito em conta (Lei 7.357/1985, arts. 44 e 45)."
   },
   {
    "lugar": [
