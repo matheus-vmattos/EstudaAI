@@ -601,3 +601,26 @@ describe('revisão do pacote com muitos cartões novos de outras matérias', () 
     expect(fila.map((c) => c.id)).toEqual(['e1', 'e2'])
   })
 })
+
+describe('revisão do Codex (PR 25)', () => {
+  it('cartões novos de fora do pacote no MESMO tópico não ocupam o limite', async () => {
+    const { filaDaSessao, NOVOS_POR_DIA } = await import('../src/shared/flashcards')
+    const d = dadosDoEdital()
+    const novo = (id: string, frente: string, criadoEm: number) => ({
+      id,
+      assuntoId: 'est-a',
+      tipo: 'basico' as const,
+      frente,
+      verso: 'v',
+      agenda: agendaNova(new Date(2026, 10, 19)),
+      criadoEm
+    })
+    for (let i = 0; i < NOVOS_POR_DIA; i++) d.cartoes.push(novo(`x${i}`, `antigo ${i}`, i))
+    d.cartoes.push(novo('e1', 'Mediana', 1000), novo('e2', 'Moda', 1001))
+    const fila = filaDaSessao(d, new Date(2026, 10, 21, 10), {
+      assuntos: null,
+      frentes: ['Mediana', 'Moda']
+    })
+    expect(fila.map((c) => c.id)).toEqual(['e1', 'e2'])
+  })
+})

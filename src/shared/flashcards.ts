@@ -98,7 +98,10 @@ export function filaDoDia(
   cartoes: Cartao[],
   agora = new Date(),
   /** só estes assuntos entram na fila; o limite de novos conta TODOS */
-  assuntos: Set<Id> | null = null
+  assuntos: Set<Id> | null = null,
+  /** e só os cartões que passam aqui (ex.: os de um pacote); também conta
+   *  antes do limite de novos, para os de fora não ocuparem a vaga */
+  incluir: ((c: Cartao) => boolean) | null = null
 ): FilaDoDia {
   const limite = fimDoDia(agora)
   const aprendendo: Cartao[] = []
@@ -109,6 +112,7 @@ export function filaDoDia(
     const due = new Date(c.agenda.due).getTime()
     if (c.primeiraRevisao && c.primeiraRevisao >= inicioDoDia(agora)) novosHoje++
     if (assuntos && !assuntos.has(c.assuntoId)) continue
+    if (incluir && !incluir(c)) continue
     if (c.agenda.state === State.New) novos.push(c)
     else if (c.agenda.state === State.Review) {
       if (due <= limite) revisoes.push(c)
@@ -205,14 +209,15 @@ export function filaDaSessao(
   alvo: { assuntos: Id[] | null; frentes?: string[] }
 ): Cartao[] {
   const frentes = alvo.frentes ? new Set(alvo.frentes.map((x) => x.trim())) : null
-  // com pacote, a fila se restringe aos lugares dele ANTES do limite de novos
-  // (senão os novos de outras matérias ocupam o limite e o pacote não aparece)
-  const doPacote = frentes
-    ? new Set(d.cartoes.filter((c) => frentes.has(c.frente.trim())).map((c) => c.assuntoId))
-    : null
-  const lugares = doPacote ?? (alvo.assuntos ? new Set(alvo.assuntos) : null)
-  const f = filaDoDia(d.cartoes, agora, lugares)
-  const fila = [...f.revisar, ...f.novos].filter((c) => !frentes || frentes.has(c.frente.trim()))
+  // o pacote é separado dentro da fila, antes do limite de novos (senão os
+  // novos de fora, até do mesmo tópico, ocupam o limite e o pacote some)
+  const f = filaDoDia(
+    d.cartoes,
+    agora,
+    alvo.assuntos ? new Set(alvo.assuntos) : null,
+    frentes ? (c) => frentes.has(c.frente.trim()) : null
+  )
+  const fila = [...f.revisar, ...f.novos]
   const materiaDe = new Map<Id, Id>()
   for (const m of d.materias) for (const n of nosDaMateria(d, m)) materiaDe.set(n.id, m.id)
   const blocos = new Map<string, Cartao[]>()
