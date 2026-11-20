@@ -184,6 +184,10 @@ export interface Dados {
   provaEmMontagem?: ProvaEmMontagem
   /** AAAA-MM-DD dos dias com estudo, para a sequência (v0.1.16+) */
   diasDeEstudo?: string[]
+  /** o que você explicou com suas palavras ("Será que você sabe?"), v0.1.18+ */
+  explicacoes?: Explicacao[]
+  /** a missão da semana que veio do Claude (v0.1.18+) */
+  missao?: Missao
   /** baralhos com a seta ao contrário do padrão (matéria aberta, nós fechados) */
   baralhosInvertidos?: Id[]
   /** itens da caixa "Do Claude" já importados */
@@ -214,7 +218,7 @@ export interface Edital {
 /** Algo que o Claude preparou e publicou em conteudo/ do repositório */
 export interface ItemDaCaixa {
   id: string
-  tipo: 'estrutura' | 'simulado' | 'cartoes' | 'edital'
+  tipo: 'estrutura' | 'simulado' | 'cartoes' | 'edital' | 'missao'
   titulo: string
   descricao?: string
   arquivo: string
@@ -228,6 +232,48 @@ export type EstadoDaAtualizacao =
   | { estado: 'baixando'; versao: string; porcento: number }
   | { estado: 'pronta'; versao: string }
   | { estado: 'erro'; mensagem: string }
+
+export interface Explicacao {
+  id: Id
+  criadoEm: number
+  topico: string
+  pergunta: string
+  texto: string
+  /** de onde veio: a questão do simulado (quando veio do Raio-X) */
+  simuladoId?: Id
+  indice?: number
+}
+
+/** Uma tarefa da missão. As de simulado e cartões apontam para um item da
+ *  caixa; "atrasados" é zerar os cartões do dia; "explicar" é escrever com
+ *  suas palavras. */
+export type TarefaDaMissao = {
+  id: string
+  titulo: string
+  detalhe: string
+  pontos: number
+} & (
+  | { tipo: 'simulado'; item: string; tema: string }
+  | { tipo: 'cartoes'; item: string }
+  | { tipo: 'atrasados' }
+  | { tipo: 'explicar'; topico: string; pergunta: string }
+)
+
+export interface Missao {
+  /** id do item da caixa */
+  itemId: string
+  recebidaEm: number
+  /** AAAA-MM-DD */
+  de: string
+  ate: string
+  frase: string
+  tarefas: TarefaDaMissao[]
+  /** ids das tarefas feitas (marcadas à mão ou vistas feitas) */
+  feitas: string[]
+  /** a frente dos cartões de cada tarefa de cartões (para saber quando
+   *  todos foram vistos, mesmo os que já existiam antes) */
+  cartoesFrentes?: Record<string, string[]>
+}
 
 export const DADOS_VAZIOS: Dados = {
   versao: 1,

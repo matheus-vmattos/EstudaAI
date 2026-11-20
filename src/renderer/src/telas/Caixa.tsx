@@ -1,14 +1,7 @@
 import { useState } from 'react'
 import { Icone } from '../Icone'
-import { novoId, type Mudar } from '../useDados'
-import {
-  importarEstrutura,
-  lerEstrutura,
-  recolherAbaixoDosAssuntos
-} from '../../../shared/estrutura'
-import { lerRespostaDaIa } from '../../../shared/questoes'
-import { importarCartoes, lerPacoteDeCartoes } from '../../../shared/pacoteDeCartoes'
-import { importarEdital, lerPacoteDeEdital, simuladoDaCaixa } from '../../../shared/edital'
+import type { Mudar } from '../useDados'
+import { importarDaCaixa } from '../importarDaCaixa'
 import type { Dados, Id, ItemDaCaixa } from '../../../shared/tipos'
 
 export type EstadoDaCaixa = { carregando: boolean; itens: ItemDaCaixa[]; erro: string }
@@ -17,7 +10,8 @@ const NOME_DO_TIPO = {
   estrutura: 'Mapa',
   simulado: 'Simulado',
   cartoes: 'Flashcards',
-  edital: 'Edital'
+  edital: 'Edital',
+  missao: 'Missão'
 }
 
 /** O que o Claude preparou para você: mapas e simulados prontos para importar */
@@ -49,88 +43,9 @@ export function Caixa({
 
   const importar = async (item: ItemDaCaixa): Promise<void> => {
     setTrabalhando(item.id)
-    const r = await window.api.caixaArquivo(item.arquivo)
+    const res = await importarDaCaixa(item, dados, mudar)
     setTrabalhando(null)
-    if ('erro' in r) {
-      setResultado((x) => ({ ...x, [item.id]: { ok: false, texto: r.erro } }))
-      return
-    }
-    if (item.tipo === 'estrutura') {
-      const raizes = lerEstrutura(r.texto)
-      // a contagem sai de uma cópia: o mudar do React pode rodar depois
-      const res = importarEstrutura(structuredClone(dados), raizes, novoId)
-      mudar((d) => {
-        recolherAbaixoDosAssuntos(d, importarEstrutura(d, raizes, novoId).materias)
-        d.caixaImportados = [...new Set([...(d.caixaImportados ?? []), item.id])]
-      })
-      setResultado((x) => ({
-        ...x,
-        [item.id]: { ok: true, texto: `✓ ${res.criados} criados · ${res.aproveitados} já existiam` }
-      }))
-      return
-    }
-    if (item.tipo === 'edital') {
-      const lido = lerPacoteDeEdital(r.texto)
-      if (!lido.ok) {
-        setResultado((x) => ({ ...x, [item.id]: { ok: false, texto: lido.erro } }))
-        return
-      }
-      const res = importarEdital(structuredClone(dados), lido.pacote, novoId)
-      mudar((d) => {
-        importarEdital(d, lido.pacote, novoId)
-        d.caixaImportados = [...new Set([...(d.caixaImportados ?? []), item.id])]
-      })
-      setResultado((x) => ({
-        ...x,
-        [item.id]: {
-          ok: true,
-          texto:
-            `✓ Edital ligado: ${res.materias} matérias` +
-            (res.criadas ? ` (${res.criadas} novas, importe também o mapa)` : '')
-        }
-      }))
-      return
-    }
-    if (item.tipo === 'cartoes') {
-      const lido = lerPacoteDeCartoes(r.texto)
-      if (!lido.ok) {
-        setResultado((x) => ({ ...x, [item.id]: { ok: false, texto: lido.erro } }))
-        return
-      }
-      const quando = Date.now()
-      const res = importarCartoes(structuredClone(dados), lido.pacote, novoId, quando)
-      mudar((d) => {
-        importarCartoes(d, lido.pacote, novoId, quando)
-        d.caixaImportados = [...new Set([...(d.caixaImportados ?? []), item.id])]
-      })
-      setResultado((x) => ({
-        ...x,
-        [item.id]: {
-          ok: true,
-          texto:
-            `✓ ${res.novos} cartões novos` +
-            (res.repetidos ? ` · ${res.repetidos} já existiam` : '') +
-            (res.lugaresCriados ? ` · ${res.lugaresCriados} lugares novos no mapa` : '')
-        }
-      }))
-      return
-    }
-    const leitura = lerRespostaDaIa(r.texto)
-    if (!leitura.ok) {
-      setResultado((x) => ({ ...x, [item.id]: { ok: false, texto: leitura.erro } }))
-      return
-    }
-    const n = leitura.questoes.length
-    const id = novoId()
-    const simulado = simuladoDaCaixa(dados, leitura, item.titulo, id, Date.now())
-    mudar((d) => {
-      d.simulados.push(simulado)
-      d.caixaImportados = [...new Set([...(d.caixaImportados ?? []), item.id])]
-    })
-    setResultado((x) => ({
-      ...x,
-      [item.id]: { ok: true, texto: `✓ ${n} questões no histórico (${n * 3} min)`, simulado: id }
-    }))
+    setResultado((x) => ({ ...x, [item.id]: res }))
   }
 
   return (
@@ -182,7 +97,7 @@ export function Caixa({
                     Ver no mapa
                   </button>
                 )}
-                {res?.ok && item.tipo === 'edital' && (
+                {res?.ok && (item.tipo === 'edital' || item.tipo === 'missao') && (
                   <button type="button" className="botao sucesso" onClick={abrirEdital}>
                     Ver meu edital
                   </button>

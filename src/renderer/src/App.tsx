@@ -210,6 +210,7 @@ export function App() {
           abrirCaixa={() => setTela('caixa')}
           abrirSimulado={setSimuladoAberto}
           abrirAnotacao={abrirAnotacao}
+          caixa={caixa.itens}
         />
       )}
       {tela === 'caixa' && (
