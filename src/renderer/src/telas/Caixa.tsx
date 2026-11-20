@@ -39,8 +39,15 @@ export function Caixa({
 }) {
   const [trabalhando, setTrabalhando] = useState<string | null>(null)
   const [resultado, setResultado] = useState<Record<string, ResultadoDaCaixa>>({})
+  const [verImportados, setVerImportados] = useState(false)
   const importados = new Set(dados.caixaImportados ?? [])
-  const itens = [...caixa.itens].reverse() // mais novo primeiro
+  const todos = [...caixa.itens].reverse() // mais novo primeiro
+  // o que já foi importado sai da frente (fica o que importou agora, para os
+  // botões "Ler", "Estudar"…); "Ver importados" traz de volta
+  const itens = verImportados
+    ? todos
+    : todos.filter((i) => !importados.has(i.id) || resultado[i.id])
+  const escondidos = todos.length - itens.length
 
   const importar = async (item: ItemDaCaixa): Promise<void> => {
     setTrabalhando(item.id)
@@ -64,7 +71,10 @@ export function Caixa({
         </header>
 
         {caixa.erro && <div className="aviso erro">{caixa.erro}</div>}
-        {!caixa.erro && !caixa.carregando && itens.length === 0 && (
+        {!caixa.erro && !caixa.carregando && todos.length > 0 && itens.length === 0 && (
+          <p className="meta">Tudo importado. O que o Claude preparar de novo aparece aqui.</p>
+        )}
+        {!caixa.erro && !caixa.carregando && todos.length === 0 && (
           <div className="vazio">
             <Icone nome="enviar" tamanho={40} />
             <p>
@@ -144,6 +154,17 @@ export function Caixa({
             )
           })}
         </div>
+        {(escondidos > 0 || verImportados) && (
+          <button
+            type="button"
+            className="botao"
+            style={{ alignSelf: 'flex-start' }}
+            aria-expanded={verImportados}
+            onClick={() => setVerImportados(!verImportados)}
+          >
+            {verImportados ? 'Esconder importados' : `Ver importados (${escondidos})`}
+          </button>
+        )}
       </main>
     </div>
   )
