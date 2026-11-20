@@ -135,6 +135,14 @@
       "descricao": "7 cartões sobre o que você errou ou acertou com dúvida em 19/11: cheque (prazos, pré-datado, cruzado), aval x fiança e garantias reais. Conferidos na Lei do Cheque e no Código Civil.",
       "arquivo": "banestes-missao1-lacunas-cartoes.json",
       "data": "2026-11-20"
+    },
+    {
+      "id": "banestes-missao1-v1",
+      "tipo": "missao",
+      "titulo": "Missão da semana: 20 a 26/11",
+      "descricao": "Medir Informática e Estatística (peso 2, nunca medidas), fechar Cheque e Garantias, zerar os cartões e explicar dois conceitos. Aparece no Meu edital.",
+      "arquivo": "banestes-missao1.json",
+      "data": "2026-11-20"
     }
   ]
 }

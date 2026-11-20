@@ -11,6 +11,8 @@ import {
 } from '../../../shared/questoes'
 import type { Dados, Id, Simulado as TipoSimulado } from '../../../shared/tipos'
 import { EstudarErros } from './EstudarErros'
+import { Explique } from '../Explique'
+import { raioX, ritmoDaProva, type Faixa } from '../../../shared/raioX'
 import { notaDaProva, type NotaDaProva } from '../../../shared/provaCompleta'
 import { idsAbaixo } from '../../../shared/arvore'
 import {
@@ -401,9 +403,9 @@ function Resultado({
   abrirAnotacao: (id: Id) => void
 }) {
   const [atual, setAtual] = useState(0)
-  // prova completa abre no resumo (notas como a banca calcula)
+  // prova completa abre no resumo (notas como a banca calcula); o resto, no Raio-X
   const nota = notaDaProva(s)
-  const [verResumo, setVerResumo] = useState(!!nota)
+  const [vista, setVista] = useState<'resumo' | 'raiox' | 'gabarito'>(nota ? 'resumo' : 'raiox')
   const [filtro, setFiltro] = useState<'todas' | 'estudar'>('todas')
   const [estudando, setEstudando] = useState(false)
   const paraEstudar = questoesParaEstudar(s).map((x) => x.indice)
@@ -474,19 +476,29 @@ function Resultado({
             <span className="numero-ambar">{paraEstudar.length}</span>
           </button>
         )}
-        {nota && (
-          <button
-            type="button"
-            className="botao"
-            aria-pressed={!verResumo}
-            onClick={() => {
-              setVerResumo(!verResumo)
-              setEstudando(false)
-            }}
-          >
-            {verResumo ? 'Ver gabarito' : 'Ver resumo'}
-          </button>
-        )}
+        <div role="tablist" aria-label="Ver" className="opcoes abas-resultado">
+          {(
+            [
+              ...(nota ? [['resumo', 'Resumo']] : []),
+              ['raiox', 'Raio-X'],
+              ['gabarito', 'Gabarito']
+            ] as ['resumo' | 'raiox' | 'gabarito', string][]
+          ).map(([v, nome]) => (
+            <button
+              key={v}
+              type="button"
+              role="tab"
+              aria-selected={vista === v && !estudando}
+              className="opcao"
+              onClick={() => {
+                setVista(v)
+                setEstudando(false)
+              }}
+            >
+              {nome}
+            </button>
+          ))}
+        </div>
         <button type="button" className="botao" onClick={refazer}>
           <Icone nome="atualizar" tamanho={16} />
           Refazer embaralhado
@@ -515,8 +527,19 @@ function Resultado({
         </div>
       </header>
 
-      {nota && verResumo && !estudando ? (
+      {nota && vista === 'resumo' && !estudando ? (
         <ResumoDaProva nota={nota} />
+      ) : vista === 'raiox' && !estudando ? (
+        <RaioXDoSimulado
+          simulado={s}
+          dados={dados}
+          mudar={mudar}
+          irPara={(i) => {
+            setFiltro('todas')
+            setAtual(i)
+            setVista('gabarito')
+          }}
+        />
       ) : estudando ? (
         <EstudarErros
           simulado={s}
@@ -730,6 +753,123 @@ function Resultado({
           </aside>
         </div>
       )}
+    </div>
+  )
+}
+
+const FAIXAS: { faixa: Faixa; nome: string; detalhe: string }[] = [
+  { faixa: 'domina', nome: 'Domina', detalhe: 'Certa, no seu ritmo, sem dúvida' },
+  { faixa: 'fragil', nome: 'Frágil', detalhe: 'Certa, mas demorou ou marcou dúvida' },
+  { faixa: 'engano', nome: 'Engano', detalhe: 'Errou rápido: acha que sabe' },
+  { faixa: 'lacuna', nome: 'Lacuna', detalhe: 'Errou e demorou, ou em branco: não sabia' }
+]
+
+const tempo = (ms: number): string => {
+  const seg = Math.round(ms / 1000)
+  return `${Math.floor(seg / 60)}:${String(seg % 60).padStart(2, '0')}`
+}
+
+/** O que o placar esconde: cada questão pelo tempo e pelo acerto, a frase do
+ *  que mais pede atenção e o "Será que você sabe?" das frágeis. */
+function RaioXDoSimulado({
+  simulado: s,
+  dados,
+  mudar,
+  irPara
+}: {
+  simulado: TipoSimulado
+  dados: Dados
+  mudar: Mudar
+  irPara: (indice: number) => void
+}) {
+  const r = raioX(s)
+  const [explicando, setExplicando] = useState<number | null>(null)
+  const e = dados.edital
+  const naProva =
+    e?.duracaoMin && e.materias.length
+      ? ritmoDaProva(
+          e.duracaoMin,
+          e.materias.reduce((n, m) => n + m.questoes, 0)
+        )
+      : s.config.tempoMin
+        ? ritmoDaProva(s.config.tempoMin, s.questoes.length)
+        : null
+  const item = explicando === null ? null : r.itens[explicando]
+  return (
+    <div className="corpo-prova">
+      <main className="questao raio-x">
+        <p className="frase-raio-x">{r.frase}</p>
+        {r.ritmo !== null && (
+          <span className="meta">
+            Seu ritmo: {tempo(r.ritmo)} por questão
+            {naProva !== null && ` · a prova dá ${tempo(naProva)}`}
+          </span>
+        )}
+        <div className="quadrantes">
+          {FAIXAS.map(({ faixa, nome, detalhe }) => {
+            const lista = r.porFaixa[faixa]
+            return (
+              <section key={faixa} className={`quadrante ${faixa}`} aria-label={nome}>
+                <div className="cabeca-quadrante">
+                  <h2 className="secao">{nome}</h2>
+                  <span className="meta">{detalhe}</span>
+                  <span className="numero">{lista.length}</span>
+                </div>
+                {faixa === 'domina'
+                  ? lista.length > 0 && (
+                      <span className="meta">
+                        {[...new Set(lista.map((x) => x.topico))].slice(0, 8).join(' · ')}
+                      </span>
+                    )
+                  : lista.map((x) => (
+                      <div key={x.indice} className="linha-quadrante">
+                        <span>{x.topico}</span>
+                        <span className="meta">
+                          {x.ms > 0 ? tempo(x.ms) : 'sem tempo'}
+                          {x.vezes !== null && x.vezes > 2 ? ` · ${x.vezes.toFixed(0)}×` : ''}
+                          {x.duvida ? ' · dúvida' : ''}
+                        </span>
+                        {faixa === 'fragil' ? (
+                          <button
+                            type="button"
+                            className={
+                              explicando === x.indice ? 'botao passo pendente' : 'botao passo'
+                            }
+                            aria-pressed={explicando === x.indice}
+                            onClick={() => setExplicando(explicando === x.indice ? null : x.indice)}
+                          >
+                            Explicar
+                            <Icone nome="direita" tamanho={14} />
+                          </button>
+                        ) : (
+                          <button
+                            type="button"
+                            className="botao passo"
+                            onClick={() => irPara(x.indice)}
+                          >
+                            {faixa === 'engano' ? 'Ver a certa' : 'Estudar'}
+                            <Icone nome="direita" tamanho={14} />
+                          </button>
+                        )}
+                      </div>
+                    ))}
+              </section>
+            )
+          })}
+        </div>
+        {item && (
+          <Explique
+            key={item.indice}
+            dados={dados}
+            mudar={mudar}
+            topico={item.topico}
+            pergunta={`O que você sabe sobre ${item.topico}? Explique com suas palavras, como se fosse para um cliente.`}
+            detalhe={`Acertou${item.ms > 0 ? ` em ${tempo(item.ms)}` : ''}${item.duvida ? ', com dúvida' : ''}`}
+            questao={s.questoes[item.indice]}
+            origem={{ simuladoId: s.id, indice: item.indice }}
+          />
+        )}
+      </main>
     </div>
   )
 }

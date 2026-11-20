@@ -343,7 +343,8 @@ button:disabled {
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-.opcao[aria-checked='true'] {
+.opcao[aria-checked='true'],
+.opcao[aria-selected='true'] {
   border-color: var(--ciano);
   background: rgb(63 224 245 / 10%);
   color: #e9f7fb;
@@ -2040,7 +2041,7 @@ dialog.config .acoes-dialogo {
 }
 .linha-edital {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 70px 130px 130px 100px 190px;
+  grid-template-columns: minmax(0, 1fr) 70px 120px 120px 100px 90px 190px;
   align-items: center;
   gap: 14px;
   min-height: 54px;
@@ -2065,7 +2066,7 @@ dialog.config .acoes-dialogo {
   white-space: nowrap;
 }
 .linha-edital > :nth-child(2),
-.linha-edital > :nth-child(5) {
+.linha-edital > :nth-child(6) {
   text-align: right;
 }
 .numero-pequeno {
@@ -2287,4 +2288,193 @@ dialog.colar-edital section {
 .linha-resumo > :nth-child(2),
 .linha-resumo > :nth-child(4) {
   text-align: right;
+}
+
+/* ---------- assistente: chance de aprovação, missão, Raio-X, explique ---------- */
+.nivel {
+  font-family: var(--mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--texto-fraco);
+}
+.nivel.nunca {
+  color: var(--ambar);
+}
+.nivel.firmando {
+  color: var(--ciano);
+}
+.nivel.firme,
+.nivel.dominada {
+  color: var(--verde);
+}
+.chance {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 20px;
+  border: 1px solid var(--linha-viva);
+  background: rgb(63 224 245 / 4%);
+}
+.nota-chance {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.nota-chance .numero {
+  font-family: var(--mono);
+  font-size: 44px;
+  line-height: 1;
+}
+.chance .barra {
+  max-width: 420px;
+  height: 8px;
+}
+.chance .barra > span {
+  height: 8px;
+}
+.frase-chance,
+.frase-missao {
+  margin: 0;
+  color: var(--texto);
+  font-size: 15px;
+}
+.estudo-do-dia.missao {
+  box-shadow: inset 3px 0 0 var(--ambar);
+}
+.estudo-do-dia.missao .secao {
+  color: var(--ambar);
+}
+.pontos-missao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pontos-missao .barra {
+  width: 140px;
+}
+.pontos-missao .barra > span {
+  background: var(--ambar);
+}
+.tarefa-dia.com-pontos {
+  grid-template-columns: 28px minmax(0, 1fr) 90px 130px;
+}
+.tarefa-dia.com-pontos > .botao {
+  justify-self: end;
+}
+.pontos {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ambar);
+  text-align: right;
+}
+.abas-resultado {
+  grid-auto-flow: column;
+}
+.abas-resultado .opcao {
+  min-height: 36px;
+  padding: 0 14px;
+  font-size: 13px;
+}
+.raio-x {
+  gap: 14px;
+}
+.frase-raio-x {
+  margin: 0;
+  color: var(--texto-forte);
+  font-size: 20px;
+  line-height: 1.4;
+}
+.quadrantes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.quadrante {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 18px;
+  border: 1px solid var(--linha-2);
+  background: var(--cartao);
+}
+.quadrante.domina {
+  border-color: var(--verde-linha);
+}
+.quadrante.fragil {
+  border-color: var(--ambar-linha);
+}
+.quadrante.engano {
+  border-color: var(--vermelho-linha);
+}
+.cabeca-quadrante {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.cabeca-quadrante .numero {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 24px;
+}
+.quadrante.domina .secao,
+.quadrante.domina .numero {
+  color: var(--verde);
+}
+.quadrante.fragil .secao,
+.quadrante.fragil .numero {
+  color: var(--ambar);
+}
+.quadrante.engano .secao,
+.quadrante.engano .numero {
+  color: var(--vermelho);
+}
+.linha-quadrante {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 40px;
+}
+.explique {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 20px;
+  border: 1px solid var(--linha-viva);
+  background: rgb(63 224 245 / 4%);
+  box-shadow: inset 3px 0 0 var(--ciano);
+}
+.pergunta-explique {
+  color: var(--texto-forte);
+  font-size: 17px;
+}
+.explique textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--linha-viva);
+  background: var(--campo);
+  color: #e9f7fb;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+  resize: vertical;
+}
+.acoes-explique {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.acoes-explique .pontos {
+  margin-left: auto;
+}
+@media (max-width: 900px) {
+  .quadrantes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.questao.raio-x {
+  max-width: 1200px;
 }

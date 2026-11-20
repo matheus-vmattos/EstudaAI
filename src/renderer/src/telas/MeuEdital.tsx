@@ -25,7 +25,16 @@ import {
   tarefaFeita
 } from '../../../shared/estudoDoDia'
 import { ProvaCompleta } from './ProvaCompleta'
-import type { Dados, Id, TarefaDoDia } from '../../../shared/tipos'
+import { Explique } from '../Explique'
+import { semAcento } from '../../../shared/texto'
+import { importarDaCaixa } from '../importarDaCaixa'
+import { chanceDeAprovacao, NOME_DO_NIVEL } from '../../../shared/chance'
+import {
+  feitaPelosDados,
+  pontosDaMissao,
+  tarefaFeita as feitaNaMissao
+} from '../../../shared/missao'
+import type { Dados, Id, ItemDaCaixa, TarefaDaMissao, TarefaDoDia } from '../../../shared/tipos'
 
 const pct = (x: number): string => `${Math.round(x * 100)}%`
 
@@ -40,7 +49,8 @@ export function MeuEdital({
   adaptar,
   abrirCaixa,
   abrirSimulado,
-  abrirAnotacao
+  abrirAnotacao,
+  caixa
 }: {
   dados: Dados
   mudar: Mudar
@@ -52,8 +62,35 @@ export function MeuEdital({
   abrirCaixa: () => void
   abrirSimulado: (id: Id) => void
   abrirAnotacao: (id: Id) => void
+  /** itens da caixa "Do Claude" (a missão da semana chega por ela) */
+  caixa: ItemDaCaixa[]
 }) {
   const [colando, setColando] = useState(false)
+  const [explicando, setExplicando] = useState<string | null>(null)
+  const [avisoMissao, setAvisoMissao] = useState('')
+  // a missão mais nova da caixa entra sozinha: o Claude a montou para você
+  const novaMissao = [...caixa].reverse().find((i) => i.tipo === 'missao')
+  const buscando = useRef<string | null>(null)
+  useEffect(() => {
+    if (!novaMissao || dados.missao?.itemId === novaMissao.id) return
+    if (buscando.current === novaMissao.id) return
+    buscando.current = novaMissao.id
+    void importarDaCaixa(novaMissao, dados, mudar).then((r) => !r.ok && setAvisoMissao(r.texto))
+  }, [novaMissao?.id]) // eslint-disable-line react-hooks/exhaustive-deps
+  // o que os dados já mostram feito fica marcado (não desmarca sozinho depois)
+  const missao = dados.missao
+  const vistasFeitas = missao
+    ? missao.tarefas.filter(
+        (t) => !feitaNaMissao(missao, t) && feitaPelosDados(dados, missao, t, agora)
+      )
+    : []
+  useEffect(() => {
+    if (!vistasFeitas.length) return
+    mudar((d) => {
+      if (d.missao)
+        d.missao.feitas = [...new Set([...d.missao.feitas, ...vistasFeitas.map((t) => t.id)])]
+    })
+  }, [vistasFeitas.map((t) => t.id).join()]) // eslint-disable-line react-hooks/exhaustive-deps
   const [naProva, setNaProva] = useState(false)
   // o plano do dia é fixado na primeira vez que a tela abre no dia
   const hoje = diaDe(agora)
@@ -81,7 +118,43 @@ export function MeuEdital({
         : [...p.marcadas, t.chave]
       d.planoDoDia = p
     })
+  const marcarNaMissao = (t: TarefaDaMissao): void =>
+    mudar((d) => {
+      if (!d.missao) return
+      d.missao.feitas = d.missao.feitas.includes(t.id)
+        ? d.missao.feitas.filter((x) => x !== t.id)
+        : [...d.missao.feitas, t.id]
+    })
+  const fazerNaMissao = async (t: TarefaDaMissao): Promise<void> => {
+    setAvisoMissao('')
+    if (t.tipo === 'explicar') return setExplicando(explicando === t.id ? null : t.id)
+    if (t.tipo === 'atrasados') return estudar({ assuntos: null, titulo: t.titulo })
+    if (t.tipo === 'simulado') {
+      const aberto = dados.simulados.find(
+        (s) => !s.entregueEm && semAcento(s.config.tema) === semAcento(t.tema)
+      )
+      if (aberto) return abrirSimulado(aberto.id)
+    }
+    if (t.tipo === 'cartoes' && missao?.cartoesEm?.[t.id])
+      return estudar({ assuntos: null, titulo: t.titulo })
+    const item = caixa.find((i) => i.id === t.item)
+    if (!item)
+      return setAvisoMissao(
+        'Não achei este conteúdo na caixa do Claude. Toque em Atualizar em Do Claude.'
+      )
+    const r = await importarDaCaixa(item, dados, mudar)
+    if (!r.ok) return setAvisoMissao(r.texto)
+    if (r.simulado) return abrirSimulado(r.simulado)
+    if (r.cartoesEm) {
+      const quando = r.cartoesEm
+      mudar((d) => {
+        if (d.missao) d.missao.cartoesEm = { ...d.missao.cartoesEm, [t.id]: quando }
+      })
+      estudar({ assuntos: null, titulo: t.titulo })
+    }
+  }
   const e = dados.edital
+  const chance = e ? chanceDeAprovacao(dados, e) : null
   const situacao = situacaoDoEdital(dados, agora)
   const dias = e ? diasAte(e.dataProva, agora) : null
 
@@ -155,6 +228,53 @@ export function MeuEdital({
               </button>
             </header>
 
+            {chance && (
+              <section aria-labelledby="t-chance" className="chance">
+                <h2 id="t-chance" className="secao">
+                  Chance de aprovação
+                </h2>
+                {chance.nota === null ? (
+                  <span className="frase-chance">
+                    Ainda não sei: nenhuma matéria foi medida em simulado. O primeiro simulado de
+                    cada matéria já dá o número.
+                  </span>
+                ) : (
+                  <>
+                    <div className="nota-chance">
+                      <span
+                        className={`numero ${chance.notaMinima !== null && chance.nota < chance.notaMinima ? 'nota-ruim' : 'nota-boa'}`}
+                      >
+                        {chance.nota.toLocaleString('pt-BR', {
+                          minimumFractionDigits: 1,
+                          maximumFractionDigits: 1
+                        })}
+                      </span>
+                      <span className="meta">
+                        nota projetada
+                        {chance.notaMinima !== null &&
+                          ` · mínimo ${chance.notaMinima.toLocaleString('pt-BR', { minimumFractionDigits: 1 })}`}
+                      </span>
+                    </div>
+                    <span className="barra">
+                      <span style={{ width: `${(1 - chance.faltaMedir) * 100}%` }} />
+                    </span>
+                    <span className={`meta ${chance.faltaMedir > 0.001 ? 'nota-media' : ''}`}>
+                      Medido em {chance.medidas} de {chance.total} questões
+                      {chance.faltaMedir > 0.001 &&
+                        ` · faltam ${chance.materias.filter((m) => m.acerto === null).length} matérias`}
+                    </span>
+                    <span className="frase-chance">
+                      {chance.faltaMedir > 0.001
+                        ? `Ainda não dá para dizer se passa: o que falta medir vale ${pct(chance.faltaMedir)} da nota.`
+                        : chance.notaMinima === null || chance.nota >= chance.notaMinima
+                          ? 'No ritmo de hoje, você passaria.'
+                          : 'Hoje, abaixo do mínimo: a lista abaixo mostra onde subir.'}
+                    </span>
+                  </>
+                )}
+              </section>
+            )}
+
             {plano.tarefas.length > 0 && (
               <section aria-labelledby="t-hoje" className="estudo-do-dia">
                 <div className="cabeca-dia">
@@ -211,6 +331,91 @@ export function MeuEdital({
               </section>
             )}
 
+            {missao && (
+              <section aria-labelledby="t-missao" className="estudo-do-dia missao">
+                <div className="cabeca-dia">
+                  <h2 id="t-missao" className="secao">
+                    Missão da semana
+                  </h2>
+                  <span className="meta">
+                    Do Claude · {missao.de.split('-').reverse().slice(0, 2).join('/')} a{' '}
+                    {missao.ate.split('-').reverse().slice(0, 2).join('/')}
+                  </span>
+                  <span className="meta sequencia pontos-missao">
+                    <span className="barra">
+                      <span
+                        style={{
+                          width: `${(pontosDaMissao(missao).feitos / Math.max(1, pontosDaMissao(missao).total)) * 100}%`
+                        }}
+                      />
+                    </span>
+                    {pontosDaMissao(missao).feitos} / {pontosDaMissao(missao).total} pts
+                  </span>
+                </div>
+                {missao.frase && <p className="frase-missao">{missao.frase}</p>}
+                {missao.tarefas.map((t) => {
+                  const feita = feitaNaMissao(missao, t)
+                  return (
+                    <div key={t.id} className={`tarefa-dia com-pontos ${feita ? 'feita' : ''}`}>
+                      <button
+                        type="button"
+                        className="marca-tarefa"
+                        aria-pressed={feita}
+                        aria-label={
+                          feita ? `Desmarcar: ${t.titulo}` : `Marcar como feito: ${t.titulo}`
+                        }
+                        onClick={() => marcarNaMissao(t)}
+                      >
+                        {feita && <Icone nome="check" tamanho={14} />}
+                      </button>
+                      <span className="corpo-tarefa">
+                        <span className="titulo-tarefa">{t.titulo}</span>
+                        <span className="meta">{t.detalhe}</span>
+                      </span>
+                      <span className={`pontos ${feita ? 'nota-boa' : ''}`}>+{t.pontos} pts</span>
+                      {!feita ? (
+                        <button
+                          type="button"
+                          className="botao passo"
+                          aria-pressed={t.tipo === 'explicar' ? explicando === t.id : undefined}
+                          onClick={() => void fazerNaMissao(t)}
+                        >
+                          {t.tipo === 'explicar'
+                            ? 'Explicar'
+                            : t.tipo === 'simulado'
+                              ? 'Começar'
+                              : 'Abrir'}
+                          <Icone nome="direita" tamanho={14} />
+                        </button>
+                      ) : (
+                        <span />
+                      )}
+                    </div>
+                  )
+                })}
+                {avisoMissao && (
+                  <div className="aviso erro" role="alert">
+                    {avisoMissao}
+                  </div>
+                )}
+                {missao.tarefas.map(
+                  (t) =>
+                    t.tipo === 'explicar' &&
+                    explicando === t.id && (
+                      <Explique
+                        key={t.id}
+                        dados={dados}
+                        mudar={mudar}
+                        topico={t.topico}
+                        pergunta={t.pergunta}
+                        detalhe={t.detalhe}
+                        pontos={t.pontos}
+                      />
+                    )
+                )}
+              </section>
+            )}
+
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
               <button
                 type="button"
@@ -234,11 +439,14 @@ export function MeuEdital({
                 <span>Questões</span>
                 <span>Peso na nota</span>
                 <span>Estudado</span>
+                <span>Nível</span>
                 <span>Acerto</span>
                 <span />
               </div>
               {situacao.map((s) => {
                 const passo = proximoPasso(s)
+                const nivel =
+                  chance?.materias.find((m) => m.materiaId === s.materiaId)?.nivel ?? 'nunca'
                 return (
                   <div key={s.materiaId} className="linha-edital">
                     <span className="nome">{s.nome}</span>
@@ -255,6 +463,7 @@ export function MeuEdital({
                         <span style={{ width: `${s.estudado * 100}%` }} />
                       </span>
                     </span>
+                    <span className={`nivel ${nivel}`}>{NOME_DO_NIVEL[nivel]}</span>
                     <span
                       className={`numero-pequeno ${s.acerto === null ? 'sem' : s.acerto >= 0.7 ? 'nota-boa' : 'nota-media'}`}
                     >

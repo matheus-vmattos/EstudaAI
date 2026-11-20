@@ -1,0 +1,62 @@
+{
+ "de": "2026-11-20",
+ "ate": "2026-11-26",
+ "frase": "Bancários está firme (27 de 30). O que mais sobe a sua nota agora é medir Informática e Estatística: cada uma vale 0,83 ponto da nota final e nunca foi medida. E fechar Cheque e Garantias, que você errou.",
+ "tarefas": [
+  {
+   "id": "info",
+   "tipo": "simulado",
+   "titulo": "Primeiro contato: Informática",
+   "detalhe": "Pronto, feito pelo Claude · 10 questões FCC · peso 2, nunca medida",
+   "pontos": 150,
+   "item": "banestes-missao1-informatica-v1",
+   "tema": "Primeiro contato com informática"
+  },
+  {
+   "id": "est",
+   "tipo": "simulado",
+   "titulo": "Primeiro contato: Probabilidade e Estatística",
+   "detalhe": "Pronto, feito pelo Claude · 10 questões FCC · peso 2, nunca medida",
+   "pontos": 150,
+   "item": "banestes-missao1-estatistica-v1",
+   "tema": "Primeiro contato com estatística"
+  },
+  {
+   "id": "lacunas",
+   "tipo": "cartoes",
+   "titulo": "Fechar lacuna: Cheque e Garantias do crédito",
+   "detalhe": "Errou as duas em 19/11 · 7 cartões conferidos na lei",
+   "pontos": 100,
+   "item": "banestes-missao1-lacunas-v1"
+  },
+  {
+   "id": "atrasados",
+   "tipo": "atrasados",
+   "titulo": "Zerar os cartões de hoje",
+   "detalhe": "Revisar no dia certo é o que fixa",
+   "pontos": 120
+  },
+  {
+   "id": "ir",
+   "tipo": "explicar",
+   "titulo": "Explique: tabela regressiva do IR na renda fixa",
+   "detalhe": "Acertou em 1 min 41 s (4× seu ritmo) e marcou dúvida",
+   "pontos": 20,
+   "topico": "Tributação de investimentos",
+   "pergunta": "Como funciona a tabela regressiva do Imposto de Renda nas aplicações de renda fixa? Explique com suas palavras, como se fosse para um cliente."
+  },
+  {
+   "id": "aval",
+   "tipo": "explicar",
+   "titulo": "Explique: aval × fiança",
+   "detalhe": "Errou Garantias do crédito com dúvida",
+   "pontos": 20,
+   "topico": "Garantias do crédito",
+   "pergunta": "Qual a diferença entre aval e fiança? Explique com suas palavras, como se fosse para um cliente."
+  }
+ ],
+ "fontes": [
+  "Dados de estudo do Matheus até 19/11 (simulado de Conhecimentos Bancários 27/30; Informática e Estatística sem simulado)",
+  "Edital Banestes 2026, itens 9.1 e 11.2 (valor de cada questão na nota)"
+ ]
+}
