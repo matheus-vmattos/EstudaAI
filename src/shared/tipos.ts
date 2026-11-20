@@ -188,6 +188,10 @@ export interface Dados {
   explicacoes?: Explicacao[]
   /** a missão da semana que veio do Claude (v0.1.18+) */
   missao?: Missao
+  /** o texto que o Claude pôs em cada anotação vazia (v0.1.19+). Enquanto a
+   *  nota for igual a ele, não conta como estudo seu e pode ser corrigida
+   *  por uma versão nova; editou, virou sua. */
+  notasDoClaude?: Record<Id, string>
   /** baralhos com a seta ao contrário do padrão (matéria aberta, nós fechados) */
   baralhosInvertidos?: Id[]
   /** itens da caixa "Do Claude" já importados */
@@ -218,7 +222,7 @@ export interface Edital {
 /** Algo que o Claude preparou e publicou em conteudo/ do repositório */
 export interface ItemDaCaixa {
   id: string
-  tipo: 'estrutura' | 'simulado' | 'cartoes' | 'edital' | 'missao'
+  tipo: 'estrutura' | 'simulado' | 'cartoes' | 'edital' | 'missao' | 'anotacoes'
   titulo: string
   descricao?: string
   arquivo: string
@@ -257,6 +261,7 @@ export type TarefaDaMissao = {
   | { tipo: 'cartoes'; item: string }
   | { tipo: 'atrasados' }
   | { tipo: 'explicar'; topico: string; pergunta: string }
+  | { tipo: 'anotacoes'; item: string }
 )
 
 export interface Missao {

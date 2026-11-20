@@ -145,6 +145,7 @@ export function MeuEdital({
     const r = await importarDaCaixa(item, dados, mudar)
     if (!r.ok) return setAvisoMissao(r.texto)
     if (r.simulado) return abrirSimulado(r.simulado)
+    if (r.nos?.[0]) return abrirAnotacao(r.nos[0])
     if (r.frentes) {
       const frentes = r.frentes
       mudar((d) => {
@@ -378,7 +379,9 @@ export function MeuEdital({
                             ? 'Explicar'
                             : t.tipo === 'simulado'
                               ? 'Começar'
-                              : 'Abrir'}
+                              : t.tipo === 'anotacoes'
+                                ? 'Ler'
+                                : 'Abrir'}
                           <Icone nome="direita" tamanho={14} />
                         </button>
                       ) : (

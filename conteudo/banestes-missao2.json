@@ -1,0 +1,84 @@
+{
+ "de": "2026-11-21",
+ "ate": "2026-11-27",
+ "frase": "Estatística ficou em 1 de 10: é a lacuna que mais pesa hoje (0,83 ponto da nota). Primeiro entender (anotações), depois fixar (cartões) e só então medir de novo, do básico ao estilo FCC. Informática foi bem (7 de 10): falta revisar os cartões dos 3 enganos.",
+ "tarefas": [
+  {
+   "id": "ler-est",
+   "tipo": "anotacoes",
+   "titulo": "Ler: Estatística do zero",
+   "detalhe": "19 anotações com fórmula, exemplo resolvido e pegadinha FCC",
+   "pontos": 60,
+   "item": "banestes-estatistica-anotacoes-v1"
+  },
+  {
+   "id": "media-mediana",
+   "tipo": "explicar",
+   "titulo": "Explique: média × mediana",
+   "detalhe": "Você marcou a média numa questão que pedia a mediana",
+   "pontos": 30,
+   "topico": "Medidas de tendência central",
+   "pergunta": "Qual a diferença entre média e mediana? Em que situação a mediana representa melhor os dados? Explique com suas palavras, como se fosse para um cliente."
+  },
+  {
+   "id": "cartoes-est",
+   "tipo": "cartoes",
+   "titulo": "Revisar os cartões de Estatística",
+   "detalhe": "17 cartões, nunca revisados · um deles corrigido",
+   "pontos": 100,
+   "item": "banestes-estatistica-cartoes-v2"
+  },
+  {
+   "id": "sim-est",
+   "tipo": "simulado",
+   "titulo": "Estatística: do básico ao FCC",
+   "detalhe": "Pronto, feito pelo Claude · 13 questões, das mais fáceis às de prova",
+   "pontos": 150,
+   "item": "banestes-missao2-estatistica-v1",
+   "tema": "Estatística do básico ao FCC"
+  },
+  {
+   "id": "cartoes-info",
+   "tipo": "cartoes",
+   "titulo": "Fechar os enganos de Informática",
+   "detalhe": "PROCV e aprendizado supervisionado · cartão do Drive corrigido",
+   "pontos": 80,
+   "item": "banestes-informatica-cartoes-v2"
+  },
+  {
+   "id": "cartoes-lgpd",
+   "tipo": "cartoes",
+   "titulo": "Revisar os cartões de LGPD",
+   "detalhe": "Dado sensível: você marcou \"renda\", que não é",
+   "pontos": 60,
+   "item": "banestes-lgpd-cartoes-v1"
+  },
+  {
+   "id": "sensivel",
+   "tipo": "explicar",
+   "titulo": "Explique: o que é dado sensível na LGPD",
+   "detalhe": "Errou em 19 s achando que sabia",
+   "pontos": 20,
+   "topico": "LGPD: dados sensíveis",
+   "pergunta": "O que é dado pessoal sensível na LGPD? Por que a renda do cliente não é um deles? Explique com suas palavras."
+  },
+  {
+   "id": "lacunas",
+   "tipo": "cartoes",
+   "titulo": "Fechar lacuna: Cheque e Garantias do crédito",
+   "detalhe": "Da missão 1 · 7 cartões conferidos na lei",
+   "pontos": 80,
+   "item": "banestes-missao1-lacunas-v1"
+  },
+  {
+   "id": "atrasados",
+   "tipo": "atrasados",
+   "titulo": "Zerar os cartões de hoje",
+   "detalhe": "Os vencidos e os novos do dia",
+   "pontos": 80
+  }
+ ],
+ "fontes": [
+  "Dados de estudo do Matheus até 20/11 (Estatística 1/10, Informática 7/10; cartões de Estatística, Informática e LGPD sem revisão)"
+ ]
+}

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Icone } from '../Icone'
 import type { Mudar } from '../useDados'
-import { importarDaCaixa } from '../importarDaCaixa'
+import { importarDaCaixa, type ResultadoDaCaixa } from '../importarDaCaixa'
 import type { Dados, Id, ItemDaCaixa } from '../../../shared/tipos'
 
 export type EstadoDaCaixa = { carregando: boolean; itens: ItemDaCaixa[]; erro: string }
@@ -11,7 +11,8 @@ const NOME_DO_TIPO = {
   simulado: 'Simulado',
   cartoes: 'Flashcards',
   edital: 'Edital',
-  missao: 'Missão'
+  missao: 'Missão',
+  anotacoes: 'Anotações'
 }
 
 /** O que o Claude preparou para você: mapas e simulados prontos para importar */
@@ -23,7 +24,8 @@ export function Caixa({
   abrirMapa,
   abrirSimulado,
   abrirFlashcards,
-  abrirEdital
+  abrirEdital,
+  abrirAnotacao
 }: {
   dados: Dados
   mudar: Mudar
@@ -33,11 +35,10 @@ export function Caixa({
   abrirSimulado: (id: Id) => void
   abrirFlashcards: () => void
   abrirEdital: () => void
+  abrirAnotacao: (id: Id) => void
 }) {
   const [trabalhando, setTrabalhando] = useState<string | null>(null)
-  const [resultado, setResultado] = useState<
-    Record<string, { ok: boolean; texto: string; simulado?: Id }>
-  >({})
+  const [resultado, setResultado] = useState<Record<string, ResultadoDaCaixa>>({})
   const importados = new Set(dados.caixaImportados ?? [])
   const itens = [...caixa.itens].reverse() // mais novo primeiro
 
@@ -100,6 +101,15 @@ export function Caixa({
                 {res?.ok && (item.tipo === 'edital' || item.tipo === 'missao') && (
                   <button type="button" className="botao sucesso" onClick={abrirEdital}>
                     Ver meu edital
+                  </button>
+                )}
+                {res?.ok && item.tipo === 'anotacoes' && res.nos?.[0] && (
+                  <button
+                    type="button"
+                    className="botao sucesso"
+                    onClick={() => abrirAnotacao(res.nos![0])}
+                  >
+                    Ler
                   </button>
                 )}
                 {res?.ok && item.tipo === 'cartoes' && (

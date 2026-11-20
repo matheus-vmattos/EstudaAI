@@ -1,6 +1,7 @@
 import { filaDoDia } from './flashcards'
 import { nosDaMateria } from './arvore'
 import { semAcento } from './texto'
+import { temNotaPropria } from './anotacoesDoClaude'
 import type { LeituraDaIa } from './questoes'
 import type { Dados, Edital, Id, Simulado } from './tipos'
 
@@ -82,7 +83,10 @@ export function situacaoDoEdital(d: Dados, agora = new Date()): SituacaoDaMateri
     const nos = nosDaMateria(d, m)
     const ids = new Set(nos.map((n) => n.id))
     const comCartao = new Set(d.cartoes.filter((c) => ids.has(c.assuntoId)).map((c) => c.assuntoId))
-    const estudados = nos.filter((n) => n.nota.trim() || comCartao.has(n.id)).length
+    // anotação que o Claude pôs e você não mexeu ainda não é estudo seu
+    const estudados = nos.filter(
+      (n) => temNotaPropria(d, n.id, n.nota) || comCartao.has(n.id)
+    ).length
     const sims = simuladosDaMateria(d, m.id)
     const total = sims.reduce((n, s) => n + s.questoes.length, 0)
     const certas = sims.reduce(

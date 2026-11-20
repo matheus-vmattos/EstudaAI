@@ -4,12 +4,15 @@ import { lerRespostaDaIa } from '../../shared/questoes'
 import { importarCartoes, lerPacoteDeCartoes } from '../../shared/pacoteDeCartoes'
 import { importarEdital, lerPacoteDeEdital, simuladoDaCaixa } from '../../shared/edital'
 import { lerPacoteDeMissao } from '../../shared/missao'
+import { importarAnotacoes, lerPacoteDeAnotacoes } from '../../shared/anotacoesDoClaude'
 import type { Dados, Id, ItemDaCaixa } from '../../shared/tipos'
 
 export type ResultadoDaCaixa = {
   ok: boolean
   texto: string
   simulado?: Id
+  /** os nós das anotações do pacote (para abrir a primeira) */
+  nos?: Id[]
   /** a frente dos cartões do pacote (a missão usa para saber quando terminou) */
   frentes?: string[]
 }
@@ -66,7 +69,30 @@ export async function importarDaCaixa(
       frentes: lido.pacote.cartoes.map((c) => c.frente.trim()),
       texto:
         `✓ ${res.novos} cartões novos` +
+        (res.corrigidos ? ` · ${res.corrigidos} corrigidos` : '') +
         (res.repetidos ? ` · ${res.repetidos} já existiam` : '') +
+        (res.lugaresCriados ? ` · ${res.lugaresCriados} lugares novos no mapa` : '')
+    }
+  }
+  if (item.tipo === 'anotacoes') {
+    const lido = lerPacoteDeAnotacoes(r.texto)
+    if (!lido.ok) return { ok: false, texto: lido.erro }
+    // os mesmos ids na cópia (que conta e devolve os nós) e na gravação
+    const ids: Id[] = []
+    let k = 0
+    const mesmoId = (): Id => (ids[k++] ??= novoId())
+    const res = importarAnotacoes(structuredClone(dados), lido.pacote, mesmoId)
+    mudar((d) => {
+      k = 0
+      importarAnotacoes(d, lido.pacote, mesmoId)
+      marcar(d)
+    })
+    return {
+      ok: true,
+      nos: res.nos,
+      texto:
+        `✓ ${res.escritas} anotações` +
+        (res.suas ? ` · ${res.suas} suas ficaram como estavam` : '') +
         (res.lugaresCriados ? ` · ${res.lugaresCriados} lugares novos no mapa` : '')
     }
   }

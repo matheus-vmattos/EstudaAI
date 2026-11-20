@@ -11,6 +11,9 @@ export interface CartaoDoPacote {
   frente: string
   verso: string
   tipo: TipoDeCartao
+  /** errata: versos antigos deste cartão. Se o seu cartão ainda tem um deles
+   *  exatamente (você não editou), o verso é trocado pelo corrigido. */
+  antes?: string[]
 }
 
 export interface PacoteDeCartoes {
@@ -43,20 +46,24 @@ export function lerPacoteDeCartoes(
     const tipo: TipoDeCartao = temLacuna(frente) ? 'lacuna' : 'basico'
     if (!lugar.length || !frente || (tipo === 'basico' && !verso))
       return { ok: false, erro: `O cartão ${i + 1} do arquivo está incompleto.` }
-    cartoes.push({ lugar, frente, verso, tipo })
+    const antes = Array.isArray(x?.antes)
+      ? x.antes.filter((v): v is string => typeof v === 'string').map((v) => v.trim())
+      : []
+    cartoes.push({ lugar, frente, verso, tipo, ...(antes.length ? { antes } : {}) })
   }
   return { ok: true, pacote: { materia: b.materia.trim(), cartoes } }
 }
 
 /** Põe os cartões nos lugares do mapa (criando o lugar que faltar) sem
  *  repetir: cartão com a mesma frente no mesmo lugar é pulado, então
- *  importar de novo não duplica. */
+ *  importar de novo não duplica. O repetido só muda por errata: se o verso
+ *  dele ainda é um dos "antes" do pacote (não foi editado por você). */
 export function importarCartoes(
   d: Dados,
   pacote: PacoteDeCartoes,
   novoId: () => Id,
   quando = Date.now()
-): { novos: number; repetidos: number; lugaresCriados: number } {
+): { novos: number; repetidos: number; lugaresCriados: number; corrigidos: number } {
   // os lugares entram pelo mesmo caminho de "Colar estrutura"
   const raiz: NoDoTexto = { nome: pacote.materia, filhos: [] }
   for (const c of pacote.cartoes) {
@@ -87,13 +94,17 @@ export function importarCartoes(
 
   let novos = 0
   let repetidos = 0
+  let corrigidos = 0
   for (const c of pacote.cartoes) {
     const lugarId = acharLugar(c.lugar)
     if (!lugarId) continue
     // com acento: "por" e "pôr" são cartões diferentes (só o lugar ignora acento)
-    const igual = d.cartoes.some((x) => x.assuntoId === lugarId && x.frente.trim() === c.frente)
+    const igual = d.cartoes.find((x) => x.assuntoId === lugarId && x.frente.trim() === c.frente)
     if (igual) {
-      repetidos++
+      if (c.antes?.includes(igual.verso.trim()) && igual.verso.trim() !== c.verso) {
+        igual.verso = c.verso
+        corrigidos++
+      } else repetidos++
       continue
     }
     d.cartoes.push({
@@ -107,5 +118,5 @@ export function importarCartoes(
     })
     novos++
   }
-  return { novos, repetidos, lugaresCriados: criados }
+  return { novos, repetidos, lugaresCriados: criados, corrigidos }
 }

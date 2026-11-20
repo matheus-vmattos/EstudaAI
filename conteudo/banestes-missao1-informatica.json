@@ -109,7 +109,7 @@
    "habilidade": "aplicar regra"
   },
   {
-   "enunciado": "Ao compartilhar um arquivo do Google Drive com a permissão de \"Comentarista\", o destinatário poderá",
+   "enunciado": "Ao compartilhar um arquivo do Google Drive com a permissão de \"Comentador\", o destinatário poderá",
    "alternativas": {
     "A": "editar o conteúdo e compartilhar com outras pessoas.",
     "B": "excluir o arquivo da pasta compartilhada.",
@@ -118,9 +118,9 @@
     "E": "alterar o conteúdo, mas sem comentar."
    },
    "gabarito": "D",
-   "resolucao": "No Drive há três níveis: Leitor (só vê), Comentarista (vê e comenta/sugere) e Editor (altera e pode compartilhar, se o proprietário permitir).",
+   "resolucao": "No Drive há três papéis: Leitor (só vê), Comentador (vê, comenta e sugere) e Editor (altera e, por padrão, pode compartilhar). Fonte: Ajuda do Google Drive.",
    "topico": "Google Workspace: Drive",
-   "conceito": "Drive: Leitor vê, Comentarista vê e comenta, Editor altera.",
+   "conceito": "Drive: Leitor vê, Comentador comenta e sugere, Editor altera.",
    "habilidade": "lembrar"
   },
   {
@@ -155,6 +155,7 @@
   }
  ],
  "fontes": [
-  "Lei 13.709/2018 (LGPD), arts. 5º II e VIII, 7º X e 20 — planalto.gov.br, texto compilado (redação da Lei 15.352/2026 no art. 5º VIII)"
+  "Lei 13.709/2018 (LGPD), arts. 5º II e VIII, 7º X e 20 — planalto.gov.br, texto compilado (redação da Lei 15.352/2026 no art. 5º VIII)",
+  "Ajuda do Google Drive (support.google.com/drive/answer/2494822), lida em 20/11/2026"
  ]
 }

@@ -31,6 +31,8 @@ export function lerPacoteDeMissao(
     else if (x.tipo === 'cartoes' && txt(x.item))
       tarefas.push({ ...base, tipo: 'cartoes', item: x.item })
     else if (x.tipo === 'atrasados') tarefas.push({ ...base, tipo: 'atrasados' })
+    else if (x.tipo === 'anotacoes' && txt(x.item))
+      tarefas.push({ ...base, tipo: 'anotacoes', item: x.item })
     else if (x.tipo === 'explicar' && txt(x.topico) && txt(x.pergunta))
       tarefas.push({ ...base, tipo: 'explicar', topico: x.topico, pergunta: x.pergunta })
     else return { ok: false, erro: `Tarefa ${i + 1}: tipo "${String(x.tipo)}" incompleto.` }
@@ -68,6 +70,8 @@ export function feitaPelosDados(
     const doPacote = d.cartoes.filter((c) => frentes.has(c.frente.trim()))
     return doPacote.length > 0 && doPacote.every((c) => c.primeiraRevisao)
   }
+  // ler não dá para medir: abrir as anotações (importá-las) conta
+  if (t.tipo === 'anotacoes') return (d.caixaImportados ?? []).includes(t.item)
   if (t.tipo === 'atrasados') {
     // "os cartões de hoje" = os vencidos e os novos do dia, como no menu
     const f = filaDoDia(d.cartoes, agora)
