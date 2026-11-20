@@ -531,3 +531,96 @@ describe('revisão do Codex (PR 23)', () => {
     expect(sequenciaDeDias(d, hoje)).toBe(0)
   })
 })
+
+describe('revisão: uma matéria por vez', () => {
+  const cartao = (id: string, assuntoId: string, frente = id) => ({
+    id,
+    assuntoId,
+    tipo: 'basico' as const,
+    frente,
+    verso: 'v',
+    agenda: agendaNova(new Date(2026, 10, 20)),
+    criadoEm: Number(id.replace(/\D/g, ''))
+  })
+  it('a fila do dia (como era) mistura matérias; a da sessão vem em blocos', async () => {
+    const { filaDoDia, filaDaSessao } = await import('../src/shared/flashcards')
+    const d = dadosDoEdital()
+    d.cartoes.push(
+      cartao('v1', 'vendas-a'),
+      cartao('e2', 'est-a'),
+      cartao('v3', 'vendas-a'),
+      cartao('e4', 'est-a')
+    )
+    const agora = new Date(2026, 10, 21, 10)
+    const antes = filaDoDia(d.cartoes, agora).novos.map((c) => c.id)
+    expect(antes).toEqual(['v1', 'e2', 'v3', 'e4']) // o problema: Vendas, Estatística, Vendas…
+    expect(filaDaSessao(d, agora, { assuntos: null }).map((c) => c.id)).toEqual([
+      'v1',
+      'v3',
+      'e2',
+      'e4'
+    ])
+  })
+  it('tarefa de cartões da missão: só os do pacote', async () => {
+    const { filaDaSessao } = await import('../src/shared/flashcards')
+    const d = dadosDoEdital()
+    d.cartoes.push(
+      cartao('v1', 'vendas-a'),
+      cartao('e2', 'est-a', 'Mediana'),
+      cartao('e4', 'est-a', 'Moda')
+    )
+    const agora = new Date(2026, 10, 21, 10)
+    expect(
+      filaDaSessao(d, agora, { assuntos: null, frentes: ['Mediana', 'Moda '] }).map((c) => c.id)
+    ).toEqual(['e2', 'e4'])
+  })
+})
+
+describe('revisão do pacote com muitos cartões novos de outras matérias', () => {
+  it('o limite de novos do dia não corta os do pacote', async () => {
+    const { filaDaSessao, NOVOS_POR_DIA } = await import('../src/shared/flashcards')
+    const d = dadosDoEdital()
+    const novo = (id: string, assuntoId: string, frente: string, criadoEm: number) => ({
+      id,
+      assuntoId,
+      tipo: 'basico' as const,
+      frente,
+      verso: 'v',
+      agenda: agendaNova(new Date(2026, 10, 19)),
+      criadoEm
+    })
+    // muitos novos de Bancários, importados antes
+    // cada um num tópico diferente, como no mapa real
+    for (let i = 0; i < NOVOS_POR_DIA + 5; i++)
+      d.cartoes.push(novo(`b${i}`, `banc-${i}`, `banc ${i}`, i))
+    d.cartoes.push(novo('e1', 'est-a', 'Mediana', 1000), novo('e2', 'est-a', 'Moda', 1001))
+    const fila = filaDaSessao(d, new Date(2026, 10, 21, 10), {
+      assuntos: null,
+      frentes: ['Mediana', 'Moda']
+    })
+    expect(fila.map((c) => c.id)).toEqual(['e1', 'e2'])
+  })
+})
+
+describe('revisão do Codex (PR 25)', () => {
+  it('cartões novos de fora do pacote no MESMO tópico não ocupam o limite', async () => {
+    const { filaDaSessao, NOVOS_POR_DIA } = await import('../src/shared/flashcards')
+    const d = dadosDoEdital()
+    const novo = (id: string, frente: string, criadoEm: number) => ({
+      id,
+      assuntoId: 'est-a',
+      tipo: 'basico' as const,
+      frente,
+      verso: 'v',
+      agenda: agendaNova(new Date(2026, 10, 19)),
+      criadoEm
+    })
+    for (let i = 0; i < NOVOS_POR_DIA; i++) d.cartoes.push(novo(`x${i}`, `antigo ${i}`, i))
+    d.cartoes.push(novo('e1', 'Mediana', 1000), novo('e2', 'Moda', 1001))
+    const fila = filaDaSessao(d, new Date(2026, 10, 21, 10), {
+      assuntos: null,
+      frentes: ['Mediana', 'Moda']
+    })
+    expect(fila.map((c) => c.id)).toEqual(['e1', 'e2'])
+  })
+})

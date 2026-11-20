@@ -150,7 +150,7 @@ export function MeuEdital({
       mudar((d) => {
         if (d.missao) d.missao.cartoesFrentes = { ...d.missao.cartoesFrentes, [t.id]: frentes }
       })
-      estudar({ assuntos: null, titulo: t.titulo })
+      estudar({ assuntos: null, titulo: t.titulo, frentes })
     }
   }
   const e = dados.edital

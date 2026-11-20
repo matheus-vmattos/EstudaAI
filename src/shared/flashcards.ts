@@ -1,5 +1,6 @@
 import { createEmptyCard, fsrs, generatorParameters, State, type Card, type Grade } from 'ts-fsrs'
-import type { Agenda, Cartao, Id } from './tipos'
+import { nosDaMateria } from './arvore'
+import type { Agenda, Cartao, Dados, Id } from './tipos'
 
 // ponytail: o FSRS é o agendador que o Anki usa hoje; a biblioteca ts-fsrs
 // faz a conta. Parâmetros padrão: com centenas de revisões dá para treinar
@@ -97,7 +98,10 @@ export function filaDoDia(
   cartoes: Cartao[],
   agora = new Date(),
   /** só estes assuntos entram na fila; o limite de novos conta TODOS */
-  assuntos: Set<Id> | null = null
+  assuntos: Set<Id> | null = null,
+  /** e só os cartões que passam aqui (ex.: os de um pacote); também conta
+   *  antes do limite de novos, para os de fora não ocuparem a vaga */
+  incluir: ((c: Cartao) => boolean) | null = null
 ): FilaDoDia {
   const limite = fimDoDia(agora)
   const aprendendo: Cartao[] = []
@@ -108,6 +112,7 @@ export function filaDoDia(
     const due = new Date(c.agenda.due).getTime()
     if (c.primeiraRevisao && c.primeiraRevisao >= inicioDoDia(agora)) novosHoje++
     if (assuntos && !assuntos.has(c.assuntoId)) continue
+    if (incluir && !incluir(c)) continue
     if (c.agenda.state === State.New) novos.push(c)
     else if (c.agenda.state === State.Review) {
       if (due <= limite) revisoes.push(c)
@@ -191,4 +196,34 @@ export function lacunaDaAnotacao(nota: string, trecho: string): string | null {
     if (i >= 0) return `${limpa.slice(0, i)}{{c1::${t}}}${limpa.slice(i + t.length)}`
   }
   return null
+}
+
+/** A fila de uma sessão de revisão, uma matéria por vez: misturar Vendas com
+ *  Estatística atrapalha o foco. Dentro da matéria, os tópicos continuam
+ *  revezando (prática intercalada). A ordem das matérias é a da fila: quem
+ *  tem o cartão mais urgente vem primeiro. Com `frentes`, só os cartões
+ *  daquele pacote (a tarefa "revisar os cartões de X" da missão). */
+export function filaDaSessao(
+  d: Dados,
+  agora: Date,
+  alvo: { assuntos: Id[] | null; frentes?: string[] }
+): Cartao[] {
+  const frentes = alvo.frentes ? new Set(alvo.frentes.map((x) => x.trim())) : null
+  // o pacote é separado dentro da fila, antes do limite de novos (senão os
+  // novos de fora, até do mesmo tópico, ocupam o limite e o pacote some)
+  const f = filaDoDia(
+    d.cartoes,
+    agora,
+    alvo.assuntos ? new Set(alvo.assuntos) : null,
+    frentes ? (c) => frentes.has(c.frente.trim()) : null
+  )
+  const fila = [...f.revisar, ...f.novos]
+  const materiaDe = new Map<Id, Id>()
+  for (const m of d.materias) for (const n of nosDaMateria(d, m)) materiaDe.set(n.id, m.id)
+  const blocos = new Map<string, Cartao[]>()
+  for (const c of fila) {
+    const m = materiaDe.get(c.assuntoId) ?? ''
+    blocos.set(m, [...(blocos.get(m) ?? []), c])
+  }
+  return [...blocos.values()].flat()
 }
