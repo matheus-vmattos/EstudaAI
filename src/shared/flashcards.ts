@@ -1,5 +1,6 @@
 import { createEmptyCard, fsrs, generatorParameters, State, type Card, type Grade } from 'ts-fsrs'
-import type { Agenda, Cartao, Id } from './tipos'
+import { nosDaMateria } from './arvore'
+import type { Agenda, Cartao, Dados, Id } from './tipos'
 
 // ponytail: o FSRS é o agendador que o Anki usa hoje; a biblioteca ts-fsrs
 // faz a conta. Parâmetros padrão: com centenas de revisões dá para treinar
@@ -191,4 +192,33 @@ export function lacunaDaAnotacao(nota: string, trecho: string): string | null {
     if (i >= 0) return `${limpa.slice(0, i)}{{c1::${t}}}${limpa.slice(i + t.length)}`
   }
   return null
+}
+
+/** A fila de uma sessão de revisão, uma matéria por vez: misturar Vendas com
+ *  Estatística atrapalha o foco. Dentro da matéria, os tópicos continuam
+ *  revezando (prática intercalada). A ordem das matérias é a da fila: quem
+ *  tem o cartão mais urgente vem primeiro. Com `frentes`, só os cartões
+ *  daquele pacote (a tarefa "revisar os cartões de X" da missão). */
+export function filaDaSessao(
+  d: Dados,
+  agora: Date,
+  alvo: { assuntos: Id[] | null; frentes?: string[] }
+): Cartao[] {
+  const frentes = alvo.frentes ? new Set(alvo.frentes.map((x) => x.trim())) : null
+  // com pacote, a fila se restringe aos lugares dele ANTES do limite de novos
+  // (senão os novos de outras matérias ocupam o limite e o pacote não aparece)
+  const doPacote = frentes
+    ? new Set(d.cartoes.filter((c) => frentes.has(c.frente.trim())).map((c) => c.assuntoId))
+    : null
+  const lugares = doPacote ?? (alvo.assuntos ? new Set(alvo.assuntos) : null)
+  const f = filaDoDia(d.cartoes, agora, lugares)
+  const fila = [...f.revisar, ...f.novos].filter((c) => !frentes || frentes.has(c.frente.trim()))
+  const materiaDe = new Map<Id, Id>()
+  for (const m of d.materias) for (const n of nosDaMateria(d, m)) materiaDe.set(n.id, m.id)
+  const blocos = new Map<string, Cartao[]>()
+  for (const c of fila) {
+    const m = materiaDe.get(c.assuntoId) ?? ''
+    blocos.set(m, [...(blocos.get(m) ?? []), c])
+  }
+  return [...blocos.values()].flat()
 }

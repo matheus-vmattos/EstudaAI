@@ -30,7 +30,12 @@ const MENU: { tela: Tela; nome: string; icone: NomeDoIcone }[] = [
 ]
 
 /** quais assuntos a revisão cobre (null = todos) */
-export type AlvoDaRevisao = { assuntos: Id[] | null; titulo: string }
+export type AlvoDaRevisao = {
+  assuntos: Id[] | null
+  titulo: string
+  /** só os cartões com estas frentes (os de um pacote da missão) */
+  frentes?: string[]
+}
 
 export function App() {
   const { dados, mudar, erroAoSalvar } = useDados()

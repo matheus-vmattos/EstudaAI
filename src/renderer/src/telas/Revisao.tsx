@@ -5,7 +5,7 @@ import type { AlvoDaRevisao } from '../App'
 import { renderizarMarkdown } from '../markdown'
 import {
   ehNovo,
-  filaDoDia,
+  filaDaSessao,
   formatarIntervalo,
   mostrarLacuna,
   NOMES_DAS_NOTAS,
@@ -34,9 +34,8 @@ export function Revisao({
   // a fila é montada uma vez, ao entrar; quem volta em minutos (aprendendo)
   // entra de novo no fim
   const [fila, setFila] = useState<Id[]>(() => {
-    // o limite de novos do dia conta todos os assuntos, não só o aberto
-    const f = filaDoDia(dados.cartoes, new Date(), alvo.assuntos ? new Set(alvo.assuntos) : null)
-    return [...f.revisar, ...f.novos].map((c) => c.id)
+    // uma matéria por vez; o limite de novos do dia conta todos os assuntos
+    return filaDaSessao(dados, new Date(), alvo).map((c) => c.id)
   })
   const [feitos, setFeitos] = useState(0)
   const [revelado, setRevelado] = useState(false)
