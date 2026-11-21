@@ -1,0 +1,610 @@
+{
+ "tema": "Treino 4: frações II",
+ "materia": "Matemática e Raciocínio Lógico",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "O produto 2/5 × 1/10 é",
+   "alternativas": {
+    "A": "1/25.",
+    "B": "2/25.",
+    "C": "2/15.",
+    "D": "1/2.",
+    "E": "4."
+   },
+   "gabarito": "A",
+   "resolucao": "Em cima com em cima, embaixo com embaixo, e simplifique: 2/5 × 1/10 = 1/25.",
+   "topico": "Frações",
+   "conceito": "Multiplicar frações: numerador × numerador, denominador × denominador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente 5/9 ÷ 1/10 é",
+   "alternativas": {
+    "A": "1/18.",
+    "B": "9/50.",
+    "C": "25/9.",
+    "D": "197/36.",
+    "E": "50/9."
+   },
+   "gabarito": "E",
+   "resolucao": "Mantém a primeira e multiplica pelo inverso da segunda: 5/9 × 10 = 50/9.",
+   "topico": "Frações",
+   "conceito": "Dividir frações: multiplicar pelo inverso da segunda.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "João gastou 1/4 do salário com aluguel e 1/6 com alimentação. Que fração do salário sobrou?",
+   "alternativas": {
+    "A": "1/10.",
+    "B": "1/3.",
+    "C": "5/12.",
+    "D": "1/2.",
+    "E": "7/12."
+   },
+   "gabarito": "E",
+   "resolucao": "Gastou 1/4 + 1/6 = 5/12. Sobrou 1 − 5/12 = 7/12.",
+   "topico": "Frações",
+   "conceito": "Sobra = 1 inteiro menos a soma das partes gastas.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 6/7 + 5/9 é",
+   "alternativas": {
+    "A": "88/63.",
+    "B": "89/63.",
+    "C": "10/7.",
+    "D": "377/252.",
+    "E": "199/126."
+   },
+   "gabarito": "B",
+   "resolucao": "MMC dos denominadores e soma dos numeradores: 6/7 + 5/9 = 89/63. Somar em cima e embaixo daria 11/16, errado.",
+   "topico": "Frações",
+   "conceito": "Somar frações: denominadores iguais primeiro (MMC).",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 8/9 − 2/9 é",
+   "alternativas": {
+    "A": "1/2.",
+    "B": "7/12.",
+    "C": "2/3.",
+    "D": "1.",
+    "E": "10/9."
+   },
+   "gabarito": "C",
+   "resolucao": "MMC e subtraia os numeradores: 8/9 − 2/9 = 2/3.",
+   "topico": "Frações",
+   "conceito": "Subtrair frações: como na soma, denominadores iguais primeiro.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O produto 1/3 × 15/16 é",
+   "alternativas": {
+    "A": "5/16.",
+    "B": "16/45.",
+    "C": "5/8.",
+    "D": "15/19.",
+    "E": "61/48."
+   },
+   "gabarito": "A",
+   "resolucao": "Em cima com em cima, embaixo com embaixo, e simplifique: 1/3 × 15/16 = 5/16.",
+   "topico": "Frações",
+   "conceito": "Multiplicar frações: numerador × numerador, denominador × denominador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "João gastou 2/5 do salário com aluguel e 1/4 com alimentação. Que fração do salário sobrou?",
+   "alternativas": {
+    "A": "1/9.",
+    "B": "11/60.",
+    "C": "4/15.",
+    "D": "7/20.",
+    "E": "2/5."
+   },
+   "gabarito": "D",
+   "resolucao": "Gastou 2/5 + 1/4 = 13/20. Sobrou 1 − 13/20 = 7/20.",
+   "topico": "Frações",
+   "conceito": "Sobra = 1 inteiro menos a soma das partes gastas.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Dos clientes de uma agência, 3/4 têm conta-corrente e, desses, 1/3 têm cartão. Que fração do total tem conta-corrente e cartão?",
+   "alternativas": {
+    "A": "1/12.",
+    "B": "1/6.",
+    "C": "1/4.",
+    "D": "5/12.",
+    "E": "1/2."
+   },
+   "gabarito": "C",
+   "resolucao": "\"Desses\" é fração de fração: 1/3 × 3/4 = 1/4.",
+   "topico": "Frações",
+   "conceito": "Fração de fração: multiplique.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 7/9 − 3/7 é",
+   "alternativas": {
+    "A": "23/126.",
+    "B": "67/252.",
+    "C": "22/63.",
+    "D": "23/63.",
+    "E": "4/9."
+   },
+   "gabarito": "C",
+   "resolucao": "MMC e subtraia os numeradores: 7/9 − 3/7 = 22/63.",
+   "topico": "Frações",
+   "conceito": "Subtrair frações: como na soma, denominadores iguais primeiro.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 3/5 − 4/7 é",
+   "alternativas": {
+    "A": "1/35.",
+    "B": "2/35.",
+    "C": "47/420.",
+    "D": "1/5.",
+    "E": "41/35."
+   },
+   "gabarito": "A",
+   "resolucao": "MMC e subtraia os numeradores: 3/5 − 4/7 = 1/35.",
+   "topico": "Frações",
+   "conceito": "Subtrair frações: como na soma, denominadores iguais primeiro.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente 4/5 ÷ 6/7 é",
+   "alternativas": {
+    "A": "7/15.",
+    "B": "24/35.",
+    "C": "14/15.",
+    "D": "15/14.",
+    "E": "29/15."
+   },
+   "gabarito": "C",
+   "resolucao": "Mantém a primeira e multiplica pelo inverso da segunda: 4/5 × 7/6 = 14/15.",
+   "topico": "Frações",
+   "conceito": "Dividir frações: multiplicar pelo inverso da segunda.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "João gastou 1/6 do salário com aluguel e 1/3 com alimentação. Que fração do salário sobrou?",
+   "alternativas": {
+    "A": "1/9.",
+    "B": "1/4.",
+    "C": "1/3.",
+    "D": "5/12.",
+    "E": "1/2."
+   },
+   "gabarito": "E",
+   "resolucao": "Gastou 1/6 + 1/3 = 1/2. Sobrou 1 − 1/2 = 1/2.",
+   "topico": "Frações",
+   "conceito": "Sobra = 1 inteiro menos a soma das partes gastas.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "João gastou 1/2 do salário com aluguel e 1/3 com alimentação. Que fração do salário sobrou?",
+   "alternativas": {
+    "A": "1/12.",
+    "B": "1/6.",
+    "C": "1/5.",
+    "D": "1/3.",
+    "E": "3/5."
+   },
+   "gabarito": "B",
+   "resolucao": "Gastou 1/2 + 1/3 = 5/6. Sobrou 1 − 5/6 = 1/6.",
+   "topico": "Frações",
+   "conceito": "Sobra = 1 inteiro menos a soma das partes gastas.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O produto 3/4 × 7/10 é",
+   "alternativas": {
+    "A": "43/120.",
+    "B": "53/120.",
+    "C": "21/40.",
+    "D": "21/20.",
+    "E": "15/14."
+   },
+   "gabarito": "C",
+   "resolucao": "Em cima com em cima, embaixo com embaixo, e simplifique: 3/4 × 7/10 = 21/40.",
+   "topico": "Frações",
+   "conceito": "Multiplicar frações: numerador × numerador, denominador × denominador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 5/7 + 3/7 é",
+   "alternativas": {
+    "A": "1.",
+    "B": "8/7.",
+    "C": "103/84.",
+    "D": "9/7.",
+    "E": "55/42."
+   },
+   "gabarito": "B",
+   "resolucao": "MMC dos denominadores e soma dos numeradores: 5/7 + 3/7 = 8/7. Somar em cima e embaixo daria 4/7, errado.",
+   "topico": "Frações",
+   "conceito": "Somar frações: denominadores iguais primeiro (MMC).",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 1/4 + 6/7 é",
+   "alternativas": {
+    "A": "1/4.",
+    "B": "7/11.",
+    "C": "15/14.",
+    "D": "31/28.",
+    "E": "8/7."
+   },
+   "gabarito": "D",
+   "resolucao": "MMC dos denominadores e soma dos numeradores: 1/4 + 6/7 = 31/28. Somar em cima e embaixo daria 7/11, errado.",
+   "topico": "Frações",
+   "conceito": "Somar frações: denominadores iguais primeiro (MMC).",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O produto 7/11 × 2/3 é",
+   "alternativas": {
+    "A": "15/44.",
+    "B": "14/33.",
+    "C": "28/33.",
+    "D": "21/22.",
+    "E": "1."
+   },
+   "gabarito": "B",
+   "resolucao": "Em cima com em cima, embaixo com embaixo, e simplifique: 7/11 × 2/3 = 14/33.",
+   "topico": "Frações",
+   "conceito": "Multiplicar frações: numerador × numerador, denominador × denominador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Dos clientes de uma agência, 1/3 têm conta-corrente e, desses, 3/4 têm cartão. Que fração do total tem conta-corrente e cartão?",
+   "alternativas": {
+    "A": "1/12.",
+    "B": "1/6.",
+    "C": "1/4.",
+    "D": "5/12.",
+    "E": "1/2."
+   },
+   "gabarito": "C",
+   "resolucao": "\"Desses\" é fração de fração: 3/4 × 1/3 = 1/4.",
+   "topico": "Frações",
+   "conceito": "Fração de fração: multiplique.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "João gastou 1/6 do salário com aluguel e 3/10 com alimentação. Que fração do salário sobrou?",
+   "alternativas": {
+    "A": "1/16.",
+    "B": "11/30.",
+    "C": "9/20.",
+    "D": "7/15.",
+    "E": "8/15."
+   },
+   "gabarito": "E",
+   "resolucao": "Gastou 1/6 + 3/10 = 7/15. Sobrou 1 − 7/15 = 8/15.",
+   "topico": "Frações",
+   "conceito": "Sobra = 1 inteiro menos a soma das partes gastas.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente 1/6 ÷ 2/7 é",
+   "alternativas": {
+    "A": "7/24.",
+    "B": "7/12.",
+    "C": "2/3.",
+    "D": "19/12.",
+    "E": "12/7."
+   },
+   "gabarito": "B",
+   "resolucao": "Mantém a primeira e multiplica pelo inverso da segunda: 1/6 × 7/2 = 7/12.",
+   "topico": "Frações",
+   "conceito": "Dividir frações: multiplicar pelo inverso da segunda.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente 1/2 ÷ 1/7 é",
+   "alternativas": {
+    "A": "1/14.",
+    "B": "2/7.",
+    "C": "7/4.",
+    "D": "7/2.",
+    "E": "9/2."
+   },
+   "gabarito": "D",
+   "resolucao": "Mantém a primeira e multiplica pelo inverso da segunda: 1/2 × 7 = 7/2.",
+   "topico": "Frações",
+   "conceito": "Dividir frações: multiplicar pelo inverso da segunda.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "João gastou 1/3 do salário com aluguel e 1/6 com alimentação. Que fração do salário sobrou?",
+   "alternativas": {
+    "A": "1/2.",
+    "B": "7/12.",
+    "C": "2/3.",
+    "D": "7/9.",
+    "E": "1."
+   },
+   "gabarito": "A",
+   "resolucao": "Gastou 1/3 + 1/6 = 1/2. Sobrou 1 − 1/2 = 1/2.",
+   "topico": "Frações",
+   "conceito": "Sobra = 1 inteiro menos a soma das partes gastas.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "João gastou 1/3 do salário com aluguel e 1/4 com alimentação. Que fração do salário sobrou?",
+   "alternativas": {
+    "A": "1/7.",
+    "B": "1/4.",
+    "C": "1/3.",
+    "D": "5/12.",
+    "E": "1/2."
+   },
+   "gabarito": "D",
+   "resolucao": "Gastou 1/3 + 1/4 = 7/12. Sobrou 1 − 7/12 = 5/12.",
+   "topico": "Frações",
+   "conceito": "Sobra = 1 inteiro menos a soma das partes gastas.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente 1/4 ÷ 6/7 é",
+   "alternativas": {
+    "A": "7/48.",
+    "B": "3/14.",
+    "C": "7/24.",
+    "D": "31/24.",
+    "E": "24/7."
+   },
+   "gabarito": "C",
+   "resolucao": "Mantém a primeira e multiplica pelo inverso da segunda: 1/4 × 7/6 = 7/24.",
+   "topico": "Frações",
+   "conceito": "Dividir frações: multiplicar pelo inverso da segunda.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 3/7 + 8/9 é",
+   "alternativas": {
+    "A": "11/16.",
+    "B": "82/63.",
+    "C": "83/63.",
+    "D": "4/3.",
+    "E": "353/252."
+   },
+   "gabarito": "C",
+   "resolucao": "MMC dos denominadores e soma dos numeradores: 3/7 + 8/9 = 83/63. Somar em cima e embaixo daria 11/16, errado.",
+   "topico": "Frações",
+   "conceito": "Somar frações: denominadores iguais primeiro (MMC).",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 3/5 − 1/5 é",
+   "alternativas": {
+    "A": "2/5.",
+    "B": "29/60.",
+    "C": "17/30.",
+    "D": "3/5.",
+    "E": "4/5."
+   },
+   "gabarito": "A",
+   "resolucao": "MMC e subtraia os numeradores: 3/5 − 1/5 = 2/5.",
+   "topico": "Frações",
+   "conceito": "Subtrair frações: como na soma, denominadores iguais primeiro.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente 5/9 ÷ 2/7 é",
+   "alternativas": {
+    "A": "35/36.",
+    "B": "35/18.",
+    "C": "73/36.",
+    "D": "19/9.",
+    "E": "53/18."
+   },
+   "gabarito": "B",
+   "resolucao": "Mantém a primeira e multiplica pelo inverso da segunda: 5/9 × 7/2 = 35/18.",
+   "topico": "Frações",
+   "conceito": "Dividir frações: multiplicar pelo inverso da segunda.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O produto 9/10 × 7/12 é",
+   "alternativas": {
+    "A": "21/40.",
+    "B": "21/20.",
+    "C": "89/60.",
+    "D": "54/35.",
+    "E": "63/22."
+   },
+   "gabarito": "A",
+   "resolucao": "Em cima com em cima, embaixo com embaixo, e simplifique: 9/10 × 7/12 = 21/40.",
+   "topico": "Frações",
+   "conceito": "Multiplicar frações: numerador × numerador, denominador × denominador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 8/9 − 3/7 é",
+   "alternativas": {
+    "A": "37/126.",
+    "B": "95/252.",
+    "C": "29/63.",
+    "D": "10/21.",
+    "E": "5/9."
+   },
+   "gabarito": "C",
+   "resolucao": "MMC e subtraia os numeradores: 8/9 − 3/7 = 29/63.",
+   "topico": "Frações",
+   "conceito": "Subtrair frações: como na soma, denominadores iguais primeiro.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 1/4 + 2/3 é",
+   "alternativas": {
+    "A": "1/4.",
+    "B": "3/7.",
+    "C": "5/6.",
+    "D": "11/12.",
+    "E": "1."
+   },
+   "gabarito": "D",
+   "resolucao": "MMC dos denominadores e soma dos numeradores: 1/4 + 2/3 = 11/12. Somar em cima e embaixo daria 3/7, errado.",
+   "topico": "Frações",
+   "conceito": "Somar frações: denominadores iguais primeiro (MMC).",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 3/7 − 2/9 é",
+   "alternativas": {
+    "A": "13/63.",
+    "B": "2/9.",
+    "C": "73/252.",
+    "D": "26/63.",
+    "E": "41/63."
+   },
+   "gabarito": "A",
+   "resolucao": "MMC e subtraia os numeradores: 3/7 − 2/9 = 13/63.",
+   "topico": "Frações",
+   "conceito": "Subtrair frações: como na soma, denominadores iguais primeiro.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 6/7 − 5/9 é",
+   "alternativas": {
+    "A": "17/126.",
+    "B": "1/7.",
+    "C": "55/252.",
+    "D": "19/63.",
+    "E": "20/63."
+   },
+   "gabarito": "D",
+   "resolucao": "MMC e subtraia os numeradores: 6/7 − 5/9 = 19/63.",
+   "topico": "Frações",
+   "conceito": "Subtrair frações: como na soma, denominadores iguais primeiro.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "João gastou 1/3 do salário com aluguel e 2/5 com alimentação. Que fração do salário sobrou?",
+   "alternativas": {
+    "A": "1/10.",
+    "B": "1/8.",
+    "C": "11/60.",
+    "D": "4/15.",
+    "E": "1/3."
+   },
+   "gabarito": "D",
+   "resolucao": "Gastou 1/3 + 2/5 = 11/15. Sobrou 1 − 11/15 = 4/15.",
+   "topico": "Frações",
+   "conceito": "Sobra = 1 inteiro menos a soma das partes gastas.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "João gastou 3/10 do salário com aluguel e 2/5 com alimentação. Que fração do salário sobrou?",
+   "alternativas": {
+    "A": "1/15.",
+    "B": "3/10.",
+    "C": "2/5.",
+    "D": "2/3.",
+    "E": "7/10."
+   },
+   "gabarito": "B",
+   "resolucao": "Gastou 3/10 + 2/5 = 7/10. Sobrou 1 − 7/10 = 3/10.",
+   "topico": "Frações",
+   "conceito": "Sobra = 1 inteiro menos a soma das partes gastas.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Dos clientes de uma agência, 1/3 têm conta-corrente e, desses, 3/5 têm cartão. Que fração do total tem conta-corrente e cartão?",
+   "alternativas": {
+    "A": "7/60.",
+    "B": "1/5.",
+    "C": "4/15.",
+    "D": "2/5.",
+    "E": "1/2."
+   },
+   "gabarito": "B",
+   "resolucao": "\"Desses\" é fração de fração: 3/5 × 1/3 = 1/5.",
+   "topico": "Frações",
+   "conceito": "Fração de fração: multiplique.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente 6/7 ÷ 5/9 é",
+   "alternativas": {
+    "A": "10/21.",
+    "B": "35/54.",
+    "C": "27/35.",
+    "D": "613/420.",
+    "E": "54/35."
+   },
+   "gabarito": "E",
+   "resolucao": "Mantém a primeira e multiplica pelo inverso da segunda: 6/7 × 9/5 = 54/35.",
+   "topico": "Frações",
+   "conceito": "Dividir frações: multiplicar pelo inverso da segunda.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 6/7 − 1/9 é",
+   "alternativas": {
+    "A": "73/126.",
+    "B": "167/252.",
+    "C": "5/7.",
+    "D": "47/63.",
+    "E": "16/21."
+   },
+   "gabarito": "D",
+   "resolucao": "MMC e subtraia os numeradores: 6/7 − 1/9 = 47/63.",
+   "topico": "Frações",
+   "conceito": "Subtrair frações: como na soma, denominadores iguais primeiro.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente 3/7 ÷ 1/8 é",
+   "alternativas": {
+    "A": "24/7.",
+    "B": "295/84.",
+    "C": "151/42.",
+    "D": "103/28.",
+    "E": "31/7."
+   },
+   "gabarito": "A",
+   "resolucao": "Mantém a primeira e multiplica pelo inverso da segunda: 3/7 × 8 = 24/7.",
+   "topico": "Frações",
+   "conceito": "Dividir frações: multiplicar pelo inverso da segunda.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O produto 1/5 × 3/10 é",
+   "alternativas": {
+    "A": "3/50.",
+    "B": "3/25.",
+    "C": "1/5.",
+    "D": "1/2.",
+    "E": "2/3."
+   },
+   "gabarito": "A",
+   "resolucao": "Em cima com em cima, embaixo com embaixo, e simplifique: 1/5 × 3/10 = 3/50.",
+   "topico": "Frações",
+   "conceito": "Multiplicar frações: numerador × numerador, denominador × denominador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O produto 4/9 × 2/11 é",
+   "alternativas": {
+    "A": "8/99.",
+    "B": "16/99.",
+    "C": "2/5.",
+    "D": "62/99.",
+    "E": "22/9."
+   },
+   "gabarito": "A",
+   "resolucao": "Em cima com em cima, embaixo com embaixo, e simplifique: 4/9 × 2/11 = 8/99.",
+   "topico": "Frações",
+   "conceito": "Multiplicar frações: numerador × numerador, denominador × denominador.",
+   "habilidade": "calcular"
+  }
+ ],
+ "fontes": [
+  "Questões geradas e conferidas em Python (fractions): cada resposta é calculada, as alternativas são únicas, as numéricas em ordem crescente"
+ ]
+}

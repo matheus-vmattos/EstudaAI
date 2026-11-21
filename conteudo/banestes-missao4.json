@@ -1,0 +1,96 @@
+{
+ "de": "2026-11-22",
+ "ate": "2026-12-05",
+ "frase": "Base sólida antes de avançar: 7 treinos de 40 questões, do mais simples ao de prova, nesta ordem. O diagnóstico mostrou onde travar (potência e raiz, divisão proporcional, aumentos sucessivos); cada treino tem a resolução passo a passo. Faça um por dia, sem pressa.",
+ "tarefas": [
+  {
+   "id": "t1",
+   "tipo": "simulado",
+   "titulo": "Treino 1: multiplicação e divisão",
+   "detalhe": "40 questões · contas inteiras, zero no quociente, resto, expressões e problemas",
+   "pontos": 80,
+   "item": "banestes-base-treino1-v1",
+   "tema": "Treino 1: multiplicação e divisão"
+  },
+  {
+   "id": "t2",
+   "tipo": "simulado",
+   "titulo": "Treino 2: decimais",
+   "detalhe": "40 questões · vírgula na multiplicação e na divisão, soma e subtração, preço × quantidade",
+   "pontos": 80,
+   "item": "banestes-base-treino2-v1",
+   "tema": "Treino 2: decimais"
+  },
+  {
+   "id": "t3",
+   "tipo": "simulado",
+   "titulo": "Treino 3: frações I",
+   "detalhe": "40 questões · simplificar, frações equivalentes, fração de uma quantidade, número misto, comparar",
+   "pontos": 80,
+   "item": "banestes-base-treino3-v1",
+   "tema": "Treino 3: frações I"
+  },
+  {
+   "id": "t4",
+   "tipo": "simulado",
+   "titulo": "Treino 4: frações II",
+   "detalhe": "40 questões · somar, subtrair, multiplicar e dividir frações, sobra do salário, fração de fração",
+   "pontos": 80,
+   "item": "banestes-base-treino4-v1",
+   "tema": "Treino 4: frações II"
+  },
+  {
+   "id": "t5",
+   "tipo": "simulado",
+   "titulo": "Treino 5: fração, decimal e porcentagem",
+   "detalhe": "40 questões · fração em porcentagem, p% de um valor, desconto, aumento, variação e sucessivos",
+   "pontos": 80,
+   "item": "banestes-base-treino5-v1",
+   "tema": "Treino 5: fração, decimal e porcentagem"
+  },
+  {
+   "id": "t6",
+   "tipo": "simulado",
+   "titulo": "Treino 6: divisão avançada e problemas",
+   "detalhe": "40 questões · divisão proporcional, quantos cabem, ônibus (arredondar para cima), MDC, MMC e média",
+   "pontos": 80,
+   "item": "banestes-base-treino6-v1",
+   "tema": "Treino 6: divisão avançada e problemas"
+  },
+  {
+   "id": "t7",
+   "tipo": "simulado",
+   "titulo": "Treino 7: regra de três, primeiros passos",
+   "detalhe": "40 questões · direta e inversa com contexto de banco e de obra, velocidade × tempo, reconhecer o tipo",
+   "pontos": 80,
+   "item": "banestes-base-treino7-v1",
+   "tema": "Treino 7: regra de três, primeiros passos"
+  },
+  {
+   "id": "cartoes-base",
+   "tipo": "cartoes",
+   "titulo": "Fixar: cartões da base",
+   "detalhe": "10 cartões de matemática básica",
+   "pontos": 60,
+   "item": "banestes-matematica-base-cartoes-v1"
+  },
+  {
+   "id": "cartoes-rl",
+   "tipo": "cartoes",
+   "titulo": "Revisar os cartões de Raciocínio Lógico",
+   "detalhe": "15 cartões · um corrigido (porcentagem)",
+   "pontos": 40,
+   "item": "banestes-rl-cartoes-v2"
+  },
+  {
+   "id": "atrasados",
+   "tipo": "atrasados",
+   "titulo": "Zerar os cartões de hoje",
+   "detalhe": "Uma matéria por vez",
+   "pontos": 40
+  }
+ ],
+ "fontes": [
+  "Diagnóstico da base de 20/11 (7/12: errou potência e raiz, divisão proporcional, aumentos sucessivos e multiplicação de frações)"
+ ]
+}

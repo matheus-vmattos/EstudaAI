@@ -1,0 +1,610 @@
+{
+ "tema": "Treino 5: fração, decimal e porcentagem",
+ "materia": "Matemática e Raciocínio Lógico",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "7,5% de 440 é",
+   "alternativas": {
+    "A": "33.",
+    "B": "38.",
+    "C": "40,5.",
+    "D": "330.",
+    "E": "407."
+   },
+   "gabarito": "A",
+   "resolucao": "7,5% = 0,075; 0,075 × 440 = 33.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "p% de um valor = valor × p ÷ 100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um produto de R$ 1.900,00 teve desconto de 40%. O novo preço é",
+   "alternativas": {
+    "A": "R$ 1.130,00.",
+    "B": "R$ 1.140,00.",
+    "C": "R$ 1.150,00.",
+    "D": "R$ 1.860,00.",
+    "E": "R$ 2.660,00."
+   },
+   "gabarito": "B",
+   "resolucao": "Desconto de 40%: × 0,6. R$ 1.900,00 × 0,6 = R$ 1.140,00.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Desconto de p%: multiplique por 1 − p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um produto de R$ 1.300,00 teve desconto de 15%. O novo preço é",
+   "alternativas": {
+    "A": "R$ 1.105,00.",
+    "B": "R$ 1.115,00.",
+    "C": "R$ 1.125,00.",
+    "D": "R$ 1.285,00.",
+    "E": "R$ 1.495,00."
+   },
+   "gabarito": "A",
+   "resolucao": "Desconto de 15%: × 0,85. R$ 1.300,00 × 0,85 = R$ 1.105,00.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Desconto de p%: multiplique por 1 − p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "11 representa quantos por cento de 220?",
+   "alternativas": {
+    "A": "5%.",
+    "B": "10%.",
+    "C": "11%.",
+    "D": "15%.",
+    "E": "200%."
+   },
+   "gabarito": "A",
+   "resolucao": "11 ÷ 220 = 0,05 = 5%.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Que porcentagem A é de B: A ÷ B × 100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "40% de 1.680 é",
+   "alternativas": {
+    "A": "672.",
+    "B": "677.",
+    "C": "712.",
+    "D": "1.008.",
+    "E": "6.720."
+   },
+   "gabarito": "A",
+   "resolucao": "40% = 0,4; 0,4 × 1.680 = 672.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "p% de um valor = valor × p ÷ 100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um produto de R$ 50,00 teve desconto de 25%. O novo preço é",
+   "alternativas": {
+    "A": "R$ 12,50.",
+    "B": "R$ 17,50.",
+    "C": "R$ 25,00.",
+    "D": "R$ 27,50.",
+    "E": "R$ 37,50."
+   },
+   "gabarito": "E",
+   "resolucao": "Desconto de 25%: × 0,75. R$ 50,00 × 0,75 = R$ 37,50.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Desconto de p%: multiplique por 1 − p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um preço subiu 50% e depois mais 50%. O preço final corresponde a quantos por cento do inicial?",
+   "alternativas": {
+    "A": "100%.",
+    "B": "200%.",
+    "C": "224%.",
+    "D": "225%.",
+    "E": "226%."
+   },
+   "gabarito": "D",
+   "resolucao": "Fatores sucessivos se multiplicam: 1,5 × 1,5 = 2,25 → 225%. Somar os percentuais daria 200%, errado.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Percentuais sucessivos: multiplique os fatores, não some.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma tarifa de R$ 950,00 teve reajuste de 25%. O novo valor é",
+   "alternativas": {
+    "A": "R$ 237,50.",
+    "B": "R$ 712,50.",
+    "C": "R$ 975,00.",
+    "D": "R$ 1.187,50.",
+    "E": "R$ 1.197,50."
+   },
+   "gabarito": "D",
+   "resolucao": "Aumento de 25%: × 1,25. R$ 950,00 × 1,25 = R$ 1.187,50.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Aumento de p%: multiplique por 1 + p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "A fração 7/20 corresponde a",
+   "alternativas": {
+    "A": "3,5%.",
+    "B": "30%.",
+    "C": "35%.",
+    "D": "40%.",
+    "E": "70%."
+   },
+   "gabarito": "C",
+   "resolucao": "7/20 = 0,35 = 35% (divida e multiplique por 100).",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Fração → porcentagem: divida e multiplique por 100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um produto de R$ 1.800,00 teve desconto de 25%. O novo preço é",
+   "alternativas": {
+    "A": "R$ 450,00.",
+    "B": "R$ 1.330,00.",
+    "C": "R$ 1.340,00.",
+    "D": "R$ 1.350,00.",
+    "E": "R$ 1.775,00."
+   },
+   "gabarito": "D",
+   "resolucao": "Desconto de 25%: × 0,75. R$ 1.800,00 × 0,75 = R$ 1.350,00.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Desconto de p%: multiplique por 1 − p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma tarifa de R$ 400,00 teve reajuste de 20%. O novo valor é",
+   "alternativas": {
+    "A": "R$ 420,00.",
+    "B": "R$ 480,00.",
+    "C": "R$ 490,00.",
+    "D": "R$ 500,00.",
+    "E": "R$ 510,00."
+   },
+   "gabarito": "B",
+   "resolucao": "Aumento de 20%: × 1,2. R$ 400,00 × 1,2 = R$ 480,00.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Aumento de p%: multiplique por 1 + p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um produto de R$ 300,00 teve desconto de 30%. O novo preço é",
+   "alternativas": {
+    "A": "R$ 200,00.",
+    "B": "R$ 210,00.",
+    "C": "R$ 220,00.",
+    "D": "R$ 270,00.",
+    "E": "R$ 390,00."
+   },
+   "gabarito": "B",
+   "resolucao": "Desconto de 30%: × 0,7. R$ 300,00 × 0,7 = R$ 210,00.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Desconto de p%: multiplique por 1 − p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um valor passou de 280 para 364. A variação percentual foi de",
+   "alternativas": {
+    "A": "15%.",
+    "B": "20%.",
+    "C": "25%.",
+    "D": "30%.",
+    "E": "35%."
+   },
+   "gabarito": "D",
+   "resolucao": "Diferença ÷ valor ANTIGO: 84 ÷ 280 = 30% (aumento). Dividir pelo novo é o erro comum.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Variação percentual = (novo − antigo) ÷ antigo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um produto de R$ 750,00 teve desconto de 25%. O novo preço é",
+   "alternativas": {
+    "A": "R$ 187,50.",
+    "B": "R$ 552,50.",
+    "C": "R$ 562,50.",
+    "D": "R$ 725,00.",
+    "E": "R$ 937,50."
+   },
+   "gabarito": "C",
+   "resolucao": "Desconto de 25%: × 0,75. R$ 750,00 × 0,75 = R$ 562,50.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Desconto de p%: multiplique por 1 − p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma tarifa de R$ 450,00 teve reajuste de 25%. O novo valor é",
+   "alternativas": {
+    "A": "R$ 112,50.",
+    "B": "R$ 337,50.",
+    "C": "R$ 475,00.",
+    "D": "R$ 552,50.",
+    "E": "R$ 562,50."
+   },
+   "gabarito": "E",
+   "resolucao": "Aumento de 25%: × 1,25. R$ 450,00 × 1,25 = R$ 562,50.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Aumento de p%: multiplique por 1 + p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um produto de R$ 1.650,00 teve desconto de 40%. O novo preço é",
+   "alternativas": {
+    "A": "R$ 660,00.",
+    "B": "R$ 960,00.",
+    "C": "R$ 970,00.",
+    "D": "R$ 980,00.",
+    "E": "R$ 990,00."
+   },
+   "gabarito": "E",
+   "resolucao": "Desconto de 40%: × 0,6. R$ 1.650,00 × 0,6 = R$ 990,00.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Desconto de p%: multiplique por 1 − p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um valor passou de 100 para 125. A variação percentual foi de",
+   "alternativas": {
+    "A": "25%.",
+    "B": "30%.",
+    "C": "35%.",
+    "D": "40%.",
+    "E": "50%."
+   },
+   "gabarito": "A",
+   "resolucao": "Diferença ÷ valor ANTIGO: 25 ÷ 100 = 25% (aumento). Dividir pelo novo é o erro comum.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Variação percentual = (novo − antigo) ÷ antigo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "A fração 1/5 corresponde a",
+   "alternativas": {
+    "A": "5%.",
+    "B": "10%.",
+    "C": "20%.",
+    "D": "25%.",
+    "E": "30%."
+   },
+   "gabarito": "C",
+   "resolucao": "1/5 = 0,2 = 20% (divida e multiplique por 100).",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Fração → porcentagem: divida e multiplique por 100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "8 representa quantos por cento de 40?",
+   "alternativas": {
+    "A": "8%.",
+    "B": "10%.",
+    "C": "20%.",
+    "D": "40%.",
+    "E": "50%."
+   },
+   "gabarito": "C",
+   "resolucao": "8 ÷ 40 = 0,2 = 20%.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Que porcentagem A é de B: A ÷ B × 100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "64 representa quantos por cento de 640?",
+   "alternativas": {
+    "A": "5%.",
+    "B": "10%.",
+    "C": "20%.",
+    "D": "64%.",
+    "E": "100%."
+   },
+   "gabarito": "B",
+   "resolucao": "64 ÷ 640 = 0,1 = 10%.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Que porcentagem A é de B: A ÷ B × 100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "A fração 9/50 corresponde a",
+   "alternativas": {
+    "A": "1,8%.",
+    "B": "3%.",
+    "C": "8%.",
+    "D": "13%.",
+    "E": "18%."
+   },
+   "gabarito": "E",
+   "resolucao": "9/50 = 0,18 = 18% (divida e multiplique por 100).",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Fração → porcentagem: divida e multiplique por 100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um produto de R$ 700,00 teve desconto de 5%. O novo preço é",
+   "alternativas": {
+    "A": "R$ 665,00.",
+    "B": "R$ 675,00.",
+    "C": "R$ 685,00.",
+    "D": "R$ 695,00.",
+    "E": "R$ 735,00."
+   },
+   "gabarito": "A",
+   "resolucao": "Desconto de 5%: × 0,95. R$ 700,00 × 0,95 = R$ 665,00.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Desconto de p%: multiplique por 1 − p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma tarifa de R$ 1.300,00 teve reajuste de 10%. O novo valor é",
+   "alternativas": {
+    "A": "R$ 1.310,00.",
+    "B": "R$ 1.430,00.",
+    "C": "R$ 1.440,00.",
+    "D": "R$ 1.450,00.",
+    "E": "R$ 1.460,00."
+   },
+   "gabarito": "B",
+   "resolucao": "Aumento de 10%: × 1,1. R$ 1.300,00 × 1,1 = R$ 1.430,00.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Aumento de p%: multiplique por 1 + p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um valor passou de 100 para 95. A variação percentual foi de",
+   "alternativas": {
+    "A": "5%.",
+    "B": "10%.",
+    "C": "15%.",
+    "D": "20%.",
+    "E": "25%."
+   },
+   "gabarito": "A",
+   "resolucao": "Diferença ÷ valor ANTIGO: 5 ÷ 100 = 5% (redução). Dividir pelo novo é o erro comum.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Variação percentual = (novo − antigo) ÷ antigo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um valor passou de 460 para 575. A variação percentual foi de",
+   "alternativas": {
+    "A": "20%.",
+    "B": "25%.",
+    "C": "30%.",
+    "D": "50%.",
+    "E": "115%."
+   },
+   "gabarito": "B",
+   "resolucao": "Diferença ÷ valor ANTIGO: 115 ÷ 460 = 25% (aumento). Dividir pelo novo é o erro comum.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Variação percentual = (novo − antigo) ÷ antigo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um produto de R$ 1.100,00 teve desconto de 5%. O novo preço é",
+   "alternativas": {
+    "A": "R$ 55,00.",
+    "B": "R$ 1.025,00.",
+    "C": "R$ 1.035,00.",
+    "D": "R$ 1.045,00.",
+    "E": "R$ 1.095,00."
+   },
+   "gabarito": "D",
+   "resolucao": "Desconto de 5%: × 0,95. R$ 1.100,00 × 0,95 = R$ 1.045,00.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Desconto de p%: multiplique por 1 − p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um preço subiu 20% e depois caiu 10%. O preço final corresponde a quantos por cento do inicial?",
+   "alternativas": {
+    "A": "100%.",
+    "B": "107%.",
+    "C": "108%.",
+    "D": "109%.",
+    "E": "110%."
+   },
+   "gabarito": "C",
+   "resolucao": "Fatores sucessivos se multiplicam: 1,2 × 0,9 = 1,08 → 108%. Somar os percentuais daria 110%, errado.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Percentuais sucessivos: multiplique os fatores, não some.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um preço subiu 10% e depois mais 10%. O preço final corresponde a quantos por cento do inicial?",
+   "alternativas": {
+    "A": "100%.",
+    "B": "120%.",
+    "C": "121%.",
+    "D": "122%.",
+    "E": "123%."
+   },
+   "gabarito": "C",
+   "resolucao": "Fatores sucessivos se multiplicam: 1,1 × 1,1 = 1,21 → 121%. Somar os percentuais daria 120%, errado.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Percentuais sucessivos: multiplique os fatores, não some.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma tarifa de R$ 650,00 teve reajuste de 25%. O novo valor é",
+   "alternativas": {
+    "A": "R$ 162,50.",
+    "B": "R$ 487,50.",
+    "C": "R$ 675,00.",
+    "D": "R$ 802,50.",
+    "E": "R$ 812,50."
+   },
+   "gabarito": "E",
+   "resolucao": "Aumento de 25%: × 1,25. R$ 650,00 × 1,25 = R$ 812,50.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Aumento de p%: multiplique por 1 + p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma tarifa de R$ 1.250,00 teve reajuste de 5%. O novo valor é",
+   "alternativas": {
+    "A": "R$ 1.255,00.",
+    "B": "R$ 1.312,50.",
+    "C": "R$ 1.322,50.",
+    "D": "R$ 1.332,50.",
+    "E": "R$ 1.342,50."
+   },
+   "gabarito": "B",
+   "resolucao": "Aumento de 5%: × 1,05. R$ 1.250,00 × 1,05 = R$ 1.312,50.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Aumento de p%: multiplique por 1 + p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um valor passou de 380 para 570. A variação percentual foi de",
+   "alternativas": {
+    "A": "35%.",
+    "B": "40%.",
+    "C": "45%.",
+    "D": "50%.",
+    "E": "55%."
+   },
+   "gabarito": "D",
+   "resolucao": "Diferença ÷ valor ANTIGO: 190 ÷ 380 = 50% (aumento). Dividir pelo novo é o erro comum.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Variação percentual = (novo − antigo) ÷ antigo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "A fração 11/20 corresponde a",
+   "alternativas": {
+    "A": "5,5%.",
+    "B": "45%.",
+    "C": "50%.",
+    "D": "55%.",
+    "E": "60%."
+   },
+   "gabarito": "D",
+   "resolucao": "11/20 = 0,55 = 55% (divida e multiplique por 100).",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Fração → porcentagem: divida e multiplique por 100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "12% de 2.060 é",
+   "alternativas": {
+    "A": "24,72.",
+    "B": "242,2.",
+    "C": "247,2.",
+    "D": "259,2.",
+    "E": "1.812,8."
+   },
+   "gabarito": "C",
+   "resolucao": "12% = 0,12; 0,12 × 2.060 = 247,2.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "p% de um valor = valor × p ÷ 100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma tarifa de R$ 1.100,00 teve reajuste de 10%. O novo valor é",
+   "alternativas": {
+    "A": "R$ 110,00.",
+    "B": "R$ 990,00.",
+    "C": "R$ 1.110,00.",
+    "D": "R$ 1.210,00.",
+    "E": "R$ 1.220,00."
+   },
+   "gabarito": "D",
+   "resolucao": "Aumento de 10%: × 1,1. R$ 1.100,00 × 1,1 = R$ 1.210,00.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Aumento de p%: multiplique por 1 + p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma tarifa de R$ 1.950,00 teve reajuste de 10%. O novo valor é",
+   "alternativas": {
+    "A": "R$ 2.145,00.",
+    "B": "R$ 2.155,00.",
+    "C": "R$ 2.165,00.",
+    "D": "R$ 2.175,00.",
+    "E": "R$ 2.185,00."
+   },
+   "gabarito": "A",
+   "resolucao": "Aumento de 10%: × 1,1. R$ 1.950,00 × 1,1 = R$ 2.145,00.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Aumento de p%: multiplique por 1 + p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um valor passou de 60 para 69. A variação percentual foi de",
+   "alternativas": {
+    "A": "9%.",
+    "B": "15%.",
+    "C": "20%.",
+    "D": "25%.",
+    "E": "30%."
+   },
+   "gabarito": "B",
+   "resolucao": "Diferença ÷ valor ANTIGO: 9 ÷ 60 = 15% (aumento). Dividir pelo novo é o erro comum.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Variação percentual = (novo − antigo) ÷ antigo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um produto de R$ 600,00 teve desconto de 5%. O novo preço é",
+   "alternativas": {
+    "A": "R$ 30,00.",
+    "B": "R$ 560,00.",
+    "C": "R$ 570,00.",
+    "D": "R$ 595,00.",
+    "E": "R$ 630,00."
+   },
+   "gabarito": "C",
+   "resolucao": "Desconto de 5%: × 0,95. R$ 600,00 × 0,95 = R$ 570,00.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Desconto de p%: multiplique por 1 − p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um preço subiu 10% e depois caiu 10%. O preço final corresponde a quantos por cento do inicial?",
+   "alternativas": {
+    "A": "95%.",
+    "B": "96%.",
+    "C": "97%.",
+    "D": "98%.",
+    "E": "99%."
+   },
+   "gabarito": "E",
+   "resolucao": "Fatores sucessivos se multiplicam: 1,1 × 0,9 = 0,99 → 99%. Somar os percentuais daria 100%, errado.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Percentuais sucessivos: multiplique os fatores, não some.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "92 representa quantos por cento de 460?",
+   "alternativas": {
+    "A": "10%.",
+    "B": "20%.",
+    "C": "40%.",
+    "D": "50%.",
+    "E": "92%."
+   },
+   "gabarito": "B",
+   "resolucao": "92 ÷ 460 = 0,2 = 20%.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Que porcentagem A é de B: A ÷ B × 100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um produto de R$ 1.750,00 teve desconto de 5%. O novo preço é",
+   "alternativas": {
+    "A": "R$ 87,50.",
+    "B": "R$ 1.632,50.",
+    "C": "R$ 1.642,50.",
+    "D": "R$ 1.652,50.",
+    "E": "R$ 1.662,50."
+   },
+   "gabarito": "E",
+   "resolucao": "Desconto de 5%: × 0,95. R$ 1.750,00 × 0,95 = R$ 1.662,50.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Desconto de p%: multiplique por 1 − p/100.",
+   "habilidade": "calcular"
+  }
+ ],
+ "fontes": [
+  "Questões geradas e conferidas em Python (fractions): cada resposta é calculada, as alternativas são únicas, as numéricas em ordem crescente"
+ ]
+}

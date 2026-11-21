@@ -226,6 +226,70 @@
       "arquivo": "banestes-missao3.json",
       "data": "2026-11-21",
       "versaoMinima": "0.1.19"
+    },
+    {
+      "id": "banestes-base-treino1-v1",
+      "tipo": "simulado",
+      "titulo": "Simulado: Treino 1: multiplicação e divisão",
+      "descricao": "40 questões com resolução: contas inteiras, zero no quociente, resto, expressões e problemas. Contas conferidas em Python.",
+      "arquivo": "banestes-base-treino1.json",
+      "data": "2026-11-21"
+    },
+    {
+      "id": "banestes-base-treino2-v1",
+      "tipo": "simulado",
+      "titulo": "Simulado: Treino 2: decimais",
+      "descricao": "40 questões com resolução: vírgula na multiplicação e na divisão, soma e subtração, preço × quantidade. Contas conferidas em Python.",
+      "arquivo": "banestes-base-treino2.json",
+      "data": "2026-11-21"
+    },
+    {
+      "id": "banestes-base-treino3-v1",
+      "tipo": "simulado",
+      "titulo": "Simulado: Treino 3: frações I",
+      "descricao": "40 questões com resolução: simplificar, frações equivalentes, fração de uma quantidade, número misto, comparar. Contas conferidas em Python.",
+      "arquivo": "banestes-base-treino3.json",
+      "data": "2026-11-21"
+    },
+    {
+      "id": "banestes-base-treino4-v1",
+      "tipo": "simulado",
+      "titulo": "Simulado: Treino 4: frações II",
+      "descricao": "40 questões com resolução: somar, subtrair, multiplicar e dividir frações, sobra do salário, fração de fração. Contas conferidas em Python.",
+      "arquivo": "banestes-base-treino4.json",
+      "data": "2026-11-21"
+    },
+    {
+      "id": "banestes-base-treino5-v1",
+      "tipo": "simulado",
+      "titulo": "Simulado: Treino 5: fração, decimal e porcentagem",
+      "descricao": "40 questões com resolução: fração em porcentagem, p% de um valor, desconto, aumento, variação e sucessivos. Contas conferidas em Python.",
+      "arquivo": "banestes-base-treino5.json",
+      "data": "2026-11-21"
+    },
+    {
+      "id": "banestes-base-treino6-v1",
+      "tipo": "simulado",
+      "titulo": "Simulado: Treino 6: divisão avançada e problemas",
+      "descricao": "40 questões com resolução: divisão proporcional, quantos cabem, ônibus (arredondar para cima), MDC, MMC e média. Contas conferidas em Python.",
+      "arquivo": "banestes-base-treino6.json",
+      "data": "2026-11-21"
+    },
+    {
+      "id": "banestes-base-treino7-v1",
+      "tipo": "simulado",
+      "titulo": "Simulado: Treino 7: regra de três, primeiros passos",
+      "descricao": "40 questões com resolução: direta e inversa com contexto de banco e de obra, velocidade × tempo, reconhecer o tipo. Contas conferidas em Python.",
+      "arquivo": "banestes-base-treino7.json",
+      "data": "2026-11-21"
+    },
+    {
+      "id": "banestes-missao4-v1",
+      "tipo": "missao",
+      "titulo": "Missão: base sólida (22/11 a 05/12)",
+      "descricao": "7 treinos de 40 questões (280 no total): multiplicação e divisão, decimais, frações, porcentagem, divisão avançada e regra de três. Aparece no Meu edital.",
+      "arquivo": "banestes-missao4.json",
+      "data": "2026-11-21"
     }
   ]
 }

@@ -1,0 +1,610 @@
+{
+ "tema": "Treino 6: divisão avançada e problemas",
+ "materia": "Matemática e Raciocínio Lógico",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "Duas fitas de 12 cm e 30 cm serão cortadas em pedaços iguais, do maior tamanho possível, sem sobras. Cada pedaço medirá quantos centímetros?",
+   "alternativas": {
+    "A": "3.",
+    "B": "6.",
+    "C": "7.",
+    "D": "8.",
+    "E": "12."
+   },
+   "gabarito": "B",
+   "resolucao": "O maior tamanho que divide os dois é o MDC(12, 30) = 6 cm.",
+   "topico": "Múltiplos e divisores",
+   "conceito": "Pedaços iguais do maior tamanho possível: MDC.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Duas fitas de 24 cm e 84 cm serão cortadas em pedaços iguais, do maior tamanho possível, sem sobras. Cada pedaço medirá quantos centímetros?",
+   "alternativas": {
+    "A": "4.",
+    "B": "6.",
+    "C": "12.",
+    "D": "16.",
+    "E": "24."
+   },
+   "gabarito": "C",
+   "resolucao": "O maior tamanho que divide os dois é o MDC(24, 84) = 12 cm.",
+   "topico": "Múltiplos e divisores",
+   "conceito": "Pedaços iguais do maior tamanho possível: MDC.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "A média das notas 10, 4, 6, 10 é",
+   "alternativas": {
+    "A": "5,5.",
+    "B": "6.",
+    "C": "6,5.",
+    "D": "7.",
+    "E": "7,5."
+   },
+   "gabarito": "E",
+   "resolucao": "Soma: 30; ÷ 4 notas = 7,5.",
+   "topico": "Média, moda e mediana",
+   "conceito": "Média: some tudo e divida pela quantidade.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Quantos pacotes de 0,5 kg podem ser feitos com 24,5 kg de café?",
+   "alternativas": {
+    "A": "48.",
+    "B": "49.",
+    "C": "50.",
+    "D": "51.",
+    "E": "490."
+   },
+   "gabarito": "B",
+   "resolucao": "24,5 ÷ 0,5 = 49 pacotes (multiplique os dois por 10, 100 ou 1.000 para tirar a vírgula).",
+   "topico": "Expressões numéricas",
+   "conceito": "\"Quantos cabem\" é divisão.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Quantos pacotes de 0,5 kg podem ser feitos com 35,5 kg de café?",
+   "alternativas": {
+    "A": "7.",
+    "B": "69.",
+    "C": "70.",
+    "D": "71.",
+    "E": "72."
+   },
+   "gabarito": "D",
+   "resolucao": "35,5 ÷ 0,5 = 71 pacotes (multiplique os dois por 10, 100 ou 1.000 para tirar a vírgula).",
+   "topico": "Expressões numéricas",
+   "conceito": "\"Quantos cabem\" é divisão.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um prêmio de R$ 784,00 será dividido em partes diretamente proporcionais a 1, 3 e 4. Qual é a maior parte?",
+   "alternativas": {
+    "A": "R$ 98,00.",
+    "B": "R$ 196,00.",
+    "C": "R$ 292,00.",
+    "D": "R$ 342,00.",
+    "E": "R$ 392,00."
+   },
+   "gabarito": "E",
+   "resolucao": "1 + 3 + 4 = 8 partes; cada parte = 784 ÷ 8 = 98; a maior: 4 × 98 = 392.",
+   "topico": "Divisão em partes proporcionais",
+   "conceito": "Diretamente proporcional: some as partes e multiplique.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "A média das notas 9, 10, 8, 7, 8 é",
+   "alternativas": {
+    "A": "7,4.",
+    "B": "8,4.",
+    "C": "8,9.",
+    "D": "9,4.",
+    "E": "42."
+   },
+   "gabarito": "B",
+   "resolucao": "Soma: 42; ÷ 5 notas = 8,4.",
+   "topico": "Média, moda e mediana",
+   "conceito": "Média: some tudo e divida pela quantidade.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "R$ 231,00 serão divididos entre A e B na razão 1 : 2. B receberá",
+   "alternativas": {
+    "A": "R$ 115,50.",
+    "B": "R$ 154,00.",
+    "C": "R$ 204,00.",
+    "D": "R$ 231,00.",
+    "E": "R$ 254,00."
+   },
+   "gabarito": "B",
+   "resolucao": "1 + 2 = 3 partes; cada parte = 231 ÷ 3 = 77; B = 2 × 77 = 154.",
+   "topico": "Divisão em partes proporcionais",
+   "conceito": "Divisão proporcional: some as partes, ache o valor de uma e multiplique.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "A média das notas 7, 5, 9, 4 é",
+   "alternativas": {
+    "A": "5,25.",
+    "B": "6,25.",
+    "C": "6,75.",
+    "D": "7,25.",
+    "E": "25."
+   },
+   "gabarito": "B",
+   "resolucao": "Soma: 25; ÷ 4 notas = 6,25.",
+   "topico": "Média, moda e mediana",
+   "conceito": "Média: some tudo e divida pela quantidade.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Quantos pacotes de 0,25 kg podem ser feitos com 4 kg de café?",
+   "alternativas": {
+    "A": "1.",
+    "B": "13.",
+    "C": "14.",
+    "D": "15.",
+    "E": "16."
+   },
+   "gabarito": "E",
+   "resolucao": "4 ÷ 0,25 = 16 pacotes (multiplique os dois por 10, 100 ou 1.000 para tirar a vírgula).",
+   "topico": "Expressões numéricas",
+   "conceito": "\"Quantos cabem\" é divisão.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma empresa vai levar 543 pessoas em ônibus de 46 lugares. O menor número de ônibus necessário é",
+   "alternativas": {
+    "A": "10.",
+    "B": "11.",
+    "C": "12.",
+    "D": "13.",
+    "E": "14."
+   },
+   "gabarito": "C",
+   "resolucao": "543 ÷ 46 = 11 e sobram 37 pessoas: elas precisam de mais um ônibus. Total: 12.",
+   "topico": "Expressões numéricas",
+   "conceito": "Quando sobra resto e ninguém pode ficar de fora, arredonde para cima.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "A média das notas 5, 9, 10, 6 é",
+   "alternativas": {
+    "A": "7,5.",
+    "B": "8.",
+    "C": "8,5.",
+    "D": "9.",
+    "E": "30."
+   },
+   "gabarito": "A",
+   "resolucao": "Soma: 30; ÷ 4 notas = 7,5.",
+   "topico": "Média, moda e mediana",
+   "conceito": "Média: some tudo e divida pela quantidade.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um prêmio de R$ 1.200,00 será dividido em partes diretamente proporcionais a 2, 3 e 5. Qual é a menor parte?",
+   "alternativas": {
+    "A": "R$ 90,00.",
+    "B": "R$ 120,00.",
+    "C": "R$ 140,00.",
+    "D": "R$ 190,00.",
+    "E": "R$ 240,00."
+   },
+   "gabarito": "E",
+   "resolucao": "2 + 3 + 5 = 10 partes; cada parte = 1.200 ÷ 10 = 120; a menor: 2 × 120 = 240.",
+   "topico": "Divisão em partes proporcionais",
+   "conceito": "Diretamente proporcional: some as partes e multiplique.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Quantos pacotes de 0,4 kg podem ser feitos com 39,2 kg de café?",
+   "alternativas": {
+    "A": "98.",
+    "B": "99.",
+    "C": "100.",
+    "D": "101.",
+    "E": "980."
+   },
+   "gabarito": "A",
+   "resolucao": "39,2 ÷ 0,4 = 98 pacotes (multiplique os dois por 10, 100 ou 1.000 para tirar a vírgula).",
+   "topico": "Expressões numéricas",
+   "conceito": "\"Quantos cabem\" é divisão.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma empresa vai levar 548 pessoas em ônibus de 40 lugares. O menor número de ônibus necessário é",
+   "alternativas": {
+    "A": "12.",
+    "B": "13.",
+    "C": "14.",
+    "D": "15.",
+    "E": "16."
+   },
+   "gabarito": "C",
+   "resolucao": "548 ÷ 40 = 13 e sobram 28 pessoas: elas precisam de mais um ônibus. Total: 14.",
+   "topico": "Expressões numéricas",
+   "conceito": "Quando sobra resto e ninguém pode ficar de fora, arredonde para cima.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Duas fitas de 45 cm e 120 cm serão cortadas em pedaços iguais, do maior tamanho possível, sem sobras. Cada pedaço medirá quantos centímetros?",
+   "alternativas": {
+    "A": "15.",
+    "B": "16.",
+    "C": "17.",
+    "D": "30.",
+    "E": "36."
+   },
+   "gabarito": "A",
+   "resolucao": "O maior tamanho que divide os dois é o MDC(45, 120) = 15 cm.",
+   "topico": "Múltiplos e divisores",
+   "conceito": "Pedaços iguais do maior tamanho possível: MDC.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Duas fitas de 48 cm e 36 cm serão cortadas em pedaços iguais, do maior tamanho possível, sem sobras. Cada pedaço medirá quantos centímetros?",
+   "alternativas": {
+    "A": "4.",
+    "B": "6.",
+    "C": "11.",
+    "D": "12.",
+    "E": "14."
+   },
+   "gabarito": "D",
+   "resolucao": "O maior tamanho que divide os dois é o MDC(48, 36) = 12 cm.",
+   "topico": "Múltiplos e divisores",
+   "conceito": "Pedaços iguais do maior tamanho possível: MDC.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um prêmio de R$ 3.056,00 será dividido em partes diretamente proporcionais a 1, 3 e 4. Qual é a maior parte?",
+   "alternativas": {
+    "A": "R$ 764,00.",
+    "B": "R$ 1.528,00.",
+    "C": "R$ 1.578,00.",
+    "D": "R$ 1.628,00.",
+    "E": "R$ 1.910,00."
+   },
+   "gabarito": "B",
+   "resolucao": "1 + 3 + 4 = 8 partes; cada parte = 3.056 ÷ 8 = 382; a maior: 4 × 382 = 1.528.",
+   "topico": "Divisão em partes proporcionais",
+   "conceito": "Diretamente proporcional: some as partes e multiplique.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma empresa vai levar 169 pessoas em ônibus de 50 lugares. O menor número de ônibus necessário é",
+   "alternativas": {
+    "A": "2.",
+    "B": "3.",
+    "C": "4.",
+    "D": "5.",
+    "E": "6."
+   },
+   "gabarito": "C",
+   "resolucao": "169 ÷ 50 = 3 e sobram 19 pessoas: elas precisam de mais um ônibus. Total: 4.",
+   "topico": "Expressões numéricas",
+   "conceito": "Quando sobra resto e ninguém pode ficar de fora, arredonde para cima.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "A média das notas 9, 6, 9, 9, 4 é",
+   "alternativas": {
+    "A": "6,4.",
+    "B": "6,9.",
+    "C": "7,4.",
+    "D": "8,4.",
+    "E": "37."
+   },
+   "gabarito": "C",
+   "resolucao": "Soma: 37; ÷ 5 notas = 7,4.",
+   "topico": "Média, moda e mediana",
+   "conceito": "Média: some tudo e divida pela quantidade.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "R$ 774,00 serão divididos entre A e B na razão 1 : 2. B receberá",
+   "alternativas": {
+    "A": "R$ 258,00.",
+    "B": "R$ 387,00.",
+    "C": "R$ 416,00.",
+    "D": "R$ 466,00.",
+    "E": "R$ 516,00."
+   },
+   "gabarito": "E",
+   "resolucao": "1 + 2 = 3 partes; cada parte = 774 ÷ 3 = 258; B = 2 × 258 = 516.",
+   "topico": "Divisão em partes proporcionais",
+   "conceito": "Divisão proporcional: some as partes, ache o valor de uma e multiplique.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "R$ 1.110,00 serão divididos entre A e B na razão 2 : 3. B receberá",
+   "alternativas": {
+    "A": "R$ 370,00.",
+    "B": "R$ 444,00.",
+    "C": "R$ 555,00.",
+    "D": "R$ 666,00.",
+    "E": "R$ 716,00."
+   },
+   "gabarito": "D",
+   "resolucao": "2 + 3 = 5 partes; cada parte = 1.110 ÷ 5 = 222; B = 3 × 222 = 666.",
+   "topico": "Divisão em partes proporcionais",
+   "conceito": "Divisão proporcional: some as partes, ache o valor de uma e multiplique.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Dois ônibus saem juntos de um terminal; um volta a cada 20 minutos e o outro a cada 30. Eles saem juntos de novo depois de quantos minutos?",
+   "alternativas": {
+    "A": "30.",
+    "B": "50.",
+    "C": "54.",
+    "D": "60.",
+    "E": "80."
+   },
+   "gabarito": "D",
+   "resolucao": "Voltar a coincidir é múltiplo comum: MMC(20, 30) = 60 minutos.",
+   "topico": "Múltiplos e divisores",
+   "conceito": "Coincidir de novo: MMC.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "R$ 1.962,00 serão divididos entre A e B na razão 4 : 5. B receberá",
+   "alternativas": {
+    "A": "R$ 981,00.",
+    "B": "R$ 1.090,00.",
+    "C": "R$ 1.140,00.",
+    "D": "R$ 1.190,00.",
+    "E": "R$ 1.240,00."
+   },
+   "gabarito": "B",
+   "resolucao": "4 + 5 = 9 partes; cada parte = 1.962 ÷ 9 = 218; B = 5 × 218 = 1.090.",
+   "topico": "Divisão em partes proporcionais",
+   "conceito": "Divisão proporcional: some as partes, ache o valor de uma e multiplique.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Duas fitas de 36 cm e 54 cm serão cortadas em pedaços iguais, do maior tamanho possível, sem sobras. Cada pedaço medirá quantos centímetros?",
+   "alternativas": {
+    "A": "6.",
+    "B": "9.",
+    "C": "10.",
+    "D": "17.",
+    "E": "18."
+   },
+   "gabarito": "E",
+   "resolucao": "O maior tamanho que divide os dois é o MDC(36, 54) = 18 cm.",
+   "topico": "Múltiplos e divisores",
+   "conceito": "Pedaços iguais do maior tamanho possível: MDC.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Duas fitas de 75 cm e 45 cm serão cortadas em pedaços iguais, do maior tamanho possível, sem sobras. Cada pedaço medirá quantos centímetros?",
+   "alternativas": {
+    "A": "15.",
+    "B": "16.",
+    "C": "17.",
+    "D": "22.",
+    "E": "30."
+   },
+   "gabarito": "A",
+   "resolucao": "O maior tamanho que divide os dois é o MDC(75, 45) = 15 cm.",
+   "topico": "Múltiplos e divisores",
+   "conceito": "Pedaços iguais do maior tamanho possível: MDC.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "R$ 468,00 serão divididos entre A e B na razão 4 : 5. B receberá",
+   "alternativas": {
+    "A": "R$ 93,60.",
+    "B": "R$ 117,00.",
+    "C": "R$ 208,00.",
+    "D": "R$ 234,00.",
+    "E": "R$ 260,00."
+   },
+   "gabarito": "E",
+   "resolucao": "4 + 5 = 9 partes; cada parte = 468 ÷ 9 = 52; B = 5 × 52 = 260.",
+   "topico": "Divisão em partes proporcionais",
+   "conceito": "Divisão proporcional: some as partes, ache o valor de uma e multiplique.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "A média das notas 8, 9, 10, 9, 6 é",
+   "alternativas": {
+    "A": "8,4.",
+    "B": "8,9.",
+    "C": "9,4.",
+    "D": "9,9.",
+    "E": "42."
+   },
+   "gabarito": "A",
+   "resolucao": "Soma: 42; ÷ 5 notas = 8,4.",
+   "topico": "Média, moda e mediana",
+   "conceito": "Média: some tudo e divida pela quantidade.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Duas fitas de 60 cm e 96 cm serão cortadas em pedaços iguais, do maior tamanho possível, sem sobras. Cada pedaço medirá quantos centímetros?",
+   "alternativas": {
+    "A": "12.",
+    "B": "13.",
+    "C": "14.",
+    "D": "24.",
+    "E": "48."
+   },
+   "gabarito": "A",
+   "resolucao": "O maior tamanho que divide os dois é o MDC(60, 96) = 12 cm.",
+   "topico": "Múltiplos e divisores",
+   "conceito": "Pedaços iguais do maior tamanho possível: MDC.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Dois ônibus saem juntos de um terminal; um volta a cada 10 minutos e o outro a cada 15. Eles saem juntos de novo depois de quantos minutos?",
+   "alternativas": {
+    "A": "15.",
+    "B": "25.",
+    "C": "30.",
+    "D": "40.",
+    "E": "150."
+   },
+   "gabarito": "C",
+   "resolucao": "Voltar a coincidir é múltiplo comum: MMC(10, 15) = 30 minutos.",
+   "topico": "Múltiplos e divisores",
+   "conceito": "Coincidir de novo: MMC.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Dois ônibus saem juntos de um terminal; um volta a cada 8 minutos e o outro a cada 12. Eles saem juntos de novo depois de quantos minutos?",
+   "alternativas": {
+    "A": "20.",
+    "B": "24.",
+    "C": "30.",
+    "D": "32.",
+    "E": "96."
+   },
+   "gabarito": "B",
+   "resolucao": "Voltar a coincidir é múltiplo comum: MMC(8, 12) = 24 minutos.",
+   "topico": "Múltiplos e divisores",
+   "conceito": "Coincidir de novo: MMC.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "A média das notas 8, 7, 6, 8 é",
+   "alternativas": {
+    "A": "7,25.",
+    "B": "7,75.",
+    "C": "8,25.",
+    "D": "8,75.",
+    "E": "29."
+   },
+   "gabarito": "A",
+   "resolucao": "Soma: 29; ÷ 4 notas = 7,25.",
+   "topico": "Média, moda e mediana",
+   "conceito": "Média: some tudo e divida pela quantidade.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma empresa vai levar 102 pessoas em ônibus de 40 lugares. O menor número de ônibus necessário é",
+   "alternativas": {
+    "A": "1.",
+    "B": "2.",
+    "C": "3.",
+    "D": "4.",
+    "E": "5."
+   },
+   "gabarito": "C",
+   "resolucao": "102 ÷ 40 = 2 e sobram 22 pessoas: elas precisam de mais um ônibus. Total: 3.",
+   "topico": "Expressões numéricas",
+   "conceito": "Quando sobra resto e ninguém pode ficar de fora, arredonde para cima.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "R$ 3.094,00 serão divididos entre A e B na razão 2 : 5. B receberá",
+   "alternativas": {
+    "A": "R$ 2.210,00.",
+    "B": "R$ 2.260,00.",
+    "C": "R$ 2.310,00.",
+    "D": "R$ 2.360,00.",
+    "E": "R$ 2.410,00."
+   },
+   "gabarito": "A",
+   "resolucao": "2 + 5 = 7 partes; cada parte = 3.094 ÷ 7 = 442; B = 5 × 442 = 2.210.",
+   "topico": "Divisão em partes proporcionais",
+   "conceito": "Divisão proporcional: some as partes, ache o valor de uma e multiplique.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma empresa vai levar 512 pessoas em ônibus de 46 lugares. O menor número de ônibus necessário é",
+   "alternativas": {
+    "A": "8.",
+    "B": "9.",
+    "C": "10.",
+    "D": "11.",
+    "E": "12."
+   },
+   "gabarito": "E",
+   "resolucao": "512 ÷ 46 = 11 e sobram 6 pessoas: elas precisam de mais um ônibus. Total: 12.",
+   "topico": "Expressões numéricas",
+   "conceito": "Quando sobra resto e ninguém pode ficar de fora, arredonde para cima.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Quantos pacotes de 0,4 kg podem ser feitos com 23,6 kg de café?",
+   "alternativas": {
+    "A": "5.",
+    "B": "57.",
+    "C": "58.",
+    "D": "59.",
+    "E": "60."
+   },
+   "gabarito": "D",
+   "resolucao": "23,6 ÷ 0,4 = 59 pacotes (multiplique os dois por 10, 100 ou 1.000 para tirar a vírgula).",
+   "topico": "Expressões numéricas",
+   "conceito": "\"Quantos cabem\" é divisão.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Duas fitas de 16 cm e 56 cm serão cortadas em pedaços iguais, do maior tamanho possível, sem sobras. Cada pedaço medirá quantos centímetros?",
+   "alternativas": {
+    "A": "4.",
+    "B": "7.",
+    "C": "8.",
+    "D": "11.",
+    "E": "16."
+   },
+   "gabarito": "C",
+   "resolucao": "O maior tamanho que divide os dois é o MDC(16, 56) = 8 cm.",
+   "topico": "Múltiplos e divisores",
+   "conceito": "Pedaços iguais do maior tamanho possível: MDC.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "R$ 625,00 serão divididos entre A e B na razão 1 : 4. B receberá",
+   "alternativas": {
+    "A": "R$ 156,25.",
+    "B": "R$ 312,50.",
+    "C": "R$ 500,00.",
+    "D": "R$ 550,00.",
+    "E": "R$ 625,00."
+   },
+   "gabarito": "C",
+   "resolucao": "1 + 4 = 5 partes; cada parte = 625 ÷ 5 = 125; B = 4 × 125 = 500.",
+   "topico": "Divisão em partes proporcionais",
+   "conceito": "Divisão proporcional: some as partes, ache o valor de uma e multiplique.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "R$ 3.912,00 serão divididos entre A e B na razão 3 : 5. B receberá",
+   "alternativas": {
+    "A": "R$ 1.304,00.",
+    "B": "R$ 1.467,00.",
+    "C": "R$ 1.956,00.",
+    "D": "R$ 2.445,00.",
+    "E": "R$ 2.495,00."
+   },
+   "gabarito": "D",
+   "resolucao": "3 + 5 = 8 partes; cada parte = 3.912 ÷ 8 = 489; B = 5 × 489 = 2.445.",
+   "topico": "Divisão em partes proporcionais",
+   "conceito": "Divisão proporcional: some as partes, ache o valor de uma e multiplique.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um prêmio de R$ 2.130,00 será dividido em partes diretamente proporcionais a 1, 2 e 3. Qual é a do meio parte?",
+   "alternativas": {
+    "A": "R$ 355,00.",
+    "B": "R$ 610,00.",
+    "C": "R$ 660,00.",
+    "D": "R$ 710,00.",
+    "E": "R$ 1.065,00."
+   },
+   "gabarito": "D",
+   "resolucao": "1 + 2 + 3 = 6 partes; cada parte = 2.130 ÷ 6 = 355; a do meio: 2 × 355 = 710.",
+   "topico": "Divisão em partes proporcionais",
+   "conceito": "Diretamente proporcional: some as partes e multiplique.",
+   "habilidade": "calcular"
+  }
+ ],
+ "fontes": [
+  "Questões geradas e conferidas em Python (fractions): cada resposta é calculada, as alternativas são únicas, as numéricas em ordem crescente"
+ ]
+}
