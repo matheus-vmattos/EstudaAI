@@ -184,6 +184,48 @@
       "descricao": "Estatística do zero (explicar, fixar e medir), os enganos de Informática e LGPD e as lacunas de Bancários. Aparece no Meu edital.",
       "arquivo": "banestes-missao2.json",
       "data": "2026-11-21"
+    },
+    {
+      "id": "banestes-matematica-base-anotacoes-v1",
+      "tipo": "anotacoes",
+      "titulo": "Anotações: a base de matemática",
+      "descricao": "7 anotações de frações, potência e raiz, porcentagem, regra de três e proporção: a base que sustenta Estatística, Matemática Financeira e Raciocínio Lógico. Só entram onde a anotação está vazia.",
+      "arquivo": "banestes-matematica-base-anotacoes.json",
+      "data": "2026-11-21",
+      "versaoMinima": "0.1.19"
+    },
+    {
+      "id": "banestes-matematica-base-cartoes-v1",
+      "tipo": "cartoes",
+      "titulo": "Flashcards: a base de matemática",
+      "descricao": "10 cartões de frações, potências, raiz de decimal, porcentagem sucessiva e regra de três inversa.",
+      "arquivo": "banestes-matematica-base-cartoes.json",
+      "data": "2026-11-21"
+    },
+    {
+      "id": "banestes-missao3-base-v1",
+      "tipo": "simulado",
+      "titulo": "Simulado: diagnóstico da base de matemática",
+      "descricao": "12 questões curtas para achar onde trava: frações, porcentagem, potência e raiz, proporção e regra de três. Com a resolução de cada uma.",
+      "arquivo": "banestes-missao3-base.json",
+      "data": "2026-11-21"
+    },
+    {
+      "id": "banestes-rl-cartoes-v2",
+      "tipo": "cartoes",
+      "titulo": "Flashcards: Matemática e Raciocínio Lógico (correção)",
+      "descricao": "Os mesmos 15 cartões, com o de aumento e desconto corrigido: o fator é 1 + p/100 (não 1 + p). Se você não editou o cartão, ele é corrigido; nada duplica.",
+      "arquivo": "banestes-rl-cartoes.json",
+      "data": "2026-11-21"
+    },
+    {
+      "id": "banestes-missao3-v1",
+      "tipo": "missao",
+      "titulo": "Missão da semana: 21 a 28/11",
+      "descricao": "A base de matemática que sustenta 20 questões da prova: diagnóstico, anotações, cartões e Raciocínio Lógico. Aparece no Meu edital.",
+      "arquivo": "banestes-missao3.json",
+      "data": "2026-11-21",
+      "versaoMinima": "0.1.19"
     }
   ]
 }

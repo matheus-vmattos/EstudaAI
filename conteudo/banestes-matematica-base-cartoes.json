@@ -1,0 +1,88 @@
+{
+ "materia": "Matemática e Raciocínio Lógico",
+ "cartoes": [
+  {
+   "lugar": [
+    "Números",
+    "Frações"
+   ],
+   "frente": "Soma de frações: $\\frac{1}{2} + \\frac{1}{3}$",
+   "verso": "$\\frac{3}{6} + \\frac{2}{6} = \\frac{5}{6}$. Iguala os denominadores (MMC); **nunca** some em cima e embaixo."
+  },
+  {
+   "lugar": [
+    "Números",
+    "Frações"
+   ],
+   "frente": "Multiplicação de frações",
+   "verso": "Em cima com em cima, embaixo com embaixo: $\\frac{2}{3} \\cdot \\frac{9}{10} = \\frac{18}{30} = \\frac{3}{5}$. \"De\" é vezes. Na probabilidade, \"e\" também é vezes, com a segunda chance já contando a primeira (sem reposição: $\\frac{5}{10} \\cdot \\frac{4}{9}$)."
+  },
+  {
+   "lugar": [
+    "Números",
+    "Frações"
+   ],
+   "frente": "Fração, decimal e porcentagem de 3/8",
+   "verso": "$\\frac{3}{8} = 0{,}375 = 37{,}5\\%$ (divida 3 por 8)."
+  },
+  {
+   "lugar": [
+    "Números",
+    "Expressões numéricas"
+   ],
+   "frente": "Potências de mesma base: multiplicar, dividir e potência de potência",
+   "verso": "Multiplicar **soma** os expoentes; dividir **subtrai**; potência de potência **multiplica**: $(2^3)^2 \\div 2^4 = 2^6 \\div 2^4 = 4$."
+  },
+  {
+   "lugar": [
+    "Números",
+    "Expressões numéricas"
+   ],
+   "frente": "Expoente zero e expoente negativo",
+   "verso": "$a^0 = 1$ (a ≠ 0). Negativo inverte: $2^{-3} = \\frac{1}{8}$; $10^{-2} = 0{,}01$."
+  },
+  {
+   "lugar": [
+    "Números",
+    "Expressões numéricas"
+   ],
+   "frente": "Raiz quadrada de 0,09",
+   "verso": "**0,3**, porque $0{,}3 \\cdot 0{,}3 = 0{,}09$. Confira sempre multiplicando de volta."
+  },
+  {
+   "lugar": [
+    "Proporcionalidade",
+    "Porcentagem, acréscimos e descontos"
+   ],
+   "frente": "Variação percentual: de 80 para 92",
+   "verso": "$\\frac{92 - 80}{80} = \\frac{12}{80} = 15\\%$. Divide pelo valor **antigo**."
+  },
+  {
+   "lugar": [
+    "Proporcionalidade",
+    "Porcentagem, acréscimos e descontos"
+   ],
+   "frente": "Aumento de 10% e depois desconto de 10%",
+   "verso": "$1{,}10 \\cdot 0{,}90 = 0{,}99$: o preço final é **1% menor**. Percentuais sucessivos se **multiplicam**."
+  },
+  {
+   "lugar": [
+    "Proporcionalidade",
+    "Porcentagem, acréscimos e descontos"
+   ],
+   "frente": "Dois aumentos seguidos de 20%",
+   "verso": "$1{,}2 \\cdot 1{,}2 = 1{,}44$: aumento total de **44%** (não 40%)."
+  },
+  {
+   "lugar": [
+    "Proporcionalidade",
+    "Regra de três"
+   ],
+   "frente": "Regra de três inversa: 8 operários em 9 dias; 12 operários em quantos?",
+   "verso": "Mais gente, menos dias → inversa: o produto se mantém. $8 \\cdot 9 = 12 \\cdot d \\Rightarrow d = 6$."
+  }
+ ],
+ "fontes": [
+  "Todas as contas conferidas em Python (fractions, math); regras de potência, frações e porcentagem são aritmética elementar verificada por cálculo"
+ ]
+}

@@ -1,0 +1,67 @@
+{
+ "de": "2026-11-21",
+ "ate": "2026-11-28",
+ "frase": "A lacuna não é de Estatística: é da base (frações, porcentagem, potência e raiz). Primeiro um diagnóstico de 12 questões para achar onde trava, depois a base em anotações e cartões. Ela sustenta 20 questões da prova (Estatística, Financeira e Raciocínio Lógico).",
+ "tarefas": [
+  {
+   "id": "diag",
+   "tipo": "simulado",
+   "titulo": "Diagnóstico: base de matemática",
+   "detalhe": "Pronto, feito pelo Claude · 12 questões, sem pressa: é para achar onde trava",
+   "pontos": 120,
+   "item": "banestes-missao3-base-v1",
+   "tema": "Base de matemática: diagnóstico"
+  },
+  {
+   "id": "ler-base",
+   "tipo": "anotacoes",
+   "titulo": "Ler: a base de matemática",
+   "detalhe": "7 anotações: frações, potência e raiz, porcentagem, regra de três, proporção",
+   "pontos": 60,
+   "item": "banestes-matematica-base-anotacoes-v1"
+  },
+  {
+   "id": "cartoes-base",
+   "tipo": "cartoes",
+   "titulo": "Fixar: cartões da base",
+   "detalhe": "10 cartões novos, só de matemática básica",
+   "pontos": 80,
+   "item": "banestes-matematica-base-cartoes-v1"
+  },
+  {
+   "id": "cartoes-rl",
+   "tipo": "cartoes",
+   "titulo": "Revisar os cartões de Raciocínio Lógico",
+   "detalhe": "15 cartões, nunca revisados · um corrigido (porcentagem)",
+   "pontos": 60,
+   "item": "banestes-rl-cartoes-v2"
+  },
+  {
+   "id": "explicar-pct",
+   "tipo": "explicar",
+   "titulo": "Explique: +10% e depois −10%",
+   "detalhe": "A pegadinha de porcentagem que a FCC mais usa",
+   "pontos": 20,
+   "topico": "Porcentagem, acréscimos e descontos",
+   "pergunta": "Por que um aumento de 10% seguido de um desconto de 10% não volta ao preço original? Explique com suas palavras, como se fosse para um cliente."
+  },
+  {
+   "id": "cartoes-est",
+   "tipo": "cartoes",
+   "titulo": "Revisar os cartões de Estatística",
+   "detalhe": "Ainda nenhum revisado · agora a tarefa abre só os de Estatística",
+   "pontos": 60,
+   "item": "banestes-estatistica-cartoes-v2"
+  },
+  {
+   "id": "atrasados",
+   "tipo": "atrasados",
+   "titulo": "Zerar os cartões de hoje",
+   "detalhe": "Uma matéria por vez",
+   "pontos": 60
+  }
+ ],
+ "fontes": [
+  "Dados de estudo do Matheus até 20/11 (Estatística 4/13 e 6/13; erros de conta em variância e probabilidade) e simulado Caixa 2024 (Matemática Financeira 1/4, Estatística 2/5)"
+ ]
+}

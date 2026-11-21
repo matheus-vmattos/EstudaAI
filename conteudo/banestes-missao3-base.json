@@ -1,0 +1,190 @@
+{
+ "tema": "Base de matemática: diagnóstico",
+ "materia": "Matemática e Raciocínio Lógico",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "O valor de 3/4 + 1/6 é",
+   "alternativas": {
+    "A": "4/10.",
+    "B": "2/3.",
+    "C": "5/6.",
+    "D": "11/12.",
+    "E": "13/12."
+   },
+   "gabarito": "D",
+   "resolucao": "MMC(4, 6) = 12: 3/4 = 9/12 e 1/6 = 2/12. Soma: 11/12. Somar em cima e embaixo (4/10) é o erro clássico.",
+   "topico": "Frações",
+   "conceito": "Somar frações: igualar os denominadores pelo MMC.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O produto 2/3 × 9/10 é igual a",
+   "alternativas": {
+    "A": "3/10.",
+    "B": "2/5.",
+    "C": "3/5.",
+    "D": "2/3.",
+    "E": "27/20."
+   },
+   "gabarito": "C",
+   "resolucao": "Em cima com em cima, embaixo com embaixo: 18/30 = 3/5.",
+   "topico": "Frações",
+   "conceito": "Multiplicar frações: numerador com numerador, denominador com denominador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente (3/4) ÷ (3/8) é igual a",
+   "alternativas": {
+    "A": "9/32.",
+    "B": "1/2.",
+    "C": "1.",
+    "D": "3/2.",
+    "E": "2."
+   },
+   "gabarito": "E",
+   "resolucao": "Mantém a primeira e multiplica pelo inverso da segunda: 3/4 × 8/3 = 24/12 = 2.",
+   "topico": "Frações",
+   "conceito": "Dividir frações: multiplicar pelo inverso da segunda.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "15% de 240 é igual a",
+   "alternativas": {
+    "A": "36.",
+    "B": "40.",
+    "C": "48.",
+    "D": "54.",
+    "E": "60."
+   },
+   "gabarito": "A",
+   "resolucao": "0,15 × 240 = 36 (ou 10% = 24 e 5% = 12; 24 + 12 = 36).",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "p% de um valor = valor × p/100.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma tarifa passou de R$ 80,00 para R$ 92,00. O aumento percentual foi de",
+   "alternativas": {
+    "A": "10%.",
+    "B": "12%.",
+    "C": "12,5%.",
+    "D": "13%.",
+    "E": "15%."
+   },
+   "gabarito": "E",
+   "resolucao": "Aumento: 92 − 80 = 12. Sobre o valor ANTIGO: 12 ÷ 80 = 0,15 = 15%. Dividir pelo novo (12 ÷ 92) é o erro comum.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Variação percentual = (novo − antigo) ÷ antigo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um produto teve aumento de 10% e, em seguida, desconto de 10%. Em relação ao preço inicial, o preço final é",
+   "alternativas": {
+    "A": "1% menor.",
+    "B": "1% maior.",
+    "C": "igual, pois os percentuais se anulam.",
+    "D": "10% menor.",
+    "E": "2% menor."
+   },
+   "gabarito": "A",
+   "resolucao": "Fatores sucessivos se multiplicam: 1,10 × 0,90 = 0,99. O preço final é 99% do inicial: 1% menor.",
+   "topico": "Porcentagem, acréscimos e descontos",
+   "conceito": "Percentuais sucessivos: multiplique os fatores, não some os percentuais.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "O valor de (2³)² ÷ 2⁴ é",
+   "alternativas": {
+    "A": "2.",
+    "B": "4.",
+    "C": "8.",
+    "D": "16.",
+    "E": "32."
+   },
+   "gabarito": "B",
+   "resolucao": "(2³)² = 2⁶ (potência de potência multiplica os expoentes). 2⁶ ÷ 2⁴ = 2² = 4 (divisão subtrai).",
+   "topico": "Expressões numéricas",
+   "conceito": "Mesma base: multiplicar soma expoentes, dividir subtrai, potência de potência multiplica.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "A raiz quadrada de 0,09 é",
+   "alternativas": {
+    "A": "0,03.",
+    "B": "0,3.",
+    "C": "0,81.",
+    "D": "3.",
+    "E": "9."
+   },
+   "gabarito": "B",
+   "resolucao": "0,3 × 0,3 = 0,09. Confira sempre multiplicando de volta: 0,03 × 0,03 = 0,0009.",
+   "topico": "Expressões numéricas",
+   "conceito": "Raiz de decimal: confira multiplicando o resultado por ele mesmo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de (1/2)² + 1/4 é",
+   "alternativas": {
+    "A": "1/16.",
+    "B": "1/8.",
+    "C": "1/4.",
+    "D": "1/2.",
+    "E": "1."
+   },
+   "gabarito": "D",
+   "resolucao": "(1/2)² = 1/4. 1/4 + 1/4 = 2/4 = 1/2.",
+   "topico": "Expressões numéricas",
+   "conceito": "Potência de fração: eleva em cima e embaixo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma comissão de R$ 1.500,00 será dividida entre A e B na razão 2 : 3. B receberá",
+   "alternativas": {
+    "A": "R$ 500,00.",
+    "B": "R$ 600,00.",
+    "C": "R$ 750,00.",
+    "D": "R$ 900,00.",
+    "E": "R$ 1.000,00."
+   },
+   "gabarito": "D",
+   "resolucao": "2 + 3 = 5 partes; cada parte = 1.500 ÷ 5 = 300. B = 3 × 300 = 900 (A = 600).",
+   "topico": "Divisão em partes proporcionais",
+   "conceito": "Divisão proporcional: some as partes, ache o valor de uma e multiplique.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Oito operários fazem uma obra em 9 dias. Mantido o ritmo, 12 operários fariam a mesma obra em",
+   "alternativas": {
+    "A": "4 dias.",
+    "B": "6 dias.",
+    "C": "9 dias.",
+    "D": "12 dias.",
+    "E": "13,5 dias."
+   },
+   "gabarito": "B",
+   "resolucao": "Mais operários, menos dias: inversa. 8 × 9 = 12 × d → d = 72 ÷ 12 = 6. A conta direta daria 13,5 (absurdo: mais gente levando mais tempo).",
+   "topico": "Regra de três",
+   "conceito": "Regra de três inversa: se uma grandeza sobe e a outra desce, o produto se mantém.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "A média dos quadrados dos números 1, 2 e 3 é",
+   "alternativas": {
+    "A": "2.",
+    "B": "3.",
+    "C": "4.",
+    "D": "13/3.",
+    "E": "14/3."
+   },
+   "gabarito": "E",
+   "resolucao": "Quadrados: 1, 4 e 9. Soma: 14. Média: 14 ÷ 3 = 14/3 (≈ 4,67). É o mesmo passo da variância: elevar ao quadrado, somar e dividir.",
+   "topico": "Média, moda e mediana",
+   "conceito": "Variância usa exatamente isto: quadrados, soma e divisão pela quantidade.",
+   "habilidade": "calcular"
+  }
+ ],
+ "fontes": [
+  "Todas as contas conferidas em Python (fractions, math); regras de potência, frações e porcentagem são aritmética elementar verificada por cálculo"
+ ]
+}
