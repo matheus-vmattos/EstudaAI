@@ -1,0 +1,610 @@
+{
+ "tema": "Treino 3: frações I",
+ "materia": "Matemática e Raciocínio Lógico",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "A fração 55/60, na forma irredutível, é",
+   "alternativas": {
+    "A": "11/13.",
+    "B": "11/12.",
+    "C": "12/13.",
+    "D": "14/15.",
+    "E": "1."
+   },
+   "gabarito": "B",
+   "resolucao": "Divida em cima e embaixo por 5: 55/60 = 11/12.",
+   "topico": "Frações",
+   "conceito": "Simplificar: divida numerador e denominador pelo mesmo número.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Entre as frações 4/5, 5/6, 7/8, 7/9, 3/10, a maior é",
+   "alternativas": {
+    "A": "3/10.",
+    "B": "7/9.",
+    "C": "7/8.",
+    "D": "5/6.",
+    "E": "4/5."
+   },
+   "gabarito": "C",
+   "resolucao": "Para comparar, escreva todas com o mesmo denominador (ou como decimal): 3/10 = 0,3; 7/9 = ≈ 0,78; 4/5 = 0,8; 5/6 = ≈ 0,83; 7/8 = 0,875. A maior é 7/8.",
+   "topico": "Frações",
+   "conceito": "Comparar frações: mesmo denominador ou decimal.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Entre as frações 1/2, 5/6, 7/9, 3/10, 9/10, a maior é",
+   "alternativas": {
+    "A": "1/2.",
+    "B": "5/6.",
+    "C": "3/10.",
+    "D": "7/9.",
+    "E": "9/10."
+   },
+   "gabarito": "E",
+   "resolucao": "Para comparar, escreva todas com o mesmo denominador (ou como decimal): 3/10 = 0,3; 1/2 = 0,5; 7/9 = ≈ 0,78; 5/6 = ≈ 0,83; 9/10 = 0,9. A maior é 9/10.",
+   "topico": "Frações",
+   "conceito": "Comparar frações: mesmo denominador ou decimal.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "7/9 de 504 é",
+   "alternativas": {
+    "A": "56.",
+    "B": "72.",
+    "C": "391.",
+    "D": "392.",
+    "E": "448."
+   },
+   "gabarito": "D",
+   "resolucao": "\"De\" é vezes: 504 ÷ 9 = 56; × 7 = 392.",
+   "topico": "Frações",
+   "conceito": "Fração de uma quantidade: divida pelo denominador, multiplique pelo numerador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Entre as frações 2/3, 2/5, 4/7, 5/8, 7/9, a maior é",
+   "alternativas": {
+    "A": "4/7.",
+    "B": "7/9.",
+    "C": "2/3.",
+    "D": "5/8.",
+    "E": "2/5."
+   },
+   "gabarito": "B",
+   "resolucao": "Para comparar, escreva todas com o mesmo denominador (ou como decimal): 2/5 = 0,4; 4/7 = ≈ 0,57; 5/8 = 0,625; 2/3 = ≈ 0,67; 7/9 = ≈ 0,78. A maior é 7/9.",
+   "topico": "Frações",
+   "conceito": "Comparar frações: mesmo denominador ou decimal.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "5 representa que fração de 40?",
+   "alternativas": {
+    "A": "1/24.",
+    "B": "1/9.",
+    "C": "1/8.",
+    "D": "1/4.",
+    "E": "8."
+   },
+   "gabarito": "C",
+   "resolucao": "Parte ÷ todo: 5/40 = 1/8.",
+   "topico": "Frações",
+   "conceito": "Que fração A é de B: A/B simplificada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "A fração 20/48, na forma irredutível, é",
+   "alternativas": {
+    "A": "1/3.",
+    "B": "5/13.",
+    "C": "5/12.",
+    "D": "7/16.",
+    "E": "6/13."
+   },
+   "gabarito": "C",
+   "resolucao": "Divida em cima e embaixo por 4: 20/48 = 5/12.",
+   "topico": "Frações",
+   "conceito": "Simplificar: divida numerador e denominador pelo mesmo número.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma fração equivalente a 1/5 é",
+   "alternativas": {
+    "A": "3/15.",
+    "B": "4/8.",
+    "C": "3/20.",
+    "D": "4/15.",
+    "E": "2/6."
+   },
+   "gabarito": "A",
+   "resolucao": "Multiplicar em cima e embaixo pelo mesmo número (3) não muda o valor: 1/5 = 3/15. Somar o mesmo número em cima e embaixo muda.",
+   "topico": "Frações",
+   "conceito": "Equivalentes: multiplique ou divida numerador e denominador pelo mesmo número.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma fração equivalente a 2/3 é",
+   "alternativas": {
+    "A": "6/7.",
+    "B": "8/15.",
+    "C": "10/12.",
+    "D": "8/12.",
+    "E": "3/4."
+   },
+   "gabarito": "D",
+   "resolucao": "Multiplicar em cima e embaixo pelo mesmo número (4) não muda o valor: 2/3 = 8/12. Somar o mesmo número em cima e embaixo muda.",
+   "topico": "Frações",
+   "conceito": "Equivalentes: multiplique ou divida numerador e denominador pelo mesmo número.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O número misto 6 3/5 na forma de fração é",
+   "alternativas": {
+    "A": "9/5.",
+    "B": "18/5.",
+    "C": "34/5.",
+    "D": "33/5.",
+    "E": "30/5."
+   },
+   "gabarito": "D",
+   "resolucao": "6 inteiros = 30/5; + 3/5 = 33/5.",
+   "topico": "Frações",
+   "conceito": "Misto → fração: inteiro × denominador + numerador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "9/10 de 480 é",
+   "alternativas": {
+    "A": "48.",
+    "B": "432.",
+    "C": "433.",
+    "D": "434.",
+    "E": "480."
+   },
+   "gabarito": "B",
+   "resolucao": "\"De\" é vezes: 480 ÷ 10 = 48; × 9 = 432.",
+   "topico": "Frações",
+   "conceito": "Fração de uma quantidade: divida pelo denominador, multiplique pelo numerador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Entre as frações 1/2, 2/3, 1/4, 6/7, 3/10, a maior é",
+   "alternativas": {
+    "A": "2/3.",
+    "B": "3/10.",
+    "C": "6/7.",
+    "D": "1/2.",
+    "E": "1/4."
+   },
+   "gabarito": "C",
+   "resolucao": "Para comparar, escreva todas com o mesmo denominador (ou como decimal): 1/4 = 0,25; 3/10 = 0,3; 1/2 = 0,5; 2/3 = ≈ 0,67; 6/7 = ≈ 0,86. A maior é 6/7.",
+   "topico": "Frações",
+   "conceito": "Comparar frações: mesmo denominador ou decimal.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "15 representa que fração de 20?",
+   "alternativas": {
+    "A": "3/7.",
+    "B": "7/12.",
+    "C": "3/5.",
+    "D": "2/3.",
+    "E": "3/4."
+   },
+   "gabarito": "E",
+   "resolucao": "Parte ÷ todo: 15/20 = 3/4.",
+   "topico": "Frações",
+   "conceito": "Que fração A é de B: A/B simplificada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "26 representa que fração de 65?",
+   "alternativas": {
+    "A": "2/5.",
+    "B": "29/60.",
+    "C": "17/30.",
+    "D": "3/5.",
+    "E": "5/2."
+   },
+   "gabarito": "A",
+   "resolucao": "Parte ÷ todo: 26/65 = 2/5.",
+   "topico": "Frações",
+   "conceito": "Que fração A é de B: A/B simplificada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Entre as frações 1/2, 5/6, 7/8, 5/9, 7/9, a maior é",
+   "alternativas": {
+    "A": "1/2.",
+    "B": "5/9.",
+    "C": "7/9.",
+    "D": "5/6.",
+    "E": "7/8."
+   },
+   "gabarito": "E",
+   "resolucao": "Para comparar, escreva todas com o mesmo denominador (ou como decimal): 1/2 = 0,5; 5/9 = ≈ 0,56; 7/9 = ≈ 0,78; 5/6 = ≈ 0,83; 7/8 = 0,875. A maior é 7/8.",
+   "topico": "Frações",
+   "conceito": "Comparar frações: mesmo denominador ou decimal.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "O número misto 6 1/2 na forma de fração é",
+   "alternativas": {
+    "A": "7/2.",
+    "B": "6/2.",
+    "C": "14/2.",
+    "D": "12/2.",
+    "E": "13/2."
+   },
+   "gabarito": "E",
+   "resolucao": "6 inteiros = 12/2; + 1/2 = 13/2.",
+   "topico": "Frações",
+   "conceito": "Misto → fração: inteiro × denominador + numerador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "A fração 30/35, na forma irredutível, é",
+   "alternativas": {
+    "A": "6/7.",
+    "B": "7/8.",
+    "C": "31/35.",
+    "D": "79/84.",
+    "E": "1."
+   },
+   "gabarito": "A",
+   "resolucao": "Divida em cima e embaixo por 5: 30/35 = 6/7.",
+   "topico": "Frações",
+   "conceito": "Simplificar: divida numerador e denominador pelo mesmo número.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O número misto 6 1/5 na forma de fração é",
+   "alternativas": {
+    "A": "7/5.",
+    "B": "6/5.",
+    "C": "32/5.",
+    "D": "30/5.",
+    "E": "31/5."
+   },
+   "gabarito": "E",
+   "resolucao": "6 inteiros = 30/5; + 1/5 = 31/5.",
+   "topico": "Frações",
+   "conceito": "Misto → fração: inteiro × denominador + numerador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Entre as frações 1/3, 3/4, 5/7, 5/8, 7/8, a maior é",
+   "alternativas": {
+    "A": "5/7.",
+    "B": "1/3.",
+    "C": "7/8.",
+    "D": "5/8.",
+    "E": "3/4."
+   },
+   "gabarito": "C",
+   "resolucao": "Para comparar, escreva todas com o mesmo denominador (ou como decimal): 1/3 = ≈ 0,33; 5/8 = 0,625; 5/7 = ≈ 0,71; 3/4 = 0,75; 7/8 = 0,875. A maior é 7/8.",
+   "topico": "Frações",
+   "conceito": "Comparar frações: mesmo denominador ou decimal.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "O número misto 2 7/8 na forma de fração é",
+   "alternativas": {
+    "A": "9/8.",
+    "B": "14/8.",
+    "C": "24/8.",
+    "D": "23/8.",
+    "E": "16/8."
+   },
+   "gabarito": "D",
+   "resolucao": "2 inteiros = 16/8; + 7/8 = 23/8.",
+   "topico": "Frações",
+   "conceito": "Misto → fração: inteiro × denominador + numerador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma fração equivalente a 8/9 é",
+   "alternativas": {
+    "A": "11/12.",
+    "B": "24/36.",
+    "C": "32/27.",
+    "D": "9/10.",
+    "E": "24/27."
+   },
+   "gabarito": "E",
+   "resolucao": "Multiplicar em cima e embaixo pelo mesmo número (3) não muda o valor: 8/9 = 24/27. Somar o mesmo número em cima e embaixo muda.",
+   "topico": "Frações",
+   "conceito": "Equivalentes: multiplique ou divida numerador e denominador pelo mesmo número.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "6/7 de 217 é",
+   "alternativas": {
+    "A": "31.",
+    "B": "186.",
+    "C": "187.",
+    "D": "188.",
+    "E": "217."
+   },
+   "gabarito": "B",
+   "resolucao": "\"De\" é vezes: 217 ÷ 7 = 31; × 6 = 186.",
+   "topico": "Frações",
+   "conceito": "Fração de uma quantidade: divida pelo denominador, multiplique pelo numerador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Entre as frações 1/3, 3/7, 4/7, 6/7, 7/8, a maior é",
+   "alternativas": {
+    "A": "4/7.",
+    "B": "7/8.",
+    "C": "6/7.",
+    "D": "3/7.",
+    "E": "1/3."
+   },
+   "gabarito": "B",
+   "resolucao": "Para comparar, escreva todas com o mesmo denominador (ou como decimal): 1/3 = ≈ 0,33; 3/7 = ≈ 0,43; 4/7 = ≈ 0,57; 6/7 = ≈ 0,86; 7/8 = 0,875. A maior é 7/8.",
+   "topico": "Frações",
+   "conceito": "Comparar frações: mesmo denominador ou decimal.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Uma fração equivalente a 5/12 é",
+   "alternativas": {
+    "A": "10/17.",
+    "B": "25/72.",
+    "C": "25/60.",
+    "D": "30/60.",
+    "E": "6/13."
+   },
+   "gabarito": "C",
+   "resolucao": "Multiplicar em cima e embaixo pelo mesmo número (5) não muda o valor: 5/12 = 25/60. Somar o mesmo número em cima e embaixo muda.",
+   "topico": "Frações",
+   "conceito": "Equivalentes: multiplique ou divida numerador e denominador pelo mesmo número.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma fração equivalente a 1/3 é",
+   "alternativas": {
+    "A": "6/18.",
+    "B": "7/9.",
+    "C": "6/21.",
+    "D": "7/18.",
+    "E": "2/4."
+   },
+   "gabarito": "A",
+   "resolucao": "Multiplicar em cima e embaixo pelo mesmo número (6) não muda o valor: 1/3 = 6/18. Somar o mesmo número em cima e embaixo muda.",
+   "topico": "Frações",
+   "conceito": "Equivalentes: multiplique ou divida numerador e denominador pelo mesmo número.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "27 representa que fração de 90?",
+   "alternativas": {
+    "A": "13/60.",
+    "B": "3/13.",
+    "C": "3/11.",
+    "D": "3/10.",
+    "E": "2/5."
+   },
+   "gabarito": "D",
+   "resolucao": "Parte ÷ todo: 27/90 = 3/10.",
+   "topico": "Frações",
+   "conceito": "Que fração A é de B: A/B simplificada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma fração equivalente a 3/4 é",
+   "alternativas": {
+    "A": "6/7.",
+    "B": "9/16.",
+    "C": "12/12.",
+    "D": "4/5.",
+    "E": "9/12."
+   },
+   "gabarito": "E",
+   "resolucao": "Multiplicar em cima e embaixo pelo mesmo número (3) não muda o valor: 3/4 = 9/12. Somar o mesmo número em cima e embaixo muda.",
+   "topico": "Frações",
+   "conceito": "Equivalentes: multiplique ou divida numerador e denominador pelo mesmo número.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma fração equivalente a 2/11 é",
+   "alternativas": {
+    "A": "9/18.",
+    "B": "14/77.",
+    "C": "14/88.",
+    "D": "16/77.",
+    "E": "3/12."
+   },
+   "gabarito": "B",
+   "resolucao": "Multiplicar em cima e embaixo pelo mesmo número (7) não muda o valor: 2/11 = 14/77. Somar o mesmo número em cima e embaixo muda.",
+   "topico": "Frações",
+   "conceito": "Equivalentes: multiplique ou divida numerador e denominador pelo mesmo número.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "3/10 de 230 é",
+   "alternativas": {
+    "A": "23.",
+    "B": "67.",
+    "C": "68.",
+    "D": "69.",
+    "E": "92."
+   },
+   "gabarito": "D",
+   "resolucao": "\"De\" é vezes: 230 ÷ 10 = 23; × 3 = 69.",
+   "topico": "Frações",
+   "conceito": "Fração de uma quantidade: divida pelo denominador, multiplique pelo numerador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O número misto 5 5/7 na forma de fração é",
+   "alternativas": {
+    "A": "10/7.",
+    "B": "25/7.",
+    "C": "41/7.",
+    "D": "35/7.",
+    "E": "40/7."
+   },
+   "gabarito": "E",
+   "resolucao": "5 inteiros = 35/7; + 5/7 = 40/7.",
+   "topico": "Frações",
+   "conceito": "Misto → fração: inteiro × denominador + numerador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O número misto 6 2/3 na forma de fração é",
+   "alternativas": {
+    "A": "8/3.",
+    "B": "12/3.",
+    "C": "21/3.",
+    "D": "20/3.",
+    "E": "18/3."
+   },
+   "gabarito": "D",
+   "resolucao": "6 inteiros = 18/3; + 2/3 = 20/3.",
+   "topico": "Frações",
+   "conceito": "Misto → fração: inteiro × denominador + numerador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "5 representa que fração de 45?",
+   "alternativas": {
+    "A": "1/10.",
+    "B": "1/9.",
+    "C": "7/36.",
+    "D": "2/9.",
+    "E": "9."
+   },
+   "gabarito": "B",
+   "resolucao": "Parte ÷ todo: 5/45 = 1/9.",
+   "topico": "Frações",
+   "conceito": "Que fração A é de B: A/B simplificada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "7/9 de 495 é",
+   "alternativas": {
+    "A": "385.",
+    "B": "386.",
+    "C": "387.",
+    "D": "388.",
+    "E": "440."
+   },
+   "gabarito": "A",
+   "resolucao": "\"De\" é vezes: 495 ÷ 9 = 55; × 7 = 385.",
+   "topico": "Frações",
+   "conceito": "Fração de uma quantidade: divida pelo denominador, multiplique pelo numerador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "56 representa que fração de 63?",
+   "alternativas": {
+    "A": "8/9.",
+    "B": "35/36.",
+    "C": "1.",
+    "D": "19/18.",
+    "E": "9/8."
+   },
+   "gabarito": "A",
+   "resolucao": "Parte ÷ todo: 56/63 = 8/9.",
+   "topico": "Frações",
+   "conceito": "Que fração A é de B: A/B simplificada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Entre as frações 4/5, 3/7, 4/7, 7/9, 3/10, a maior é",
+   "alternativas": {
+    "A": "3/7.",
+    "B": "7/9.",
+    "C": "3/10.",
+    "D": "4/5.",
+    "E": "4/7."
+   },
+   "gabarito": "D",
+   "resolucao": "Para comparar, escreva todas com o mesmo denominador (ou como decimal): 3/10 = 0,3; 3/7 = ≈ 0,43; 4/7 = ≈ 0,57; 7/9 = ≈ 0,78; 4/5 = 0,8. A maior é 4/5.",
+   "topico": "Frações",
+   "conceito": "Comparar frações: mesmo denominador ou decimal.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Uma fração equivalente a 1/8 é",
+   "alternativas": {
+    "A": "3/10.",
+    "B": "2/16.",
+    "C": "2/24.",
+    "D": "3/16.",
+    "E": "2/9."
+   },
+   "gabarito": "B",
+   "resolucao": "Multiplicar em cima e embaixo pelo mesmo número (2) não muda o valor: 1/8 = 2/16. Somar o mesmo número em cima e embaixo muda.",
+   "topico": "Frações",
+   "conceito": "Equivalentes: multiplique ou divida numerador e denominador pelo mesmo número.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O número misto 3 3/5 na forma de fração é",
+   "alternativas": {
+    "A": "18/5.",
+    "B": "6/5.",
+    "C": "9/5.",
+    "D": "19/5.",
+    "E": "15/5."
+   },
+   "gabarito": "A",
+   "resolucao": "3 inteiros = 15/5; + 3/5 = 18/5.",
+   "topico": "Frações",
+   "conceito": "Misto → fração: inteiro × denominador + numerador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "7 representa que fração de 63?",
+   "alternativas": {
+    "A": "1/36.",
+    "B": "1/10.",
+    "C": "1/9.",
+    "D": "2/9.",
+    "E": "9."
+   },
+   "gabarito": "C",
+   "resolucao": "Parte ÷ todo: 7/63 = 1/9.",
+   "topico": "Frações",
+   "conceito": "Que fração A é de B: A/B simplificada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O número misto 2 1/8 na forma de fração é",
+   "alternativas": {
+    "A": "17/8.",
+    "B": "3/8.",
+    "C": "2/8.",
+    "D": "18/8.",
+    "E": "16/8."
+   },
+   "gabarito": "A",
+   "resolucao": "2 inteiros = 16/8; + 1/8 = 17/8.",
+   "topico": "Frações",
+   "conceito": "Misto → fração: inteiro × denominador + numerador.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Entre as frações 1/2, 5/6, 3/7, 5/7, 2/9, a maior é",
+   "alternativas": {
+    "A": "3/7.",
+    "B": "5/7.",
+    "C": "5/6.",
+    "D": "2/9.",
+    "E": "1/2."
+   },
+   "gabarito": "C",
+   "resolucao": "Para comparar, escreva todas com o mesmo denominador (ou como decimal): 2/9 = ≈ 0,22; 3/7 = ≈ 0,43; 1/2 = 0,5; 5/7 = ≈ 0,71; 5/6 = ≈ 0,83. A maior é 5/6.",
+   "topico": "Frações",
+   "conceito": "Comparar frações: mesmo denominador ou decimal.",
+   "habilidade": "interpretar"
+  }
+ ],
+ "fontes": [
+  "Questões geradas e conferidas em Python (fractions): cada resposta é calculada, as alternativas são únicas, as numéricas em ordem crescente"
+ ]
+}

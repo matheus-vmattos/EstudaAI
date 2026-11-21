@@ -1,0 +1,610 @@
+{
+ "tema": "Treino 2: decimais",
+ "materia": "Matemática e Raciocínio Lógico",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "O produto 1,25 × 0,8 é",
+   "alternativas": {
+    "A": "0,1.",
+    "B": "1.",
+    "C": "2.",
+    "D": "10.",
+    "E": "100."
+   },
+   "gabarito": "B",
+   "resolucao": "Multiplique sem vírgula e conte as casas decimais dos fatores: 1,25 × 0,8 = 1.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Multiplicação de decimais: casas do resultado = soma das casas dos fatores.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Com R$ 57,60 compram-se quantas unidades de um item que custa R$ 6,40 cada?",
+   "alternativas": {
+    "A": "9.",
+    "B": "10.",
+    "C": "11.",
+    "D": "12.",
+    "E": "90."
+   },
+   "gabarito": "A",
+   "resolucao": "57,6 ÷ 6,4 = 9 (multiplique os dois por 100 e divida).",
+   "topico": "Expressões numéricas",
+   "conceito": "\"Quantas cabem\" é divisão.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 0,8 + 3,75 é",
+   "alternativas": {
+    "A": "4,45.",
+    "B": "4,55.",
+    "C": "4,65.",
+    "D": "5,55.",
+    "E": "45,5."
+   },
+   "gabarito": "B",
+   "resolucao": "Alinhe vírgula com vírgula: 0,8 + 3,75 = 4,55.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Soma e subtração de decimais: vírgula embaixo de vírgula.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente 1,08 ÷ 0,12 é",
+   "alternativas": {
+    "A": "0,09.",
+    "B": "0,9.",
+    "C": "7.",
+    "D": "8.",
+    "E": "9."
+   },
+   "gabarito": "E",
+   "resolucao": "Tire a vírgula do divisor multiplicando os dois termos por 10 ou 100: 1,08 ÷ 0,12 = 9. Confira: 9 × 0,12 = 1,08.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Dividir por decimal: multiplique os dois por 10, 100… até o divisor ficar inteiro.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente 29 ÷ 0,5 é",
+   "alternativas": {
+    "A": "5,8.",
+    "B": "57.",
+    "C": "58.",
+    "D": "59.",
+    "E": "580."
+   },
+   "gabarito": "C",
+   "resolucao": "Tire a vírgula do divisor multiplicando os dois termos por 10 ou 100: 29 ÷ 0,5 = 58. Confira: 58 × 0,5 = 29.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Dividir por decimal: multiplique os dois por 10, 100… até o divisor ficar inteiro.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Com R$ 37,50 compram-se quantas unidades de um item que custa R$ 1,25 cada?",
+   "alternativas": {
+    "A": "3.",
+    "B": "27.",
+    "C": "28.",
+    "D": "29.",
+    "E": "30."
+   },
+   "gabarito": "E",
+   "resolucao": "37,5 ÷ 1,25 = 30 (multiplique os dois por 100 e divida).",
+   "topico": "Expressões numéricas",
+   "conceito": "\"Quantas cabem\" é divisão.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 3,75 − 1,8 é",
+   "alternativas": {
+    "A": "0,195.",
+    "B": "1,75.",
+    "C": "1,85.",
+    "D": "1,95.",
+    "E": "2,95."
+   },
+   "gabarito": "D",
+   "resolucao": "Alinhe vírgula com vírgula (complete com zeros): 3,75 − 1,8 = 1,95.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Soma e subtração de decimais: vírgula embaixo de vírgula.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O resultado de 18,9 ÷ 6 é",
+   "alternativas": {
+    "A": "0,315.",
+    "B": "2,95.",
+    "C": "3,05.",
+    "D": "3,15.",
+    "E": "4,15."
+   },
+   "gabarito": "D",
+   "resolucao": "18,9 ÷ 6 = 3,15: a vírgula do quociente fica embaixo da vírgula do dividendo.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Decimal ÷ inteiro: a vírgula sobe para o quociente.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O resultado de 16,2 ÷ 9 é",
+   "alternativas": {
+    "A": "0,18.",
+    "B": "1,6.",
+    "C": "1,7.",
+    "D": "1,8.",
+    "E": "2,8."
+   },
+   "gabarito": "D",
+   "resolucao": "16,2 ÷ 9 = 1,8: a vírgula do quociente fica embaixo da vírgula do dividendo.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Decimal ÷ inteiro: a vírgula sobe para o quociente.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente 4,8 ÷ 0,2 é",
+   "alternativas": {
+    "A": "24.",
+    "B": "25.",
+    "C": "26.",
+    "D": "27.",
+    "E": "240."
+   },
+   "gabarito": "A",
+   "resolucao": "Tire a vírgula do divisor multiplicando os dois termos por 10 ou 100: 4,8 ÷ 0,2 = 24. Confira: 24 × 0,2 = 4,8.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Dividir por decimal: multiplique os dois por 10, 100… até o divisor ficar inteiro.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma tarifa de R$ 4,80 é cobrada em cada uma de 28 operações. O total cobrado é",
+   "alternativas": {
+    "A": "R$ 129,60.",
+    "B": "R$ 134,40.",
+    "C": "R$ 139,20.",
+    "D": "R$ 144,40.",
+    "E": "R$ 1.344,00."
+   },
+   "gabarito": "B",
+   "resolucao": "4,8 × 28 = 134,4.",
+   "topico": "Expressões numéricas",
+   "conceito": "Valor unitário × quantidade.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 7,3 + 0,9 é",
+   "alternativas": {
+    "A": "8,1.",
+    "B": "8,2.",
+    "C": "8,3.",
+    "D": "9,2.",
+    "E": "82."
+   },
+   "gabarito": "B",
+   "resolucao": "Alinhe vírgula com vírgula: 7,3 + 0,9 = 8,2.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Soma e subtração de decimais: vírgula embaixo de vírgula.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 3,75 − 0,25 é",
+   "alternativas": {
+    "A": "0,35.",
+    "B": "3,2.",
+    "C": "3,3.",
+    "D": "3,4.",
+    "E": "3,5."
+   },
+   "gabarito": "E",
+   "resolucao": "Alinhe vírgula com vírgula (complete com zeros): 3,75 − 0,25 = 3,5.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Soma e subtração de decimais: vírgula embaixo de vírgula.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O resultado de 5,4 ÷ 3 é",
+   "alternativas": {
+    "A": "0,18.",
+    "B": "1,6.",
+    "C": "1,7.",
+    "D": "1,8.",
+    "E": "2,8."
+   },
+   "gabarito": "D",
+   "resolucao": "5,4 ÷ 3 = 1,8: a vírgula do quociente fica embaixo da vírgula do dividendo.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Decimal ÷ inteiro: a vírgula sobe para o quociente.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente 4,68 ÷ 0,12 é",
+   "alternativas": {
+    "A": "3,9.",
+    "B": "38.",
+    "C": "39.",
+    "D": "40.",
+    "E": "390."
+   },
+   "gabarito": "C",
+   "resolucao": "Tire a vírgula do divisor multiplicando os dois termos por 10 ou 100: 4,68 ÷ 0,12 = 39. Confira: 39 × 0,12 = 4,68.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Dividir por decimal: multiplique os dois por 10, 100… até o divisor ficar inteiro.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O produto 0,3 × 24 é",
+   "alternativas": {
+    "A": "0,72.",
+    "B": "5,2.",
+    "C": "6,2.",
+    "D": "7,2.",
+    "E": "8,2."
+   },
+   "gabarito": "D",
+   "resolucao": "Multiplique sem vírgula e conte as casas decimais dos fatores: 0,3 × 24 = 7,2.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Multiplicação de decimais: casas do resultado = soma das casas dos fatores.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 7,3 + 1,8 é",
+   "alternativas": {
+    "A": "0,91.",
+    "B": "9.",
+    "C": "9,1.",
+    "D": "10,1.",
+    "E": "91."
+   },
+   "gabarito": "C",
+   "resolucao": "Alinhe vírgula com vírgula: 7,3 + 1,8 = 9,1.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Soma e subtração de decimais: vírgula embaixo de vírgula.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Com R$ 92,50 compram-se quantas unidades de um item que custa R$ 2,50 cada?",
+   "alternativas": {
+    "A": "37.",
+    "B": "38.",
+    "C": "39.",
+    "D": "40.",
+    "E": "370."
+   },
+   "gabarito": "A",
+   "resolucao": "92,5 ÷ 2,5 = 37 (multiplique os dois por 100 e divida).",
+   "topico": "Expressões numéricas",
+   "conceito": "\"Quantas cabem\" é divisão.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma tarifa de R$ 12,50 é cobrada em cada uma de 35 operações. O total cobrado é",
+   "alternativas": {
+    "A": "R$ 43,75.",
+    "B": "R$ 417,50.",
+    "C": "R$ 425,00.",
+    "D": "R$ 427,50.",
+    "E": "R$ 437,50."
+   },
+   "gabarito": "E",
+   "resolucao": "12,5 × 35 = 437,5.",
+   "topico": "Expressões numéricas",
+   "conceito": "Valor unitário × quantidade.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Com R$ 33,60 compram-se quantas unidades de um item que custa R$ 1,60 cada?",
+   "alternativas": {
+    "A": "2.",
+    "B": "19.",
+    "C": "20.",
+    "D": "21.",
+    "E": "22."
+   },
+   "gabarito": "D",
+   "resolucao": "33,6 ÷ 1,6 = 21 (multiplique os dois por 100 e divida).",
+   "topico": "Expressões numéricas",
+   "conceito": "\"Quantas cabem\" é divisão.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma tarifa de R$ 4,80 é cobrada em cada uma de 39 operações. O total cobrado é",
+   "alternativas": {
+    "A": "R$ 18,72.",
+    "B": "R$ 182,40.",
+    "C": "R$ 187,20.",
+    "D": "R$ 192,00.",
+    "E": "R$ 1.872,00."
+   },
+   "gabarito": "C",
+   "resolucao": "4,8 × 39 = 187,2.",
+   "topico": "Expressões numéricas",
+   "conceito": "Valor unitário × quantidade.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 3,75 + 4,05 é",
+   "alternativas": {
+    "A": "0,78.",
+    "B": "7,5.",
+    "C": "7,6.",
+    "D": "7,7.",
+    "E": "7,8."
+   },
+   "gabarito": "E",
+   "resolucao": "Alinhe vírgula com vírgula: 3,75 + 4,05 = 7,8.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Soma e subtração de decimais: vírgula embaixo de vírgula.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O produto 0,4 × 0,75 é",
+   "alternativas": {
+    "A": "0,3.",
+    "B": "0,4.",
+    "C": "1,3.",
+    "D": "3.",
+    "E": "30."
+   },
+   "gabarito": "A",
+   "resolucao": "Multiplique sem vírgula e conte as casas decimais dos fatores: 0,4 × 0,75 = 0,3.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Multiplicação de decimais: casas do resultado = soma das casas dos fatores.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Com R$ 76,25 compram-se quantas unidades de um item que custa R$ 1,25 cada?",
+   "alternativas": {
+    "A": "61.",
+    "B": "62.",
+    "C": "63.",
+    "D": "64.",
+    "E": "610."
+   },
+   "gabarito": "A",
+   "resolucao": "76,25 ÷ 1,25 = 61 (multiplique os dois por 100 e divida).",
+   "topico": "Expressões numéricas",
+   "conceito": "\"Quantas cabem\" é divisão.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 2,45 + 0,9 é",
+   "alternativas": {
+    "A": "0,335.",
+    "B": "3,25.",
+    "C": "3,35.",
+    "D": "4,35.",
+    "E": "33,5."
+   },
+   "gabarito": "C",
+   "resolucao": "Alinhe vírgula com vírgula: 2,45 + 0,9 = 3,35.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Soma e subtração de decimais: vírgula embaixo de vírgula.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 12,5 − 0,25 é",
+   "alternativas": {
+    "A": "12,15.",
+    "B": "12,25.",
+    "C": "12,35.",
+    "D": "13,25.",
+    "E": "122,5."
+   },
+   "gabarito": "B",
+   "resolucao": "Alinhe vírgula com vírgula (complete com zeros): 12,5 − 0,25 = 12,25.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Soma e subtração de decimais: vírgula embaixo de vírgula.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente 8,4 ÷ 0,2 é",
+   "alternativas": {
+    "A": "42.",
+    "B": "43.",
+    "C": "44.",
+    "D": "45.",
+    "E": "420."
+   },
+   "gabarito": "A",
+   "resolucao": "Tire a vírgula do divisor multiplicando os dois termos por 10 ou 100: 8,4 ÷ 0,2 = 42. Confira: 42 × 0,2 = 8,4.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Dividir por decimal: multiplique os dois por 10, 100… até o divisor ficar inteiro.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O produto 0,05 × 0,4 é",
+   "alternativas": {
+    "A": "0,002.",
+    "B": "0,02.",
+    "C": "0,2.",
+    "D": "1,02.",
+    "E": "2."
+   },
+   "gabarito": "B",
+   "resolucao": "Multiplique sem vírgula e conte as casas decimais dos fatores: 0,05 × 0,4 = 0,02.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Multiplicação de decimais: casas do resultado = soma das casas dos fatores.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 10,05 + 3,75 é",
+   "alternativas": {
+    "A": "13,7.",
+    "B": "13,8.",
+    "C": "13,9.",
+    "D": "14,8.",
+    "E": "138."
+   },
+   "gabarito": "B",
+   "resolucao": "Alinhe vírgula com vírgula: 10,05 + 3,75 = 13,8.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Soma e subtração de decimais: vírgula embaixo de vírgula.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma tarifa de R$ 12,50 é cobrada em cada uma de 9 operações. O total cobrado é",
+   "alternativas": {
+    "A": "R$ 11,25.",
+    "B": "R$ 92,50.",
+    "C": "R$ 100,00.",
+    "D": "R$ 102,50.",
+    "E": "R$ 112,50."
+   },
+   "gabarito": "E",
+   "resolucao": "12,5 × 9 = 112,5.",
+   "topico": "Expressões numéricas",
+   "conceito": "Valor unitário × quantidade.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente 42 ÷ 1,5 é",
+   "alternativas": {
+    "A": "2,8.",
+    "B": "27.",
+    "C": "28.",
+    "D": "29.",
+    "E": "280."
+   },
+   "gabarito": "C",
+   "resolucao": "Tire a vírgula do divisor multiplicando os dois termos por 10 ou 100: 42 ÷ 1,5 = 28. Confira: 28 × 1,5 = 42.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Dividir por decimal: multiplique os dois por 10, 100… até o divisor ficar inteiro.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O produto 1,25 × 40 é",
+   "alternativas": {
+    "A": "5.",
+    "B": "48.",
+    "C": "49.",
+    "D": "50.",
+    "E": "51."
+   },
+   "gabarito": "D",
+   "resolucao": "Multiplique sem vírgula e conte as casas decimais dos fatores: 1,25 × 40 = 50.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Multiplicação de decimais: casas do resultado = soma das casas dos fatores.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O resultado de 4,8 ÷ 8 é",
+   "alternativas": {
+    "A": "0,06.",
+    "B": "0,5.",
+    "C": "0,6.",
+    "D": "1,6.",
+    "E": "2,6."
+   },
+   "gabarito": "C",
+   "resolucao": "4,8 ÷ 8 = 0,6: a vírgula do quociente fica embaixo da vírgula do dividendo.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Decimal ÷ inteiro: a vírgula sobe para o quociente.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 3,75 + 6,35 é",
+   "alternativas": {
+    "A": "1,01.",
+    "B": "9,9.",
+    "C": "10.",
+    "D": "10,1.",
+    "E": "11,1."
+   },
+   "gabarito": "D",
+   "resolucao": "Alinhe vírgula com vírgula: 3,75 + 6,35 = 10,1.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Soma e subtração de decimais: vírgula embaixo de vírgula.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Com R$ 21,60 compram-se quantas unidades de um item que custa R$ 0,80 cada?",
+   "alternativas": {
+    "A": "27.",
+    "B": "28.",
+    "C": "29.",
+    "D": "30.",
+    "E": "270."
+   },
+   "gabarito": "A",
+   "resolucao": "21,6 ÷ 0,8 = 27 (multiplique os dois por 100 e divida).",
+   "topico": "Expressões numéricas",
+   "conceito": "\"Quantas cabem\" é divisão.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O produto 0,5 × 1,25 é",
+   "alternativas": {
+    "A": "0,0625.",
+    "B": "0,625.",
+    "C": "1,625.",
+    "D": "6,25.",
+    "E": "62,5."
+   },
+   "gabarito": "B",
+   "resolucao": "Multiplique sem vírgula e conte as casas decimais dos fatores: 0,5 × 1,25 = 0,625.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Multiplicação de decimais: casas do resultado = soma das casas dos fatores.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 7,3 + 0,25 é",
+   "alternativas": {
+    "A": "0,755.",
+    "B": "7,45.",
+    "C": "7,55.",
+    "D": "8,55.",
+    "E": "75,5."
+   },
+   "gabarito": "C",
+   "resolucao": "Alinhe vírgula com vírgula: 7,3 + 0,25 = 7,55.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Soma e subtração de decimais: vírgula embaixo de vírgula.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente 0,6 ÷ 0,2 é",
+   "alternativas": {
+    "A": "2.",
+    "B": "3.",
+    "C": "4.",
+    "D": "5.",
+    "E": "30."
+   },
+   "gabarito": "B",
+   "resolucao": "Tire a vírgula do divisor multiplicando os dois termos por 10 ou 100: 0,6 ÷ 0,2 = 3. Confira: 3 × 0,2 = 0,6.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Dividir por decimal: multiplique os dois por 10, 100… até o divisor ficar inteiro.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor de 12,5 + 6,35 é",
+   "alternativas": {
+    "A": "18,85.",
+    "B": "18,95.",
+    "C": "19,05.",
+    "D": "19,85.",
+    "E": "188,5."
+   },
+   "gabarito": "A",
+   "resolucao": "Alinhe vírgula com vírgula: 12,5 + 6,35 = 18,85.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Soma e subtração de decimais: vírgula embaixo de vírgula.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Com R$ 87,50 compram-se quantas unidades de um item que custa R$ 1,25 cada?",
+   "alternativas": {
+    "A": "7.",
+    "B": "67.",
+    "C": "68.",
+    "D": "69.",
+    "E": "70."
+   },
+   "gabarito": "E",
+   "resolucao": "87,5 ÷ 1,25 = 70 (multiplique os dois por 100 e divida).",
+   "topico": "Expressões numéricas",
+   "conceito": "\"Quantas cabem\" é divisão.",
+   "habilidade": "calcular"
+  }
+ ],
+ "fontes": [
+  "Questões geradas e conferidas em Python (fractions): cada resposta é calculada, as alternativas são únicas, as numéricas em ordem crescente"
+ ]
+}

@@ -1,0 +1,610 @@
+{
+ "tema": "Treino 1: multiplicação e divisão",
+ "materia": "Matemática e Raciocínio Lógico",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "O valor de (7 + 6) × 8 é",
+   "alternativas": {
+    "A": "96.",
+    "B": "104.",
+    "C": "105.",
+    "D": "106.",
+    "E": "112."
+   },
+   "gabarito": "B",
+   "resolucao": "Parênteses primeiro: 7 + 6 = 13; × 8 = 104.",
+   "topico": "Expressões numéricas",
+   "conceito": "Parênteses antes de tudo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um cliente pagou 13 parcelas de R$ 315,00. O total pago foi",
+   "alternativas": {
+    "A": "R$ 328,00.",
+    "B": "R$ 3.780,00.",
+    "C": "R$ 3.995,00.",
+    "D": "R$ 4.045,00.",
+    "E": "R$ 4.095,00."
+   },
+   "gabarito": "E",
+   "resolucao": "13 × 315 = 4.095.",
+   "topico": "Expressões numéricas",
+   "conceito": "Parcelas iguais: número de parcelas × valor de cada uma.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O resultado de 515 × 9 é",
+   "alternativas": {
+    "A": "4.545.",
+    "B": "4.635.",
+    "C": "4.645.",
+    "D": "4.725.",
+    "E": "4.735."
+   },
+   "gabarito": "B",
+   "resolucao": "515 × 9 = 4.635. Multiplique cada algarismo, inclusive o zero, e leve o \"vai um\" para a casa seguinte.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Zero no meio do número ocupa a casa: não pule.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "2.160 folhetos foram divididos igualmente entre 6 atendentes. Cada um recebeu",
+   "alternativas": {
+    "A": "345.",
+    "B": "350.",
+    "C": "355.",
+    "D": "360.",
+    "E": "370."
+   },
+   "gabarito": "D",
+   "resolucao": "Repartir igualmente é dividir: 2.160 ÷ 6 = 360.",
+   "topico": "Expressões numéricas",
+   "conceito": "Repartir em partes iguais: divisão.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O resultado de 105 × 8 é",
+   "alternativas": {
+    "A": "120.",
+    "B": "760.",
+    "C": "830.",
+    "D": "840.",
+    "E": "920."
+   },
+   "gabarito": "D",
+   "resolucao": "105 × 8 = 840. Multiplique cada algarismo, inclusive o zero, e leve o \"vai um\" para a casa seguinte.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Zero no meio do número ocupa a casa: não pule.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um caixa recebeu 28 maços com 51 cédulas cada um. O total de cédulas é",
+   "alternativas": {
+    "A": "79.",
+    "B": "1.377.",
+    "C": "1.428.",
+    "D": "1.456.",
+    "E": "1.528."
+   },
+   "gabarito": "C",
+   "resolucao": "Grupos iguais: 28 × 51 = 1.428 cédulas.",
+   "topico": "Expressões numéricas",
+   "conceito": "Grupos iguais: quantidade de grupos × tamanho de cada grupo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente da divisão 320 ÷ 16 é",
+   "alternativas": {
+    "A": "20.",
+    "B": "21.",
+    "C": "22.",
+    "D": "30.",
+    "E": "200."
+   },
+   "gabarito": "A",
+   "resolucao": "320 ÷ 16 = 20. Confira multiplicando: 20 × 16 = 320.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Divisão: confira multiplicando o quociente pelo divisor.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente da divisão 415 ÷ 5 é",
+   "alternativas": {
+    "A": "82.",
+    "B": "83.",
+    "C": "84.",
+    "D": "93.",
+    "E": "830."
+   },
+   "gabarito": "B",
+   "resolucao": "415 ÷ 5 = 83. Confira multiplicando: 83 × 5 = 415.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Divisão: confira multiplicando o quociente pelo divisor.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente da divisão 2.760 ÷ 24 é",
+   "alternativas": {
+    "A": "115.",
+    "B": "116.",
+    "C": "117.",
+    "D": "125.",
+    "E": "1.150."
+   },
+   "gabarito": "A",
+   "resolucao": "2.760 ÷ 24 = 115. Confira multiplicando: 115 × 24 = 2.760.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Divisão: confira multiplicando o quociente pelo divisor.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um auditório tem 48 fileiras com 45 cadeiras. O total de cadeiras é",
+   "alternativas": {
+    "A": "93.",
+    "B": "2.115.",
+    "C": "2.150.",
+    "D": "2.160.",
+    "E": "2.208."
+   },
+   "gabarito": "D",
+   "resolucao": "Grupos iguais: 48 × 45 = 2.160 cadeiras.",
+   "topico": "Expressões numéricas",
+   "conceito": "Grupos iguais: quantidade de grupos × tamanho de cada grupo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente da divisão 2.641 ÷ 19 é",
+   "alternativas": {
+    "A": "129.",
+    "B": "136.",
+    "C": "137.",
+    "D": "138.",
+    "E": "139."
+   },
+   "gabarito": "E",
+   "resolucao": "2.641 ÷ 19 = 139. Confira multiplicando: 139 × 19 = 2.641.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Divisão: confira multiplicando o quociente pelo divisor.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O resto da divisão de 726 por 5 é",
+   "alternativas": {
+    "A": "1.",
+    "B": "2.",
+    "C": "3.",
+    "D": "4.",
+    "E": "5."
+   },
+   "gabarito": "A",
+   "resolucao": "726 = 5 × 145 + 1. Resto 1, sempre menor que o divisor (5).",
+   "topico": "Inteiros e racionais",
+   "conceito": "Dividendo = divisor × quociente + resto (resto < divisor).",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O resultado de 105 × 7 é",
+   "alternativas": {
+    "A": "105.",
+    "B": "665.",
+    "C": "715.",
+    "D": "725.",
+    "E": "735."
+   },
+   "gabarito": "E",
+   "resolucao": "105 × 7 = 735. Multiplique cada algarismo, inclusive o zero, e leve o \"vai um\" para a casa seguinte.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Zero no meio do número ocupa a casa: não pule.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "1.240 folhetos foram divididos igualmente entre 4 atendentes. Cada um recebeu",
+   "alternativas": {
+    "A": "295.",
+    "B": "300.",
+    "C": "305.",
+    "D": "310.",
+    "E": "320."
+   },
+   "gabarito": "D",
+   "resolucao": "Repartir igualmente é dividir: 1.240 ÷ 4 = 310.",
+   "topico": "Expressões numéricas",
+   "conceito": "Repartir em partes iguais: divisão.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente da divisão 1.496 ÷ 8 é",
+   "alternativas": {
+    "A": "177.",
+    "B": "186.",
+    "C": "187.",
+    "D": "188.",
+    "E": "197."
+   },
+   "gabarito": "C",
+   "resolucao": "1.496 ÷ 8 = 187. Confira multiplicando: 187 × 8 = 1.496.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Divisão: confira multiplicando o quociente pelo divisor.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O resultado de 10.040 ÷ 10 é",
+   "alternativas": {
+    "A": "1.004.",
+    "B": "1.005.",
+    "C": "1.006.",
+    "D": "1.014.",
+    "E": "10.040."
+   },
+   "gabarito": "A",
+   "resolucao": "10.040 ÷ 10 = 1.004. Quando o divisor não \"cabe\", escreva 0 no quociente antes de descer o próximo algarismo. Conferindo: 1.004 × 10 = 10.040.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Zero no quociente: não cabe, escreve 0 e desce o próximo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente da divisão 224 ÷ 7 é",
+   "alternativas": {
+    "A": "31.",
+    "B": "32.",
+    "C": "33.",
+    "D": "42.",
+    "E": "320."
+   },
+   "gabarito": "B",
+   "resolucao": "224 ÷ 7 = 32. Confira multiplicando: 32 × 7 = 224.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Divisão: confira multiplicando o quociente pelo divisor.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O resto da divisão de 849 por 8 é",
+   "alternativas": {
+    "A": "1.",
+    "B": "2.",
+    "C": "3.",
+    "D": "7.",
+    "E": "8."
+   },
+   "gabarito": "A",
+   "resolucao": "849 = 8 × 106 + 1. Resto 1, sempre menor que o divisor (8).",
+   "topico": "Inteiros e racionais",
+   "conceito": "Dividendo = divisor × quociente + resto (resto < divisor).",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O produto 82 × 82 é igual a",
+   "alternativas": {
+    "A": "6.624.",
+    "B": "6.714.",
+    "C": "6.724.",
+    "D": "6.734.",
+    "E": "6.824."
+   },
+   "gabarito": "C",
+   "resolucao": "82 × 82 = 82 × 80 + 82 × 2 = 6.560 + 164 = 6.724.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Multiplicar por dois algarismos: dezenas e unidades separadas, depois some.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma agência tem 15 caixas de arquivo com 27 pastas em cada. O total de pastas é",
+   "alternativas": {
+    "A": "405.",
+    "B": "415.",
+    "C": "420.",
+    "D": "425.",
+    "E": "505."
+   },
+   "gabarito": "A",
+   "resolucao": "Grupos iguais: 15 × 27 = 405 pastas.",
+   "topico": "Expressões numéricas",
+   "conceito": "Grupos iguais: quantidade de grupos × tamanho de cada grupo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O resto da divisão de 267 por 8 é",
+   "alternativas": {
+    "A": "2.",
+    "B": "3.",
+    "C": "4.",
+    "D": "5.",
+    "E": "8."
+   },
+   "gabarito": "B",
+   "resolucao": "267 = 8 × 33 + 3. Resto 3, sempre menor que o divisor (8).",
+   "topico": "Inteiros e racionais",
+   "conceito": "Dividendo = divisor × quociente + resto (resto < divisor).",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente da divisão 1.292 ÷ 17 é",
+   "alternativas": {
+    "A": "66.",
+    "B": "74.",
+    "C": "75.",
+    "D": "76.",
+    "E": "77."
+   },
+   "gabarito": "D",
+   "resolucao": "1.292 ÷ 17 = 76. Confira multiplicando: 76 × 17 = 1.292.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Divisão: confira multiplicando o quociente pelo divisor.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O resultado de 2.036 ÷ 4 é",
+   "alternativas": {
+    "A": "59.",
+    "B": "508.",
+    "C": "509.",
+    "D": "510.",
+    "E": "519."
+   },
+   "gabarito": "C",
+   "resolucao": "2.036 ÷ 4 = 509. Quando o divisor não \"cabe\", escreva 0 no quociente antes de descer o próximo algarismo. Conferindo: 509 × 4 = 2.036.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Zero no quociente: não cabe, escreve 0 e desce o próximo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor da expressão 8 × 6 + 18 ÷ 3 é",
+   "alternativas": {
+    "A": "22.",
+    "B": "54.",
+    "C": "55.",
+    "D": "66.",
+    "E": "96."
+   },
+   "gabarito": "B",
+   "resolucao": "Primeiro multiplicação e divisão: 8 × 6 = 48 e 18 ÷ 3 = 6. Depois a soma: 48 + 6 = 54.",
+   "topico": "Expressões numéricas",
+   "conceito": "Ordem: multiplicação e divisão antes de soma e subtração.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O quociente da divisão 45 ÷ 3 é",
+   "alternativas": {
+    "A": "15.",
+    "B": "16.",
+    "C": "17.",
+    "D": "25.",
+    "E": "150."
+   },
+   "gabarito": "A",
+   "resolucao": "45 ÷ 3 = 15. Confira multiplicando: 15 × 3 = 45.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Divisão: confira multiplicando o quociente pelo divisor.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um cliente pagou 20 parcelas de R$ 70,00. O total pago foi",
+   "alternativas": {
+    "A": "R$ 1.330,00.",
+    "B": "R$ 1.400,00.",
+    "C": "R$ 1.450,00.",
+    "D": "R$ 1.470,00.",
+    "E": "R$ 1.500,00."
+   },
+   "gabarito": "B",
+   "resolucao": "20 × 70 = 1.400.",
+   "topico": "Expressões numéricas",
+   "conceito": "Parcelas iguais: número de parcelas × valor de cada uma.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um caixa recebeu 29 maços com 45 cédulas cada um. O total de cédulas é",
+   "alternativas": {
+    "A": "1.305.",
+    "B": "1.315.",
+    "C": "1.325.",
+    "D": "1.334.",
+    "E": "1.405."
+   },
+   "gabarito": "A",
+   "resolucao": "Grupos iguais: 29 × 45 = 1.305 cédulas.",
+   "topico": "Expressões numéricas",
+   "conceito": "Grupos iguais: quantidade de grupos × tamanho de cada grupo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O resultado de 12.048 ÷ 12 é",
+   "alternativas": {
+    "A": "1.003.",
+    "B": "1.004.",
+    "C": "1.005.",
+    "D": "1.014.",
+    "E": "10.040."
+   },
+   "gabarito": "B",
+   "resolucao": "12.048 ÷ 12 = 1.004. Quando o divisor não \"cabe\", escreva 0 no quociente antes de descer o próximo algarismo. Conferindo: 1.004 × 12 = 12.048.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Zero no quociente: não cabe, escreve 0 e desce o próximo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor da expressão 8 × 8 + 8 ÷ 2 é",
+   "alternativas": {
+    "A": "68.",
+    "B": "69.",
+    "C": "70.",
+    "D": "72.",
+    "E": "96."
+   },
+   "gabarito": "A",
+   "resolucao": "Primeiro multiplicação e divisão: 8 × 8 = 64 e 8 ÷ 2 = 4. Depois a soma: 64 + 4 = 68.",
+   "topico": "Expressões numéricas",
+   "conceito": "Ordem: multiplicação e divisão antes de soma e subtração.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O resto da divisão de 828 por 8 é",
+   "alternativas": {
+    "A": "1.",
+    "B": "2.",
+    "C": "3.",
+    "D": "4.",
+    "E": "5."
+   },
+   "gabarito": "D",
+   "resolucao": "828 = 8 × 103 + 4. Resto 4, sempre menor que o divisor (8).",
+   "topico": "Inteiros e racionais",
+   "conceito": "Dividendo = divisor × quociente + resto (resto < divisor).",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um cliente pagou 7 parcelas de R$ 185,00. O total pago foi",
+   "alternativas": {
+    "A": "R$ 1.295,00.",
+    "B": "R$ 1.345,00.",
+    "C": "R$ 1.395,00.",
+    "D": "R$ 1.445,00.",
+    "E": "R$ 1.480,00."
+   },
+   "gabarito": "A",
+   "resolucao": "7 × 185 = 1.295.",
+   "topico": "Expressões numéricas",
+   "conceito": "Parcelas iguais: número de parcelas × valor de cada uma.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor da expressão 4 × 6 + 48 ÷ 4 é",
+   "alternativas": {
+    "A": "18.",
+    "B": "33.",
+    "C": "34.",
+    "D": "35.",
+    "E": "36."
+   },
+   "gabarito": "E",
+   "resolucao": "Primeiro multiplicação e divisão: 4 × 6 = 24 e 48 ÷ 4 = 12. Depois a soma: 24 + 12 = 36.",
+   "topico": "Expressões numéricas",
+   "conceito": "Ordem: multiplicação e divisão antes de soma e subtração.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O resultado de 250 × 5 é",
+   "alternativas": {
+    "A": "125.",
+    "B": "1.200.",
+    "C": "1.240.",
+    "D": "1.250.",
+    "E": "1.300."
+   },
+   "gabarito": "D",
+   "resolucao": "250 × 5 = 1.250. Multiplique cada algarismo, inclusive o zero, e leve o \"vai um\" para a casa seguinte.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Zero no meio do número ocupa a casa: não pule.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O produto 69 × 97 é igual a",
+   "alternativas": {
+    "A": "6.593.",
+    "B": "6.683.",
+    "C": "6.693.",
+    "D": "6.703.",
+    "E": "6.793."
+   },
+   "gabarito": "C",
+   "resolucao": "69 × 97 = 69 × 90 + 69 × 7 = 6.210 + 483 = 6.693.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Multiplicar por dois algarismos: dezenas e unidades separadas, depois some.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O resultado de 4.466 ÷ 11 é",
+   "alternativas": {
+    "A": "46.",
+    "B": "404.",
+    "C": "405.",
+    "D": "406.",
+    "E": "407."
+   },
+   "gabarito": "D",
+   "resolucao": "4.466 ÷ 11 = 406. Quando o divisor não \"cabe\", escreva 0 no quociente antes de descer o próximo algarismo. Conferindo: 406 × 11 = 4.466.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Zero no quociente: não cabe, escreve 0 e desce o próximo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor da expressão 6 × 5 + 90 ÷ 9 é",
+   "alternativas": {
+    "A": "36.",
+    "B": "37.",
+    "C": "38.",
+    "D": "39.",
+    "E": "40."
+   },
+   "gabarito": "E",
+   "resolucao": "Primeiro multiplicação e divisão: 6 × 5 = 30 e 90 ÷ 9 = 10. Depois a soma: 30 + 10 = 40.",
+   "topico": "Expressões numéricas",
+   "conceito": "Ordem: multiplicação e divisão antes de soma e subtração.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O valor da expressão 8 × 7 + 36 ÷ 6 é",
+   "alternativas": {
+    "A": "60.",
+    "B": "61.",
+    "C": "62.",
+    "D": "63.",
+    "E": "67."
+   },
+   "gabarito": "C",
+   "resolucao": "Primeiro multiplicação e divisão: 8 × 7 = 56 e 36 ÷ 6 = 6. Depois a soma: 56 + 6 = 62.",
+   "topico": "Expressões numéricas",
+   "conceito": "Ordem: multiplicação e divisão antes de soma e subtração.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O resultado de 3.054 ÷ 6 é",
+   "alternativas": {
+    "A": "59.",
+    "B": "506.",
+    "C": "507.",
+    "D": "508.",
+    "E": "509."
+   },
+   "gabarito": "E",
+   "resolucao": "3.054 ÷ 6 = 509. Quando o divisor não \"cabe\", escreva 0 no quociente antes de descer o próximo algarismo. Conferindo: 509 × 6 = 3.054.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Zero no quociente: não cabe, escreve 0 e desce o próximo.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "315 folhetos foram divididos igualmente entre 7 atendentes. Cada um recebeu",
+   "alternativas": {
+    "A": "35.",
+    "B": "40.",
+    "C": "45.",
+    "D": "55.",
+    "E": "308."
+   },
+   "gabarito": "C",
+   "resolucao": "Repartir igualmente é dividir: 315 ÷ 7 = 45.",
+   "topico": "Expressões numéricas",
+   "conceito": "Repartir em partes iguais: divisão.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O resultado de 1.260 ÷ 12 é",
+   "alternativas": {
+    "A": "15.",
+    "B": "104.",
+    "C": "105.",
+    "D": "106.",
+    "E": "115."
+   },
+   "gabarito": "C",
+   "resolucao": "1.260 ÷ 12 = 105. Quando o divisor não \"cabe\", escreva 0 no quociente antes de descer o próximo algarismo. Conferindo: 105 × 12 = 1.260.",
+   "topico": "Inteiros e racionais",
+   "conceito": "Zero no quociente: não cabe, escreve 0 e desce o próximo.",
+   "habilidade": "calcular"
+  }
+ ],
+ "fontes": [
+  "Questões geradas e conferidas em Python (fractions): cada resposta é calculada, as alternativas são únicas, as numéricas em ordem crescente"
+ ]
+}
