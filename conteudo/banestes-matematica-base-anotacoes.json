@@ -12,7 +12,7 @@
     "Números",
     "Frações"
    ],
-   "texto": "## Frações sem medo\n\n**Somar ou subtrair:** igualar os denominadores (MMC).\n$$\\frac{3}{4} + \\frac{1}{6} = \\frac{9}{12} + \\frac{2}{12} = \\frac{11}{12}$$\n\n**Multiplicar:** em cima com em cima, embaixo com embaixo (e simplificar).\n$$\\frac{2}{3} \\cdot \\frac{9}{10} = \\frac{18}{30} = \\frac{3}{5}$$\n\n**Dividir:** mantém a primeira e multiplica pelo **inverso** da segunda.\n$$\\frac{3}{4} \\div \\frac{3}{8} = \\frac{3}{4} \\cdot \\frac{8}{3} = 2$$\n\n**\"De\" é vezes:** $\\frac{2}{5}$ de $\\frac{1}{4}$ $= \\frac{2}{5} \\cdot \\frac{1}{4} = \\frac{1}{10}$. Na probabilidade, \"e\" (um e depois o outro) também é vezes.\n\n> **PEGADINHA** Somar frações somando em cima e embaixo: $\\frac{1}{2} + \\frac{1}{3}$ **não** é $\\frac{2}{5}$. É $\\frac{5}{6}$.\n\n**Fração, decimal e porcentagem são a mesma coisa:** $\\frac{3}{8} = 0{,}375 = 37{,}5\\%$."
+   "texto": "## Frações sem medo\n\n**Somar ou subtrair:** igualar os denominadores (MMC).\n$$\\frac{3}{4} + \\frac{1}{6} = \\frac{9}{12} + \\frac{2}{12} = \\frac{11}{12}$$\n\n**Multiplicar:** em cima com em cima, embaixo com embaixo (e simplificar).\n$$\\frac{2}{3} \\cdot \\frac{9}{10} = \\frac{18}{30} = \\frac{3}{5}$$\n\n**Dividir:** mantém a primeira e multiplica pelo **inverso** da segunda.\n$$\\frac{3}{4} \\div \\frac{3}{8} = \\frac{3}{4} \\cdot \\frac{8}{3} = 2$$\n\n**\"De\" é vezes:** $\\frac{2}{5}$ de $\\frac{1}{4}$ $= \\frac{2}{5} \\cdot \\frac{1}{4} = \\frac{1}{10}$.\n\nNa probabilidade, \"um **e** depois o outro\" também é vezes, mas a **segunda** chance já considera que a primeira aconteceu: sem reposição, duas azuis de uma urna com 5 azuis em 10 é $\\frac{5}{10} \\cdot \\frac{4}{9}$ (não $\\frac{5}{10} \\cdot \\frac{5}{10}$).\n\n> **PEGADINHA** Somar frações somando em cima e embaixo: $\\frac{1}{2} + \\frac{1}{3}$ **não** é $\\frac{2}{5}$. É $\\frac{5}{6}$.\n\n**Fração, decimal e porcentagem são a mesma coisa:** $\\frac{3}{8} = 0{,}375 = 37{,}5\\%$."
   },
   {
    "lugar": [
@@ -26,7 +26,7 @@
     "Proporcionalidade",
     "Porcentagem, acréscimos e descontos"
    ],
-   "texto": "## Porcentagem pelo fator (o atalho da FCC)\n\n- $p\\%$ de um valor: multiplique por $\\frac{p}{100}$. 15% de 240 = 0,15 × 240 = **36**.\n- **Aumento** de p%: multiplique por $(1 + p)$. +10% → ×1,10.\n- **Desconto** de p%: multiplique por $(1 - p)$. −15% → ×0,85.\n- **Quanto subiu?** $\\frac{\\text{novo} - \\text{antigo}}{\\text{antigo}}$: de 80 para 92 → $\\frac{12}{80} = 15\\%$.\n\n**Sucessivos multiplicam (não somam):**\n- +10% e depois −10% → $1{,}10 \\cdot 0{,}90 = 0{,}99$ → **perdeu 1%**;\n- dois aumentos de 20% → $1{,}2 \\cdot 1{,}2 = 1{,}44$ → **+44%** (não 40%).\n\n> **PEGADINHA** Aumento e desconto do mesmo percentual **não** voltam ao valor original."
+   "texto": "## Porcentagem pelo fator (o atalho da FCC)\n\n- $p\\%$ de um valor: multiplique por $\\frac{p}{100}$. 15% de 240 = 0,15 × 240 = **36**.\n- **Aumento** de p%: multiplique por $1 + \\frac{p}{100}$. +10% → ×1,10.\n- **Desconto** de p%: multiplique por $1 - \\frac{p}{100}$. −15% → ×0,85.\n- **Quanto subiu?** $\\frac{\\text{novo} - \\text{antigo}}{\\text{antigo}}$: de 80 para 92 → $\\frac{12}{80} = 15\\%$.\n\n**Sucessivos multiplicam (não somam):**\n- +10% e depois −10% → $1{,}10 \\cdot 0{,}90 = 0{,}99$ → **perdeu 1%**;\n- dois aumentos de 20% → $1{,}2 \\cdot 1{,}2 = 1{,}44$ → **+44%** (não 40%).\n\n> **PEGADINHA** Aumento e desconto do mesmo percentual **não** voltam ao valor original."
   },
   {
    "lugar": [

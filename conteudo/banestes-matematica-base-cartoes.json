@@ -15,7 +15,7 @@
     "Frações"
    ],
    "frente": "Multiplicação de frações",
-   "verso": "Em cima com em cima, embaixo com embaixo: $\\frac{2}{3} \\cdot \\frac{9}{10} = \\frac{18}{30} = \\frac{3}{5}$. \"De\" e \"e\" (na probabilidade) são vezes."
+   "verso": "Em cima com em cima, embaixo com embaixo: $\\frac{2}{3} \\cdot \\frac{9}{10} = \\frac{18}{30} = \\frac{3}{5}$. \"De\" é vezes. Na probabilidade, \"e\" também é vezes, com a segunda chance já contando a primeira (sem reposição: $\\frac{5}{10} \\cdot \\frac{4}{9}$)."
   },
   {
    "lugar": [

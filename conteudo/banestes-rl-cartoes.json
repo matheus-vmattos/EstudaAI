@@ -63,7 +63,10 @@
     "Porcentagem, acréscimos e descontos"
    ],
    "frente": "Aumento e desconto pelo fator",
-   "verso": "Aumento de p%: multiplique por $(1 + p)$. Desconto de p%: por $(1 - p)$. Ex.: +20% → ×1,20; −15% → ×0,85."
+   "verso": "Aumento de p%: multiplique por $1 + \\frac{p}{100}$. Desconto de p%: por $1 - \\frac{p}{100}$. Ex.: +20% → ×1,20; −15% → ×0,85.",
+   "antes": [
+    "Aumento de p%: multiplique por $(1 + p)$. Desconto de p%: por $(1 - p)$. Ex.: +20% → ×1,20; −15% → ×0,85."
+   ]
   },
   {
    "lugar": [
@@ -121,5 +124,8 @@
    "frente": "Média ponderada",
    "verso": "$$\\bar{x} = \\dfrac{\\sum x_i\\, p_i}{\\sum p_i}$$ Ex.: notas 6 (peso 1) e 9 (peso 2) → $\\dfrac{6 + 18}{3} = 8$."
   }
+ ],
+ "fontes": [
+  "Contas conferidas por cálculo; fator de aumento/desconto 1 ± p/100 (errata de 21/11/2026)"
  ]
 }

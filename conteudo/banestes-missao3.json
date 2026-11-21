@@ -32,9 +32,9 @@
    "id": "cartoes-rl",
    "tipo": "cartoes",
    "titulo": "Revisar os cartões de Raciocínio Lógico",
-   "detalhe": "15 cartões, nunca revisados",
+   "detalhe": "15 cartões, nunca revisados · um corrigido (porcentagem)",
    "pontos": 60,
-   "item": "banestes-rl-cartoes-v1"
+   "item": "banestes-rl-cartoes-v2"
   },
   {
    "id": "explicar-pct",

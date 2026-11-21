@@ -211,6 +211,14 @@
       "data": "2026-11-21"
     },
     {
+      "id": "banestes-rl-cartoes-v2",
+      "tipo": "cartoes",
+      "titulo": "Flashcards: Matemática e Raciocínio Lógico (correção)",
+      "descricao": "Os mesmos 15 cartões, com o de aumento e desconto corrigido: o fator é 1 + p/100 (não 1 + p). Se você não editou o cartão, ele é corrigido; nada duplica.",
+      "arquivo": "banestes-rl-cartoes.json",
+      "data": "2026-11-21"
+    },
+    {
       "id": "banestes-missao3-v1",
       "tipo": "missao",
       "titulo": "Missão da semana: 21 a 28/11",
