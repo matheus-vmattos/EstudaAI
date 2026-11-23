@@ -56,20 +56,28 @@ export function pedidosDeExplicar(s: Simulado, r: RaioX, max = 3): PedidoDeExpli
   ]
   const saida: PedidoDeExplicar[] = []
   const topicos = new Set<string>()
-  for (const { faixa, motivo } of ordem)
-    for (const x of r.porFaixa[faixa]) {
-      if (saida.length >= max) return saida
-      if (topicos.has(x.topico)) continue
-      topicos.add(x.topico)
-      const q = s.questoes[x.indice]
-      saida.push({
-        indice: x.indice,
-        topico: x.topico,
-        motivo,
-        pergunta:
-          q.explicar ??
-          `Explique com suas palavras esta questão de ${x.topico}: o que ela cobra e como se chega na resposta certa.`
-      })
-    }
+  const pedir = (x: { indice: number; topico: string }, motivo: string): void => {
+    const q = s.questoes[x.indice]
+    topicos.add(x.topico)
+    saida.push({
+      indice: x.indice,
+      topico: x.topico,
+      motivo,
+      pergunta:
+        q.explicar ??
+        `Explique com suas palavras esta questão de ${x.topico}: o que ela cobra e como se chega na resposta certa.`
+    })
+  }
+  // 1ª volta: um por tópico; 2ª (treino de um tópico só): outras questões que
+  // trazem a própria pergunta, para não pedir duas vezes a mesma coisa
+  for (const volta of [1, 2])
+    for (const { faixa, motivo } of ordem)
+      for (const x of r.porFaixa[faixa]) {
+        if (saida.length >= max) return saida
+        if (saida.some((p) => p.indice === x.indice)) continue
+        if (volta === 1 && topicos.has(x.topico)) continue
+        if (volta === 2 && !s.questoes[x.indice].explicar) continue
+        pedir(x, motivo)
+      }
   return saida
 }

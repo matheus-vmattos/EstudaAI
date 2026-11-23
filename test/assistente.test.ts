@@ -642,6 +642,22 @@ describe('Explique depois dos exercícios e retorno do Claude', () => {
     expect(p[1].pergunta).toBe('Por que mais operários fazem a obra em menos dias?')
     expect(p[0].pergunta).toContain('MDC')
   })
+  it('treino de um tópico só: completa com outras questões que trazem a própria pergunta', async () => {
+    const { pedidosDeExplicar } = await import('../src/shared/explicar')
+    const s = sim([
+      ['MDC', false, 60],
+      ['MDC', false, 70],
+      ['MDC', false, 80],
+      ['MDC', true, 30]
+    ])
+    // sem pergunta própria: um só pedido (não repete a genérica do tópico)
+    expect(pedidosDeExplicar(s, raioX(s))).toHaveLength(1)
+    for (const i of [0, 1, 2]) s.questoes[i].explicar = `Pergunta da questão ${i}`
+    const p = pedidosDeExplicar(s, raioX(s))
+    expect(p.map((x) => x.indice).sort()).toEqual([0, 1, 2])
+    expect(new Set(p.map((x) => x.pergunta)).size).toBe(3)
+  })
+
   it('o retorno vale só para o texto avaliado; reescreveu, volta a esperar', async () => {
     const { mesclarRetornos, situacaoDe, placarDeExplicacoes } =
       await import('../src/shared/explicar')

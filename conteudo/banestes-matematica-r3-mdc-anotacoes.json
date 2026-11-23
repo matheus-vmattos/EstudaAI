@@ -1,0 +1,22 @@
+{
+ "materia": "Matemática e Raciocínio Lógico",
+ "notas": [
+  {
+   "lugar": [
+    "Proporcionalidade",
+    "Regra de três"
+   ],
+   "texto": "## Regra de três: direta ou inversa? Decida antes de calcular\n\n**1. A pergunta que resolve tudo:** se uma grandeza **sobe**, a outra **sobe** (direta) ou **desce** (inversa)?\n\n**2. O que fica FIXO decide.**\n- Tempo fixo e pergunta a produção → **direta** (mais máquinas, mais caixas na mesma hora).\n- Serviço fixo e pergunta o tempo → **inversa** (mais máquinas, o mesmo lote acaba antes).\n\n**3. Direta:** ache o valor de 1 e multiplique. 6 atendentes atendem 90 clientes por hora → 1 atende 15 → 10 atendem **150**.\n\n**4. Inversa: o produto fica constante** (é o \"trabalho total\").\n- 8 operários fazem o muro em 9 dias → trabalho total = 8 × 9 = **72 operário-dias**.\n- 12 operários: 72 ÷ 12 = **6 dias**.\n- 6 operários: 72 ÷ 6 = **12 dias**.\n\n**Velocidade e tempo** (distância fixa): 60 km/h em 3 h → distância 180 km → a 90 km/h: 180 ÷ 90 = **2 h**.\n\n**5. Confira o sentido:** mais operários tem que dar MENOS dias. Se deu mais, você fez a direta.\n\n> **PEGADINHA** \"Chegaram mais 3 funcionários\": some antes (12 + 3 = 15), depois faça a conta com 15, não com 3.\n\n> **PEGADINHA** A direta no automático: 8 operários em 9 dias → 12 operários em 9 × 12 ÷ 8 = 13,5 dias. Mais gente levando mais tempo é absurdo: essa é a alternativa-armadilha da FCC."
+  },
+  {
+   "lugar": [
+    "Números",
+    "Múltiplos e divisores"
+   ],
+   "texto": "## MDC e MMC: quando usar cada um\n\n- **MDC**: \"maior possível\", \"partes iguais\", \"sem sobra\". O resultado é **menor ou igual** aos números.\n- **MMC**: \"de novo juntos\", \"coincidir\", \"menor quantidade que dá para dividir\". O resultado é **maior ou igual** aos números.\n\n**Fatorar resolve os dois.** 72 = 2³ × 3² e 90 = 2 × 3² × 5.\n- **MDC:** só os primos **comuns**, com o **menor** expoente: 2 × 3² = **18**.\n- **MMC:** **todos** os primos, com o **maior** expoente: 2³ × 3² × 5 = **360**.\n\n**MDC na prática:** fitas de 72 cm e 90 cm em pedaços iguais, os maiores possíveis, sem sobra → pedaços de **18 cm**; total de pedaços: 72 ÷ 18 + 90 ÷ 18 = 4 + 5 = **9**.\n\n**Kits:** 24 canetas e 40 blocos, o maior número de kits iguais → MDC(24, 40) = **8 kits**, cada um com 3 canetas e 5 blocos.\n\n**MMC na prática:** ônibus a cada 12 e a cada 18 minutos saem juntos de novo depois de MMC(12, 18) = **36 minutos**.\n\n**Atalho:** para dois números, MDC × MMC = a × b. Então MMC = a × b ÷ MDC: 12 × 18 ÷ 6 = 216 ÷ 6 = **36**.\n\n> **PEGADINHA** Multiplicar os números (12 × 18 = 216) dá um múltiplo comum, mas **não o menor**. Só dá o MMC quando os números não têm fator comum (ex.: 4 e 9 → 36).\n\n> **PEGADINHA** Na questão de pedaços, a FCC pergunta às vezes o **tamanho** (o MDC) e às vezes **quantos pedaços** (as divisões somadas). Leia a pergunta duas vezes."
+  }
+ ],
+ "fontes": [
+  "Contas conferidas em Python (fractions, math.gcd); regras de MDC, MMC e proporcionalidade são aritmética elementar verificada por cálculo"
+ ]
+}

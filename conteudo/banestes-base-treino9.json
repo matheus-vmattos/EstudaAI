@@ -1,0 +1,890 @@
+{
+ "tema": "Treino 9: MDC e MMC",
+ "materia": "Matemática e Raciocínio Lógico",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "Entre os números abaixo, o único que é múltiplo de 4 e também de 6 é",
+   "alternativas": {
+    "A": "32.",
+    "B": "36.",
+    "C": "52.",
+    "D": "54.",
+    "E": "56."
+   },
+   "gabarito": "B",
+   "resolucao": "Múltiplo comum de 4 e 6 é múltiplo do MMC(4, 6) = 12.\n36 = 12 × 3: divide por 4 (9) e por 6 (6) sem resto.\nTeste rápido em cada alternativa: divide pelos dois sem sobra?",
+   "comentarios": {
+    "A": "32 é múltiplo de 4 (32 ÷ 4 = 8), mas não de 6 (32 ÷ 6 deixa resto 2).",
+    "E": "56 é múltiplo de 4 (56 ÷ 4 = 14), mas não de 6 (56 ÷ 6 deixa resto 2).",
+    "D": "54 é múltiplo de 6 (54 ÷ 6 = 9), mas não de 4 (54 ÷ 4 deixa resto 2).",
+    "C": "52 é múltiplo de 4 (52 ÷ 4 = 13), mas não de 6 (52 ÷ 6 deixa resto 4)."
+   },
+   "topico": "MMC",
+   "conceito": "MMC (mínimo múltiplo comum): o MENOR número que é múltiplo dos dois. Pela fatoração: todos os primos, com o MAIOR expoente. Multiplicar a × b só dá o MMC quando eles não têm fator comum.",
+   "explicar": "Explique por que todo múltiplo comum de 4 e 6 é múltiplo de 12.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Entre os números abaixo, o único que é múltiplo de 15 e também de 20 é",
+   "alternativas": {
+    "A": "15.",
+    "B": "45.",
+    "C": "120.",
+    "D": "330.",
+    "E": "340."
+   },
+   "gabarito": "C",
+   "resolucao": "Múltiplo comum de 15 e 20 é múltiplo do MMC(15, 20) = 60.\n120 = 60 × 2: divide por 15 (8) e por 20 (6) sem resto.\nTeste rápido em cada alternativa: divide pelos dois sem sobra?",
+   "comentarios": {
+    "B": "45 é múltiplo de 15 (45 ÷ 15 = 3), mas não de 20 (45 ÷ 20 deixa resto 5).",
+    "A": "15 é múltiplo de 15 (15 ÷ 15 = 1), mas não de 20 (15 ÷ 20 deixa resto 15).",
+    "D": "330 é múltiplo de 15 (330 ÷ 15 = 22), mas não de 20 (330 ÷ 20 deixa resto 10).",
+    "E": "340 é múltiplo de 20 (340 ÷ 20 = 17), mas não de 15 (340 ÷ 15 deixa resto 10)."
+   },
+   "topico": "MMC",
+   "conceito": "MMC (mínimo múltiplo comum): o MENOR número que é múltiplo dos dois. Pela fatoração: todos os primos, com o MAIOR expoente. Multiplicar a × b só dá o MMC quando eles não têm fator comum.",
+   "explicar": "Explique por que todo múltiplo comum de 15 e 20 é múltiplo de 60.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Entre os números abaixo, o único que é múltiplo de 10 e também de 15 é",
+   "alternativas": {
+    "A": "30.",
+    "B": "50.",
+    "C": "105.",
+    "D": "130.",
+    "E": "135."
+   },
+   "gabarito": "A",
+   "resolucao": "Múltiplo comum de 10 e 15 é múltiplo do MMC(10, 15) = 30.\n30 = 30 × 1: divide por 10 (3) e por 15 (2) sem resto.\nTeste rápido em cada alternativa: divide pelos dois sem sobra?",
+   "comentarios": {
+    "D": "130 é múltiplo de 10 (130 ÷ 10 = 13), mas não de 15 (130 ÷ 15 deixa resto 10).",
+    "E": "135 é múltiplo de 15 (135 ÷ 15 = 9), mas não de 10 (135 ÷ 10 deixa resto 5).",
+    "B": "50 é múltiplo de 10 (50 ÷ 10 = 5), mas não de 15 (50 ÷ 15 deixa resto 5).",
+    "C": "105 é múltiplo de 15 (105 ÷ 15 = 7), mas não de 10 (105 ÷ 10 deixa resto 5)."
+   },
+   "topico": "MMC",
+   "conceito": "MMC (mínimo múltiplo comum): o MENOR número que é múltiplo dos dois. Pela fatoração: todos os primos, com o MAIOR expoente. Multiplicar a × b só dá o MMC quando eles não têm fator comum.",
+   "explicar": "Explique por que todo múltiplo comum de 10 e 15 é múltiplo de 30.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Entre os números abaixo, o único que é múltiplo de 8 e também de 12 é",
+   "alternativas": {
+    "A": "64.",
+    "B": "96.",
+    "C": "108.",
+    "D": "128.",
+    "E": "176."
+   },
+   "gabarito": "B",
+   "resolucao": "Múltiplo comum de 8 e 12 é múltiplo do MMC(8, 12) = 24.\n96 = 24 × 4: divide por 8 (12) e por 12 (8) sem resto.\nTeste rápido em cada alternativa: divide pelos dois sem sobra?",
+   "comentarios": {
+    "A": "64 é múltiplo de 8 (64 ÷ 8 = 8), mas não de 12 (64 ÷ 12 deixa resto 4).",
+    "E": "176 é múltiplo de 8 (176 ÷ 8 = 22), mas não de 12 (176 ÷ 12 deixa resto 8).",
+    "C": "108 é múltiplo de 12 (108 ÷ 12 = 9), mas não de 8 (108 ÷ 8 deixa resto 4).",
+    "D": "128 é múltiplo de 8 (128 ÷ 8 = 16), mas não de 12 (128 ÷ 12 deixa resto 8)."
+   },
+   "topico": "MMC",
+   "conceito": "MMC (mínimo múltiplo comum): o MENOR número que é múltiplo dos dois. Pela fatoração: todos os primos, com o MAIOR expoente. Multiplicar a × b só dá o MMC quando eles não têm fator comum.",
+   "explicar": "Explique por que todo múltiplo comum de 8 e 12 é múltiplo de 24.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Entre os números abaixo, o único que divide 24 e também 18, sem deixar resto, é",
+   "alternativas": {
+    "A": "2.",
+    "B": "3.",
+    "C": "8.",
+    "D": "12.",
+    "E": "15."
+   },
+   "gabarito": "B",
+   "resolucao": "Todo divisor comum de 24 e 18 divide o MDC(24, 18) = 6.\nDivisores de 6 (sem o 1): 2, 3, 6. Nas alternativas, só 3 está entre eles.\nConfere: 24 ÷ 3 = 8 e 18 ÷ 3 = 6. ✔",
+   "comentarios": {
+    "A": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 3.",
+    "C": "8 divide 24, mas não 18 (18 ÷ 8 deixa resto 2).",
+    "E": "15 não divide nenhum dos dois.",
+    "D": "12 divide 24, mas não 18 (18 ÷ 12 deixa resto 6)."
+   },
+   "topico": "MDC",
+   "conceito": "MDC (máximo divisor comum): o MAIOR número que divide os dois sem sobra. Pela fatoração: os primos que aparecem nos dois, com o MENOR expoente.",
+   "explicar": "Explique por que todo divisor comum de 24 e 18 também divide 6.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Entre os números abaixo, o único que divide 126 e também 90, sem deixar resto, é",
+   "alternativas": {
+    "A": "10.",
+    "B": "11.",
+    "C": "18.",
+    "D": "63.",
+    "E": "95."
+   },
+   "gabarito": "C",
+   "resolucao": "Todo divisor comum de 126 e 90 divide o MDC(126, 90) = 18.\nDivisores de 18 (sem o 1): 2, 3, 6, 9, 18. Nas alternativas, só 18 está entre eles.\nConfere: 126 ÷ 18 = 7 e 90 ÷ 18 = 5. ✔",
+   "comentarios": {
+    "B": "11 não divide nenhum dos dois.",
+    "A": "10 divide 90, mas não 126 (126 ÷ 10 deixa resto 6).",
+    "D": "63 divide 126, mas não 90 (90 ÷ 63 deixa resto 27).",
+    "E": "95 não divide nenhum dos dois."
+   },
+   "topico": "MDC",
+   "conceito": "MDC (máximo divisor comum): o MAIOR número que divide os dois sem sobra. Pela fatoração: os primos que aparecem nos dois, com o MENOR expoente.",
+   "explicar": "Explique por que todo divisor comum de 126 e 90 também divide 18.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "O máximo divisor comum (MDC) de 54 e 126 é",
+   "alternativas": {
+    "A": "2.",
+    "B": "9.",
+    "C": "18.",
+    "D": "72.",
+    "E": "378."
+   },
+   "gabarito": "C",
+   "resolucao": "Fatore: 54 = 2 × 3³; 126 = 2 × 3² × 7.\nMDC = primos comuns com o menor expoente = 2 × 3² = 18.\nConfere: 54 ÷ 18 = 3 e 126 ÷ 18 = 7, e 3 e 7 não têm mais divisor comum. ✔",
+   "comentarios": {
+    "A": "2 divide os dois, mas não é o MAIOR divisor comum.",
+    "B": "Divide os dois, mas não é o maior.",
+    "E": "378 é o MMC (o menor MÚLTIPLO comum), não o maior DIVISOR.",
+    "D": "72: a diferença dos números não é o MDC."
+   },
+   "topico": "MDC",
+   "conceito": "MDC (máximo divisor comum): o MAIOR número que divide os dois sem sobra. Pela fatoração: os primos que aparecem nos dois, com o MENOR expoente.",
+   "explicar": "Explique como achar o MDC de 54 e 126 e por que ele é 18.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O máximo divisor comum (MDC) de 140 e 40 é",
+   "alternativas": {
+    "A": "2.",
+    "B": "10.",
+    "C": "20.",
+    "D": "100.",
+    "E": "280."
+   },
+   "gabarito": "C",
+   "resolucao": "Fatore: 140 = 2² × 5 × 7; 40 = 2³ × 5.\nMDC = primos comuns com o menor expoente = 2² × 5 = 20.\nConfere: 140 ÷ 20 = 7 e 40 ÷ 20 = 2, e 7 e 2 não têm mais divisor comum. ✔",
+   "comentarios": {
+    "A": "2 divide os dois, mas não é o MAIOR divisor comum.",
+    "B": "Divide os dois, mas não é o maior.",
+    "E": "280 é o MMC (o menor MÚLTIPLO comum), não o maior DIVISOR.",
+    "D": "100: a diferença dos números não é o MDC."
+   },
+   "topico": "MDC",
+   "conceito": "MDC (máximo divisor comum): o MAIOR número que divide os dois sem sobra. Pela fatoração: os primos que aparecem nos dois, com o MENOR expoente.",
+   "explicar": "Explique como achar o MDC de 140 e 40 e por que ele é 20.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O máximo divisor comum (MDC) de 96 e 168 é",
+   "alternativas": {
+    "A": "24.",
+    "B": "26.",
+    "C": "72.",
+    "D": "96.",
+    "E": "672."
+   },
+   "gabarito": "A",
+   "resolucao": "Fatore: 96 = 2⁵ × 3; 168 = 2³ × 3 × 7.\nMDC = primos comuns com o menor expoente = 2³ × 3 = 24.\nConfere: 96 ÷ 24 = 4 e 168 ÷ 24 = 7, e 4 e 7 não têm mais divisor comum. ✔",
+   "comentarios": {
+    "E": "672 é o MMC (o menor MÚLTIPLO comum), não o maior DIVISOR.",
+    "C": "72: a diferença dos números não é o MDC.",
+    "D": "96 não divide 168.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 24."
+   },
+   "topico": "MDC",
+   "conceito": "MDC (máximo divisor comum): o MAIOR número que divide os dois sem sobra. Pela fatoração: os primos que aparecem nos dois, com o MENOR expoente.",
+   "explicar": "Explique como achar o MDC de 96 e 168 e por que ele é 24.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O máximo divisor comum (MDC) de 70 e 28 é",
+   "alternativas": {
+    "A": "2.",
+    "B": "7.",
+    "C": "12.",
+    "D": "14.",
+    "E": "140."
+   },
+   "gabarito": "D",
+   "resolucao": "Fatore: 70 = 2 × 5 × 7; 28 = 2² × 7.\nMDC = primos comuns com o menor expoente = 2 × 7 = 14.\nConfere: 70 ÷ 14 = 5 e 28 ÷ 14 = 2, e 5 e 2 não têm mais divisor comum. ✔",
+   "comentarios": {
+    "A": "2 divide os dois, mas não é o MAIOR divisor comum.",
+    "B": "Divide os dois, mas não é o maior.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 14.",
+    "E": "140 é o MMC (o menor MÚLTIPLO comum), não o maior DIVISOR."
+   },
+   "topico": "MDC",
+   "conceito": "MDC (máximo divisor comum): o MAIOR número que divide os dois sem sobra. Pela fatoração: os primos que aparecem nos dois, com o MENOR expoente.",
+   "explicar": "Explique como achar o MDC de 70 e 28 e por que ele é 14.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O mínimo múltiplo comum (MMC) de 10 e 15 é",
+   "alternativas": {
+    "A": "5.",
+    "B": "30.",
+    "C": "32.",
+    "D": "60.",
+    "E": "150."
+   },
+   "gabarito": "B",
+   "resolucao": "Fatore: 10 = 2 × 5; 15 = 3 × 5.\nMMC = todos os primos com o maior expoente = 2 × 3 × 5 = 30.\nConfere: 30 ÷ 10 = 3 e 30 ÷ 15 = 2 (exatas). ✔\nAtalho: MMC = 10 × 15 ÷ MDC = 150 ÷ 5 = 30.",
+   "comentarios": {
+    "A": "5 é o MDC (o maior divisor comum), não o MMC.",
+    "E": "10 × 15 = 150 é múltiplo comum, mas não o MENOR: como 10 e 15 têm o fator 5 em comum, o MMC é 150 ÷ 5 = 30.",
+    "D": "60 é múltiplo comum, mas não o menor.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 30."
+   },
+   "topico": "MMC",
+   "conceito": "MMC (mínimo múltiplo comum): o MENOR número que é múltiplo dos dois. Pela fatoração: todos os primos, com o MAIOR expoente. Multiplicar a × b só dá o MMC quando eles não têm fator comum.",
+   "explicar": "Explique por que o MMC de 10 e 15 é 30, e não 10 × 15 = 150.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O mínimo múltiplo comum (MMC) de 20 e 30 é",
+   "alternativas": {
+    "A": "10.",
+    "B": "30.",
+    "C": "50.",
+    "D": "60.",
+    "E": "600."
+   },
+   "gabarito": "D",
+   "resolucao": "Fatore: 20 = 2² × 5; 30 = 2 × 3 × 5.\nMMC = todos os primos com o maior expoente = 2² × 3 × 5 = 60.\nConfere: 60 ÷ 20 = 3 e 60 ÷ 30 = 2 (exatas). ✔\nAtalho: MMC = 20 × 30 ÷ MDC = 600 ÷ 10 = 60.",
+   "comentarios": {
+    "A": "10 é o MDC (o maior divisor comum), não o MMC.",
+    "C": "20 + 30: soma não é múltiplo comum.",
+    "B": "30 não é múltiplo de 20.",
+    "E": "20 × 30 = 600 é múltiplo comum, mas não o MENOR: como 20 e 30 têm o fator 10 em comum, o MMC é 600 ÷ 10 = 60."
+   },
+   "topico": "MMC",
+   "conceito": "MMC (mínimo múltiplo comum): o MENOR número que é múltiplo dos dois. Pela fatoração: todos os primos, com o MAIOR expoente. Multiplicar a × b só dá o MMC quando eles não têm fator comum.",
+   "explicar": "Explique por que o MMC de 20 e 30 é 60, e não 20 × 30 = 600.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O mínimo múltiplo comum (MMC) de 15 e 20 é",
+   "alternativas": {
+    "A": "5.",
+    "B": "20.",
+    "C": "35.",
+    "D": "58.",
+    "E": "60."
+   },
+   "gabarito": "E",
+   "resolucao": "Fatore: 15 = 3 × 5; 20 = 2² × 5.\nMMC = todos os primos com o maior expoente = 2² × 3 × 5 = 60.\nConfere: 60 ÷ 15 = 4 e 60 ÷ 20 = 3 (exatas). ✔\nAtalho: MMC = 15 × 20 ÷ MDC = 300 ÷ 5 = 60.",
+   "comentarios": {
+    "A": "5 é o MDC (o maior divisor comum), não o MMC.",
+    "C": "15 + 20: soma não é múltiplo comum.",
+    "B": "20 não é múltiplo de 15.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 60."
+   },
+   "topico": "MMC",
+   "conceito": "MMC (mínimo múltiplo comum): o MENOR número que é múltiplo dos dois. Pela fatoração: todos os primos, com o MAIOR expoente. Multiplicar a × b só dá o MMC quando eles não têm fator comum.",
+   "explicar": "Explique por que o MMC de 15 e 20 é 60, e não 15 × 20 = 300.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O mínimo múltiplo comum (MMC) de 6 e 8 é",
+   "alternativas": {
+    "A": "2.",
+    "B": "8.",
+    "C": "14.",
+    "D": "24.",
+    "E": "48."
+   },
+   "gabarito": "D",
+   "resolucao": "Fatore: 6 = 2 × 3; 8 = 2³.\nMMC = todos os primos com o maior expoente = 2³ × 3 = 24.\nConfere: 24 ÷ 6 = 4 e 24 ÷ 8 = 3 (exatas). ✔\nAtalho: MMC = 6 × 8 ÷ MDC = 48 ÷ 2 = 24.",
+   "comentarios": {
+    "A": "2 é o MDC (o maior divisor comum), não o MMC.",
+    "C": "6 + 8: soma não é múltiplo comum.",
+    "B": "8 não é múltiplo de 6.",
+    "E": "6 × 8 = 48 é múltiplo comum, mas não o MENOR: como 6 e 8 têm o fator 2 em comum, o MMC é 48 ÷ 2 = 24."
+   },
+   "topico": "MMC",
+   "conceito": "MMC (mínimo múltiplo comum): o MENOR número que é múltiplo dos dois. Pela fatoração: todos os primos, com o MAIOR expoente. Multiplicar a × b só dá o MMC quando eles não têm fator comum.",
+   "explicar": "Explique por que o MMC de 6 e 8 é 24, e não 6 × 8 = 48.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Dois rolos de fita, de 72 cm e 90 cm, serão cortados em pedaços de mesmo comprimento, o maior possível, sem sobra. Cada pedaço terá",
+   "alternativas": {
+    "A": "2 cm.",
+    "B": "9 cm.",
+    "C": "16 cm.",
+    "D": "18 cm.",
+    "E": "360 cm."
+   },
+   "gabarito": "D",
+   "resolucao": "Pedaços iguais, o MAIOR possível, sem sobra → MDC.\nFatore: 72 = 2³ × 3²; 90 = 2 × 3² × 5.\nMDC = primos comuns com o menor expoente = 2 × 3² = 18.\nConfere: 72 ÷ 18 = 4 e 90 ÷ 18 = 5, e 4 e 5 não têm mais divisor comum. ✔\nResultado: 4 + 5 = 9 pedaços de 18 cm.",
+   "comentarios": {
+    "A": "2 cm corta sem sobra, mas não é o MAIOR tamanho possível.",
+    "B": "9 é o NÚMERO de pedaços, não o tamanho de cada um.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 18 cm.",
+    "E": "360 é o MMC: um pedaço de 360 cm nem cabe nas fitas!"
+   },
+   "topico": "MDC",
+   "conceito": "MDC (máximo divisor comum): o MAIOR número que divide os dois sem sobra. Pela fatoração: os primos que aparecem nos dois, com o MENOR expoente.",
+   "explicar": "Explique por que o tamanho do pedaço é o MDC(72, 90) = 18, e não o MMC.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Dois rolos de fita, de 210 cm e 90 cm, serão cortados em pedaços de mesmo comprimento, o maior possível, sem sobra. Cada pedaço terá",
+   "alternativas": {
+    "A": "30 cm.",
+    "B": "32 cm.",
+    "C": "45 cm.",
+    "D": "60 cm.",
+    "E": "630 cm."
+   },
+   "gabarito": "A",
+   "resolucao": "Pedaços iguais, o MAIOR possível, sem sobra → MDC.\nFatore: 210 = 2 × 3 × 5 × 7; 90 = 2 × 3² × 5.\nMDC = primos comuns com o menor expoente = 2 × 3 × 5 = 30.\nConfere: 210 ÷ 30 = 7 e 90 ÷ 30 = 3, e 7 e 3 não têm mais divisor comum. ✔\nResultado: 7 + 3 = 10 pedaços de 30 cm.",
+   "comentarios": {
+    "E": "630 é o MMC: um pedaço de 630 cm nem cabe nas fitas!",
+    "D": "60 não divide 210 sem sobra.",
+    "C": "Metade da menor medida não divide as duas sem sobra.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 30 cm."
+   },
+   "topico": "MDC",
+   "conceito": "MDC (máximo divisor comum): o MAIOR número que divide os dois sem sobra. Pela fatoração: os primos que aparecem nos dois, com o MENOR expoente.",
+   "explicar": "Explique por que o tamanho do pedaço é o MDC(210, 90) = 30, e não o MMC.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Dois tecidos, de 75 m e 105 m, serão cortados em peças de mesmo tamanho, o maior possível, sem sobra. Cada peça terá",
+   "alternativas": {
+    "A": "15 m.",
+    "B": "17 m.",
+    "C": "30 m.",
+    "D": "37 m.",
+    "E": "525 m."
+   },
+   "gabarito": "A",
+   "resolucao": "Pedaços iguais, o MAIOR possível, sem sobra → MDC.\nFatore: 75 = 3 × 5²; 105 = 3 × 5 × 7.\nMDC = primos comuns com o menor expoente = 3 × 5 = 15.\nConfere: 75 ÷ 15 = 5 e 105 ÷ 15 = 7, e 5 e 7 não têm mais divisor comum. ✔\nResultado: 5 + 7 = 12 pedaços de 15 m.",
+   "comentarios": {
+    "E": "525 é o MMC: um pedaço de 525 m nem cabe nas fitas!",
+    "C": "30 não divide 75 sem sobra.",
+    "D": "Metade da menor medida não divide as duas sem sobra.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 15 m."
+   },
+   "topico": "MDC",
+   "conceito": "MDC (máximo divisor comum): o MAIOR número que divide os dois sem sobra. Pela fatoração: os primos que aparecem nos dois, com o MENOR expoente.",
+   "explicar": "Explique por que o tamanho do pedaço é o MDC(75, 105) = 15, e não o MMC.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Duas barras de 18 cm e 42 cm serão cortadas em pedaços iguais, do maior comprimento possível, sem sobra. O número total de pedaços será",
+   "alternativas": {
+    "A": "3.",
+    "B": "6.",
+    "C": "7.",
+    "D": "8.",
+    "E": "10."
+   },
+   "gabarito": "E",
+   "resolucao": "Dois passos: (1) o tamanho do pedaço é o MDC; (2) o total é quantos pedaços saem de cada barra.\nFatore: 18 = 2 × 3²; 42 = 2 × 3 × 7.\nMDC = primos comuns com o menor expoente = 2 × 3 = 6.\nPedaços: 18 ÷ 6 = 3 e 42 ÷ 6 = 7; total 3 + 7 = 10.",
+   "comentarios": {
+    "B": "6 cm é o TAMANHO de cada pedaço; a pergunta é QUANTOS pedaços.",
+    "A": "3 são só os pedaços da barra de 18 cm; faltam os 7 da outra.",
+    "C": "7 são só os pedaços da barra de 42 cm; faltam os 3 da outra.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 10."
+   },
+   "topico": "MDC",
+   "conceito": "MDC (máximo divisor comum): o MAIOR número que divide os dois sem sobra. Pela fatoração: os primos que aparecem nos dois, com o MENOR expoente.",
+   "explicar": "Explique as duas etapas desta questão: por que primeiro o MDC e depois as divisões 18 ÷ 6 e 42 ÷ 6.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Duas barras de 18 cm e 30 cm serão cortadas em pedaços iguais, do maior comprimento possível, sem sobra. O número total de pedaços será",
+   "alternativas": {
+    "A": "3.",
+    "B": "5.",
+    "C": "6.",
+    "D": "7.",
+    "E": "8."
+   },
+   "gabarito": "E",
+   "resolucao": "Dois passos: (1) o tamanho do pedaço é o MDC; (2) o total é quantos pedaços saem de cada barra.\nFatore: 18 = 2 × 3²; 30 = 2 × 3 × 5.\nMDC = primos comuns com o menor expoente = 2 × 3 = 6.\nPedaços: 18 ÷ 6 = 3 e 30 ÷ 6 = 5; total 3 + 5 = 8.",
+   "comentarios": {
+    "C": "6 cm é o TAMANHO de cada pedaço; a pergunta é QUANTOS pedaços.",
+    "A": "3 são só os pedaços da barra de 18 cm; faltam os 5 da outra.",
+    "B": "5 são só os pedaços da barra de 30 cm; faltam os 3 da outra.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 8."
+   },
+   "topico": "MDC",
+   "conceito": "MDC (máximo divisor comum): o MAIOR número que divide os dois sem sobra. Pela fatoração: os primos que aparecem nos dois, com o MENOR expoente.",
+   "explicar": "Explique as duas etapas desta questão: por que primeiro o MDC e depois as divisões 18 ÷ 6 e 30 ÷ 6.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Duas barras de 96 cm e 120 cm serão cortadas em pedaços iguais, do maior comprimento possível, sem sobra. O número total de pedaços será",
+   "alternativas": {
+    "A": "4.",
+    "B": "9.",
+    "C": "18.",
+    "D": "24.",
+    "E": "108."
+   },
+   "gabarito": "B",
+   "resolucao": "Dois passos: (1) o tamanho do pedaço é o MDC; (2) o total é quantos pedaços saem de cada barra.\nFatore: 96 = 2⁵ × 3; 120 = 2³ × 3 × 5.\nMDC = primos comuns com o menor expoente = 2³ × 3 = 24.\nPedaços: 96 ÷ 24 = 4 e 120 ÷ 24 = 5; total 4 + 5 = 9.",
+   "comentarios": {
+    "A": "4 são só os pedaços da barra de 96 cm; faltam os 5 da outra.",
+    "D": "24 cm é o TAMANHO de cada pedaço; a pergunta é QUANTOS pedaços.",
+    "E": "Cortou em pedaços de 2 cm: sem sobra, mas não é o maior tamanho; dá pedaços demais.",
+    "C": "O dobro do certo: 4 + 5 = 9."
+   },
+   "topico": "MDC",
+   "conceito": "MDC (máximo divisor comum): o MAIOR número que divide os dois sem sobra. Pela fatoração: os primos que aparecem nos dois, com o MENOR expoente.",
+   "explicar": "Explique as duas etapas desta questão: por que primeiro o MDC e depois as divisões 96 ÷ 24 e 120 ÷ 24.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Uma agência tem 64 canetas e 112 blocos para montar kits iguais, com o maior número possível de kits e sem sobrar nada. Cada kit terá quantas canetas?",
+   "alternativas": {
+    "A": "4.",
+    "B": "7.",
+    "C": "11.",
+    "D": "16.",
+    "E": "32."
+   },
+   "gabarito": "A",
+   "resolucao": "Kits iguais, o maior número possível, sem sobra → o número de kits é o MDC.\nFatore: 64 = 2⁶; 112 = 2⁴ × 7.\nMDC = primos comuns com o menor expoente = 2⁴ = 16.\nSão 16 kits; cada um com 64 ÷ 16 = 4 canetas e 112 ÷ 16 = 7 blocos.",
+   "comentarios": {
+    "D": "16 é o número de KITS; a pergunta é quantas canetas vão em cada um.",
+    "B": "7 é o número de BLOCOS em cada kit.",
+    "C": "11 é o total de itens de cada kit.",
+    "E": "Usou 2 kits: sem sobra, mas não é o maior número de kits."
+   },
+   "topico": "MDC",
+   "conceito": "MDC (máximo divisor comum): o MAIOR número que divide os dois sem sobra. Pela fatoração: os primos que aparecem nos dois, com o MENOR expoente.",
+   "explicar": "Explique por que cada kit tem 64 ÷ 16 = 4 canetas.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Uma agência tem 24 canetas e 40 blocos para montar kits iguais, com o maior número possível de kits e sem sobrar nada. Serão montados quantos kits?",
+   "alternativas": {
+    "A": "3.",
+    "B": "5.",
+    "C": "8.",
+    "D": "9.",
+    "E": "120."
+   },
+   "gabarito": "C",
+   "resolucao": "Kits iguais, o maior número possível, sem sobra → o número de kits é o MDC.\nFatore: 24 = 2³ × 3; 40 = 2³ × 5.\nMDC = primos comuns com o menor expoente = 2³ = 8.\nSão 8 kits; cada um com 24 ÷ 8 = 3 canetas e 40 ÷ 8 = 5 blocos.",
+   "comentarios": {
+    "A": "3 é o número de CANETAS em cada kit, não o número de kits.",
+    "B": "5 é o número de BLOCOS em cada kit.",
+    "E": "120 é o MMC; o número de kits tem que dividir 24 e 40.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 8."
+   },
+   "topico": "MDC",
+   "conceito": "MDC (máximo divisor comum): o MAIOR número que divide os dois sem sobra. Pela fatoração: os primos que aparecem nos dois, com o MENOR expoente.",
+   "explicar": "Explique por que o número máximo de kits é o MDC(24, 40).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Uma agência tem 36 canetas e 24 blocos para montar kits iguais, com o maior número possível de kits e sem sobrar nada. Cada kit terá quantas canetas?",
+   "alternativas": {
+    "A": "3.",
+    "B": "5.",
+    "C": "12.",
+    "D": "18.",
+    "E": "36."
+   },
+   "gabarito": "A",
+   "resolucao": "Kits iguais, o maior número possível, sem sobra → o número de kits é o MDC.\nFatore: 36 = 2² × 3²; 24 = 2³ × 3.\nMDC = primos comuns com o menor expoente = 2² × 3 = 12.\nSão 12 kits; cada um com 36 ÷ 12 = 3 canetas e 24 ÷ 12 = 2 blocos.",
+   "comentarios": {
+    "C": "12 é o número de KITS; a pergunta é quantas canetas vão em cada um.",
+    "B": "5 é o total de itens de cada kit.",
+    "D": "Usou 2 kits: sem sobra, mas não é o maior número de kits.",
+    "E": "36 são todas as canetas."
+   },
+   "topico": "MDC",
+   "conceito": "MDC (máximo divisor comum): o MAIOR número que divide os dois sem sobra. Pela fatoração: os primos que aparecem nos dois, com o MENOR expoente.",
+   "explicar": "Explique por que cada kit tem 36 ÷ 12 = 3 canetas.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Uma agência tem 60 canetas e 48 blocos para montar kits iguais, com o maior número possível de kits e sem sobrar nada. Serão montados quantos kits?",
+   "alternativas": {
+    "A": "2.",
+    "B": "4.",
+    "C": "5.",
+    "D": "9.",
+    "E": "12."
+   },
+   "gabarito": "E",
+   "resolucao": "Kits iguais, o maior número possível, sem sobra → o número de kits é o MDC.\nFatore: 60 = 2² × 3 × 5; 48 = 2⁴ × 3.\nMDC = primos comuns com o menor expoente = 2² × 3 = 12.\nSão 12 kits; cada um com 60 ÷ 12 = 5 canetas e 48 ÷ 12 = 4 blocos.",
+   "comentarios": {
+    "C": "5 é o número de CANETAS em cada kit, não o número de kits.",
+    "B": "4 é o número de BLOCOS em cada kit.",
+    "A": "2 kits funciona, mas não é o MAIOR número possível.",
+    "D": "9 são os itens de cada kit."
+   },
+   "topico": "MDC",
+   "conceito": "MDC (máximo divisor comum): o MAIOR número que divide os dois sem sobra. Pela fatoração: os primos que aparecem nos dois, com o MENOR expoente.",
+   "explicar": "Explique por que o número máximo de kits é o MDC(60, 48).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Dois sinais luminosos piscam juntos; um pisca a cada 10 segundos e o outro a cada 12 segundos. Voltam a piscar juntos depois de quantos segundos?",
+   "alternativas": {
+    "A": "2 segundos.",
+    "B": "22 segundos.",
+    "C": "60 segundos.",
+    "D": "62 segundos.",
+    "E": "120 segundos."
+   },
+   "gabarito": "C",
+   "resolucao": "Voltar a coincidir pela primeira vez → MMC.\nFatore: 10 = 2 × 5; 12 = 2² × 3.\nMMC = todos os primos com o maior expoente = 2² × 3 × 5 = 60.\nConfere: 60 ÷ 10 = 6 e 60 ÷ 12 = 5 (exatas). ✔\nLista rápida: múltiplos de 12: 12, 24, 36, 48, 60; o primeiro que também é múltiplo de 10 é 60.",
+   "comentarios": {
+    "A": "2 é o MDC; nesse momento nenhum dos dois completou o ciclo junto com o outro.",
+    "B": "10 + 12 = 22 não é múltiplo de 10 nem de 12.",
+    "E": "10 × 12 = 120: também coincidem aí, mas não é a PRIMEIRA vez. Como 10 e 12 têm o fator 2 em comum, a primeira é 120 ÷ 2 = 60.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 60 segundos."
+   },
+   "topico": "MMC",
+   "conceito": "MMC (mínimo múltiplo comum): o MENOR número que é múltiplo dos dois. Pela fatoração: todos os primos, com o MAIOR expoente. Multiplicar a × b só dá o MMC quando eles não têm fator comum.",
+   "explicar": "Explique por que eles coincidem pela primeira vez em 60 e não em 10 × 12 = 120.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Um paciente toma um remédio a cada 8 horas e outro a cada 12 horas. Tomou os dois juntos agora. Vai tomá-los juntos de novo daqui a quantas horas?",
+   "alternativas": {
+    "A": "4 horas.",
+    "B": "12 horas.",
+    "C": "20 horas.",
+    "D": "22 horas.",
+    "E": "24 horas."
+   },
+   "gabarito": "E",
+   "resolucao": "Voltar a coincidir pela primeira vez → MMC.\nFatore: 8 = 2³; 12 = 2² × 3.\nMMC = todos os primos com o maior expoente = 2³ × 3 = 24.\nConfere: 24 ÷ 8 = 3 e 24 ÷ 12 = 2 (exatas). ✔\nLista rápida: múltiplos de 12: 12, 24; o primeiro que também é múltiplo de 8 é 24.",
+   "comentarios": {
+    "A": "4 é o MDC; nesse momento nenhum dos dois completou o ciclo junto com o outro.",
+    "C": "8 + 12 = 20 não é múltiplo de 8 nem de 12.",
+    "B": "Em 12 só o de 12 completou o ciclo.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 24 horas."
+   },
+   "topico": "MMC",
+   "conceito": "MMC (mínimo múltiplo comum): o MENOR número que é múltiplo dos dois. Pela fatoração: todos os primos, com o MAIOR expoente. Multiplicar a × b só dá o MMC quando eles não têm fator comum.",
+   "explicar": "Explique por que eles coincidem pela primeira vez em 24 e não em 8 × 12 = 96.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Um paciente toma um remédio a cada 8 horas e outro a cada 10 horas. Tomou os dois juntos agora. Vai tomá-los juntos de novo daqui a quantas horas?",
+   "alternativas": {
+    "A": "2 horas.",
+    "B": "10 horas.",
+    "C": "18 horas.",
+    "D": "40 horas.",
+    "E": "80 horas."
+   },
+   "gabarito": "D",
+   "resolucao": "Voltar a coincidir pela primeira vez → MMC.\nFatore: 8 = 2³; 10 = 2 × 5.\nMMC = todos os primos com o maior expoente = 2³ × 5 = 40.\nConfere: 40 ÷ 8 = 5 e 40 ÷ 10 = 4 (exatas). ✔\nLista rápida: múltiplos de 10: 10, 20, 30, 40; o primeiro que também é múltiplo de 8 é 40.",
+   "comentarios": {
+    "A": "2 é o MDC; nesse momento nenhum dos dois completou o ciclo junto com o outro.",
+    "C": "8 + 10 = 18 não é múltiplo de 8 nem de 10.",
+    "B": "Em 10 só o de 10 completou o ciclo.",
+    "E": "8 × 10 = 80: também coincidem aí, mas não é a PRIMEIRA vez. Como 8 e 10 têm o fator 2 em comum, a primeira é 80 ÷ 2 = 40."
+   },
+   "topico": "MMC",
+   "conceito": "MMC (mínimo múltiplo comum): o MENOR número que é múltiplo dos dois. Pela fatoração: todos os primos, com o MAIOR expoente. Multiplicar a × b só dá o MMC quando eles não têm fator comum.",
+   "explicar": "Explique por que eles coincidem pela primeira vez em 40 e não em 8 × 10 = 80.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Dois corredores largam juntos numa pista; um completa a volta em 18 minutos e o outro em 24 minutos. Passam juntos pela largada de novo depois de quantos minutos?",
+   "alternativas": {
+    "A": "6 minutos.",
+    "B": "72 minutos.",
+    "C": "74 minutos.",
+    "D": "144 minutos.",
+    "E": "432 minutos."
+   },
+   "gabarito": "B",
+   "resolucao": "Voltar a coincidir pela primeira vez → MMC.\nFatore: 18 = 2 × 3²; 24 = 2³ × 3.\nMMC = todos os primos com o maior expoente = 2³ × 3² = 72.\nConfere: 72 ÷ 18 = 4 e 72 ÷ 24 = 3 (exatas). ✔\nLista rápida: múltiplos de 24: 24, 48, 72; o primeiro que também é múltiplo de 18 é 72.",
+   "comentarios": {
+    "A": "6 é o MDC; nesse momento nenhum dos dois completou o ciclo junto com o outro.",
+    "E": "18 × 24 = 432: também coincidem aí, mas não é a PRIMEIRA vez. Como 18 e 24 têm o fator 6 em comum, a primeira é 432 ÷ 6 = 72.",
+    "D": "Coincidem em 144 também, mas antes já coincidiram em 72.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 72 minutos."
+   },
+   "topico": "MMC",
+   "conceito": "MMC (mínimo múltiplo comum): o MENOR número que é múltiplo dos dois. Pela fatoração: todos os primos, com o MAIOR expoente. Multiplicar a × b só dá o MMC quando eles não têm fator comum.",
+   "explicar": "Explique por que eles coincidem pela primeira vez em 72 e não em 18 × 24 = 432.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Dois trens saem juntos de uma estação às 8h00. Um sai a cada 20 minutos e o outro a cada 30 minutos. A próxima vez em que sairão juntos será às",
+   "alternativas": {
+    "A": "8h10.",
+    "B": "8h30.",
+    "C": "8h50.",
+    "D": "9h00.",
+    "E": "18h00."
+   },
+   "gabarito": "D",
+   "resolucao": "Coincidir de novo → MMC(20, 30).\nFatore: 20 = 2² × 5; 30 = 2 × 3 × 5.\nMMC = todos os primos com o maior expoente = 2² × 3 × 5 = 60.\n8h00 + 60 min = 9h00 (60 min = 1 h 00 min).",
+   "comentarios": {
+    "C": "Somou 20 + 30 = 50 min: soma não é múltiplo comum.",
+    "A": "Somou o MDC (10 min); o pedido é quando coincidem: MMC.",
+    "B": "Em 30 min só sai o trem de 30 em 30.",
+    "E": "Somou 20 × 30 = 600 min: é um múltiplo comum, mas não o primeiro (o MMC é 60)."
+   },
+   "topico": "MMC",
+   "conceito": "MMC (mínimo múltiplo comum): o MENOR número que é múltiplo dos dois. Pela fatoração: todos os primos, com o MAIOR expoente. Multiplicar a × b só dá o MMC quando eles não têm fator comum.",
+   "explicar": "Explique como saiu o horário 9h00: qual conta dá os 60 minutos e por quê.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Dois trens saem juntos de uma estação às 14h00. Um sai a cada 10 minutos e o outro a cada 15 minutos. A próxima vez em que sairão juntos será às",
+   "alternativas": {
+    "A": "14h25.",
+    "B": "14h30.",
+    "C": "14h40.",
+    "D": "15h00.",
+    "E": "16h30."
+   },
+   "gabarito": "B",
+   "resolucao": "Coincidir de novo → MMC(10, 15).\nFatore: 10 = 2 × 5; 15 = 3 × 5.\nMMC = todos os primos com o maior expoente = 2 × 3 × 5 = 30.\n14h00 + 30 min = 14h30.",
+   "comentarios": {
+    "A": "Somou 10 + 15 = 25 min: soma não é múltiplo comum.",
+    "E": "Somou 10 × 15 = 150 min: é um múltiplo comum, mas não o primeiro (o MMC é 30).",
+    "D": "Em 60 min também coincidem, mas já tinham coincidido em 30 min.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 14h30."
+   },
+   "topico": "MMC",
+   "conceito": "MMC (mínimo múltiplo comum): o MENOR número que é múltiplo dos dois. Pela fatoração: todos os primos, com o MAIOR expoente. Multiplicar a × b só dá o MMC quando eles não têm fator comum.",
+   "explicar": "Explique como saiu o horário 14h30: qual conta dá os 30 minutos e por quê.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Dois trens saem juntos de uma estação às 14h00. Um sai a cada 16 minutos e o outro a cada 24 minutos. A próxima vez em que sairão juntos será às",
+   "alternativas": {
+    "A": "14h08.",
+    "B": "14h24.",
+    "C": "14h38.",
+    "D": "14h40.",
+    "E": "14h48."
+   },
+   "gabarito": "E",
+   "resolucao": "Coincidir de novo → MMC(16, 24).\nFatore: 16 = 2⁴; 24 = 2³ × 3.\nMMC = todos os primos com o maior expoente = 2⁴ × 3 = 48.\n14h00 + 48 min = 14h48.",
+   "comentarios": {
+    "D": "Somou 16 + 24 = 40 min: soma não é múltiplo comum.",
+    "A": "Somou o MDC (8 min); o pedido é quando coincidem: MMC.",
+    "B": "Em 24 min só sai o trem de 24 em 24.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 14h48."
+   },
+   "topico": "MMC",
+   "conceito": "MMC (mínimo múltiplo comum): o MENOR número que é múltiplo dos dois. Pela fatoração: todos os primos, com o MAIOR expoente. Multiplicar a × b só dá o MMC quando eles não têm fator comum.",
+   "explicar": "Explique como saiu o horário 14h48: qual conta dá os 48 minutos e por quê.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Dois trens saem juntos de uma estação às 6h00. Um sai a cada 12 minutos e o outro a cada 18 minutos. A próxima vez em que sairão juntos será às",
+   "alternativas": {
+    "A": "6h06.",
+    "B": "6h18.",
+    "C": "6h26.",
+    "D": "6h30.",
+    "E": "6h36."
+   },
+   "gabarito": "E",
+   "resolucao": "Coincidir de novo → MMC(12, 18).\nFatore: 12 = 2² × 3; 18 = 2 × 3².\nMMC = todos os primos com o maior expoente = 2² × 3² = 36.\n6h00 + 36 min = 6h36.",
+   "comentarios": {
+    "D": "Somou 12 + 18 = 30 min: soma não é múltiplo comum.",
+    "A": "Somou o MDC (6 min); o pedido é quando coincidem: MMC.",
+    "B": "Em 18 min só sai o trem de 18 em 18.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 6h36."
+   },
+   "topico": "MMC",
+   "conceito": "MMC (mínimo múltiplo comum): o MENOR número que é múltiplo dos dois. Pela fatoração: todos os primos, com o MAIOR expoente. Multiplicar a × b só dá o MMC quando eles não têm fator comum.",
+   "explicar": "Explique como saiu o horário 6h36: qual conta dá os 36 minutos e por quê.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Três luzes piscam juntas agora. Elas piscam a cada 5, 6 e 8 segundos, respectivamente. Vão piscar juntas de novo daqui a quantos segundos?",
+   "alternativas": {
+    "A": "8.",
+    "B": "19.",
+    "C": "30.",
+    "D": "120.",
+    "E": "240."
+   },
+   "gabarito": "D",
+   "resolucao": "Coincidir de novo → MMC(5, 6, 8).\nFatore: 5 = 5; 6 = 2 × 3; 8 = 2³.\nTodos os primos com o maior expoente: 2³ × 3 × 5 = 120.\nConfere: 120 ÷ 5 = 24, 120 ÷ 6 = 20, 120 ÷ 8 = 15 (exatas). ✔",
+   "comentarios": {
+    "C": "30 é o MMC só de 5 e 6; a luz de 8 s não pisca aí.",
+    "B": "5 + 6 + 8: soma não é múltiplo comum.",
+    "A": "8 não é múltiplo dos três.",
+    "E": "5 × 6 × 8 = 240: coincidem aí, mas não pela primeira vez (há fatores comuns)."
+   },
+   "topico": "MMC",
+   "conceito": "MMC (mínimo múltiplo comum): o MENOR número que é múltiplo dos dois. Pela fatoração: todos os primos, com o MAIOR expoente. Multiplicar a × b só dá o MMC quando eles não têm fator comum.",
+   "explicar": "Explique como achar o MMC de 5, 6 e 8 pela fatoração.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Para saber depois de quantos dias dois plantões, um a cada 12 dias e outro a cada 18 dias, caem de novo no mesmo dia, a conta adequada é",
+   "alternativas": {
+    "A": "o MMC de 12 e 18.",
+    "B": "a média (12 + 18) ÷ 2.",
+    "C": "a soma 12 + 18.",
+    "D": "o produto 12 × 18.",
+    "E": "a diferença 18 − 12."
+   },
+   "gabarito": "A",
+   "resolucao": "O que se procura: o primeiro momento em que os dois ciclos coincidem.\nMenor que é múltiplo / coincidir → MMC: o MMC(12, 18) = 36.\nRegra prática: \"maior\", \"partes iguais\", \"sem sobra\" → MDC; \"de novo juntos\", \"coincidir\", \"menor quantidade que dá para dividir\" → MMC.",
+   "comentarios": {
+    "B": "A média não tem relação com dividir em partes iguais nem com coincidir ciclos.",
+    "C": "Somar as quantidades não divide nem faz ciclos coincidirem.",
+    "D": "12 × 18 = 216 não é o pedido: é múltiplo comum, mas não o menor (MMC = 36).",
+    "E": "A diferença 6 não é o critério de nenhum dos dois casos (aqui, por acaso, MDC = 6)."
+   },
+   "topico": "MDC ou MMC?",
+   "conceito": "MDC divide (o resultado é ≤ os números); MMC multiplica (o resultado é ≥ os números).",
+   "explicar": "Explique como decidir entre MDC e MMC nesta situação, com as palavras-chave do enunciado.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Para dividir 16 meninos e 40 meninas em grupos com o mesmo número de pessoas, só de meninos ou só de meninas, com o menor número de grupos, a conta adequada é",
+   "alternativas": {
+    "A": "o MMC de 16 e 40.",
+    "B": "o MDC de 16 e 40.",
+    "C": "a soma 16 + 40.",
+    "D": "o produto 16 × 40.",
+    "E": "a diferença 40 − 16."
+   },
+   "gabarito": "B",
+   "resolucao": "O que se procura: o maior tamanho de grupo que divide as duas quantidades.\nMaior que divide → MDC: o MDC(16, 40) = 8.\nRegra prática: \"maior\", \"partes iguais\", \"sem sobra\" → MDC; \"de novo juntos\", \"coincidir\", \"menor quantidade que dá para dividir\" → MMC.",
+   "comentarios": {
+    "A": "Aqui se procura o maior tamanho de grupo que divide as duas quantidades: isso é MDC. MMC é para quando ciclos coincidem ou é preciso um múltiplo.",
+    "C": "Somar as quantidades não divide nem faz ciclos coincidirem.",
+    "D": "16 × 40 = 640 não é o pedido: nem divide 16.",
+    "E": "A diferença 24 não é o critério de nenhum dos dois casos."
+   },
+   "topico": "MDC ou MMC?",
+   "conceito": "MDC divide (o resultado é ≤ os números); MMC multiplica (o resultado é ≥ os números).",
+   "explicar": "Explique como decidir entre MDC e MMC nesta situação, com as palavras-chave do enunciado.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Para formar o menor quadrado possível juntando ladrilhos retangulares de 24 cm por 36 cm, todos na mesma posição, a conta adequada é",
+   "alternativas": {
+    "A": "o MDC de 24 e 36.",
+    "B": "a média (24 + 36) ÷ 2.",
+    "C": "o produto 24 × 36.",
+    "D": "a diferença 36 − 24.",
+    "E": "o MMC de 24 e 36."
+   },
+   "gabarito": "E",
+   "resolucao": "O que se procura: o menor lado que é múltiplo das duas medidas.\nMenor que é múltiplo / coincidir → MMC: o MMC(24, 36) = 72.\nRegra prática: \"maior\", \"partes iguais\", \"sem sobra\" → MDC; \"de novo juntos\", \"coincidir\", \"menor quantidade que dá para dividir\" → MMC.",
+   "comentarios": {
+    "A": "Aqui se procura o menor lado que é múltiplo das duas medidas: isso é MMC. MDC é para dividir em partes iguais, as maiores possíveis.",
+    "B": "A média não tem relação com dividir em partes iguais nem com coincidir ciclos.",
+    "C": "24 × 36 = 864 não é o pedido: é múltiplo comum, mas não o menor (MMC = 72).",
+    "D": "A diferença 12 não é o critério de nenhum dos dois casos (aqui, por acaso, MDC = 12)."
+   },
+   "topico": "MDC ou MMC?",
+   "conceito": "MDC divide (o resultado é ≤ os números); MMC multiplica (o resultado é ≥ os números).",
+   "explicar": "Explique como decidir entre MDC e MMC nesta situação, com as palavras-chave do enunciado.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Para saber depois de quantos dias dois plantões, um a cada 15 dias e outro a cada 25 dias, caem de novo no mesmo dia, a conta adequada é",
+   "alternativas": {
+    "A": "o produto 15 × 25.",
+    "B": "a diferença 25 − 15.",
+    "C": "a média (15 + 25) ÷ 2.",
+    "D": "o MMC de 15 e 25.",
+    "E": "o MDC de 15 e 25."
+   },
+   "gabarito": "D",
+   "resolucao": "O que se procura: o primeiro momento em que os dois ciclos coincidem.\nMenor que é múltiplo / coincidir → MMC: o MMC(15, 25) = 75.\nRegra prática: \"maior\", \"partes iguais\", \"sem sobra\" → MDC; \"de novo juntos\", \"coincidir\", \"menor quantidade que dá para dividir\" → MMC.",
+   "comentarios": {
+    "A": "15 × 25 = 375 não é o pedido: é múltiplo comum, mas não o menor (MMC = 75).",
+    "B": "A diferença 10 não é o critério de nenhum dos dois casos.",
+    "C": "A média não tem relação com dividir em partes iguais nem com coincidir ciclos.",
+    "E": "Aqui se procura o primeiro momento em que os dois ciclos coincidem: isso é MMC. MDC é para dividir em partes iguais, as maiores possíveis."
+   },
+   "topico": "MDC ou MMC?",
+   "conceito": "MDC divide (o resultado é ≤ os números); MMC multiplica (o resultado é ≥ os números).",
+   "explicar": "Explique como decidir entre MDC e MMC nesta situação, com as palavras-chave do enunciado.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Dois números naturais têm produto 375 e máximo divisor comum 5. O mínimo múltiplo comum desses números é",
+   "alternativas": {
+    "A": "75.",
+    "B": "77.",
+    "C": "80.",
+    "D": "375.",
+    "E": "1.875."
+   },
+   "gabarito": "A",
+   "resolucao": "Para dois números: MDC × MMC = produto dos números.\n5 × MMC = 375 → MMC = 375 ÷ 5 = 75.\nExemplo que dá certo: 15 e 25 (produto 375, MDC 5, MMC 75).",
+   "comentarios": {
+    "D": "375 é o produto; o MMC é o produto dividido pelo MDC.",
+    "E": "Multiplicou pelo MDC; o certo é dividir: 375 ÷ 5.",
+    "C": "Quase: 375 ÷ 5 = 75.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 75."
+   },
+   "topico": "MMC",
+   "conceito": "Para dois números a e b: MDC(a, b) × MMC(a, b) = a × b.",
+   "explicar": "Explique, com 15 e 25, por que MDC × MMC = 15 × 25.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Dois números naturais têm produto 1792 e máximo divisor comum 8. O mínimo múltiplo comum desses números é",
+   "alternativas": {
+    "A": "8.",
+    "B": "112.",
+    "C": "224.",
+    "D": "1.792.",
+    "E": "14.336."
+   },
+   "gabarito": "C",
+   "resolucao": "Para dois números: MDC × MMC = produto dos números.\n8 × MMC = 1792 → MMC = 1792 ÷ 8 = 224.\nExemplo que dá certo: 56 e 32 (produto 1792, MDC 8, MMC 224).",
+   "comentarios": {
+    "A": "8 é o MDC dado no enunciado.",
+    "B": "Dividiu por 16; o certo é dividir só pelo MDC (8).",
+    "D": "1792 é o produto; o MMC é o produto dividido pelo MDC.",
+    "E": "Multiplicou pelo MDC; o certo é dividir: 1792 ÷ 8."
+   },
+   "topico": "MMC",
+   "conceito": "Para dois números a e b: MDC(a, b) × MMC(a, b) = a × b.",
+   "explicar": "Explique, com 56 e 32, por que MDC × MMC = 56 × 32.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Dois números naturais têm produto 315 e máximo divisor comum 3. O mínimo múltiplo comum desses números é",
+   "alternativas": {
+    "A": "3.",
+    "B": "95.",
+    "C": "105.",
+    "D": "315.",
+    "E": "945."
+   },
+   "gabarito": "C",
+   "resolucao": "Para dois números: MDC × MMC = produto dos números.\n3 × MMC = 315 → MMC = 315 ÷ 3 = 105.\nExemplo que dá certo: 15 e 21 (produto 315, MDC 3, MMC 105).",
+   "comentarios": {
+    "A": "3 é o MDC dado no enunciado.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 105.",
+    "D": "315 é o produto; o MMC é o produto dividido pelo MDC.",
+    "E": "Multiplicou pelo MDC; o certo é dividir: 315 ÷ 3."
+   },
+   "topico": "MMC",
+   "conceito": "Para dois números a e b: MDC(a, b) × MMC(a, b) = a × b.",
+   "explicar": "Explique, com 15 e 21, por que MDC × MMC = 15 × 21.",
+   "habilidade": "calcular"
+  }
+ ],
+ "fontes": [
+  "Questões geradas e conferidas em Python (fractions, math.gcd): cada resposta é calculada; cada alternativa errada vem de um engano típico, explicado no comentário dela; nenhum modelo aparece mais de 4 vezes e nenhum conjunto de números se repete"
+ ]
+}

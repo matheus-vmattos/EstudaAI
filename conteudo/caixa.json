@@ -290,6 +290,47 @@
       "descricao": "7 treinos de 40 questões (280 no total): multiplicação e divisão, decimais, frações, porcentagem, divisão avançada e regra de três. Aparece no Meu edital.",
       "arquivo": "banestes-missao4.json",
       "data": "2026-11-21"
+    },
+    {
+      "id": "banestes-base-treino8-v1",
+      "tipo": "simulado",
+      "titulo": "Treino 8: regra de três inversa",
+      "descricao": "40 questões, do \"sobe ou desce?\" ao problema de prova. Cada alternativa errada diz qual engano dá aquele número.",
+      "arquivo": "banestes-base-treino8.json",
+      "data": "2026-11-23"
+    },
+    {
+      "id": "banestes-base-treino9-v1",
+      "tipo": "simulado",
+      "titulo": "Treino 9: MDC e MMC",
+      "descricao": "40 questões: divisor e múltiplo comum, fitas, kits, ônibus e horários, e como decidir entre MDC e MMC. Cada errada com o motivo.",
+      "arquivo": "banestes-base-treino9.json",
+      "data": "2026-11-23"
+    },
+    {
+      "id": "banestes-missao5-bancarios-v1",
+      "tipo": "simulado",
+      "titulo": "Simulado: Bancários (SFN, lavagem, FGC e cheque)",
+      "descricao": "15 questões FCC, cada fato conferido na lei ou na norma (Lei 9.613, Circular 3.978, Res. CMN 4.222, Lei 7.357, Código Civil).",
+      "arquivo": "banestes-missao5-bancarios.json",
+      "data": "2026-11-23"
+    },
+    {
+      "id": "banestes-matematica-r3-mdc-anotacoes-v1",
+      "tipo": "anotacoes",
+      "titulo": "Anotações: regra de três inversa e MDC/MMC",
+      "descricao": "A anotação de regra de três reescrita (o \"trabalho total\" e o que fica fixo) e uma nova de MDC e MMC. Se você não editou a de regra de três, ela é atualizada; as suas ficam como estão.",
+      "arquivo": "banestes-matematica-r3-mdc-anotacoes.json",
+      "data": "2026-11-23",
+      "versaoMinima": "0.1.19"
+    },
+    {
+      "id": "banestes-missao5-v1",
+      "tipo": "missao",
+      "titulo": "Missão: matemática + matérias de peso (23/11 a 06/12)",
+      "descricao": "Treinos 8 e 9 (regra de três inversa, MDC/MMC), simulado de Bancários, cartões de Vendas e Português e duas explicações. Aparece no Meu edital.",
+      "arquivo": "banestes-missao5.json",
+      "data": "2026-11-23"
     }
   ]
 }
