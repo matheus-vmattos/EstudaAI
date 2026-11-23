@@ -1,0 +1,343 @@
+{
+ "tema": "Vendas e Atendimento: relacionamento, ouvidoria e ética na oferta",
+ "materia": "Vendas, Negociação e Atendimento",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "Segundo a Resolução CMN nº 4.949/2021, no relacionamento com clientes e usuários, as instituições financeiras devem conduzir suas atividades com observância de princípios de",
+   "alternativas": {
+    "A": "lucratividade, agilidade, sigilo e eficiência.",
+    "B": "legalidade, impessoalidade, moralidade e publicidade.",
+    "C": "ética, responsabilidade, transparência e diligência.",
+    "D": "confidencialidade, integridade, disponibilidade e autenticidade.",
+    "E": "cordialidade, rapidez, cortesia e pontualidade."
+   },
+   "gabarito": "C",
+   "resolucao": "Res. CMN 4.949/2021, art. 2º: as instituições \"devem conduzir suas atividades com observância de princípios de ética, responsabilidade, transparência e diligência, propiciando a convergência de interesses e a consolidação de imagem institucional de credibilidade, segurança e competência.\"",
+   "comentarios": {
+    "A": "Lucratividade e agilidade não são os princípios do art. 2º; são ética, responsabilidade, transparência e diligência.",
+    "B": "Esses são os princípios da administração pública (CF, art. 37), não os do art. 2º da 4.949.",
+    "D": "São princípios de segurança da informação, não os do relacionamento com clientes.",
+    "E": "São qualidades desejáveis do atendimento, mas não os princípios listados no art. 2º."
+   },
+   "topico": "Relacionamento com o cliente (Res. CMN 4.949)",
+   "conceito": "Os 4 princípios do relacionamento: Ética, Responsabilidade, Transparência e Diligência.",
+   "explicar": "Explique, com um exemplo de atendimento na agência, o que é agir com transparência e com diligência.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Para efeito da Resolução CMN nº 4.949/2021, o relacionamento com clientes e usuários abrange as fases de",
+   "alternativas": {
+    "A": "pré-contratação, de contratação e de pós-contratação.",
+    "B": "contratação, apenas, já que antes dela não há cliente.",
+    "C": "prospecção e venda, encerrando-se com a assinatura do contrato.",
+    "D": "pós-contratação, apenas, quando surgem as reclamações.",
+    "E": "contratação e cobrança, excluída a oferta do produto."
+   },
+   "gabarito": "A",
+   "resolucao": "Res. CMN 4.949/2021, art. 1º, § 2º: \"o relacionamento com clientes e usuários abrange as fases de pré-contratação, de contratação e de pós-contratação de produtos e de serviços.\"",
+   "comentarios": {
+    "B": "A norma inclui a pré-contratação (a oferta) e a pós-contratação.",
+    "C": "O relacionamento continua depois da assinatura: há a fase de pós-contratação.",
+    "D": "Abrange as três fases, não só o pós-venda.",
+    "E": "A oferta está dentro: é a pré-contratação."
+   },
+   "topico": "Relacionamento com o cliente (Res. CMN 4.949)",
+   "conceito": "A regra vale antes (oferta), durante (contrato) e depois (pós-venda, cancelamento, reclamação).",
+   "explicar": "Explique as três fases do relacionamento com um exemplo de venda de um cartão de crédito.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Um cliente pede ao gerente uma aplicação para formar uma reserva de emergência, que ele pode precisar sacar a qualquer momento. Pela Resolução CMN nº 4.949/2021, ao ofertar ou recomendar um produto, o banco deve assegurar",
+   "alternativas": {
+    "A": "a oferta do produto de maior rentabilidade para a instituição.",
+    "B": "a oferta do produto com o maior prazo de aplicação disponível.",
+    "C": "a oferta de mais de um produto, para ampliar o relacionamento.",
+    "D": "que o cliente assine termo dispensando informações sobre riscos.",
+    "E": "a adequação do produto às necessidades, aos interesses e aos objetivos do cliente."
+   },
+   "gabarito": "E",
+   "resolucao": "Res. CMN 4.949/2021, art. 4º, I: na contratação e na prestação de serviços, as instituições devem assegurar \"adequação dos produtos e serviços ofertados ou recomendados às necessidades, aos interesses e aos objetivos dos clientes e usuários\".",
+   "comentarios": {
+    "A": "A norma manda adequar o produto ao CLIENTE (art. 4º, I), não à meta do banco.",
+    "B": "Prazo longo contraria a necessidade dele, que é poder sacar a qualquer momento.",
+    "C": "Vender mais produtos não é dever da norma; o dever é a adequação.",
+    "D": "O art. 4º, III exige informar riscos, custos e penalidades; não há dispensa."
+   },
+   "topico": "Relacionamento com o cliente (Res. CMN 4.949)",
+   "conceito": "Adequação ao perfil: o produto certo é o que serve ao objetivo do cliente (aqui, liquidez), não o que dá mais resultado ao banco.",
+   "explicar": "Explique por que oferecer um produto de prazo longo a esse cliente fere a adequação.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "De acordo com a Resolução CMN nº 4.949/2021, ao contratar uma operação, o cliente deve receber, de forma clara e precisa, as informações necessárias à livre escolha, explicitando inclusive",
+   "alternativas": {
+    "A": "apenas a taxa de juros mensal, por ser o dado mais relevante.",
+    "B": "direitos e deveres, responsabilidades, custos ou ônus, penalidades e eventuais riscos.",
+    "C": "os riscos, somente quando o cliente os solicitar por escrito.",
+    "D": "as metas comerciais do gerente para aquele produto.",
+    "E": "os custos, sendo dispensadas as penalidades por atraso."
+   },
+   "gabarito": "B",
+   "resolucao": "Res. CMN 4.949/2021, art. 4º, III: \"prestação, de forma clara e precisa, das informações necessárias à livre escolha e à tomada de decisões por parte de clientes e usuários, explicitando, inclusive, direitos e deveres, responsabilidades, custos ou ônus, penalidades e eventuais riscos existentes na execução de operações e na prestação de serviços\".",
+   "comentarios": {
+    "A": "A norma pede muito mais: direitos, deveres, custos, penalidades e riscos.",
+    "C": "A informação dos riscos é dever da instituição, sem depender de pedido.",
+    "D": "Metas internas não são informação exigida pela norma.",
+    "E": "Penalidades estão expressamente na lista do art. 4º, III."
+   },
+   "topico": "Relacionamento com o cliente (Res. CMN 4.949)",
+   "conceito": "Transparência na venda: o cliente decide sabendo custos, penalidades e riscos.",
+   "explicar": "Explique quais informações você daria a um cliente antes de ele contratar um empréstimo, e por quê.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Um banco envia um cartão de crédito à casa de um cliente que nunca o pediu, \"como cortesia\". Pela Resolução CMN nº 4.949/2021, a conduta é",
+   "alternativas": {
+    "A": "regular, desde que o cartão venha sem anuidade no primeiro ano.",
+    "B": "regular, desde que o cartão só seja desbloqueado pelo cliente.",
+    "C": "regular, porque o cliente já tem conta no banco.",
+    "D": "irregular, porque o instrumento de pagamento só pode ser enviado ou habilitado por expressa solicitação ou autorização do cliente.",
+    "E": "irregular apenas se o cliente for idoso."
+   },
+   "gabarito": "D",
+   "resolucao": "Res. CMN 4.949/2021, art. 4º, VI: as instituições devem assegurar \"encaminhamento de instrumento de pagamento ao domicílio do cliente ou usuário ou a sua habilitação somente em decorrência de sua expressa solicitação ou autorização\". O CDC, art. 39, III, também veda \"enviar ou entregar ao consumidor, sem solicitação prévia, qualquer produto, ou fornecer qualquer serviço\".",
+   "comentarios": {
+    "A": "Isenção de anuidade não supre a falta de solicitação ou autorização.",
+    "B": "O envio em si já exige solicitação ou autorização expressa.",
+    "C": "Ter conta não equivale a pedir o cartão.",
+    "E": "A regra vale para qualquer cliente, não só para idosos."
+   },
+   "topico": "Relacionamento com o cliente (Res. CMN 4.949)",
+   "conceito": "Cartão, só com pedido ou autorização expressa do cliente.",
+   "explicar": "Explique por que mandar um cartão \"de cortesia\" não é uma boa venda, segundo as regras.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Um cliente quer encerrar a conta e levar o relacionamento para outro banco. Conforme a Resolução CMN nº 4.949/2021, a instituição deve assegurar",
+   "alternativas": {
+    "A": "tempestividade e inexistência de barreiras, critérios ou procedimentos desarrazoados para a extinção do contrato e a transferência para outra instituição.",
+    "B": "que o encerramento só ocorra após entrevista de retenção obrigatória.",
+    "C": "que o cliente permaneça ao menos 12 meses antes do cancelamento.",
+    "D": "que a transferência seja feita somente na agência de origem.",
+    "E": "que o cliente pague tarifa de saída proporcional ao tempo de conta."
+   },
+   "gabarito": "A",
+   "resolucao": "Res. CMN 4.949/2021, art. 4º, VII: as instituições devem assegurar \"tempestividade e inexistência de barreiras, critérios ou procedimentos desarrazoados para: (...) b) a extinção da relação contratual relativa a produtos e serviços, incluindo o cancelamento de contratos; e c) a transferência de relacionamento para outra instituição, se aplicável.\"",
+   "comentarios": {
+    "B": "Exigir etapa obrigatória para dificultar a saída é barreira desarrazoada.",
+    "C": "Não há prazo mínimo de permanência na norma.",
+    "D": "Limitar o canal é procedimento desarrazoado; a norma exige ausência de barreiras.",
+    "E": "A norma fala em ausência de barreiras, não em tarifa de saída."
+   },
+   "topico": "Relacionamento com o cliente (Res. CMN 4.949)",
+   "conceito": "Fidelizar é merecer o cliente, não prendê-lo: sair e transferir tem que ser simples.",
+   "explicar": "Explique a diferença entre reter um cliente oferecendo valor e criar barreiras para ele sair.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Um senhor vai à agência pagar uma conta no caixa, e o funcionário diz que esse pagamento \"só pode ser feito pelo aplicativo\". Considerando que não há nenhuma das exceções previstas, a Resolução CMN nº 4.949/2021",
+   "alternativas": {
+    "A": "permite a recusa, desde que o aplicativo seja gratuito.",
+    "B": "permite a recusa, desde que o cliente seja orientado a usar o aplicativo.",
+    "C": "veda impedir, recusar, dificultar ou restringir o atendimento presencial, inclusive no caixa, mesmo quando houver atendimento em outros canais.",
+    "D": "veda a recusa apenas para clientes, e não para não clientes.",
+    "E": "permite a recusa em horários de grande movimento."
+   },
+   "gabarito": "C",
+   "resolucao": "Res. CMN 4.949/2021, art. 5º: \"É vedado às instituições referidas no art. 1º impedir o acesso, recusar, dificultar ou impor restrição ao atendimento presencial em suas dependências, inclusive em guichês de caixa, a clientes ou usuários de produtos e de serviços, mesmo quando disponível o atendimento em outros canais.\" § 4º: vale \"indistintamente em relação a clientes e a não clientes\" (salvo cooperativas de crédito).",
+   "comentarios": {
+    "A": "A existência de canal gratuito não autoriza recusar o caixa.",
+    "B": "Orientar sobre o app é bom, mas não pode substituir o atendimento pedido.",
+    "D": "A regra vale indistintamente para clientes e não clientes (§ 4º).",
+    "E": "Não há essa exceção; as exceções são as listadas no § 1º."
+   },
+   "topico": "Atendimento presencial e canais",
+   "conceito": "O canal digital é opção do cliente, não imposição do banco.",
+   "explicar": "Explique como você atenderia esse senhor e, ao mesmo tempo, apresentaria o aplicativo sem impor.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Na boca do caixa, a agência afixa um aviso: \"Limite de 5 contas por pessoa\". Pela Resolução CMN nº 4.949/2021, ressalvadas as exceções da legislação ou da regulamentação específica, esse limite",
+   "alternativas": {
+    "A": "é permitido, por organizar a fila.",
+    "B": "é permitido apenas para não clientes.",
+    "C": "é permitido se houver caixa eletrônico disponível.",
+    "D": "é vedado apenas para pagamentos acima de R$ 1.000,00.",
+    "E": "é vedado, pois não pode haver restrição quanto à quantidade de documentos, de transações ou de operações por pessoa."
+   },
+   "gabarito": "E",
+   "resolucao": "Res. CMN 4.949/2021, art. 5º, § 2º: \"é vedada a imposição de restrições quanto à quantidade de documentos, de transações ou de operações por pessoa, bem como em relação a montante máximo ou mínimo a ser pago ou recebido ou ainda quanto à faculdade de o cliente ou o usuário optar por pagamentos em espécie, salvo as exceções previstas na legislação ou na regulamentação específica.\"",
+   "comentarios": {
+    "A": "Organizar a fila não autoriza limitar documentos por pessoa (art. 5º, § 2º).",
+    "B": "A regra vale para clientes e não clientes (§ 4º).",
+    "C": "A restrição é vedada mesmo havendo outros canais (art. 5º, caput).",
+    "D": "A norma também veda restrição de montante máximo ou mínimo, sem esse corte de valor."
+   },
+   "topico": "Atendimento presencial e canais",
+   "conceito": "No atendimento presencial, não se limita quantidade de documentos por pessoa nem valor.",
+   "explicar": "Explique por que o banco não pode limitar a quantidade de contas pagas por pessoa no caixa.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Conforme a Resolução CMN nº 4.949/2021, para observar os princípios do relacionamento, a instituição deve, entre outras ações, dispensar a clientes e usuários tratamento",
+   "alternativas": {
+    "A": "idêntico, sem considerar perfil ou vulnerabilidade.",
+    "B": "justo e equitativo, considerando seus perfis de relacionamento e vulnerabilidades associadas.",
+    "C": "preferencial aos clientes de maior renda.",
+    "D": "padronizado, definido apenas pela área comercial.",
+    "E": "diferenciado apenas para clientes com investimentos."
+   },
+   "gabarito": "B",
+   "resolucao": "Res. CMN 4.949/2021, art. 3º: a observância dos princípios requer, entre outras, \"I - promover cultura organizacional que incentive relacionamento cooperativo e equilibrado com clientes e usuários; e II - dispensar tratamento justo e equitativo a clientes e usuários, considerando seus perfis de relacionamento e vulnerabilidades associadas.\"",
+   "comentarios": {
+    "A": "A norma manda CONSIDERAR perfil e vulnerabilidades.",
+    "C": "Tratamento justo e equitativo não é preferência por renda.",
+    "D": "Não é o que diz o art. 3º, II.",
+    "E": "O tratamento justo vale para todos, considerando vulnerabilidades."
+   },
+   "topico": "Relacionamento com o cliente (Res. CMN 4.949)",
+   "conceito": "Justo e equitativo: tratar cada cliente de acordo com o perfil e as fragilidades dele (idoso, pouca familiaridade digital etc.).",
+   "explicar": "Explique com um exemplo o que é considerar a vulnerabilidade de um cliente no atendimento.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Pela Resolução CMN nº 4.860/2020, a ouvidoria das instituições tem por finalidade, entre outras,",
+   "alternativas": {
+    "A": "substituir o atendimento da agência em qualquer demanda do cliente.",
+    "B": "vender produtos aos clientes que reclamam, para retê-los.",
+    "C": "julgar recursos contra decisões do Banco Central.",
+    "D": "atender em última instância as demandas que não tiverem sido solucionadas nos canais de atendimento primário da instituição.",
+    "E": "atender apenas reclamações encaminhadas pelo Procon."
+   },
+   "gabarito": "D",
+   "resolucao": "Res. CMN 4.860/2020, art. 3º: a ouvidoria tem por finalidade \"I - atender em última instância as demandas dos clientes e usuários de produtos e serviços que não tiverem sido solucionadas nos canais de atendimento primário da instituição; e II - atuar como canal de comunicação entre a instituição e os clientes e usuários de produtos e serviços, inclusive na mediação de conflitos.\" Parágrafo único: primário é o atendimento habitual, incluídos os correspondentes e o SAC.",
+   "comentarios": {
+    "A": "A ouvidoria é última instância, depois dos canais primários (agência, SAC, correspondentes).",
+    "B": "A ouvidoria não pode nem ficar vinculada à área de negociação de produtos.",
+    "C": "Não é essa a finalidade da ouvidoria da instituição.",
+    "E": "Atende os clientes e usuários, não só demandas do Procon."
+   },
+   "topico": "Reclamações e ouvidoria (Res. CMN 4.860)",
+   "conceito": "Ordem da reclamação: canal primário (agência, SAC) → ouvidoria (última instância).",
+   "explicar": "Explique o caminho que um cliente insatisfeito percorre até a ouvidoria e por que ela não é o primeiro passo.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Segundo a Resolução CMN nº 4.860/2020, o prazo de resposta da ouvidoria às demandas",
+   "alternativas": {
+    "A": "não pode ultrapassar cinco dias úteis, sem prorrogação.",
+    "B": "não pode ultrapassar dez dias úteis, prorrogável excepcionalmente e de forma justificada uma única vez, por igual período, informando-se o demandante dos motivos.",
+    "C": "não pode ultrapassar trinta dias corridos, prorrogável sem limite.",
+    "D": "não pode ultrapassar dez dias úteis, prorrogável quantas vezes forem necessárias.",
+    "E": "é livremente fixado pela instituição em sua política interna."
+   },
+   "gabarito": "B",
+   "resolucao": "Res. CMN 4.860/2020, art. 6º, § 2º: \"O prazo de resposta para as demandas não pode ultrapassar dez dias úteis, podendo ser prorrogado, excepcionalmente e de forma justificada, uma única vez, por igual período, limitado o número de prorrogações a 10% (dez por cento) do total de demandas no mês, devendo o demandante ser informado sobre os motivos da prorrogação.\"",
+   "comentarios": {
+    "A": "O prazo é de dez dias úteis, com uma prorrogação possível.",
+    "C": "São dez dias úteis, e a prorrogação é única, por igual período.",
+    "D": "A prorrogação é uma única vez, e limitada a 10% das demandas do mês.",
+    "E": "O prazo máximo está na própria resolução (art. 6º, § 2º)."
+   },
+   "topico": "Reclamações e ouvidoria (Res. CMN 4.860)",
+   "conceito": "Ouvidoria: 10 dias úteis + 1 prorrogação de 10, justificada.",
+   "explicar": "Explique o prazo da ouvidoria e quando ele pode ser prorrogado.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "De acordo com a Resolução CMN nº 4.860/2020, a ouvidoria NÃO pode estar vinculada a componente organizacional que configure conflito de interesses ou de atribuições, como",
+   "alternativas": {
+    "A": "a unidade responsável pela negociação de produtos e serviços.",
+    "B": "a diretoria responsável pela ouvidoria designada ao Banco Central.",
+    "C": "o sistema de registro e controle das demandas.",
+    "D": "o canal telefônico gratuito de acesso à ouvidoria.",
+    "E": "o setor que divulga o número da ouvidoria nos extratos."
+   },
+   "gabarito": "A",
+   "resolucao": "Res. CMN 4.860/2020, art. 4º, parágrafo único: \"A ouvidoria não pode estar vinculada a componente organizacional da instituição que configure conflito de interesses ou de atribuições, a exemplo das unidades responsáveis por negociação de produtos e serviços, gestão de riscos, auditoria interna e conformidade (compliance).\"",
+   "comentarios": {
+    "B": "Ter um diretor responsável é exigência (art. 9º), não conflito.",
+    "C": "O sistema de controle é obrigatório (art. 7º, I), não um conflito.",
+    "D": "O acesso gratuito, inclusive por telefone, é obrigatório (art. 7º, III).",
+    "E": "Divulgar o canal da ouvidoria é dever, não conflito."
+   },
+   "topico": "Reclamações e ouvidoria (Res. CMN 4.860)",
+   "conceito": "Quem julga a reclamação não pode ser quem vende: por isso a ouvidoria fica separada da área comercial.",
+   "explicar": "Explique por que a ouvidoria não pode ficar subordinada à área de vendas.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Pela Resolução CMN nº 4.860/2020, o atendimento prestado pela ouvidoria",
+   "alternativas": {
+    "A": "deve ser cobrado por tarifa, quando a reclamação for improcedente.",
+    "B": "dispensa protocolo quando a demanda é resolvida no mesmo dia.",
+    "C": "só pode ser feito por escrito, na agência.",
+    "D": "não pode ser gravado, para preservar o sigilo do cliente.",
+    "E": "deve ser identificado por número de protocolo fornecido ao demandante e, quando por telefone, deve ser gravado."
+   },
+   "gabarito": "E",
+   "resolucao": "Res. CMN 4.860/2020, art. 6º, § 1º: o atendimento da ouvidoria \"I - deve ser identificado por meio de número de protocolo, o qual deve ser fornecido ao demandante; II - deve ser gravado, quando realizado por telefone, e, quando realizado por meio de documento escrito ou por meio eletrônico, arquivada a respectiva documentação\". Art. 7º, III: acesso gratuito.",
+   "comentarios": {
+    "A": "O acesso à ouvidoria é gratuito (art. 7º, III).",
+    "B": "O protocolo é sempre fornecido (art. 6º, § 1º, I).",
+    "C": "O acesso deve ser por canais ágeis e eficazes, inclusive por telefone.",
+    "D": "Por telefone, deve ser gravado (art. 6º, § 1º, II)."
+   },
+   "topico": "Reclamações e ouvidoria (Res. CMN 4.860)",
+   "conceito": "Ouvidoria: gratuita, com protocolo, e gravada quando por telefone.",
+   "explicar": "Explique por que protocolo e gravação protegem tanto o cliente quanto o banco.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Um gerente informa ao cliente que só liberará o empréstimo se ele contratar também um seguro de vida do banco. Nos termos do Código de Defesa do Consumidor, essa conduta é",
+   "alternativas": {
+    "A": "regular, porque o seguro reduz o risco da operação.",
+    "B": "regular, desde que o seguro tenha preço de mercado.",
+    "C": "prática abusiva, por condicionar o fornecimento de um serviço ao fornecimento de outro.",
+    "D": "regular, se o cliente assinar que concorda.",
+    "E": "prática abusiva apenas se o cliente for idoso."
+   },
+   "gabarito": "C",
+   "resolucao": "CDC (Lei 8.078/1990), art. 39: \"É vedado ao fornecedor de produtos ou serviços, dentre outras práticas abusivas: I - condicionar o fornecimento de produto ou de serviço ao fornecimento de outro produto ou serviço, bem como, sem justa causa, a limites quantitativos\".",
+   "comentarios": {
+    "A": "Reduzir risco não autoriza condicionar: o CDC veda a venda casada (art. 39, I).",
+    "B": "O preço não importa; o vício é condicionar um produto a outro.",
+    "D": "A concordância obtida sob condição não afasta a prática abusiva.",
+    "E": "A venda casada é vedada para qualquer consumidor; o inciso IV trata de outra prática."
+   },
+   "topico": "Ética na oferta (CDC)",
+   "conceito": "Venda casada: amarrar um produto a outro é prática abusiva. Oferecer o seguro como opção, explicando o benefício, é venda legítima.",
+   "explicar": "Explique a diferença entre oferecer um seguro junto com o empréstimo e fazer venda casada.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Um cliente contrata, por telefone, um produto oferecido pelo banco e, quatro dias depois da assinatura, desiste. Pelo Código de Defesa do Consumidor, ele",
+   "alternativas": {
+    "A": "não pode desistir, porque assinou o contrato.",
+    "B": "pode desistir, mas perde os valores já pagos.",
+    "C": "pode desistir somente se provar defeito no produto.",
+    "D": "pode desistir, porque a contratação foi fora do estabelecimento e está dentro do prazo de 7 dias, com devolução imediata e atualizada do que pagou.",
+    "E": "pode desistir em até 30 dias, em qualquer forma de contratação."
+   },
+   "gabarito": "D",
+   "resolucao": "CDC, art. 49: \"O consumidor pode desistir do contrato, no prazo de 7 dias a contar de sua assinatura ou do ato de recebimento do produto ou serviço, sempre que a contratação de fornecimento de produtos e serviços ocorrer fora do estabelecimento comercial, especialmente por telefone ou a domicílio.\" Parágrafo único: os valores pagos \"serão devolvidos, de imediato, monetariamente atualizados.\" 4 dias < 7: pode desistir.",
+   "comentarios": {
+    "A": "O art. 49 dá 7 dias para desistir na contratação fora do estabelecimento.",
+    "B": "O parágrafo único manda devolver de imediato, monetariamente atualizados.",
+    "C": "O arrependimento não exige motivo nem defeito.",
+    "E": "São 7 dias, e só para contratação fora do estabelecimento comercial."
+   },
+   "topico": "Ética na oferta (CDC)",
+   "conceito": "Arrependimento: 7 dias, contratação fora do estabelecimento (telefone, internet, domicílio), sem precisar de motivo.",
+   "explicar": "Explique quando vale o direito de arrependimento e o que acontece com o dinheiro pago.",
+   "habilidade": "interpretar"
+  }
+ ],
+ "fontes": [
+  "Resolução CMN 4.949/2021, arts. 1º § 2º, 2º, 3º, 4º e 5º (redação vigente, com a Res. CMN 5.117/2024) — bcb.gov.br (busca de normas), lida em 23/11/2026",
+  "Resolução CMN 4.860/2020, arts. 3º, 4º, 6º e 7º — bcb.gov.br (busca de normas), lida em 23/11/2026",
+  "Código de Defesa do Consumidor (Lei 8.078/1990), arts. 39, I e III, e 49 — planalto.gov.br, texto compilado, lida em 23/11/2026",
+  "Fora deste simulado: técnicas de venda e de negociação (SPIN, BATNA, etapas da venda), por não terem fonte normativa para conferir"
+ ]
+}
