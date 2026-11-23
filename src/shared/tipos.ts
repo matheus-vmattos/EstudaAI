@@ -262,6 +262,8 @@ export interface Explicacao {
   topico: string
   pergunta: string
   texto: string
+  /** a última vez que o texto foi enviado (reescrever conta como estudo no dia) */
+  atualizadoEm?: number
   /** de onde veio: a questão do simulado (quando veio do Raio-X) */
   simuladoId?: Id
   indice?: number

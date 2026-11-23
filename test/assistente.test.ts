@@ -681,3 +681,40 @@ describe('Explique depois dos exercícios e retorno do Claude', () => {
     expect(placarDeExplicacoes(d)).toEqual({ certo: 0, quase: 0, revisar: 0, esperando: 1 })
   })
 })
+
+describe('Codex no PR 28', () => {
+  it('o retorno mais novo vence, chegue na ordem que chegar', async () => {
+    const { mesclarRetornos, retornoDe } = await import('../src/shared/explicar')
+    const d = dadosDoEdital()
+    d.explicacoes = [{ id: 'x1', criadoEm: 1, topico: 'MDC', pergunta: 'p', texto: 't' }]
+    const velho = {
+      explicacaoId: 'x1',
+      veredito: 'revisar' as const,
+      texto: 'antes',
+      textoAvaliado: 't',
+      criadoEm: 10
+    }
+    const novo = { ...velho, veredito: 'certo' as const, texto: 'corrigido', criadoEm: 20 }
+    expect(mesclarRetornos(d, [novo, velho])).toBe(true) // a nuvem manda do mais novo ao mais velho
+    expect(retornoDe(d, d.explicacoes[0])?.veredito).toBe('certo')
+    expect(mesclarRetornos(d, [novo, velho])).toBe(false) // a mesma busca não grava de novo
+  })
+  it('reescrever uma explicação antiga conta como estudo no dia em que reescreveu', async () => {
+    const { registrarDiaDeEstudo } = await import('../src/shared/estudoDoDia')
+    const d = dadosDoEdital()
+    const ontem = new Date(2026, 10, 22, 10).getTime()
+    const hoje = new Date(2026, 10, 23, 10)
+    d.explicacoes = [
+      {
+        id: 'x1',
+        criadoEm: ontem,
+        atualizadoEm: hoje.getTime(),
+        topico: 'MDC',
+        pergunta: 'p',
+        texto: 't2'
+      }
+    ]
+    registrarDiaDeEstudo(d, hoje)
+    expect(d.diasDeEstudo).toContain('2026-11-23')
+  })
+})

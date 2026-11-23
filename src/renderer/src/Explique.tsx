@@ -51,8 +51,10 @@ export function Explique({
     mudar((d) => {
       const lista = d.explicacoes ?? []
       const atual = ja && lista.find((x) => x.id === ja.id)
-      if (atual) atual.texto = texto.trim()
-      else
+      if (atual) {
+        atual.texto = texto.trim()
+        atual.atualizadoEm = Date.now()
+      } else
         lista.push({
           id: novoId(),
           criadoEm: Date.now(),

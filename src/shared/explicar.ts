@@ -31,7 +31,13 @@ export function mesclarRetornos(d: Dados, novos: Retorno[]): boolean {
   let mudou = false
   for (const r of novos) {
     const ja = vistos.get(chave(r))
-    if (ja && ja.veredito === r.veredito && ja.texto === r.texto) continue
+    // o mais novo vence: a nuvem manda do mais novo ao mais velho
+    if (
+      ja &&
+      (ja.criadoEm > r.criadoEm ||
+        (ja.criadoEm === r.criadoEm && ja.veredito === r.veredito && ja.texto === r.texto))
+    )
+      continue
     vistos.set(chave(r), r)
     mudou = true
   }
