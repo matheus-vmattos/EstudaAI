@@ -331,6 +331,22 @@
       "descricao": "Treinos 8 e 9 (regra de três inversa, MDC/MMC), simulado de Bancários, cartões de Vendas e Português e duas explicações. Aparece no Meu edital.",
       "arquivo": "banestes-missao5.json",
       "data": "2026-11-23"
+    },
+    {
+      "id": "banestes-missao5-vendas-v1",
+      "tipo": "simulado",
+      "titulo": "Simulado: Vendas e Atendimento (relacionamento, ouvidoria e ética)",
+      "descricao": "15 questões FCC, cada fato conferido na norma: Res. CMN 4.949 (relacionamento e atendimento), Res. CMN 4.860 (ouvidoria) e CDC (venda casada, arrependimento).",
+      "arquivo": "banestes-missao5-vendas.json",
+      "data": "2026-11-23"
+    },
+    {
+      "id": "banestes-missao5-v2",
+      "tipo": "missao",
+      "titulo": "Missão: matemática + matérias de peso, com Vendas (23/11 a 06/12)",
+      "descricao": "A Missão 5 com o simulado de Vendas incluído. Simulados já feitos voltam marcados sozinhos; os cartões de Vendas marcam de novo quando você clicar em Estudar.",
+      "arquivo": "banestes-missao5.json",
+      "data": "2026-11-23"
     }
   ]
 }

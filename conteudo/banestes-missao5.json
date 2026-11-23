@@ -1,7 +1,7 @@
 {
  "de": "2026-11-23",
  "ate": "2026-12-06",
- "frase": "Os 7 treinos da base estão feitos. Agora a matemática segue com o que travou no Treino 7 e no 6 (regra de três inversa e MDC/MMC), e as matérias de peso entram junto: Bancários vale 25% da nota, Vendas 17%, Português desempata. Por dia: um bloco de matemática e um de outra matéria.",
+ "frase": "Os 7 treinos da base estão feitos. Agora a matemática segue com o que travou no Treino 7 e no 6 (regra de três inversa e MDC/MMC), e as matérias de peso entram junto: Bancários vale 25% da nota, Vendas 17% (agora com simulado), Português desempata. Por dia: um bloco de matemática e um de outra matéria.",
  "tarefas": [
   {
    "id": "t8",
@@ -20,6 +20,15 @@
    "pontos": 120,
    "item": "banestes-missao5-bancarios-v1",
    "tema": "Conhecimentos Bancários: SFN, lavagem, FGC e cheque"
+  },
+  {
+   "id": "vendas",
+   "tipo": "simulado",
+   "titulo": "Vendas e Atendimento: relacionamento, ouvidoria e ética na oferta",
+   "detalhe": "15 questões FCC conferidas nas normas · 17% da nota",
+   "pontos": 120,
+   "item": "banestes-missao5-vendas-v1",
+   "tema": "Vendas e Atendimento: relacionamento, ouvidoria e ética na oferta"
   },
   {
    "id": "t9",
@@ -75,6 +84,7 @@
  "fontes": [
   "Seus treinos de 22 e 23/11: Treino 6 (MDC 0/8, MMC 1/3) e Treino 7 (inversa 0/17, identificar o tipo 2/8)",
   "Edital Banestes 2026, item 9 (questões e pesos) e item 12.3 (desempate)",
-  "Fontes de cada simulado listadas no próprio arquivo"
+  "Fontes de cada simulado listadas no próprio arquivo",
+  "Simulado de Vendas: Res. CMN 4.949/2021, Res. CMN 4.860/2020 e CDC, listados no arquivo"
  ]
 }
