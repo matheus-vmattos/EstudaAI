@@ -1,0 +1,890 @@
+{
+ "tema": "Treino 8: regra de três inversa",
+ "materia": "Matemática e Raciocínio Lógico",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "Um estoque de ração alimenta 3 animais; o número de animais passa a 9. O número de dias que o estoque dura",
+   "alternativas": {
+    "A": "diminui na mesma quantidade em que mudou o número de animais.",
+    "B": "fica igual, pois o total não muda.",
+    "C": "diminui, pois as grandezas são inversamente proporcionais.",
+    "D": "muda, mas não dá para saber se aumenta ou diminui.",
+    "E": "aumenta, pois as grandezas são diretamente proporcionais."
+   },
+   "gabarito": "C",
+   "resolucao": "Pergunta-chave: o número de animais subiu; o número de dias sobe ou desce?\nAqui o estoque é fixo, então quanto mais animais, menos dias: inversa (uma sobe, a outra desce).\nE quanto: o número de animais ficou 3 vezes maior, então o número de dias fica 3 vezes menor.",
+   "comentarios": {
+    "A": "Proporção é multiplicação, não soma: o número de animais ficou 3 vezes maior, então o número de dias fica 3 vezes menor.",
+    "B": "O total fixo é justamente o que faz o número de dias mudar: o estoque é fixo, então quanto mais animais, menos dias.",
+    "D": "Dá para saber: o estoque é fixo, então quanto mais animais, menos dias. Pergunte sempre \"se uma sobe, a outra sobe ou desce?\".",
+    "E": "Trocou o sentido: aqui o estoque é fixo, então quanto mais animais, menos dias. Se o número de animais sobe, o número de dias desce."
+   },
+   "topico": "Direta ou inversa?",
+   "conceito": "Antes de qualquer conta, decida: se uma grandeza sobe, a outra sobe (direta) ou desce (inversa)?",
+   "explicar": "Explique por que, nesta situação, quando o número de animais sobe, o número de dias desce.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Um carro de consumo constante abastece 40 litros e, na outra semana, 120 litros. A distância que ele consegue rodar",
+   "alternativas": {
+    "A": "aumenta, pois as grandezas são diretamente proporcionais.",
+    "B": "aumenta na mesma quantidade em que mudou o número de litros.",
+    "C": "aumenta e diminui ao mesmo tempo, conforme o dia.",
+    "D": "muda, mas não dá para saber se aumenta ou diminui.",
+    "E": "diminui, pois as grandezas são inversamente proporcionais."
+   },
+   "gabarito": "A",
+   "resolucao": "Pergunta-chave: o número de litros subiu; a distância sobe ou desce?\nAqui o consumo é fixo, então quanto mais litros, mais quilômetros: direta (as duas andam juntas).\nE quanto: o número de litros ficou 3 vezes maior, então a distância fica 3 vezes maior.",
+   "comentarios": {
+    "B": "Proporção é multiplicação, não soma: o número de litros ficou 3 vezes maior, então a distância fica 3 vezes maior.",
+    "C": "O ritmo é constante: nada no enunciado faz a relação mudar de sentido.",
+    "D": "Dá para saber: o consumo é fixo, então quanto mais litros, mais quilômetros. Pergunte sempre \"se uma sobe, a outra sobe ou desce?\".",
+    "E": "Trocou o sentido: aqui o consumo é fixo, então quanto mais litros, mais quilômetros. Se o número de litros sobe, a distância sobe."
+   },
+   "topico": "Direta ou inversa?",
+   "conceito": "Antes de qualquer conta, decida: se uma grandeza sobe, a outra sobe (direta) ou desce (inversa)?",
+   "explicar": "Explique por que, nesta situação, quando o número de litros sobe, a distância sobe.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Uma conta de valor fixo é dividida igualmente entre 12 pessoas; passam a ser 6 pessoas. O valor que cada uma paga",
+   "alternativas": {
+    "A": "aumenta, pois as grandezas são inversamente proporcionais.",
+    "B": "muda, mas não dá para saber se aumenta ou diminui.",
+    "C": "fica igual, pois o total não muda.",
+    "D": "aumenta na mesma quantidade em que mudou o número de pessoas.",
+    "E": "aumenta e diminui ao mesmo tempo, conforme o dia."
+   },
+   "gabarito": "A",
+   "resolucao": "Pergunta-chave: o número de pessoas caiu; o valor por pessoa sobe ou desce?\nAqui o total é fixo, então quanto mais pessoas, menor a parte de cada uma: inversa (uma sobe, a outra desce).\nE quanto: o número de pessoas ficou 2 vezes menor, então o valor por pessoa fica 2 vezes maior.",
+   "comentarios": {
+    "B": "Dá para saber: o total é fixo, então quanto mais pessoas, menor a parte de cada uma. Pergunte sempre \"se uma sobe, a outra sobe ou desce?\".",
+    "C": "O total fixo é justamente o que faz o valor por pessoa mudar: o total é fixo, então quanto mais pessoas, menor a parte de cada uma.",
+    "D": "Proporção é multiplicação, não soma: o número de pessoas ficou 2 vezes menor, então o valor por pessoa fica 2 vezes maior.",
+    "E": "O ritmo é constante: nada no enunciado faz a relação mudar de sentido."
+   },
+   "topico": "Direta ou inversa?",
+   "conceito": "Antes de qualquer conta, decida: se uma grandeza sobe, a outra sobe (direta) ou desce (inversa)?",
+   "explicar": "Explique por que, nesta situação, quando o número de pessoas desce, o valor por pessoa sobe.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Uma fila fixa de clientes é atendida por 12 atendentes; passam a ser 6 atendentes. O tempo para zerar a fila",
+   "alternativas": {
+    "A": "aumenta e diminui ao mesmo tempo, conforme o dia.",
+    "B": "aumenta na mesma quantidade em que mudou o número de atendentes.",
+    "C": "diminui, pois as grandezas são diretamente proporcionais.",
+    "D": "fica igual, pois o total não muda.",
+    "E": "aumenta, pois as grandezas são inversamente proporcionais."
+   },
+   "gabarito": "E",
+   "resolucao": "Pergunta-chave: o número de atendentes caiu; o tempo sobe ou desce?\nAqui a fila é fixa, então quanto mais atendentes, menos tempo: inversa (uma sobe, a outra desce).\nE quanto: o número de atendentes ficou 2 vezes menor, então o tempo fica 2 vezes maior.",
+   "comentarios": {
+    "A": "O ritmo é constante: nada no enunciado faz a relação mudar de sentido.",
+    "B": "Proporção é multiplicação, não soma: o número de atendentes ficou 2 vezes menor, então o tempo fica 2 vezes maior.",
+    "C": "Trocou o sentido: aqui a fila é fixa, então quanto mais atendentes, menos tempo. Se o número de atendentes desce, o tempo sobe.",
+    "D": "O total fixo é justamente o que faz o tempo mudar: a fila é fixa, então quanto mais atendentes, menos tempo."
+   },
+   "topico": "Direta ou inversa?",
+   "conceito": "Antes de qualquer conta, decida: se uma grandeza sobe, a outra sobe (direta) ou desce (inversa)?",
+   "explicar": "Explique por que, nesta situação, quando o número de atendentes desce, o tempo sobe.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "9 operários fazem uma reforma em 8 dias, todos no mesmo ritmo. Quantos dias 1 operário sozinho levaria para fazer uma reforma?",
+   "alternativas": {
+    "A": "8.",
+    "B": "9.",
+    "C": "17.",
+    "D": "70.",
+    "E": "72."
+   },
+   "gabarito": "E",
+   "resolucao": "O que pede: o tempo de 1 operário só, para o mesmo serviço.\nTrabalho total = operários × dias = 9 × 8 = 72 (operário-dias).\n1 operário faz sozinho as 72 partes: leva 72 dias.\nConfere: 9 operários dividindo 72 partes = 72 ÷ 9 = 8 dias, como no enunciado.",
+   "comentarios": {
+    "A": "8 dias é o tempo da equipe toda; com menos gente o tempo aumenta.",
+    "C": "9 + 8: somou, mas o trabalho total é 9 × 8.",
+    "B": "8 + 1: cada operário não \"acrescenta 1 dia\"; o tempo muda na proporção.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 72."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Inversamente proporcionais: quando uma grandeza dobra, a outra cai pela metade. O produto das duas fica constante (é o \"trabalho total\").",
+   "explicar": "Explique o que é o \"trabalho total\" 9 × 8 = 72 e por que ele não muda quando muda o número de operários.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "2 atendentes fazem um lote de processos em 11 horas, todos no mesmo ritmo. Quantos horas 1 atendente sozinho levaria para fazer um lote de processos?",
+   "alternativas": {
+    "A": "11.",
+    "B": "12.",
+    "C": "13.",
+    "D": "20.",
+    "E": "22."
+   },
+   "gabarito": "E",
+   "resolucao": "O que pede: o tempo de 1 atendente só, para o mesmo serviço.\nTrabalho total = atendentes × horas = 2 × 11 = 22 (atendente-horas).\n1 atendente faz sozinho as 22 partes: leva 22 horas.\nConfere: 2 atendentes dividindo 22 partes = 22 ÷ 2 = 11 horas, como no enunciado.",
+   "comentarios": {
+    "A": "11 horas é o tempo da equipe toda; com menos gente o tempo aumenta.",
+    "C": "2 + 11: somou, mas o trabalho total é 2 × 11.",
+    "B": "11 + 1: cada atendente não \"acrescenta 1 hora\"; o tempo muda na proporção.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 22."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Inversamente proporcionais: quando uma grandeza dobra, a outra cai pela metade. O produto das duas fica constante (é o \"trabalho total\").",
+   "explicar": "Explique o que é o \"trabalho total\" 2 × 11 = 22 e por que ele não muda quando muda o número de atendentes.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "3 atendentes fazem um lote de processos em 14 horas, todos no mesmo ritmo. Quantos horas 1 atendente sozinho levaria para fazer um lote de processos?",
+   "alternativas": {
+    "A": "14.",
+    "B": "15.",
+    "C": "17.",
+    "D": "42.",
+    "E": "84."
+   },
+   "gabarito": "D",
+   "resolucao": "O que pede: o tempo de 1 atendente só, para o mesmo serviço.\nTrabalho total = atendentes × horas = 3 × 14 = 42 (atendente-horas).\n1 atendente faz sozinho as 42 partes: leva 42 horas.\nConfere: 3 atendentes dividindo 42 partes = 42 ÷ 3 = 14 horas, como no enunciado.",
+   "comentarios": {
+    "A": "14 horas é o tempo da equipe toda; com menos gente o tempo aumenta.",
+    "C": "3 + 14: somou, mas o trabalho total é 3 × 14.",
+    "B": "14 + 1: cada atendente não \"acrescenta 1 hora\"; o tempo muda na proporção.",
+    "E": "O dobro do certo: o trabalho total já é 3 × 14 = 42 \"atendente-horas\"; não há o que dobrar."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Inversamente proporcionais: quando uma grandeza dobra, a outra cai pela metade. O produto das duas fica constante (é o \"trabalho total\").",
+   "explicar": "Explique o que é o \"trabalho total\" 3 × 14 = 42 e por que ele não muda quando muda o número de atendentes.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "3 atendentes fazem um lote de processos em 6 horas, todos no mesmo ritmo. Quantos horas 1 atendente sozinho levaria para fazer um lote de processos?",
+   "alternativas": {
+    "A": "2.",
+    "B": "6.",
+    "C": "7.",
+    "D": "9.",
+    "E": "18."
+   },
+   "gabarito": "E",
+   "resolucao": "O que pede: o tempo de 1 atendente só, para o mesmo serviço.\nTrabalho total = atendentes × horas = 3 × 6 = 18 (atendente-horas).\n1 atendente faz sozinho as 18 partes: leva 18 horas.\nConfere: 3 atendentes dividindo 18 partes = 18 ÷ 3 = 6 horas, como no enunciado.",
+   "comentarios": {
+    "A": "6 ÷ 3: dividiu, como se 1 atendente fosse mais rápido que 3. Sozinho, ele demora MAIS.",
+    "B": "6 horas é o tempo da equipe toda; com menos gente o tempo aumenta.",
+    "D": "3 + 6: somou, mas o trabalho total é 3 × 6.",
+    "C": "6 + 1: cada atendente não \"acrescenta 1 hora\"; o tempo muda na proporção."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Inversamente proporcionais: quando uma grandeza dobra, a outra cai pela metade. O produto das duas fica constante (é o \"trabalho total\").",
+   "explicar": "Explique o que é o \"trabalho total\" 3 × 6 = 18 e por que ele não muda quando muda o número de atendentes.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "7 operários constroem um muro em 12 dias. Com 2 operários, no mesmo ritmo, o muro fica pronto em quantos dias?",
+   "alternativas": {
+    "A": "17.",
+    "B": "42.",
+    "C": "43.",
+    "D": "44.",
+    "E": "84."
+   },
+   "gabarito": "B",
+   "resolucao": "Direta ou inversa? Mais operários dividem o mesmo muro: inversa.\nO produto fica constante: 7 × 12 = 84.\nCom 2 operários: 84 ÷ 2 = 42 dias.\nConfere o sentido: menos operários (7 → 2) deu mais dias (12 → 42). ✔",
+   "comentarios": {
+    "A": "12 + 5: ajustou pela diferença de operários; proporção é multiplicação, não soma.",
+    "E": "7 × 12 = 84 é o trabalho total, não a resposta: falta dividir por 2.",
+    "C": "Conta quase certa: refaça a divisão do trabalho total.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 42."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Inversamente proporcionais: quando uma grandeza dobra, a outra cai pela metade. O produto das duas fica constante (é o \"trabalho total\").",
+   "explicar": "Explique por que com 2 operários são 42 dias.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "3 operários constroem um muro em 14 dias. Com 7 operários, no mesmo ritmo, o muro fica pronto em quantos dias?",
+   "alternativas": {
+    "A": "6.",
+    "B": "7.",
+    "C": "10.",
+    "D": "14.",
+    "E": "42."
+   },
+   "gabarito": "A",
+   "resolucao": "Direta ou inversa? Mais operários dividem o mesmo muro: inversa.\nO produto fica constante: 3 × 14 = 42.\nCom 7 operários: 42 ÷ 7 = 6 dias.\nConfere o sentido: mais operários (3 → 7) deu menos dias (14 → 6). ✔",
+   "comentarios": {
+    "E": "3 × 14 = 42 é o trabalho total, não a resposta: falta dividir por 7.",
+    "C": "14 − 4: ajustou pela diferença de operários; proporção é multiplicação, não soma.",
+    "D": "14 dias é a situação inicial; com 7 operários o tempo muda.",
+    "B": "Conta quase certa: refaça a divisão do trabalho total."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Inversamente proporcionais: quando uma grandeza dobra, a outra cai pela metade. O produto das duas fica constante (é o \"trabalho total\").",
+   "explicar": "Explique por que com 7 operários são 6 dias.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "10 operários constroem um muro em 11 dias. Com 5 operários, no mesmo ritmo, o muro fica pronto em quantos dias?",
+   "alternativas": {
+    "A": "5,5.",
+    "B": "16.",
+    "C": "22.",
+    "D": "23.",
+    "E": "110."
+   },
+   "gabarito": "C",
+   "resolucao": "Direta ou inversa? Mais operários dividem o mesmo muro: inversa.\nO produto fica constante: 10 × 11 = 110.\nCom 5 operários: 110 ÷ 5 = 22 dias.\nConfere o sentido: menos operários (10 → 5) deu mais dias (11 → 22). ✔",
+   "comentarios": {
+    "A": "11 × 5 ÷ 10: regra de três DIRETA. Mas mais operários dividem o mesmo muro: menos operários, mais dias.",
+    "B": "11 + 5: ajustou pela diferença de operários; proporção é multiplicação, não soma.",
+    "E": "10 × 11 = 110 é o trabalho total, não a resposta: falta dividir por 5.",
+    "D": "Conta quase certa: refaça a divisão do trabalho total."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Inversamente proporcionais: quando uma grandeza dobra, a outra cai pela metade. O produto das duas fica constante (é o \"trabalho total\").",
+   "explicar": "Explique por que com 5 operários são 22 dias, e não 5,5 (a conta da regra direta).",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "3 operários constroem um muro em 9 dias. Com 9 operários, no mesmo ritmo, o muro fica pronto em quantos dias?",
+   "alternativas": {
+    "A": "2.",
+    "B": "3.",
+    "C": "4.",
+    "D": "9.",
+    "E": "27."
+   },
+   "gabarito": "B",
+   "resolucao": "Direta ou inversa? Mais operários dividem o mesmo muro: inversa.\nO produto fica constante: 3 × 9 = 27.\nCom 9 operários: 27 ÷ 9 = 3 dias.\nConfere o sentido: mais operários (3 → 9) deu menos dias (9 → 3). ✔",
+   "comentarios": {
+    "A": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 3.",
+    "E": "9 × 9 ÷ 3: regra de três DIRETA. Mas mais operários dividem o mesmo muro: mais operários, menos dias.",
+    "D": "9 dias é a situação inicial; com 9 operários o tempo muda.",
+    "C": "Conta quase certa: refaça a divisão do trabalho total."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Inversamente proporcionais: quando uma grandeza dobra, a outra cai pela metade. O produto das duas fica constante (é o \"trabalho total\").",
+   "explicar": "Explique por que com 9 operários são 3 dias, e não 27 (a conta da regra direta).",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Com 8 torneiras iguais abertas, um reservatório enche em 15 horas. Com 6 dessas torneiras, ele enche em quantas horas?",
+   "alternativas": {
+    "A": "17.",
+    "B": "20.",
+    "C": "21.",
+    "D": "22.",
+    "E": "120."
+   },
+   "gabarito": "B",
+   "resolucao": "Direta ou inversa? Mais torneiras despejam mais água por hora no mesmo reservatório: inversa.\nO produto fica constante: 8 × 15 = 120.\nCom 6 torneiras: 120 ÷ 6 = 20 horas.\nConfere o sentido: menos torneiras (8 → 6) deu mais horas (15 → 20). ✔",
+   "comentarios": {
+    "A": "15 + 2: ajustou pela diferença de torneiras; proporção é multiplicação, não soma.",
+    "E": "8 × 15 = 120 é o trabalho total, não a resposta: falta dividir por 6.",
+    "C": "Conta quase certa: refaça a divisão do trabalho total.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 20."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Inversamente proporcionais: quando uma grandeza dobra, a outra cai pela metade. O produto das duas fica constante (é o \"trabalho total\").",
+   "explicar": "Explique por que com 6 torneiras são 20 horas.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Com 5 torneiras iguais abertas, um reservatório enche em 18 horas. Com 3 dessas torneiras, ele enche em quantas horas?",
+   "alternativas": {
+    "A": "10,8.",
+    "B": "18.",
+    "C": "20.",
+    "D": "28.",
+    "E": "30."
+   },
+   "gabarito": "E",
+   "resolucao": "Direta ou inversa? Mais torneiras despejam mais água por hora no mesmo reservatório: inversa.\nO produto fica constante: 5 × 18 = 90.\nCom 3 torneiras: 90 ÷ 3 = 30 horas.\nConfere o sentido: menos torneiras (5 → 3) deu mais horas (18 → 30). ✔",
+   "comentarios": {
+    "A": "18 × 3 ÷ 5: regra de três DIRETA. Mas mais torneiras despejam mais água por hora no mesmo reservatório: menos torneiras, mais horas.",
+    "C": "18 + 2: ajustou pela diferença de torneiras; proporção é multiplicação, não soma.",
+    "B": "18 horas é a situação inicial; com 3 torneiras o tempo muda.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 30."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Inversamente proporcionais: quando uma grandeza dobra, a outra cai pela metade. O produto das duas fica constante (é o \"trabalho total\").",
+   "explicar": "Explique por que com 3 torneiras são 30 horas, e não 10,8 (a conta da regra direta).",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Com 8 torneiras iguais abertas, um reservatório enche em 24 horas. Com 2 dessas torneiras, ele enche em quantas horas?",
+   "alternativas": {
+    "A": "6.",
+    "B": "30.",
+    "C": "96.",
+    "D": "97.",
+    "E": "192."
+   },
+   "gabarito": "C",
+   "resolucao": "Direta ou inversa? Mais torneiras despejam mais água por hora no mesmo reservatório: inversa.\nO produto fica constante: 8 × 24 = 192.\nCom 2 torneiras: 192 ÷ 2 = 96 horas.\nConfere o sentido: menos torneiras (8 → 2) deu mais horas (24 → 96). ✔",
+   "comentarios": {
+    "A": "24 × 2 ÷ 8: regra de três DIRETA. Mas mais torneiras despejam mais água por hora no mesmo reservatório: menos torneiras, mais horas.",
+    "B": "24 + 6: ajustou pela diferença de torneiras; proporção é multiplicação, não soma.",
+    "E": "8 × 24 = 192 é o trabalho total, não a resposta: falta dividir por 2.",
+    "D": "Conta quase certa: refaça a divisão do trabalho total."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Inversamente proporcionais: quando uma grandeza dobra, a outra cai pela metade. O produto das duas fica constante (é o \"trabalho total\").",
+   "explicar": "Explique por que com 2 torneiras são 96 horas, e não 6 (a conta da regra direta).",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Com 2 torneiras iguais abertas, um reservatório enche em 16 horas. Com 4 dessas torneiras, ele enche em quantas horas?",
+   "alternativas": {
+    "A": "7.",
+    "B": "8.",
+    "C": "14.",
+    "D": "16.",
+    "E": "32."
+   },
+   "gabarito": "B",
+   "resolucao": "Direta ou inversa? Mais torneiras despejam mais água por hora no mesmo reservatório: inversa.\nO produto fica constante: 2 × 16 = 32.\nCom 4 torneiras: 32 ÷ 4 = 8 horas.\nConfere o sentido: mais torneiras (2 → 4) deu menos horas (16 → 8). ✔",
+   "comentarios": {
+    "A": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 8.",
+    "E": "16 × 4 ÷ 2: regra de três DIRETA. Mas mais torneiras despejam mais água por hora no mesmo reservatório: mais torneiras, menos horas.",
+    "C": "16 − 2: ajustou pela diferença de torneiras; proporção é multiplicação, não soma.",
+    "D": "16 horas é a situação inicial; com 4 torneiras o tempo muda."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Inversamente proporcionais: quando uma grandeza dobra, a outra cai pela metade. O produto das duas fica constante (é o \"trabalho total\").",
+   "explicar": "Explique por que com 4 torneiras são 8 horas, e não 32 (a conta da regra direta).",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Em uma agência, 6 atendentes zeram a fila da manhã em 53 minutos. Se a mesma fila fosse atendida por 3 atendentes, no mesmo ritmo, levaria quantos minutos?",
+   "alternativas": {
+    "A": "26,5.",
+    "B": "53.",
+    "C": "56.",
+    "D": "96.",
+    "E": "106."
+   },
+   "gabarito": "E",
+   "resolucao": "Direta ou inversa? Mais atendentes dividem a mesma fila: inversa.\nO produto fica constante: 6 × 53 = 318.\nCom 3 atendentes: 318 ÷ 3 = 106 minutos.\nConfere o sentido: menos atendentes (6 → 3) deu mais minutos (53 → 106). ✔",
+   "comentarios": {
+    "A": "53 × 3 ÷ 6: regra de três DIRETA. Mas mais atendentes dividem a mesma fila: menos atendentes, mais minutos.",
+    "C": "53 + 3: ajustou pela diferença de atendentes; proporção é multiplicação, não soma.",
+    "B": "53 minutos é a situação inicial; com 3 atendentes o tempo muda.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 106."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Inversamente proporcionais: quando uma grandeza dobra, a outra cai pela metade. O produto das duas fica constante (é o \"trabalho total\").",
+   "explicar": "Explique por que com 3 atendentes são 106 minutos, e não 26,5 (a conta da regra direta).",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Em uma agência, 5 atendentes zeram a fila da manhã em 105 minutos. Se a mesma fila fosse atendida por 3 atendentes, no mesmo ritmo, levaria quantos minutos?",
+   "alternativas": {
+    "A": "63.",
+    "B": "105.",
+    "C": "107.",
+    "D": "165.",
+    "E": "175."
+   },
+   "gabarito": "E",
+   "resolucao": "Direta ou inversa? Mais atendentes dividem a mesma fila: inversa.\nO produto fica constante: 5 × 105 = 525.\nCom 3 atendentes: 525 ÷ 3 = 175 minutos.\nConfere o sentido: menos atendentes (5 → 3) deu mais minutos (105 → 175). ✔",
+   "comentarios": {
+    "A": "105 × 3 ÷ 5: regra de três DIRETA. Mas mais atendentes dividem a mesma fila: menos atendentes, mais minutos.",
+    "C": "105 + 2: ajustou pela diferença de atendentes; proporção é multiplicação, não soma.",
+    "B": "105 minutos é a situação inicial; com 3 atendentes o tempo muda.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 175."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Inversamente proporcionais: quando uma grandeza dobra, a outra cai pela metade. O produto das duas fica constante (é o \"trabalho total\").",
+   "explicar": "Explique por que com 3 atendentes são 175 minutos, e não 63 (a conta da regra direta).",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Em uma agência, 7 atendentes zeram a fila da manhã em 114 minutos. Se a mesma fila fosse atendida por 3 atendentes, no mesmo ritmo, levaria quantos minutos?",
+   "alternativas": {
+    "A": "114.",
+    "B": "118.",
+    "C": "266.",
+    "D": "267.",
+    "E": "798."
+   },
+   "gabarito": "C",
+   "resolucao": "Direta ou inversa? Mais atendentes dividem a mesma fila: inversa.\nO produto fica constante: 7 × 114 = 798.\nCom 3 atendentes: 798 ÷ 3 = 266 minutos.\nConfere o sentido: menos atendentes (7 → 3) deu mais minutos (114 → 266). ✔",
+   "comentarios": {
+    "B": "114 + 4: ajustou pela diferença de atendentes; proporção é multiplicação, não soma.",
+    "A": "114 minutos é a situação inicial; com 3 atendentes o tempo muda.",
+    "E": "7 × 114 = 798 é o trabalho total, não a resposta: falta dividir por 3.",
+    "D": "Conta quase certa: refaça a divisão do trabalho total."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Inversamente proporcionais: quando uma grandeza dobra, a outra cai pela metade. O produto das duas fica constante (é o \"trabalho total\").",
+   "explicar": "Explique por que com 3 atendentes são 266 minutos.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Em uma agência, 2 atendentes zeram a fila da manhã em 40 minutos. Se a mesma fila fosse atendida por 5 atendentes, no mesmo ritmo, levaria quantos minutos?",
+   "alternativas": {
+    "A": "14.",
+    "B": "16.",
+    "C": "37.",
+    "D": "80.",
+    "E": "100."
+   },
+   "gabarito": "B",
+   "resolucao": "Direta ou inversa? Mais atendentes dividem a mesma fila: inversa.\nO produto fica constante: 2 × 40 = 80.\nCom 5 atendentes: 80 ÷ 5 = 16 minutos.\nConfere o sentido: mais atendentes (2 → 5) deu menos minutos (40 → 16). ✔",
+   "comentarios": {
+    "A": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 16.",
+    "E": "40 × 5 ÷ 2: regra de três DIRETA. Mas mais atendentes dividem a mesma fila: mais atendentes, menos minutos.",
+    "D": "2 × 40 = 80 é o trabalho total, não a resposta: falta dividir por 5.",
+    "C": "40 − 3: ajustou pela diferença de atendentes; proporção é multiplicação, não soma."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Inversamente proporcionais: quando uma grandeza dobra, a outra cai pela metade. O produto das duas fica constante (é o \"trabalho total\").",
+   "explicar": "Explique por que com 5 atendentes são 16 minutos, e não 100 (a conta da regra direta).",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "O estoque de café de uma agência dura 12 dias para 25 funcionários. Chegaram mais 5 funcionários, que tomam café na mesma quantidade. O estoque passa a durar quantos dias?",
+   "alternativas": {
+    "A": "7.",
+    "B": "8.",
+    "C": "10.",
+    "D": "60.",
+    "E": "300."
+   },
+   "gabarito": "C",
+   "resolucao": "Pegadinha: \"mais 5\" quer dizer que agora são 25 + 5 = 30 funcionários.\nInversa: mais pessoas, menos dias. Total do estoque = 25 × 12 = 300 porções-dia.\n300 ÷ 30 = 10 dias.\nConfere: 30 × 10 = 300. ✔",
+   "comentarios": {
+    "A": "12 − 5: tirou um dia por funcionário novo; a proporção é por multiplicação.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 10.",
+    "D": "Dividiu por 5: mas agora são 25 + 5 = 30 pessoas tomando café, não 5.",
+    "E": "25 × 12 = 300 é o total de \"cafés-dia\" do estoque; falta dividir por 30 pessoas."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Inversamente proporcionais: quando uma grandeza dobra, a outra cai pela metade. O produto das duas fica constante (é o \"trabalho total\").",
+   "explicar": "Explique por que o estoque dura 10 dias, e não 12 − 5 nem 12 × 30 ÷ 25.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "O estoque de café de uma agência dura 46 dias para 36 funcionários. Chegaram mais 10 funcionários, que tomam café na mesma quantidade. O estoque passa a durar quantos dias?",
+   "alternativas": {
+    "A": "36.",
+    "B": "38.",
+    "C": "46.",
+    "D": "56.",
+    "E": "1.656."
+   },
+   "gabarito": "A",
+   "resolucao": "Pegadinha: \"mais 10\" quer dizer que agora são 36 + 10 = 46 funcionários.\nInversa: mais pessoas, menos dias. Total do estoque = 36 × 46 = 1656 porções-dia.\n1656 ÷ 46 = 36 dias.\nConfere: 46 × 36 = 1656. ✔",
+   "comentarios": {
+    "D": "46 + 10: mais gente não faz o café durar mais.",
+    "E": "36 × 46 = 1656 é o total de \"cafés-dia\" do estoque; falta dividir por 46 pessoas.",
+    "C": "46 dias era antes; com 46 pessoas o estoque dura menos.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 36."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Inversamente proporcionais: quando uma grandeza dobra, a outra cai pela metade. O produto das duas fica constante (é o \"trabalho total\").",
+   "explicar": "Explique por que o estoque dura 36 dias, e não 46 − 10 nem 46 × 46 ÷ 36.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Mantendo 96 km/h, um motorista faz o trajeto entre duas cidades em 5 horas. Se mantiver 48 km/h no mesmo trajeto, levará",
+   "alternativas": {
+    "A": "2,5 horas.",
+    "B": "10 horas.",
+    "C": "10,5 horas.",
+    "D": "20 horas.",
+    "E": "480 horas."
+   },
+   "gabarito": "B",
+   "resolucao": "Inversa: mais devagar, mais tempo (a distância é a mesma).\nDistância = 96 × 5 = 480 km.\nTempo novo = 480 ÷ 48 = 10 horas.\nConfere: 48 × 10 = 480 km. ✔",
+   "comentarios": {
+    "A": "5 × 48 ÷ 96: regra direta. Mais devagar chega DEPOIS: o tempo tem que subir.",
+    "E": "96 × 5 = 480 é a distância em km, não o tempo.",
+    "C": "Quase: 480 ÷ 48 = 10, não 10,5.",
+    "D": "O dobro do certo: 480 ÷ 48 = 10."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Com a distância fixa, velocidade × tempo = distância (constante): velocidade e tempo são inversamente proporcionais.",
+   "explicar": "Explique por que a 48 km/h a viagem leva 10 h, e não 2,5 h.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Mantendo 75 km/h, um motorista faz o trajeto entre duas cidades em 5 horas. Se mantiver 50 km/h no mesmo trajeto, levará",
+   "alternativas": {
+    "A": "6 horas.",
+    "B": "7 horas.",
+    "C": "7,5 horas.",
+    "D": "8 horas.",
+    "E": "375 horas."
+   },
+   "gabarito": "C",
+   "resolucao": "Inversa: mais devagar, mais tempo (a distância é a mesma).\nDistância = 75 × 5 = 375 km.\nTempo novo = 375 ÷ 50 = 7,5 horas (7 h 30 min).\nConfere: 50 × 7,5 = 375 km. ✔",
+   "comentarios": {
+    "A": "Mudou 1 hora \"no olho\": a mudança de tempo segue a razão das velocidades.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 7,5 horas.",
+    "E": "75 × 5 = 375 é a distância em km, não o tempo.",
+    "D": "Quase: 375 ÷ 50 = 7,5, não 8."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Com a distância fixa, velocidade × tempo = distância (constante): velocidade e tempo são inversamente proporcionais.",
+   "explicar": "Explique por que a 50 km/h a viagem leva 7,5 h, e não ≈ 3,3 h.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Mantendo 40 km/h, um motorista faz o trajeto entre duas cidades em 3 horas. Se mantiver 48 km/h no mesmo trajeto, levará",
+   "alternativas": {
+    "A": "2,5 horas.",
+    "B": "3 horas.",
+    "C": "3,6 horas.",
+    "D": "5 horas.",
+    "E": "120 horas."
+   },
+   "gabarito": "A",
+   "resolucao": "Inversa: mais rápido, menos tempo (a distância é a mesma).\nDistância = 40 × 3 = 120 km.\nTempo novo = 120 ÷ 48 = 2,5 horas (2 h 30 min).\nConfere: 48 × 2,5 = 120 km. ✔",
+   "comentarios": {
+    "C": "3 × 48 ÷ 40: regra direta. Mais rápido chega ANTES: o tempo tem que cair.",
+    "E": "40 × 3 = 120 é a distância em km, não o tempo.",
+    "B": "Quase: 120 ÷ 48 = 2,5, não 3.",
+    "D": "O dobro do certo: 120 ÷ 48 = 2,5."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Com a distância fixa, velocidade × tempo = distância (constante): velocidade e tempo são inversamente proporcionais.",
+   "explicar": "Explique por que a 48 km/h a viagem leva 2,5 h, e não 3,6 h.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Mantendo 120 km/h, um motorista faz o trajeto entre duas cidades em 3 horas. Se mantiver 90 km/h no mesmo trajeto, levará",
+   "alternativas": {
+    "A": "2,25 horas.",
+    "B": "4 horas.",
+    "C": "4,5 horas.",
+    "D": "8 horas.",
+    "E": "360 horas."
+   },
+   "gabarito": "B",
+   "resolucao": "Inversa: mais devagar, mais tempo (a distância é a mesma).\nDistância = 120 × 3 = 360 km.\nTempo novo = 360 ÷ 90 = 4 horas.\nConfere: 90 × 4 = 360 km. ✔",
+   "comentarios": {
+    "A": "3 × 90 ÷ 120: regra direta. Mais devagar chega DEPOIS: o tempo tem que subir.",
+    "E": "120 × 3 = 360 é a distância em km, não o tempo.",
+    "C": "Quase: 360 ÷ 90 = 4, não 4,5.",
+    "D": "O dobro do certo: 360 ÷ 90 = 4."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Com a distância fixa, velocidade × tempo = distância (constante): velocidade e tempo são inversamente proporcionais.",
+   "explicar": "Explique por que a 90 km/h a viagem leva 4 h, e não 2,25 h.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Caminhando a 6 km/h, Ana chega ao trabalho em 24 minutos. Pedalando a 3 km/h pelo mesmo caminho, ela chega em quantos minutos?",
+   "alternativas": {
+    "A": "12 minutos.",
+    "B": "24 minutos.",
+    "C": "27 minutos.",
+    "D": "48 minutos.",
+    "E": "144 minutos."
+   },
+   "gabarito": "D",
+   "resolucao": "Inversa: mais lenta, mais tempo.\nVelocidade × tempo fica constante: 6 × 24 = 144.\n144 ÷ 3 = 48 minutos.\nConfere pela razão: a velocidade foi multiplicada por 3/6; o tempo, por 6/3: 24 × 6 ÷ 3 = 48. ✔",
+   "comentarios": {
+    "A": "24 × 3 ÷ 6: regra direta. Indo mais devagar ela chega depois.",
+    "C": "Tirou/somou a diferença de velocidade dos minutos; a relação é de multiplicação.",
+    "B": "24 min é o tempo a pé; de bicicleta muda.",
+    "E": "6 × 24 = 144 é o produto constante; falta dividir por 3."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Não precisa converter minutos em horas: com a mesma unidade dos dois lados, o produto velocidade × tempo é constante.",
+   "explicar": "Explique, sem fazer conta de distância, por que 24 minutos viram 48 minutos.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Caminhando a 6 km/h, Ana chega ao trabalho em 60 minutos. Pedalando a 4 km/h pelo mesmo caminho, ela chega em quantos minutos?",
+   "alternativas": {
+    "A": "40 minutos.",
+    "B": "90 minutos.",
+    "C": "92 minutos.",
+    "D": "95 minutos.",
+    "E": "360 minutos."
+   },
+   "gabarito": "B",
+   "resolucao": "Inversa: mais lenta, mais tempo.\nVelocidade × tempo fica constante: 6 × 60 = 360.\n360 ÷ 4 = 90 minutos.\nConfere pela razão: a velocidade foi multiplicada por 4/6; o tempo, por 6/4: 60 × 6 ÷ 4 = 90. ✔",
+   "comentarios": {
+    "A": "60 × 4 ÷ 6: regra direta. Indo mais devagar ela chega depois.",
+    "E": "6 × 60 = 360 é o produto constante; falta dividir por 4.",
+    "D": "Quase: 360 ÷ 4 = 90.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 90 minutos."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Não precisa converter minutos em horas: com a mesma unidade dos dois lados, o produto velocidade × tempo é constante.",
+   "explicar": "Explique, sem fazer conta de distância, por que 60 minutos viram 90 minutos.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Caminhando a 3 km/h, Ana chega ao trabalho em 24 minutos. Pedalando a 8 km/h pelo mesmo caminho, ela chega em quantos minutos?",
+   "alternativas": {
+    "A": "9 minutos.",
+    "B": "19 minutos.",
+    "C": "24 minutos.",
+    "D": "64 minutos.",
+    "E": "72 minutos."
+   },
+   "gabarito": "A",
+   "resolucao": "Inversa: mais rápida, menos tempo.\nVelocidade × tempo fica constante: 3 × 24 = 72.\n72 ÷ 8 = 9 minutos.\nConfere pela razão: a velocidade foi multiplicada por 8/3; o tempo, por 3/8: 24 × 3 ÷ 8 = 9. ✔",
+   "comentarios": {
+    "D": "24 × 8 ÷ 3: regra direta. Indo mais rápido ela chega antes.",
+    "E": "3 × 24 = 72 é o produto constante; falta dividir por 8.",
+    "B": "Tirou/somou a diferença de velocidade dos minutos; a relação é de multiplicação.",
+    "C": "24 min é o tempo a pé; de bicicleta muda."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Não precisa converter minutos em horas: com a mesma unidade dos dois lados, o produto velocidade × tempo é constante.",
+   "explicar": "Explique, sem fazer conta de distância, por que 24 minutos viram 9 minutos.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Caminhando a 6 km/h, Ana chega ao trabalho em 24 minutos. Pedalando a 4 km/h pelo mesmo caminho, ela chega em quantos minutos?",
+   "alternativas": {
+    "A": "16 minutos.",
+    "B": "26 minutos.",
+    "C": "36 minutos.",
+    "D": "41 minutos.",
+    "E": "144 minutos."
+   },
+   "gabarito": "C",
+   "resolucao": "Inversa: mais lenta, mais tempo.\nVelocidade × tempo fica constante: 6 × 24 = 144.\n144 ÷ 4 = 36 minutos.\nConfere pela razão: a velocidade foi multiplicada por 4/6; o tempo, por 6/4: 24 × 6 ÷ 4 = 36. ✔",
+   "comentarios": {
+    "A": "24 × 4 ÷ 6: regra direta. Indo mais devagar ela chega depois.",
+    "B": "Tirou/somou a diferença de velocidade dos minutos; a relação é de multiplicação.",
+    "E": "6 × 24 = 144 é o produto constante; falta dividir por 4.",
+    "D": "Quase: 144 ÷ 4 = 36."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Não precisa converter minutos em horas: com a mesma unidade dos dois lados, o produto velocidade × tempo é constante.",
+   "explicar": "Explique, sem fazer conta de distância, por que 24 minutos viram 36 minutos.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Com a verba do mês, um setor compra 12 resmas de papel a R$ 6,00 cada. Se o preço da resma passar a R$ 3,00, a mesma verba comprará quantas resmas?",
+   "alternativas": {
+    "A": "6.",
+    "B": "15.",
+    "C": "24.",
+    "D": "26.",
+    "E": "72."
+   },
+   "gabarito": "C",
+   "resolucao": "Inversa: preço menor, quantidade maior (a verba é a mesma).\nVerba = 12 × 6 = R$ 72,00.\n72 ÷ 3 = 24 resmas.\nConfere: 24 × 3 = 72. ✔",
+   "comentarios": {
+    "A": "12 × 3 ÷ 6: regra direta. Com o preço menor, a mesma verba compra MAIS.",
+    "B": "12 + 3: proporção não é soma.",
+    "E": "12 × 6 = 72 é a verba em reais, não a quantidade.",
+    "D": "Quase: 72 ÷ 3 = 24."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Verba fixa: preço × quantidade = verba (constante). Preço e quantidade são inversamente proporcionais.",
+   "explicar": "Explique por que, com a resma a R$ 3,00, a verba compra 24 resmas.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Com a verba do mês, um setor compra 49 resmas de papel a R$ 8,00 cada. Se o preço da resma passar a R$ 2,00, a mesma verba comprará quantas resmas?",
+   "alternativas": {
+    "A": "49.",
+    "B": "55.",
+    "C": "186.",
+    "D": "196.",
+    "E": "392."
+   },
+   "gabarito": "D",
+   "resolucao": "Inversa: preço menor, quantidade maior (a verba é a mesma).\nVerba = 49 × 8 = R$ 392,00.\n392 ÷ 2 = 196 resmas.\nConfere: 196 × 2 = 392. ✔",
+   "comentarios": {
+    "B": "49 + 6: proporção não é soma.",
+    "A": "49 unidades era com o preço antigo.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 196.",
+    "E": "49 × 8 = 392 é a verba em reais, não a quantidade."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Verba fixa: preço × quantidade = verba (constante). Preço e quantidade são inversamente proporcionais.",
+   "explicar": "Explique por que, com a resma a R$ 2,00, a verba compra 196 resmas.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Com a verba do mês, um setor compra 44 resmas de papel a R$ 6,00 cada. Se o preço da resma passar a R$ 3,00, a mesma verba comprará quantas resmas?",
+   "alternativas": {
+    "A": "22.",
+    "B": "44.",
+    "C": "47.",
+    "D": "88.",
+    "E": "264."
+   },
+   "gabarito": "D",
+   "resolucao": "Inversa: preço menor, quantidade maior (a verba é a mesma).\nVerba = 44 × 6 = R$ 264,00.\n264 ÷ 3 = 88 resmas.\nConfere: 88 × 3 = 264. ✔",
+   "comentarios": {
+    "A": "44 × 3 ÷ 6: regra direta. Com o preço menor, a mesma verba compra MAIS.",
+    "C": "44 + 3: proporção não é soma.",
+    "B": "44 unidades era com o preço antigo.",
+    "E": "44 × 6 = 264 é a verba em reais, não a quantidade."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Verba fixa: preço × quantidade = verba (constante). Preço e quantidade são inversamente proporcionais.",
+   "explicar": "Explique por que, com a resma a R$ 3,00, a verba compra 88 resmas.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um grupo de 8 colegas dividiria igualmente o aluguel de um salão, e cada um pagaria R$ 60,00. Como 3 desistiram, quanto cada um dos que ficaram vai pagar?",
+   "alternativas": {
+    "A": "R$ 37,50.",
+    "B": "R$ 60,00.",
+    "C": "R$ 63,00.",
+    "D": "R$ 96,00.",
+    "E": "R$ 480,00."
+   },
+   "gabarito": "D",
+   "resolucao": "Inversa: menos pessoas, parte maior de cada uma (o aluguel é o mesmo).\nAluguel = 8 × 60 = R$ 480,00.\nFicaram 8 − 3 = 5 pessoas: 480 ÷ 5 = R$ 96,00.\nConfere: 5 × R$ 96,00 = R$ 480,00. ✔",
+   "comentarios": {
+    "A": "60 × 5 ÷ 8: regra direta. Com menos gente, cada um paga MAIS.",
+    "C": "R$ 60 + 3: somou 1 real por desistente; a parte de quem saiu é repartida, não somada assim.",
+    "B": "R$ 60,00 era a parte com 8 pessoas.",
+    "E": "8 × 60 = 480 é o aluguel inteiro."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Valor fixo dividido: número de pessoas × parte de cada = total (constante).",
+   "explicar": "Explique por que, com 5 pessoas, cada uma paga R$ 96,00.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Um grupo de 5 colegas dividiria igualmente o aluguel de um salão, e cada um pagaria R$ 123,00. Como 2 desistiram, quanto cada um dos que ficaram vai pagar?",
+   "alternativas": {
+    "A": "R$ 73,80.",
+    "B": "R$ 123,00.",
+    "C": "R$ 125,00.",
+    "D": "R$ 205,00.",
+    "E": "R$ 615,00."
+   },
+   "gabarito": "D",
+   "resolucao": "Inversa: menos pessoas, parte maior de cada uma (o aluguel é o mesmo).\nAluguel = 5 × 123 = R$ 615,00.\nFicaram 5 − 2 = 3 pessoas: 615 ÷ 3 = R$ 205,00.\nConfere: 3 × R$ 205,00 = R$ 615,00. ✔",
+   "comentarios": {
+    "A": "123 × 3 ÷ 5: regra direta. Com menos gente, cada um paga MAIS.",
+    "C": "R$ 123 + 2: somou 1 real por desistente; a parte de quem saiu é repartida, não somada assim.",
+    "B": "R$ 123,00 era a parte com 5 pessoas.",
+    "E": "5 × 123 = 615 é o aluguel inteiro."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Valor fixo dividido: número de pessoas × parte de cada = total (constante).",
+   "explicar": "Explique por que, com 3 pessoas, cada uma paga R$ 205,00.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Um grupo de 4 colegas dividiria igualmente o aluguel de um salão, e cada um pagaria R$ 24,00. Como 1 desistiu, quanto cada um dos que ficaram vai pagar?",
+   "alternativas": {
+    "A": "R$ 18,00.",
+    "B": "R$ 24,00.",
+    "C": "R$ 25,00.",
+    "D": "R$ 32,00.",
+    "E": "R$ 96,00."
+   },
+   "gabarito": "D",
+   "resolucao": "Inversa: menos pessoas, parte maior de cada uma (o aluguel é o mesmo).\nAluguel = 4 × 24 = R$ 96,00.\nFicaram 4 − 1 = 3 pessoas: 96 ÷ 3 = R$ 32,00.\nConfere: 3 × R$ 32,00 = R$ 96,00. ✔",
+   "comentarios": {
+    "A": "24 × 3 ÷ 4: regra direta. Com menos gente, cada um paga MAIS.",
+    "C": "R$ 24 + 1: somou 1 real por desistente; a parte de quem saiu é repartida, não somada assim.",
+    "B": "R$ 24,00 era a parte com 4 pessoas.",
+    "E": "4 × 24 = 96 é o aluguel inteiro."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Valor fixo dividido: número de pessoas × parte de cada = total (constante).",
+   "explicar": "Explique por que, com 3 pessoas, cada uma paga R$ 32,00.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "5 máquinas iguais embalam um lote de pedidos em 560 minutos. Em quantos minutos 8 dessas máquinas embalam o mesmo lote?",
+   "alternativas": {
+    "A": "350.",
+    "B": "557.",
+    "C": "560.",
+    "D": "896.",
+    "E": "2.800."
+   },
+   "gabarito": "A",
+   "resolucao": "Direta ou inversa? O lote é fixo: mais máquinas terminam ANTES. Inversa.\nTrabalho total = 5 × 560 = 2800 máquina-minutos.\n2800 ÷ 8 = 350 minutos.\nCompare com \"caixas por hora\": lá o tempo é fixo (direta); aqui o lote é fixo (inversa).",
+   "comentarios": {
+    "D": "560 × 8 ÷ 5: tratou como direta. O lote é fixo, então mais máquinas = menos tempo.",
+    "B": "560 − 3: proporção é multiplicação.",
+    "E": "5 × 560 é o trabalho total; falta dividir por 8.",
+    "C": "560 min era com 5 máquinas."
+   },
+   "topico": "Direta ou inversa?",
+   "conceito": "O que fica FIXO decide: tempo fixo e pergunta a produção → direta; serviço fixo e pergunta o tempo → inversa.",
+   "explicar": "Explique por que aqui a regra é inversa: o que está fixo no enunciado?",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "6 máquinas iguais embalam 330 caixas por hora. Quantas caixas por hora embalam 2 dessas máquinas?",
+   "alternativas": {
+    "A": "110.",
+    "B": "326.",
+    "C": "330.",
+    "D": "660.",
+    "E": "990."
+   },
+   "gabarito": "A",
+   "resolucao": "Direta ou inversa? Mais máquinas embalam MAIS caixas na mesma hora: direta.\nPor máquina: 330 ÷ 6 = 55 caixas por hora.\n2 máquinas: 55 × 2 = 110 caixas.\nCuidado: o tempo é o mesmo (1 hora); a pergunta é a produção, não o tempo.",
+   "comentarios": {
+    "E": "330 × 6 ÷ 2: tratou como inversa. Aqui não há um trabalho fixo: o tempo é fixo e mais máquinas produzem mais.",
+    "B": "330 − 4: proporção é multiplicação.",
+    "D": "330 × 2: esqueceu de dividir por 6 (a produção de 6 máquinas, não de 1).",
+    "C": "330 era com 6 máquinas."
+   },
+   "topico": "Direta ou inversa?",
+   "conceito": "O que fica FIXO decide: tempo fixo e pergunta a produção → direta; serviço fixo e pergunta o tempo → inversa.",
+   "explicar": "Explique por que aqui a regra é direta, e não inversa como em \"operários e dias\".",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "6 máquinas iguais embalam um lote de pedidos em 162 minutos. Em quantos minutos 3 dessas máquinas embalam o mesmo lote?",
+   "alternativas": {
+    "A": "81.",
+    "B": "162.",
+    "C": "165.",
+    "D": "314.",
+    "E": "324."
+   },
+   "gabarito": "E",
+   "resolucao": "Direta ou inversa? O lote é fixo: mais máquinas terminam ANTES. Inversa.\nTrabalho total = 6 × 162 = 972 máquina-minutos.\n972 ÷ 3 = 324 minutos.\nCompare com \"caixas por hora\": lá o tempo é fixo (direta); aqui o lote é fixo (inversa).",
+   "comentarios": {
+    "A": "162 × 3 ÷ 6: tratou como direta. O lote é fixo, então mais máquinas = menos tempo.",
+    "C": "162 + 3: proporção é multiplicação.",
+    "B": "162 min era com 6 máquinas.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 324."
+   },
+   "topico": "Direta ou inversa?",
+   "conceito": "O que fica FIXO decide: tempo fixo e pergunta a produção → direta; serviço fixo e pergunta o tempo → inversa.",
+   "explicar": "Explique por que aqui a regra é inversa: o que está fixo no enunciado?",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "2 máquinas iguais embalam 364 caixas por hora. Quantas caixas por hora embalam 4 dessas máquinas?",
+   "alternativas": {
+    "A": "182.",
+    "B": "364.",
+    "C": "366.",
+    "D": "728.",
+    "E": "1.456."
+   },
+   "gabarito": "D",
+   "resolucao": "Direta ou inversa? Mais máquinas embalam MAIS caixas na mesma hora: direta.\nPor máquina: 364 ÷ 2 = 182 caixas por hora.\n4 máquinas: 182 × 4 = 728 caixas.\nCuidado: o tempo é o mesmo (1 hora); a pergunta é a produção, não o tempo.",
+   "comentarios": {
+    "A": "364 × 2 ÷ 4: tratou como inversa. Aqui não há um trabalho fixo: o tempo é fixo e mais máquinas produzem mais.",
+    "C": "364 + 2: proporção é multiplicação.",
+    "B": "364 era com 2 máquinas.",
+    "E": "364 × 4: esqueceu de dividir por 2 (a produção de 2 máquinas, não de 1)."
+   },
+   "topico": "Direta ou inversa?",
+   "conceito": "O que fica FIXO decide: tempo fixo e pergunta a produção → direta; serviço fixo e pergunta o tempo → inversa.",
+   "explicar": "Explique por que aqui a regra é direta, e não inversa como em \"operários e dias\".",
+   "habilidade": "interpretar"
+  }
+ ],
+ "fontes": [
+  "Questões geradas e conferidas em Python (fractions, math.gcd): cada resposta é calculada; cada alternativa errada vem de um engano típico, explicado no comentário dela; nenhum modelo aparece mais de 4 vezes e nenhum conjunto de números se repete"
+ ]
+}

@@ -2478,3 +2478,118 @@ dialog.colar-edital section {
 .questao.raio-x {
   max-width: 1200px;
 }
+
+/* Explique + retorno do Claude (mockup ExpliqueRetorno, 2026-11-23) */
+.explique.item {
+  box-shadow: none;
+  border-color: var(--linha-2);
+  background: var(--cartao);
+}
+.explique.item.certo {
+  border-color: var(--verde-linha);
+}
+.explique.item.quase {
+  border-color: var(--ambar-linha);
+}
+.explique.item.revisar {
+  border-color: var(--vermelho-linha);
+}
+.cabeca-explique {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.cabeca-explique .pergunta-explique {
+  flex: 1;
+}
+.explique.item > :not(.cabeca-explique) {
+  margin-left: 22px;
+}
+.explique.item textarea {
+  width: calc(100% - 22px);
+}
+.sua-explicacao {
+  margin: 0;
+  color: var(--texto-medio);
+  font-size: 15px;
+  font-style: italic;
+  white-space: pre-wrap;
+}
+.veredito {
+  padding: 3px 10px;
+  border: 1px solid var(--linha-2);
+  color: var(--texto-medio);
+  font-family: var(--mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.veredito.certo {
+  border-color: var(--verde);
+  color: var(--verde);
+}
+.veredito.quase {
+  border-color: var(--ambar);
+  color: var(--ambar);
+}
+.veredito.revisar {
+  border-color: var(--vermelho);
+  color: var(--vermelho);
+}
+.retorno {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+  border-left: 2px solid var(--ciano);
+  background: var(--ciano-fundo);
+  color: #e9f7fb;
+  font-size: 15px;
+  white-space: pre-wrap;
+}
+.retorno.certo {
+  border-left-color: var(--verde);
+  background: rgb(57 245 154 / 5%);
+}
+.retorno.quase {
+  border-left-color: var(--ambar);
+  background: rgb(255 181 71 / 5%);
+}
+.retorno.revisar {
+  border-left-color: var(--vermelho);
+  background: rgb(255 107 122 / 5%);
+}
+.rotulo-retorno {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.retorno.certo .rotulo-retorno {
+  color: var(--verde);
+}
+.retorno.quase .rotulo-retorno {
+  color: var(--ambar);
+}
+.retorno.revisar .rotulo-retorno {
+  color: var(--vermelho);
+}
+.agora-explique {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 24px;
+  border: 1px solid var(--linha-viva);
+  background: rgb(63 224 245 / 4%);
+  box-shadow: inset 3px 0 0 var(--ciano);
+}
+.linha-explicacao {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px auto;
+  align-items: center;
+  gap: 14px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--linha-2);
+}

@@ -1,0 +1,80 @@
+{
+ "de": "2026-11-23",
+ "ate": "2026-12-06",
+ "frase": "Os 7 treinos da base estão feitos. Agora a matemática segue com o que travou no Treino 7 e no 6 (regra de três inversa e MDC/MMC), e as matérias de peso entram junto: Bancários vale 25% da nota, Vendas 17%, Português desempata. Por dia: um bloco de matemática e um de outra matéria.",
+ "tarefas": [
+  {
+   "id": "t8",
+   "tipo": "simulado",
+   "titulo": "Treino 8: regra de três inversa",
+   "detalhe": "Você fez 0/17 na inversa no Treino 7 · 40 questões, cada errada com o motivo",
+   "pontos": 100,
+   "item": "banestes-base-treino8-v1",
+   "tema": "Treino 8: regra de três inversa"
+  },
+  {
+   "id": "banc",
+   "tipo": "simulado",
+   "titulo": "Bancários: SFN, lavagem, FGC e cheque",
+   "detalhe": "15 questões FCC conferidas na lei · 25% da nota",
+   "pontos": 120,
+   "item": "banestes-missao5-bancarios-v1",
+   "tema": "Conhecimentos Bancários: SFN, lavagem, FGC e cheque"
+  },
+  {
+   "id": "t9",
+   "tipo": "simulado",
+   "titulo": "Treino 9: MDC e MMC",
+   "detalhe": "Você deixou o MDC em branco no Treino 6 · 40 questões",
+   "pontos": 100,
+   "item": "banestes-base-treino9-v1",
+   "tema": "Treino 9: MDC e MMC"
+  },
+  {
+   "id": "exp-inv",
+   "tipo": "explicar",
+   "titulo": "Explique: regra de três inversa",
+   "topico": "Regra de três",
+   "pergunta": "Por que, quando aumentam os operários, os dias da obra diminuem? Explique com o \"trabalho total\" e um exemplo seu com números.",
+   "detalhe": "Depois do Treino 8",
+   "pontos": 30
+  },
+  {
+   "id": "exp-mdc",
+   "tipo": "explicar",
+   "titulo": "Explique: MDC ou MMC?",
+   "topico": "Múltiplos e divisores",
+   "pergunta": "Como você decide, pelo enunciado, se a questão pede MDC ou MMC? Dê um exemplo de cada.",
+   "detalhe": "Depois do Treino 9",
+   "pontos": 30
+  },
+  {
+   "id": "cartoes-vendas",
+   "tipo": "cartoes",
+   "titulo": "Cartões de Vendas, Negociação e Atendimento",
+   "detalhe": "33 cartões · 17% da nota, 10 questões",
+   "pontos": 60,
+   "item": "banestes-vendas-cartoes-v1"
+  },
+  {
+   "id": "cartoes-port",
+   "tipo": "cartoes",
+   "titulo": "Cartões de Português: crase, concordância e regência",
+   "detalhe": "63 cartões · 2º critério de desempate",
+   "pontos": 60,
+   "item": "portugues-cartoes-piloto-v1"
+  },
+  {
+   "id": "atrasados",
+   "tipo": "atrasados",
+   "titulo": "Zerar os cartões de hoje",
+   "detalhe": "Uma matéria por vez",
+   "pontos": 40
+  }
+ ],
+ "fontes": [
+  "Seus treinos de 22 e 23/11: Treino 6 (MDC 0/8, MMC 1/3) e Treino 7 (inversa 0/17, identificar o tipo 2/8)",
+  "Edital Banestes 2026, item 9 (questões e pesos) e item 12.3 (desempate)",
+  "Fontes de cada simulado listadas no próprio arquivo"
+ ]
+}

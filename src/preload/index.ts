@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron'
-import type { Dados, EstadoDaAtualizacao, ItemDaCaixa } from '../shared/tipos'
+import type { Dados, EstadoDaAtualizacao, ItemDaCaixa, Retorno } from '../shared/tipos'
 import type { EstadoDaNuvem } from '../shared/sincronizar'
 
 type Resposta = { ok?: true; confirmar?: true; erro?: string }
@@ -39,6 +39,7 @@ const api = {
     ipcRenderer.invoke('nuvem:criarConta', email, senha),
   nuvemSair: (): Promise<void> => ipcRenderer.invoke('nuvem:sair'),
   nuvemSincronizar: (): Promise<void> => ipcRenderer.invoke('nuvem:sincronizar'),
+  nuvemRetornos: (): Promise<Retorno[] | null> => ipcRenderer.invoke('nuvem:retornos'),
   /** a nuvem pergunta à tela: trocar os dados ("nuvem:trocar") ou qual
    *  versão fica ("nuvem:conflito"); a tela responde com o id */
   aoPerguntarNuvem: <T>(

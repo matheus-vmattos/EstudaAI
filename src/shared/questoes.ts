@@ -290,12 +290,16 @@ export function acertos(questoes: Questao[], respostas: (string | null)[]): numb
 function lerExtras(
   item: Record<string, unknown>,
   alternativas: Alternativa[]
-): Pick<Questao, 'comentarios' | 'conceito' | 'topico' | 'habilidade' | 'videoaula' | 'materia'> {
+): Pick<
+  Questao,
+  'comentarios' | 'conceito' | 'topico' | 'habilidade' | 'videoaula' | 'materia' | 'explicar'
+> {
   const extras: Pick<
     Questao,
-    'comentarios' | 'conceito' | 'topico' | 'habilidade' | 'videoaula' | 'materia'
+    'comentarios' | 'conceito' | 'topico' | 'habilidade' | 'videoaula' | 'materia' | 'explicar'
   > = {}
   if (textoValido(item.materia)) extras.materia = item.materia.trim()
+  if (textoValido(item.explicar)) extras.explicar = item.explicar.trim()
   const c = item.comentarios
   if (c && typeof c === 'object' && !Array.isArray(c)) {
     const letras = new Set(alternativas.map((a) => a.letra))

@@ -1,0 +1,346 @@
+{
+ "tema": "Conhecimentos Bancários: SFN, lavagem, FGC e cheque",
+ "materia": "Conhecimentos Bancários",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "Nos termos da Lei nº 9.069/1995, com a redação vigente, o Conselho Monetário Nacional é integrado pelo",
+   "alternativas": {
+    "A": "Presidente do Banco Central do Brasil, que o preside, pelo Ministro da Fazenda e pelo Presidente da CVM.",
+    "B": "Ministro da Fazenda, que o preside, pelo Ministro do Planejamento e Orçamento e pelo Presidente do Banco Central do Brasil.",
+    "C": "Ministro da Fazenda, que o preside, pelo Presidente do Banco Central do Brasil e pelo Presidente da CVM.",
+    "D": "Ministro da Fazenda, que o preside, pelo Presidente do Banco Central do Brasil e pelo Presidente do BNDES.",
+    "E": "Presidente da República, que o preside, pelo Ministro da Fazenda e pelo Presidente do Banco Central do Brasil."
+   },
+   "gabarito": "B",
+   "resolucao": "Lei 9.069/1995, art. 8º (redação da Lei 14.600/2023): o CMN é integrado pelo Ministro de Estado da Fazenda, que o presidirá (I), pelo Ministro de Estado do Planejamento e Orçamento (II) e pelo Presidente do Banco Central do Brasil (III). São três membros; nenhum órgão supervisor além do BCB.",
+   "comentarios": {
+    "A": "Quem preside é o Ministro da Fazenda, e a CVM não integra o CMN.",
+    "C": "A CVM é supervisora do mercado de capitais, não membro do CMN; falta o Ministro do Planejamento e Orçamento.",
+    "D": "O BNDES é operador do sistema, não membro do CMN.",
+    "E": "O Presidente da República não integra o CMN; quem preside é o Ministro da Fazenda."
+   },
+   "topico": "SFN: estrutura e órgãos",
+   "conceito": "O CMN é o órgão normativo máximo do SFN: três membros, presidido pelo Ministro da Fazenda.",
+   "explicar": "Explique quem compõe o CMN e por que a CVM, mesmo sendo importante, não está nele.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Segundo a Lei nº 9.613/1998, a instituição financeira que identificar proposta de operação com sérios indícios de lavagem de dinheiro deverá comunicá-la ao Coaf",
+   "alternativas": {
+    "A": "no prazo de 24 horas, abstendo-se de dar ciência do ato a qualquer pessoa, inclusive ao cliente a quem a informação se refere.",
+    "B": "no prazo de 24 horas, informando previamente o cliente, para que ele possa apresentar justificativa.",
+    "C": "até o dia útil seguinte, depois de concluída a operação, informando o cliente.",
+    "D": "no prazo de 5 dias úteis, somente se a operação for efetivamente realizada.",
+    "E": "no prazo de 24 horas, desde que o cliente autorize por escrito a comunicação."
+   },
+   "gabarito": "A",
+   "resolucao": "Lei 9.613/1998, art. 11, II: as instituições \"deverão comunicar ao Coaf, abstendo-se de dar ciência de tal ato a qualquer pessoa, inclusive àquela à qual se refira a informação, no prazo de 24 (vinte e quatro) horas, a proposta ou realização\" das operações do inciso I.",
+   "comentarios": {
+    "B": "Avisar o cliente é justamente o proibido: a lei manda se abster de dar ciência a qualquer pessoa, inclusive a ele.",
+    "C": "O prazo do art. 11, II é de 24 horas, alcança também a PROPOSTA, e o cliente não pode ser avisado.",
+    "D": "A comunicação vale para a proposta ou a realização, em 24 horas.",
+    "E": "A comunicação não depende de autorização do cliente; ele nem pode saber dela."
+   },
+   "topico": "Lavagem de dinheiro e COAF",
+   "conceito": "Comunicação de suspeita ao Coaf: em 24 horas, vale para a proposta e para a operação feita, e em sigilo (o cliente não é avisado).",
+   "explicar": "Explique por que o banco não pode avisar o cliente de que comunicou a operação ao Coaf.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "De acordo com a Lei nº 9.613/1998, os cadastros de clientes e os registros de transações mantidos pelas instituições sujeitas à lei devem ser conservados",
+   "alternativas": {
+    "A": "por no mínimo dois anos a partir da abertura da conta, prazo que não pode ser alterado.",
+    "B": "por no mínimo cinco anos a partir da abertura da conta, prazo que não pode ser alterado.",
+    "C": "por no máximo cinco anos a partir da conclusão da transação, devendo ser destruídos depois disso.",
+    "D": "por no mínimo cinco anos a partir do encerramento da conta ou da conclusão da transação, prazo que pode ser ampliado pela autoridade competente.",
+    "E": "enquanto a conta estiver ativa, podendo ser descartados no dia do encerramento."
+   },
+   "gabarito": "D",
+   "resolucao": "Lei 9.613/1998, art. 10, § 2º: \"Os cadastros e registros referidos nos incisos I e II deste artigo deverão ser conservados durante o período mínimo de cinco anos a partir do encerramento da conta ou da conclusão da transação, prazo este que poderá ser ampliado pela autoridade competente.\"",
+   "comentarios": {
+    "A": "O mínimo é de cinco anos, contados do ENCERRAMENTO da conta ou da conclusão da transação, e pode ser ampliado.",
+    "B": "O marco inicial é o encerramento da conta ou a conclusão da transação, não a abertura; e o prazo pode ser ampliado.",
+    "C": "Cinco anos é o MÍNIMO, não o máximo; a lei não manda destruir.",
+    "E": "A guarda continua por pelo menos cinco anos DEPOIS do encerramento."
+   },
+   "topico": "Lavagem de dinheiro e COAF",
+   "conceito": "Guarda de cadastro e registros: mínimo de 5 anos, contados do fim da relação (encerramento da conta ou conclusão da transação).",
+   "explicar": "Explique de quando se contam os cinco anos de guarda dos registros e por que faz sentido contar a partir daí.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Um cliente saca, em espécie, R$ 60.000,00 de sua conta. Pela Circular BCB nº 3.978/2020, a instituição deve",
+   "alternativas": {
+    "A": "comunicar a operação ao Coaf apenas se o saque superar R$ 100.000,00.",
+    "B": "comunicar a operação ao Coaf no prazo de 30 dias, por meio de relatório mensal.",
+    "C": "dispensar a comunicação, porque saque de conta própria não é operação suspeita.",
+    "D": "comunicar a operação ao cliente e ao Coaf, no prazo de 24 horas.",
+    "E": "comunicar a operação ao Coaf até o dia útil seguinte ao da sua ocorrência."
+   },
+   "gabarito": "E",
+   "resolucao": "Circular BCB 3.978/2020, art. 49: as instituições devem comunicar ao Coaf \"I - as operações de depósito ou aporte em espécie ou saque em espécie de valor igual ou superior a R$50.000,00\". Parágrafo único: \"A comunicação mencionada no caput deve ser realizada até o dia útil seguinte ao da ocorrência da operação ou do provisionamento.\" R$ 60.000 ≥ R$ 50.000: comunica.",
+   "comentarios": {
+    "A": "O valor de referência é igual ou superior a R$ 50.000,00, e o saque foi de R$ 60.000,00.",
+    "B": "O prazo é até o dia útil seguinte ao da operação.",
+    "C": "A comunicação de espécie de R$ 50 mil ou mais é obrigatória pelo valor, sem depender de suspeita.",
+    "D": "O cliente não recebe essa comunicação; e o prazo da Circular é até o dia útil seguinte."
+   },
+   "topico": "Lavagem de dinheiro e COAF",
+   "conceito": "Espécie de R$ 50 mil ou mais (depósito, aporte, saque): comunicação ao Coaf pelo valor, até o dia útil seguinte.",
+   "explicar": "Explique a diferença entre a comunicação por valor (espécie ≥ R$ 50 mil) e a comunicação por suspeita da Lei 9.613.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Pela Circular BCB nº 3.978/2020, também deve ser comunicada ao Coaf",
+   "alternativas": {
+    "A": "toda transferência por Pix de valor igual ou superior a R$ 5.000,00.",
+    "B": "a abertura de qualquer conta de depósito por pessoa física.",
+    "C": "a solicitação de provisionamento de saque em espécie de valor igual ou superior a R$ 50.000,00.",
+    "D": "a solicitação de provisionamento de saque em espécie de qualquer valor.",
+    "E": "o saque em espécie de valor igual ou superior a R$ 10.000,00."
+   },
+   "gabarito": "C",
+   "resolucao": "Circular BCB 3.978/2020, art. 49, III: deve ser comunicada ao Coaf \"a solicitação de provisionamento de saques em espécie de valor igual ou superior a R$50.000,00\". O PEDIDO de provisionamento já é comunicado, antes mesmo do saque.",
+   "comentarios": {
+    "A": "O art. 49 trata de operações EM ESPÉCIE de R$ 50 mil ou mais, não de Pix de R$ 5 mil.",
+    "B": "Abrir conta não é, por si, operação a comunicar pelo art. 49.",
+    "D": "Só a partir de R$ 50.000,00.",
+    "E": "O valor de referência do art. 49 é R$ 50.000,00, não R$ 10.000,00."
+   },
+   "topico": "Lavagem de dinheiro e COAF",
+   "conceito": "O provisionamento (aviso antecipado de saque grande em espécie) de R$ 50 mil ou mais também vai ao Coaf.",
+   "explicar": "Explique por que o simples pedido de provisionamento de saque já é comunicado ao Coaf.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Pelo regulamento do Fundo Garantidor de Créditos (Resolução CMN nº 4.222/2013), o total de créditos de cada pessoa contra a mesma instituição associada, ou contra todas as do mesmo conglomerado financeiro, é garantido até",
+   "alternativas": {
+    "A": "R$ 50.000,00.",
+    "B": "R$ 250.000,00.",
+    "C": "R$ 100.000,00.",
+    "D": "R$ 500.000,00.",
+    "E": "R$ 1.000.000,00."
+   },
+   "gabarito": "B",
+   "resolucao": "Res. CMN 4.222/2013, Anexo II, art. 2º, § 3º: \"O total de créditos de cada pessoa contra a mesma instituição associada, ou contra todas as instituições associadas do mesmo conglomerado financeiro, será garantido até o valor de R$ 250.000,00\".",
+   "comentarios": {
+    "A": "R$ 50 mil é o valor da comunicação de espécie ao Coaf, não o limite do FGC.",
+    "C": "O limite por pessoa e por instituição (ou conglomerado) é R$ 250 mil.",
+    "D": "O dobro do limite: o FGC garante até R$ 250 mil.",
+    "E": "Não é o limite por instituição ou conglomerado, que é R$ 250 mil."
+   },
+   "topico": "FGC: garantia de depósitos",
+   "conceito": "FGC: até R$ 250 mil por pessoa, somando tudo o que ela tem na mesma instituição ou no mesmo conglomerado.",
+   "explicar": "Explique por que ter dinheiro em dois bancos do mesmo conglomerado não dobra a garantia do FGC.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Ana tem R$ 180.000,00 em CDB no Banco X e R$ 120.000,00 em LCI no Banco Y. Os dois bancos são associados ao FGC e pertencem ao mesmo conglomerado financeiro. Se ambos sofrerem intervenção, a garantia ordinária do FGC cobrirá, no total,",
+   "alternativas": {
+    "A": "R$ 250.000,00.",
+    "B": "R$ 120.000,00.",
+    "C": "R$ 180.000,00.",
+    "D": "R$ 300.000,00.",
+    "E": "R$ 500.000,00."
+   },
+   "gabarito": "A",
+   "resolucao": "Os dois créditos são cobertos: depósito a prazo (CDB, art. 2º, III) e letra de crédito imobiliário (art. 2º, VIII). Soma: 180.000 + 120.000 = 300.000. Como os bancos são do mesmo conglomerado, o limite é único (§ 3º): R$ 250.000,00.",
+   "comentarios": {
+    "B": "A LCI também é coberta, mas o CDB entra junto: soma-se tudo no conglomerado e aplica-se o limite.",
+    "C": "A LCI é coberta (art. 2º, VIII); a soma dos créditos é limitada a R$ 250 mil.",
+    "D": "Seria a soma integral, mas o limite vale para o CONGLOMERADO inteiro: R$ 250 mil.",
+    "E": "Contou R$ 250 mil por banco; no mesmo conglomerado o limite é um só."
+   },
+   "topico": "FGC: garantia de depósitos",
+   "conceito": "No mesmo conglomerado, some tudo e aplique UM limite de R$ 250 mil.",
+   "explicar": "Explique, com os números de Ana, por que o FGC paga R$ 250 mil e não R$ 300 mil.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Entre os créditos abaixo, NÃO é coberto pela garantia ordinária do FGC",
+   "alternativas": {
+    "A": "depósitos de poupança.",
+    "B": "letras de crédito do agronegócio (LCA).",
+    "C": "depósitos à vista.",
+    "D": "cotas de fundos de investimento administrados por instituição associada.",
+    "E": "depósitos a prazo, com ou sem emissão de certificado (CDB)."
+   },
+   "gabarito": "D",
+   "resolucao": "Res. CMN 4.222/2013, Anexo II, art. 2º, § 2º: \"Não são cobertos pela garantia ordinária os créditos por cotas de fundos de investimento administrados por instituições associadas.\" Poupança, depósitos à vista e a prazo e LCA estão no rol do caput (incisos I, II, III e IX).",
+   "comentarios": {
+    "A": "Poupança é coberta (art. 2º, II).",
+    "B": "LCA é coberta (art. 2º, IX).",
+    "C": "Depósitos à vista são cobertos (art. 2º, I).",
+    "E": "Depósito a prazo, como o CDB, é coberto (art. 2º, III)."
+   },
+   "topico": "FGC: garantia de depósitos",
+   "conceito": "Fundo de investimento não é depósito no banco: o dinheiro é do fundo, e por isso fica fora do FGC.",
+   "explicar": "Explique por que a cota de um fundo de investimento não tem garantia do FGC, e a poupança tem.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Pela Resolução CMN nº 4.222/2013, estão fora da garantia ordinária do FGC, entre outros,",
+   "alternativas": {
+    "A": "os depósitos de poupança.",
+    "B": "as letras de crédito imobiliário.",
+    "C": "as letras de câmbio.",
+    "D": "os depósitos em conta-salário.",
+    "E": "os depósitos judiciais."
+   },
+   "gabarito": "E",
+   "resolucao": "Res. CMN 4.222/2013, Anexo II, art. 2º, § 1º: não são cobertos, entre outros, os recursos captados no exterior (I), as operações de programas governamentais instituídos por lei (II), os depósitos judiciais (III) e os instrumentos com cláusula de subordinação (IV).",
+   "comentarios": {
+    "A": "Poupança é coberta (art. 2º, II).",
+    "B": "LCI é coberta (art. 2º, VIII).",
+    "C": "Letras de câmbio são cobertas (art. 2º, V).",
+    "D": "São cobertos: o inciso IV inclui as contas não movimentáveis por cheque para pagamento de salários."
+   },
+   "topico": "FGC: garantia de depósitos",
+   "conceito": "FGC cobre depósitos e letras do rol do art. 2º; ficam fora, por exemplo, depósitos judiciais, recursos captados no exterior e cotas de fundos.",
+   "explicar": "Explique com suas palavras o que entra e o que fica fora da garantia do FGC.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Um cheque emitido em Vitória para ser pago por agência de Vitória deve ser apresentado para pagamento, nos termos da Lei nº 7.357/1985, no prazo de",
+   "alternativas": {
+    "A": "8 dias, contados do dia da emissão.",
+    "B": "30 dias, contados do dia da emissão.",
+    "C": "60 dias, contados do dia da emissão.",
+    "D": "6 meses, contados do dia da emissão.",
+    "E": "30 dias, contados do dia em que o portador o recebeu."
+   },
+   "gabarito": "B",
+   "resolucao": "Lei 7.357/1985, art. 33: o cheque deve ser apresentado \"no prazo de 30 (trinta) dias, quando emitido no lugar onde houver de ser pago; e de 60 (sessenta) dias, quando emitido em outro lugar do País ou no exterior\". Emitido e pagável em Vitória: mesmo lugar, 30 dias.",
+   "comentarios": {
+    "A": "8 dias não aparece na lei; para o mesmo lugar o prazo é de 30 dias.",
+    "C": "60 dias é para cheque emitido em OUTRO lugar do País ou no exterior.",
+    "D": "6 meses é a prescrição da execução, contada do fim do prazo de apresentação.",
+    "E": "O prazo conta da data de emissão, não do recebimento."
+   },
+   "topico": "Cheque",
+   "conceito": "Apresentação do cheque: 30 dias (mesma praça) ou 60 dias (outra praça ou exterior), contados da emissão.",
+   "explicar": "Explique quando o prazo é de 30 e quando é de 60 dias, com um exemplo de cidades do Espírito Santo.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Nos termos da Lei nº 7.357/1985, a ação de execução do cheque prescreve em",
+   "alternativas": {
+    "A": "6 meses, contados da data de emissão.",
+    "B": "30 dias, contados da expiração do prazo de apresentação.",
+    "C": "6 meses, contados da expiração do prazo de apresentação.",
+    "D": "2 anos, contados da data de emissão.",
+    "E": "5 anos, contados da data de emissão."
+   },
+   "gabarito": "C",
+   "resolucao": "Lei 7.357/1985, art. 59: \"Prescrevem em 6 (seis) meses, contados da expiração do prazo de apresentação, a ação que o art. 47 desta Lei assegura ao portador.\" Ex.: cheque da mesma praça emitido em 1º/3: apresentação até 31/3; execução até 6 meses depois disso.",
+   "comentarios": {
+    "A": "O marco é o FIM do prazo de apresentação, não a emissão.",
+    "B": "30 dias é prazo de apresentação (mesma praça), não de prescrição.",
+    "D": "A execução prescreve em 6 meses, contados do fim do prazo de apresentação.",
+    "E": "A execução prescreve em 6 meses, contados do fim do prazo de apresentação."
+   },
+   "topico": "Cheque",
+   "conceito": "Prescrição da execução do cheque: 6 meses DEPOIS do fim do prazo de apresentação (30 ou 60 dias).",
+   "explicar": "Explique, com uma data de exemplo, até quando o portador pode executar um cheque da mesma praça.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Um cheque com data de emissão futura (\"pré-datado\") é apresentado ao banco antes da data nele indicada. Segundo a Lei nº 7.357/1985, esse cheque",
+   "alternativas": {
+    "A": "é pagável no dia da apresentação, porque o cheque é ordem de pagamento à vista.",
+    "B": "só pode ser pago na data indicada, e o banco deve devolvê-lo ao portador.",
+    "C": "é nulo, porque o cheque não admite data futura.",
+    "D": "só pode ser pago se o emitente autorizar por escrito.",
+    "E": "é pagável somente 30 dias após a data indicada."
+   },
+   "gabarito": "A",
+   "resolucao": "Lei 7.357/1985, art. 32: \"O cheque é pagável à vista.\" Parágrafo único: \"O cheque apresentado para pagamento antes do dia indicado como data de emissão é pagável no dia da apresentação.\"",
+   "comentarios": {
+    "B": "A lei diz o contrário: apresentado antes da data, é pagável no dia da apresentação.",
+    "C": "O cheque não é nulo: a lei apenas manda pagar no dia da apresentação.",
+    "D": "Não há exigência de autorização: ele é pagável à vista.",
+    "E": "Não há esse adiamento; é pagável no dia da apresentação."
+   },
+   "topico": "Cheque",
+   "conceito": "Para o banco, cheque é à vista: a data futura não impede o pagamento quando ele é apresentado.",
+   "explicar": "Explique por que o banco paga o cheque \"pré-datado\" se ele for apresentado antes da data.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "O portador que não apresenta o cheque no prazo legal, pela Lei nº 7.357/1985, perde o direito de execução contra o emitente",
+   "alternativas": {
+    "A": "em qualquer caso, pois a apresentação fora do prazo extingue o cheque.",
+    "B": "somente se o cheque tiver sido emitido em outro lugar do País.",
+    "C": "se o emitente não tinha fundos em nenhum momento do prazo de apresentação.",
+    "D": "se o cheque for nominal, mas não se for ao portador.",
+    "E": "se o emitente tinha fundos disponíveis durante o prazo de apresentação e os deixou de ter por fato que não lhe seja imputável."
+   },
+   "gabarito": "E",
+   "resolucao": "Lei 7.357/1985, art. 47, § 3º: o portador que não apresentar o cheque em tempo hábil \"perde o direito de execução contra o emitente, se este tinha fundos disponíveis durante o prazo de apresentação e os deixou de ter, em razão de fato que não lhe seja imputável.\"",
+   "comentarios": {
+    "A": "A perda contra o emitente só ocorre na hipótese do art. 47, § 3º; a regra não é \"em qualquer caso\".",
+    "B": "O lugar de emissão muda o prazo (30 ou 60 dias), não a regra do § 3º.",
+    "C": "É o oposto: o portador perde a execução quando o emitente TINHA fundos no prazo e os perdeu sem culpa dele.",
+    "D": "A lei não distingue cheque nominal e ao portador nessa regra."
+   },
+   "topico": "Cheque",
+   "conceito": "Atraso na apresentação só tira a execução contra o emitente se ele tinha saldo no prazo e o perdeu sem culpa dele.",
+   "explicar": "Explique em que situação o atraso do portador faz ele perder a execução contra o emitente.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Sobre as garantias pessoais, de acordo com o Código Civil, é correto afirmar:",
+   "alternativas": {
+    "A": "o cônjuge pode prestar fiança sem autorização do outro em qualquer regime de bens.",
+    "B": "é permitido o aval parcial em título de crédito, por regra geral do Código Civil.",
+    "C": "pela fiança, uma pessoa garante satisfazer ao credor uma obrigação assumida pelo devedor, caso este não a cumpra.",
+    "D": "a fiança é garantia real, porque recai sobre um bem do fiador.",
+    "E": "o aval só pode ser prestado com autorização do credor."
+   },
+   "gabarito": "C",
+   "resolucao": "Código Civil, art. 818: \"Pelo contrato de fiança, uma pessoa garante satisfazer ao credor uma obrigação assumida pelo devedor, caso este não a cumpra.\" Art. 1.647, III: nenhum dos cônjuges pode, sem autorização do outro, \"prestar fiança ou aval\", exceto no regime da separação absoluta. Art. 897, parágrafo único: \"É vedado o aval parcial.\"",
+   "comentarios": {
+    "A": "O art. 1.647, III exige autorização do outro cônjuge, exceto no regime da separação absoluta.",
+    "B": "O art. 897, parágrafo único, do Código Civil veda o aval parcial.",
+    "D": "Fiança é garantia PESSOAL: o fiador responde com o seu patrimônio, sem um bem específico vinculado.",
+    "E": "A regra de autorização do Código Civil é a do cônjuge (art. 1.647, III), não a do credor."
+   },
+   "topico": "Garantias do crédito",
+   "conceito": "Fiança = contrato acessório de garantia pessoal; aval = garantia de título de crédito. Os dois exigem autorização do cônjuge, salvo separação absoluta.",
+   "explicar": "Explique a diferença entre fiança e aval e por que o cônjuge precisa autorizar.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Em relação à comunicação ao Coaf de operações em espécie, conforme a Circular BCB nº 3.978/2020, considere um depósito em espécie de R$ 50.000,00. Esse depósito",
+   "alternativas": {
+    "A": "não precisa ser comunicado, porque só é comunicado o que for superior a R$ 50.000,00.",
+    "B": "só deve ser comunicado se for feito por terceiro.",
+    "C": "só deve ser comunicado se o cliente não comprovar a origem.",
+    "D": "deve ser comunicado, porque o valor de referência é igual ou superior a R$ 50.000,00.",
+    "E": "deve ser comunicado ao Banco Central, e não ao Coaf."
+   },
+   "gabarito": "D",
+   "resolucao": "Circular BCB 3.978/2020, art. 49, I: devem ser comunicadas ao Coaf as operações \"de depósito ou aporte em espécie ou saque em espécie de valor igual ou superior a R$50.000,00\". Igual já basta: pegadinha clássica de \"superior\" x \"igual ou superior\".",
+   "comentarios": {
+    "A": "A norma diz \"igual ou superior\": R$ 50.000,00 exatos já obriga.",
+    "B": "Não há essa condição no art. 49, I.",
+    "C": "A comunicação por valor não depende de comprovação de origem.",
+    "E": "O destinatário da comunicação do art. 49 é o Coaf."
+   },
+   "topico": "Lavagem de dinheiro e COAF",
+   "conceito": "Leia sempre \"igual ou superior\": o limite exato já está dentro da regra.",
+   "explicar": "Explique a diferença entre \"superior a R$ 50 mil\" e \"igual ou superior a R$ 50 mil\" com um exemplo.",
+   "habilidade": "reconhecer"
+  }
+ ],
+ "fontes": [
+  "Lei 9.069/1995, art. 8º (redação da Lei 14.600/2023) — planalto.gov.br, lida em 23/11/2026",
+  "Lei 9.613/1998, arts. 10, § 2º e 11, II — planalto.gov.br, texto compilado, lida em 23/11/2026",
+  "Circular BCB 3.978/2020, art. 49 — bcb.gov.br (busca de normas), lida em 23/11/2026",
+  "Resolução CMN 4.222/2013, Anexo II (regulamento do FGC), art. 2º — bcb.gov.br (busca de normas), lida em 23/11/2026",
+  "Lei 7.357/1985, arts. 32, 33, 47 § 3º e 59 — planalto.gov.br, lida em 23/11/2026",
+  "Código Civil (Lei 10.406/2002), arts. 818, 897 parágrafo único e 1.647, III — planalto.gov.br, texto compilado, lida em 23/11/2026",
+  "Fora deste simulado por não ter sido conferido: limite de chaves Pix e teto global do FGC"
+ ]
+}

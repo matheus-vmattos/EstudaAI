@@ -624,3 +624,97 @@ describe('revisão do Codex (PR 25)', () => {
     expect(fila.map((c) => c.id)).toEqual(['e1', 'e2'])
   })
 })
+
+describe('Explique depois dos exercícios e retorno do Claude', () => {
+  it('pede até 3, um por tópico, do que mais precisa', async () => {
+    const { pedidosDeExplicar } = await import('../src/shared/explicar')
+    const s = sim([
+      ['MDC', false, 60],
+      ['MDC', false, 70],
+      ['Regra inversa', false, 5],
+      ['Porcentagem', true, 30, true],
+      ['Frações', true, 30],
+      ['Frações', true, 31]
+    ])
+    s.questoes[2].explicar = 'Por que mais operários fazem a obra em menos dias?'
+    const p = pedidosDeExplicar(s, raioX(s))
+    expect(p.map((x) => x.topico)).toEqual(['MDC', 'Regra inversa', 'Porcentagem'])
+    expect(p[1].pergunta).toBe('Por que mais operários fazem a obra em menos dias?')
+    expect(p[0].pergunta).toContain('MDC')
+  })
+  it('treino de um tópico só: completa com outras questões que trazem a própria pergunta', async () => {
+    const { pedidosDeExplicar } = await import('../src/shared/explicar')
+    const s = sim([
+      ['MDC', false, 60],
+      ['MDC', false, 70],
+      ['MDC', false, 80],
+      ['MDC', true, 30]
+    ])
+    // sem pergunta própria: um só pedido (não repete a genérica do tópico)
+    expect(pedidosDeExplicar(s, raioX(s))).toHaveLength(1)
+    for (const i of [0, 1, 2]) s.questoes[i].explicar = `Pergunta da questão ${i}`
+    const p = pedidosDeExplicar(s, raioX(s))
+    expect(p.map((x) => x.indice).sort()).toEqual([0, 1, 2])
+    expect(new Set(p.map((x) => x.pergunta)).size).toBe(3)
+  })
+
+  it('o retorno vale só para o texto avaliado; reescreveu, volta a esperar', async () => {
+    const { mesclarRetornos, situacaoDe, placarDeExplicacoes } =
+      await import('../src/shared/explicar')
+    const d = dadosDoEdital()
+    d.explicacoes = [
+      { id: 'x1', criadoEm: 1, topico: 'MDC', pergunta: 'p', texto: 'o maior divisor comum' }
+    ]
+    expect(situacaoDe(d, d.explicacoes[0])).toBe('esperando')
+    const r = {
+      explicacaoId: 'x1',
+      veredito: 'quase' as const,
+      texto: 'faltou o exemplo',
+      textoAvaliado: 'o maior divisor comum',
+      criadoEm: 2
+    }
+    expect(mesclarRetornos(d, [r])).toBe(true)
+    expect(mesclarRetornos(d, [r])).toBe(false) // não repete
+    expect(situacaoDe(d, d.explicacoes[0])).toBe('quase')
+    d.explicacoes[0].texto = 'o maior número que divide os dois sem sobra'
+    expect(situacaoDe(d, d.explicacoes[0])).toBe('esperando')
+    expect(placarDeExplicacoes(d)).toEqual({ certo: 0, quase: 0, revisar: 0, esperando: 1 })
+  })
+})
+
+describe('Codex no PR 28', () => {
+  it('o retorno mais novo vence, chegue na ordem que chegar', async () => {
+    const { mesclarRetornos, retornoDe } = await import('../src/shared/explicar')
+    const d = dadosDoEdital()
+    d.explicacoes = [{ id: 'x1', criadoEm: 1, topico: 'MDC', pergunta: 'p', texto: 't' }]
+    const velho = {
+      explicacaoId: 'x1',
+      veredito: 'revisar' as const,
+      texto: 'antes',
+      textoAvaliado: 't',
+      criadoEm: 10
+    }
+    const novo = { ...velho, veredito: 'certo' as const, texto: 'corrigido', criadoEm: 20 }
+    expect(mesclarRetornos(d, [novo, velho])).toBe(true) // a nuvem manda do mais novo ao mais velho
+    expect(retornoDe(d, d.explicacoes[0])?.veredito).toBe('certo')
+    expect(mesclarRetornos(d, [novo, velho])).toBe(false) // a mesma busca não grava de novo
+  })
+  it('reescrever uma explicação antiga conta como estudo no dia em que reescreveu', async () => {
+    const { registrarDiaDeEstudo } = await import('../src/shared/estudoDoDia')
+    const d = dadosDoEdital()
+    const ontem = new Date(2026, 10, 22, 10).getTime()
+    const hoje = new Date(2026, 10, 23, 10)
+    d.explicacoes = [
+      {
+        id: 'x1',
+        criadoEm: ontem,
+        atualizadoEm: hoje.getTime(),
+        topico: 'MDC',
+        pergunta: 'p',
+        texto: 't2'
+      }
+    ]
+    registrarDiaDeEstudo(d, hoje)
+    expect(d.diasDeEstudo).toContain('2026-11-23')
+  })
+})
