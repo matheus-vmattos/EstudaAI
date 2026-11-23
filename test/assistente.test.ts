@@ -624,3 +624,44 @@ describe('revisão do Codex (PR 25)', () => {
     expect(fila.map((c) => c.id)).toEqual(['e1', 'e2'])
   })
 })
+
+describe('Explique depois dos exercícios e retorno do Claude', () => {
+  it('pede até 3, um por tópico, do que mais precisa', async () => {
+    const { pedidosDeExplicar } = await import('../src/shared/explicar')
+    const s = sim([
+      ['MDC', false, 60],
+      ['MDC', false, 70],
+      ['Regra inversa', false, 5],
+      ['Porcentagem', true, 30, true],
+      ['Frações', true, 30],
+      ['Frações', true, 31]
+    ])
+    s.questoes[2].explicar = 'Por que mais operários fazem a obra em menos dias?'
+    const p = pedidosDeExplicar(s, raioX(s))
+    expect(p.map((x) => x.topico)).toEqual(['MDC', 'Regra inversa', 'Porcentagem'])
+    expect(p[1].pergunta).toBe('Por que mais operários fazem a obra em menos dias?')
+    expect(p[0].pergunta).toContain('MDC')
+  })
+  it('o retorno vale só para o texto avaliado; reescreveu, volta a esperar', async () => {
+    const { mesclarRetornos, situacaoDe, placarDeExplicacoes } =
+      await import('../src/shared/explicar')
+    const d = dadosDoEdital()
+    d.explicacoes = [
+      { id: 'x1', criadoEm: 1, topico: 'MDC', pergunta: 'p', texto: 'o maior divisor comum' }
+    ]
+    expect(situacaoDe(d, d.explicacoes[0])).toBe('esperando')
+    const r = {
+      explicacaoId: 'x1',
+      veredito: 'quase' as const,
+      texto: 'faltou o exemplo',
+      textoAvaliado: 'o maior divisor comum',
+      criadoEm: 2
+    }
+    expect(mesclarRetornos(d, [r])).toBe(true)
+    expect(mesclarRetornos(d, [r])).toBe(false) // não repete
+    expect(situacaoDe(d, d.explicacoes[0])).toBe('quase')
+    d.explicacoes[0].texto = 'o maior número que divide os dois sem sobra'
+    expect(situacaoDe(d, d.explicacoes[0])).toBe('esperando')
+    expect(placarDeExplicacoes(d)).toEqual({ certo: 0, quase: 0, revisar: 0, esperando: 1 })
+  })
+})

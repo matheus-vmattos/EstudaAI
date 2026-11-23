@@ -43,6 +43,8 @@ export interface Questao {
   comentarios?: Record<string, string>
   /** 2–3 frases sobre o conceito cobrado (v0.1.4+) */
   conceito?: string
+  /** a pergunta para você explicar com suas palavras depois (v0.1.22+) */
+  explicar?: string
   /** marcador do subtema, para o diagnóstico (v0.1.5+) */
   topico?: string
   /** o que a questão exige (lista fixa em questoes.ts) (v0.1.5+) */
@@ -192,6 +194,8 @@ export interface Dados {
    *  nota for igual a ele, não conta como estudo seu e pode ser corrigida
    *  por uma versão nova; editou, virou sua. */
   notasDoClaude?: Record<Id, string>
+  /** o retorno do Claude para cada explicação (v0.1.22+), vindo da nuvem */
+  retornos?: Retorno[]
   /** baralhos com a seta ao contrário do padrão (matéria aberta, nós fechados) */
   baralhosInvertidos?: Id[]
   /** itens da caixa "Do Claude" já importados */
@@ -239,6 +243,18 @@ export type EstadoDaAtualizacao =
   | { estado: 'baixando'; versao: string; porcento: number }
   | { estado: 'pronta'; versao: string }
   | { estado: 'erro'; mensagem: string }
+
+export type Veredito = 'certo' | 'quase' | 'revisar'
+
+/** A avaliação do Claude para uma explicação, do texto exato que ele leu
+ *  (se você reescreveu depois, o retorno fica velho e a nova espera). */
+export interface Retorno {
+  explicacaoId: Id
+  veredito: Veredito
+  texto: string
+  textoAvaliado: string
+  criadoEm: number
+}
 
 export interface Explicacao {
   id: Id

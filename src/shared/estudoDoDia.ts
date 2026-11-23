@@ -141,6 +141,7 @@ function diasVisiveis(d: Dados): Set<string> {
   for (const c of d.cartoes) if (c.agenda.last_review) marcar(Date.parse(c.agenda.last_review))
   for (const c of d.cartoes) marcar(c.primeiraRevisao)
   for (const s of d.simulados) marcar(s.entregueEm)
+  for (const x of d.explicacoes ?? []) marcar(x.criadoEm) // explicar também é estudo
   // tópico só conta pela anotação sua (criar no mapa ou receber a do Claude não é estudo)
   for (const t of d.topicos) if (temNotaPropria(d, t.id, t.nota)) marcar(t.atualizadoEm)
   for (const m of d.materias)

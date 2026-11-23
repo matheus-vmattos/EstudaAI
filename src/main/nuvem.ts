@@ -11,7 +11,7 @@ import {
   type EstadoDaNuvem,
   type MemoriaDaNuvem
 } from '../shared/sincronizar'
-import type { Dados } from '../shared/tipos'
+import type { Dados, Retorno } from '../shared/tipos'
 
 /** Sincronização entre PCs: os dados de cada conta numa linha do Supabase
  *  (projeto painelfin, tabela estudaai_dados). O PC continua sendo a fonte:
@@ -417,6 +417,36 @@ export function iniciarNuvem(obterJanela: () => BrowserWindow | null): void {
     acesso = null
     gravarArquivoSeguro(caminho(), '{}')
     emitir({ situacao: 'desconectado', email: '', ultimaSync: 0, mensagem: '' })
+  })
+
+  // o retorno do Claude para as suas explicações (tabela à parte, só leitura
+  // para você; quem escreve é o Claude). Sem conta ou sem internet: nada.
+  ipcMain.handle('nuvem:retornos', async (): Promise<Retorno[] | null> => {
+    if (!memoria?.renovar) return null
+    try {
+      const r = await pedir(
+        '/rest/v1/estudaai_retornos?select=explicacao_id,veredito,texto,texto_avaliado,criado_em&order=criado_em.desc&limit=500'
+      )
+      if (!r.ok) return null
+      const linhas = (await r.json()) as {
+        explicacao_id: string
+        veredito: string
+        texto: string
+        texto_avaliado: string
+        criado_em: string
+      }[]
+      return linhas
+        .filter((l) => ['certo', 'quase', 'revisar'].includes(l.veredito))
+        .map((l) => ({
+          explicacaoId: l.explicacao_id,
+          veredito: l.veredito as Retorno['veredito'],
+          texto: l.texto,
+          textoAvaliado: l.texto_avaliado,
+          criadoEm: Date.parse(l.criado_em) || 0
+        }))
+    } catch {
+      return null
+    }
   })
 
   // de 5 em 5 min: sobe o que mudou aqui e vê se o outro PC mudou

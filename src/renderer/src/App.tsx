@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { mesclarRetornos } from '../../shared/explicar'
 import { Icone, type NomeDoIcone } from './Icone'
 import { useDados } from './useDados'
 import { Atualizacao } from './Atualizacao'
@@ -78,6 +79,28 @@ export function App() {
     const id = window.setInterval(buscarCaixa, 30 * 60000)
     return () => window.clearInterval(id)
   }, [buscarCaixa])
+
+  // o retorno do Claude às suas explicações: ao abrir, a cada 30 min e ao
+  // voltar para a janela (é uma leitura pequena). Só grava se chegou algo novo.
+  const dadosAtuais = useRef(dados)
+  dadosAtuais.current = dados
+  useEffect(() => {
+    const buscar = (): void =>
+      void window.api.nuvemRetornos().then((r) => {
+        const atual = dadosAtuais.current
+        if (!r?.length || !atual) return
+        if (!mesclarRetornos(structuredClone(atual), r)) return
+        mudar((d) => void mesclarRetornos(d, r))
+      })
+    const primeira = window.setTimeout(buscar, 5000) // depois de a nuvem entrar
+    const id = window.setInterval(buscar, 30 * 60000)
+    window.addEventListener('focus', buscar)
+    return () => {
+      window.clearTimeout(primeira)
+      window.clearInterval(id)
+      window.removeEventListener('focus', buscar)
+    }
+  }, [mudar])
 
   // com edital, o app abre nele: é o "por onde começo hoje"
   const abriuNoEdital = useRef(false)

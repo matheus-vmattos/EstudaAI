@@ -12,6 +12,7 @@ import {
 import type { Dados, Id, Simulado as TipoSimulado } from '../../../shared/tipos'
 import { EstudarErros } from './EstudarErros'
 import { Explique } from '../Explique'
+import { pedidosDeExplicar, situacaoDe } from '../../../shared/explicar'
 import { raioX, ritmoDaProva, type Faixa } from '../../../shared/raioX'
 import { notaDaProva, type NotaDaProva } from '../../../shared/provaCompleta'
 import { idsAbaixo } from '../../../shared/arvore'
@@ -784,6 +785,14 @@ function RaioXDoSimulado({
 }) {
   const r = raioX(s)
   const [explicando, setExplicando] = useState<number | null>(null)
+  const [pulados, setPulados] = useState<number[]>([])
+  const pedidos = pedidosDeExplicar(s, r)
+  const pedidosVisiveis = pedidos.filter((p) => !pulados.includes(p.indice))
+  const naLista = new Set(pedidos.map((p) => p.indice))
+  const explicacoesDaqui = (dados.explicacoes ?? []).filter(
+    (x) => x.simuladoId === s.id && naLista.has(x.indice ?? -1) && x.texto.trim()
+  )
+  const avaliadas = explicacoesDaqui.filter((x) => situacaoDe(dados, x) !== 'esperando').length
   const e = dados.edital
   const naProva =
     e?.duracaoMin && e.materias.length
@@ -804,6 +813,34 @@ function RaioXDoSimulado({
             Seu ritmo: {tempo(r.ritmo)} por questão
             {naProva !== null && ` · a prova dá ${tempo(naProva)}`}
           </span>
+        )}
+        {pedidosVisiveis.length > 0 && (
+          <section aria-labelledby="t-agora" className="agora-explique">
+            <div className="cabeca-dia">
+              <h2 id="t-agora" className="secao">
+                Agora explique com suas palavras
+              </h2>
+              <span className="meta">
+                {pedidos.length} {pedidos.length === 1 ? 'conceito' : 'conceitos'} deste treino
+                {explicacoesDaqui.length > 0 &&
+                  ` · ${avaliadas} ${avaliadas === 1 ? 'avaliado' : 'avaliados'} · ${explicacoesDaqui.length - avaliadas} esperando o Claude`}
+              </span>
+            </div>
+            {pedidosVisiveis.map((p) => (
+              <Explique
+                key={p.indice}
+                dados={dados}
+                mudar={mudar}
+                numero={pedidos.indexOf(p) + 1}
+                topico={p.topico}
+                pergunta={p.pergunta}
+                detalhe={`${p.motivo} · ${p.topico}`}
+                questao={s.questoes[p.indice]}
+                origem={{ simuladoId: s.id, indice: p.indice }}
+                aoPular={() => setPulados((x) => [...x, p.indice])}
+              />
+            ))}
+          </section>
         )}
         <div className="quadrantes">
           {FAIXAS.map(({ faixa, nome, detalhe }) => {
@@ -829,7 +866,9 @@ function RaioXDoSimulado({
                           {x.vezes !== null && x.vezes > 2 ? ` · ${x.vezes.toFixed(0)}×` : ''}
                           {x.duvida ? ' · dúvida' : ''}
                         </span>
-                        {faixa === 'fragil' ? (
+                        {naLista.has(x.indice) && !pulados.includes(x.indice) ? (
+                          <span className="meta">Explique acima</span>
+                        ) : faixa === 'fragil' ? (
                           <button
                             type="button"
                             className={
