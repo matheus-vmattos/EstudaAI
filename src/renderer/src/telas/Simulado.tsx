@@ -790,7 +790,7 @@ function RaioXDoSimulado({
   const pedidosVisiveis = pedidos.filter((p) => !pulados.includes(p.indice))
   const naLista = new Set(pedidos.flatMap((p) => p.indices))
   const explicacoesDaqui = pedidos
-    .map((p) => explicacaoDoConceito(dados, p.pergunta))
+    .map((p) => explicacaoDoConceito(dados, p.pergunta, p.legado))
     .filter((x): x is NonNullable<typeof x> => !!x?.texto.trim())
   const avaliadas = explicacoesDaqui.filter((x) => situacaoDe(dados, x) !== 'esperando').length
   const e = dados.edital
@@ -835,6 +835,7 @@ function RaioXDoSimulado({
                 topico={p.topico}
                 pergunta={p.pergunta}
                 detalhe={`${p.topico} · ${p.motivo}`}
+                legado={p.legado}
                 questao={s.questoes[p.indice]}
                 aoPular={() => setPulados((x) => [...x, p.indice])}
               />

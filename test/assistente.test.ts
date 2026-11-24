@@ -746,7 +746,13 @@ describe('Missão republicada na mesma semana', () => {
   it('mantém o que já foi feito, os cartões de cada tarefa e o início', async () => {
     const { continuarMissao } = await import('../src/shared/missao')
     type M = import('../src/shared/tipos').Missao
-    const tarefa = (id: string) => ({ id, tipo: 'atrasados' as const, titulo: id, detalhe: '', pontos: 10 })
+    const tarefa = (id: string) => ({
+      id,
+      tipo: 'atrasados' as const,
+      titulo: id,
+      detalhe: '',
+      pontos: 10
+    })
     const antiga: M = {
       itemId: 'm-v1',
       de: '2026-11-23',
@@ -773,5 +779,52 @@ describe('Missão republicada na mesma semana', () => {
     expect(m.itemId).toBe('m-v2')
     // semana nova: começa do zero
     expect(continuarMissao({ ...nova, de: '2026-12-07' }, antiga).feitas).toEqual([])
+  })
+})
+
+describe('Codex no PR 30: explicações da 0.1.22 continuam valendo', () => {
+  it('acha a explicação antiga do Raio-X (com simuladoId) pela mesma pergunta, ou pelo tópico daquele simulado', async () => {
+    const { explicacaoDoConceito, pedidosDeExplicar } = await import('../src/shared/explicar')
+    const d = dadosDoEdital()
+    const s = sim([['Economia circular', false, 60]])
+    d.explicacoes = [
+      {
+        id: 'velha',
+        criadoEm: 1,
+        topico: 'Economia circular',
+        pergunta:
+          'Explique com suas palavras esta questão de Economia circular: o que ela cobra e como se chega na resposta certa.',
+        texto: 'reutilizar',
+        simuladoId: s.id,
+        indice: 0
+      },
+      {
+        id: 'mesma',
+        criadoEm: 1,
+        topico: 'X',
+        pergunta: 'Como você decide?',
+        texto: 't',
+        simuladoId: 'outro',
+        indice: 3
+      }
+    ]
+    expect(explicacaoDoConceito(d, 'Como você decide?')?.id).toBe('mesma')
+    expect(
+      explicacaoDoConceito(d, 'O que é Economia circular e…', {
+        simuladoId: s.id,
+        topico: 'Economia circular'
+      })?.id
+    ).toBe('velha')
+    // avaliada como "Certo" na 0.1.22: não volta a ser pedida
+    d.retornos = [
+      {
+        explicacaoId: 'velha',
+        veredito: 'certo',
+        texto: 'ok',
+        textoAvaliado: 'reutilizar',
+        criadoEm: 2
+      }
+    ]
+    expect(pedidosDeExplicar(s, raioX(s), d)).toEqual([])
   })
 })

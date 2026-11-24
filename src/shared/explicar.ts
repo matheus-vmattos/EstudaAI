@@ -1,5 +1,5 @@
 import type { RaioX } from './raioX'
-import type { Dados, Explicacao, Questao, Retorno, Simulado, Veredito } from './tipos'
+import type { Dados, Explicacao, Id, Questao, Retorno, Simulado, Veredito } from './tipos'
 import { semAcento } from './texto'
 
 export type SituacaoDaExplicacao = 'esperando' | Veredito
@@ -54,6 +54,8 @@ export interface PedidoDeExplicar {
   topico: string
   pergunta: string
   motivo: string
+  /** a explicação da 0.1.22 que vale para este pedido (presa a este simulado) */
+  legado?: { simuladoId: Id; topico: string }
 }
 
 /** A pergunta é sobre o CONCEITO, não sobre a questão: a do conteúdo, ou uma
@@ -64,9 +66,28 @@ export const perguntaDoConceito = (q: Questao, topico: string): string =>
 
 const mesmaPergunta = (a: string, b: string): boolean => semAcento(a.trim()) === semAcento(b.trim())
 
-/** A sua explicação de um conceito (vale para todos os simulados) */
-export const explicacaoDoConceito = (d: Dados, pergunta: string): Explicacao | undefined =>
-  (d.explicacoes ?? []).find((x) => !x.simuladoId && mesmaPergunta(x.pergunta, pergunta))
+/** A sua explicação de um conceito (vale para todos os simulados): pela mesma
+ *  pergunta, em qualquer simulado ou missão (a sem simulado primeiro). As da
+ *  0.1.22 eram presas à questão e à pergunta antiga; o `legado` (o simulado e o
+ *  tópico) as encontra, para não pedir de novo nem perder o retorno. */
+export function explicacaoDoConceito(
+  d: Dados,
+  pergunta: string,
+  legado?: { simuladoId: Id; topico: string }
+): Explicacao | undefined {
+  const iguais = (d.explicacoes ?? []).filter((x) => mesmaPergunta(x.pergunta, pergunta))
+  return iguais.find((x) => !x.simuladoId) ?? iguais[0] ?? (legado && explicacaoAntiga(d, legado))
+}
+
+/** A explicação da 0.1.22: presa a um simulado e a um tópico */
+const explicacaoAntiga = (
+  d: Dados,
+  l: { simuladoId: Id; topico: string }
+): Explicacao | undefined =>
+  (d.explicacoes ?? []).find(
+    (x) =>
+      x.simuladoId === l.simuladoId && semAcento(x.topico.trim()) === semAcento(l.topico.trim())
+  )
 
 const MOTIVO = { lacuna: 'errou', engano: 'errou rápido', fragil: 'acertou com dúvida' } as const
 
@@ -74,7 +95,8 @@ const MOTIVO = { lacuna: 'errou', engano: 'errou rápido', fragil: 'acertou com 
  *  sabia, errou achando que sabia, acertou inseguro). Um pedido por conceito,
  *  com as questões que o puxaram; conceito já explicado "Certo" não volta. */
 export function pedidosDeExplicar(s: Simulado, r: RaioX, d?: Dados, max = 3): PedidoDeExplicar[] {
-  const grupos = new Map<string, PedidoDeExplicar & { faixas: (keyof typeof MOTIVO)[] }>()
+  type Grupo = PedidoDeExplicar & { faixas: (keyof typeof MOTIVO)[] }
+  const grupos = new Map<string, Grupo>()
   for (const faixa of ['lacuna', 'engano', 'fragil'] as const)
     for (const x of r.porFaixa[faixa]) {
       const pergunta = perguntaDoConceito(s.questoes[x.indice], x.topico)
@@ -85,12 +107,6 @@ export function pedidosDeExplicar(s: Simulado, r: RaioX, d?: Dados, max = 3): Pe
         g.faixas.push(faixa)
         continue
       }
-      if (
-        d &&
-        explicacaoDoConceito(d, pergunta) &&
-        situacaoDe(d, explicacaoDoConceito(d, pergunta)!) === 'certo'
-      )
-        continue
       grupos.set(chave, {
         indice: x.indice,
         indices: [x.indice],
@@ -100,7 +116,27 @@ export function pedidosDeExplicar(s: Simulado, r: RaioX, d?: Dados, max = 3): Pe
         faixas: [faixa]
       })
     }
-  return [...grupos.values()].slice(0, max).map(({ faixas, ...p }) => {
+  let lista = [...grupos.values()]
+  if (d) {
+    // a mesma pergunta acha a explicação; as da 0.1.22 (presas a este simulado,
+    // com a pergunta antiga) só entram pelo tópico se nenhum pedido já as achou
+    // pela pergunta, e cada uma num pedido só
+    const exatas = lista.map((g) => explicacaoDoConceito(d, g.pergunta))
+    const usadas = new Set(exatas.filter((x) => x).map((x) => x!.id))
+    lista = lista.filter((g, k) => {
+      let ja = exatas[k]
+      if (!ja) {
+        const velha = explicacaoAntiga(d, { simuladoId: s.id, topico: g.topico })
+        if (velha && !usadas.has(velha.id)) {
+          usadas.add(velha.id)
+          g.legado = { simuladoId: s.id, topico: g.topico }
+          ja = velha
+        }
+      }
+      return !(ja && situacaoDe(d, ja) === 'certo')
+    })
+  }
+  return lista.slice(0, max).map(({ faixas, ...p }) => {
     const partes = (['lacuna', 'engano', 'fragil'] as const)
       .map((f) => {
         const nums = p.indices.filter((_, i) => faixas[i] === f).map((i) => i + 1)

@@ -2,8 +2,7 @@ import { useId, useState } from 'react'
 import { Icone } from './Icone'
 import { novoId, type Mudar } from './useDados'
 import { promptDeConferir } from '../../shared/missao'
-import { retornoDe, type SituacaoDaExplicacao } from '../../shared/explicar'
-import { semAcento } from '../../shared/texto'
+import { explicacaoDoConceito, retornoDe, type SituacaoDaExplicacao } from '../../shared/explicar'
 import type { Dados, Id, Questao } from '../../shared/tipos'
 
 /** "Será que você sabe?": explicar com suas palavras. A explicação fica
@@ -21,7 +20,8 @@ export function Explique({
   origem,
   pontos,
   numero,
-  aoPular
+  aoPular,
+  legado
 }: {
   dados: Dados
   mudar: Mudar
@@ -35,14 +35,16 @@ export function Explique({
   /** dentro da lista "Agora explique": o número e o botão Pular */
   numero?: number
   aoPular?: () => void
+  /** a explicação da 0.1.22 deste simulado e tópico, se houver */
+  legado?: { simuladoId: Id; topico: string }
 }) {
   const idCampo = useId()
-  const ja = (dados.explicacoes ?? []).find((x) =>
-    origem
-      ? x.simuladoId === origem.simuladoId && x.indice === origem.indice
-      : // conceito: a mesma pergunta, em qualquer simulado ou missão
-        !x.simuladoId && semAcento(x.pergunta.trim()) === semAcento(pergunta.trim())
-  )
+  const ja = origem
+    ? (dados.explicacoes ?? []).find(
+        (x) => x.simuladoId === origem.simuladoId && x.indice === origem.indice
+      )
+    : // conceito: a mesma pergunta em qualquer simulado ou missão (e a da 0.1.22, pelo legado)
+      explicacaoDoConceito(dados, pergunta, legado)
   const [texto, setTexto] = useState(ja?.texto ?? '')
   const [aviso, setAviso] = useState('')
   const [editando, setEditando] = useState(!ja?.texto.trim())
