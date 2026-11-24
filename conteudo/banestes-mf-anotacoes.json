@@ -1,0 +1,85 @@
+{
+ "materia": "Matemática Financeira",
+ "notas": [
+  {
+   "lugar": [
+    "Juros simples",
+    "Juros e montante"
+   ],
+   "texto": "## Juros simples: o juro de todo mês é o mesmo\n\n**J = C · i · n** e **M = C + J = C · (1 + i · n)**. Taxa e prazo sempre na MESMA unidade.\n\n**Exemplo:** R$ 4.000 a 5% ao mês por 3 meses → J = 4.000 × 0,05 × 3 = **R$ 600**; M = **R$ 4.600**. Por mês: R$ 200, sempre igual (o juro é sempre sobre os 4.000 iniciais).\n\n**Achar a taxa:** i = J ÷ (C · n). **Achar o prazo:** n = J ÷ (C · i).\n\n> **PEGADINHA** A FCC pede \"os juros\" e coloca o montante como alternativa (e vice-versa). Leia a última linha do enunciado antes de marcar."
+  },
+  {
+   "lugar": [
+    "Juros simples",
+    "Taxas proporcionais"
+   ],
+   "texto": "## Taxa proporcional (juros simples)\n\nProporcional = divide ou multiplica pelo tempo: **12% a.a. = 6% a.s. = 3% a.t. = 1% a.m.**\n\nSó vale em juros SIMPLES. Em compostos, a conversão é pela taxa **equivalente** (ver Taxas).\n\n> **PEGADINHA** \"Ano comercial\" tem 360 dias (12 meses de 30). Quando o enunciado não diz nada, a FCC usa o comercial."
+  },
+  {
+   "lugar": [
+    "Juros compostos",
+    "Montante"
+   ],
+   "texto": "## Juros compostos: juro sobre juro\n\n**M = C · (1 + i)^n**. Cada mês multiplica pelo mesmo fator (1 + i).\n\n**Exemplo:** R$ 2.000 a 2% ao mês por 2 meses → 2.000 × 1,02² = 2.000 × 1,0404 = **R$ 2.080,80**.\n\n**Capital a partir do montante:** C = M ÷ (1 + i)^n. A FCC costuma dar a potência pronta (ex.: \"use 1,1³ = 1,331\").\n\n> **PEGADINHA** Fazer C · (1 + i · n): isso é juros simples e dá um pouco menos (R$ 2.080,00 no exemplo)."
+  },
+  {
+   "lugar": [
+    "Juros compostos",
+    "Simples x compostos"
+   ],
+   "texto": "## Simples × compostos\n\n- **Simples:** o juro de cada mês é sempre sobre o capital inicial; cresce em linha reta; M = C(1 + i·n).\n- **Compostos:** o juro de cada mês é sobre o saldo do mês anterior; cresce em curva; M = C(1 + i)^n.\n\n**No 1º período os dois dão igual.** Depois, compostos dão mais. Antes de 1 período (frações do mês), os simples dão mais, um detalhe que a FCC às vezes cobra."
+  },
+  {
+   "lugar": [
+    "Taxas",
+    "Taxas equivalentes"
+   ],
+   "texto": "## Taxa equivalente (juros compostos)\n\nDuas taxas são equivalentes se levam o mesmo capital ao mesmo montante no mesmo tempo: **(1 + i_ano) = (1 + i_mês)^12**.\n\n**Exemplo:** 10% ao semestre → (1,1)² = 1,21 → **21% ao ano** (e não 20%).\n**Ao contrário:** 1% ao mês → 1,01^12 ≈ 1,1268 → **≈ 12,68% ao ano**.\n\n> **PEGADINHA** Multiplicar pelo número de períodos (10% × 2 = 20%) é a taxa PROPORCIONAL, de juros simples."
+  },
+  {
+   "lugar": [
+    "Taxas",
+    "Nominal e efetiva"
+   ],
+   "texto": "## Taxa nominal × efetiva\n\n**Nominal:** o período da taxa é diferente do período de capitalização. Ex.: \"24% ao ano, capitalizada mensalmente\".\n**Efetiva do período:** nominal ÷ número de períodos → **24% ÷ 12 = 2% ao mês** (essa é a que se usa na conta).\n**Efetiva anual:** (1,02)^12 − 1 ≈ 26,82% ao ano, MAIOR que os 24% nominais.\n\n> **PEGADINHA** Usar os 24% como se fossem a taxa efetiva anual."
+  },
+  {
+   "lugar": [
+    "Taxas",
+    "Taxa real e inflação"
+   ],
+   "texto": "## Taxa real (Fisher)\n\n**(1 + aparente) = (1 + real) · (1 + inflação)**\n\n**Exemplo:** rendeu 15,5% num ano de inflação de 5% → 1,155 ÷ 1,05 = 1,10 → **real = 10%** (e não 10,5%).\n\nSubtrair (15,5 − 5) é só aproximação; a FCC quer a divisão dos fatores."
+  },
+  {
+   "lugar": [
+    "Descontos",
+    "Desconto simples"
+   ],
+   "texto": "## Desconto simples: comercial (por fora) × racional (por dentro)\n\n**Comercial (por fora):** o desconto é calculado sobre o **valor nominal (N)**: D = N · d · n; valor atual A = N − D.\n**Racional (por dentro):** é juro simples ao contrário: **A = N ÷ (1 + i · n)**; D = N − A.\n\n**Exemplo:** título de R$ 2.600, 6 meses antes, 5% ao mês:\n- comercial: D = 2.600 × 0,05 × 6 = R$ 780 → A = **R$ 1.820**;\n- racional: A = 2.600 ÷ 1,3 = **R$ 2.000** → D = R$ 600.\n\nPara a mesma taxa, **o comercial dá desconto maior** (é calculado sobre um valor maior)."
+  },
+  {
+   "lugar": [
+    "Amortização",
+    "SAC"
+   ],
+   "texto": "## SAC: amortização constante, prestação decrescente\n\n1. **Amortização** = dívida ÷ número de parcelas (igual todo mês).\n2. **Juros da parcela k** = saldo ANTES dela × taxa.\n3. **Prestação** = amortização + juros.\n\n**Exemplo:** R$ 60.000 em 6 parcelas a 2% ao mês → amortização R$ 10.000.\n3ª parcela: saldo antes = 60.000 − 2 × 10.000 = 40.000 → juros R$ 800 → prestação **R$ 10.800**.\n\nAs prestações caem R$ 200 por mês (10.000 × 2%): formam uma PA decrescente.\n\n> **PEGADINHA** Calcular os juros sobre a dívida inteira ou sobre o saldo DEPOIS da parcela."
+  },
+  {
+   "lugar": [
+    "Amortização",
+    "Price"
+   ],
+   "texto": "## Tabela Price: prestação constante\n\nPrestação = valor ÷ **fator de valor atual** (a FCC dá o fator).\n\n**Exemplo:** R$ 10.000 em 3 parcelas a 2% ao mês, fator a = 2,8839 → **≈ R$ 3.467,53** por mês.\n\nNo começo, quase toda a prestação é juro; no fim, quase toda é amortização. Total pago (3 × 3.467,53 = R$ 10.402,59) > valor emprestado: a diferença são os juros.\n\n**SAC × Price:** a 1ª parcela do SAC é maior; o total de juros do SAC é menor (a dívida cai mais rápido)."
+  },
+  {
+   "lugar": [
+    "Fluxo de caixa",
+    "Equivalência de capitais"
+   ],
+   "texto": "## Equivalência de capitais\n\nDinheiro em datas diferentes só se compara levado para a **mesma data**:\n- levar para o futuro: **VF = VP · (1 + i)^n**;\n- trazer para o presente: **VP = VF ÷ (1 + i)^n**.\n\n**Exemplo:** a 10% ao mês, R$ 1.000 hoje equivalem a **R$ 1.100** daqui a 1 mês. Se a loja pede R$ 1.150 a prazo, à vista (R$ 1.000) é melhor para quem tem esse rendimento."
+  }
+ ],
+ "fontes": [
+  "Contas de todos os exemplos conferidas em Python (fractions, math.comb/perm) antes de publicar; regras lógicas conferidas por tabela-verdade no gerador do treino"
+ ]
+}

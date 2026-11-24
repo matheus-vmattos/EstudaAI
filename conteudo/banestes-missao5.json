@@ -1,7 +1,7 @@
 {
  "de": "2026-11-23",
  "ate": "2026-12-06",
- "frase": "Os 7 treinos da base estão feitos. Agora a matemática segue com o que travou no Treino 7 e no 6 (regra de três inversa e MDC/MMC), e as matérias de peso entram junto: Bancários vale 25% da nota, Vendas 17% (agora com simulado), Português desempata. Por dia: um bloco de matemática e um de outra matéria.",
+ "frase": "Os 7 treinos da base estão feitos. Agora a matemática segue com o que travou no Treino 7 e no 6 (regra de três inversa e MDC/MMC), e as matérias de peso entram junto: Bancários vale 25% da nota, Vendas 17% (agora com simulado), Português desempata. Por dia: um bloco de matemática e um de outra matéria. Novo: o Treino 10 mistura direta e inversa sem aviso, para treinar a decisão antes da conta.",
  "tarefas": [
   {
    "id": "t8",
@@ -11,6 +11,15 @@
    "pontos": 100,
    "item": "banestes-base-treino8-v1",
    "tema": "Treino 8: regra de três inversa"
+  },
+  {
+   "id": "t10",
+   "tipo": "simulado",
+   "titulo": "Treino 10: direta ou inversa? (tudo misturado)",
+   "detalhe": "No Treino 8 você fez 31/32 em bloco e 2/4 quando misturou · 40 questões, nada em bloco",
+   "pontos": 120,
+   "item": "banestes-base-treino10-v1",
+   "tema": "Treino 10: direta ou inversa?"
   },
   {
    "id": "banc",
@@ -42,10 +51,10 @@
   {
    "id": "exp-inv",
    "tipo": "explicar",
-   "titulo": "Explique: regra de três inversa",
+   "titulo": "Explique: direta ou inversa?",
    "topico": "Regra de três",
-   "pergunta": "Por que, quando aumentam os operários, os dias da obra diminuem? Explique com o \"trabalho total\" e um exemplo seu com números.",
-   "detalhe": "Depois do Treino 8",
+   "pergunta": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "detalhe": "O conceito por trás de todo o Treino 10",
    "pontos": 30
   },
   {

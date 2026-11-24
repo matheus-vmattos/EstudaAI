@@ -1,5 +1,6 @@
 import type { RaioX } from './raioX'
-import type { Dados, Explicacao, Retorno, Simulado, Veredito } from './tipos'
+import type { Dados, Explicacao, Id, Questao, Retorno, Simulado, Veredito } from './tipos'
+import { semAcento } from './texto'
 
 export type SituacaoDaExplicacao = 'esperando' | Veredito
 
@@ -46,44 +47,110 @@ export function mesclarRetornos(d: Dados, novos: Retorno[]): boolean {
 }
 
 export interface PedidoDeExplicar {
+  /** a questão que puxou o pedido (a primeira do conceito) */
   indice: number
+  /** todas as questões deste simulado que pediram este conceito */
+  indices: number[]
   topico: string
   pergunta: string
   motivo: string
+  /** a explicação da 0.1.22 que vale para este pedido (presa a este simulado) */
+  legado?: { simuladoId: Id; topico: string }
 }
 
-/** Depois do simulado: até 3 conceitos para explicar, do que mais pede
- *  (não sabia, errou achando que sabia, acertou inseguro), um por tópico. */
-export function pedidosDeExplicar(s: Simulado, r: RaioX, max = 3): PedidoDeExplicar[] {
-  const ordem: { faixa: 'lacuna' | 'engano' | 'fragil'; motivo: string }[] = [
-    { faixa: 'lacuna', motivo: 'Você errou' },
-    { faixa: 'engano', motivo: 'Errou rápido, achando que sabia' },
-    { faixa: 'fragil', motivo: 'Acertou, mas com dúvida' }
-  ]
-  const saida: PedidoDeExplicar[] = []
-  const topicos = new Set<string>()
-  const pedir = (x: { indice: number; topico: string }, motivo: string): void => {
-    const q = s.questoes[x.indice]
-    topicos.add(x.topico)
-    saida.push({
-      indice: x.indice,
-      topico: x.topico,
-      motivo,
-      pergunta:
-        q.explicar ??
-        `Explique com suas palavras esta questão de ${x.topico}: o que ela cobra e como se chega na resposta certa.`
+/** A pergunta é sobre o CONCEITO, não sobre a questão: a do conteúdo, ou uma
+ *  geral do tópico. A mesma pergunta volta em outros simulados até virar "Certo". */
+export const perguntaDoConceito = (q: Questao, topico: string): string =>
+  q.explicar ??
+  `O que é ${topico} e como você reconhece e resolve uma questão desse tipo? Explique a ideia com suas palavras e um exemplo seu.`
+
+const mesmaPergunta = (a: string, b: string): boolean => semAcento(a.trim()) === semAcento(b.trim())
+
+/** A sua explicação de um conceito (vale para todos os simulados): pela mesma
+ *  pergunta, em qualquer simulado ou missão (a sem simulado primeiro). As da
+ *  0.1.22 eram presas à questão e à pergunta antiga; o `legado` (o simulado e o
+ *  tópico) as encontra, para não pedir de novo nem perder o retorno. */
+export function explicacaoDoConceito(
+  d: Dados,
+  pergunta: string,
+  legado?: { simuladoId: Id; topico: string }
+): Explicacao | undefined {
+  const iguais = (d.explicacoes ?? []).filter((x) => mesmaPergunta(x.pergunta, pergunta))
+  return iguais.find((x) => !x.simuladoId) ?? iguais[0] ?? (legado && explicacaoAntiga(d, legado))
+}
+
+/** A explicação da 0.1.22: presa a um simulado e a um tópico */
+const explicacaoAntiga = (
+  d: Dados,
+  l: { simuladoId: Id; topico: string }
+): Explicacao | undefined =>
+  (d.explicacoes ?? []).find(
+    (x) =>
+      x.simuladoId === l.simuladoId && semAcento(x.topico.trim()) === semAcento(l.topico.trim())
+  )
+
+const MOTIVO = { lacuna: 'errou', engano: 'errou rápido', fragil: 'acertou com dúvida' } as const
+
+/** Depois do simulado: até 3 conceitos para explicar, do que mais pede (não
+ *  sabia, errou achando que sabia, acertou inseguro). Um pedido por conceito,
+ *  com as questões que o puxaram; conceito já explicado "Certo" não volta. */
+export function pedidosDeExplicar(s: Simulado, r: RaioX, d?: Dados, max = 3): PedidoDeExplicar[] {
+  type Grupo = PedidoDeExplicar & { faixas: (keyof typeof MOTIVO)[] }
+  const grupos = new Map<string, Grupo>()
+  for (const faixa of ['lacuna', 'engano', 'fragil'] as const)
+    for (const x of r.porFaixa[faixa]) {
+      const pergunta = perguntaDoConceito(s.questoes[x.indice], x.topico)
+      const chave = semAcento(pergunta.trim())
+      const g = grupos.get(chave)
+      if (g) {
+        g.indices.push(x.indice)
+        g.faixas.push(faixa)
+        continue
+      }
+      grupos.set(chave, {
+        indice: x.indice,
+        indices: [x.indice],
+        topico: x.topico,
+        pergunta,
+        motivo: '',
+        faixas: [faixa]
+      })
+    }
+  let lista = [...grupos.values()]
+  if (d) {
+    // a mesma pergunta acha a explicação; as da 0.1.22 (presas a este simulado,
+    // com a pergunta antiga) só entram pelo tópico se nenhum pedido já as achou
+    // pela pergunta, e cada uma num pedido só
+    const exatas = lista.map((g) => explicacaoDoConceito(d, g.pergunta))
+    const usadas = new Set(exatas.filter((x) => x).map((x) => x!.id))
+    lista = lista.filter((g, k) => {
+      let ja = exatas[k]
+      if (!ja) {
+        const velha = explicacaoAntiga(d, { simuladoId: s.id, topico: g.topico })
+        if (velha && !usadas.has(velha.id)) {
+          usadas.add(velha.id)
+          g.legado = { simuladoId: s.id, topico: g.topico }
+          ja = velha
+        }
+      }
+      return !(ja && situacaoDe(d, ja) === 'certo')
     })
   }
-  // 1ª volta: um por tópico; 2ª (treino de um tópico só): outras questões que
-  // trazem a própria pergunta, para não pedir duas vezes a mesma coisa
-  for (const volta of [1, 2])
-    for (const { faixa, motivo } of ordem)
-      for (const x of r.porFaixa[faixa]) {
-        if (saida.length >= max) return saida
-        if (saida.some((p) => p.indice === x.indice)) continue
-        if (volta === 1 && topicos.has(x.topico)) continue
-        if (volta === 2 && !s.questoes[x.indice].explicar) continue
-        pedir(x, motivo)
-      }
-  return saida
+  return lista.slice(0, max).map(({ faixas, ...p }) => {
+    const partes = (['lacuna', 'engano', 'fragil'] as const)
+      .map((f) => {
+        const nums = p.indices.filter((_, i) => faixas[i] === f).map((i) => i + 1)
+        if (!nums.length) return ''
+        const lista =
+          nums.length > 4
+            ? `${nums.slice(0, 3).join(', ')} e mais ${nums.length - 3}`
+            : nums.length > 1
+              ? `${nums.slice(0, -1).join(', ')} e ${nums.at(-1)}`
+              : `${nums[0]}`
+        return `${MOTIVO[f]} a ${lista}`
+      })
+      .filter(Boolean)
+    const texto = partes.join('; ')
+    return { ...p, motivo: texto[0].toUpperCase() + texto.slice(1) }
+  })
 }

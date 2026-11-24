@@ -1,0 +1,346 @@
+{
+ "tema": "Bancários parte 2: Banco Central, consórcio, previdência, seguros e sigilo",
+ "materia": "Conhecimentos Bancários",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "Nos termos da Lei Complementar nº 179/2021, o objetivo fundamental do Banco Central do Brasil é",
+   "alternativas": {
+    "A": "fomentar o pleno emprego.",
+    "B": "financiar o Tesouro Nacional.",
+    "C": "assegurar a estabilidade de preços.",
+    "D": "fixar a meta da taxa de câmbio.",
+    "E": "zelar pela eficiência do sistema financeiro."
+   },
+   "gabarito": "C",
+   "resolucao": "LC 179/2021, art. 1º: \"O Banco Central do Brasil tem por objetivo fundamental assegurar a estabilidade de preços.\" Parágrafo único: sem prejuízo dele, também zelar pela estabilidade e eficiência do sistema financeiro, suavizar as flutuações do nível de atividade econômica e fomentar o pleno emprego.",
+   "comentarios": {
+    "A": "Fomentar o pleno emprego é objetivo \"sem prejuízo\" do fundamental (parágrafo único), não o fundamental.",
+    "B": "Não está entre os objetivos do art. 1º.",
+    "D": "Não está entre os objetivos do art. 1º.",
+    "E": "É objetivo \"sem prejuízo\" do fundamental (parágrafo único), não o fundamental."
+   },
+   "topico": "Banco Central: objetivos e competências",
+   "conceito": "Objetivo fundamental do BCB: estabilidade de preços. Os demais (sistema financeiro, atividade econômica, emprego) vêm \"sem prejuízo\" dele.",
+   "explicar": "Qual é o objetivo fundamental do Banco Central e quais são os objetivos \"sem prejuízo\" dele? Explique o que significa o Banco Central ser autônomo.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Segundo a Lei Complementar nº 179/2021, são objetivos do Banco Central do Brasil, sem prejuízo de seu objetivo fundamental, entre outros,",
+   "alternativas": {
+    "A": "suavizar as flutuações do nível de atividade econômica e fomentar o pleno emprego.",
+    "B": "fixar a taxa de juros dos empréstimos ao consumidor e controlar preços de bens.",
+    "C": "assegurar a estabilidade de preços e a arrecadação de tributos federais.",
+    "D": "regular o mercado de valores mobiliários e as companhias abertas.",
+    "E": "supervisionar seguradoras e entidades de previdência aberta."
+   },
+   "gabarito": "A",
+   "resolucao": "LC 179/2021, art. 1º, parágrafo único: \"Sem prejuízo de seu objetivo fundamental, o Banco Central do Brasil também tem por objetivos zelar pela estabilidade e pela eficiência do sistema financeiro, suavizar as flutuações do nível de atividade econômica e fomentar o pleno emprego.\"",
+   "comentarios": {
+    "B": "O BCB não fixa juros de empréstimos ao consumidor nem controla preços de bens; não está no art. 1º.",
+    "C": "Estabilidade de preços é o objetivo FUNDAMENTAL; arrecadação de tributos não é objetivo do BCB.",
+    "D": "Não está entre os objetivos do art. 1º.",
+    "E": "Não está entre os objetivos do art. 1º."
+   },
+   "topico": "Banco Central: objetivos e competências",
+   "conceito": "Três objetivos \"sem prejuízo\": sistema financeiro (estabilidade e eficiência), atividade econômica (suavizar flutuações) e pleno emprego.",
+   "explicar": "Qual é o objetivo fundamental do Banco Central e quais são os objetivos \"sem prejuízo\" dele? Explique o que significa o Banco Central ser autônomo.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "De acordo com a Lei Complementar nº 179/2021, o mandato do Presidente do Banco Central do Brasil",
+   "alternativas": {
+    "A": "coincide com o mandato do Presidente da República, começando e terminando junto com ele.",
+    "B": "tem duração de 4 anos, com início em 1º de janeiro do terceiro ano de mandato do Presidente da República.",
+    "C": "tem duração de 5 anos, com início em 1º de janeiro do primeiro ano de mandato do Presidente da República.",
+    "D": "é por prazo indeterminado, até a exoneração pelo Ministro da Fazenda.",
+    "E": "tem duração de 4 anos, com início em 1º de janeiro do segundo ano de mandato do Presidente da República."
+   },
+   "gabarito": "B",
+   "resolucao": "LC 179/2021, art. 4º, § 1º: \"O mandato do Presidente do Banco Central do Brasil terá duração de 4 (quatro) anos, com início no dia 1º de janeiro do terceiro ano de mandato do Presidente da República.\" Caput: indicados pelo Presidente da República e nomeados após aprovação do Senado Federal.",
+   "comentarios": {
+    "A": "A lei descasa os mandatos: o do Presidente do BCB começa no 3º ano do mandato presidencial.",
+    "C": "São 4 anos, começando no 3º ano do mandato presidencial.",
+    "D": "O mandato é fixo (4 anos) e o BCB não é vinculado a Ministério.",
+    "E": "O início é no TERCEIRO ano do mandato presidencial."
+   },
+   "topico": "Banco Central: objetivos e competências",
+   "conceito": "Mandato do Presidente do BCB: 4 anos, começando no 3º ano do governo, para não coincidir com o mandato presidencial.",
+   "explicar": "Qual é o objetivo fundamental do Banco Central e quais são os objetivos \"sem prejuízo\" dele? Explique o que significa o Banco Central ser autônomo.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Conforme a Lei Complementar nº 179/2021, o Presidente e os Diretores do Banco Central do Brasil são",
+   "alternativas": {
+    "A": "eleitos pelo Conselho Monetário Nacional, sem participação do Senado.",
+    "B": "nomeados pelo Ministro da Fazenda, após aprovação da Câmara dos Deputados.",
+    "C": "escolhidos entre servidores de carreira do Banco Central, por concurso interno.",
+    "D": "indicados pelo Presidente da República e por ele nomeados, após aprovação de seus nomes pelo Senado Federal.",
+    "E": "indicados pelo Senado Federal e nomeados pelo Presidente da República."
+   },
+   "gabarito": "D",
+   "resolucao": "LC 179/2021, art. 4º, caput: \"O Presidente e os Diretores do Banco Central do Brasil serão indicados pelo Presidente da República e por ele nomeados, após aprovação de seus nomes pelo Senado Federal.\"",
+   "comentarios": {
+    "A": "São indicados pelo Presidente da República e aprovados pelo Senado.",
+    "B": "Quem indica e nomeia é o Presidente da República; quem aprova é o Senado.",
+    "C": "Não há essa regra no art. 4º.",
+    "E": "Quem INDICA é o Presidente da República; o Senado aprova."
+   },
+   "topico": "Banco Central: objetivos e competências",
+   "conceito": "Indicação e nomeação: Presidente da República. Aprovação: Senado Federal.",
+   "explicar": "Qual é o objetivo fundamental do Banco Central e quais são os objetivos \"sem prejuízo\" dele? Explique o que significa o Banco Central ser autônomo.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "A Lei Complementar nº 179/2021 caracteriza o Banco Central do Brasil como",
+   "alternativas": {
+    "A": "órgão da administração direta, subordinado ao Ministério da Fazenda.",
+    "B": "empresa pública vinculada ao Conselho Monetário Nacional.",
+    "C": "sociedade de economia mista, com ações negociadas em bolsa.",
+    "D": "autarquia comum, vinculada ao Ministério do Planejamento e Orçamento.",
+    "E": "autarquia de natureza especial, sem vinculação a Ministério, de tutela ou de subordinação hierárquica."
+   },
+   "gabarito": "E",
+   "resolucao": "LC 179/2021, art. 6º: \"O Banco Central do Brasil é autarquia de natureza especial caracterizada pela ausência de vinculação a Ministério, de tutela ou de subordinação hierárquica, pela autonomia técnica, operacional, administrativa e financeira, pela investidura a termo de seus dirigentes e pela estabilidade durante seus mandatos (...)\".",
+   "comentarios": {
+    "A": "O BCB é autarquia de natureza especial, sem vinculação a Ministério.",
+    "B": "Não é empresa pública; é autarquia de natureza especial.",
+    "C": "Não é sociedade de economia mista.",
+    "D": "É de natureza ESPECIAL e sem vinculação a Ministério."
+   },
+   "topico": "Banco Central: objetivos e competências",
+   "conceito": "Autonomia do BCB: autarquia especial, sem vínculo a Ministério, com mandatos fixos e autonomia técnica, operacional, administrativa e financeira.",
+   "explicar": "Qual é o objetivo fundamental do Banco Central e quais são os objetivos \"sem prejuízo\" dele? Explique o que significa o Banco Central ser autônomo.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Nos termos da Lei nº 4.595/1964, compete privativamente ao Banco Central do Brasil",
+   "alternativas": {
+    "A": "fixar a meta de inflação, sem participação do Conselho Monetário Nacional.",
+    "B": "emitir moeda-papel e moeda metálica, nas condições e limites autorizados pelo Conselho Monetário Nacional.",
+    "C": "emitir moeda nos limites fixados pela Comissão de Valores Mobiliários.",
+    "D": "emitir títulos da dívida pública para financiar o orçamento federal.",
+    "E": "autorizar o funcionamento de seguradoras."
+   },
+   "gabarito": "B",
+   "resolucao": "Lei 4.595/1964, art. 10: \"Compete privativamente ao Banco Central da República do Brasil: I - Emitir moeda-papel e moeda metálica, nas condições e limites autorizados pelo Conselho Monetário Nacional\". Também é competência do BCB (inciso V, redação da LC 179/2021) \"realizar operações de redesconto e empréstimo com instituições financeiras\".",
+   "comentarios": {
+    "A": "A emissão é que é competência privativa do BCB (art. 10, I), e nos limites autorizados pelo CMN.",
+    "C": "Os limites da emissão são autorizados pelo CMN, não pela CVM.",
+    "D": "Não é o que diz o art. 10, I.",
+    "E": "Seguradoras estão no Sistema Nacional de Seguros Privados (CNSP/Susep)."
+   },
+   "topico": "Banco Central: objetivos e competências",
+   "conceito": "BCB emite a moeda; o CMN autoriza as condições e os limites. O BCB também faz o redesconto (empréstimo de última instância aos bancos).",
+   "explicar": "Qual é o objetivo fundamental do Banco Central e quais são os objetivos \"sem prejuízo\" dele? Explique o que significa o Banco Central ser autônomo.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Segundo a Lei nº 11.795/2008, consórcio é a reunião de pessoas naturais e jurídicas em grupo, com prazo de duração e número de cotas previamente determinados, promovida por administradora, com a finalidade de propiciar a seus integrantes, de forma isonômica, a aquisição de bens ou serviços por meio de",
+   "alternativas": {
+    "A": "autofinanciamento.",
+    "B": "financiamento bancário com juros prefixados.",
+    "C": "arrendamento mercantil (leasing).",
+    "D": "capitalização com sorteio de prêmios em dinheiro.",
+    "E": "crédito consignado em folha de pagamento."
+   },
+   "gabarito": "A",
+   "resolucao": "Lei 11.795/2008, art. 2º: \"Consórcio é a reunião de pessoas naturais e jurídicas em grupo, com prazo de duração e número de cotas previamente determinados, promovida por administradora de consórcio, com a finalidade de propiciar a seus integrantes, de forma isonômica, a aquisição de bens ou serviços, por meio de autofinanciamento.\"",
+   "comentarios": {
+    "B": "No consórcio, o próprio grupo financia seus membros (autofinanciamento); não é empréstimo bancário com juros.",
+    "C": "Leasing é outra operação; a lei fala em autofinanciamento.",
+    "D": "Isso descreve título de capitalização, não consórcio.",
+    "E": "Consignado é empréstimo; o consórcio é autofinanciamento."
+   },
+   "topico": "Consórcio",
+   "conceito": "Consórcio = autofinanciamento: as parcelas do grupo pagam os bens de quem é contemplado.",
+   "explicar": "Explique como funciona um consórcio: o que é autofinanciamento, como se é contemplado e como a administradora é remunerada.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Conforme a Lei nº 11.795/2008, a contemplação no consórcio ocorre por meio de",
+   "alternativas": {
+    "A": "sorteio, apenas, sendo vedado o lance.",
+    "B": "lance, apenas, vencendo sempre quem oferecer o maior valor em dinheiro.",
+    "C": "ordem de adesão ao grupo, do primeiro ao último consorciado.",
+    "D": "sorteio ou de lance, na forma prevista no contrato de participação.",
+    "E": "decisão do Banco Central, que escolhe os contemplados de cada mês."
+   },
+   "gabarito": "D",
+   "resolucao": "Lei 11.795/2008, art. 22, § 1º: \"A contemplação ocorre por meio de sorteio ou de lance, na forma prevista no contrato de participação em grupo de consórcio, por adesão.\"",
+   "comentarios": {
+    "A": "O lance é expressamente previsto: sorteio OU lance.",
+    "B": "Também há sorteio; e a forma do lance segue o contrato.",
+    "C": "Não há contemplação por ordem de chegada na lei.",
+    "E": "O BCB fiscaliza o sistema; não escolhe contemplados."
+   },
+   "topico": "Consórcio",
+   "conceito": "Contemplação: sorteio ou lance.",
+   "explicar": "Explique como funciona um consórcio: o que é autofinanciamento, como se é contemplado e como a administradora é remunerada.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Nos termos da Lei nº 11.795/2008, a normatização, coordenação, supervisão, fiscalização e controle das atividades do sistema de consórcios são realizados",
+   "alternativas": {
+    "A": "pela Comissão de Valores Mobiliários.",
+    "B": "pela Superintendência de Seguros Privados.",
+    "C": "pelo Banco Central do Brasil.",
+    "D": "pelo Procon de cada estado.",
+    "E": "pela própria administradora de consórcio."
+   },
+   "gabarito": "C",
+   "resolucao": "Lei 11.795/2008, art. 6º: \"A normatização, coordenação, supervisão, fiscalização e controle das atividades do sistema de consórcios serão realizados pelo Banco Central do Brasil.\"",
+   "comentarios": {
+    "A": "A lei atribui ao Banco Central, não à CVM.",
+    "B": "A lei atribui o sistema de consórcios ao Banco Central, não à Susep.",
+    "D": "O Procon protege o consumidor, mas a lei põe o sistema de consórcios sob o Banco Central.",
+    "E": "A administradora é fiscalizada; quem fiscaliza é o Banco Central."
+   },
+   "topico": "Consórcio",
+   "conceito": "Consórcio: Banco Central (não Susep, não CVM).",
+   "explicar": "Explique como funciona um consórcio: o que é autofinanciamento, como se é contemplado e como a administradora é remunerada.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "De acordo com a Lei nº 11.795/2008, a administradora de consórcio é remunerada pela formação, organização e administração do grupo por meio da",
+   "alternativas": {
+    "A": "cobrança de juros sobre o crédito concedido ao contemplado.",
+    "B": "participação nos lucros das aplicações financeiras do grupo.",
+    "C": "comissão paga pelo Banco Central a cada grupo encerrado.",
+    "D": "venda das cotas não contempladas ao final do grupo.",
+    "E": "taxa de administração."
+   },
+   "gabarito": "E",
+   "resolucao": "Lei 11.795/2008, art. 5º, § 3º: \"A administradora de consórcio tem direito à taxa de administração, a título de remuneração pela formação, organização e administração do grupo de consórcio até o encerramento deste (...)\". Caput: é sociedade limitada ou anônima.",
+   "comentarios": {
+    "A": "Consórcio não tem juros: a remuneração é a taxa de administração.",
+    "B": "A lei prevê a taxa de administração como remuneração.",
+    "C": "Quem paga a taxa é o consorciado, conforme o contrato.",
+    "D": "Não é a forma de remuneração prevista."
+   },
+   "topico": "Consórcio",
+   "conceito": "A administradora ganha com a taxa de administração, não com juros.",
+   "explicar": "Explique como funciona um consórcio: o que é autofinanciamento, como se é contemplado e como a administradora é remunerada.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Segundo a Lei Complementar nº 109/2001, as entidades abertas de previdência complementar",
+   "alternativas": {
+    "A": "são fundações sem fins lucrativos, acessíveis apenas aos empregados de uma empresa.",
+    "B": "são constituídas unicamente sob a forma de sociedades anônimas e operam planos acessíveis a quaisquer pessoas físicas.",
+    "C": "são cooperativas, acessíveis apenas a associados de entidades de classe.",
+    "D": "são constituídas sob qualquer forma societária e só aceitam pessoas jurídicas.",
+    "E": "são sociedades civis sem fins lucrativos, acessíveis a quaisquer pessoas."
+   },
+   "gabarito": "B",
+   "resolucao": "LC 109/2001, art. 36: \"As entidades abertas são constituídas unicamente sob a forma de sociedades anônimas e têm por objetivo instituir e operar planos de benefícios de caráter previdenciário (...) acessíveis a quaisquer pessoas físicas.\" Art. 4º: as entidades são classificadas em fechadas e abertas.",
+   "comentarios": {
+    "A": "Essa é a descrição das entidades FECHADAS (art. 31).",
+    "C": "Abertas são sociedades anônimas, acessíveis a qualquer pessoa física.",
+    "D": "A forma é UNICAMENTE sociedade anônima, e os planos são para pessoas físicas.",
+    "E": "Sem fins lucrativos é característica das fechadas; as abertas são sociedades anônimas."
+   },
+   "topico": "Previdência complementar",
+   "conceito": "Aberta = sociedade anônima, qualquer pessoa física pode entrar. Fechada = fundo de pensão de empresa, ente público ou categoria, sem fins lucrativos.",
+   "explicar": "Qual a diferença entre entidade aberta e fechada de previdência complementar: quem pode entrar, qual a forma jurídica e se tem fim lucrativo?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Nos termos da Lei Complementar nº 109/2001, as entidades fechadas de previdência complementar",
+   "alternativas": {
+    "A": "são acessíveis exclusivamente aos empregados de uma empresa ou grupo de empresas, aos servidores públicos ou aos associados de pessoas jurídicas de caráter profissional, classista ou setorial, e organizam-se como fundação ou sociedade civil, sem fins lucrativos.",
+    "B": "são acessíveis a quaisquer pessoas físicas e constituídas como sociedades anônimas.",
+    "C": "são acessíveis apenas a servidores públicos e constituídas como autarquias.",
+    "D": "têm fins lucrativos e distribuem lucros aos patrocinadores.",
+    "E": "são acessíveis a qualquer pessoa, desde que indicada por um banco."
+   },
+   "gabarito": "A",
+   "resolucao": "LC 109/2001, art. 31: as entidades fechadas são acessíveis exclusivamente \"aos empregados de uma empresa ou grupo de empresas e aos servidores da União, dos Estados, do Distrito Federal e dos Municípios, entes denominados patrocinadores; e aos associados ou membros de pessoas jurídicas de caráter profissional, classista ou setorial, denominadas instituidores\". § 1º: \"organizar-se-ão sob a forma de fundação ou sociedade civil, sem fins lucrativos.\"",
+   "comentarios": {
+    "B": "Essa é a descrição das ABERTAS (art. 36).",
+    "C": "Também atendem empregados de empresas e associados de instituidores; e são fundação ou sociedade civil.",
+    "D": "São SEM fins lucrativos (art. 31, § 1º).",
+    "E": "O acesso é exclusivo a empregados/servidores (patrocinadores) e associados (instituidores)."
+   },
+   "topico": "Previdência complementar",
+   "conceito": "Fechada = fundo de pensão: patrocinador (empresa/ente público) ou instituidor (associação de classe), sem fins lucrativos.",
+   "explicar": "Qual a diferença entre entidade aberta e fechada de previdência complementar: quem pode entrar, qual a forma jurídica e se tem fim lucrativo?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Nos termos do Decreto-Lei nº 73/1966, integram o Sistema Nacional de Seguros Privados, entre outros,",
+   "alternativas": {
+    "A": "o Conselho Monetário Nacional, o Banco Central e a CVM.",
+    "B": "a Previc, o CNPC e as entidades fechadas de previdência.",
+    "C": "o Banco Central, a Susep e as administradoras de consórcio.",
+    "D": "o Conselho Nacional de Seguros Privados (CNSP), a Superintendência de Seguros Privados (Susep) e os resseguradores.",
+    "E": "a CVM, o CNSP e as bolsas de valores."
+   },
+   "gabarito": "D",
+   "resolucao": "Decreto-Lei 73/1966, art. 8º: \"Fica instituído o Sistema Nacional de Seguros Privados (...) constituído: a) do Conselho Nacional de Seguros Privados - CNSP; b) da Superintendência de Seguros Privados - SUSEP; c) dos resseguradores (redação da LC 126/2007); d) das instituições autorizadas a operar nos mercados de seguros privados e de proteção patrimonial mutualista (redação da LC 213/2025)\".",
+   "comentarios": {
+    "A": "Esses compõem a estrutura do mercado financeiro e de capitais, não o SNSP do art. 8º.",
+    "B": "Previc, CNPC e entidades fechadas não estão na lista do art. 8º do DL 73.",
+    "C": "Consórcio é do Banco Central; não integra o SNSP.",
+    "E": "CVM e bolsas não integram o SNSP."
+   },
+   "topico": "Seguros: Sistema Nacional de Seguros Privados",
+   "conceito": "SNSP: CNSP (normativo), Susep (supervisor), resseguradores e as instituições autorizadas a operar seguros.",
+   "explicar": "Quem compõe o Sistema Nacional de Seguros Privados e qual o papel do CNSP e da Susep?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Segundo a Lei Complementar nº 105/2001, NÃO constitui violação do dever de sigilo bancário",
+   "alternativas": {
+    "A": "o fornecimento do extrato da conta do cliente ao empregador dele, a pedido do empregador.",
+    "B": "a divulgação do saldo do cliente a um parente que se apresente na agência.",
+    "C": "a troca de informações entre instituições financeiras, para fins cadastrais, inclusive por intermédio de centrais de risco, observadas as normas do CMN e do Banco Central.",
+    "D": "a entrega dos dados das aplicações do cliente a um vendedor de seguros parceiro.",
+    "E": "a publicação da lista dos maiores depositantes da agência."
+   },
+   "gabarito": "C",
+   "resolucao": "LC 105/2001, art. 1º: \"As instituições financeiras conservarão sigilo em suas operações ativas e passivas e serviços prestados.\" § 3º: não constitui violação, entre outros, \"I - a troca de informações entre instituições financeiras, para fins cadastrais, inclusive por intermédio de centrais de risco (...)\"; II - informações de cadastro de emitentes de cheques sem fundos e devedores inadimplentes a entidades de proteção ao crédito; IV - a comunicação de ilícitos às autoridades; V - a revelação com o consentimento expresso dos interessados.",
+   "comentarios": {
+    "A": "Não está entre as hipóteses do § 3º; sem consentimento expresso do cliente, viola o sigilo.",
+    "B": "Não está entre as hipóteses do § 3º.",
+    "D": "Não está entre as hipóteses do § 3º.",
+    "E": "Não está entre as hipóteses do § 3º."
+   },
+   "topico": "Sigilo bancário",
+   "conceito": "Sigilo: operações ativas, passivas e serviços. Exceções do § 3º: cadastro entre bancos, proteção ao crédito, comunicação de ilícitos e consentimento expresso.",
+   "explicar": "O que é o sigilo bancário e em que situações a lei diz que NÃO há violação dele? Dê dois exemplos.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "De acordo com a Lei Complementar nº 105/2001, a revelação de informações sigilosas de um cliente",
+   "alternativas": {
+    "A": "é sempre crime, mesmo com o consentimento do cliente.",
+    "B": "só é permitida com autorização do Banco Central, mesmo que o cliente consinta.",
+    "C": "é permitida a qualquer pessoa que comprove parentesco com o cliente.",
+    "D": "é permitida se o cliente apenas deixar de se opor, de forma tácita.",
+    "E": "não viola o dever de sigilo quando feita com o consentimento expresso dos interessados."
+   },
+   "gabarito": "E",
+   "resolucao": "LC 105/2001, art. 1º, § 3º, V: não constitui violação do dever de sigilo \"a revelação de informações sigilosas com o consentimento expresso dos interessados\".",
+   "comentarios": {
+    "A": "Com consentimento EXPRESSO dos interessados, não há violação (art. 1º, § 3º, V).",
+    "B": "A lei não exige autorização do BCB quando há consentimento expresso.",
+    "C": "Parentesco não é hipótese de exceção.",
+    "D": "O consentimento tem de ser EXPRESSO, não tácito."
+   },
+   "topico": "Sigilo bancário",
+   "conceito": "Consentimento tem de ser expresso: silêncio não autoriza.",
+   "explicar": "O que é o sigilo bancário e em que situações a lei diz que NÃO há violação dele? Dê dois exemplos.",
+   "habilidade": "reconhecer"
+  }
+ ],
+ "fontes": [
+  "Lei Complementar 179/2021, arts. 1º, 4º e 6º — planalto.gov.br, lida em 24/11/2026",
+  "Lei 4.595/1964, art. 10, I, e V (redação da LC 179/2021) — planalto.gov.br, lida em 24/11/2026",
+  "Lei 11.795/2008, arts. 2º, 5º, 6º e 22 — planalto.gov.br, lida em 24/11/2026",
+  "Lei Complementar 109/2001, arts. 4º, 31 e 36 — planalto.gov.br, lida em 24/11/2026",
+  "Decreto-Lei 73/1966, art. 8º (redações da LC 126/2007 e da LC 213/2025) — planalto.gov.br, lida em 24/11/2026",
+  "Lei Complementar 105/2001, art. 1º, caput e § 3º — planalto.gov.br, lida em 24/11/2026",
+  "Fora deste simulado por não terem sido conferidos no texto: definição de instituição financeira (Lei 4.595, art. 17) e os corretores no SNSP (alínea com marcas de revogação por medidas provisórias)"
+ ]
+}

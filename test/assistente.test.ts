@@ -626,7 +626,7 @@ describe('revisão do Codex (PR 25)', () => {
 })
 
 describe('Explique depois dos exercícios e retorno do Claude', () => {
-  it('pede até 3, um por tópico, do que mais precisa', async () => {
+  it('pede até 3 conceitos, do que mais precisa, com as questões que puxaram cada um', async () => {
     const { pedidosDeExplicar } = await import('../src/shared/explicar')
     const s = sim([
       ['MDC', false, 60],
@@ -639,25 +639,48 @@ describe('Explique depois dos exercícios e retorno do Claude', () => {
     s.questoes[2].explicar = 'Por que mais operários fazem a obra em menos dias?'
     const p = pedidosDeExplicar(s, raioX(s))
     expect(p.map((x) => x.topico)).toEqual(['MDC', 'Regra inversa', 'Porcentagem'])
+    expect(p[0].indices).toEqual([0, 1]) // as duas de MDC, num pedido só
+    expect(p[0].motivo).toContain('1 e 2')
     expect(p[1].pergunta).toBe('Por que mais operários fazem a obra em menos dias?')
-    expect(p[0].pergunta).toContain('MDC')
+    // sem pergunta no conteúdo: a geral do conceito, não "explique esta questão"
+    expect(p[0].pergunta).toMatch(/^O que é MDC e como você reconhece/)
   })
-  it('treino de um tópico só: completa com outras questões que trazem a própria pergunta', async () => {
+  it('a mesma pergunta de conceito em várias questões vira um pedido só; conceito já "Certo" não volta', async () => {
     const { pedidosDeExplicar } = await import('../src/shared/explicar')
     const s = sim([
-      ['MDC', false, 60],
-      ['MDC', false, 70],
-      ['MDC', false, 80],
-      ['MDC', true, 30]
+      ['Regra de três direta', false, 60],
+      ['Regra de três inversa', false, 70],
+      ['O que fica fixo', false, 80]
     ])
-    // sem pergunta própria: um só pedido (não repete a genérica do tópico)
-    expect(pedidosDeExplicar(s, raioX(s))).toHaveLength(1)
-    for (const i of [0, 1, 2]) s.questoes[i].explicar = `Pergunta da questão ${i}`
-    const p = pedidosDeExplicar(s, raioX(s))
-    expect(p.map((x) => x.indice).sort()).toEqual([0, 1, 2])
-    expect(new Set(p.map((x) => x.pergunta)).size).toBe(3)
+    s.questoes[0].explicar = s.questoes[1].explicar = 'Como você decide se é direta ou inversa?'
+    s.questoes[2].explicar = 'Por que o que fica fixo decide?'
+    const d = dadosDoEdital()
+    expect(pedidosDeExplicar(s, raioX(s), d).map((x) => x.pergunta)).toEqual([
+      'Como você decide se é direta ou inversa?',
+      'Por que o que fica fixo decide?'
+    ])
+    d.explicacoes = [
+      {
+        id: 'c1',
+        criadoEm: 1,
+        topico: 'Regra de três direta',
+        pergunta: 'Como você decide se é direta ou inversa?',
+        texto: 'pelo que fica fixo'
+      }
+    ]
+    d.retornos = [
+      {
+        explicacaoId: 'c1',
+        veredito: 'certo',
+        texto: 'isso',
+        textoAvaliado: 'pelo que fica fixo',
+        criadoEm: 2
+      }
+    ]
+    expect(pedidosDeExplicar(s, raioX(s), d).map((x) => x.pergunta)).toEqual([
+      'Por que o que fica fixo decide?'
+    ])
   })
-
   it('o retorno vale só para o texto avaliado; reescreveu, volta a esperar', async () => {
     const { mesclarRetornos, situacaoDe, placarDeExplicacoes } =
       await import('../src/shared/explicar')
@@ -716,5 +739,92 @@ describe('Codex no PR 28', () => {
     ]
     registrarDiaDeEstudo(d, hoje)
     expect(d.diasDeEstudo).toContain('2026-11-23')
+  })
+})
+
+describe('Missão republicada na mesma semana', () => {
+  it('mantém o que já foi feito, os cartões de cada tarefa e o início', async () => {
+    const { continuarMissao } = await import('../src/shared/missao')
+    type M = import('../src/shared/tipos').Missao
+    const tarefa = (id: string) => ({
+      id,
+      tipo: 'atrasados' as const,
+      titulo: id,
+      detalhe: '',
+      pontos: 10
+    })
+    const antiga: M = {
+      itemId: 'm-v1',
+      de: '2026-11-23',
+      ate: '2026-12-06',
+      frase: '',
+      recebidaEm: 100,
+      tarefas: [tarefa('a'), tarefa('b')],
+      feitas: ['a', 'b'],
+      cartoesFrentes: { a: ['x'] }
+    }
+    const nova: M = {
+      itemId: 'm-v2',
+      de: '2026-11-23',
+      ate: '2026-12-06',
+      frase: '',
+      recebidaEm: 900,
+      tarefas: [tarefa('a'), tarefa('c')],
+      feitas: []
+    }
+    const m = continuarMissao(nova, antiga)
+    expect(m.feitas).toEqual(['a']) // 'b' saiu da missão
+    expect(m.cartoesFrentes).toEqual({ a: ['x'] })
+    expect(m.recebidaEm).toBe(100)
+    expect(m.itemId).toBe('m-v2')
+    // semana nova: começa do zero
+    expect(continuarMissao({ ...nova, de: '2026-12-07' }, antiga).feitas).toEqual([])
+  })
+})
+
+describe('Codex no PR 30: explicações da 0.1.22 continuam valendo', () => {
+  it('acha a explicação antiga do Raio-X (com simuladoId) pela mesma pergunta, ou pelo tópico daquele simulado', async () => {
+    const { explicacaoDoConceito, pedidosDeExplicar } = await import('../src/shared/explicar')
+    const d = dadosDoEdital()
+    const s = sim([['Economia circular', false, 60]])
+    d.explicacoes = [
+      {
+        id: 'velha',
+        criadoEm: 1,
+        topico: 'Economia circular',
+        pergunta:
+          'Explique com suas palavras esta questão de Economia circular: o que ela cobra e como se chega na resposta certa.',
+        texto: 'reutilizar',
+        simuladoId: s.id,
+        indice: 0
+      },
+      {
+        id: 'mesma',
+        criadoEm: 1,
+        topico: 'X',
+        pergunta: 'Como você decide?',
+        texto: 't',
+        simuladoId: 'outro',
+        indice: 3
+      }
+    ]
+    expect(explicacaoDoConceito(d, 'Como você decide?')?.id).toBe('mesma')
+    expect(
+      explicacaoDoConceito(d, 'O que é Economia circular e…', {
+        simuladoId: s.id,
+        topico: 'Economia circular'
+      })?.id
+    ).toBe('velha')
+    // avaliada como "Certo" na 0.1.22: não volta a ser pedida
+    d.retornos = [
+      {
+        explicacaoId: 'velha',
+        veredito: 'certo',
+        texto: 'ok',
+        textoAvaliado: 'reutilizar',
+        criadoEm: 2
+      }
+    ]
+    expect(pedidosDeExplicar(s, raioX(s), d)).toEqual([])
   })
 })
