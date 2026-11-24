@@ -12,7 +12,7 @@ import {
 import type { Dados, Id, Simulado as TipoSimulado } from '../../../shared/tipos'
 import { EstudarErros } from './EstudarErros'
 import { Explique } from '../Explique'
-import { pedidosDeExplicar, situacaoDe } from '../../../shared/explicar'
+import { explicacaoDoConceito, pedidosDeExplicar, situacaoDe } from '../../../shared/explicar'
 import { raioX, ritmoDaProva, type Faixa } from '../../../shared/raioX'
 import { notaDaProva, type NotaDaProva } from '../../../shared/provaCompleta'
 import { idsAbaixo } from '../../../shared/arvore'
@@ -786,12 +786,12 @@ function RaioXDoSimulado({
   const r = raioX(s)
   const [explicando, setExplicando] = useState<number | null>(null)
   const [pulados, setPulados] = useState<number[]>([])
-  const pedidos = pedidosDeExplicar(s, r)
+  const pedidos = pedidosDeExplicar(s, r, dados)
   const pedidosVisiveis = pedidos.filter((p) => !pulados.includes(p.indice))
-  const naLista = new Set(pedidos.map((p) => p.indice))
-  const explicacoesDaqui = (dados.explicacoes ?? []).filter(
-    (x) => x.simuladoId === s.id && naLista.has(x.indice ?? -1) && x.texto.trim()
-  )
+  const naLista = new Set(pedidos.flatMap((p) => p.indices))
+  const explicacoesDaqui = pedidos
+    .map((p) => explicacaoDoConceito(dados, p.pergunta))
+    .filter((x): x is NonNullable<typeof x> => !!x?.texto.trim())
   const avaliadas = explicacoesDaqui.filter((x) => situacaoDe(dados, x) !== 'esperando').length
   const e = dados.edital
   const naProva =
@@ -834,9 +834,8 @@ function RaioXDoSimulado({
                 numero={pedidos.indexOf(p) + 1}
                 topico={p.topico}
                 pergunta={p.pergunta}
-                detalhe={`${p.motivo} · ${p.topico}`}
+                detalhe={`${p.topico} · ${p.motivo}`}
                 questao={s.questoes[p.indice]}
-                origem={{ simuladoId: s.id, indice: p.indice }}
                 aoPular={() => setPulados((x) => [...x, p.indice])}
               />
             ))}

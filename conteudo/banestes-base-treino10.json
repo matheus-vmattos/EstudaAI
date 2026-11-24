@@ -1,0 +1,890 @@
+{
+ "tema": "Treino 10: direta ou inversa?",
+ "materia": "Matemática e Raciocínio Lógico",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "Um estoque de ração alimenta 6 cavalos durante 36 dias. O mesmo estoque alimentaria 12 cavalos durante quantos dias?",
+   "alternativas": {
+    "A": "3.",
+    "B": "18.",
+    "C": "30.",
+    "D": "72.",
+    "E": "216."
+   },
+   "gabarito": "B",
+   "resolucao": "1. O que fica fixo? O estoque de ração.\n2. Então mais cavalos comem o mesmo estoque em MENOS dias: regra INVERSA.\n3. Inversa: o produto fica constante. 6 × 36 = 216.\n   Com 12: 216 ÷ 12 = 18.\n4. Teste do absurdo: mais cavalos (6 → 12) deu menos dias (36 → 18). Faz sentido. ✔\nCompare: com cavalos e a ração POR DIA, o fixo é o tempo (1 dia) e o quanto cada cavalo come, e a regra é DIRETA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "A": "36 ÷ 12: dividiu pela nova quantidade, mas esqueceu o total fixo (6 × 36); multiplique por 6 antes.",
+    "D": "36 × 12 ÷ 6: é a conta da regra DIRETA. Mas aqui o que fica fixo é o estoque de ração: mais cavalos comem o mesmo estoque em MENOS dias.",
+    "E": "6 × 36 = 216 é o total fixo (o produto), não a resposta: falta dividir por 12.",
+    "C": "36 − 6: proporção é multiplicação, não soma da diferença."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "O presente de um colega custou um valor fixo. Dividido entre 12 amigos, cada um pagou R$ 112,00. Se fosse dividido entre 3 amigos, cada um pagaria quanto? Antes de calcular: o que permanece fixo nessa situação e qual é o tipo de proporção?",
+   "alternativas": {
+    "A": "A resposta (reais); por isso a proporção é direta.",
+    "B": "O número de amigos; por isso a proporção é direta.",
+    "C": "Nada fica fixo; por isso não é regra de três.",
+    "D": "O preço do presente; por isso a proporção é direta.",
+    "E": "O preço do presente; por isso a proporção é inversa."
+   },
+   "gabarito": "E",
+   "resolucao": "Leia o que NÃO muda entre as duas situações: o preço do presente.\nCom isso fixo, mais amigos dividindo o mesmo valor, cada um paga MENOS: proporção inversa.\nSó depois disso vem a conta (dá R$ 448,00).",
+   "comentarios": {
+    "A": "A resposta é o que se procura, e ela muda; o fixo é o preço do presente.",
+    "B": "O número de amigos MUDA (12 → 3): é justamente a grandeza que varia.",
+    "C": "Fica, sim: o preço do presente. É ele que permite a regra de três.",
+    "D": "O fixo está certo, mas o tipo não: mais amigos dividindo o mesmo valor, cada um paga MENOS."
+   },
+   "topico": "O que fica fixo",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Por que descobrir o que fica fixo no enunciado decide se a proporção é direta ou inversa? Explique com um exemplo seu.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "6 cavalos comem, juntos, 234 kg de ração por dia. Quantos kg por dia comem 2 cavalos iguais?",
+   "alternativas": {
+    "A": "39.",
+    "B": "78.",
+    "C": "230.",
+    "D": "468.",
+    "E": "702."
+   },
+   "gabarito": "B",
+   "resolucao": "1. O que fica fixo? O tempo (1 dia) e o quanto cada cavalo come.\n2. Então mais cavalos comem MAIS ração por dia: regra DIRETA.\n3. Direta: valor de 1 cavalo = 234 ÷ 6 = 39; com 2: × 2 = 78.\n   (Atalho: 234 × 2 ÷ 6 = 78.)\n4. Teste do absurdo: menos cavalos (6 → 2) deu menos kg (234 → 78). Faz sentido. ✔\nCompare: com cavalos e o MESMO estoque de ração, o fixo é o estoque de ração, e a regra é INVERSA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "A": "234 ÷ 6 = 39 é o valor de 1 cavalo; faltou multiplicar por 2.",
+    "E": "234 × 6 ÷ 2: é a conta da regra INVERSA. Mas aqui o que fica fixo é o tempo (1 dia) e o quanto cada cavalo come: mais cavalos comem MAIS ração por dia.",
+    "D": "234 × 2: esqueceu de dividir por 6 (o dado é de 6 cavalos, não de 1).",
+    "C": "234 − 4: proporção é multiplicação, não soma da diferença."
+   },
+   "topico": "Regra de três direta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "A 60 km/h, um ônibus faz um trajeto em 36 minutos. A 120 km/h, o mesmo trajeto leva quantos minutos?",
+   "alternativas": {
+    "A": "18.",
+    "B": "20.",
+    "C": "36.",
+    "D": "72.",
+    "E": "2.160."
+   },
+   "gabarito": "A",
+   "resolucao": "1. O que fica fixo? A distância (o trajeto é o mesmo).\n2. Então mais rápido, o mesmo trajeto leva MENOS tempo: regra INVERSA.\n3. Inversa: o produto fica constante. 60 × 36 = 2.160.\n   Com 120: 2.160 ÷ 120 = 18.\n4. Teste do absurdo: mais km/h de velocidade (60 → 120) deu menos minutos (36 → 18). Faz sentido. ✔\nCompare: com velocidade num MESMO tempo de viagem, o fixo é o tempo de viagem, e a regra é DIRETA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "D": "36 × 120 ÷ 60: é a conta da regra DIRETA. Mas aqui o que fica fixo é a distância (o trajeto é o mesmo): mais rápido, o mesmo trajeto leva MENOS tempo.",
+    "E": "60 × 36 = 2.160 é o total fixo (o produto), não a resposta: falta dividir por 120.",
+    "C": "36 é a situação inicial; com 120 km/h de velocidade o valor muda.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 18."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Em 1 hora, 8 torneiras iguais despejam 644 litros de água. Em 1 hora, 2 dessas torneiras despejam quantos litros? Sem fazer a conta: qual expressão dá a resposta?",
+   "alternativas": {
+    "A": "644 + 2 − 8",
+    "B": "(644 + 8) ÷ 2",
+    "C": "644 × 2 ÷ 8",
+    "D": "644 × 8 × 2",
+    "E": "644 × 8 ÷ 2"
+   },
+   "gabarito": "C",
+   "resolucao": "O fixo é o tempo (1 hora): na mesma hora, mais torneiras despejam MAIS água, regra DIRETA.\nDireta: a RAZÃO é constante. Valor de 1 = 644 ÷ 8; para 2: 644 ÷ 8 × 2 = 644 × 2 ÷ 8.\nResultado: 161.",
+   "comentarios": {
+    "A": "Somar a diferença não é proporção.",
+    "B": "Mistura valores de grandezas diferentes numa soma; não é proporção.",
+    "D": "Multiplicar tudo não é regra de três: uma das grandezas divide.",
+    "E": "É a conta da regra INVERSA. Aqui o fixo é o tempo (1 hora): na mesma hora, mais torneiras despejam MAIS água."
+   },
+   "topico": "Montar a conta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Por que a conta da inversa é diferente da conta da direta? Explique usando a ideia de que, na inversa, o produto das duas grandezas fica constante.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "3 cavalos comem, juntos, 33 kg de ração por dia. Quantos kg por dia comem 11 cavalos iguais?",
+   "alternativas": {
+    "A": "9.",
+    "B": "11.",
+    "C": "41.",
+    "D": "121.",
+    "E": "363."
+   },
+   "gabarito": "D",
+   "resolucao": "1. O que fica fixo? O tempo (1 dia) e o quanto cada cavalo come.\n2. Então mais cavalos comem MAIS ração por dia: regra DIRETA.\n3. Direta: valor de 1 cavalo = 33 ÷ 3 = 11; com 11: × 11 = 121.\n   (Atalho: 33 × 11 ÷ 3 = 121.)\n4. Teste do absurdo: mais cavalos (3 → 11) deu mais kg (33 → 121). Faz sentido. ✔\nCompare: com cavalos e o MESMO estoque de ração, o fixo é o estoque de ração, e a regra é INVERSA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "A": "33 × 3 ÷ 11: é a conta da regra INVERSA. Mas aqui o que fica fixo é o tempo (1 dia) e o quanto cada cavalo come: mais cavalos comem MAIS ração por dia.",
+    "B": "33 ÷ 3 = 11 é o valor de 1 cavalo; faltou multiplicar por 11.",
+    "C": "33 + 8: proporção é multiplicação, não soma da diferença.",
+    "E": "33 × 11: esqueceu de dividir por 3 (o dado é de 3 cavalos, não de 1)."
+   },
+   "topico": "Regra de três direta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "O presente de um colega custou um valor fixo. Dividido entre 2 amigos, cada um pagou R$ 90,00. Se fosse dividido entre 10 amigos, cada um pagaria",
+   "alternativas": {
+    "A": "R$ 18,00.",
+    "B": "R$ 82,00.",
+    "C": "R$ 90,00.",
+    "D": "R$ 180,00.",
+    "E": "R$ 450,00."
+   },
+   "gabarito": "A",
+   "resolucao": "1. O que fica fixo? O preço do presente.\n2. Então mais amigos dividindo o mesmo valor, cada um paga MENOS: regra INVERSA.\n3. Inversa: o produto fica constante. 2 × 90 = 180.\n   Com 10: 180 ÷ 10 = R$ 18,00.\n4. Teste do absurdo: mais amigos (2 → 10) deu menos reais (R$ 90,00 → R$ 18,00). Faz sentido. ✔\nCompare: com ingressos de MESMO preço cada, o fixo é o preço de cada ingresso, e a regra é DIRETA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "E": "90 × 10 ÷ 2: é a conta da regra DIRETA. Mas aqui o que fica fixo é o preço do presente: mais amigos dividindo o mesmo valor, cada um paga MENOS.",
+    "D": "2 × 90 = 180 é o total fixo (o produto), não a resposta: falta dividir por 10.",
+    "B": "90 − 8: proporção é multiplicação, não soma da diferença.",
+    "C": "R$ 90,00 é a situação inicial; com 10 amigos o valor muda."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "3 máquinas iguais embalam um lote de pedidos em 96 minutos. Em quantos minutos 8 dessas máquinas embalam o mesmo lote?",
+   "alternativas": {
+    "A": "12.",
+    "B": "34.",
+    "C": "36.",
+    "D": "256.",
+    "E": "288."
+   },
+   "gabarito": "C",
+   "resolucao": "1. O que fica fixo? O lote (o serviço é o mesmo).\n2. Então mais máquinas terminam o mesmo lote em MENOS tempo: regra INVERSA.\n3. Inversa: o produto fica constante. 3 × 96 = 288.\n   Com 8: 288 ÷ 8 = 36.\n4. Teste do absurdo: mais máquinas (3 → 8) deu menos minutos (96 → 36). Faz sentido. ✔\nCompare: com máquinas embalando caixas POR HORA, o fixo é o tempo (1 hora), e a regra é DIRETA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "A": "96 ÷ 8: dividiu pela nova quantidade, mas esqueceu o total fixo (3 × 96); multiplique por 3 antes.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 36.",
+    "D": "96 × 8 ÷ 3: é a conta da regra DIRETA. Mas aqui o que fica fixo é o lote (o serviço é o mesmo): mais máquinas terminam o mesmo lote em MENOS tempo.",
+    "E": "3 × 96 = 288 é o total fixo (o produto), não a resposta: falta dividir por 8."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Em 10 dias de trabalho, 9 operários assentam 108 m² de piso. No mesmo prazo e no mesmo ritmo, 3 operários assentam quantos m²?",
+   "alternativas": {
+    "A": "12.",
+    "B": "36.",
+    "C": "102.",
+    "D": "108.",
+    "E": "324."
+   },
+   "gabarito": "B",
+   "resolucao": "1. O que fica fixo? O prazo (10 dias).\n2. Então no mesmo prazo, mais operários assentam MAIS piso: regra DIRETA.\n3. Direta: valor de 1 operário = 108 ÷ 9 = 12; com 3: × 3 = 36.\n   (Atalho: 108 × 3 ÷ 9 = 36.)\n4. Teste do absurdo: menos operários (9 → 3) deu menos m² (108 → 36). Faz sentido. ✔\nCompare: com operários levantando o MESMO muro, o fixo é o muro (o serviço é o mesmo), e a regra é INVERSA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "A": "108 ÷ 9 = 12 é o valor de 1 operário; faltou multiplicar por 3.",
+    "E": "108 × 9 ÷ 3: é a conta da regra INVERSA. Mas aqui o que fica fixo é o prazo (10 dias): no mesmo prazo, mais operários assentam MAIS piso.",
+    "C": "108 − 6: proporção é multiplicação, não soma da diferença.",
+    "D": "108 é a situação inicial; com 3 operários o valor muda."
+   },
+   "topico": "Regra de três direta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Com 7 torneiras iguais abertas, um tanque enche em 168 minutos. Com 2 dessas torneiras, o mesmo tanque enche em quantos minutos?",
+   "alternativas": {
+    "A": "48.",
+    "B": "168.",
+    "C": "173.",
+    "D": "588.",
+    "E": "1.176."
+   },
+   "gabarito": "D",
+   "resolucao": "1. O que fica fixo? O tanque (o volume é o mesmo).\n2. Então mais torneiras enchem o mesmo tanque em MENOS tempo: regra INVERSA.\n3. Inversa: o produto fica constante. 7 × 168 = 1.176.\n   Com 2: 1.176 ÷ 2 = 588.\n4. Teste do absurdo: menos torneiras (7 → 2) deu mais minutos (168 → 588). Faz sentido. ✔\nCompare: com torneiras despejando água em 1 HORA, o fixo é o tempo (1 hora), e a regra é DIRETA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "A": "168 × 2 ÷ 7: é a conta da regra DIRETA. Mas aqui o que fica fixo é o tanque (o volume é o mesmo): mais torneiras enchem o mesmo tanque em MENOS tempo.",
+    "C": "168 + 5: proporção é multiplicação, não soma da diferença.",
+    "B": "168 é a situação inicial; com 2 torneiras o valor muda.",
+    "E": "7 × 168 = 1.176 é o total fixo (o produto), não a resposta: falta dividir por 2."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Um técnico ganha por hora trabalhada. Em 3 horas, recebe R$ 612,00. Em 4 horas, recebe",
+   "alternativas": {
+    "A": "R$ 204,00.",
+    "B": "R$ 459,00.",
+    "C": "R$ 613,00.",
+    "D": "R$ 816,00.",
+    "E": "R$ 2.448,00."
+   },
+   "gabarito": "D",
+   "resolucao": "1. O que fica fixo? O valor de cada hora.\n2. Então mais horas trabalhadas rendem MAIS dinheiro: regra DIRETA.\n3. Direta: valor de 1 hora = 612 ÷ 3 = 204; com 4: × 4 = R$ 816,00.\n   (Atalho: 612 × 4 ÷ 3 = R$ 816,00.)\n4. Teste do absurdo: mais horas (3 → 4) deu mais reais (R$ 612,00 → R$ 816,00). Faz sentido. ✔\nCompare: com preço e quantidade com a MESMA verba, o fixo é a verba, e a regra é INVERSA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "B": "612 × 3 ÷ 4: é a conta da regra INVERSA. Mas aqui o que fica fixo é o valor de cada hora: mais horas trabalhadas rendem MAIS dinheiro.",
+    "A": "612 ÷ 3 = 204 é o valor de 1 hora; faltou multiplicar por 4.",
+    "C": "612 + 1: proporção é multiplicação, não soma da diferença.",
+    "E": "612 × 4: esqueceu de dividir por 3 (o dado é de 3 horas, não de 1)."
+   },
+   "topico": "Regra de três direta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Em uma hora, 5 atendentes atendem 174 clientes. No mesmo ritmo, em uma hora, 10 atendentes atendem quantos clientes? Antes de calcular: o que permanece fixo nessa situação e qual é o tipo de proporção?",
+   "alternativas": {
+    "A": "A resposta (clientes); por isso a proporção é inversa.",
+    "B": "O tempo (1 hora); por isso a proporção é inversa.",
+    "C": "A fila (o número de clientes é o mesmo); por isso a proporção é inversa.",
+    "D": "O tempo (1 hora); por isso a proporção é direta.",
+    "E": "Nada fica fixo; por isso não é regra de três."
+   },
+   "gabarito": "D",
+   "resolucao": "Leia o que NÃO muda entre as duas situações: o tempo (1 hora).\nCom isso fixo, na mesma hora, mais atendentes atendem MAIS clientes: proporção direta.\nSó depois disso vem a conta (dá 348).",
+   "comentarios": {
+    "A": "A resposta é o que se procura, e ela muda; o fixo é o tempo (1 hora).",
+    "B": "O fixo está certo, mas o tipo não: na mesma hora, mais atendentes atendem MAIS clientes.",
+    "C": "Isso vale para atendentes zerando a MESMA fila. Aqui o que não muda é o tempo (1 hora).",
+    "E": "Fica, sim: o tempo (1 hora). É ele que permite a regra de três."
+   },
+   "topico": "O que fica fixo",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Por que descobrir o que fica fixo no enunciado decide se a proporção é direta ou inversa? Explique com um exemplo seu.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Um técnico ganha por hora trabalhada. Em 8 horas, recebe R$ 570,00. Em 4 horas, recebe quanto? Antes de calcular: o que permanece fixo nessa situação e qual é o tipo de proporção?",
+   "alternativas": {
+    "A": "A resposta (reais); por isso a proporção é inversa.",
+    "B": "O valor de cada hora; por isso a proporção é direta.",
+    "C": "Nada fica fixo; por isso não é regra de três.",
+    "D": "A verba; por isso a proporção é inversa.",
+    "E": "O valor de cada hora; por isso a proporção é inversa."
+   },
+   "gabarito": "B",
+   "resolucao": "Leia o que NÃO muda entre as duas situações: o valor de cada hora.\nCom isso fixo, mais horas trabalhadas rendem MAIS dinheiro: proporção direta.\nSó depois disso vem a conta (dá R$ 285,00).",
+   "comentarios": {
+    "A": "A resposta é o que se procura, e ela muda; o fixo é o valor de cada hora.",
+    "C": "Fica, sim: o valor de cada hora. É ele que permite a regra de três.",
+    "D": "Isso vale para preço e quantidade com a MESMA verba. Aqui o que não muda é o valor de cada hora.",
+    "E": "O fixo está certo, mas o tipo não: mais horas trabalhadas rendem MAIS dinheiro."
+   },
+   "topico": "O que fica fixo",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Por que descobrir o que fica fixo no enunciado decide se a proporção é direta ou inversa? Explique com um exemplo seu.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Uma carga é embalada em 50 caixas com 14 kg cada. Se cada caixa levar 7 kg, a mesma carga precisará de quantas caixas? Sem fazer a conta: qual expressão dá a resposta?",
+   "alternativas": {
+    "A": "50 + 7 − 14",
+    "B": "(50 + 14) ÷ 7",
+    "C": "50 × 14 ÷ 7",
+    "D": "50 × 7 ÷ 14",
+    "E": "50 × 14 × 7"
+   },
+   "gabarito": "C",
+   "resolucao": "O fixo é a carga total (o peso é o mesmo): caixas mais pesadas: a mesma carga precisa de MENOS caixas, regra INVERSA.\nInversa: o PRODUTO é constante. 14 × 50 = 7 × ?, então ? = 50 × 14 ÷ 7.\nResultado: 100.",
+   "comentarios": {
+    "A": "Somar a diferença não é proporção.",
+    "B": "Mistura valores de grandezas diferentes numa soma; não é proporção.",
+    "D": "É a conta da regra DIRETA. Aqui o fixo é a carga total (o peso é o mesmo): caixas mais pesadas: a mesma carga precisa de MENOS caixas.",
+    "E": "Multiplicar tudo não é regra de três: uma das grandezas divide."
+   },
+   "topico": "Montar a conta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Por que a conta da inversa é diferente da conta da direta? Explique usando a ideia de que, na inversa, o produto das duas grandezas fica constante.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Em um mesmo intervalo de tempo, um carro a 30 km/h percorre 354 km. No mesmo intervalo, a 60 km/h, percorre quantos km? Sem fazer a conta: qual expressão dá a resposta?",
+   "alternativas": {
+    "A": "354 × 30 × 60",
+    "B": "354 × 30 ÷ 60",
+    "C": "354 × 60 ÷ 30",
+    "D": "354 + 60 − 30",
+    "E": "(354 + 30) ÷ 60"
+   },
+   "gabarito": "C",
+   "resolucao": "O fixo é o tempo de viagem: no mesmo tempo, mais rápido percorre MAIS distância, regra DIRETA.\nDireta: a RAZÃO é constante. Valor de 1 = 354 ÷ 30; para 60: 354 ÷ 30 × 60 = 354 × 60 ÷ 30.\nResultado: 708.",
+   "comentarios": {
+    "A": "Multiplicar tudo não é regra de três: uma das grandezas divide.",
+    "B": "É a conta da regra INVERSA. Aqui o fixo é o tempo de viagem: no mesmo tempo, mais rápido percorre MAIS distância.",
+    "D": "Somar a diferença não é proporção.",
+    "E": "Mistura valores de grandezas diferentes numa soma; não é proporção."
+   },
+   "topico": "Montar a conta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Por que a conta da inversa é diferente da conta da direta? Explique usando a ideia de que, na inversa, o produto das duas grandezas fica constante.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "O presente de um colega custou um valor fixo. Dividido entre 3 amigos, cada um pagou R$ 116,00. Se fosse dividido entre 6 amigos, cada um pagaria quanto? Sem fazer a conta: qual expressão dá a resposta?",
+   "alternativas": {
+    "A": "116 + 6 − 3",
+    "B": "(116 + 3) ÷ 6",
+    "C": "116 × 6 ÷ 3",
+    "D": "116 × 3 × 6",
+    "E": "116 × 3 ÷ 6"
+   },
+   "gabarito": "E",
+   "resolucao": "O fixo é o preço do presente: mais amigos dividindo o mesmo valor, cada um paga MENOS, regra INVERSA.\nInversa: o PRODUTO é constante. 3 × 116 = 6 × ?, então ? = 116 × 3 ÷ 6.\nResultado: R$ 58,00.",
+   "comentarios": {
+    "A": "Somar a diferença não é proporção.",
+    "B": "Mistura valores de grandezas diferentes numa soma; não é proporção.",
+    "C": "É a conta da regra DIRETA. Aqui o fixo é o preço do presente: mais amigos dividindo o mesmo valor, cada um paga MENOS.",
+    "D": "Multiplicar tudo não é regra de três: uma das grandezas divide."
+   },
+   "topico": "Montar a conta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Por que a conta da inversa é diferente da conta da direta? Explique usando a ideia de que, na inversa, o produto das duas grandezas fica constante.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Um estoque de ração alimenta 9 cavalos durante 48 dias. O mesmo estoque alimentaria 6 cavalos durante quantos dias? Antes de calcular: o que permanece fixo nessa situação e qual é o tipo de proporção?",
+   "alternativas": {
+    "A": "O estoque de ração; por isso a proporção é direta.",
+    "B": "Nada fica fixo; por isso não é regra de três.",
+    "C": "O tempo (1 dia) e o quanto cada cavalo come; por isso a proporção é direta.",
+    "D": "A resposta (dias); por isso a proporção é direta.",
+    "E": "O estoque de ração; por isso a proporção é inversa."
+   },
+   "gabarito": "E",
+   "resolucao": "Leia o que NÃO muda entre as duas situações: o estoque de ração.\nCom isso fixo, mais cavalos comem o mesmo estoque em MENOS dias: proporção inversa.\nSó depois disso vem a conta (dá 72).",
+   "comentarios": {
+    "A": "O fixo está certo, mas o tipo não: mais cavalos comem o mesmo estoque em MENOS dias.",
+    "B": "Fica, sim: o estoque de ração. É ele que permite a regra de três.",
+    "C": "Isso vale para cavalos e a ração POR DIA. Aqui o que não muda é o estoque de ração.",
+    "D": "A resposta é o que se procura, e ela muda; o fixo é o estoque de ração."
+   },
+   "topico": "O que fica fixo",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Por que descobrir o que fica fixo no enunciado decide se a proporção é direta ou inversa? Explique com um exemplo seu.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "3 cavalos comem, juntos, 42 kg de ração por dia. Quantos kg por dia comem 6 cavalos iguais? Antes de calcular: o que permanece fixo nessa situação e qual é o tipo de proporção?",
+   "alternativas": {
+    "A": "O estoque de ração; por isso a proporção é inversa.",
+    "B": "O número de cavalos; por isso a proporção é direta.",
+    "C": "O tempo (1 dia) e o quanto cada cavalo come; por isso a proporção é inversa.",
+    "D": "Nada fica fixo; por isso não é regra de três.",
+    "E": "O tempo (1 dia) e o quanto cada cavalo come; por isso a proporção é direta."
+   },
+   "gabarito": "E",
+   "resolucao": "Leia o que NÃO muda entre as duas situações: o tempo (1 dia) e o quanto cada cavalo come.\nCom isso fixo, mais cavalos comem MAIS ração por dia: proporção direta.\nSó depois disso vem a conta (dá 84).",
+   "comentarios": {
+    "A": "Isso vale para cavalos e o MESMO estoque de ração. Aqui o que não muda é o tempo (1 dia) e o quanto cada cavalo come.",
+    "B": "O número de cavalos MUDA (3 → 6): é justamente a grandeza que varia.",
+    "C": "O fixo está certo, mas o tipo não: mais cavalos comem MAIS ração por dia.",
+    "D": "Fica, sim: o tempo (1 dia) e o quanto cada cavalo come. É ele que permite a regra de três."
+   },
+   "topico": "O que fica fixo",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Por que descobrir o que fica fixo no enunciado decide se a proporção é direta ou inversa? Explique com um exemplo seu.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "5 máquinas iguais embalam 890 caixas por hora. Quantas caixas por hora embalam 10 dessas máquinas?",
+   "alternativas": {
+    "A": "178.",
+    "B": "445.",
+    "C": "895.",
+    "D": "1.780.",
+    "E": "8.900."
+   },
+   "gabarito": "D",
+   "resolucao": "1. O que fica fixo? O tempo (1 hora).\n2. Então na mesma hora, mais máquinas embalam MAIS caixas: regra DIRETA.\n3. Direta: valor de 1 máquina = 890 ÷ 5 = 178; com 10: × 10 = 1.780.\n   (Atalho: 890 × 10 ÷ 5 = 1.780.)\n4. Teste do absurdo: mais máquinas (5 → 10) deu mais caixas (890 → 1.780). Faz sentido. ✔\nCompare: com máquinas embalando o MESMO lote, o fixo é o lote (o serviço é o mesmo), e a regra é INVERSA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "B": "890 × 5 ÷ 10: é a conta da regra INVERSA. Mas aqui o que fica fixo é o tempo (1 hora): na mesma hora, mais máquinas embalam MAIS caixas.",
+    "A": "890 ÷ 5 = 178 é o valor de 1 máquina; faltou multiplicar por 10.",
+    "C": "890 + 5: proporção é multiplicação, não soma da diferença.",
+    "E": "890 × 10: esqueceu de dividir por 5 (o dado é de 5 máquinas, não de 1)."
+   },
+   "topico": "Regra de três direta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Um técnico ganha por hora trabalhada. Em 6 horas, recebe R$ 454,00. Em 12 horas, recebe",
+   "alternativas": {
+    "A": "R$ 227,00.",
+    "B": "R$ 454,00.",
+    "C": "R$ 460,00.",
+    "D": "R$ 908,00.",
+    "E": "R$ 5.448,00."
+   },
+   "gabarito": "D",
+   "resolucao": "1. O que fica fixo? O valor de cada hora.\n2. Então mais horas trabalhadas rendem MAIS dinheiro: regra DIRETA.\n3. Direta: valor de 1 hora = 454 ÷ 6 = 454/6; com 12: × 12 = R$ 908,00.\n   (Atalho: 454 × 12 ÷ 6 = R$ 908,00.)\n4. Teste do absurdo: mais horas (6 → 12) deu mais reais (R$ 454,00 → R$ 908,00). Faz sentido. ✔\nCompare: com preço e quantidade com a MESMA verba, o fixo é a verba, e a regra é INVERSA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "A": "454 × 6 ÷ 12: é a conta da regra INVERSA. Mas aqui o que fica fixo é o valor de cada hora: mais horas trabalhadas rendem MAIS dinheiro.",
+    "C": "454 + 6: proporção é multiplicação, não soma da diferença.",
+    "B": "R$ 454,00 é a situação inicial; com 12 horas o valor muda.",
+    "E": "454 × 12: esqueceu de dividir por 6 (o dado é de 6 horas, não de 1)."
+   },
+   "topico": "Regra de três direta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Com a verba do mês, um setor compra 66 pastas a R$ 8,00 cada. Se a pasta custar R$ 12,00, a mesma verba compra quantas pastas? Antes de calcular: o que permanece fixo nessa situação e qual é o tipo de proporção?",
+   "alternativas": {
+    "A": "O número de reais de preço; por isso a proporção é direta.",
+    "B": "A verba; por isso a proporção é inversa.",
+    "C": "O valor de cada hora; por isso a proporção é direta.",
+    "D": "A resposta (pastas); por isso a proporção é direta.",
+    "E": "A verba; por isso a proporção é direta."
+   },
+   "gabarito": "B",
+   "resolucao": "Leia o que NÃO muda entre as duas situações: a verba.\nCom isso fixo, mais cara a pasta, a mesma verba compra MENOS pastas: proporção inversa.\nSó depois disso vem a conta (dá 44).",
+   "comentarios": {
+    "A": "O número de reais de preço MUDA (8 → 12): é justamente a grandeza que varia.",
+    "C": "Isso vale para horas trabalhadas com o MESMO valor por hora. Aqui o que não muda é a verba.",
+    "D": "A resposta é o que se procura, e ela muda; o fixo é a verba.",
+    "E": "O fixo está certo, mas o tipo não: mais cara a pasta, a mesma verba compra MENOS pastas."
+   },
+   "topico": "O que fica fixo",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Por que descobrir o que fica fixo no enunciado decide se a proporção é direta ou inversa? Explique com um exemplo seu.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Em 1 hora, 7 torneiras iguais despejam 728 litros de água. Em 1 hora, 2 dessas torneiras despejam quantos litros?",
+   "alternativas": {
+    "A": "208.",
+    "B": "723.",
+    "C": "728.",
+    "D": "1.456.",
+    "E": "2.548."
+   },
+   "gabarito": "A",
+   "resolucao": "1. O que fica fixo? O tempo (1 hora).\n2. Então na mesma hora, mais torneiras despejam MAIS água: regra DIRETA.\n3. Direta: valor de 1 torneira = 728 ÷ 7 = 104; com 2: × 2 = 208.\n   (Atalho: 728 × 2 ÷ 7 = 208.)\n4. Teste do absurdo: menos torneiras (7 → 2) deu menos litros (728 → 208). Faz sentido. ✔\nCompare: com torneiras enchendo o MESMO tanque, o fixo é o tanque (o volume é o mesmo), e a regra é INVERSA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "E": "728 × 7 ÷ 2: é a conta da regra INVERSA. Mas aqui o que fica fixo é o tempo (1 hora): na mesma hora, mais torneiras despejam MAIS água.",
+    "D": "728 × 2: esqueceu de dividir por 7 (o dado é de 7 torneiras, não de 1).",
+    "B": "728 − 5: proporção é multiplicação, não soma da diferença.",
+    "C": "728 é a situação inicial; com 2 torneiras o valor muda."
+   },
+   "topico": "Regra de três direta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Em uma hora, 9 atendentes atendem 216 clientes. No mesmo ritmo, em uma hora, 2 atendentes atendem quantos clientes?",
+   "alternativas": {
+    "A": "24.",
+    "B": "46.",
+    "C": "48.",
+    "D": "432.",
+    "E": "972."
+   },
+   "gabarito": "C",
+   "resolucao": "1. O que fica fixo? O tempo (1 hora).\n2. Então na mesma hora, mais atendentes atendem MAIS clientes: regra DIRETA.\n3. Direta: valor de 1 atendente = 216 ÷ 9 = 24; com 2: × 2 = 48.\n   (Atalho: 216 × 2 ÷ 9 = 48.)\n4. Teste do absurdo: menos atendentes (9 → 2) deu menos clientes (216 → 48). Faz sentido. ✔\nCompare: com atendentes zerando a MESMA fila, o fixo é a fila (o número de clientes é o mesmo), e a regra é INVERSA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "A": "216 ÷ 9 = 24 é o valor de 1 atendente; faltou multiplicar por 2.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 48.",
+    "E": "216 × 9 ÷ 2: é a conta da regra INVERSA. Mas aqui o que fica fixo é o tempo (1 hora): na mesma hora, mais atendentes atendem MAIS clientes.",
+    "D": "216 × 2: esqueceu de dividir por 9 (o dado é de 9 atendentes, não de 1)."
+   },
+   "topico": "Regra de três direta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Em um mesmo intervalo de tempo, um carro a 100 km/h percorre 60 km. No mesmo intervalo, a 120 km/h, percorre quantos km?",
+   "alternativas": {
+    "A": "50.",
+    "B": "72.",
+    "C": "74.",
+    "D": "80.",
+    "E": "7.200."
+   },
+   "gabarito": "B",
+   "resolucao": "1. O que fica fixo? O tempo de viagem.\n2. Então no mesmo tempo, mais rápido percorre MAIS distância: regra DIRETA.\n3. Direta: valor de 1 km/h = 60 ÷ 100 = 0,6; com 120: × 120 = 72.\n   (Atalho: 60 × 120 ÷ 100 = 72.)\n4. Teste do absurdo: mais km/h de velocidade (100 → 120) deu mais km (60 → 72). Faz sentido. ✔\nCompare: com velocidade num MESMO trajeto, o fixo é a distância (o trajeto é o mesmo), e a regra é INVERSA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "A": "60 × 100 ÷ 120: é a conta da regra INVERSA. Mas aqui o que fica fixo é o tempo de viagem: no mesmo tempo, mais rápido percorre MAIS distância.",
+    "E": "60 × 120: esqueceu de dividir por 100 (o dado é de 100 km/h de velocidade, não de 1).",
+    "D": "60 + 20: proporção é multiplicação, não soma da diferença.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 72."
+   },
+   "topico": "Regra de três direta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Com a verba do mês, um setor compra 30 pastas a R$ 3,00 cada. Se a pasta custar R$ 2,00, a mesma verba compra quantas pastas?",
+   "alternativas": {
+    "A": "15.",
+    "B": "20.",
+    "C": "30.",
+    "D": "31.",
+    "E": "45."
+   },
+   "gabarito": "E",
+   "resolucao": "1. O que fica fixo? A verba.\n2. Então mais cara a pasta, a mesma verba compra MENOS pastas: regra INVERSA.\n3. Inversa: o produto fica constante. 3 × 30 = 90.\n   Com 2: 90 ÷ 2 = 45.\n4. Teste do absurdo: menos reais de preço (3 → 2) deu mais pastas (30 → 45). Faz sentido. ✔\nCompare: com horas trabalhadas com o MESMO valor por hora, o fixo é o valor de cada hora, e a regra é DIRETA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "B": "30 × 2 ÷ 3: é a conta da regra DIRETA. Mas aqui o que fica fixo é a verba: mais cara a pasta, a mesma verba compra MENOS pastas.",
+    "D": "30 + 1: proporção é multiplicação, não soma da diferença.",
+    "C": "30 é a situação inicial; com 2 reais de preço o valor muda.",
+    "A": "30 ÷ 2: dividiu pela nova quantidade, mas esqueceu o total fixo (3 × 30); multiplique por 3 antes."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Uma carga é embalada em 96 caixas com 8 kg cada. Se cada caixa levar 12 kg, a mesma carga precisará de quantas caixas? Sem fazer a conta: qual expressão dá a resposta?",
+   "alternativas": {
+    "A": "96 × 8 × 12",
+    "B": "96 + 12 − 8",
+    "C": "96 × 8 ÷ 12",
+    "D": "(96 + 8) ÷ 12",
+    "E": "96 × 12 ÷ 8"
+   },
+   "gabarito": "C",
+   "resolucao": "O fixo é a carga total (o peso é o mesmo): caixas mais pesadas: a mesma carga precisa de MENOS caixas, regra INVERSA.\nInversa: o PRODUTO é constante. 8 × 96 = 12 × ?, então ? = 96 × 8 ÷ 12.\nResultado: 64.",
+   "comentarios": {
+    "A": "Multiplicar tudo não é regra de três: uma das grandezas divide.",
+    "B": "Somar a diferença não é proporção.",
+    "D": "Mistura valores de grandezas diferentes numa soma; não é proporção.",
+    "E": "É a conta da regra DIRETA. Aqui o fixo é a carga total (o peso é o mesmo): caixas mais pesadas: a mesma carga precisa de MENOS caixas."
+   },
+   "topico": "Montar a conta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Por que a conta da inversa é diferente da conta da direta? Explique usando a ideia de que, na inversa, o produto das duas grandezas fica constante.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Em 1 hora, 2 torneiras iguais despejam 614 litros de água. Em 1 hora, 4 dessas torneiras despejam quantos litros?",
+   "alternativas": {
+    "A": "307.",
+    "B": "614.",
+    "C": "616.",
+    "D": "1.128.",
+    "E": "1.228."
+   },
+   "gabarito": "E",
+   "resolucao": "1. O que fica fixo? O tempo (1 hora).\n2. Então na mesma hora, mais torneiras despejam MAIS água: regra DIRETA.\n3. Direta: valor de 1 torneira = 614 ÷ 2 = 307; com 4: × 4 = 1.228.\n   (Atalho: 614 × 4 ÷ 2 = 1.228.)\n4. Teste do absurdo: mais torneiras (2 → 4) deu mais litros (614 → 1.228). Faz sentido. ✔\nCompare: com torneiras enchendo o MESMO tanque, o fixo é o tanque (o volume é o mesmo), e a regra é INVERSA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "A": "614 × 2 ÷ 4: é a conta da regra INVERSA. Mas aqui o que fica fixo é o tempo (1 hora): na mesma hora, mais torneiras despejam MAIS água.",
+    "C": "614 + 2: proporção é multiplicação, não soma da diferença.",
+    "B": "614 é a situação inicial; com 4 torneiras o valor muda.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 1.228."
+   },
+   "topico": "Regra de três direta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Um estoque de ração alimenta 4 cavalos durante 30 dias. O mesmo estoque alimentaria 10 cavalos durante quantos dias? Antes de calcular: o que permanece fixo nessa situação e qual é o tipo de proporção?",
+   "alternativas": {
+    "A": "O estoque de ração; por isso a proporção é inversa.",
+    "B": "O estoque de ração; por isso a proporção é direta.",
+    "C": "A resposta (dias); por isso a proporção é direta.",
+    "D": "O tempo (1 dia) e o quanto cada cavalo come; por isso a proporção é direta.",
+    "E": "Nada fica fixo; por isso não é regra de três."
+   },
+   "gabarito": "A",
+   "resolucao": "Leia o que NÃO muda entre as duas situações: o estoque de ração.\nCom isso fixo, mais cavalos comem o mesmo estoque em MENOS dias: proporção inversa.\nSó depois disso vem a conta (dá 12).",
+   "comentarios": {
+    "B": "O fixo está certo, mas o tipo não: mais cavalos comem o mesmo estoque em MENOS dias.",
+    "C": "A resposta é o que se procura, e ela muda; o fixo é o estoque de ração.",
+    "D": "Isso vale para cavalos e a ração POR DIA. Aqui o que não muda é o estoque de ração.",
+    "E": "Fica, sim: o estoque de ração. É ele que permite a regra de três."
+   },
+   "topico": "O que fica fixo",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Por que descobrir o que fica fixo no enunciado decide se a proporção é direta ou inversa? Explique com um exemplo seu.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "O presente de um colega custou um valor fixo. Dividido entre 2 amigos, cada um pagou R$ 108,00. Se fosse dividido entre 8 amigos, cada um pagaria",
+   "alternativas": {
+    "A": "R$ 27,00.",
+    "B": "R$ 102,00.",
+    "C": "R$ 108,00.",
+    "D": "R$ 216,00.",
+    "E": "R$ 432,00."
+   },
+   "gabarito": "A",
+   "resolucao": "1. O que fica fixo? O preço do presente.\n2. Então mais amigos dividindo o mesmo valor, cada um paga MENOS: regra INVERSA.\n3. Inversa: o produto fica constante. 2 × 108 = 216.\n   Com 8: 216 ÷ 8 = R$ 27,00.\n4. Teste do absurdo: mais amigos (2 → 8) deu menos reais (R$ 108,00 → R$ 27,00). Faz sentido. ✔\nCompare: com ingressos de MESMO preço cada, o fixo é o preço de cada ingresso, e a regra é DIRETA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "E": "108 × 8 ÷ 2: é a conta da regra DIRETA. Mas aqui o que fica fixo é o preço do presente: mais amigos dividindo o mesmo valor, cada um paga MENOS.",
+    "D": "2 × 108 = 216 é o total fixo (o produto), não a resposta: falta dividir por 8.",
+    "B": "108 − 6: proporção é multiplicação, não soma da diferença.",
+    "C": "R$ 108,00 é a situação inicial; com 8 amigos o valor muda."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Com 8 torneiras iguais abertas, um tanque enche em 120 minutos. Com 6 dessas torneiras, o mesmo tanque enche em quantos minutos?",
+   "alternativas": {
+    "A": "20.",
+    "B": "90.",
+    "C": "120.",
+    "D": "122.",
+    "E": "160."
+   },
+   "gabarito": "E",
+   "resolucao": "1. O que fica fixo? O tanque (o volume é o mesmo).\n2. Então mais torneiras enchem o mesmo tanque em MENOS tempo: regra INVERSA.\n3. Inversa: o produto fica constante. 8 × 120 = 960.\n   Com 6: 960 ÷ 6 = 160.\n4. Teste do absurdo: menos torneiras (8 → 6) deu mais minutos (120 → 160). Faz sentido. ✔\nCompare: com torneiras despejando água em 1 HORA, o fixo é o tempo (1 hora), e a regra é DIRETA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "B": "120 × 6 ÷ 8: é a conta da regra DIRETA. Mas aqui o que fica fixo é o tanque (o volume é o mesmo): mais torneiras enchem o mesmo tanque em MENOS tempo.",
+    "D": "120 + 2: proporção é multiplicação, não soma da diferença.",
+    "C": "120 é a situação inicial; com 6 torneiras o valor muda.",
+    "A": "120 ÷ 6: dividiu pela nova quantidade, mas esqueceu o total fixo (8 × 120); multiplique por 8 antes."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "2 máquinas iguais embalam 616 caixas por hora. Quantas caixas por hora embalam 7 dessas máquinas? Sem fazer a conta: qual expressão dá a resposta?",
+   "alternativas": {
+    "A": "616 × 2 × 7",
+    "B": "616 + 7 − 2",
+    "C": "(616 + 2) ÷ 7",
+    "D": "616 × 2 ÷ 7",
+    "E": "616 × 7 ÷ 2"
+   },
+   "gabarito": "E",
+   "resolucao": "O fixo é o tempo (1 hora): na mesma hora, mais máquinas embalam MAIS caixas, regra DIRETA.\nDireta: a RAZÃO é constante. Valor de 1 = 616 ÷ 2; para 7: 616 ÷ 2 × 7 = 616 × 7 ÷ 2.\nResultado: 2.156.",
+   "comentarios": {
+    "A": "Multiplicar tudo não é regra de três: uma das grandezas divide.",
+    "B": "Somar a diferença não é proporção.",
+    "C": "Mistura valores de grandezas diferentes numa soma; não é proporção.",
+    "D": "É a conta da regra INVERSA. Aqui o fixo é o tempo (1 hora): na mesma hora, mais máquinas embalam MAIS caixas."
+   },
+   "topico": "Montar a conta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Por que a conta da inversa é diferente da conta da direta? Explique usando a ideia de que, na inversa, o produto das duas grandezas fica constante.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Um estoque de ração alimenta 8 cavalos durante 36 dias. O mesmo estoque alimentaria 6 cavalos durante quantos dias?",
+   "alternativas": {
+    "A": "27.",
+    "B": "36.",
+    "C": "38.",
+    "D": "48.",
+    "E": "288."
+   },
+   "gabarito": "D",
+   "resolucao": "1. O que fica fixo? O estoque de ração.\n2. Então mais cavalos comem o mesmo estoque em MENOS dias: regra INVERSA.\n3. Inversa: o produto fica constante. 8 × 36 = 288.\n   Com 6: 288 ÷ 6 = 48.\n4. Teste do absurdo: menos cavalos (8 → 6) deu mais dias (36 → 48). Faz sentido. ✔\nCompare: com cavalos e a ração POR DIA, o fixo é o tempo (1 dia) e o quanto cada cavalo come, e a regra é DIRETA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "A": "36 × 6 ÷ 8: é a conta da regra DIRETA. Mas aqui o que fica fixo é o estoque de ração: mais cavalos comem o mesmo estoque em MENOS dias.",
+    "C": "36 + 2: proporção é multiplicação, não soma da diferença.",
+    "B": "36 é a situação inicial; com 6 cavalos o valor muda.",
+    "E": "8 × 36 = 288 é o total fixo (o produto), não a resposta: falta dividir por 6."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Em 10 dias de trabalho, 9 operários assentam 582 m² de piso. No mesmo prazo e no mesmo ritmo, 3 operários assentam quantos m²? Antes de calcular: o que permanece fixo nessa situação e qual é o tipo de proporção?",
+   "alternativas": {
+    "A": "O prazo (10 dias); por isso a proporção é direta.",
+    "B": "A resposta (m²); por isso a proporção é inversa.",
+    "C": "Nada fica fixo; por isso não é regra de três.",
+    "D": "O número de operários; por isso a proporção é direta.",
+    "E": "O muro (o serviço é o mesmo); por isso a proporção é inversa."
+   },
+   "gabarito": "A",
+   "resolucao": "Leia o que NÃO muda entre as duas situações: o prazo (10 dias).\nCom isso fixo, no mesmo prazo, mais operários assentam MAIS piso: proporção direta.\nSó depois disso vem a conta (dá 194).",
+   "comentarios": {
+    "B": "A resposta é o que se procura, e ela muda; o fixo é o prazo (10 dias).",
+    "C": "Fica, sim: o prazo (10 dias). É ele que permite a regra de três.",
+    "D": "O número de operários MUDA (9 → 3): é justamente a grandeza que varia.",
+    "E": "Isso vale para operários levantando o MESMO muro. Aqui o que não muda é o prazo (10 dias)."
+   },
+   "topico": "O que fica fixo",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Por que descobrir o que fica fixo no enunciado decide se a proporção é direta ou inversa? Explique com um exemplo seu.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Em uma hora, 10 atendentes atendem 96 clientes. No mesmo ritmo, em uma hora, 5 atendentes atendem quantos clientes?",
+   "alternativas": {
+    "A": "48.",
+    "B": "91.",
+    "C": "96.",
+    "D": "192.",
+    "E": "480."
+   },
+   "gabarito": "A",
+   "resolucao": "1. O que fica fixo? O tempo (1 hora).\n2. Então na mesma hora, mais atendentes atendem MAIS clientes: regra DIRETA.\n3. Direta: valor de 1 atendente = 96 ÷ 10 = 9,6; com 5: × 5 = 48.\n   (Atalho: 96 × 5 ÷ 10 = 48.)\n4. Teste do absurdo: menos atendentes (10 → 5) deu menos clientes (96 → 48). Faz sentido. ✔\nCompare: com atendentes zerando a MESMA fila, o fixo é a fila (o número de clientes é o mesmo), e a regra é INVERSA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "D": "96 × 10 ÷ 5: é a conta da regra INVERSA. Mas aqui o que fica fixo é o tempo (1 hora): na mesma hora, mais atendentes atendem MAIS clientes.",
+    "E": "96 × 5: esqueceu de dividir por 10 (o dado é de 10 atendentes, não de 1).",
+    "B": "96 − 5: proporção é multiplicação, não soma da diferença.",
+    "C": "96 é a situação inicial; com 5 atendentes o valor muda."
+   },
+   "topico": "Regra de três direta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "5 atendentes, no mesmo ritmo, zeram uma fila de clientes em 52 minutos. 10 atendentes zeram a mesma fila em quantos minutos?",
+   "alternativas": {
+    "A": "24.",
+    "B": "26.",
+    "C": "47.",
+    "D": "104.",
+    "E": "260."
+   },
+   "gabarito": "B",
+   "resolucao": "1. O que fica fixo? A fila (o número de clientes é o mesmo).\n2. Então mais atendentes zeram a mesma fila em MENOS tempo: regra INVERSA.\n3. Inversa: o produto fica constante. 5 × 52 = 260.\n   Com 10: 260 ÷ 10 = 26.\n4. Teste do absurdo: mais atendentes (5 → 10) deu menos minutos (52 → 26). Faz sentido. ✔\nCompare: com atendentes atendendo clientes EM 1 HORA, o fixo é o tempo (1 hora), e a regra é DIRETA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "A": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 26.",
+    "D": "52 × 10 ÷ 5: é a conta da regra DIRETA. Mas aqui o que fica fixo é a fila (o número de clientes é o mesmo): mais atendentes zeram a mesma fila em MENOS tempo.",
+    "E": "5 × 52 = 260 é o total fixo (o produto), não a resposta: falta dividir por 10.",
+    "C": "52 − 5: proporção é multiplicação, não soma da diferença."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Uma carga é embalada em 114 caixas com 12 kg cada. Se cada caixa levar 8 kg, a mesma carga precisará de quantas caixas?",
+   "alternativas": {
+    "A": "76.",
+    "B": "114.",
+    "C": "118.",
+    "D": "171.",
+    "E": "1.368."
+   },
+   "gabarito": "D",
+   "resolucao": "1. O que fica fixo? A carga total (o peso é o mesmo).\n2. Então caixas mais pesadas: a mesma carga precisa de MENOS caixas: regra INVERSA.\n3. Inversa: o produto fica constante. 12 × 114 = 1.368.\n   Com 8: 1.368 ÷ 8 = 171.\n4. Teste do absurdo: menos kg por caixa (12 → 8) deu mais caixas (114 → 171). Faz sentido. ✔\nCompare: com litros e km com o MESMO consumo, o fixo é o consumo do carro (km por litro), e a regra é DIRETA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "A": "114 × 8 ÷ 12: é a conta da regra DIRETA. Mas aqui o que fica fixo é a carga total (o peso é o mesmo): caixas mais pesadas: a mesma carga precisa de MENOS caixas.",
+    "C": "114 + 4: proporção é multiplicação, não soma da diferença.",
+    "B": "114 é a situação inicial; com 8 kg por caixa o valor muda.",
+    "E": "12 × 114 = 1.368 é o total fixo (o produto), não a resposta: falta dividir por 8."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Um carro de consumo constante roda 180 km com 2 litros de gasolina. Com 5 litros, roda quantos km?",
+   "alternativas": {
+    "A": "72.",
+    "B": "90.",
+    "C": "450.",
+    "D": "460.",
+    "E": "900."
+   },
+   "gabarito": "C",
+   "resolucao": "1. O que fica fixo? O consumo do carro (km por litro).\n2. Então mais combustível roda MAIS quilômetros: regra DIRETA.\n3. Direta: valor de 1 litro = 180 ÷ 2 = 90; com 5: × 5 = 450.\n   (Atalho: 180 × 5 ÷ 2 = 450.)\n4. Teste do absurdo: mais litros (2 → 5) deu mais km (180 → 450). Faz sentido. ✔\nCompare: com kg por caixa com a MESMA carga, o fixo é a carga total (o peso é o mesmo), e a regra é INVERSA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "A": "180 × 2 ÷ 5: é a conta da regra INVERSA. Mas aqui o que fica fixo é o consumo do carro (km por litro): mais combustível roda MAIS quilômetros.",
+    "B": "180 ÷ 2 = 90 é o valor de 1 litro; faltou multiplicar por 5.",
+    "E": "180 × 5: esqueceu de dividir por 2 (o dado é de 2 litros, não de 1).",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 450."
+   },
+   "topico": "Regra de três direta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Em 10 dias de trabalho, 8 operários assentam 222 m² de piso. No mesmo prazo e no mesmo ritmo, 12 operários assentam quantos m²?",
+   "alternativas": {
+    "A": "148.",
+    "B": "226.",
+    "C": "333.",
+    "D": "343.",
+    "E": "2.664."
+   },
+   "gabarito": "C",
+   "resolucao": "1. O que fica fixo? O prazo (10 dias).\n2. Então no mesmo prazo, mais operários assentam MAIS piso: regra DIRETA.\n3. Direta: valor de 1 operário = 222 ÷ 8 = 27,75; com 12: × 12 = 333.\n   (Atalho: 222 × 12 ÷ 8 = 333.)\n4. Teste do absurdo: mais operários (8 → 12) deu mais m² (222 → 333). Faz sentido. ✔\nCompare: com operários levantando o MESMO muro, o fixo é o muro (o serviço é o mesmo), e a regra é INVERSA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "A": "222 × 8 ÷ 12: é a conta da regra INVERSA. Mas aqui o que fica fixo é o prazo (10 dias): no mesmo prazo, mais operários assentam MAIS piso.",
+    "B": "222 + 4: proporção é multiplicação, não soma da diferença.",
+    "E": "222 × 12: esqueceu de dividir por 8 (o dado é de 8 operários, não de 1).",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 333."
+   },
+   "topico": "Regra de três direta",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "3 atendentes, no mesmo ritmo, zeram uma fila de clientes em 210 minutos. 5 atendentes zeram a mesma fila em quantos minutos?",
+   "alternativas": {
+    "A": "126.",
+    "B": "208.",
+    "C": "210.",
+    "D": "350.",
+    "E": "630."
+   },
+   "gabarito": "A",
+   "resolucao": "1. O que fica fixo? A fila (o número de clientes é o mesmo).\n2. Então mais atendentes zeram a mesma fila em MENOS tempo: regra INVERSA.\n3. Inversa: o produto fica constante. 3 × 210 = 630.\n   Com 5: 630 ÷ 5 = 126.\n4. Teste do absurdo: mais atendentes (3 → 5) deu menos minutos (210 → 126). Faz sentido. ✔\nCompare: com atendentes atendendo clientes EM 1 HORA, o fixo é o tempo (1 hora), e a regra é DIRETA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "D": "210 × 5 ÷ 3: é a conta da regra DIRETA. Mas aqui o que fica fixo é a fila (o número de clientes é o mesmo): mais atendentes zeram a mesma fila em MENOS tempo.",
+    "E": "3 × 210 = 630 é o total fixo (o produto), não a resposta: falta dividir por 5.",
+    "B": "210 − 2: proporção é multiplicação, não soma da diferença.",
+    "C": "210 é a situação inicial; com 5 atendentes o valor muda."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "6 máquinas iguais embalam um lote de pedidos em 252 minutos. Em quantos minutos 7 dessas máquinas embalam o mesmo lote?",
+   "alternativas": {
+    "A": "36.",
+    "B": "216.",
+    "C": "251.",
+    "D": "294.",
+    "E": "1.512."
+   },
+   "gabarito": "B",
+   "resolucao": "1. O que fica fixo? O lote (o serviço é o mesmo).\n2. Então mais máquinas terminam o mesmo lote em MENOS tempo: regra INVERSA.\n3. Inversa: o produto fica constante. 6 × 252 = 1.512.\n   Com 7: 1.512 ÷ 7 = 216.\n4. Teste do absurdo: mais máquinas (6 → 7) deu menos minutos (252 → 216). Faz sentido. ✔\nCompare: com máquinas embalando caixas POR HORA, o fixo é o tempo (1 hora), e a regra é DIRETA. Mesmas grandezas, outro fixo, outra regra.",
+   "comentarios": {
+    "A": "252 ÷ 7: dividiu pela nova quantidade, mas esqueceu o total fixo (6 × 252); multiplique por 6 antes.",
+    "D": "252 × 7 ÷ 6: é a conta da regra DIRETA. Mas aqui o que fica fixo é o lote (o serviço é o mesmo): mais máquinas terminam o mesmo lote em MENOS tempo.",
+    "E": "6 × 252 = 1.512 é o total fixo (o produto), não a resposta: falta dividir por 7.",
+    "C": "252 − 1: proporção é multiplicação, não soma da diferença."
+   },
+   "topico": "Regra de três inversa",
+   "conceito": "Antes da conta, ache o que fica FIXO. Serviço/total fixo e se pergunta o tempo ou a parte de cada um → inversa (o produto é constante). Tempo/preço unitário fixo e se pergunta a produção ou o total → direta (a razão é constante).",
+   "explicar": "Como você decide, antes de qualquer conta, se uma regra de três é direta ou inversa? Dê um exemplo de cada com as mesmas grandezas (por exemplo, operários).",
+   "habilidade": "interpretar"
+  }
+ ],
+ "fontes": [
+  "Questões geradas e conferidas em Python (fractions): cada resposta e cada armadilha são calculadas; os mesmos tipos de grandeza aparecem nos dois sentidos, e a ordem foi sorteada sem blocos (no máximo 3 do mesmo tipo seguidas)"
+ ]
+}

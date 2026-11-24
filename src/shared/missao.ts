@@ -83,8 +83,12 @@ export function feitaPelosDados(
     const f = filaDoDia(d.cartoes, agora)
     return f.revisar.length + f.novos.length === 0
   }
+  // a mesma pergunta respondida no Raio-X também vale (é o mesmo conceito)
   return (d.explicacoes ?? []).some(
-    (x) => x.criadoEm >= m.recebidaEm && semAcento(x.topico) === semAcento(t.topico)
+    (x) =>
+      Math.max(x.criadoEm, x.atualizadoEm ?? 0) >= m.recebidaEm &&
+      (semAcento(x.topico) === semAcento(t.topico) ||
+        semAcento(x.pergunta.trim()) === semAcento(t.pergunta.trim()))
   )
 }
 
@@ -128,4 +132,21 @@ export function promptDeConferir(
     '3. O que faltou e a banca costuma cobrar (pegadinhas).',
     'Confira na legislação vigente; se não tiver certeza de algo, diga.'
   ].join('\n')
+}
+
+/** A missão nova substitui a anterior. Se é a mesma semana republicada (mesmo
+ *  início, ex.: uma tarefa a mais), o que você já fez e os cartões de cada
+ *  tarefa continuam valendo, e as explicações contam desde a primeira versão. */
+export function continuarMissao(nova: Missao, anterior?: Missao): Missao {
+  if (!anterior || anterior.de !== nova.de) return nova
+  const ids = new Set(nova.tarefas.map((t) => t.id))
+  const frentes = Object.fromEntries(
+    Object.entries(anterior.cartoesFrentes ?? {}).filter(([id]) => ids.has(id))
+  )
+  return {
+    ...nova,
+    recebidaEm: anterior.recebidaEm,
+    feitas: anterior.feitas.filter((id) => ids.has(id)),
+    ...(Object.keys(frentes).length ? { cartoesFrentes: frentes } : {})
+  }
 }

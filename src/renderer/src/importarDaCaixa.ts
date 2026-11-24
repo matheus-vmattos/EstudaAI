@@ -3,7 +3,7 @@ import { importarEstrutura, lerEstrutura, recolherAbaixoDosAssuntos } from '../.
 import { lerRespostaDaIa } from '../../shared/questoes'
 import { importarCartoes, lerPacoteDeCartoes } from '../../shared/pacoteDeCartoes'
 import { importarEdital, lerPacoteDeEdital, simuladoDaCaixa } from '../../shared/edital'
-import { lerPacoteDeMissao } from '../../shared/missao'
+import { continuarMissao, lerPacoteDeMissao } from '../../shared/missao'
 import { importarAnotacoes, lerPacoteDeAnotacoes } from '../../shared/anotacoesDoClaude'
 import type { Dados, Id, ItemDaCaixa } from '../../shared/tipos'
 
@@ -100,7 +100,7 @@ export async function importarDaCaixa(
     const lido = lerPacoteDeMissao(r.texto, item.id, Date.now())
     if (!lido.ok) return { ok: false, texto: lido.erro }
     mudar((d) => {
-      d.missao = lido.missao
+      d.missao = continuarMissao(lido.missao, d.missao)
       marcar(d)
     })
     return {

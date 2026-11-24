@@ -1,5 +1,6 @@
 import type { RaioX } from './raioX'
-import type { Dados, Explicacao, Retorno, Simulado, Veredito } from './tipos'
+import type { Dados, Explicacao, Questao, Retorno, Simulado, Veredito } from './tipos'
+import { semAcento } from './texto'
 
 export type SituacaoDaExplicacao = 'esperando' | Veredito
 
@@ -46,44 +47,74 @@ export function mesclarRetornos(d: Dados, novos: Retorno[]): boolean {
 }
 
 export interface PedidoDeExplicar {
+  /** a questão que puxou o pedido (a primeira do conceito) */
   indice: number
+  /** todas as questões deste simulado que pediram este conceito */
+  indices: number[]
   topico: string
   pergunta: string
   motivo: string
 }
 
-/** Depois do simulado: até 3 conceitos para explicar, do que mais pede
- *  (não sabia, errou achando que sabia, acertou inseguro), um por tópico. */
-export function pedidosDeExplicar(s: Simulado, r: RaioX, max = 3): PedidoDeExplicar[] {
-  const ordem: { faixa: 'lacuna' | 'engano' | 'fragil'; motivo: string }[] = [
-    { faixa: 'lacuna', motivo: 'Você errou' },
-    { faixa: 'engano', motivo: 'Errou rápido, achando que sabia' },
-    { faixa: 'fragil', motivo: 'Acertou, mas com dúvida' }
-  ]
-  const saida: PedidoDeExplicar[] = []
-  const topicos = new Set<string>()
-  const pedir = (x: { indice: number; topico: string }, motivo: string): void => {
-    const q = s.questoes[x.indice]
-    topicos.add(x.topico)
-    saida.push({
-      indice: x.indice,
-      topico: x.topico,
-      motivo,
-      pergunta:
-        q.explicar ??
-        `Explique com suas palavras esta questão de ${x.topico}: o que ela cobra e como se chega na resposta certa.`
-    })
-  }
-  // 1ª volta: um por tópico; 2ª (treino de um tópico só): outras questões que
-  // trazem a própria pergunta, para não pedir duas vezes a mesma coisa
-  for (const volta of [1, 2])
-    for (const { faixa, motivo } of ordem)
-      for (const x of r.porFaixa[faixa]) {
-        if (saida.length >= max) return saida
-        if (saida.some((p) => p.indice === x.indice)) continue
-        if (volta === 1 && topicos.has(x.topico)) continue
-        if (volta === 2 && !s.questoes[x.indice].explicar) continue
-        pedir(x, motivo)
+/** A pergunta é sobre o CONCEITO, não sobre a questão: a do conteúdo, ou uma
+ *  geral do tópico. A mesma pergunta volta em outros simulados até virar "Certo". */
+export const perguntaDoConceito = (q: Questao, topico: string): string =>
+  q.explicar ??
+  `O que é ${topico} e como você reconhece e resolve uma questão desse tipo? Explique a ideia com suas palavras e um exemplo seu.`
+
+const mesmaPergunta = (a: string, b: string): boolean => semAcento(a.trim()) === semAcento(b.trim())
+
+/** A sua explicação de um conceito (vale para todos os simulados) */
+export const explicacaoDoConceito = (d: Dados, pergunta: string): Explicacao | undefined =>
+  (d.explicacoes ?? []).find((x) => !x.simuladoId && mesmaPergunta(x.pergunta, pergunta))
+
+const MOTIVO = { lacuna: 'errou', engano: 'errou rápido', fragil: 'acertou com dúvida' } as const
+
+/** Depois do simulado: até 3 conceitos para explicar, do que mais pede (não
+ *  sabia, errou achando que sabia, acertou inseguro). Um pedido por conceito,
+ *  com as questões que o puxaram; conceito já explicado "Certo" não volta. */
+export function pedidosDeExplicar(s: Simulado, r: RaioX, d?: Dados, max = 3): PedidoDeExplicar[] {
+  const grupos = new Map<string, PedidoDeExplicar & { faixas: (keyof typeof MOTIVO)[] }>()
+  for (const faixa of ['lacuna', 'engano', 'fragil'] as const)
+    for (const x of r.porFaixa[faixa]) {
+      const pergunta = perguntaDoConceito(s.questoes[x.indice], x.topico)
+      const chave = semAcento(pergunta.trim())
+      const g = grupos.get(chave)
+      if (g) {
+        g.indices.push(x.indice)
+        g.faixas.push(faixa)
+        continue
       }
-  return saida
+      if (
+        d &&
+        explicacaoDoConceito(d, pergunta) &&
+        situacaoDe(d, explicacaoDoConceito(d, pergunta)!) === 'certo'
+      )
+        continue
+      grupos.set(chave, {
+        indice: x.indice,
+        indices: [x.indice],
+        topico: x.topico,
+        pergunta,
+        motivo: '',
+        faixas: [faixa]
+      })
+    }
+  return [...grupos.values()].slice(0, max).map(({ faixas, ...p }) => {
+    const partes = (['lacuna', 'engano', 'fragil'] as const)
+      .map((f) => {
+        const nums = p.indices.filter((_, i) => faixas[i] === f).map((i) => i + 1)
+        if (!nums.length) return ''
+        const lista =
+          nums.length > 4
+            ? `${nums.slice(0, 3).join(', ')} e mais ${nums.length - 3}`
+            : nums.length > 1
+              ? `${nums.slice(0, -1).join(', ')} e ${nums.at(-1)}`
+              : `${nums[0]}`
+        return `${MOTIVO[f]} a ${lista}`
+      })
+      .filter(Boolean)
+    const texto = partes.join('; ')
+    return { ...p, motivo: texto[0].toUpperCase() + texto.slice(1) }
+  })
 }

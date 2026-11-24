@@ -40,7 +40,8 @@ export function Explique({
   const ja = (dados.explicacoes ?? []).find((x) =>
     origem
       ? x.simuladoId === origem.simuladoId && x.indice === origem.indice
-      : !x.simuladoId && semAcento(x.topico) === semAcento(topico)
+      : // conceito: a mesma pergunta, em qualquer simulado ou missão
+        !x.simuladoId && semAcento(x.pergunta.trim()) === semAcento(pergunta.trim())
   )
   const [texto, setTexto] = useState(ja?.texto ?? '')
   const [aviso, setAviso] = useState('')
