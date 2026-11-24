@@ -1,0 +1,50 @@
+{
+ "materia": "Matemática e Raciocínio Lógico",
+ "notas": [
+  {
+   "lugar": [
+    "Raciocínio lógico",
+    "Hipóteses e conclusões válidas"
+   ],
+   "texto": "## Proposições, negações e argumentos válidos\n\n**Negações (cai sempre):**\n- não (p e q) = **não p OU não q**\n- não (p ou q) = **não p E não q**\n- não (se p, então q) = **p E não q** (a negação de \"se… então\" NUNCA é outro \"se… então\")\n\n**Equivalentes de \"se p, então q\":** \"se não q, então não p\" (contrapositiva) e \"não p ou q\".\n**NÃO equivalem:** \"se q, então p\" (recíproca) e \"se não p, então não q\" (inversa).\n\n**Argumentos válidos:** de \"se p, então q\" e \"p\", conclui-se q (modus ponens); e de \"não q\", conclui-se não p (modus tollens).\n**Falácias:** de \"q\" concluir \"p\"; de \"não p\" concluir \"não q\".\n\n**Quantificadores:** não (todo A é B) = **algum A não é B**; não (algum A é B) = **nenhum A é B**.\n\n> **PEGADINHA** \"Se chove, a rua molha. A rua está molhada.\" Não dá para concluir que choveu (pode ter sido o caminhão-pipa)."
+  },
+  {
+   "lugar": [
+    "Raciocínio lógico",
+    "Relações arbitrárias (pessoas, lugares, objetos)"
+   ],
+   "texto": "## Associação lógica (quem faz o quê)\n\n1. Monte a tabela: pessoas nas linhas, cada atributo (cargo, cidade…) nas colunas.\n2. Cada pista vira um **X** (não pode) ou um **✓** (é isso).\n3. Cada linha e cada coluna têm um único ✓: quando sobrar uma opção, ela é a certa, e o ✓ apaga a coluna.\n4. Pistas do tipo \"quem é gerente mora em Serra\" ligam dois atributos: use-as depois que um dos dois estiver definido.\n\nAo final, confira TODAS as pistas com a solução."
+  },
+  {
+   "lugar": [
+    "Raciocínio lógico",
+    "Raciocínio sequencial"
+   ],
+   "texto": "## Sequências: perguntas a fazer aos números\n\n1. **Diferença** constante? É PA (soma sempre o mesmo).\n2. **Razão** constante? É PG (multiplica sempre pelo mesmo).\n3. As **diferenças crescem** com regra própria (2, 3, 4…)?\n4. **Duas sequências intercaladas** (posições ímpares e pares com regras diferentes)?\n\n**Exemplo intercalada:** 3, 30, 5, 27, 7, 24 → ímpares +2 (3, 5, 7, 9), pares −3 (30, 27, 24) → próximo: **9**."
+  },
+  {
+   "lugar": [
+    "Contagem",
+    "Princípio multiplicativo e aditivo"
+   ],
+   "texto": "## Princípio multiplicativo e aditivo\n\n**Multiplicativo:** escolhas em etapas, uma E outra → **multiplique**. 3 cartões, 4 seguros e 2 planos → 3 × 4 × 2 = **24** pacotes.\n**Aditivo:** uma OU outra (casos que não se misturam) → **some**.\n\n> **PEGADINHA** Somar etapas que acontecem juntas (3 + 4 + 2 = 9 está errado)."
+  },
+  {
+   "lugar": [
+    "Contagem",
+    "Permutações"
+   ],
+   "texto": "## Permutações e arranjos: a ORDEM importa\n\n**Todos em fila (permutação):** n! → anagramas de RENDA (5 letras diferentes) = 5! = **120**.\n**Alguns, em posições/cargos diferentes (arranjo):** A(n, k) = n!/(n − k)! → presidente e vice entre 8 → 8 × 7 = **56**.\n\nTeste: trocar a ordem gera uma escolha diferente? Se sim, é arranjo/permutação."
+  },
+  {
+   "lugar": [
+    "Contagem",
+    "Combinações simples"
+   ],
+   "texto": "## Combinações: a ordem NÃO importa\n\n**C(n, k) = n! / (k! · (n − k)!)** → comissão de 3 entre 8: C(8, 3) = **56**; de 2 entre 10: **45**.\n\nÉ o arranjo dividido por k! (as ordens que contam o mesmo grupo): 10 × 9 = 90 duplas ordenadas ÷ 2 = 45.\n\n> **PEGADINHA** Comissão \"sem cargos\" é combinação; com presidente e vice, é arranjo."
+  }
+ ],
+ "fontes": [
+  "Contas de todos os exemplos conferidas em Python (fractions, math.comb/perm) antes de publicar; regras lógicas conferidas por tabela-verdade no gerador do treino"
+ ]
+}

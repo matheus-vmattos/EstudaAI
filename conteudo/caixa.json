@@ -364,6 +364,74 @@
       "arquivo": "banestes-missao5.json",
       "data": "2026-11-24",
       "versaoMinima": "0.1.23"
+    },
+    {
+      "id": "banestes-mf-treino1-v1",
+      "tipo": "simulado",
+      "titulo": "Matemática Financeira: treino 1",
+      "descricao": "40 questões misturadas: juros simples e compostos, taxas (proporcional, equivalente, nominal, real), desconto comercial e racional, SAC, Price e equivalência. Cada errada com o motivo.",
+      "arquivo": "banestes-mf-treino1.json",
+      "data": "2026-11-24"
+    },
+    {
+      "id": "banestes-est-treino1-v1",
+      "tipo": "simulado",
+      "titulo": "Estatística e Probabilidade: treino 1",
+      "descricao": "40 questões misturadas: média (simples e ponderada), mediana, moda, amplitude, variância, desvio, CV, propriedades, probabilidade e condicional.",
+      "arquivo": "banestes-est-treino1.json",
+      "data": "2026-11-24"
+    },
+    {
+      "id": "banestes-rl-treino1-v1",
+      "tipo": "simulado",
+      "titulo": "Raciocínio Lógico e Contagem: treino 1",
+      "descricao": "40 questões: negação, equivalência, argumentos, quantificadores, associação, sequências e contagem (arranjo, permutação, combinação). Lógica conferida por tabela-verdade.",
+      "arquivo": "banestes-rl-treino1.json",
+      "data": "2026-11-24"
+    },
+    {
+      "id": "banestes-bancarios-p2-v1",
+      "tipo": "simulado",
+      "titulo": "Simulado: Bancários parte 2 (BC, consórcio, previdência, seguros, sigilo)",
+      "descricao": "15 questões FCC conferidas na lei: LC 179, Lei 4.595, Lei 11.795, LC 109, DL 73 e LC 105.",
+      "arquivo": "banestes-bancarios-p2.json",
+      "data": "2026-11-24"
+    },
+    {
+      "id": "banestes-mf-anotacoes-v1",
+      "tipo": "anotacoes",
+      "titulo": "Anotações: Matemática Financeira",
+      "descricao": "11 anotações para o seu mapa: juros, taxas, desconto, SAC, Price e equivalência, com exemplo resolvido. Só entram onde a anotação está vazia.",
+      "arquivo": "banestes-mf-anotacoes.json",
+      "data": "2026-11-24",
+      "versaoMinima": "0.1.19"
+    },
+    {
+      "id": "banestes-rl-anotacoes-v1",
+      "tipo": "anotacoes",
+      "titulo": "Anotações: Raciocínio lógico e Contagem",
+      "descricao": "6 anotações: negações e argumentos, associação, sequências, princípio multiplicativo, permutação e combinação. Só entram onde está vazio.",
+      "arquivo": "banestes-rl-anotacoes.json",
+      "data": "2026-11-24",
+      "versaoMinima": "0.1.19"
+    },
+    {
+      "id": "banestes-bancarios-anotacoes-v1",
+      "tipo": "anotacoes",
+      "titulo": "Anotações: Conhecimentos Bancários",
+      "descricao": "8 anotações para o mapa de Bancários (CMN, Banco Central, previdência, consórcio, Coaf, FGC, cheque, sigilo), cada uma com o artigo da lei. Só entram onde está vazio.",
+      "arquivo": "banestes-bancarios-anotacoes.json",
+      "data": "2026-11-24",
+      "versaoMinima": "0.1.19"
+    },
+    {
+      "id": "banestes-missao5-v4",
+      "tipo": "missao",
+      "titulo": "Missão: o que o edital cobra e você ainda não mediu (23/11 a 06/12)",
+      "descricao": "A Missão 5 com Matemática Financeira, Estatística, Lógica e Bancários parte 2. O que você já fez continua marcado.",
+      "arquivo": "banestes-missao5-v4.json",
+      "data": "2026-11-24",
+      "versaoMinima": "0.1.23"
     }
   ]
 }

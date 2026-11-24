@@ -1,0 +1,890 @@
+{
+ "tema": "Raciocínio Lógico e Contagem: treino 1",
+ "materia": "Matemática e Raciocínio Lógico",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "Na sequência 9, 13, 18, 24, 31, …, o próximo termo é",
+   "alternativas": {
+    "A": "38.",
+    "B": "39.",
+    "C": "40.",
+    "D": "41.",
+    "E": "62."
+   },
+   "gabarito": "B",
+   "resolucao": "Regra: as diferenças crescem 1 a cada passo (4, 5, 6, 7, 8).\nPróximo: 39.",
+   "comentarios": {
+    "A": "Repetiu a última diferença; ela cresce a cada passo.",
+    "C": "Somou um passo a mais.",
+    "E": "Achou que dobrava.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 39."
+   },
+   "topico": "Sequências",
+   "conceito": "Teste a diferença entre termos (PA), a razão (PG) e padrões alternados (duas sequências intercaladas).",
+   "explicar": "Como você procura a regra de uma sequência? Que perguntas faz aos números (diferença, razão, alternância)?",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Considere as premissas: \"Se o gerente aprova, então a meta é batida\" e \"A meta não é batida\". A partir delas, pode-se concluir corretamente que",
+   "alternativas": {
+    "A": "O gerente não aprova.",
+    "B": "O gerente aprova.",
+    "C": "Nada se pode concluir sobre as duas proposições.",
+    "D": "A meta é batida.",
+    "E": "O gerente aprova e a meta não é batida."
+   },
+   "gabarito": "A",
+   "resolucao": "Premissa 1: p → q. Premissa 2: ~q.\nÉ modus tollens (nega o consequente, nega o antecedente).\nTeste de validade: procure um caso com as premissas verdadeiras e a conclusão falsa; se existir, a conclusão não decorre.",
+   "comentarios": {
+    "B": "Contradiz as premissas: não pode ser verdade junto com elas.",
+    "C": "Pode-se: é modus tollens (nega o consequente, nega o antecedente).",
+    "D": "Contradiz as premissas: não pode ser verdade junto com elas.",
+    "E": "Contradiz as premissas: não pode ser verdade junto com elas."
+   },
+   "topico": "Argumentos válidos",
+   "conceito": "Válidos: modus ponens (p → q, p ⊢ q) e modus tollens (p → q, ~q ⊢ ~p). Falácias: afirmar o consequente (q ⊢ p) e negar o antecedente (~p ⊢ ~q).",
+   "explicar": "Quando uma conclusão \"decorre necessariamente\" das premissas? Explique por que, de \"se chove, a rua molha\" e \"a rua está molhada\", não dá para concluir que choveu.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "A negação lógica da proposição \"Se chove, então a meta é batida\" é:",
+   "alternativas": {
+    "A": "Não chove ou a meta é batida.",
+    "B": "Se a meta é batida, então chove.",
+    "C": "Chove e a meta não é batida.",
+    "D": "Se chove, então a meta não é batida.",
+    "E": "Se não chove, então a meta não é batida."
+   },
+   "gabarito": "C",
+   "resolucao": "Forma: p → q. Negação: p ∧ ~q.\nAqui: Chove e a meta não é batida.\nConferido na tabela-verdade: é verdadeira exatamente quando a original é falsa.",
+   "comentarios": {
+    "A": "\"Não p ou q\" é EQUIVALENTE à original, não a negação dela.",
+    "B": "A negação de \"se p, então q\" não é outro \"se… então\": é \"p e não q\". Essa é a RECÍPROCA, outra afirmação.",
+    "D": "A negação de \"se p, então q\" não é outro \"se… então\": é \"p e não q\".",
+    "E": "A negação de \"se p, então q\" não é outro \"se… então\": é \"p e não q\". Essa é a INVERSA, outra afirmação."
+   },
+   "topico": "Negação de proposições",
+   "conceito": "Negações: ~(p ∧ q) ≡ ~p ∨ ~q; ~(p ∨ q) ≡ ~p ∧ ~q; ~(p → q) ≡ p ∧ ~q.",
+   "explicar": "Como se nega \"p e q\", \"p ou q\" e \"se p, então q\"? Explique por que a negação de \"se p, então q\" não é outro \"se… então\".",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Entre 8 candidatos, serão escolhidos um presidente e um vice-presidente (pessoas diferentes). O número de escolhas possíveis é",
+   "alternativas": {
+    "A": "16.",
+    "B": "28.",
+    "C": "56.",
+    "D": "64.",
+    "E": "20.160."
+   },
+   "gabarito": "C",
+   "resolucao": "Cargos diferentes: a ordem importa.\n8 opções para presidente × 7 para vice = 56.",
+   "comentarios": {
+    "B": "Com cargos diferentes, a ordem importa: presidente A e vice B é diferente de presidente B e vice A. Não divida por 2.",
+    "A": "Somou; são etapas: multiplique.",
+    "D": "A mesma pessoa não pode ocupar os dois cargos.",
+    "E": "Usou permutação de todos."
+   },
+   "topico": "Contagem",
+   "conceito": "Princípio multiplicativo: etapas independentes, multiplique. Ordem importa: arranjo A(n,k) = n!/(n−k)!; todos em fila: n!. Ordem não importa: combinação C(n,k) = n!/(k!(n−k)!).",
+   "explicar": "Como você decide se a ordem importa (arranjo/permutação) ou não importa (combinação)? Dê um exemplo de cada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "A negação de \"Algum cliente é investidor\" é:",
+   "alternativas": {
+    "A": "Algum investidor é cliente.",
+    "B": "Todo cliente é investidor.",
+    "C": "Algum cliente não é investidor.",
+    "D": "Algum investidor não é cliente.",
+    "E": "Nenhum cliente é investidor."
+   },
+   "gabarito": "E",
+   "resolucao": "~(todo A é B) = algum A não é B. ~(algum A é B) = nenhum A é B. ~(nenhum A é B) = algum A é B.\nAqui: Nenhum cliente é investidor.",
+   "comentarios": {
+    "A": "Para negar \"algum é\", nenhum pode ser: \"nenhum… é\".",
+    "B": "Para negar \"algum é\", nenhum pode ser: \"nenhum… é\".",
+    "C": "Para negar \"algum é\", nenhum pode ser: \"nenhum… é\".",
+    "D": "Para negar \"algum é\", nenhum pode ser: \"nenhum… é\"."
+   },
+   "topico": "Quantificadores",
+   "conceito": "~(todo A é B) = algum A não é B. ~(algum A é B) = nenhum A é B. ~(nenhum A é B) = algum A é B.",
+   "explicar": "Qual é a negação de \"todo A é B\" e de \"nenhum A é B\"? Por que \"todo A não é B\" não serve?",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "O número de anagramas da palavra META (todas as letras são diferentes) é",
+   "alternativas": {
+    "A": "6.",
+    "B": "12.",
+    "C": "16.",
+    "D": "22.",
+    "E": "24."
+   },
+   "gabarito": "E",
+   "resolucao": "Todas as letras em fila, ordem importa: 4! = 4 × 3 × 2 × 1 = 24.",
+   "comentarios": {
+    "C": "4 × 4: as escolhas diminuem a cada posição (4, 3, …).",
+    "A": "Combinação não serve: em anagrama a ordem importa.",
+    "B": "Dividiu por 2 sem letra repetida.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 24."
+   },
+   "topico": "Contagem",
+   "conceito": "Princípio multiplicativo: etapas independentes, multiplique. Ordem importa: arranjo A(n,k) = n!/(n−k)!; todos em fila: n!. Ordem não importa: combinação C(n,k) = n!/(k!(n−k)!).",
+   "explicar": "Como você decide se a ordem importa (arranjo/permutação) ou não importa (combinação)? Dê um exemplo de cada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Entre 11 candidatos, serão escolhidos um presidente e um vice-presidente (pessoas diferentes). O número de escolhas possíveis é",
+   "alternativas": {
+    "A": "22.",
+    "B": "55.",
+    "C": "110.",
+    "D": "121.",
+    "E": "220."
+   },
+   "gabarito": "C",
+   "resolucao": "Cargos diferentes: a ordem importa.\n11 opções para presidente × 10 para vice = 110.",
+   "comentarios": {
+    "B": "Com cargos diferentes, a ordem importa: presidente A e vice B é diferente de presidente B e vice A. Não divida por 2.",
+    "A": "Somou; são etapas: multiplique.",
+    "D": "A mesma pessoa não pode ocupar os dois cargos.",
+    "E": "Usou permutação de todos."
+   },
+   "topico": "Contagem",
+   "conceito": "Princípio multiplicativo: etapas independentes, multiplique. Ordem importa: arranjo A(n,k) = n!/(n−k)!; todos em fila: n!. Ordem não importa: combinação C(n,k) = n!/(k!(n−k)!).",
+   "explicar": "Como você decide se a ordem importa (arranjo/permutação) ou não importa (combinação)? Dê um exemplo de cada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Ana, Bia e Caio trabalham numa agência; cada um tem um cargo diferente (caixa, gerente, analista) e mora numa cidade diferente (Vitória, Serra, Vila Velha). Sabe-se que: Quem é caixa mora em Vitória. Bia não mora em Vitória. Bia não é analista. Ana não mora em Vila Velha. Quem é analista mora em Vila Velha. Então, é correto afirmar que",
+   "alternativas": {
+    "A": "Ana é gerente e mora em Vila Velha.",
+    "B": "Ana é gerente e mora em Vitória.",
+    "C": "Ana é analista e mora em Vila Velha.",
+    "D": "Ana é analista e mora em Serra.",
+    "E": "Ana é caixa e mora em Vitória."
+   },
+   "gabarito": "E",
+   "resolucao": "Monte a tabela nomes × cargos × cidades e risque o que cada pista elimina.\nSolução única: Ana: caixa, Vitória; Bia: gerente, Serra; Caio: analista, Vila Velha.",
+   "comentarios": {
+    "A": "Contradiz uma das pistas (monte a tabela e confira).",
+    "B": "Contradiz uma das pistas (monte a tabela e confira).",
+    "C": "Contradiz uma das pistas (monte a tabela e confira).",
+    "D": "Contradiz uma das pistas (monte a tabela e confira)."
+   },
+   "topico": "Associação lógica",
+   "conceito": "Monte a tabela pessoas × atributos, marque o que as pistas eliminam e confirme: cada linha e cada coluna com um único \"sim\".",
+   "explicar": "Como você organiza uma questão de associação (quem faz o quê)? Explique o método da tabela com um exemplo seu.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Uma proposição logicamente equivalente a \"Se Carla viaja, então a agência abre\" é:",
+   "alternativas": {
+    "A": "Carla não viaja ou a agência abre.",
+    "B": "Carla viaja e a agência abre.",
+    "C": "Carla viaja e a agência não abre.",
+    "D": "Se a agência abre, então Carla viaja.",
+    "E": "Se Carla não viaja, então a agência não abre."
+   },
+   "gabarito": "A",
+   "resolucao": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q.\nAqui: Carla não viaja ou a agência abre.\nRecíproca e inversa NÃO são equivalentes.",
+   "comentarios": {
+    "B": "\"p e q\" exige as duas; \"se p, então q\" é verdadeira também quando p é falsa.",
+    "C": "Isso é a NEGAÇÃO da condicional, não uma equivalente.",
+    "D": "É a RECÍPROCA (\"se q, então p\"): não equivale.",
+    "E": "É a INVERSA (\"se não p, então não q\"): não equivale."
+   },
+   "topico": "Equivalências lógicas",
+   "conceito": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q. A recíproca (q → p) e a inversa (~p → ~q) NÃO são equivalentes.",
+   "explicar": "Por que \"se p, então q\" equivale a \"se não q, então não p\", mas NÃO equivale a \"se q, então p\"? Use um exemplo do dia a dia.",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Um cliente pode montar um pacote escolhendo 1 entre 6 cartões, 1 entre 6 seguros e 1 entre 4 planos de capitalização. O número de pacotes diferentes é",
+   "alternativas": {
+    "A": "16.",
+    "B": "36.",
+    "C": "134.",
+    "D": "144.",
+    "E": "560."
+   },
+   "gabarito": "D",
+   "resolucao": "Princípio multiplicativo: 6 × 6 × 4 = 144.",
+   "comentarios": {
+    "A": "Somou; escolhas em etapas independentes se MULTIPLICAM.",
+    "B": "Esqueceu uma das etapas.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 144.",
+    "E": "Usou combinação de todos os itens juntos; aqui há um de cada grupo."
+   },
+   "topico": "Contagem",
+   "conceito": "Princípio multiplicativo: etapas independentes, multiplique. Ordem importa: arranjo A(n,k) = n!/(n−k)!; todos em fila: n!. Ordem não importa: combinação C(n,k) = n!/(k!(n−k)!).",
+   "explicar": "Como você decide se a ordem importa (arranjo/permutação) ou não importa (combinação)? Dê um exemplo de cada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Ana, Bia e Caio trabalham numa agência; cada um tem um cargo diferente (caixa, gerente, analista) e mora numa cidade diferente (Vitória, Serra, Vila Velha). Sabe-se que: Quem é gerente mora em Serra. Caio não é caixa. Ana não é caixa. Bia não mora em Vila Velha. Ana não mora em Vila Velha. Então, é correto afirmar que",
+   "alternativas": {
+    "A": "Bia é caixa e mora em Vitória.",
+    "B": "Bia é gerente e mora em Vitória.",
+    "C": "Bia é analista e mora em Vitória.",
+    "D": "Bia é analista e mora em Vila Velha.",
+    "E": "Bia é caixa e mora em Serra."
+   },
+   "gabarito": "A",
+   "resolucao": "Monte a tabela nomes × cargos × cidades e risque o que cada pista elimina.\nSolução única: Ana: gerente, Serra; Bia: caixa, Vitória; Caio: analista, Vila Velha.",
+   "comentarios": {
+    "B": "Contradiz uma das pistas (monte a tabela e confira).",
+    "C": "Contradiz uma das pistas (monte a tabela e confira).",
+    "D": "Contradiz uma das pistas (monte a tabela e confira).",
+    "E": "Contradiz uma das pistas (monte a tabela e confira)."
+   },
+   "topico": "Associação lógica",
+   "conceito": "Monte a tabela pessoas × atributos, marque o que as pistas eliminam e confirme: cada linha e cada coluna com um único \"sim\".",
+   "explicar": "Como você organiza uma questão de associação (quem faz o quê)? Explique o método da tabela com um exemplo seu.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Na sequência 7, 9, 14, 22, 33, …, o próximo termo é",
+   "alternativas": {
+    "A": "44.",
+    "B": "47.",
+    "C": "49.",
+    "D": "50.",
+    "E": "66."
+   },
+   "gabarito": "B",
+   "resolucao": "Regra: as diferenças crescem 3 a cada passo (2, 5, 8, 11, 14).\nPróximo: 47.",
+   "comentarios": {
+    "A": "Repetiu a última diferença; ela cresce a cada passo.",
+    "D": "Somou um passo a mais.",
+    "E": "Achou que dobrava.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 47."
+   },
+   "topico": "Sequências",
+   "conceito": "Teste a diferença entre termos (PA), a razão (PG) e padrões alternados (duas sequências intercaladas).",
+   "explicar": "Como você procura a regra de uma sequência? Que perguntas faz aos números (diferença, razão, alternância)?",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Entre 12 candidatos, serão escolhidos um presidente e um vice-presidente (pessoas diferentes). O número de escolhas possíveis é",
+   "alternativas": {
+    "A": "66.",
+    "B": "132.",
+    "C": "142.",
+    "D": "144.",
+    "E": "264."
+   },
+   "gabarito": "B",
+   "resolucao": "Cargos diferentes: a ordem importa.\n12 opções para presidente × 11 para vice = 132.",
+   "comentarios": {
+    "A": "Com cargos diferentes, a ordem importa: presidente A e vice B é diferente de presidente B e vice A. Não divida por 2.",
+    "D": "A mesma pessoa não pode ocupar os dois cargos.",
+    "E": "Usou permutação de todos.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 132."
+   },
+   "topico": "Contagem",
+   "conceito": "Princípio multiplicativo: etapas independentes, multiplique. Ordem importa: arranjo A(n,k) = n!/(n−k)!; todos em fila: n!. Ordem não importa: combinação C(n,k) = n!/(k!(n−k)!).",
+   "explicar": "Como você decide se a ordem importa (arranjo/permutação) ou não importa (combinação)? Dê um exemplo de cada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma proposição logicamente equivalente a \"Se o gerente aprova, então a taxa sobe\" é:",
+   "alternativas": {
+    "A": "Se o gerente não aprova, então a taxa não sobe.",
+    "B": "Se a taxa sobe, então o gerente aprova.",
+    "C": "O gerente aprova e a taxa sobe.",
+    "D": "Se a taxa não sobe, então o gerente não aprova.",
+    "E": "O gerente aprova e a taxa não sobe."
+   },
+   "gabarito": "D",
+   "resolucao": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q.\nAqui: Se a taxa não sobe, então o gerente não aprova.\nRecíproca e inversa NÃO são equivalentes.",
+   "comentarios": {
+    "A": "É a INVERSA (\"se não p, então não q\"): não equivale.",
+    "B": "É a RECÍPROCA (\"se q, então p\"): não equivale.",
+    "C": "\"p e q\" exige as duas; \"se p, então q\" é verdadeira também quando p é falsa.",
+    "E": "Isso é a NEGAÇÃO da condicional, não uma equivalente."
+   },
+   "topico": "Equivalências lógicas",
+   "conceito": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q. A recíproca (q → p) e a inversa (~p → ~q) NÃO são equivalentes.",
+   "explicar": "Por que \"se p, então q\" equivale a \"se não q, então não p\", mas NÃO equivale a \"se q, então p\"? Use um exemplo do dia a dia.",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Uma proposição logicamente equivalente a \"Se o sistema cai, então Bruno trabalha\" é:",
+   "alternativas": {
+    "A": "O sistema não cai ou Bruno trabalha.",
+    "B": "Se o sistema não cai, então Bruno não trabalha.",
+    "C": "O sistema cai e Bruno trabalha.",
+    "D": "O sistema cai e Bruno não trabalha.",
+    "E": "Se Bruno trabalha, então o sistema cai."
+   },
+   "gabarito": "A",
+   "resolucao": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q.\nAqui: O sistema não cai ou Bruno trabalha.\nRecíproca e inversa NÃO são equivalentes.",
+   "comentarios": {
+    "B": "É a INVERSA (\"se não p, então não q\"): não equivale.",
+    "C": "\"p e q\" exige as duas; \"se p, então q\" é verdadeira também quando p é falsa.",
+    "D": "Isso é a NEGAÇÃO da condicional, não uma equivalente.",
+    "E": "É a RECÍPROCA (\"se q, então p\"): não equivale."
+   },
+   "topico": "Equivalências lógicas",
+   "conceito": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q. A recíproca (q → p) e a inversa (~p → ~q) NÃO são equivalentes.",
+   "explicar": "Por que \"se p, então q\" equivale a \"se não q, então não p\", mas NÃO equivale a \"se q, então p\"? Use um exemplo do dia a dia.",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "O número de anagramas da palavra RENDA (todas as letras são diferentes) é",
+   "alternativas": {
+    "A": "10.",
+    "B": "24.",
+    "C": "25.",
+    "D": "60.",
+    "E": "120."
+   },
+   "gabarito": "E",
+   "resolucao": "Todas as letras em fila, ordem importa: 5! = 5 × 4 × 3 × 2 × 1 = 120.",
+   "comentarios": {
+    "C": "5 × 5: as escolhas diminuem a cada posição (5, 4, …).",
+    "A": "Combinação não serve: em anagrama a ordem importa.",
+    "B": "(5−1)! é para arranjo em círculo, não em fila.",
+    "D": "Dividiu por 2 sem letra repetida."
+   },
+   "topico": "Contagem",
+   "conceito": "Princípio multiplicativo: etapas independentes, multiplique. Ordem importa: arranjo A(n,k) = n!/(n−k)!; todos em fila: n!. Ordem não importa: combinação C(n,k) = n!/(k!(n−k)!).",
+   "explicar": "Como você decide se a ordem importa (arranjo/permutação) ou não importa (combinação)? Dê um exemplo de cada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Considere as premissas: \"Se o gerente aprova, então Ana estuda\" e \"Ana não estuda\". A partir delas, pode-se concluir corretamente que",
+   "alternativas": {
+    "A": "O gerente aprova.",
+    "B": "O gerente não aprova.",
+    "C": "O gerente aprova e Ana não estuda.",
+    "D": "Nada se pode concluir sobre as duas proposições.",
+    "E": "Ana estuda."
+   },
+   "gabarito": "B",
+   "resolucao": "Premissa 1: p → q. Premissa 2: ~q.\nÉ modus tollens (nega o consequente, nega o antecedente).\nTeste de validade: procure um caso com as premissas verdadeiras e a conclusão falsa; se existir, a conclusão não decorre.",
+   "comentarios": {
+    "A": "Contradiz as premissas: não pode ser verdade junto com elas.",
+    "C": "Contradiz as premissas: não pode ser verdade junto com elas.",
+    "D": "Pode-se: é modus tollens (nega o consequente, nega o antecedente).",
+    "E": "Contradiz as premissas: não pode ser verdade junto com elas."
+   },
+   "topico": "Argumentos válidos",
+   "conceito": "Válidos: modus ponens (p → q, p ⊢ q) e modus tollens (p → q, ~q ⊢ ~p). Falácias: afirmar o consequente (q ⊢ p) e negar o antecedente (~p ⊢ ~q).",
+   "explicar": "Quando uma conclusão \"decorre necessariamente\" das premissas? Explique por que, de \"se chove, a rua molha\" e \"a rua está molhada\", não dá para concluir que choveu.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Ana, Bia e Caio trabalham numa agência; cada um tem um cargo diferente (caixa, gerente, analista) e mora numa cidade diferente (Vitória, Serra, Vila Velha). Sabe-se que: Bia não é caixa. Quem é caixa mora em Serra. Caio não mora em Serra. Caio não é gerente. Caio não mora em Vila Velha. Então, é correto afirmar que",
+   "alternativas": {
+    "A": "Ana é caixa e mora em Serra.",
+    "B": "Ana é analista e mora em Vila Velha.",
+    "C": "Ana é analista e mora em Vitória.",
+    "D": "Ana é caixa e mora em Vila Velha.",
+    "E": "Ana é analista e mora em Serra."
+   },
+   "gabarito": "A",
+   "resolucao": "Monte a tabela nomes × cargos × cidades e risque o que cada pista elimina.\nSolução única: Ana: caixa, Serra; Bia: gerente, Vila Velha; Caio: analista, Vitória.",
+   "comentarios": {
+    "B": "Contradiz uma das pistas (monte a tabela e confira).",
+    "C": "Contradiz uma das pistas (monte a tabela e confira).",
+    "D": "Contradiz uma das pistas (monte a tabela e confira).",
+    "E": "Contradiz uma das pistas (monte a tabela e confira)."
+   },
+   "topico": "Associação lógica",
+   "conceito": "Monte a tabela pessoas × atributos, marque o que as pistas eliminam e confirme: cada linha e cada coluna com um único \"sim\".",
+   "explicar": "Como você organiza uma questão de associação (quem faz o quê)? Explique o método da tabela com um exemplo seu.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "O número de anagramas da palavra SALDO (todas as letras são diferentes) é",
+   "alternativas": {
+    "A": "10.",
+    "B": "24.",
+    "C": "25.",
+    "D": "60.",
+    "E": "120."
+   },
+   "gabarito": "E",
+   "resolucao": "Todas as letras em fila, ordem importa: 5! = 5 × 4 × 3 × 2 × 1 = 120.",
+   "comentarios": {
+    "C": "5 × 5: as escolhas diminuem a cada posição (5, 4, …).",
+    "A": "Combinação não serve: em anagrama a ordem importa.",
+    "B": "(5−1)! é para arranjo em círculo, não em fila.",
+    "D": "Dividiu por 2 sem letra repetida."
+   },
+   "topico": "Contagem",
+   "conceito": "Princípio multiplicativo: etapas independentes, multiplique. Ordem importa: arranjo A(n,k) = n!/(n−k)!; todos em fila: n!. Ordem não importa: combinação C(n,k) = n!/(k!(n−k)!).",
+   "explicar": "Como você decide se a ordem importa (arranjo/permutação) ou não importa (combinação)? Dê um exemplo de cada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um cliente pode montar um pacote escolhendo 1 entre 4 cartões, 1 entre 2 seguros e 1 entre 4 planos de capitalização. O número de pacotes diferentes é",
+   "alternativas": {
+    "A": "8.",
+    "B": "10.",
+    "C": "32.",
+    "D": "64.",
+    "E": "120."
+   },
+   "gabarito": "C",
+   "resolucao": "Princípio multiplicativo: 4 × 2 × 4 = 32.",
+   "comentarios": {
+    "B": "Somou; escolhas em etapas independentes se MULTIPLICAM.",
+    "A": "Esqueceu uma das etapas.",
+    "E": "Usou combinação de todos os itens juntos; aqui há um de cada grupo.",
+    "D": "O dobro do certo."
+   },
+   "topico": "Contagem",
+   "conceito": "Princípio multiplicativo: etapas independentes, multiplique. Ordem importa: arranjo A(n,k) = n!/(n−k)!; todos em fila: n!. Ordem não importa: combinação C(n,k) = n!/(k!(n−k)!).",
+   "explicar": "Como você decide se a ordem importa (arranjo/permutação) ou não importa (combinação)? Dê um exemplo de cada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Considere as premissas: \"Se o cliente paga em dia, então Carla viaja\" e \"Carla viaja\". A partir delas, pode-se concluir corretamente que",
+   "alternativas": {
+    "A": "O cliente não paga em dia.",
+    "B": "Não é possível concluir se o cliente paga em dia ou não.",
+    "C": "O cliente paga em dia.",
+    "D": "Carla não viaja.",
+    "E": "O cliente paga em dia e Carla viaja."
+   },
+   "gabarito": "B",
+   "resolucao": "Premissa 1: p → q. Premissa 2: q.\nCuidado com a falácia da afirmação do consequente.\nTeste de validade: procure um caso com as premissas verdadeiras e a conclusão falsa; se existir, a conclusão não decorre.",
+   "comentarios": {
+    "A": "Não decorre: há um caso com as premissas verdadeiras e esta conclusão falsa.",
+    "C": "Afirmar o consequente é falácia: q verdadeiro não garante p.",
+    "D": "Contradiz as premissas: não pode ser verdade junto com elas.",
+    "E": "Não decorre: há um caso com as premissas verdadeiras e esta conclusão falsa."
+   },
+   "topico": "Argumentos válidos",
+   "conceito": "Válidos: modus ponens (p → q, p ⊢ q) e modus tollens (p → q, ~q ⊢ ~p). Falácias: afirmar o consequente (q ⊢ p) e negar o antecedente (~p ⊢ ~q).",
+   "explicar": "Quando uma conclusão \"decorre necessariamente\" das premissas? Explique por que, de \"se chove, a rua molha\" e \"a rua está molhada\", não dá para concluir que choveu.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "De um grupo de 9 funcionários, quer-se formar uma comissão de 3 pessoas, sem cargos. O número de comissões diferentes é",
+   "alternativas": {
+    "A": "27.",
+    "B": "36.",
+    "C": "72.",
+    "D": "84.",
+    "E": "504."
+   },
+   "gabarito": "D",
+   "resolucao": "Sem cargos, a ordem não importa: combinação.\nC(9,3) = 9! ÷ (3! · 6!) = 84.",
+   "comentarios": {
+    "A": "Multiplicou n por k; não é a fórmula.",
+    "C": "Fórmula montada errado.",
+    "B": "Usou 2 em vez de 3.",
+    "E": "É o arranjo A(9,3): contou a mesma comissão em ordens diferentes; divida por 3! = 6."
+   },
+   "topico": "Contagem",
+   "conceito": "Princípio multiplicativo: etapas independentes, multiplique. Ordem importa: arranjo A(n,k) = n!/(n−k)!; todos em fila: n!. Ordem não importa: combinação C(n,k) = n!/(k!(n−k)!).",
+   "explicar": "Como você decide se a ordem importa (arranjo/permutação) ou não importa (combinação)? Dê um exemplo de cada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma proposição logicamente equivalente a \"Se Ana estuda, então a agência abre\" é:",
+   "alternativas": {
+    "A": "Ana estuda e a agência não abre.",
+    "B": "Se Ana não estuda, então a agência não abre.",
+    "C": "Ana estuda e a agência abre.",
+    "D": "Se a agência abre, então Ana estuda.",
+    "E": "Se a agência não abre, então Ana não estuda."
+   },
+   "gabarito": "E",
+   "resolucao": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q.\nAqui: Se a agência não abre, então Ana não estuda.\nRecíproca e inversa NÃO são equivalentes.",
+   "comentarios": {
+    "A": "Isso é a NEGAÇÃO da condicional, não uma equivalente.",
+    "B": "É a INVERSA (\"se não p, então não q\"): não equivale.",
+    "C": "\"p e q\" exige as duas; \"se p, então q\" é verdadeira também quando p é falsa.",
+    "D": "É a RECÍPROCA (\"se q, então p\"): não equivale."
+   },
+   "topico": "Equivalências lógicas",
+   "conceito": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q. A recíproca (q → p) e a inversa (~p → ~q) NÃO são equivalentes.",
+   "explicar": "Por que \"se p, então q\" equivale a \"se não q, então não p\", mas NÃO equivale a \"se q, então p\"? Use um exemplo do dia a dia.",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "A negação de \"Todo contrato tem cláusula de multa\" é:",
+   "alternativas": {
+    "A": "Nenhum contrato tem cláusula de multa.",
+    "B": "Todo contrato não tem cláusula de multa.",
+    "C": "Só os contratos novos têm cláusula de multa.",
+    "D": "Algum contrato não tem cláusula de multa.",
+    "E": "Algum contrato tem cláusula de multa."
+   },
+   "gabarito": "D",
+   "resolucao": "~(todo A é B) = algum A não é B. ~(algum A é B) = nenhum A é B. ~(nenhum A é B) = algum A é B.\nAqui: Algum contrato não tem cláusula de multa.",
+   "comentarios": {
+    "A": "Para negar \"todo\", basta UM que não seja: \"algum… não\".",
+    "B": "Para negar \"todo\", basta UM que não seja: \"algum… não\".",
+    "C": "Para negar \"todo\", basta UM que não seja: \"algum… não\".",
+    "E": "Para negar \"todo\", basta UM que não seja: \"algum… não\"."
+   },
+   "topico": "Quantificadores",
+   "conceito": "~(todo A é B) = algum A não é B. ~(algum A é B) = nenhum A é B. ~(nenhum A é B) = algum A é B.",
+   "explicar": "Qual é a negação de \"todo A é B\" e de \"nenhum A é B\"? Por que \"todo A não é B\" não serve?",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Na sequência 2, 27, 5, 25, 8, 23, …, o próximo termo é",
+   "alternativas": {
+    "A": "9.",
+    "B": "11.",
+    "C": "14.",
+    "D": "21.",
+    "E": "26."
+   },
+   "gabarito": "B",
+   "resolucao": "Regra: são duas sequências intercaladas: nas posições ímpares soma 3; nas pares subtrai 2.\nPróximo: 11.",
+   "comentarios": {
+    "A": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 11.",
+    "D": "Continuou a sequência das posições pares; o próximo é uma posição ímpar.",
+    "E": "Aplicou a regra das ímpares ao último termo (que é par).",
+    "C": "Pulou um passo."
+   },
+   "topico": "Sequências",
+   "conceito": "Teste a diferença entre termos (PA), a razão (PG) e padrões alternados (duas sequências intercaladas).",
+   "explicar": "Como você procura a regra de uma sequência? Que perguntas faz aos números (diferença, razão, alternância)?",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "A negação de \"Todo bancário é organizado\" é:",
+   "alternativas": {
+    "A": "Algum bancário não é organizado.",
+    "B": "Nenhum bancário é organizado.",
+    "C": "Algum organizado não é bancário.",
+    "D": "Algum bancário é organizado.",
+    "E": "Todo bancário não é organizado."
+   },
+   "gabarito": "A",
+   "resolucao": "~(todo A é B) = algum A não é B. ~(algum A é B) = nenhum A é B. ~(nenhum A é B) = algum A é B.\nAqui: Algum bancário não é organizado.",
+   "comentarios": {
+    "B": "Para negar \"todo\", basta UM que não seja: \"algum… não\".",
+    "C": "Para negar \"todo\", basta UM que não seja: \"algum… não\".",
+    "D": "Para negar \"todo\", basta UM que não seja: \"algum… não\".",
+    "E": "Para negar \"todo\", basta UM que não seja: \"algum… não\"."
+   },
+   "topico": "Quantificadores",
+   "conceito": "~(todo A é B) = algum A não é B. ~(algum A é B) = nenhum A é B. ~(nenhum A é B) = algum A é B.",
+   "explicar": "Qual é a negação de \"todo A é B\" e de \"nenhum A é B\"? Por que \"todo A não é B\" não serve?",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "A negação lógica da proposição \"O gerente aprova e Ana estuda\" é:",
+   "alternativas": {
+    "A": "O gerente não aprova e Ana não estuda.",
+    "B": "O gerente aprova e Ana estuda.",
+    "C": "O gerente aprova ou Ana não estuda.",
+    "D": "O gerente não aprova ou Ana não estuda.",
+    "E": "O gerente não aprova ou Ana estuda."
+   },
+   "gabarito": "D",
+   "resolucao": "Forma: p ∧ q. Negação: ~p ∨ ~q.\nAqui: O gerente não aprova ou Ana não estuda.\nConferido na tabela-verdade: é verdadeira exatamente quando a original é falsa.",
+   "comentarios": {
+    "A": "Trocou \"e\" mas manteve o conectivo: a negação de \"e\" vira \"ou\" (De Morgan).",
+    "B": "É a própria frase original, não a negação.",
+    "C": "Teste na tabela-verdade: essa frase não é verdadeira exatamente quando a original é falsa.",
+    "E": "Teste na tabela-verdade: essa frase não é verdadeira exatamente quando a original é falsa."
+   },
+   "topico": "Negação de proposições",
+   "conceito": "Negações: ~(p ∧ q) ≡ ~p ∨ ~q; ~(p ∨ q) ≡ ~p ∧ ~q; ~(p → q) ≡ p ∧ ~q.",
+   "explicar": "Como se nega \"p e q\", \"p ou q\" e \"se p, então q\"? Explique por que a negação de \"se p, então q\" não é outro \"se… então\".",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "A negação lógica da proposição \"A meta é batida ou o gerente aprova\" é:",
+   "alternativas": {
+    "A": "A meta não é batida ou o gerente não aprova.",
+    "B": "A meta não é batida e o gerente não aprova.",
+    "C": "A meta é batida e o gerente não aprova.",
+    "D": "Se a meta não é batida, então o gerente aprova.",
+    "E": "A meta não é batida e o gerente aprova."
+   },
+   "gabarito": "B",
+   "resolucao": "Forma: p ∨ q. Negação: ~p ∧ ~q.\nAqui: A meta não é batida e o gerente não aprova.\nConferido na tabela-verdade: é verdadeira exatamente quando a original é falsa.",
+   "comentarios": {
+    "A": "A negação de \"ou\" vira \"e\", com as duas partes negadas.",
+    "C": "Teste na tabela-verdade: essa frase não é verdadeira exatamente quando a original é falsa.",
+    "D": "Teste na tabela-verdade: essa frase não é verdadeira exatamente quando a original é falsa.",
+    "E": "Teste na tabela-verdade: essa frase não é verdadeira exatamente quando a original é falsa."
+   },
+   "topico": "Negação de proposições",
+   "conceito": "Negações: ~(p ∧ q) ≡ ~p ∨ ~q; ~(p ∨ q) ≡ ~p ∧ ~q; ~(p → q) ≡ p ∧ ~q.",
+   "explicar": "Como se nega \"p e q\", \"p ou q\" e \"se p, então q\"? Explique por que a negação de \"se p, então q\" não é outro \"se… então\".",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "De um grupo de 12 funcionários, quer-se formar uma comissão de 3 pessoas, sem cargos. O número de comissões diferentes é",
+   "alternativas": {
+    "A": "36.",
+    "B": "66.",
+    "C": "132.",
+    "D": "220.",
+    "E": "1.320."
+   },
+   "gabarito": "D",
+   "resolucao": "Sem cargos, a ordem não importa: combinação.\nC(12,3) = 12! ÷ (3! · 9!) = 220.",
+   "comentarios": {
+    "A": "Multiplicou n por k; não é a fórmula.",
+    "C": "Fórmula montada errado.",
+    "B": "Usou 2 em vez de 3.",
+    "E": "É o arranjo A(12,3): contou a mesma comissão em ordens diferentes; divida por 3! = 6."
+   },
+   "topico": "Contagem",
+   "conceito": "Princípio multiplicativo: etapas independentes, multiplique. Ordem importa: arranjo A(n,k) = n!/(n−k)!; todos em fila: n!. Ordem não importa: combinação C(n,k) = n!/(k!(n−k)!).",
+   "explicar": "Como você decide se a ordem importa (arranjo/permutação) ou não importa (combinação)? Dê um exemplo de cada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "A negação de \"Nenhum gerente é impaciente\" é:",
+   "alternativas": {
+    "A": "Algum gerente é impaciente.",
+    "B": "Todo gerente é paciente.",
+    "C": "Algum gerente não é impaciente.",
+    "D": "Todo gerente é impaciente.",
+    "E": "Nenhum impaciente é gerente."
+   },
+   "gabarito": "A",
+   "resolucao": "~(todo A é B) = algum A não é B. ~(algum A é B) = nenhum A é B. ~(nenhum A é B) = algum A é B.\nAqui: Algum gerente é impaciente.",
+   "comentarios": {
+    "B": "Para negar \"nenhum\", basta UM que seja: \"algum… é\".",
+    "C": "Para negar \"nenhum\", basta UM que seja: \"algum… é\".",
+    "D": "Para negar \"nenhum\", basta UM que seja: \"algum… é\".",
+    "E": "Para negar \"nenhum\", basta UM que seja: \"algum… é\"."
+   },
+   "topico": "Quantificadores",
+   "conceito": "~(todo A é B) = algum A não é B. ~(algum A é B) = nenhum A é B. ~(nenhum A é B) = algum A é B.",
+   "explicar": "Qual é a negação de \"todo A é B\" e de \"nenhum A é B\"? Por que \"todo A não é B\" não serve?",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "O número de anagramas da palavra BANCOS (todas as letras são diferentes) é",
+   "alternativas": {
+    "A": "15.",
+    "B": "36.",
+    "C": "120.",
+    "D": "360.",
+    "E": "720."
+   },
+   "gabarito": "E",
+   "resolucao": "Todas as letras em fila, ordem importa: 6! = 6 × 5 × 4 × 3 × 2 × 1 = 720.",
+   "comentarios": {
+    "B": "6 × 6: as escolhas diminuem a cada posição (6, 5, …).",
+    "A": "Combinação não serve: em anagrama a ordem importa.",
+    "C": "(6−1)! é para arranjo em círculo, não em fila.",
+    "D": "Dividiu por 2 sem letra repetida."
+   },
+   "topico": "Contagem",
+   "conceito": "Princípio multiplicativo: etapas independentes, multiplique. Ordem importa: arranjo A(n,k) = n!/(n−k)!; todos em fila: n!. Ordem não importa: combinação C(n,k) = n!/(k!(n−k)!).",
+   "explicar": "Como você decide se a ordem importa (arranjo/permutação) ou não importa (combinação)? Dê um exemplo de cada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um cliente pode montar um pacote escolhendo 1 entre 5 cartões, 1 entre 6 seguros e 1 entre 4 planos de capitalização. O número de pacotes diferentes é",
+   "alternativas": {
+    "A": "15.",
+    "B": "30.",
+    "C": "120.",
+    "D": "240.",
+    "E": "455."
+   },
+   "gabarito": "C",
+   "resolucao": "Princípio multiplicativo: 5 × 6 × 4 = 120.",
+   "comentarios": {
+    "A": "Somou; escolhas em etapas independentes se MULTIPLICAM.",
+    "B": "Esqueceu uma das etapas.",
+    "E": "Usou combinação de todos os itens juntos; aqui há um de cada grupo.",
+    "D": "O dobro do certo."
+   },
+   "topico": "Contagem",
+   "conceito": "Princípio multiplicativo: etapas independentes, multiplique. Ordem importa: arranjo A(n,k) = n!/(n−k)!; todos em fila: n!. Ordem não importa: combinação C(n,k) = n!/(k!(n−k)!).",
+   "explicar": "Como você decide se a ordem importa (arranjo/permutação) ou não importa (combinação)? Dê um exemplo de cada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "A negação lógica da proposição \"O cliente paga em dia ou o gerente aprova\" é:",
+   "alternativas": {
+    "A": "Se o cliente não paga em dia, então o gerente aprova.",
+    "B": "O cliente paga em dia e o gerente não aprova.",
+    "C": "O cliente não paga em dia ou o gerente não aprova.",
+    "D": "O cliente não paga em dia e o gerente aprova.",
+    "E": "O cliente não paga em dia e o gerente não aprova."
+   },
+   "gabarito": "E",
+   "resolucao": "Forma: p ∨ q. Negação: ~p ∧ ~q.\nAqui: O cliente não paga em dia e o gerente não aprova.\nConferido na tabela-verdade: é verdadeira exatamente quando a original é falsa.",
+   "comentarios": {
+    "A": "Teste na tabela-verdade: essa frase não é verdadeira exatamente quando a original é falsa.",
+    "B": "Teste na tabela-verdade: essa frase não é verdadeira exatamente quando a original é falsa.",
+    "C": "A negação de \"ou\" vira \"e\", com as duas partes negadas.",
+    "D": "Teste na tabela-verdade: essa frase não é verdadeira exatamente quando a original é falsa."
+   },
+   "topico": "Negação de proposições",
+   "conceito": "Negações: ~(p ∧ q) ≡ ~p ∨ ~q; ~(p ∨ q) ≡ ~p ∧ ~q; ~(p → q) ≡ p ∧ ~q.",
+   "explicar": "Como se nega \"p e q\", \"p ou q\" e \"se p, então q\"? Explique por que a negação de \"se p, então q\" não é outro \"se… então\".",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "De um grupo de 9 funcionários, quer-se formar uma comissão de 2 pessoas, sem cargos. O número de comissões diferentes é",
+   "alternativas": {
+    "A": "9.",
+    "B": "18.",
+    "C": "36.",
+    "D": "38.",
+    "E": "72."
+   },
+   "gabarito": "C",
+   "resolucao": "Sem cargos, a ordem não importa: combinação.\nC(9,2) = 9! ÷ (2! · 7!) = 36.",
+   "comentarios": {
+    "B": "Multiplicou n por k; não é a fórmula.",
+    "A": "Fórmula montada errado.",
+    "E": "É o arranjo A(9,2): contou a mesma comissão em ordens diferentes; divida por 2! = 2.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 36."
+   },
+   "topico": "Contagem",
+   "conceito": "Princípio multiplicativo: etapas independentes, multiplique. Ordem importa: arranjo A(n,k) = n!/(n−k)!; todos em fila: n!. Ordem não importa: combinação C(n,k) = n!/(k!(n−k)!).",
+   "explicar": "Como você decide se a ordem importa (arranjo/permutação) ou não importa (combinação)? Dê um exemplo de cada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Na sequência 10, 12, 15, 19, 24, …, o próximo termo é",
+   "alternativas": {
+    "A": "28.",
+    "B": "29.",
+    "C": "30.",
+    "D": "31.",
+    "E": "48."
+   },
+   "gabarito": "C",
+   "resolucao": "Regra: as diferenças crescem 1 a cada passo (2, 3, 4, 5, 6).\nPróximo: 30.",
+   "comentarios": {
+    "B": "Repetiu a última diferença; ela cresce a cada passo.",
+    "A": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 30.",
+    "D": "Somou um passo a mais.",
+    "E": "Achou que dobrava."
+   },
+   "topico": "Sequências",
+   "conceito": "Teste a diferença entre termos (PA), a razão (PG) e padrões alternados (duas sequências intercaladas).",
+   "explicar": "Como você procura a regra de uma sequência? Que perguntas faz aos números (diferença, razão, alternância)?",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "De um grupo de 11 funcionários, quer-se formar uma comissão de 2 pessoas, sem cargos. O número de comissões diferentes é",
+   "alternativas": {
+    "A": "11.",
+    "B": "22.",
+    "C": "53.",
+    "D": "55.",
+    "E": "110."
+   },
+   "gabarito": "D",
+   "resolucao": "Sem cargos, a ordem não importa: combinação.\nC(11,2) = 11! ÷ (2! · 9!) = 55.",
+   "comentarios": {
+    "B": "Multiplicou n por k; não é a fórmula.",
+    "A": "Fórmula montada errado.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 55.",
+    "E": "É o arranjo A(11,2): contou a mesma comissão em ordens diferentes; divida por 2! = 2."
+   },
+   "topico": "Contagem",
+   "conceito": "Princípio multiplicativo: etapas independentes, multiplique. Ordem importa: arranjo A(n,k) = n!/(n−k)!; todos em fila: n!. Ordem não importa: combinação C(n,k) = n!/(k!(n−k)!).",
+   "explicar": "Como você decide se a ordem importa (arranjo/permutação) ou não importa (combinação)? Dê um exemplo de cada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Considere as premissas: \"Se chove, então o gerente aprova\" e \"O gerente não aprova\". A partir delas, pode-se concluir corretamente que",
+   "alternativas": {
+    "A": "Chove.",
+    "B": "Não chove.",
+    "C": "Nada se pode concluir sobre as duas proposições.",
+    "D": "Chove e o gerente não aprova.",
+    "E": "O gerente aprova."
+   },
+   "gabarito": "B",
+   "resolucao": "Premissa 1: p → q. Premissa 2: ~q.\nÉ modus tollens (nega o consequente, nega o antecedente).\nTeste de validade: procure um caso com as premissas verdadeiras e a conclusão falsa; se existir, a conclusão não decorre.",
+   "comentarios": {
+    "A": "Contradiz as premissas: não pode ser verdade junto com elas.",
+    "C": "Pode-se: é modus tollens (nega o consequente, nega o antecedente).",
+    "D": "Contradiz as premissas: não pode ser verdade junto com elas.",
+    "E": "Contradiz as premissas: não pode ser verdade junto com elas."
+   },
+   "topico": "Argumentos válidos",
+   "conceito": "Válidos: modus ponens (p → q, p ⊢ q) e modus tollens (p → q, ~q ⊢ ~p). Falácias: afirmar o consequente (q ⊢ p) e negar o antecedente (~p ⊢ ~q).",
+   "explicar": "Quando uma conclusão \"decorre necessariamente\" das premissas? Explique por que, de \"se chove, a rua molha\" e \"a rua está molhada\", não dá para concluir que choveu.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Ana, Bia e Caio trabalham numa agência; cada um tem um cargo diferente (caixa, gerente, analista) e mora numa cidade diferente (Vitória, Serra, Vila Velha). Sabe-se que: Quem é caixa mora em Vila Velha. Caio não mora em Serra. Ana não é caixa. Bia não é gerente. Ana não mora em Serra. Então, é correto afirmar que",
+   "alternativas": {
+    "A": "Caio é caixa e mora em Vila Velha.",
+    "B": "Caio é gerente e mora em Vila Velha.",
+    "C": "Caio é caixa e mora em Vitória.",
+    "D": "Caio é analista e mora em Serra.",
+    "E": "Caio é gerente e mora em Serra."
+   },
+   "gabarito": "A",
+   "resolucao": "Monte a tabela nomes × cargos × cidades e risque o que cada pista elimina.\nSolução única: Ana: gerente, Vitória; Bia: analista, Serra; Caio: caixa, Vila Velha.",
+   "comentarios": {
+    "B": "Contradiz uma das pistas (monte a tabela e confira).",
+    "C": "Contradiz uma das pistas (monte a tabela e confira).",
+    "D": "Contradiz uma das pistas (monte a tabela e confira).",
+    "E": "Contradiz uma das pistas (monte a tabela e confira)."
+   },
+   "topico": "Associação lógica",
+   "conceito": "Monte a tabela pessoas × atributos, marque o que as pistas eliminam e confirme: cada linha e cada coluna com um único \"sim\".",
+   "explicar": "Como você organiza uma questão de associação (quem faz o quê)? Explique o método da tabela com um exemplo seu.",
+   "habilidade": "interpretar"
+  },
+  {
+   "enunciado": "Entre 9 candidatos, serão escolhidos um presidente e um vice-presidente (pessoas diferentes). O número de escolhas possíveis é",
+   "alternativas": {
+    "A": "18.",
+    "B": "36.",
+    "C": "70.",
+    "D": "72.",
+    "E": "81."
+   },
+   "gabarito": "D",
+   "resolucao": "Cargos diferentes: a ordem importa.\n9 opções para presidente × 8 para vice = 72.",
+   "comentarios": {
+    "B": "Com cargos diferentes, a ordem importa: presidente A e vice B é diferente de presidente B e vice A. Não divida por 2.",
+    "A": "Somou; são etapas: multiplique.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 72.",
+    "E": "A mesma pessoa não pode ocupar os dois cargos."
+   },
+   "topico": "Contagem",
+   "conceito": "Princípio multiplicativo: etapas independentes, multiplique. Ordem importa: arranjo A(n,k) = n!/(n−k)!; todos em fila: n!. Ordem não importa: combinação C(n,k) = n!/(k!(n−k)!).",
+   "explicar": "Como você decide se a ordem importa (arranjo/permutação) ou não importa (combinação)? Dê um exemplo de cada.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um cliente pode montar um pacote escolhendo 1 entre 3 cartões, 1 entre 6 seguros e 1 entre 4 planos de capitalização. O número de pacotes diferentes é",
+   "alternativas": {
+    "A": "13.",
+    "B": "18.",
+    "C": "72.",
+    "D": "144.",
+    "E": "286."
+   },
+   "gabarito": "C",
+   "resolucao": "Princípio multiplicativo: 3 × 6 × 4 = 72.",
+   "comentarios": {
+    "A": "Somou; escolhas em etapas independentes se MULTIPLICAM.",
+    "B": "Esqueceu uma das etapas.",
+    "E": "Usou combinação de todos os itens juntos; aqui há um de cada grupo.",
+    "D": "O dobro do certo."
+   },
+   "topico": "Contagem",
+   "conceito": "Princípio multiplicativo: etapas independentes, multiplique. Ordem importa: arranjo A(n,k) = n!/(n−k)!; todos em fila: n!. Ordem não importa: combinação C(n,k) = n!/(k!(n−k)!).",
+   "explicar": "Como você decide se a ordem importa (arranjo/permutação) ou não importa (combinação)? Dê um exemplo de cada.",
+   "habilidade": "calcular"
+  }
+ ],
+ "fontes": [
+  "Lógica conferida em Python: cada negação/equivalência pela tabela-verdade (só a certa coincide), cada argumento por força bruta (procura valoração com premissas verdadeiras e conclusão falsa), cada associação com solução única por permutações; contagens com math.comb e math.perm"
+ ]
+}

@@ -1,0 +1,65 @@
+{
+ "materia": "Conhecimentos Bancários",
+ "notas": [
+  {
+   "lugar": [
+    "Sistema Financeiro Nacional",
+    "Órgãos normativos (CMN, CNSP, CNPC)"
+   ],
+   "texto": "## CMN e CNSP: quem faz as regras\n\n**CMN (Conselho Monetário Nacional)**: órgão normativo máximo do sistema financeiro. Três membros (Lei 9.069/1995, art. 8º, redação da Lei 14.600/2023):\n- **Ministro da Fazenda, que preside**;\n- Ministro do Planejamento e Orçamento;\n- Presidente do Banco Central.\n\n**CNSP (Conselho Nacional de Seguros Privados)**: encabeça o Sistema Nacional de Seguros Privados (Decreto-Lei 73/1966, art. 8º), junto com a Susep, os resseguradores e as instituições autorizadas a operar seguros.\n\n> **PEGADINHA** CVM e BNDES NÃO fazem parte do CMN; o Presidente da República também não."
+  },
+  {
+   "lugar": [
+    "Sistema Financeiro Nacional",
+    "Supervisores (Bacen, CVM, Susep, Previc)"
+   ],
+   "texto": "## Banco Central: objetivo, autonomia e competências\n\n**Objetivo fundamental** (LC 179/2021, art. 1º): **assegurar a estabilidade de preços**.\nSem prejuízo dele: zelar pela estabilidade e eficiência do sistema financeiro, suavizar as flutuações da atividade econômica e **fomentar o pleno emprego**.\n\n**Autonomia** (art. 6º): autarquia de **natureza especial**, sem vinculação a Ministério, com autonomia técnica, operacional, administrativa e financeira.\n\n**Dirigentes** (art. 4º): indicados e nomeados pelo **Presidente da República**, após aprovação do **Senado**. Mandato do Presidente do BC: **4 anos**, começando em **1º de janeiro do 3º ano** do mandato do Presidente da República.\n\n**Competências privativas** (Lei 4.595, art. 10): emitir moeda (nos limites autorizados pelo CMN), redesconto e empréstimo às instituições financeiras, fiscalizar as instituições financeiras.\n\n> **PEGADINHA** Pleno emprego é objetivo \"sem prejuízo\", não o fundamental."
+  },
+  {
+   "lugar": [
+    "Seguros, previdência e capitalização",
+    "Previdência complementar aberta"
+   ],
+   "texto": "## Previdência complementar: aberta × fechada (LC 109/2001)\n\n**Abertas** (art. 36): **unicamente sociedades anônimas**; planos **acessíveis a quaisquer pessoas físicas**.\n\n**Fechadas** (art. 31), os \"fundos de pensão\": acessíveis **exclusivamente** a:\n- empregados de uma empresa ou grupo e servidores públicos (os **patrocinadores**);\n- associados de entidades profissionais, classistas ou setoriais (os **instituidores**).\nOrganizam-se como **fundação ou sociedade civil, sem fins lucrativos**.\n\n> **PEGADINHA** A FCC troca as descrições: \"S.A., qualquer pessoa\" é ABERTA; \"sem fins lucrativos, só empregados\" é FECHADA."
+  },
+  {
+   "lugar": [
+    "Seguros, previdência e capitalização",
+    "Consórcio"
+   ],
+   "texto": "## Consórcio (Lei 11.795/2008)\n\n- **O que é** (art. 2º): grupo com prazo e número de cotas definidos, promovido por administradora, para a aquisição de bens ou serviços por **autofinanciamento**, de forma isonômica.\n- **Contemplação** (art. 22, § 1º): por **sorteio ou lance**.\n- **Quem fiscaliza** (art. 6º): o **Banco Central** (não a Susep, não a CVM).\n- **Administradora** (art. 5º): sociedade limitada ou anônima; remunerada pela **taxa de administração**.\n\n> **PEGADINHA** Consórcio não tem juros: o custo é a taxa de administração."
+  },
+  {
+   "lugar": [
+    "Prevenção à lavagem de dinheiro (PLD/FT)",
+    "COAF"
+   ],
+   "texto": "## Comunicações ao Coaf\n\n**Por suspeita** (Lei 9.613/1998, art. 11, II): comunicar a **proposta ou a realização** da operação em **24 horas**, **sem dar ciência a ninguém, nem ao cliente**.\n\n**Por valor, mesmo sem suspeita** (Circular BCB 3.978/2020, art. 49): depósito, aporte ou saque **em espécie** de valor **igual ou superior a R$ 50.000**, e o pedido de **provisionamento** de saque nesse valor. Prazo: **até o dia útil seguinte**.\n\n**Guarda de cadastros e registros** (Lei 9.613, art. 10, § 2º): no mínimo **5 anos** a partir do encerramento da conta ou da conclusão da transação.\n\n> **PEGADINHA** \"Igual ou superior\": R$ 50.000,00 exatos já obrigam."
+  },
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Investimentos"
+   ],
+   "texto": "## FGC: o que tem garantia (Res. CMN 4.222/2013, Anexo II)\n\n**Limite:** até **R$ 250 mil por pessoa**, somando tudo na mesma instituição **ou no mesmo conglomerado** (art. 2º, § 3º).\n\n**Cobertos (art. 2º):** depósitos à vista, **poupança**, depósitos a prazo (**CDB**), conta-salário, letras de câmbio, letras imobiliárias e hipotecárias, **LCI** e **LCA**, e certas compromissadas.\n\n**Fora:** cotas de **fundos de investimento**, depósitos judiciais, recursos captados no exterior, instrumentos com cláusula de subordinação.\n\n**Exemplo:** R$ 180 mil em CDB no banco X + R$ 120 mil em LCI no banco Y, do mesmo conglomerado → garantia de **R$ 250 mil** (não R$ 300 mil)."
+  },
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Meios de pagamento"
+   ],
+   "texto": "## Cheque: prazos que a FCC cobra (Lei 7.357/1985)\n\n- **Apresentação** (art. 33): **30 dias** se emitido no lugar onde vai ser pago; **60 dias** se emitido em outro lugar do País ou no exterior. Conta da data de emissão.\n- **Prescrição da execução** (art. 59): **6 meses** contados do **fim do prazo de apresentação**.\n- **\"Pré-datado\"** (art. 32): o cheque é **pagável à vista**; apresentado antes da data, é pago no dia da apresentação.\n- **Atraso do portador** (art. 47, § 3º): ele perde a execução contra o emitente só se este tinha fundos no prazo e os perdeu sem culpa."
+  },
+  {
+   "lugar": [
+    "Regulação e consumidor",
+    "Regulação dos mercados financeiro e securitário"
+   ],
+   "texto": "## Sigilo bancário (LC 105/2001)\n\n**Regra** (art. 1º): as instituições financeiras conservam sigilo em suas **operações ativas e passivas e serviços prestados**.\n\n**Não é violação** (art. 1º, § 3º), entre outros:\n- troca de informações **entre instituições**, para cadastro (centrais de risco);\n- informar cadastro de emitentes de cheque sem fundos e de inadimplentes a **entidades de proteção ao crédito**;\n- **comunicar ilícitos** às autoridades;\n- revelar com o **consentimento expresso** do interessado.\n\n> **PEGADINHA** Consentimento tácito não serve: tem de ser EXPRESSO."
+  }
+ ],
+ "fontes": [
+  "Lei 9.069/1995, art. 8º; LC 179/2021, arts. 1º, 4º e 6º; Lei 4.595/1964, art. 10; DL 73/1966, art. 8º; LC 109/2001, arts. 31 e 36; Lei 11.795/2008, arts. 2º, 5º, 6º e 22; LC 105/2001, art. 1º; Lei 7.357/1985, arts. 32, 33, 47 e 59; Lei 9.613/1998, arts. 10 e 11 — planalto.gov.br",
+  "Circular BCB 3.978/2020, art. 49; Resolução CMN 4.222/2013, Anexo II, art. 2º — bcb.gov.br (busca de normas)"
+ ]
+}

@@ -1,0 +1,890 @@
+{
+ "tema": "Matemática Financeira: treino 1",
+ "materia": "Matemática Financeira",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "Um financiamento de R$ 24.000,00 será pago em 12 prestações mensais pelo Sistema de Amortização Constante (SAC), à taxa de 2% ao mês. Os juros pagos na 3ª prestação são",
+   "alternativas": {
+    "A": "R$ 40,00.",
+    "B": "R$ 360,00.",
+    "C": "R$ 390,00.",
+    "D": "R$ 400,00.",
+    "E": "R$ 480,00."
+   },
+   "gabarito": "D",
+   "resolucao": "Amortização (constante) = 24.000 ÷ 12 = R$ 2.000,00.\nSaldo antes da 3ª = 24.000 − 2 × 2.000 = R$ 20.000,00.\nJuros da 3ª = 20.000 × 2% = R$ 400,00.\nPrestação = amortização + juros = R$ 2.000,00 + R$ 400,00 = R$ 2.400,00.",
+   "comentarios": {
+    "B": "Usou o saldo depois da 3ª parcela; os juros da 3ª são sobre o saldo ANTES dela.",
+    "A": "Aplicou a taxa sobre a amortização; os juros são sobre o saldo devedor.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 400,00.",
+    "E": "Calculou os juros sobre a dívida INTEIRA (R$ 24.000,00); no SAC, os juros da 3ª são sobre o saldo depois de 2 amortizações."
+   },
+   "topico": "Sistemas de amortização",
+   "conceito": "SAC: amortização constante (dívida ÷ n); juros sobre o saldo, que cai; prestação decrescente. Price: prestação constante; no começo quase tudo é juro.",
+   "explicar": "No SAC, por que a prestação cai a cada mês, e na Tabela Price ela fica igual? Explique pelo que acontece com os juros e a amortização.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um capital de R$ 20.000,00 foi aplicado a juros simples de 5% ao mês durante 9 meses. Os juros obtidos foram de",
+   "alternativas": {
+    "A": "R$ 1.000,00.",
+    "B": "R$ 9.000,00.",
+    "C": "R$ 9.100,00.",
+    "D": "R$ 11.026,56.",
+    "E": "R$ 29.000,00."
+   },
+   "gabarito": "B",
+   "resolucao": "Juros simples: J = C · i · n.\nJ = 20.000 × 5/100 × 9 = R$ 9.000,00.\n(Por mês: R$ 1.000,00; em 9 meses, sempre o mesmo valor.)",
+   "comentarios": {
+    "A": "R$ 1.000,00 é o juro de 1 mês; faltou multiplicar por 9.",
+    "E": "R$ 29.000,00 é o MONTANTE (capital + juros); a pergunta é só os juros.",
+    "D": "R$ 11.026,56 seria a juros COMPOSTOS; aqui é simples.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 9.000,00."
+   },
+   "topico": "Juros simples",
+   "conceito": "Juros simples: o juro de cada período é sempre sobre o capital inicial. J = C · i · n e M = C · (1 + i · n). Taxa e prazo na mesma unidade.",
+   "explicar": "Explique a diferença entre juros simples e compostos com um exemplo seu de 3 meses: em qual deles o juro de cada mês é sempre o mesmo, e por quê?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma loja oferece um produto por R$ 10.000,00 à vista ou em um pagamento único daqui a 2 meses. Para as duas formas serem equivalentes a juros compostos de 2% ao mês, o pagamento a prazo deve ser de",
+   "alternativas": {
+    "A": "R$ 10.000,00.",
+    "B": "R$ 10.400,00.",
+    "C": "R$ 10.404,00.",
+    "D": "R$ 10.504,00.",
+    "E": "R$ 10.612,08."
+   },
+   "gabarito": "C",
+   "resolucao": "Levar para o futuro: VF = VP · (1 + i)^n.\nVF = 10.000 × (1 + 0,02)^2 = R$ 10.404,00.\nÀ vista ou esse valor na data combinada: dá no mesmo, a essa taxa.",
+   "comentarios": {
+    "B": "Juros simples nos dois meses: faltou o juro sobre juro.",
+    "A": "Sem juros, a prazo e à vista não seriam equivalentes.",
+    "E": "Elevou a 3; são 2 meses.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 10.404,00."
+   },
+   "topico": "Valor presente e equivalência",
+   "conceito": "Dinheiro em datas diferentes só se compara levado à mesma data: VF = VP · (1 + i)^n e VP = VF ÷ (1 + i)^n.",
+   "explicar": "O que significa dizer que R$ 1.000 hoje e R$ 1.100 daqui a um mês são \"equivalentes\" a 10% ao mês? Como você compara pagamentos em datas diferentes?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um título de R$ 2.750,00, com vencimento em 5 meses, é resgatado hoje com desconto racional (por dentro) simples de 2% ao mês. O valor atual do título é",
+   "alternativas": {
+    "A": "R$ 250,00.",
+    "B": "R$ 2.400,00.",
+    "C": "R$ 2.475,00.",
+    "D": "R$ 2.500,00.",
+    "E": "R$ 2.750,00."
+   },
+   "gabarito": "D",
+   "resolucao": "Racional (por dentro): A = N ÷ (1 + i · n).\nA = 2.750 ÷ (1 + 0,02 × 5) = 2.750 ÷ 1,1 = R$ 2.500,00.\nDesconto = R$ 250,00; o comercial seria maior: R$ 275,00.",
+   "comentarios": {
+    "C": "R$ 2.475,00 usa o desconto COMERCIAL (sobre o nominal); o racional é sobre o valor atual.",
+    "A": "R$ 250,00 é o desconto, não o valor atual.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 2.500,00.",
+    "E": "R$ 2.750,00 é o nominal."
+   },
+   "topico": "Desconto simples",
+   "conceito": "Desconto comercial (por fora): D = N · d · n, sobre o valor NOMINAL. Racional (por dentro): A = N ÷ (1 + i · n), o desconto é sobre o valor ATUAL. Para a mesma taxa, o comercial é maior.",
+   "explicar": "Explique a diferença entre desconto comercial (por fora) e racional (por dentro): sobre qual valor cada um calcula o desconto?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um título de valor nominal R$ 8.000,00 foi descontado 2 meses antes do vencimento, à taxa de desconto comercial simples de 3% ao mês. O valor recebido (valor atual) foi de",
+   "alternativas": {
+    "A": "R$ 7.520,00.",
+    "B": "R$ 7.547,17.",
+    "C": "R$ 7.620,00.",
+    "D": "R$ 7.760,00.",
+    "E": "R$ 8.000,00."
+   },
+   "gabarito": "A",
+   "resolucao": "Comercial (por fora): o desconto é sobre o NOMINAL. D = N · d · n = 8.000 × 3/100 × 2 = R$ 480,00.\nValor atual = N − D = R$ 8.000,00 − R$ 480,00 = R$ 7.520,00.",
+   "comentarios": {
+    "B": "É o desconto RACIONAL (por dentro); o pedido é o comercial (por fora).",
+    "D": "Usou só 1 mês; são 2.",
+    "E": "R$ 8.000,00 é o valor nominal (de face).",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 7.520,00."
+   },
+   "topico": "Desconto simples",
+   "conceito": "Desconto comercial (por fora): D = N · d · n, sobre o valor NOMINAL. Racional (por dentro): A = N ÷ (1 + i · n), o desconto é sobre o valor ATUAL. Para a mesma taxa, o comercial é maior.",
+   "explicar": "Explique a diferença entre desconto comercial (por fora) e racional (por dentro): sobre qual valor cada um calcula o desconto?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um capital de R$ 10.000,00 é aplicado a juros compostos de 10% ao mês. Após 3 meses, o montante será de",
+   "alternativas": {
+    "A": "R$ 3.310,00.",
+    "B": "R$ 11.000,00.",
+    "C": "R$ 13.000,00.",
+    "D": "R$ 13.210,00.",
+    "E": "R$ 13.310,00."
+   },
+   "gabarito": "E",
+   "resolucao": "M = C · (1 + i)^n = 10.000 × (1 + 0,1)^3.\n(1,10)^3 = 1,331\nM = 10.000 × 1,331 = R$ 13.310,00.\nCompare: a juros simples daria R$ 13.000,00; a diferença (R$ 310,00) é o juro sobre juro.",
+   "comentarios": {
+    "C": "R$ 13.000,00 é o montante a juros SIMPLES: faltou o juro sobre juro.",
+    "A": "R$ 3.310,00 são só os juros; o montante soma o capital.",
+    "B": "R$ 11.000,00 é o montante de 1 mês só.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 13.310,00."
+   },
+   "topico": "Juros compostos",
+   "conceito": "Juros compostos: juro sobre juro. M = C · (1 + i)^n. Cada período multiplica pelo mesmo fator (1 + i).",
+   "explicar": "Por que, nos juros compostos, o juro de cada mês é maior que o do mês anterior? Explique com o fator (1 + i) e um exemplo seu.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Em juros simples, a taxa mensal proporcional a 24% ao ano é",
+   "alternativas": {
+    "A": "2% ao mês.",
+    "B": "3% ao mês.",
+    "C": "4% ao mês.",
+    "D": "6% ao mês.",
+    "E": "24% ao mês."
+   },
+   "gabarito": "A",
+   "resolucao": "Taxa proporcional (juros simples): divide pelo número de meses do ano.\n24% ÷ 12 = 2% ao mês.",
+   "comentarios": {
+    "E": "24% é a taxa ANUAL; divida por 12.",
+    "C": "Dividiu por 6 (semestre); o pedido é mensal: divida por 12.",
+    "D": "Dividiu por 4 (trimestre); o pedido é mensal.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 2% ao mês."
+   },
+   "topico": "Taxas: proporcional, equivalente, nominal e real",
+   "conceito": "Proporcional (simples): divide ou multiplica a taxa pelo tempo (12% a.a. → 1% a.m.). Equivalente (composta): (1 + i_mês)^12 = 1 + i_ano. Nominal capitalizada: a taxa dita \"ao ano, capitalizada mensalmente\" vira taxa efetiva mensal pela divisão; a efetiva anual sai do fator. Real: (1 + aparente) = (1 + real) · (1 + inflação).",
+   "explicar": "Qual a diferença entre taxa proporcional e taxa equivalente? Por que 1% ao mês composto não dá 12% ao ano?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Qual capital, aplicado a juros compostos de 10% ao mês, gera o montante de R$ 6.655,00 em 3 meses? (Use (1 + 0,1)^3 = 1,331.)",
+   "alternativas": {
+    "A": "R$ 4.658,50.",
+    "B": "R$ 4.900,00.",
+    "C": "R$ 5.000,00.",
+    "D": "R$ 6.050,00.",
+    "E": "R$ 6.655,00."
+   },
+   "gabarito": "C",
+   "resolucao": "C = M ÷ (1 + i)^n = 6.655 ÷ 1,331 = R$ 5.000,00.\nConfere: 5.000 × 1,331 = R$ 6.655,00. ✔",
+   "comentarios": {
+    "A": "Tirou o juro como se fosse desconto sobre o montante; o certo é dividir pelo fator.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 5.000,00.",
+    "E": "R$ 6.655,00 é o montante; o capital é menor.",
+    "D": "Dividiu pelo fator de 1 mês só."
+   },
+   "topico": "Juros compostos",
+   "conceito": "Juros compostos: juro sobre juro. M = C · (1 + i)^n. Cada período multiplica pelo mesmo fator (1 + i).",
+   "explicar": "Por que, nos juros compostos, o juro de cada mês é maior que o do mês anterior? Explique com o fator (1 + i) e um exemplo seu.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Em juros simples, a taxa mensal proporcional a 36% ao ano é",
+   "alternativas": {
+    "A": "3% ao mês.",
+    "B": "4% ao mês.",
+    "C": "6% ao mês.",
+    "D": "9% ao mês.",
+    "E": "36% ao mês."
+   },
+   "gabarito": "A",
+   "resolucao": "Taxa proporcional (juros simples): divide pelo número de meses do ano.\n36% ÷ 12 = 3% ao mês.",
+   "comentarios": {
+    "E": "36% é a taxa ANUAL; divida por 12.",
+    "C": "Dividiu por 6 (semestre); o pedido é mensal: divida por 12.",
+    "D": "Dividiu por 4 (trimestre); o pedido é mensal.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 3% ao mês."
+   },
+   "topico": "Taxas: proporcional, equivalente, nominal e real",
+   "conceito": "Proporcional (simples): divide ou multiplica a taxa pelo tempo (12% a.a. → 1% a.m.). Equivalente (composta): (1 + i_mês)^12 = 1 + i_ano. Nominal capitalizada: a taxa dita \"ao ano, capitalizada mensalmente\" vira taxa efetiva mensal pela divisão; a efetiva anual sai do fator. Real: (1 + aparente) = (1 + real) · (1 + inflação).",
+   "explicar": "Qual a diferença entre taxa proporcional e taxa equivalente? Por que 1% ao mês composto não dá 12% ao ano?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Em juros simples, a taxa mensal proporcional a 30% ao ano é",
+   "alternativas": {
+    "A": "2,5% ao mês.",
+    "B": "3,5% ao mês.",
+    "C": "5% ao mês.",
+    "D": "7,5% ao mês.",
+    "E": "30% ao mês."
+   },
+   "gabarito": "A",
+   "resolucao": "Taxa proporcional (juros simples): divide pelo número de meses do ano.\n30% ÷ 12 = 2,5% ao mês.",
+   "comentarios": {
+    "E": "30% é a taxa ANUAL; divida por 12.",
+    "C": "Dividiu por 6 (semestre); o pedido é mensal: divida por 12.",
+    "D": "Dividiu por 4 (trimestre); o pedido é mensal.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 2,5% ao mês."
+   },
+   "topico": "Taxas: proporcional, equivalente, nominal e real",
+   "conceito": "Proporcional (simples): divide ou multiplica a taxa pelo tempo (12% a.a. → 1% a.m.). Equivalente (composta): (1 + i_mês)^12 = 1 + i_ano. Nominal capitalizada: a taxa dita \"ao ano, capitalizada mensalmente\" vira taxa efetiva mensal pela divisão; a efetiva anual sai do fator. Real: (1 + aparente) = (1 + real) · (1 + inflação).",
+   "explicar": "Qual a diferença entre taxa proporcional e taxa equivalente? Por que 1% ao mês composto não dá 12% ao ano?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um título de valor nominal R$ 1.000,00 foi descontado 5 meses antes do vencimento, à taxa de desconto comercial simples de 2% ao mês. O valor do desconto foi de",
+   "alternativas": {
+    "A": "R$ 20,00.",
+    "B": "R$ 90,00.",
+    "C": "R$ 90,91.",
+    "D": "R$ 100,00.",
+    "E": "R$ 900,00."
+   },
+   "gabarito": "D",
+   "resolucao": "Comercial (por fora): o desconto é sobre o NOMINAL. D = N · d · n = 1.000 × 2/100 × 5 = R$ 100,00.\nValor atual = N − D = R$ 1.000,00 − R$ 100,00 = R$ 900,00.",
+   "comentarios": {
+    "C": "É o desconto RACIONAL (por dentro); o pedido é o comercial (por fora).",
+    "A": "Usou só 1 mês; são 5.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 100,00.",
+    "E": "R$ 900,00 é o valor recebido (nominal − desconto); leia o que se pede."
+   },
+   "topico": "Desconto simples",
+   "conceito": "Desconto comercial (por fora): D = N · d · n, sobre o valor NOMINAL. Racional (por dentro): A = N ÷ (1 + i · n), o desconto é sobre o valor ATUAL. Para a mesma taxa, o comercial é maior.",
+   "explicar": "Explique a diferença entre desconto comercial (por fora) e racional (por dentro): sobre qual valor cada um calcula o desconto?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma aplicação rendeu 14,4% em um ano em que a inflação foi de 4%. A taxa real de rendimento foi de",
+   "alternativas": {
+    "A": "10%.",
+    "B": "10,4%.",
+    "C": "11%.",
+    "D": "14,4%.",
+    "E": "18,4%."
+   },
+   "gabarito": "A",
+   "resolucao": "(1 + aparente) = (1 + real) · (1 + inflação).\n1 + real = 1,144 ÷ 1,04 = 1,1.\nReal = 10%.",
+   "comentarios": {
+    "B": "14,4% − 4% = 10,4%: subtrair é a aproximação; o certo é dividir os fatores.",
+    "D": "14,4% é a taxa aparente (nominal).",
+    "E": "Somou a inflação; ela tem de ser descontada.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 10%."
+   },
+   "topico": "Taxas: proporcional, equivalente, nominal e real",
+   "conceito": "Proporcional (simples): divide ou multiplica a taxa pelo tempo (12% a.a. → 1% a.m.). Equivalente (composta): (1 + i_mês)^12 = 1 + i_ano. Nominal capitalizada: a taxa dita \"ao ano, capitalizada mensalmente\" vira taxa efetiva mensal pela divisão; a efetiva anual sai do fator. Real: (1 + aparente) = (1 + real) · (1 + inflação).",
+   "explicar": "Qual a diferença entre taxa proporcional e taxa equivalente? Por que 1% ao mês composto não dá 12% ao ano?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um financiamento de R$ 48.000,00 será pago em 10 prestações mensais pelo Sistema de Amortização Constante (SAC), à taxa de 1% ao mês. Os juros pagos na 6ª prestação são",
+   "alternativas": {
+    "A": "R$ 48,00.",
+    "B": "R$ 192,00.",
+    "C": "R$ 230,00.",
+    "D": "R$ 240,00.",
+    "E": "R$ 480,00."
+   },
+   "gabarito": "D",
+   "resolucao": "Amortização (constante) = 48.000 ÷ 10 = R$ 4.800,00.\nSaldo antes da 6ª = 48.000 − 5 × 4.800 = R$ 24.000,00.\nJuros da 6ª = 24.000 × 1% = R$ 240,00.\nPrestação = amortização + juros = R$ 4.800,00 + R$ 240,00 = R$ 5.040,00.",
+   "comentarios": {
+    "B": "Usou o saldo depois da 6ª parcela; os juros da 6ª são sobre o saldo ANTES dela.",
+    "A": "Aplicou a taxa sobre a amortização; os juros são sobre o saldo devedor.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 240,00.",
+    "E": "Calculou os juros sobre a dívida INTEIRA (R$ 48.000,00); no SAC, os juros da 6ª são sobre o saldo depois de 5 amortizações."
+   },
+   "topico": "Sistemas de amortização",
+   "conceito": "SAC: amortização constante (dívida ÷ n); juros sobre o saldo, que cai; prestação decrescente. Price: prestação constante; no começo quase tudo é juro.",
+   "explicar": "No SAC, por que a prestação cai a cada mês, e na Tabela Price ela fica igual? Explique pelo que acontece com os juros e a amortização.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma taxa nominal de 36% ao ano, capitalizada mensalmente, corresponde a uma taxa efetiva de",
+   "alternativas": {
+    "A": "1,5% ao mês.",
+    "B": "3% ao mês.",
+    "C": "4% ao mês.",
+    "D": "6% ao mês.",
+    "E": "36% ao mês."
+   },
+   "gabarito": "B",
+   "resolucao": "Taxa nominal capitalizada: a efetiva do período é a nominal dividida pelo número de períodos do ano.\n36% ÷ 12 = 3% ao mês.\nA efetiva ANUAL seria maior, pelo fator composto.",
+   "comentarios": {
+    "A": "Dividiu por 24; são 12 períodos no ano.",
+    "E": "36% é a taxa nominal anual, não a efetiva do período de capitalização.",
+    "D": "Dividiu por 6; o ano tem 12 períodos de capitalização.",
+    "C": "Somou 1 ponto sem motivo: a efetiva do período é a nominal ÷ número de períodos."
+   },
+   "topico": "Taxas: proporcional, equivalente, nominal e real",
+   "conceito": "Proporcional (simples): divide ou multiplica a taxa pelo tempo (12% a.a. → 1% a.m.). Equivalente (composta): (1 + i_mês)^12 = 1 + i_ano. Nominal capitalizada: a taxa dita \"ao ano, capitalizada mensalmente\" vira taxa efetiva mensal pela divisão; a efetiva anual sai do fator. Real: (1 + aparente) = (1 + real) · (1 + inflação).",
+   "explicar": "Qual a diferença entre taxa proporcional e taxa equivalente? Por que 1% ao mês composto não dá 12% ao ano?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um financiamento de R$ 12.000,00 será pago em 24 prestações mensais pelo Sistema de Amortização Constante (SAC), à taxa de 2% ao mês. Os juros pagos na 3ª prestação são",
+   "alternativas": {
+    "A": "R$ 10,00.",
+    "B": "R$ 210,00.",
+    "C": "R$ 220,00.",
+    "D": "R$ 240,00.",
+    "E": "R$ 720,00."
+   },
+   "gabarito": "C",
+   "resolucao": "Amortização (constante) = 12.000 ÷ 24 = R$ 500,00.\nSaldo antes da 3ª = 12.000 − 2 × 500 = R$ 11.000,00.\nJuros da 3ª = 11.000 × 2% = R$ 220,00.\nPrestação = amortização + juros = R$ 500,00 + R$ 220,00 = R$ 720,00.",
+   "comentarios": {
+    "B": "Usou o saldo depois da 3ª parcela; os juros da 3ª são sobre o saldo ANTES dela.",
+    "A": "Aplicou a taxa sobre a amortização; os juros são sobre o saldo devedor.",
+    "D": "Calculou os juros sobre a dívida INTEIRA (R$ 12.000,00); no SAC, os juros da 3ª são sobre o saldo depois de 2 amortizações.",
+    "E": "Somou a amortização; a pergunta é só os juros."
+   },
+   "topico": "Sistemas de amortização",
+   "conceito": "SAC: amortização constante (dívida ÷ n); juros sobre o saldo, que cai; prestação decrescente. Price: prestação constante; no começo quase tudo é juro.",
+   "explicar": "No SAC, por que a prestação cai a cada mês, e na Tabela Price ela fica igual? Explique pelo que acontece com os juros e a amortização.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um financiamento de R$ 24.000,00 será pago em 12 prestações mensais pelo Sistema de Amortização Constante (SAC), à taxa de 2% ao mês. O valor da 5ª prestação é",
+   "alternativas": {
+    "A": "R$ 2.000,00.",
+    "B": "R$ 2.040,00.",
+    "C": "R$ 2.220,00.",
+    "D": "R$ 2.280,00.",
+    "E": "R$ 2.320,00."
+   },
+   "gabarito": "E",
+   "resolucao": "Amortização (constante) = 24.000 ÷ 12 = R$ 2.000,00.\nSaldo antes da 5ª = 24.000 − 4 × 2.000 = R$ 16.000,00.\nJuros da 5ª = 16.000 × 2% = R$ 320,00.\nPrestação = amortização + juros = R$ 2.000,00 + R$ 320,00 = R$ 2.320,00.",
+   "comentarios": {
+    "A": "É a amortização; a prestação soma os juros.",
+    "D": "Usou o saldo depois da 5ª parcela; os juros da 5ª são sobre o saldo ANTES dela.",
+    "B": "Aplicou a taxa sobre a amortização; os juros são sobre o saldo devedor.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 2.320,00."
+   },
+   "topico": "Sistemas de amortização",
+   "conceito": "SAC: amortização constante (dívida ÷ n); juros sobre o saldo, que cai; prestação decrescente. Price: prestação constante; no começo quase tudo é juro.",
+   "explicar": "No SAC, por que a prestação cai a cada mês, e na Tabela Price ela fica igual? Explique pelo que acontece com os juros e a amortização.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um capital de R$ 10.000,00 é aplicado a juros compostos de 5% ao mês. Após 2 meses, o montante será de",
+   "alternativas": {
+    "A": "R$ 1.025,00.",
+    "B": "R$ 11.000,00.",
+    "C": "R$ 11.025,00.",
+    "D": "R$ 11.125,00.",
+    "E": "R$ 11.576,25."
+   },
+   "gabarito": "C",
+   "resolucao": "M = C · (1 + i)^n = 10.000 × (1 + 0,05)^2.\n(1,05)^2 = 1,1025\nM = 10.000 × 1,1025 = R$ 11.025,00.\nCompare: a juros simples daria R$ 11.000,00; a diferença (R$ 25,00) é o juro sobre juro.",
+   "comentarios": {
+    "B": "R$ 11.000,00 é o montante a juros SIMPLES: faltou o juro sobre juro.",
+    "A": "R$ 1.025,00 são só os juros; o montante soma o capital.",
+    "E": "Elevou a 3; o prazo é 2 meses.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 11.025,00."
+   },
+   "topico": "Juros compostos",
+   "conceito": "Juros compostos: juro sobre juro. M = C · (1 + i)^n. Cada período multiplica pelo mesmo fator (1 + i).",
+   "explicar": "Por que, nos juros compostos, o juro de cada mês é maior que o do mês anterior? Explique com o fator (1 + i) e um exemplo seu.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um capital de R$ 8.000,00, aplicado a juros simples, gerou o montante de R$ 11.200,00 em 8 meses. A taxa mensal foi de",
+   "alternativas": {
+    "A": "5% ao mês.",
+    "B": "6% ao mês.",
+    "C": "10% ao mês.",
+    "D": "20% ao mês.",
+    "E": "40% ao mês."
+   },
+   "gabarito": "A",
+   "resolucao": "J = M − C = R$ 11.200,00 − R$ 8.000,00 = R$ 3.200,00.\ni = J ÷ (C · n) = 3.200 ÷ (8.000 × 8) = 5% ao mês.",
+   "comentarios": {
+    "E": "40% é a taxa do PERÍODO todo (8 meses); divida por 8.",
+    "C": "Confira: J = M − C, e i = J ÷ (C · n).",
+    "D": "Dividiu pelo número errado: são 8 meses.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 5% ao mês."
+   },
+   "topico": "Juros simples",
+   "conceito": "Juros simples: o juro de cada período é sempre sobre o capital inicial. J = C · i · n e M = C · (1 + i · n). Taxa e prazo na mesma unidade.",
+   "explicar": "Explique a diferença entre juros simples e compostos com um exemplo seu de 3 meses: em qual deles o juro de cada mês é sempre o mesmo, e por quê?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma aplicação rendeu 13,4% em um ano em que a inflação foi de 5%. A taxa real de rendimento foi de",
+   "alternativas": {
+    "A": "8%.",
+    "B": "8,4%.",
+    "C": "9%.",
+    "D": "13,4%.",
+    "E": "18,4%."
+   },
+   "gabarito": "A",
+   "resolucao": "(1 + aparente) = (1 + real) · (1 + inflação).\n1 + real = 1,134 ÷ 1,05 = 1,08.\nReal = 8%.",
+   "comentarios": {
+    "B": "13,4% − 5% = 8,4%: subtrair é a aproximação; o certo é dividir os fatores.",
+    "D": "13,4% é a taxa aparente (nominal).",
+    "E": "Somou a inflação; ela tem de ser descontada.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 8%."
+   },
+   "topico": "Taxas: proporcional, equivalente, nominal e real",
+   "conceito": "Proporcional (simples): divide ou multiplica a taxa pelo tempo (12% a.a. → 1% a.m.). Equivalente (composta): (1 + i_mês)^12 = 1 + i_ano. Nominal capitalizada: a taxa dita \"ao ano, capitalizada mensalmente\" vira taxa efetiva mensal pela divisão; a efetiva anual sai do fator. Real: (1 + aparente) = (1 + real) · (1 + inflação).",
+   "explicar": "Qual a diferença entre taxa proporcional e taxa equivalente? Por que 1% ao mês composto não dá 12% ao ano?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um título de R$ 1.100,00, com vencimento em 2 meses, é resgatado hoje com desconto racional (por dentro) simples de 5% ao mês. O valor atual do título é",
+   "alternativas": {
+    "A": "R$ 100,00.",
+    "B": "R$ 990,00.",
+    "C": "R$ 1.000,00.",
+    "D": "R$ 1.045,00.",
+    "E": "R$ 1.100,00."
+   },
+   "gabarito": "C",
+   "resolucao": "Racional (por dentro): A = N ÷ (1 + i · n).\nA = 1.100 ÷ (1 + 0,05 × 2) = 1.100 ÷ 1,1 = R$ 1.000,00.\nDesconto = R$ 100,00; o comercial seria maior: R$ 110,00.",
+   "comentarios": {
+    "B": "R$ 990,00 usa o desconto COMERCIAL (sobre o nominal); o racional é sobre o valor atual.",
+    "A": "R$ 100,00 é o desconto, não o valor atual.",
+    "E": "R$ 1.100,00 é o nominal.",
+    "D": "Usou só 1 mês; são 2."
+   },
+   "topico": "Desconto simples",
+   "conceito": "Desconto comercial (por fora): D = N · d · n, sobre o valor NOMINAL. Racional (por dentro): A = N ÷ (1 + i · n), o desconto é sobre o valor ATUAL. Para a mesma taxa, o comercial é maior.",
+   "explicar": "Explique a diferença entre desconto comercial (por fora) e racional (por dentro): sobre qual valor cada um calcula o desconto?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um título de valor nominal R$ 10.000,00 foi descontado 6 meses antes do vencimento, à taxa de desconto comercial simples de 4% ao mês. O valor do desconto foi de",
+   "alternativas": {
+    "A": "R$ 1.935,48.",
+    "B": "R$ 2.400,00.",
+    "C": "R$ 2.500,00.",
+    "D": "R$ 7.600,00.",
+    "E": "R$ 10.000,00."
+   },
+   "gabarito": "B",
+   "resolucao": "Comercial (por fora): o desconto é sobre o NOMINAL. D = N · d · n = 10.000 × 4/100 × 6 = R$ 2.400,00.\nValor atual = N − D = R$ 10.000,00 − R$ 2.400,00 = R$ 7.600,00.",
+   "comentarios": {
+    "A": "É o desconto RACIONAL (por dentro); o pedido é o comercial (por fora).",
+    "D": "R$ 7.600,00 é o valor recebido (nominal − desconto); leia o que se pede.",
+    "E": "R$ 10.000,00 é o valor nominal (de face).",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 2.400,00."
+   },
+   "topico": "Desconto simples",
+   "conceito": "Desconto comercial (por fora): D = N · d · n, sobre o valor NOMINAL. Racional (por dentro): A = N ÷ (1 + i · n), o desconto é sobre o valor ATUAL. Para a mesma taxa, o comercial é maior.",
+   "explicar": "Explique a diferença entre desconto comercial (por fora) e racional (por dentro): sobre qual valor cada um calcula o desconto?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um empréstimo de R$ 20.000,00 será pago em 4 prestações mensais iguais (Tabela Price), à taxa de 5% ao mês. Dado o fator de valor atual para 4 pagamentos a 5%, a = 3,546, o valor de cada prestação é, aproximadamente,",
+   "alternativas": {
+    "A": "R$ 4.432,50.",
+    "B": "R$ 5.000,00.",
+    "C": "R$ 5.250,00.",
+    "D": "R$ 5.540,16.",
+    "E": "R$ 5.640,16."
+   },
+   "gabarito": "E",
+   "resolucao": "Na Price: PV = PMT × a (o fator de valor atual).\nPMT = 20.000 ÷ 3,546 ≈ R$ 5.640,16.\nConfere: 4 × R$ 5.640,16 = R$ 22.560,64, um pouco mais que R$ 20.000,00: a diferença são os juros.",
+   "comentarios": {
+    "B": "R$ 5.000,00 é a dívida ÷ 4, sem juros nenhum.",
+    "C": "Dividiu e somou 1 mês de juros; na Price o fator já embute os juros de todo o prazo.",
+    "A": "Usou o fator ao contrário; prestação = valor ÷ fator.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 5.640,16."
+   },
+   "topico": "Sistemas de amortização",
+   "conceito": "SAC: amortização constante (dívida ÷ n); juros sobre o saldo, que cai; prestação decrescente. Price: prestação constante; no começo quase tudo é juro.",
+   "explicar": "No SAC, por que a prestação cai a cada mês, e na Tabela Price ela fica igual? Explique pelo que acontece com os juros e a amortização.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "A taxa anual equivalente, em juros compostos, a 10% ao quadrimestre é",
+   "alternativas": {
+    "A": "10% ao ano.",
+    "B": "30% ao ano.",
+    "C": "32,1% ao ano.",
+    "D": "33,1% ao ano.",
+    "E": "34,1% ao ano."
+   },
+   "gabarito": "D",
+   "resolucao": "Equivalente (composta): 1 + i_ano = (1 + i_período)^3.\n(1 + 0,1)^3 = 1,331 → i_ano = 33,1%.\nNote: é mais que 10% × 3 = 30%, por causa do juro sobre juro.",
+   "comentarios": {
+    "B": "30% é a taxa PROPORCIONAL (10% × 3), de juros simples.",
+    "A": "10% é a do quadrimestre, não a anual.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 33,1% ao ano.",
+    "E": "Conta quase certa: refaça o fator."
+   },
+   "topico": "Taxas: proporcional, equivalente, nominal e real",
+   "conceito": "Proporcional (simples): divide ou multiplica a taxa pelo tempo (12% a.a. → 1% a.m.). Equivalente (composta): (1 + i_mês)^12 = 1 + i_ano. Nominal capitalizada: a taxa dita \"ao ano, capitalizada mensalmente\" vira taxa efetiva mensal pela divisão; a efetiva anual sai do fator. Real: (1 + aparente) = (1 + real) · (1 + inflação).",
+   "explicar": "Qual a diferença entre taxa proporcional e taxa equivalente? Por que 1% ao mês composto não dá 12% ao ano?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um título de valor nominal R$ 6.000,00 foi descontado 2 meses antes do vencimento, à taxa de desconto comercial simples de 1% ao mês. O valor do desconto foi de",
+   "alternativas": {
+    "A": "R$ 60,00.",
+    "B": "R$ 110,00.",
+    "C": "R$ 117,65.",
+    "D": "R$ 120,00.",
+    "E": "R$ 5.880,00."
+   },
+   "gabarito": "D",
+   "resolucao": "Comercial (por fora): o desconto é sobre o NOMINAL. D = N · d · n = 6.000 × 1/100 × 2 = R$ 120,00.\nValor atual = N − D = R$ 6.000,00 − R$ 120,00 = R$ 5.880,00.",
+   "comentarios": {
+    "C": "É o desconto RACIONAL (por dentro); o pedido é o comercial (por fora).",
+    "A": "Usou só 1 mês; são 2.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 120,00.",
+    "E": "R$ 5.880,00 é o valor recebido (nominal − desconto); leia o que se pede."
+   },
+   "topico": "Desconto simples",
+   "conceito": "Desconto comercial (por fora): D = N · d · n, sobre o valor NOMINAL. Racional (por dentro): A = N ÷ (1 + i · n), o desconto é sobre o valor ATUAL. Para a mesma taxa, o comercial é maior.",
+   "explicar": "Explique a diferença entre desconto comercial (por fora) e racional (por dentro): sobre qual valor cada um calcula o desconto?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma loja oferece um produto por R$ 5.000,00 à vista ou em um pagamento único daqui a 1 mês. Para as duas formas serem equivalentes a juros compostos de 10% ao mês, o pagamento a prazo deve ser de",
+   "alternativas": {
+    "A": "R$ 5.000,00.",
+    "B": "R$ 5.500,00.",
+    "C": "R$ 5.600,00.",
+    "D": "R$ 6.000,00.",
+    "E": "R$ 6.050,00."
+   },
+   "gabarito": "B",
+   "resolucao": "Levar para o futuro: VF = VP · (1 + i)^n.\nVF = 5.000 × (1 + 0,1)^1 = R$ 5.500,00.\nÀ vista ou esse valor na data combinada: dá no mesmo, a essa taxa.",
+   "comentarios": {
+    "A": "Sem juros, a prazo e à vista não seriam equivalentes.",
+    "D": "Somou o juro duas vezes.",
+    "E": "Elevou a 2; são 1 mês.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 5.500,00."
+   },
+   "topico": "Valor presente e equivalência",
+   "conceito": "Dinheiro em datas diferentes só se compara levado à mesma data: VF = VP · (1 + i)^n e VP = VF ÷ (1 + i)^n.",
+   "explicar": "O que significa dizer que R$ 1.000 hoje e R$ 1.100 daqui a um mês são \"equivalentes\" a 10% ao mês? Como você compara pagamentos em datas diferentes?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma aplicação rendeu 15,5% em um ano em que a inflação foi de 5%. A taxa real de rendimento foi de",
+   "alternativas": {
+    "A": "5%.",
+    "B": "9%.",
+    "C": "10%.",
+    "D": "10,5%.",
+    "E": "15,5%."
+   },
+   "gabarito": "C",
+   "resolucao": "(1 + aparente) = (1 + real) · (1 + inflação).\n1 + real = 1,155 ÷ 1,05 = 1,1.\nReal = 10%.",
+   "comentarios": {
+    "A": "5% é a inflação, não o ganho real.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá 10%.",
+    "D": "15,5% − 5% = 10,5%: subtrair é a aproximação; o certo é dividir os fatores.",
+    "E": "15,5% é a taxa aparente (nominal)."
+   },
+   "topico": "Taxas: proporcional, equivalente, nominal e real",
+   "conceito": "Proporcional (simples): divide ou multiplica a taxa pelo tempo (12% a.a. → 1% a.m.). Equivalente (composta): (1 + i_mês)^12 = 1 + i_ano. Nominal capitalizada: a taxa dita \"ao ano, capitalizada mensalmente\" vira taxa efetiva mensal pela divisão; a efetiva anual sai do fator. Real: (1 + aparente) = (1 + real) · (1 + inflação).",
+   "explicar": "Qual a diferença entre taxa proporcional e taxa equivalente? Por que 1% ao mês composto não dá 12% ao ano?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Qual capital, aplicado a juros compostos de 10% ao mês, gera o montante de R$ 2.420,00 em 2 meses? (Use (1 + 0,1)^2 = 1,21.)",
+   "alternativas": {
+    "A": "R$ 1.900,00.",
+    "B": "R$ 1.936,00.",
+    "C": "R$ 2.000,00.",
+    "D": "R$ 2.200,00.",
+    "E": "R$ 2.420,00."
+   },
+   "gabarito": "C",
+   "resolucao": "C = M ÷ (1 + i)^n = 2.420 ÷ 1,21 = R$ 2.000,00.\nConfere: 2.000 × 1,21 = R$ 2.420,00. ✔",
+   "comentarios": {
+    "B": "Tirou o juro como se fosse desconto sobre o montante; o certo é dividir pelo fator.",
+    "A": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 2.000,00.",
+    "E": "R$ 2.420,00 é o montante; o capital é menor.",
+    "D": "Dividiu pelo fator de 1 mês só."
+   },
+   "topico": "Juros compostos",
+   "conceito": "Juros compostos: juro sobre juro. M = C · (1 + i)^n. Cada período multiplica pelo mesmo fator (1 + i).",
+   "explicar": "Por que, nos juros compostos, o juro de cada mês é maior que o do mês anterior? Explique com o fator (1 + i) e um exemplo seu.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um capital de R$ 10.000,00, aplicado a juros simples, gerou o montante de R$ 16.000,00 em 12 meses. A taxa mensal foi de",
+   "alternativas": {
+    "A": "2,5% ao mês.",
+    "B": "5% ao mês.",
+    "C": "10% ao mês.",
+    "D": "30% ao mês.",
+    "E": "60% ao mês."
+   },
+   "gabarito": "B",
+   "resolucao": "J = M − C = R$ 16.000,00 − R$ 10.000,00 = R$ 6.000,00.\ni = J ÷ (C · n) = 6.000 ÷ (10.000 × 12) = 5% ao mês.",
+   "comentarios": {
+    "A": "Confundiu montante com juros.",
+    "E": "60% é a taxa do PERÍODO todo (12 meses); divida por 12.",
+    "C": "Confira: J = M − C, e i = J ÷ (C · n).",
+    "D": "Dividiu pelo número errado: são 12 meses."
+   },
+   "topico": "Juros simples",
+   "conceito": "Juros simples: o juro de cada período é sempre sobre o capital inicial. J = C · i · n e M = C · (1 + i · n). Taxa e prazo na mesma unidade.",
+   "explicar": "Explique a diferença entre juros simples e compostos com um exemplo seu de 3 meses: em qual deles o juro de cada mês é sempre o mesmo, e por quê?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um capital de R$ 20.000,00 é aplicado a juros compostos de 20% ao mês. Após 3 meses, o montante será de",
+   "alternativas": {
+    "A": "R$ 14.560,00.",
+    "B": "R$ 32.000,00.",
+    "C": "R$ 34.560,00.",
+    "D": "R$ 34.660,00.",
+    "E": "R$ 41.472,00."
+   },
+   "gabarito": "C",
+   "resolucao": "M = C · (1 + i)^n = 20.000 × (1 + 0,2)^3.\n(1,20)^3 = 1,728\nM = 20.000 × 1,728 = R$ 34.560,00.\nCompare: a juros simples daria R$ 32.000,00; a diferença (R$ 2.560,00) é o juro sobre juro.",
+   "comentarios": {
+    "B": "R$ 32.000,00 é o montante a juros SIMPLES: faltou o juro sobre juro.",
+    "A": "R$ 14.560,00 são só os juros; o montante soma o capital.",
+    "E": "Elevou a 4; o prazo é 3 meses.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 34.560,00."
+   },
+   "topico": "Juros compostos",
+   "conceito": "Juros compostos: juro sobre juro. M = C · (1 + i)^n. Cada período multiplica pelo mesmo fator (1 + i).",
+   "explicar": "Por que, nos juros compostos, o juro de cada mês é maior que o do mês anterior? Explique com o fator (1 + i) e um exemplo seu.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma aplicação rendeu 15,5% em um ano em que a inflação foi de 10%. A taxa real de rendimento foi de",
+   "alternativas": {
+    "A": "5%.",
+    "B": "5,5%.",
+    "C": "10%.",
+    "D": "15,5%.",
+    "E": "25,5%."
+   },
+   "gabarito": "A",
+   "resolucao": "(1 + aparente) = (1 + real) · (1 + inflação).\n1 + real = 1,155 ÷ 1,1 = 1,05.\nReal = 5%.",
+   "comentarios": {
+    "B": "15,5% − 10% = 5,5%: subtrair é a aproximação; o certo é dividir os fatores.",
+    "D": "15,5% é a taxa aparente (nominal).",
+    "E": "Somou a inflação; ela tem de ser descontada.",
+    "C": "10% é a inflação, não o ganho real."
+   },
+   "topico": "Taxas: proporcional, equivalente, nominal e real",
+   "conceito": "Proporcional (simples): divide ou multiplica a taxa pelo tempo (12% a.a. → 1% a.m.). Equivalente (composta): (1 + i_mês)^12 = 1 + i_ano. Nominal capitalizada: a taxa dita \"ao ano, capitalizada mensalmente\" vira taxa efetiva mensal pela divisão; a efetiva anual sai do fator. Real: (1 + aparente) = (1 + real) · (1 + inflação).",
+   "explicar": "Qual a diferença entre taxa proporcional e taxa equivalente? Por que 1% ao mês composto não dá 12% ao ano?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um capital de R$ 2.000,00 é aplicado a juros compostos de 10% ao mês. Após 2 meses, o montante será de",
+   "alternativas": {
+    "A": "R$ 420,00.",
+    "B": "R$ 2.200,00.",
+    "C": "R$ 2.320,00.",
+    "D": "R$ 2.400,00.",
+    "E": "R$ 2.420,00."
+   },
+   "gabarito": "E",
+   "resolucao": "M = C · (1 + i)^n = 2.000 × (1 + 0,1)^2.\n(1,10)^2 = 1,21\nM = 2.000 × 1,21 = R$ 2.420,00.\nCompare: a juros simples daria R$ 2.400,00; a diferença (R$ 20,00) é o juro sobre juro.",
+   "comentarios": {
+    "D": "R$ 2.400,00 é o montante a juros SIMPLES: faltou o juro sobre juro.",
+    "A": "R$ 420,00 são só os juros; o montante soma o capital.",
+    "B": "R$ 2.200,00 é o montante de 1 mês só.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 2.420,00."
+   },
+   "topico": "Juros compostos",
+   "conceito": "Juros compostos: juro sobre juro. M = C · (1 + i)^n. Cada período multiplica pelo mesmo fator (1 + i).",
+   "explicar": "Por que, nos juros compostos, o juro de cada mês é maior que o do mês anterior? Explique com o fator (1 + i) e um exemplo seu.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma loja oferece um produto por R$ 1.000,00 à vista ou em um pagamento único daqui a 2 meses. Para as duas formas serem equivalentes a juros compostos de 2% ao mês, o pagamento a prazo deve ser de",
+   "alternativas": {
+    "A": "R$ 940,40.",
+    "B": "R$ 961,17.",
+    "C": "R$ 1.000,00.",
+    "D": "R$ 1.040,00.",
+    "E": "R$ 1.040,40."
+   },
+   "gabarito": "E",
+   "resolucao": "Levar para o futuro: VF = VP · (1 + i)^n.\nVF = 1.000 × (1 + 0,02)^2 = R$ 1.040,40.\nÀ vista ou esse valor na data combinada: dá no mesmo, a essa taxa.",
+   "comentarios": {
+    "D": "Juros simples nos dois meses: faltou o juro sobre juro.",
+    "C": "Sem juros, a prazo e à vista não seriam equivalentes.",
+    "B": "Trouxe para o presente; o pedido é levar para o futuro (multiplicar pelo fator).",
+    "A": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 1.040,40."
+   },
+   "topico": "Valor presente e equivalência",
+   "conceito": "Dinheiro em datas diferentes só se compara levado à mesma data: VF = VP · (1 + i)^n e VP = VF ÷ (1 + i)^n.",
+   "explicar": "O que significa dizer que R$ 1.000 hoje e R$ 1.100 daqui a um mês são \"equivalentes\" a 10% ao mês? Como você compara pagamentos em datas diferentes?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um empréstimo de R$ 30.000,00 será pago em 3 prestações mensais iguais (Tabela Price), à taxa de 2% ao mês. Dado o fator de valor atual para 3 pagamentos a 2%, a = 2,8839, o valor de cada prestação é, aproximadamente,",
+   "alternativas": {
+    "A": "R$ 9.613,00.",
+    "B": "R$ 10.000,00.",
+    "C": "R$ 10.200,00.",
+    "D": "R$ 10.302,58.",
+    "E": "R$ 10.402,58."
+   },
+   "gabarito": "E",
+   "resolucao": "Na Price: PV = PMT × a (o fator de valor atual).\nPMT = 30.000 ÷ 2,8839 ≈ R$ 10.402,58.\nConfere: 3 × R$ 10.402,58 = R$ 31.207,74, um pouco mais que R$ 30.000,00: a diferença são os juros.",
+   "comentarios": {
+    "B": "R$ 10.000,00 é a dívida ÷ 3, sem juros nenhum.",
+    "C": "Dividiu e somou 1 mês de juros; na Price o fator já embute os juros de todo o prazo.",
+    "A": "Usou o fator ao contrário; prestação = valor ÷ fator.",
+    "D": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 10.402,58."
+   },
+   "topico": "Sistemas de amortização",
+   "conceito": "SAC: amortização constante (dívida ÷ n); juros sobre o saldo, que cai; prestação decrescente. Price: prestação constante; no começo quase tudo é juro.",
+   "explicar": "No SAC, por que a prestação cai a cada mês, e na Tabela Price ela fica igual? Explique pelo que acontece com os juros e a amortização.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um capital de R$ 6.000,00 foi aplicado a juros simples de 3% ao mês durante 9 meses. Os juros obtidos foram de",
+   "alternativas": {
+    "A": "R$ 180,00.",
+    "B": "R$ 1.620,00.",
+    "C": "R$ 1.720,00.",
+    "D": "R$ 1.828,64.",
+    "E": "R$ 7.620,00."
+   },
+   "gabarito": "B",
+   "resolucao": "Juros simples: J = C · i · n.\nJ = 6.000 × 3/100 × 9 = R$ 1.620,00.\n(Por mês: R$ 180,00; em 9 meses, sempre o mesmo valor.)",
+   "comentarios": {
+    "A": "R$ 180,00 é o juro de 1 mês; faltou multiplicar por 9.",
+    "E": "R$ 7.620,00 é o MONTANTE (capital + juros); a pergunta é só os juros.",
+    "D": "R$ 1.828,64 seria a juros COMPOSTOS; aqui é simples.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 1.620,00."
+   },
+   "topico": "Juros simples",
+   "conceito": "Juros simples: o juro de cada período é sempre sobre o capital inicial. J = C · i · n e M = C · (1 + i · n). Taxa e prazo na mesma unidade.",
+   "explicar": "Explique a diferença entre juros simples e compostos com um exemplo seu de 3 meses: em qual deles o juro de cada mês é sempre o mesmo, e por quê?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um capital de R$ 2.000,00 foi aplicado a juros simples de 1% ao mês durante 8 meses. Os juros obtidos foram de",
+   "alternativas": {
+    "A": "R$ 16,00.",
+    "B": "R$ 20,00.",
+    "C": "R$ 150,00.",
+    "D": "R$ 160,00.",
+    "E": "R$ 2.160,00."
+   },
+   "gabarito": "D",
+   "resolucao": "Juros simples: J = C · i · n.\nJ = 2.000 × 1/100 × 8 = R$ 160,00.\n(Por mês: R$ 20,00; em 8 meses, sempre o mesmo valor.)",
+   "comentarios": {
+    "B": "R$ 20,00 é o juro de 1 mês; faltou multiplicar por 8.",
+    "A": "Errou a vírgula: i = 1% = 1/100, não 1/1.000.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 160,00.",
+    "E": "R$ 2.160,00 é o MONTANTE (capital + juros); a pergunta é só os juros."
+   },
+   "topico": "Juros simples",
+   "conceito": "Juros simples: o juro de cada período é sempre sobre o capital inicial. J = C · i · n e M = C · (1 + i · n). Taxa e prazo na mesma unidade.",
+   "explicar": "Explique a diferença entre juros simples e compostos com um exemplo seu de 3 meses: em qual deles o juro de cada mês é sempre o mesmo, e por quê?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um empréstimo de R$ 5.000,00 será pago em 3 prestações mensais iguais (Tabela Price), à taxa de 2% ao mês. Dado o fator de valor atual para 3 pagamentos a 2%, a = 2,8839, o valor de cada prestação é, aproximadamente,",
+   "alternativas": {
+    "A": "R$ 1.602,17.",
+    "B": "R$ 1.633,76.",
+    "C": "R$ 1.666,67.",
+    "D": "R$ 1.700,00.",
+    "E": "R$ 1.733,76."
+   },
+   "gabarito": "E",
+   "resolucao": "Na Price: PV = PMT × a (o fator de valor atual).\nPMT = 5.000 ÷ 2,8839 ≈ R$ 1.733,76.\nConfere: 3 × R$ 1.733,76 = R$ 5.201,28, um pouco mais que R$ 5.000,00: a diferença são os juros.",
+   "comentarios": {
+    "C": "R$ 1.666,67 é a dívida ÷ 3, sem juros nenhum.",
+    "D": "Dividiu e somou 1 mês de juros; na Price o fator já embute os juros de todo o prazo.",
+    "A": "Usou o fator ao contrário; prestação = valor ÷ fator.",
+    "B": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 1.733,76."
+   },
+   "topico": "Sistemas de amortização",
+   "conceito": "SAC: amortização constante (dívida ÷ n); juros sobre o saldo, que cai; prestação decrescente. Price: prestação constante; no começo quase tudo é juro.",
+   "explicar": "No SAC, por que a prestação cai a cada mês, e na Tabela Price ela fica igual? Explique pelo que acontece com os juros e a amortização.",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um título de R$ 3.250,00, com vencimento em 6 meses, é resgatado hoje com desconto racional (por dentro) simples de 5% ao mês. O valor atual do título é",
+   "alternativas": {
+    "A": "R$ 2.275,00.",
+    "B": "R$ 2.500,00.",
+    "C": "R$ 2.600,00.",
+    "D": "R$ 3.087,50.",
+    "E": "R$ 3.250,00."
+   },
+   "gabarito": "B",
+   "resolucao": "Racional (por dentro): A = N ÷ (1 + i · n).\nA = 3.250 ÷ (1 + 0,05 × 6) = 3.250 ÷ 1,3 = R$ 2.500,00.\nDesconto = R$ 750,00; o comercial seria maior: R$ 975,00.",
+   "comentarios": {
+    "A": "R$ 2.275,00 usa o desconto COMERCIAL (sobre o nominal); o racional é sobre o valor atual.",
+    "E": "R$ 3.250,00 é o nominal.",
+    "D": "Usou só 1 mês; são 6.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 2.500,00."
+   },
+   "topico": "Desconto simples",
+   "conceito": "Desconto comercial (por fora): D = N · d · n, sobre o valor NOMINAL. Racional (por dentro): A = N ÷ (1 + i · n), o desconto é sobre o valor ATUAL. Para a mesma taxa, o comercial é maior.",
+   "explicar": "Explique a diferença entre desconto comercial (por fora) e racional (por dentro): sobre qual valor cada um calcula o desconto?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um título de R$ 9.600,00, com vencimento em 10 meses, é resgatado hoje com desconto racional (por dentro) simples de 2% ao mês. O valor atual do título é",
+   "alternativas": {
+    "A": "R$ 7.680,00.",
+    "B": "R$ 8.000,00.",
+    "C": "R$ 8.100,00.",
+    "D": "R$ 9.408,00.",
+    "E": "R$ 9.600,00."
+   },
+   "gabarito": "B",
+   "resolucao": "Racional (por dentro): A = N ÷ (1 + i · n).\nA = 9.600 ÷ (1 + 0,02 × 10) = 9.600 ÷ 1,2 = R$ 8.000,00.\nDesconto = R$ 1.600,00; o comercial seria maior: R$ 1.920,00.",
+   "comentarios": {
+    "A": "R$ 7.680,00 usa o desconto COMERCIAL (sobre o nominal); o racional é sobre o valor atual.",
+    "E": "R$ 9.600,00 é o nominal.",
+    "D": "Usou só 1 mês; são 10.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 8.000,00."
+   },
+   "topico": "Desconto simples",
+   "conceito": "Desconto comercial (por fora): D = N · d · n, sobre o valor NOMINAL. Racional (por dentro): A = N ÷ (1 + i · n), o desconto é sobre o valor ATUAL. Para a mesma taxa, o comercial é maior.",
+   "explicar": "Explique a diferença entre desconto comercial (por fora) e racional (por dentro): sobre qual valor cada um calcula o desconto?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Uma loja oferece um produto por R$ 1.000,00 à vista ou em um pagamento único daqui a 1 mês. Para as duas formas serem equivalentes a juros compostos de 2% ao mês, o pagamento a prazo deve ser de",
+   "alternativas": {
+    "A": "R$ 920,00.",
+    "B": "R$ 980,39.",
+    "C": "R$ 1.000,00.",
+    "D": "R$ 1.020,00.",
+    "E": "R$ 1.040,00."
+   },
+   "gabarito": "D",
+   "resolucao": "Levar para o futuro: VF = VP · (1 + i)^n.\nVF = 1.000 × (1 + 0,02)^1 = R$ 1.020,00.\nÀ vista ou esse valor na data combinada: dá no mesmo, a essa taxa.",
+   "comentarios": {
+    "C": "Sem juros, a prazo e à vista não seriam equivalentes.",
+    "B": "Trouxe para o presente; o pedido é levar para o futuro (multiplicar pelo fator).",
+    "A": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 1.020,00.",
+    "E": "Somou o juro duas vezes."
+   },
+   "topico": "Valor presente e equivalência",
+   "conceito": "Dinheiro em datas diferentes só se compara levado à mesma data: VF = VP · (1 + i)^n e VP = VF ÷ (1 + i)^n.",
+   "explicar": "O que significa dizer que R$ 1.000 hoje e R$ 1.100 daqui a um mês são \"equivalentes\" a 10% ao mês? Como você compara pagamentos em datas diferentes?",
+   "habilidade": "calcular"
+  },
+  {
+   "enunciado": "Um empréstimo de R$ 20.000,00 será pago em 4 prestações mensais iguais (Tabela Price), à taxa de 1% ao mês. Dado o fator de valor atual para 4 pagamentos a 1%, a = 3,902, o valor de cada prestação é, aproximadamente,",
+   "alternativas": {
+    "A": "R$ 4.877,50.",
+    "B": "R$ 5.000,00.",
+    "C": "R$ 5.025,58.",
+    "D": "R$ 5.050,00.",
+    "E": "R$ 5.125,58."
+   },
+   "gabarito": "E",
+   "resolucao": "Na Price: PV = PMT × a (o fator de valor atual).\nPMT = 20.000 ÷ 3,902 ≈ R$ 5.125,58.\nConfere: 4 × R$ 5.125,58 = R$ 20.502,32, um pouco mais que R$ 20.000,00: a diferença são os juros.",
+   "comentarios": {
+    "B": "R$ 5.000,00 é a dívida ÷ 4, sem juros nenhum.",
+    "D": "Dividiu e somou 1 mês de juros; na Price o fator já embute os juros de todo o prazo.",
+    "A": "Usou o fator ao contrário; prestação = valor ÷ fator.",
+    "C": "Não sai de nenhuma conta com os dados da questão; a conta certa dá R$ 5.125,58."
+   },
+   "topico": "Sistemas de amortização",
+   "conceito": "SAC: amortização constante (dívida ÷ n); juros sobre o saldo, que cai; prestação decrescente. Price: prestação constante; no começo quase tudo é juro.",
+   "explicar": "No SAC, por que a prestação cai a cada mês, e na Tabela Price ela fica igual? Explique pelo que acontece com os juros e a amortização.",
+   "habilidade": "calcular"
+  }
+ ],
+ "fontes": [
+  "Questões geradas e conferidas em Python (fractions): cada resposta e cada armadilha são calculadas a partir das fórmulas de juros, taxas, desconto e amortização; os fatores da Tabela Price (a = Σ 1/(1+i)^k) foram calculados e arredondados a 4 casas, como a banca dá"
+ ]
+}
