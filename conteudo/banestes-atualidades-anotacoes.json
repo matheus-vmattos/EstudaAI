@@ -1,0 +1,30 @@
+{
+ "materia": "Atualidades do Mercado Financeiro",
+ "notas": [
+  {
+   "lugar": [
+    "Inovação financeira",
+    "Moedas digitais"
+   ],
+   "texto": "## Ativos virtuais (Lei 14.478/2022)\n\n**Ativo virtual** (art. 3º): representação digital de valor negociada ou transferida por meios eletrônicos, para **pagamentos ou investimento**.\n**Fora do conceito:** moeda nacional e estrangeiras; moeda eletrônica (Lei 12.865); pontos de fidelidade; valores mobiliários e ativos financeiros.\n\n**Prestadora de serviços de ativos virtuais** (art. 5º): pessoa jurídica que, em nome de terceiros, troca, transfere, custodia ou administra ativos virtuais. Só funciona com **prévia autorização** federal (art. 2º).\n\n**Quem regula:** o **Banco Central** disciplina e supervisiona as prestadoras (Decreto 11.563/2023, art. 2º)."
+  },
+  {
+   "lugar": [
+    "Inovação financeira",
+    "Open Finance"
+   ],
+   "texto": "## Open Finance\n\nRes. Conjunta BCB/CMN 1/2020: compartilhamento padronizado de dados e serviços, **sempre com consentimento** do cliente (livre, informado, prévio, inequívoco, eletrônico e com finalidade definida), revogável **a qualquer tempo**.\nObjetivos: inovação, concorrência, eficiência do SFN e do SPB, cidadania financeira."
+  },
+  {
+   "lugar": [
+    "Cidadania financeira",
+    "Educação financeira"
+   ],
+   "texto": "## ENEF e FBEF (Decreto 10.393/2020)\n\n**ENEF** (art. 1º): promover a educação **financeira, securitária, previdenciária e fiscal** no País.\n**FBEF** (art. 2º): colegiado de articulação que implementa e estabelece os princípios da ENEF, divulga e integra as ações. Integram, entre outros, Banco Central, CVM, Susep e Previc (art. 3º)."
+  }
+ ],
+ "fontes": [
+  "Lei 14.478/2022, arts. 2º, 3º e 5º; Decreto 11.563/2023, art. 2º; Decreto 10.393/2020, arts. 1º a 3º — planalto.gov.br",
+  "Res. Conjunta BCB/CMN 1/2020 — bcb.gov.br"
+ ]
+}

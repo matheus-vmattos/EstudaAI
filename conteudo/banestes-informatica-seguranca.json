@@ -1,0 +1,341 @@
+{
+ "tema": "Informática: segurança digital, golpes, senhas e backup",
+ "materia": "Informática e Comportamentos Digitais",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "Segundo a Cartilha de Segurança para Internet (CERT.br), o código malicioso do tipo worm",
+   "alternativas": {
+    "A": "torna-se parte de programas e arquivos e propaga-se enviando cópias de si mesmo por e-mails e mensagens.",
+    "B": "além de executar as funções para as quais foi aparentemente projetado, executa outras, normalmente maliciosas, sem o conhecimento do usuário.",
+    "C": "propaga-se automaticamente pelas redes, explorando vulnerabilidades nos sistemas e enviando cópias de si mesmo de dispositivo para dispositivo.",
+    "D": "é projetado para apresentar propagandas.",
+    "E": "permite o retorno de um invasor a um dispositivo comprometido, por meio de serviços criados ou modificados para esse fim."
+   },
+   "gabarito": "C",
+   "resolucao": "Cartilha CERT.br, fascículo \"Códigos Maliciosos\": WORM — \"Propaga-se automaticamente pelas redes, explorando vulnerabilidades nos sistemas e enviando cópias de si mesmo de dispositivo para dispositivo.\" (resumo fiel do texto da cartilha).",
+   "comentarios": {
+    "A": "Essa é a descrição do vírus.",
+    "B": "Essa é a descrição do trojan.",
+    "D": "Essa é a descrição do adware.",
+    "E": "Essa é a descrição do backdoor."
+   },
+   "topico": "Códigos maliciosos",
+   "conceito": "Vírus se anexa a arquivos; worm se espalha sozinho pela rede; ransomware sequestra os dados; spyware (keylogger, screenlogger) espiona; trojan se disfarça; backdoor deixa a porta aberta.",
+   "explicar": "Explique a diferença entre vírus, worm e ransomware: como cada um se espalha ou age, e o que o ransomware exige.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Segundo a Cartilha de Segurança para Internet (CERT.br), o código malicioso do tipo ransomware",
+   "alternativas": {
+    "A": "torna inacessíveis os dados do dispositivo, geralmente usando criptografia, e exige pagamento de resgate para restabelecer o acesso.",
+    "B": "captura e armazena as teclas digitadas pelo usuário.",
+    "C": "propaga-se automaticamente pelas redes, explorando vulnerabilidades nos sistemas e enviando cópias de si mesmo de dispositivo para dispositivo.",
+    "D": "é projetado para apresentar propagandas.",
+    "E": "torna-se parte de programas e arquivos e propaga-se enviando cópias de si mesmo por e-mails e mensagens."
+   },
+   "gabarito": "A",
+   "resolucao": "Cartilha CERT.br, fascículo \"Códigos Maliciosos\": RANSOMWARE — \"Torna inacessíveis os dados do dispositivo, geralmente usando criptografia, e exige pagamento de resgate para restabelecer o acesso.\" (resumo fiel do texto da cartilha).",
+   "comentarios": {
+    "B": "Essa é a descrição do keylogger.",
+    "C": "Essa é a descrição do worm.",
+    "D": "Essa é a descrição do adware.",
+    "E": "Essa é a descrição do vírus."
+   },
+   "topico": "Códigos maliciosos",
+   "conceito": "Vírus se anexa a arquivos; worm se espalha sozinho pela rede; ransomware sequestra os dados; spyware (keylogger, screenlogger) espiona; trojan se disfarça; backdoor deixa a porta aberta.",
+   "explicar": "Explique a diferença entre vírus, worm e ransomware: como cada um se espalha ou age, e o que o ransomware exige.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Segundo a Cartilha de Segurança para Internet (CERT.br), o código malicioso do tipo keylogger",
+   "alternativas": {
+    "A": "armazena a posição do cursor e a tela apresentada nos momentos em que o mouse é clicado.",
+    "B": "permite o retorno de um invasor a um dispositivo comprometido, por meio de serviços criados ou modificados para esse fim.",
+    "C": "torna inacessíveis os dados do dispositivo, geralmente usando criptografia, e exige pagamento de resgate para restabelecer o acesso.",
+    "D": "além de executar as funções para as quais foi aparentemente projetado, executa outras, normalmente maliciosas, sem o conhecimento do usuário.",
+    "E": "captura e armazena as teclas digitadas pelo usuário."
+   },
+   "gabarito": "E",
+   "resolucao": "Cartilha CERT.br, fascículo \"Códigos Maliciosos\": KEYLOGGER — \"Captura e armazena as teclas digitadas pelo usuário.\" (resumo fiel do texto da cartilha).",
+   "comentarios": {
+    "A": "Essa é a descrição do screenlogger.",
+    "B": "Essa é a descrição do backdoor.",
+    "C": "Essa é a descrição do ransomware.",
+    "D": "Essa é a descrição do trojan."
+   },
+   "topico": "Códigos maliciosos",
+   "conceito": "Vírus se anexa a arquivos; worm se espalha sozinho pela rede; ransomware sequestra os dados; spyware (keylogger, screenlogger) espiona; trojan se disfarça; backdoor deixa a porta aberta.",
+   "explicar": "Explique a diferença entre vírus, worm e ransomware: como cada um se espalha ou age, e o que o ransomware exige.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Segundo a Cartilha de Segurança para Internet (CERT.br), o código malicioso do tipo trojan",
+   "alternativas": {
+    "A": "propaga-se automaticamente pelas redes, explorando vulnerabilidades nos sistemas e enviando cópias de si mesmo de dispositivo para dispositivo.",
+    "B": "além de executar as funções para as quais foi aparentemente projetado, executa outras, normalmente maliciosas, sem o conhecimento do usuário.",
+    "C": "captura e armazena as teclas digitadas pelo usuário.",
+    "D": "permite o retorno de um invasor a um dispositivo comprometido, por meio de serviços criados ou modificados para esse fim.",
+    "E": "é projetado para apresentar propagandas."
+   },
+   "gabarito": "B",
+   "resolucao": "Cartilha CERT.br, fascículo \"Códigos Maliciosos\": TROJAN — \"Além de executar as funções para as quais foi aparentemente projetado, executa outras, normalmente maliciosas, sem o conhecimento do usuário.\" (resumo fiel do texto da cartilha).",
+   "comentarios": {
+    "A": "Essa é a descrição do worm.",
+    "C": "Essa é a descrição do keylogger.",
+    "D": "Essa é a descrição do backdoor.",
+    "E": "Essa é a descrição do adware."
+   },
+   "topico": "Códigos maliciosos",
+   "conceito": "Vírus se anexa a arquivos; worm se espalha sozinho pela rede; ransomware sequestra os dados; spyware (keylogger, screenlogger) espiona; trojan se disfarça; backdoor deixa a porta aberta.",
+   "explicar": "Explique a diferença entre vírus, worm e ransomware: como cada um se espalha ou age, e o que o ransomware exige.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Um usuário acessa o internet banking digitando a senha em um teclado virtual na tela. Segundo a Cartilha do CERT.br, o tipo de spyware usado para capturar as teclas digitadas nesse teclado virtual é o",
+   "alternativas": {
+    "A": "adware.",
+    "B": "worm.",
+    "C": "ransomware.",
+    "D": "screenlogger.",
+    "E": "backdoor."
+   },
+   "gabarito": "D",
+   "resolucao": "Cartilha CERT.br, fascículo \"Códigos Maliciosos\": SCREENLOGGER \"armazena a posição do cursor e a tela apresentada no monitor (...) nos momentos em que o mouse é clicado. Usado para capturar teclas digitadas em teclados virtuais.\" O keylogger captura as teclas do teclado físico.",
+   "comentarios": {
+    "A": "Adware apresenta propagandas.",
+    "B": "Worm se propaga pela rede; não é spyware.",
+    "C": "Ransomware sequestra dados e pede resgate.",
+    "E": "Backdoor permite o retorno do invasor."
+   },
+   "topico": "Códigos maliciosos",
+   "conceito": "Teclado virtual: screenlogger (a tela e o clique). Teclado físico: keylogger.",
+   "explicar": "Explique a diferença entre vírus, worm e ransomware: como cada um se espalha ou age, e o que o ransomware exige.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "De acordo com a Cartilha do CERT.br, o programa popularmente chamado de \"antivírus\"",
+   "alternativas": {
+    "A": "é nome popular para ferramentas antimalware, que atuam sobre diversos tipos de códigos maliciosos, não exclusivamente sobre vírus.",
+    "B": "atua exclusivamente sobre vírus, sendo inútil contra worms e trojans.",
+    "C": "dispensa atualização depois de instalado.",
+    "D": "substitui a necessidade de backup.",
+    "E": "deve ser desativado para não deixar o computador lento."
+   },
+   "gabarito": "A",
+   "resolucao": "Cartilha CERT.br, fascículo \"Códigos Maliciosos\": \"Antivírus é nome popular para ferramentas antimalware, que atuam sobre diversos tipos de códigos maliciosos (não exclusivamente sobre vírus).\" E \"precisam de atualização contínua\".",
+   "comentarios": {
+    "B": "A cartilha diz o contrário: atua sobre diversos tipos, não só vírus.",
+    "C": "Precisa de atualização contínua para ser efetivo.",
+    "D": "A cartilha recomenda backup à parte (ex.: contra ransomware).",
+    "E": "A cartilha recomenda manter e configurar a verificação automática."
+   },
+   "topico": "Códigos maliciosos",
+   "conceito": "Antivírus = antimalware: vários tipos de ameaça, sempre atualizado.",
+   "explicar": "Explique a diferença entre vírus, worm e ransomware: como cada um se espalha ou age, e o que o ransomware exige.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Segundo a Cartilha do CERT.br, usar no dia a dia uma conta padrão, e a conta de administrador apenas quando necessário, ajuda a limitar as ações dos códigos maliciosos. Essa recomendação baseia-se no princípio de segurança conhecido como",
+   "alternativas": {
+    "A": "defesa em profundidade.",
+    "B": "privilégio mínimo.",
+    "C": "segregação de funções.",
+    "D": "autenticação forte.",
+    "E": "disponibilidade."
+   },
+   "gabarito": "B",
+   "resolucao": "Cartilha CERT.br, fascículo \"Códigos Maliciosos\": um malware \"consegue fazer no dispositivo o mesmo que o usuário que o ativou e terá acesso irrestrito se a conta usada for de administrador\". A recomendação \"baseia-se em um princípio de segurança conhecido como “privilégio mínimo”\".",
+   "comentarios": {
+    "A": "É outro princípio; a cartilha cita o \"privilégio mínimo\".",
+    "C": "Princípio de controle interno, não o citado.",
+    "D": "Autenticação forte é sobre verificar quem acessa (senha + segundo fator).",
+    "E": "Disponibilidade é um atributo da informação, não esse princípio."
+   },
+   "topico": "Códigos maliciosos",
+   "conceito": "Privilégio mínimo: cada um usa só o acesso de que precisa.",
+   "explicar": "Explique a diferença entre vírus, worm e ransomware: como cada um se espalha ou age, e o que o ransomware exige.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Segundo a Cartilha do CERT.br, botnet é",
+   "alternativas": {
+    "A": "um antivírus que funciona em rede.",
+    "B": "um tipo de backup distribuído na nuvem.",
+    "C": "um código que captura as teclas digitadas.",
+    "D": "uma rede formada por inúmeros dispositivos zumbis (infectados por bot), que potencializa as ações danosas.",
+    "E": "a chave física usada na verificação em duas etapas."
+   },
+   "gabarito": "D",
+   "resolucao": "Cartilha CERT.br, fascículo \"Códigos Maliciosos\": BOT \"similar ao worm, possui mecanismos de comunicação com o invasor que permitem que ele seja remotamente controlado\"; ZUMBI: \"outro nome dado ao dispositivo infectado por bot\"; BOTNET: \"rede formada por inúmeros dispositivos zumbis. Permite potencializar as ações danosas executadas pelos bots.\"",
+   "comentarios": {
+    "A": "Não: botnet é rede de dispositivos infectados.",
+    "B": "Não tem relação com backup.",
+    "C": "Isso é keylogger.",
+    "E": "Isso é a chave de segurança (U2F/FIDO)."
+   },
+   "topico": "Códigos maliciosos",
+   "conceito": "Bot = worm com controle remoto; zumbi = máquina infectada; botnet = rede de zumbis.",
+   "explicar": "Explique a diferença entre vírus, worm e ransomware: como cada um se espalha ou age, e o que o ransomware exige.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "A Cartilha do CERT.br define engenharia social como",
+   "alternativas": {
+    "A": "o uso de programas que exploram vulnerabilidades técnicas dos sistemas.",
+    "B": "a criação de redes de computadores infectados controlados remotamente.",
+    "C": "a tentativa de enganar outra pessoa explorando sentimentos como medo, obediência, confiança, ganância, curiosidade e vontade de ajudar.",
+    "D": "a análise do comportamento de usuários para melhorar o atendimento.",
+    "E": "a cópia de dados para outro local, como proteção contra perdas."
+   },
+   "gabarito": "C",
+   "resolucao": "Cartilha CERT.br, fascículo \"Golpes: Não se Deixe Enganar\": \"Engenharia social é quando alguém tenta enganar outra pessoa explorando sentimentos, como medo, obediência, confiança, carência, ganância, curiosidade e vontade de ajudar. É uma técnica muito usada por golpistas para levar as pessoas a agir sem pensar.\"",
+   "comentarios": {
+    "A": "Isso descreve exploração técnica (ex.: worm), não engenharia social.",
+    "B": "Isso é uma botnet.",
+    "D": "Não é o sentido de segurança usado pela cartilha.",
+    "E": "Isso é backup."
+   },
+   "topico": "Golpes e engenharia social",
+   "conceito": "Engenharia social ataca a pessoa, não a máquina: emoção para fazer agir sem pensar.",
+   "explicar": "O que é engenharia social e quais sinais numa mensagem indicam que pode ser golpe? Dê um exemplo de golpe bancário.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Um cliente recebe mensagem dizendo que seu \"token será bloqueado hoje\" e que ele deve atualizar o cadastro por um link. Segundo a Cartilha do CERT.br, a atitude recomendada é",
+   "alternativas": {
+    "A": "clicar no link rapidamente, para evitar o bloqueio.",
+    "B": "responder a mensagem pedindo mais informações ao remetente.",
+    "C": "confirmar o cadastro informando apenas a senha do cartão.",
+    "D": "acreditar na mensagem se ela trouxer seu nome e CPF corretos.",
+    "E": "não fazer o que a mensagem pede e, na dúvida, contatar a instituição pelos canais oficiais."
+   },
+   "gabarito": "E",
+   "resolucao": "Cartilha CERT.br, \"Golpes: Não se Deixe Enganar\": suspeite de mensagens sobre \"recadastramento de token\", \"CPF cancelado\", \"pagamento pendente\" etc. \"Não faça o que o golpista pede • na dúvida, contate a instituição pelos canais oficiais.\" E \"suspeite, mesmo que saibam seus dados\".",
+   "comentarios": {
+    "A": "Pressa é sinal típico de golpe; a cartilha manda não fazer o que o golpista pede.",
+    "B": "Contato deve ser por canais oficiais, não pela própria mensagem.",
+    "C": "Nunca se repassam senhas ou códigos.",
+    "D": "Golpistas usam dados vazados: suspeite mesmo que saibam seus dados."
+   },
+   "topico": "Golpes e engenharia social",
+   "conceito": "Mensagem com pressa, ameaça ou dinheiro: pare, não clique, ligue no canal oficial.",
+   "explicar": "O que é engenharia social e quais sinais numa mensagem indicam que pode ser golpe? Dê um exemplo de golpe bancário.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Segundo a Cartilha do CERT.br, entre os métodos de verificação em duas etapas, é atualmente a opção mais segura",
+   "alternativas": {
+    "A": "o código recebido por SMS.",
+    "B": "a pergunta secreta de recuperação.",
+    "C": "a senha repetida duas vezes.",
+    "D": "a chave de segurança física (token físico, também chamada chave U2F/FIDO).",
+    "E": "o código recebido por e-mail."
+   },
+   "gabarito": "D",
+   "resolucao": "Cartilha CERT.br, fascículo \"Autenticação\": \"A chave de segurança física (ou token físico), também chamada chave U2F, FIDO ou FIDO2, é atualmente a opção mais segura de verificação.\" E: \"Prefira chave de segurança física ou geradores de códigos de verificação por aplicativo de celular • use SMS apenas se não houver outras opções\".",
+   "comentarios": {
+    "A": "A cartilha recomenda usar SMS apenas se não houver outras opções.",
+    "B": "Pergunta de segurança não é método de verificação em duas etapas da lista.",
+    "C": "Repetir a senha não é um segundo fator.",
+    "E": "Não é o que a cartilha aponta como mais seguro."
+   },
+   "topico": "Senhas e verificação em duas etapas",
+   "conceito": "Segundo fator: chave física > app gerador de código > SMS (só se não houver outro).",
+   "explicar": "Por que a verificação em duas etapas protege mesmo quando a senha vaza? Qual método a cartilha considera mais seguro, e qual usar só em último caso?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "De acordo com a Cartilha do CERT.br, a verificação em duas etapas protege a conta porque",
+   "alternativas": {
+    "A": "mesmo que o atacante descubra a senha, ele precisará de outras informações para invadi-la.",
+    "B": "dispensa o uso de senha.",
+    "C": "impede que a senha seja vazada.",
+    "D": "permite repetir a mesma senha em vários serviços com segurança.",
+    "E": "torna desnecessário trocar a senha após um vazamento."
+   },
+   "gabarito": "A",
+   "resolucao": "Cartilha CERT.br, \"Autenticação\": \"A verificação em duas etapas adiciona uma segunda camada de proteção no acesso às suas contas. Com ela ativada, mesmo que o atacante descubra sua senha, ele precisará de outras informações para invadir sua conta.\"",
+   "comentarios": {
+    "B": "Ela é uma SEGUNDA camada, além da senha.",
+    "C": "A senha pode vazar; o segundo fator é que protege depois disso.",
+    "D": "A cartilha manda usar uma senha diferente para cada conta.",
+    "E": "Senha exposta deve ser trocada imediatamente."
+   },
+   "topico": "Senhas e verificação em duas etapas",
+   "conceito": "Senha vazou? Sem o segundo fator, o atacante não entra.",
+   "explicar": "Por que a verificação em duas etapas protege mesmo quando a senha vaza? Qual método a cartilha considera mais seguro, e qual usar só em último caso?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Sobre senhas, a Cartilha do CERT.br recomenda",
+   "alternativas": {
+    "A": "usar a mesma senha forte em todos os serviços, para não esquecê-la.",
+    "B": "usar uma senha diferente para cada conta, criar senhas longas e guardá-las de forma segura, por exemplo em aplicativo gerenciador de senhas.",
+    "C": "usar datas e nomes de familiares, por serem fáceis de lembrar.",
+    "D": "salvar no navegador as senhas do banco e do e-mail.",
+    "E": "usar sequências de teclado, como \"qwerty\", por serem longas."
+   },
+   "gabarito": "B",
+   "resolucao": "Cartilha CERT.br, \"Autenticação\": \"Use uma senha diferente para cada conta\"; \"Crie senhas longas • escolha, por exemplo, três palavras aleatórias\"; \"Evite usar sequências de teclado\"; \"Não use informações pessoais\"; para guardar: \"usar aplicativos gerenciadores de senhas\", papel em local seguro ou arquivo criptografado; \"Evite salvar senhas de contas importantes em navegadores web\".",
+   "comentarios": {
+    "A": "Reusar é arriscado: descoberta uma, o atacante acessa as demais.",
+    "C": "Não use informações pessoais.",
+    "D": "A cartilha recomenda evitar salvar no navegador as senhas de contas importantes.",
+    "E": "Evite sequências de teclado."
+   },
+   "topico": "Senhas e verificação em duas etapas",
+   "conceito": "Senha boa: única, longa, sem dado pessoal, bem guardada.",
+   "explicar": "Por que a verificação em duas etapas protege mesmo quando a senha vaza? Qual método a cartilha considera mais seguro, e qual usar só em último caso?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Segundo a Cartilha do CERT.br (fascículo \"Backup\"), uma boa prática é",
+   "alternativas": {
+    "A": "manter uma única cópia, para não ocupar espaço.",
+    "B": "deixar o disco externo de backup conectado o tempo todo.",
+    "C": "ter pelo menos 2 cópias dos dados, armazenadas em locais diferentes, como uma na nuvem e outra em pen drive.",
+    "D": "nunca testar o backup, para não corromper os arquivos.",
+    "E": "guardar todas as cópias no mesmo equipamento dos dados originais."
+   },
+   "gabarito": "C",
+   "resolucao": "Cartilha CERT.br, \"Backup\": \"A expressão “Quem tem 1 não tem nenhum” reforça a importância de ter várias cópias (...) Tenha pelo menos 2 cópias dos dados. Armazene as cópias em locais diferentes • por exemplo: uma na nuvem e outra em pen drive.\" E: \"Não deixe as mídias conectadas o tempo todo\".",
+   "comentarios": {
+    "A": "\"Quem tem 1 não tem nenhum\": tenha pelo menos 2 cópias.",
+    "B": "A cartilha manda não deixar as mídias conectadas o tempo todo.",
+    "D": "A cartilha manda acessar e testar as cópias de tempos em tempos.",
+    "E": "As cópias devem ficar em locais diferentes."
+   },
+   "topico": "Backup e boas práticas",
+   "conceito": "Backup: 2 ou mais cópias, em lugares diferentes, desconectadas e testadas.",
+   "explicar": "Como você faria o backup dos seus arquivos de estudo seguindo a cartilha: quantas cópias, onde, e por que não deixar o disco conectado o tempo todo?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "De acordo com a Cartilha do CERT.br, sobre o ransomware é correto afirmar que",
+   "alternativas": {
+    "A": "o pagamento do resgate garante a devolução dos dados.",
+    "B": "basta reiniciar o computador para recuperar os dados cifrados.",
+    "C": "ele só ataca celulares, nunca computadores.",
+    "D": "ele se limita a exibir propagandas.",
+    "E": "manter backups atualizados permite recuperar os dados, e o pagamento do resgate não garante o restabelecimento do acesso."
+   },
+   "gabarito": "E",
+   "resolucao": "Cartilha CERT.br (página \"Ransomware\"): se o equipamento for infectado, \"a única garantia de que você conseguirá acessá-los novamente é possuir backups atualizados\"; \"O pagamento do resgate não garante que você conseguirá restabelecer o acesso aos dados.\" E o fascículo \"Backup\" lembra que o ransomware \"cifra os dados e apaga os backups\" quando pode: por isso a mídia não fica sempre conectada.",
+   "comentarios": {
+    "A": "A cartilha diz que o pagamento NÃO garante.",
+    "B": "Reiniciar não decifra os dados; a proteção é ter backup.",
+    "C": "Não há essa restrição na cartilha.",
+    "D": "Isso é adware."
+   },
+   "topico": "Backup e boas práticas",
+   "conceito": "Contra ransomware: backup atualizado e desconectado; pagar não garante nada.",
+   "explicar": "Como você faria o backup dos seus arquivos de estudo seguindo a cartilha: quantas cópias, onde, e por que não deixar o disco conectado o tempo todo?",
+   "habilidade": "reconhecer"
+  }
+ ],
+ "fontes": [
+  "Cartilha de Segurança para Internet, CERT.br/NIC.br — fascículos \"Códigos Maliciosos\", \"Golpes: Não se Deixe Enganar\", \"Autenticação\" e \"Backup\" (cartilha.cert.br/fasciculos), e página \"Ransomware\" (cartilha.cert.br/ransomware), lidos em 25/11/2026",
+  "Fora deste simulado por não ter sido conferido no texto: definição de phishing"
+ ]
+}

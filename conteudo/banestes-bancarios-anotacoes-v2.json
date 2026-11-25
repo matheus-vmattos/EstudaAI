@@ -1,0 +1,95 @@
+{
+ "materia": "Conhecimentos Bancários",
+ "notas": [
+  {
+   "lugar": [
+    "Sistema Financeiro Nacional",
+    "Órgãos normativos (CMN, CNSP, CNPC)"
+   ],
+   "texto": "## CMN e CNSP: quem faz as regras\n\n**CMN (Conselho Monetário Nacional)**: órgão normativo máximo do sistema financeiro. Três membros (Lei 9.069/1995, art. 8º, redação da Lei 14.600/2023):\n- **Ministro da Fazenda, que preside**;\n- Ministro do Planejamento e Orçamento;\n- Presidente do Banco Central.\n\n**CNSP (Conselho Nacional de Seguros Privados)**: encabeça o Sistema Nacional de Seguros Privados (Decreto-Lei 73/1966, art. 8º), junto com a Susep, os resseguradores e as instituições autorizadas a operar seguros.\n\n> **PEGADINHA** CVM e BNDES NÃO fazem parte do CMN; o Presidente da República também não."
+  },
+  {
+   "lugar": [
+    "Sistema Financeiro Nacional",
+    "Supervisores (Bacen, CVM, Susep, Previc)"
+   ],
+   "texto": "## Banco Central: objetivo, autonomia e competências\n\n**Objetivo fundamental** (LC 179/2021, art. 1º): **assegurar a estabilidade de preços**.\nSem prejuízo dele: zelar pela estabilidade e eficiência do sistema financeiro, suavizar as flutuações da atividade econômica e **fomentar o pleno emprego**.\n\n**Autonomia** (art. 6º): autarquia de **natureza especial**, sem vinculação a Ministério, com autonomia técnica, operacional, administrativa e financeira.\n\n**Dirigentes** (art. 4º): indicados e nomeados pelo **Presidente da República**, após aprovação do **Senado**. Mandato do Presidente do BC: **4 anos**, começando em **1º de janeiro do 3º ano** do mandato do Presidente da República.\n\n**Competências privativas** (Lei 4.595, art. 10): emitir moeda (nos limites autorizados pelo CMN), redesconto e empréstimo às instituições financeiras, fiscalizar as instituições financeiras.\n\n> **PEGADINHA** Pleno emprego é objetivo \"sem prejuízo\", não o fundamental."
+  },
+  {
+   "lugar": [
+    "Seguros, previdência e capitalização",
+    "Previdência complementar aberta"
+   ],
+   "texto": "## Previdência complementar: aberta × fechada (LC 109/2001)\n\n**Abertas** (art. 36): **unicamente sociedades anônimas**; planos **acessíveis a quaisquer pessoas físicas**.\n\n**Fechadas** (art. 31), os \"fundos de pensão\": acessíveis **exclusivamente** a:\n- empregados de uma empresa ou grupo e servidores públicos (os **patrocinadores**);\n- associados de entidades profissionais, classistas ou setoriais (os **instituidores**).\nOrganizam-se como **fundação ou sociedade civil, sem fins lucrativos**.\n\n> **PEGADINHA** A FCC troca as descrições: \"S.A., qualquer pessoa\" é ABERTA; \"sem fins lucrativos, só empregados\" é FECHADA.\n\n## Tributação e dedução (a sua dúvida do bloco de notas)\n\n**Dedução no IR** (Lei 9.532/1997, art. 11): contribuições à previdência privada pagas pela própria pessoa física podem ser deduzidas até **12% do total dos rendimentos** da base de cálculo, **desde que** ela também contribua para o regime geral (INSS) ou próprio.\n\n**Tabela regressiva** (Lei 11.053/2004, art. 1º; opção de quem entrou a partir de 2005), pelo tempo de acumulação:\n- até 2 anos: **35%**\n- de 2 a 4: **30%**\n- de 4 a 6: **25%**\n- de 6 a 8: **20%**\n- de 8 a 10: **15%**\n- mais de 10 anos: **10%**\n\n> **PEGADINHA** As siglas PGBL e VGBL não aparecem nessas leis. A prova costuma associar a dedução de 12% ao PGBL; o VGBL é o \"seguro de vida com cobertura por sobrevivência\" que a Lei 11.053 cita no § 1º do art. 1º."
+  },
+  {
+   "lugar": [
+    "Seguros, previdência e capitalização",
+    "Consórcio"
+   ],
+   "texto": "## Consórcio (Lei 11.795/2008)\n\n- **O que é** (art. 2º): grupo com prazo e número de cotas definidos, promovido por administradora, para a aquisição de bens ou serviços por **autofinanciamento**, de forma isonômica.\n- **Contemplação** (art. 22, § 1º): por **sorteio ou lance**.\n- **Quem fiscaliza** (art. 6º): o **Banco Central** (não a Susep, não a CVM).\n- **Administradora** (art. 5º): sociedade limitada ou anônima; remunerada pela **taxa de administração**.\n\n> **PEGADINHA** Consórcio não tem juros: o custo é a taxa de administração."
+  },
+  {
+   "lugar": [
+    "Prevenção à lavagem de dinheiro (PLD/FT)",
+    "COAF"
+   ],
+   "texto": "## Comunicações ao Coaf\n\n**Por suspeita** (Lei 9.613/1998, art. 11, II): comunicar a **proposta ou a realização** da operação em **24 horas**, **sem dar ciência a ninguém, nem ao cliente**.\n\n**Por valor, mesmo sem suspeita** (Circular BCB 3.978/2020, art. 49): depósito, aporte ou saque **em espécie** de valor **igual ou superior a R$ 50.000**, e o pedido de **provisionamento** de saque nesse valor. Prazo: **até o dia útil seguinte**.\n\n**Guarda de cadastros e registros** (Lei 9.613, art. 10, § 2º): no mínimo **5 anos** a partir do encerramento da conta ou da conclusão da transação.\n\n> **PEGADINHA** \"Igual ou superior\": R$ 50.000,00 exatos já obrigam."
+  },
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Investimentos"
+   ],
+   "texto": "## FGC: o que tem garantia (Res. CMN 4.222/2013, Anexo II)\n\n**Limite:** até **R$ 250 mil por pessoa**, somando tudo na mesma instituição **ou no mesmo conglomerado** (art. 2º, § 3º).\n\n**Cobertos (art. 2º):** depósitos à vista, **poupança**, depósitos a prazo (**CDB**), conta-salário, letras de câmbio, letras imobiliárias e hipotecárias, **LCI** e **LCA**, e certas compromissadas.\n\n**Fora:** cotas de **fundos de investimento**, depósitos judiciais, recursos captados no exterior, instrumentos com cláusula de subordinação.\n\n**Exemplo:** R$ 180 mil em CDB no banco X + R$ 120 mil em LCI no banco Y, do mesmo conglomerado → garantia de **R$ 250 mil** (não R$ 300 mil).\n\n## Poupança, LCI e LCA\n\n**Poupança** (Lei 8.177/1991, art. 12, redação da Lei 12.703/2012): remuneração básica + adicional:\n- meta Selic **acima de 8,5% a.a.** → **0,5% ao mês**;\n- meta Selic **até 8,5% a.a.** → **70% da meta Selic**, mensalizada.\nCalculada sobre o **menor saldo** do período; creditada **na data de aniversário** (pessoa física).\n\n**LCI e LCA**: **isentas de IR para pessoa física** (Lei 11.033/2004, art. 3º, II e IV) e cobertas pelo FGC.\n\n**Ações** (Lei 6.404/1976, art. 15): **ordinárias, preferenciais ou de fruição**. Preferenciais sem voto: no máximo **50%** do total (era 2/3 até 2001)."
+  },
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Meios de pagamento"
+   ],
+   "texto": "## Cheque: prazos que a FCC cobra (Lei 7.357/1985)\n\n- **Apresentação** (art. 33): **30 dias** se emitido no lugar onde vai ser pago; **60 dias** se emitido em outro lugar do País ou no exterior. Conta da data de emissão.\n- **Prescrição da execução** (art. 59): **6 meses** contados do **fim do prazo de apresentação**.\n- **\"Pré-datado\"** (art. 32): o cheque é **pagável à vista**; apresentado antes da data, é pago no dia da apresentação.\n- **Atraso do portador** (art. 47, § 3º): ele perde a execução contra o emitente só se este tinha fundos no prazo e os perdeu sem culpa."
+  },
+  {
+   "lugar": [
+    "Regulação e consumidor",
+    "Regulação dos mercados financeiro e securitário"
+   ],
+   "texto": "## Sigilo bancário (LC 105/2001)\n\n**Regra** (art. 1º): as instituições financeiras conservam sigilo em suas **operações ativas e passivas e serviços prestados**.\n\n**Não é violação** (art. 1º, § 3º), entre outros:\n- troca de informações **entre instituições**, para cadastro (centrais de risco);\n- informar cadastro de emitentes de cheque sem fundos e de inadimplentes a **entidades de proteção ao crédito**;\n- **comunicar ilícitos** às autoridades;\n- revelar com o **consentimento expresso** do interessado.\n\n> **PEGADINHA** Consentimento tácito não serve: tem de ser EXPRESSO."
+  },
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Crédito"
+   ],
+   "texto": "## Cheque especial e cartão de crédito\n\n**Cheque especial** (Res. CMN 4.765/2019): \"limite de crédito rotativo vinculado a conta de depósitos à vista\" (art. 1º); juros limitados a **8% ao mês** (art. 3º).\n\n**Rotativo do cartão** (Res. CMN 4.549/2017): só **até o vencimento da fatura seguinte** (art. 1º). Depois, só parcelamento **em condições mais vantajosas** que o rotativo (art. 2º); é vedado voltar ao rotativo o que já foi parcelado.\n\n**Teto de juros** (Lei 14.690/2023, art. 28, § 1º): sem limites aprovados pelo CMN em 90 dias, juros e encargos do rotativo/parcelado **não podem passar do valor original da dívida**.\n\n> **PEGADINHA** 8% ao mês é do cheque especial, não do cartão."
+  },
+  {
+   "lugar": [
+    "Inovação nos pagamentos",
+    "Pix"
+   ],
+   "texto": "## Pix: pagamento instantâneo\n\nRegulamento do Pix (anexo à Res. BCB 1/2020): pagamento instantâneo é a transferência em que a ordem e a **disponibilidade dos fundos ao recebedor ocorrem em tempo real**, com o serviço disponível **24 horas por dia, em todos os dias do ano**."
+  },
+  {
+   "lugar": [
+    "Inovação nos pagamentos",
+    "Open Finance"
+   ],
+   "texto": "## Open Finance (Sistema Financeiro Aberto)\n\nRes. Conjunta BCB/CMN 1/2020 (o texto original usa o nome Open Banking):\n- **O que é:** compartilhamento padronizado de dados e serviços entre instituições (art. 2º, I).\n- **Objetivos (art. 3º):** incentivar a inovação, promover a concorrência, aumentar a eficiência do SFN e do SPB, promover a cidadania financeira.\n- **Princípios (art. 4º):** transparência, segurança e privacidade, qualidade dos dados, tratamento não discriminatório, reciprocidade, interoperabilidade.\n- **Consentimento (art. 2º, VIII):** livre, informado, prévio e inequívoco, por meio eletrônico, para finalidades determinadas.\n- **Revogação (art. 15):** a qualquer tempo, ao menos pelo mesmo canal; a instituição não pode ficar propondo a revogação."
+  },
+  {
+   "lugar": [
+    "Mercado financeiro e de capitais",
+    "Conceitos e instrumentos"
+   ],
+   "texto": "## Ações\n\nLei 6.404/1976, art. 15: as ações são **ordinárias, preferenciais ou de fruição**, conforme os direitos que dão.\n§ 2º (redação da Lei 10.303/2001): preferenciais **sem voto** (ou com voto restrito) no máximo **50% do total** emitido.\n\n> **PEGADINHA** Debênture não é espécie de ação."
+  }
+ ],
+ "fontes": [
+  "Lei 9.069/1995, art. 8º; LC 179/2021, arts. 1º, 4º e 6º; Lei 4.595/1964, art. 10; DL 73/1966, art. 8º; LC 109/2001, arts. 31 e 36; Lei 11.795/2008, arts. 2º, 5º, 6º e 22; LC 105/2001, art. 1º; Lei 7.357/1985, arts. 32, 33, 47 e 59; Lei 9.613/1998, arts. 10 e 11 — planalto.gov.br",
+  "Circular BCB 3.978/2020, art. 49; Resolução CMN 4.222/2013, Anexo II, art. 2º — bcb.gov.br (busca de normas)",
+  "Lei 8.177/1991, art. 12; Lei 11.033/2004, art. 3º; Lei 6.404/1976, art. 15; Lei 9.532/1997, art. 11; Lei 11.053/2004, art. 1º; Lei 14.690/2023, art. 28 — planalto.gov.br",
+  "Res. CMN 4.765/2019; Res. CMN 4.549/2017; Regulamento do Pix (Res. BCB 1/2020); Res. Conjunta BCB/CMN 1/2020 — bcb.gov.br"
+ ]
+}
