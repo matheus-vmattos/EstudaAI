@@ -43,3 +43,28 @@ export function notaDeDuvida(
     atualizadoEm: agora
   }
 }
+
+/** O que a janelinha manda: salvar uma nota ou apagar uma. Nunca a lista
+ *  inteira: uma lista velha apagaria o que chegou da nuvem (ou do "Anotar
+ *  dúvida") enquanto você digitava. */
+export type OpDoBloco = { tipo: 'salvar'; nota: NotaDoBloco } | { tipo: 'apagar'; id: string }
+
+/** Aplica as operações sobre a lista que vale agora. A edição mais nova de
+ *  cada nota vence; operação malformada (veio de outra janela) não entra. */
+export function aplicarOps(notas: NotaDoBloco[], ops: unknown): NotaDoBloco[] {
+  let lista = [...notas]
+  if (!Array.isArray(ops)) return lista
+  for (const op of ops.slice(0, MAX_NOTAS)) {
+    const o = op as Partial<{ tipo: string; nota: unknown; id: unknown }>
+    if (o?.tipo === 'apagar' && typeof o.id === 'string') {
+      lista = lista.filter((n) => n.id !== o.id)
+    } else if (o?.tipo === 'salvar') {
+      const [nota] = lerNotasDoBloco([o.nota])
+      if (!nota) continue
+      const ja = lista.find((n) => n.id === nota.id)
+      if (ja && ja.atualizadoEm > nota.atualizadoEm) continue
+      lista = ja ? lista.map((n) => (n.id === nota.id ? nota : n)) : [nota, ...lista]
+    }
+  }
+  return lista.slice(0, MAX_NOTAS)
+}

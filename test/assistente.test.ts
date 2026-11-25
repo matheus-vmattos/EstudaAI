@@ -924,3 +924,43 @@ describe('Raio-X polido: não chama de firme o que não é', () => {
     expect(d.pontos.join(' ')).toContain('não mediu o tempo')
   })
 })
+
+describe('Codex no PR 31: o bloco não perde nem sobrescreve notas', () => {
+  const n = (id: string, texto: string, atualizadoEm: number) => ({
+    id,
+    titulo: id,
+    texto,
+    criadoEm: 1,
+    atualizadoEm
+  })
+  it('a janelinha manda operações, não a lista: a nota que chegou da nuvem fica', async () => {
+    const { aplicarOps } = await import('../src/shared/bloco')
+    // a principal já tem a nota "nuvem" (veio do outro PC) quando chega a edição de "a"
+    const atual = [n('a', 'velho', 1), n('nuvem', 'do outro PC', 5)]
+    const depois = aplicarOps(atual, [{ tipo: 'salvar', nota: n('a', 'novo', 9) }])
+    expect(depois.map((x) => [x.id, x.texto])).toEqual([
+      ['a', 'novo'],
+      ['nuvem', 'do outro PC']
+    ])
+    // edição mais velha não desfaz uma mais nova
+    expect(
+      aplicarOps(depois, [{ tipo: 'salvar', nota: n('a', 'atrasada', 3) }]).find(
+        (x) => x.id === 'a'
+      )?.texto
+    ).toBe('novo')
+    expect(aplicarOps(depois, [{ tipo: 'apagar', id: 'a' }]).map((x) => x.id)).toEqual(['nuvem'])
+    // operação malformada (veio de outra janela) não entra
+    expect(
+      aplicarOps(depois, [{ tipo: 'salvar', nota: { id: 7 } } as never, 'lixo' as never])
+    ).toEqual(depois)
+  })
+  it('a atualização de fora durante a digitação não é jogada fora: entra, e a digitação pendente fica por cima', async () => {
+    const { aplicarOps } = await import('../src/shared/bloco')
+    const pendentes = [{ tipo: 'salvar' as const, nota: n('a', 'digitando…', 9) }]
+    const deFora = [n('a', 'velho', 1), n('duvida', 'anotada no gabarito', 8)]
+    expect(aplicarOps(deFora, pendentes).map((x) => [x.id, x.texto])).toEqual([
+      ['a', 'digitando…'],
+      ['duvida', 'anotada no gabarito']
+    ])
+  })
+})

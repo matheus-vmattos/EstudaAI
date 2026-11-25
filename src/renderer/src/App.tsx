@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { mesclarRetornos } from '../../shared/explicar'
-import { lerNotasDoBloco } from '../../shared/bloco'
+import { aplicarOps } from '../../shared/bloco'
 import { Icone, type NomeDoIcone } from './Icone'
 import { useDados } from './useDados'
 import { Atualizacao } from './Atualizacao'
@@ -103,21 +103,24 @@ export function App() {
     }
   }, [mudar])
 
-  // bloco de notas flutuante: a janelinha manda a lista, a principal grava
-  // (é a dona do estado) e devolve o que ficou valendo
+  // bloco de notas flutuante: a janelinha manda operações (salvar/apagar uma
+  // nota), a principal aplica sobre o que vale agora e devolve a lista
   useEffect(
     () =>
-      window.api.bloco.aoAplicar((notas) =>
+      window.api.bloco.aoAplicar((ops) =>
         mudar((d) => {
-          d.blocoDeNotas = lerNotasDoBloco(notas)
+          d.blocoDeNotas = aplicarOps(d.blocoDeNotas ?? [], ops)
         })
       ),
     [mudar]
   )
+  // com os dados carregados, publica sempre, até a lista vazia (dados da nuvem
+  // sem notas também limpam a janelinha)
+  const carregou = dados !== null
   const notasDoBloco = dados?.blocoDeNotas
   useEffect(() => {
-    if (notasDoBloco) window.api.bloco.publicar(notasDoBloco)
-  }, [notasDoBloco])
+    if (carregou) window.api.bloco.publicar(notasDoBloco ?? [])
+  }, [carregou, notasDoBloco])
 
   // com edital, o app abre nele: é o "por onde começo hoje"
   const abriuNoEdital = useRef(false)

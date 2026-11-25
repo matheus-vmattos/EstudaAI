@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { Icone } from './Icone'
+import { aplicarOps, type OpDoBloco } from '../../shared/bloco'
 import type { ConfigDoBloco, NotaDoBloco } from '../../shared/tipos'
 
 const novoId = (): string => crypto.randomUUID()
 
 /** O bloco de notas flutuante (sistema do esquecAI): fica por cima de tudo,
  *  para anotar uma dúvida enquanto assiste a uma aula ou lê um PDF. Quem grava
- *  é a janela principal; daqui sai a lista inteira (em lote, a cada pausa na
- *  digitação) e volta o que ficou valendo. */
+ *  é a janela principal; daqui saem operações (salvar/apagar UMA nota), em
+ *  lote a cada pausa na digitação, e volta a lista que ficou valendo. */
 export function BlocoDeNotas() {
   const [notas, setNotas] = useState<NotaDoBloco[] | null>(null)
   const [aberta, setAberta] = useState<string | null>(null)
@@ -16,44 +17,45 @@ export function BlocoDeNotas() {
   const [apagando, setApagando] = useState(false)
   const pendente = useRef<number | undefined>(undefined)
   const campo = useRef<HTMLTextAreaElement>(null)
-  const sujo = useRef(false)
+  // a última operação de cada nota que ainda não saiu daqui (lote de 400 ms)
+  const fila = useRef(new Map<string, OpDoBloco>())
 
   useEffect(() => {
     document.title = 'Bloco de notas'
     void window.api.bloco.ler().then(({ notas, selecionar }) => {
-      setNotas(notas)
+      setNotas(aplicarOps(notas, [...fila.current.values()]))
       if (selecionar) setAberta(selecionar)
     })
     void window.api.bloco.config().then(setConfig)
-    // o que vem da principal (edição lá, nuvem, outro PC) só entra quando não
-    // há digitação esperando para sair daqui: senão apagaria letras
-    const off1 = window.api.bloco.aoMudar((n) => {
-      if (!sujo.current) setNotas(n)
-    })
+    // o que vem da principal (edição lá, nuvem, outro PC) sempre entra; o que
+    // você está digitando e ainda não saiu fica por cima
+    const off1 = window.api.bloco.aoMudar((n) =>
+      setNotas(aplicarOps(n, [...fila.current.values()]))
+    )
     const off2 = window.api.bloco.aoSelecionar((id) => setAberta(id))
+    // ao fechar a janelinha, o que estiver esperando sai na hora
+    const sair = (): void => {
+      if (fila.current.size) window.api.bloco.opsAgora([...fila.current.values()])
+      fila.current.clear()
+    }
+    window.addEventListener('beforeunload', sair)
     return () => {
       off1()
       off2()
+      window.removeEventListener('beforeunload', sair)
     }
   }, [])
 
-  const gravar = (lista: NotaDoBloco[]): void => {
-    setNotas(lista)
-    sujo.current = true
+  const operar = (op: OpDoBloco): void => {
+    fila.current.set(op.tipo === 'salvar' ? op.nota.id : op.id, op)
+    setNotas((atual) => aplicarOps(atual ?? [], [op]))
     window.clearTimeout(pendente.current)
     pendente.current = window.setTimeout(() => {
-      sujo.current = false
-      void window.api.bloco.salvar(lista)
+      const ops = [...fila.current.values()]
+      fila.current.clear()
+      if (ops.length) void window.api.bloco.ops(ops)
     }, 400)
   }
-  // ao sair (fechar a janelinha), o que estiver esperando sai na hora
-  useEffect(() => {
-    const sair = (): void => {
-      if (sujo.current && notas) void window.api.bloco.salvar(notas)
-    }
-    window.addEventListener('beforeunload', sair)
-    return () => window.removeEventListener('beforeunload', sair)
-  }, [notas])
 
   // ao abrir uma nota com texto (ex.: a dúvida do gabarito), o cursor vai
   // para o fim, onde se escreve
@@ -81,12 +83,12 @@ export function BlocoDeNotas() {
       criadoEm: agora,
       atualizadoEm: agora
     }
-    gravar([n, ...(notas ?? [])])
+    operar({ tipo: 'salvar', nota: n })
     setAberta(n.id)
   }
   const editar = (patch: Partial<Pick<NotaDoBloco, 'titulo' | 'texto'>>): void => {
-    if (!nota || !notas) return
-    gravar(notas.map((n) => (n.id === nota.id ? { ...n, ...patch, atualizadoEm: Date.now() } : n)))
+    if (!nota) return
+    operar({ tipo: 'salvar', nota: { ...nota, ...patch, atualizadoEm: Date.now() } })
   }
 
   return (
@@ -212,7 +214,7 @@ export function BlocoDeNotas() {
                 type="button"
                 className="botao perigo"
                 onClick={() => {
-                  gravar((notas ?? []).filter((n) => n.id !== nota.id))
+                  operar({ tipo: 'apagar', id: nota.id })
                   setAberta(null)
                   setApagando(false)
                 }}

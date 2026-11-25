@@ -3,8 +3,9 @@ import { existsSync, readFileSync } from 'fs'
 import { join } from 'path'
 import { app } from 'electron'
 import { is } from '@electron-toolkit/utils'
-import { gravarArquivoSeguro, lerDados } from './dados'
-import { lerNotasDoBloco } from '../shared/bloco'
+import { gravarArquivoSeguro, lerDados, salvarDados } from './dados'
+import { salvouNoPc } from './nuvem'
+import { aplicarOps, lerNotasDoBloco } from '../shared/bloco'
 import type { ConfigDoBloco, NotaDoBloco } from '../shared/tipos'
 
 /** Bloco de notas em janelinha flutuante (o mesmo sistema do esquecAI:
@@ -26,6 +27,21 @@ let config: ConfigDoBloco = { ...PADRAO }
 let janela: BrowserWindow | null = null
 let ultimas: NotaDoBloco[] | null = null
 let selecionarAoAbrir: string | null = null
+let recentes: { ops: unknown[]; em: number }[] = []
+const vigiadas = new WeakSet<BrowserWindow>()
+
+/** sem a janela principal (fechando), as operações vão direto para o arquivo */
+function aplicarNoArquivo(ops: unknown): void {
+  try {
+    const d = lerDados()
+    d.blocoDeNotas = aplicarOps(d.blocoDeNotas ?? [], ops)
+    salvarDados(d)
+    salvouNoPc()
+    ultimas = d.blocoDeNotas
+  } catch {
+    // arquivo ilegível: lerDados já trata; aqui não há o que salvar
+  }
+}
 
 function lerConfig(): void {
   try {
@@ -110,8 +126,20 @@ function abrir(principal: () => BrowserWindow | null, notaId?: string): void {
   } else {
     void janela.loadFile(join(__dirname, '../renderer/index.html'), { hash: '/bloco' })
   }
-  // a principal fechou: a janelinha vai junto (senão o app ficaria aberto sem tela)
-  principal()?.once('closed', () => janela?.close())
+  // a principal fechou: o que acabou de ir para ela pode ter chegado depois
+  // da última gravação dela. Reaplicar no arquivo é seguro (a edição mais nova
+  // vence; apagar duas vezes não muda nada). E a janelinha vai junto (senão o
+  // app ficaria aberto sem tela); ao fechar, ela descarrega o que esperava.
+  const p = principal()
+  if (p && !vigiadas.has(p)) {
+    vigiadas.add(p)
+    p.once('closed', () => {
+      const ops = recentes.flatMap((r) => r.ops)
+      recentes = []
+      if (ops.length) aplicarNoArquivo(ops)
+      janela?.close()
+    })
+  }
 }
 
 export function iniciarBloco(principal: () => BrowserWindow | null): void {
@@ -136,10 +164,25 @@ export function iniciarBloco(principal: () => BrowserWindow | null): void {
     selecionarAoAbrir = null
     return { notas: ultimas ?? lerDados().blocoDeNotas ?? [], selecionar: sel }
   })
-  // da janelinha para a principal (só a janelinha pode mandar)
-  ipcMain.handle('bloco:salvar', (e, notas: NotaDoBloco[]) => {
-    if (!janela || e.sender !== janela.webContents) return
-    principal()?.webContents.send('bloco:aplicar', lerNotasDoBloco(notas))
+  // da janelinha: operações (salvar/apagar uma nota), nunca a lista inteira.
+  // Vão para a principal (a dona do estado); sem a principal, direto no arquivo.
+  const receber = (
+    e: Electron.IpcMainEvent | Electron.IpcMainInvokeEvent,
+    ops: unknown
+  ): boolean => {
+    if (!janela || e.sender !== janela.webContents || !Array.isArray(ops)) return false
+    const p = principal()
+    if (p && !p.isDestroyed()) {
+      recentes.push({ ops, em: Date.now() })
+      recentes = recentes.filter((r) => Date.now() - r.em < 5000)
+      p.webContents.send('bloco:aplicar', ops)
+    } else aplicarNoArquivo(ops)
+    return true
+  }
+  ipcMain.handle('bloco:ops', (e, ops: unknown) => void receber(e, ops))
+  // ao fechar a janelinha, o que estava esperando sai na hora (síncrono)
+  ipcMain.on('bloco:opsAgora', (e, ops: unknown) => {
+    e.returnValue = receber(e, ops)
   })
   // da principal para a janelinha: o que ficou valendo (edição, nuvem, outro PC)
   ipcMain.on('bloco:publicar', (e, notas: NotaDoBloco[]) => {

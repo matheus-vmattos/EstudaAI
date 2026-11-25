@@ -1,4 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron'
+import type { OpDoBloco } from '../shared/bloco'
 import type {
   ConfigDoBloco,
   Dados,
@@ -56,12 +57,14 @@ const api = {
       ipcRenderer.invoke('bloco:mudarConfig', patch),
     ler: (): Promise<{ notas: NotaDoBloco[]; selecionar: string | null }> =>
       ipcRenderer.invoke('bloco:ler'),
-    /** da janelinha: a lista nova vai para a janela principal gravar */
-    salvar: (notas: NotaDoBloco[]): Promise<void> => ipcRenderer.invoke('bloco:salvar', notas),
+    /** da janelinha: operações (salvar/apagar uma nota) para a principal gravar */
+    ops: (ops: OpDoBloco[]): Promise<void> => ipcRenderer.invoke('bloco:ops', ops),
+    /** síncrono, ao fechar a janelinha: o que estava esperando sai na hora */
+    opsAgora: (ops: OpDoBloco[]): boolean => ipcRenderer.sendSync('bloco:opsAgora', ops),
     /** da principal: o que ficou valendo vai para a janelinha */
     publicar: (notas: NotaDoBloco[]): void => ipcRenderer.send('bloco:publicar', notas),
-    aoAplicar: (fn: (notas: NotaDoBloco[]) => void): (() => void) => {
-      const ouvir = (_: unknown, n: NotaDoBloco[]): void => fn(n)
+    aoAplicar: (fn: (ops: OpDoBloco[]) => void): (() => void) => {
+      const ouvir = (_: unknown, o: OpDoBloco[]): void => fn(o)
       ipcRenderer.on('bloco:aplicar', ouvir)
       return () => ipcRenderer.removeListener('bloco:aplicar', ouvir)
     },
