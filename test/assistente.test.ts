@@ -51,7 +51,8 @@ const sim = (
 })
 
 describe('Raio-X do simulado', () => {
-  // o simulado de Bancários de 19/11 (27/30), resumido: ritmo de 23 s
+  // o simulado de Bancários de 19/11 (27/30), resumido. Desde a 0.1.24 a base
+  // é o tempo MÉDIO (o mesmo número do topo do resultado), não a mediana
   const firmes = Array.from({ length: 24 }, (_, i): [string, boolean, number] => [
     `SFN ${i}`,
     true,
@@ -69,7 +70,8 @@ describe('Raio-X do simulado', () => {
   const r = raioX(s)
 
   it('classifica pelo tempo e pelo acerto', () => {
-    expect(r.ritmo).toBe(23000)
+    const media = (24 * 23 + 101 + 37 + 36 + 21 + 44 + 38) / 30
+    expect(r.ritmo).toBeCloseTo(media * 1000)
     expect(r.porFaixa.domina).toHaveLength(24)
     expect(r.porFaixa.fragil.map((x) => x.topico)).toEqual([
       'Tributação de investimentos',
@@ -80,20 +82,24 @@ describe('Raio-X do simulado', () => {
     expect(r.porFaixa.engano.map((x) => x.topico)).toEqual(['Títulos públicos federais'])
     expect(r.porFaixa.lacuna.map((x) => x.topico)).toEqual(['Cheque', 'Garantias do crédito'])
     expect(r.certas).toBe(27)
-    expect(r.porFaixa.fragil[0].vezes).toBeCloseTo(101 / 23)
+    expect(r.porFaixa.fragil[0].vezes).toBeCloseTo(
+      101 / ((24 * 23 + 101 + 37 + 36 + 21 + 44 + 38) / 30)
+    )
   })
   it('a frase diz o que o placar esconde', () => {
     expect(r.frase).toBe(
       'Acertou bastante, mas mostrou lacuna em Títulos públicos federais. Você não sabia Cheque e Garantias do crédito.'
     )
   })
-  it('certa demorada (mais que o dobro do ritmo) sem dúvida também é frágil', () => {
+  it('certa demorada (mais que o dobro do tempo médio) sem dúvida também é frágil', () => {
+    // média 14 s: 30 s é mais que o dobro
     const x = raioX(
       sim([
         ['a', true, 10],
         ['b', true, 10],
         ['c', true, 10],
-        ['d', true, 25]
+        ['e', true, 10],
+        ['d', true, 30]
       ])
     )
     expect(x.porFaixa.fragil.map((i) => i.topico)).toEqual(['d'])
@@ -826,5 +832,135 @@ describe('Codex no PR 30: explicações da 0.1.22 continuam valendo', () => {
       }
     ]
     expect(pedidosDeExplicar(s, raioX(s), d)).toEqual([])
+  })
+})
+
+describe('Raio-X polido (0.1.24): o diagnóstico', () => {
+  it('mostra o padrão por tópico, cada erro com o engano e a troca de assunto (o Treino 8 dele)', async () => {
+    const { diagnostico } = await import('../src/shared/raioX')
+    // como o Treino 8 real: 4 de "Direta ou inversa?", 32 de inversa em bloco
+    // (errou a 31, de conta), e 4 de "Direta ou inversa?" no fim (errou 39 e 40)
+    const linhas: [string, boolean, number, boolean?][] = [
+      ...Array.from({ length: 4 }, (): [string, boolean, number] => [
+        'Direta ou inversa?',
+        true,
+        30
+      ]),
+      ...Array.from({ length: 32 }, (_, i): [string, boolean, number] => [
+        'Regra de três inversa',
+        i !== 26,
+        50
+      ]),
+      ['Direta ou inversa?', true, 96],
+      ['Direta ou inversa?', true, 114, true],
+      ['Direta ou inversa?', false, 84],
+      ['Direta ou inversa?', false, 34]
+    ]
+    const s = sim(linhas)
+    s.questoes[38].comentarios = { B: 'É a conta da regra DIRETA. O lote é fixo.' }
+    const d = diagnostico(s, raioX(s))
+    expect(d.frase).toBe(
+      'Em “Regra de três inversa” você está firme (31/32). Onde perde ponto: “Direta ou inversa?” (6/8).'
+    )
+    expect(d.erros.map((e) => e.indice + 1)).toEqual([31, 39, 40])
+    expect(d.erros[1].motivo).toBe('É a conta da regra DIRETA. O lote é fixo.')
+    expect(d.erros[1].marcada).toBe('B')
+    expect(d.pontos.some((p) => p.startsWith('2 erros foram rápidos'))).toBe(true) // a 31 e a 40, abaixo da média
+    expect(d.inseguras.map((x) => x.indice + 1)).toContain(38)
+  })
+  it('sem erros: tudo firme, ou acertou todas com insegurança', async () => {
+    const { diagnostico } = await import('../src/shared/raioX')
+    const firme = sim([
+      ['a', true, 10],
+      ['b', true, 10]
+    ])
+    expect(diagnostico(firme, raioX(firme)).frase).toMatch(/^Tudo firme/)
+    const inseguro = sim([
+      ['a', true, 10],
+      ['b', true, 10, true]
+    ])
+    expect(diagnostico(inseguro, raioX(inseguro)).frase).toMatch(/^Acertou todas, mas 1/)
+  })
+})
+
+describe('Bloco de notas (0.1.24)', () => {
+  it('só aceita o que tem forma de nota, sem repetir id, com limite de tamanho', async () => {
+    const { lerNotasDoBloco } = await import('../src/shared/bloco')
+    const n = lerNotasDoBloco([
+      { id: 'a', titulo: 'x'.repeat(500), texto: 't', criadoEm: 1, atualizadoEm: 2 },
+      { id: 'a', titulo: 'repetida' },
+      { titulo: 'sem id' },
+      'lixo',
+      { id: 'b', texto: 42 }
+    ])
+    expect(n.map((x) => x.id)).toEqual(['a', 'b'])
+    expect(n[0].titulo).toHaveLength(200)
+    expect(n[1].texto).toBe('')
+    expect(lerNotasDoBloco('não é lista')).toEqual([])
+  })
+  it('a dúvida nasce com a questão e a resposta certa', async () => {
+    const { notaDeDuvida } = await import('../src/shared/bloco')
+    const n = notaDeDuvida(q('MDC'), 7, 'Treino 9', 'id1', 5)
+    expect(n.titulo).toBe('Dúvida: questão 7 · Treino 9')
+    expect(n.texto).toContain('sobre MDC')
+    expect(n.texto).toContain('Certa: A) A')
+    expect(n.texto.endsWith('Minha dúvida: ')).toBe(true)
+  })
+})
+
+describe('Raio-X polido: não chama de firme o que não é', () => {
+  it('melhor tópico abaixo de 80% não é "firme"; sem tempo medido não fala em "tempo de sobra"', async () => {
+    const { diagnostico } = await import('../src/shared/raioX')
+    const linhas: [string, boolean, number][] = [
+      ...Array.from({ length: 13 }, (_, i): [string, boolean, number] => ['Inversa', i < 4, 0]),
+      ...Array.from({ length: 6 }, (): [string, boolean, number] => ['Montar a conta', false, 0])
+    ]
+    const s = sim(linhas)
+    const d = diagnostico(s, raioX(s))
+    expect(d.frase).toBe(
+      'Onde mais perde ponto: “Montar a conta” (0/6). O melhor foi “Inversa” (4/13), ainda abaixo de 80%.'
+    )
+    expect(d.pontos.join(' ')).not.toContain('tempo de sobra')
+    expect(d.pontos.join(' ')).toContain('não mediu o tempo')
+  })
+})
+
+describe('Codex no PR 31: o bloco não perde nem sobrescreve notas', () => {
+  const n = (id: string, texto: string, atualizadoEm: number) => ({
+    id,
+    titulo: id,
+    texto,
+    criadoEm: 1,
+    atualizadoEm
+  })
+  it('a janelinha manda operações, não a lista: a nota que chegou da nuvem fica', async () => {
+    const { aplicarOps } = await import('../src/shared/bloco')
+    // a principal já tem a nota "nuvem" (veio do outro PC) quando chega a edição de "a"
+    const atual = [n('a', 'velho', 1), n('nuvem', 'do outro PC', 5)]
+    const depois = aplicarOps(atual, [{ tipo: 'salvar', nota: n('a', 'novo', 9) }])
+    expect(depois.map((x) => [x.id, x.texto])).toEqual([
+      ['a', 'novo'],
+      ['nuvem', 'do outro PC']
+    ])
+    // edição mais velha não desfaz uma mais nova
+    expect(
+      aplicarOps(depois, [{ tipo: 'salvar', nota: n('a', 'atrasada', 3) }]).find(
+        (x) => x.id === 'a'
+      )?.texto
+    ).toBe('novo')
+    expect(aplicarOps(depois, [{ tipo: 'apagar', id: 'a' }]).map((x) => x.id)).toEqual(['nuvem'])
+    // operação malformada (veio de outra janela) não entra
+    expect(
+      aplicarOps(depois, [{ tipo: 'salvar', nota: { id: 7 } } as never, 'lixo' as never])
+    ).toEqual(depois)
+  })
+  it('a atualização de fora durante a digitação não é jogada fora: entra, e a digitação pendente fica por cima', async () => {
+    const { aplicarOps } = await import('../src/shared/bloco')
+    const pendentes = [{ tipo: 'salvar' as const, nota: n('a', 'digitando…', 9) }]
+    const deFora = [n('a', 'velho', 1), n('duvida', 'anotada no gabarito', 8)]
+    expect(aplicarOps(deFora, pendentes).map((x) => [x.id, x.texto])).toEqual([
+      ['a', 'digitando…'],
+      ['duvida', 'anotada no gabarito']
+    ])
   })
 })

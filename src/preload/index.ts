@@ -1,5 +1,13 @@
 import { contextBridge, ipcRenderer } from 'electron'
-import type { Dados, EstadoDaAtualizacao, ItemDaCaixa, Retorno } from '../shared/tipos'
+import type { OpDoBloco } from '../shared/bloco'
+import type {
+  ConfigDoBloco,
+  Dados,
+  EstadoDaAtualizacao,
+  ItemDaCaixa,
+  NotaDoBloco,
+  Retorno
+} from '../shared/tipos'
 import type { EstadoDaNuvem } from '../shared/sincronizar'
 
 type Resposta = { ok?: true; confirmar?: true; erro?: string }
@@ -40,6 +48,37 @@ const api = {
   nuvemSair: (): Promise<void> => ipcRenderer.invoke('nuvem:sair'),
   nuvemSincronizar: (): Promise<void> => ipcRenderer.invoke('nuvem:sincronizar'),
   nuvemRetornos: (): Promise<Retorno[] | null> => ipcRenderer.invoke('nuvem:retornos'),
+  /** bloco de notas flutuante (0.1.24+) */
+  bloco: {
+    abrir: (notaId?: string): Promise<void> => ipcRenderer.invoke('bloco:abrir', notaId),
+    fechar: (): Promise<void> => ipcRenderer.invoke('bloco:fechar'),
+    config: (): Promise<ConfigDoBloco> => ipcRenderer.invoke('bloco:config'),
+    mudarConfig: (patch: Partial<ConfigDoBloco>): Promise<ConfigDoBloco> =>
+      ipcRenderer.invoke('bloco:mudarConfig', patch),
+    ler: (): Promise<{ notas: NotaDoBloco[]; selecionar: string | null }> =>
+      ipcRenderer.invoke('bloco:ler'),
+    /** da janelinha: operações (salvar/apagar uma nota) para a principal gravar */
+    ops: (ops: OpDoBloco[]): Promise<void> => ipcRenderer.invoke('bloco:ops', ops),
+    /** síncrono, ao fechar a janelinha: o que estava esperando sai na hora */
+    opsAgora: (ops: OpDoBloco[]): boolean => ipcRenderer.sendSync('bloco:opsAgora', ops),
+    /** da principal: o que ficou valendo vai para a janelinha */
+    publicar: (notas: NotaDoBloco[]): void => ipcRenderer.send('bloco:publicar', notas),
+    aoAplicar: (fn: (ops: OpDoBloco[]) => void): (() => void) => {
+      const ouvir = (_: unknown, o: OpDoBloco[]): void => fn(o)
+      ipcRenderer.on('bloco:aplicar', ouvir)
+      return () => ipcRenderer.removeListener('bloco:aplicar', ouvir)
+    },
+    aoMudar: (fn: (notas: NotaDoBloco[]) => void): (() => void) => {
+      const ouvir = (_: unknown, n: NotaDoBloco[]): void => fn(n)
+      ipcRenderer.on('bloco:mudou', ouvir)
+      return () => ipcRenderer.removeListener('bloco:mudou', ouvir)
+    },
+    aoSelecionar: (fn: (id: string) => void): (() => void) => {
+      const ouvir = (_: unknown, id: string): void => fn(id)
+      ipcRenderer.on('bloco:selecionar', ouvir)
+      return () => ipcRenderer.removeListener('bloco:selecionar', ouvir)
+    }
+  },
   /** a nuvem pergunta à tela: trocar os dados ("nuvem:trocar") ou qual
    *  versão fica ("nuvem:conflito"); a tela responde com o id */
   aoPerguntarNuvem: <T>(
