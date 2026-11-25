@@ -432,6 +432,57 @@
       "arquivo": "banestes-missao5-v4.json",
       "data": "2026-11-24",
       "versaoMinima": "0.1.23"
+    },
+    {
+      "id": "banestes-bancarios-p3-v1",
+      "tipo": "simulado",
+      "titulo": "Simulado: Bancários parte 3 (crédito, Pix, poupança, investimentos, previdência)",
+      "descricao": "15 questões do que mais cai em prova de nível médio, cada fato conferido na lei ou na norma: cheque especial, rotativo, Pix, poupança, LCI/LCA, ações, dedução de previdência e tabela regressiva.",
+      "arquivo": "banestes-bancarios-p3.json",
+      "data": "2026-11-25"
+    },
+    {
+      "id": "banestes-informatica-seguranca-v1",
+      "tipo": "simulado",
+      "titulo": "Simulado: Informática (segurança digital, golpes, senhas e backup)",
+      "descricao": "15 questões conferidas na Cartilha de Segurança para Internet do CERT.br: tipos de malware, engenharia social, verificação em duas etapas, senhas e backup.",
+      "arquivo": "banestes-informatica-seguranca.json",
+      "data": "2026-11-25"
+    },
+    {
+      "id": "banestes-atualidades1-v1",
+      "tipo": "simulado",
+      "titulo": "Simulado: Atualidades (Open Finance, ativos virtuais, educação financeira)",
+      "descricao": "10 questões conferidas na norma: Res. Conjunta BCB/CMN 1/2020, Lei 14.478/2022, Decreto 11.563/2023 e Decreto 10.393/2020.",
+      "arquivo": "banestes-atualidades1.json",
+      "data": "2026-11-25"
+    },
+    {
+      "id": "banestes-bancarios-anotacoes-v2",
+      "tipo": "anotacoes",
+      "titulo": "Anotações: Bancários (atualizadas: crédito, Pix, Open Finance, poupança, previdência)",
+      "descricao": "As 8 anotações de Bancários com previdência (dedução e tabela regressiva) e investimentos (poupança, LCI/LCA, ações) ampliados, mais 4 novas. As que você não editou são atualizadas; as suas ficam como estão.",
+      "arquivo": "banestes-bancarios-anotacoes-v2.json",
+      "data": "2026-11-25",
+      "versaoMinima": "0.1.19"
+    },
+    {
+      "id": "banestes-atualidades-anotacoes-v1",
+      "tipo": "anotacoes",
+      "titulo": "Anotações: Atualidades (ativos virtuais, Open Finance, ENEF)",
+      "descricao": "3 anotações para o mapa de Atualidades, cada uma com o artigo da norma. Só entram onde está vazio.",
+      "arquivo": "banestes-atualidades-anotacoes.json",
+      "data": "2026-11-25",
+      "versaoMinima": "0.1.19"
+    },
+    {
+      "id": "banestes-missao5-v5",
+      "tipo": "missao",
+      "titulo": "Missão: + Bancários 3, Informática e Atualidades (23/11 a 06/12)",
+      "descricao": "A Missão 5 com Bancários parte 3, Informática (segurança) e Atualidades. O que você já fez continua marcado.",
+      "arquivo": "banestes-missao5-v5.json",
+      "data": "2026-11-25",
+      "versaoMinima": "0.1.23"
     }
   ]
 }

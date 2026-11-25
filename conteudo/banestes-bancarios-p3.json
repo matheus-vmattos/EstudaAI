@@ -1,0 +1,342 @@
+{
+ "tema": "Bancários parte 3: crédito, Pix, poupança, investimentos e previdência",
+ "materia": "Conhecimentos Bancários",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "Nos termos da Resolução CMN nº 4.765/2019, as taxas de juros remuneratórios cobradas sobre o valor utilizado do cheque especial estão limitadas a, no máximo,",
+   "alternativas": {
+    "A": "2% ao mês.",
+    "B": "4% ao mês.",
+    "C": "8% ao mês.",
+    "D": "12% ao mês.",
+    "E": "8% ao ano."
+   },
+   "gabarito": "C",
+   "resolucao": "Resolução CMN 4.765/2019, art. 3º: \"As taxas de juros remuneratórios cobradas sobre o valor utilizado do cheque especial estão limitadas a, no máximo, 8% (oito por cento) ao mês.\" Art. 1º, parágrafo único: cheque especial é \"a concessão de limite de crédito rotativo vinculado a conta de depósitos à vista\".",
+   "comentarios": {
+    "A": "O limite da norma é 8% ao mês.",
+    "B": "O limite da norma é 8% ao mês.",
+    "D": "Acima do limite: a norma fixa no máximo 8% ao mês.",
+    "E": "É 8% ao MÊS, não ao ano."
+   },
+   "topico": "Crédito: cheque especial e cartão",
+   "conceito": "Cheque especial: crédito rotativo ligado à conta corrente, com juros de no máximo 8% ao mês.",
+   "explicar": "Explique as regras do cheque especial e do rotativo do cartão que protegem o cliente: o que é limitado e por quanto tempo o rotativo pode durar?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Segundo a Resolução CMN nº 4.765/2019, cheque especial é",
+   "alternativas": {
+    "A": "a concessão de limite de crédito rotativo vinculado a conta de depósitos à vista.",
+    "B": "o cheque emitido com data futura, para desconto posterior.",
+    "C": "o cheque garantido por aval de terceiro.",
+    "D": "um empréstimo com parcelas fixas descontadas em folha.",
+    "E": "a conta de poupança vinculada à conta corrente."
+   },
+   "gabarito": "A",
+   "resolucao": "Resolução CMN 4.765/2019, art. 1º, parágrafo único: \"define-se como cheque especial a concessão de limite de crédito rotativo vinculado a conta de depósitos à vista.\"",
+   "comentarios": {
+    "B": "Isso é o chamado cheque \"pré-datado\"; a norma define cheque especial como limite de crédito rotativo.",
+    "C": "Não é a definição do art. 1º.",
+    "D": "Isso descreve consignado, não cheque especial.",
+    "E": "Não é a definição do art. 1º."
+   },
+   "topico": "Crédito: cheque especial e cartão",
+   "conceito": "Cheque especial = limite de crédito rotativo na conta corrente.",
+   "explicar": "Explique as regras do cheque especial e do rotativo do cartão que protegem o cliente: o que é limitado e por quanto tempo o rotativo pode durar?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "De acordo com a Resolução CMN nº 4.549/2017, o saldo devedor da fatura do cartão de crédito não liquidado integralmente no vencimento",
+   "alternativas": {
+    "A": "pode ficar no crédito rotativo por até 12 meses.",
+    "B": "pode ficar no crédito rotativo por prazo indeterminado, a critério do cliente.",
+    "C": "deve ser cobrado integralmente na fatura seguinte, sem possibilidade de parcelamento.",
+    "D": "é transferido automaticamente para o cheque especial.",
+    "E": "somente pode ser financiado no crédito rotativo até o vencimento da fatura subsequente."
+   },
+   "gabarito": "E",
+   "resolucao": "Resolução CMN 4.549/2017, art. 1º: o saldo devedor da fatura, \"quando não liquidado integralmente no vencimento, somente pode ser objeto de financiamento na modalidade de crédito rotativo até o vencimento da fatura subsequente.\" Art. 2º: depois disso, o saldo pode ser financiado em linha de pagamento parcelado, \"desde que em condições mais vantajosas para o cliente\".",
+   "comentarios": {
+    "A": "O rotativo só vale até o vencimento da fatura SEGUINTE.",
+    "B": "Há prazo: até o vencimento da fatura seguinte.",
+    "C": "Depois do prazo, a norma permite parcelamento em condições mais vantajosas (art. 2º).",
+    "D": "Não há essa previsão."
+   },
+   "topico": "Crédito: cheque especial e cartão",
+   "conceito": "Rotativo do cartão: no máximo até a próxima fatura; depois, só parcelamento em condições mais vantajosas.",
+   "explicar": "Explique as regras do cheque especial e do rotativo do cartão que protegem o cliente: o que é limitado e por quanto tempo o rotativo pode durar?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Conforme a Resolução CMN nº 4.549/2017, após o prazo do crédito rotativo, o saldo remanescente da fatura do cartão pode ser financiado mediante",
+   "alternativas": {
+    "A": "nova contratação de crédito rotativo, nas mesmas condições.",
+    "B": "linha de crédito para pagamento parcelado, em condições mais vantajosas para o cliente do que as do rotativo.",
+    "C": "débito automático na conta poupança do cliente.",
+    "D": "linha parcelada com encargos maiores que os do rotativo.",
+    "E": "cobrança judicial imediata, vedado qualquer parcelamento."
+   },
+   "gabarito": "B",
+   "resolucao": "Resolução CMN 4.549/2017, art. 2º: \"o saldo remanescente do crédito rotativo pode ser financiado mediante linha de crédito para pagamento parcelado, desde que em condições mais vantajosas para o cliente em relação àquelas praticadas na modalidade de crédito rotativo\". § 2º: é vedado o rotativo de valores já parcelados.",
+   "comentarios": {
+    "A": "É vedado financiar no rotativo valores já parcelados (art. 2º, § 2º), e o rotativo tem prazo.",
+    "C": "Não há essa previsão.",
+    "D": "As condições têm de ser MAIS vantajosas que as do rotativo.",
+    "E": "A norma prevê o parcelamento."
+   },
+   "topico": "Crédito: cheque especial e cartão",
+   "conceito": "Depois do rotativo, só parcelado e mais barato.",
+   "explicar": "Explique as regras do cheque especial e do rotativo do cartão que protegem o cliente: o que é limitado e por quanto tempo o rotativo pode durar?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "De acordo com o Regulamento do Pix (anexo à Resolução BCB nº 1/2020), pagamento instantâneo é a transferência eletrônica de fundos na qual a transmissão da ordem e a disponibilidade dos fundos ao recebedor ocorrem em tempo real e cujo serviço está disponível",
+   "alternativas": {
+    "A": "somente em dias úteis, das 6h às 22h.",
+    "B": "em dias úteis, durante o horário de funcionamento das agências.",
+    "C": "24 horas por dia, exceto em feriados nacionais.",
+    "D": "durante 24 horas por dia e em todos os dias do ano.",
+    "E": "somente quando o recebedor estiver com o aplicativo aberto."
+   },
+   "gabarito": "D",
+   "resolucao": "Regulamento anexo à Resolução BCB 1/2020, definição de pagamento instantâneo: \"transferência eletrônica de fundos, na qual a transmissão da ordem de pagamento e a disponibilidade de fundos para o usuário recebedor ocorrem em tempo real e cujo serviço está disponível durante 24 (vinte e quatro) horas por dia e em todos os dias no ano\".",
+   "comentarios": {
+    "A": "O serviço é 24 horas, todos os dias do ano.",
+    "B": "O serviço é 24 horas, todos os dias do ano.",
+    "C": "Não há exceção para feriados: \"todos os dias no ano\".",
+    "E": "Não há essa condição na definição."
+   },
+   "topico": "Meios de pagamento: Pix",
+   "conceito": "Pix: tempo real, 24 horas por dia, todos os dias do ano.",
+   "explicar": "O que torna o Pix um \"pagamento instantâneo\"? Explique com as palavras do regulamento.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Nos termos da Lei nº 8.177/1991, com redação da Lei nº 12.703/2012, enquanto a meta da taxa Selic ao ano for superior a 8,5%, a remuneração adicional dos depósitos de poupança corresponde a juros de",
+   "alternativas": {
+    "A": "0,5% ao mês.",
+    "B": "0,5% ao ano.",
+    "C": "70% da meta Selic, mensalizada.",
+    "D": "100% da meta Selic, mensalizada.",
+    "E": "8,5% ao ano."
+   },
+   "gabarito": "A",
+   "resolucao": "Lei 8.177/1991, art. 12, II (redação da Lei 12.703/2012): remuneração adicional por juros de \"a) 0,5% (cinco décimos por cento) ao mês, enquanto a meta da taxa Selic ao ano, definida pelo Banco Central do Brasil, for superior a 8,5% (...); ou b) 70% (setenta por cento) da meta da taxa Selic ao ano (...) mensalizada, vigente na data de início do período de rendimento, nos demais casos.\"",
+   "comentarios": {
+    "B": "É 0,5% ao MÊS.",
+    "C": "Essa regra vale quando a meta Selic é igual ou inferior a 8,5% ao ano.",
+    "D": "Não há essa regra na lei.",
+    "E": "8,5% é o gatilho da meta Selic, não a remuneração."
+   },
+   "topico": "Poupança",
+   "conceito": "Poupança (parte adicional): Selic acima de 8,5% a.a. → 0,5% ao mês; Selic até 8,5% → 70% da Selic.",
+   "explicar": "Como a poupança rende: qual parte depende da meta Selic, qual é a regra quando a Selic está acima e abaixo de 8,5% ao ano, e sobre qual saldo se calcula?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Pela Lei nº 8.177/1991, quando a meta da taxa Selic ao ano for igual ou inferior a 8,5%, a remuneração adicional da poupança passa a ser de",
+   "alternativas": {
+    "A": "0,5% ao mês, fixos, em qualquer cenário.",
+    "B": "50% da meta da taxa Selic, mensalizada.",
+    "C": "100% da meta da taxa Selic, sem mensalizar.",
+    "D": "70% da taxa de inflação do período.",
+    "E": "70% da meta da taxa Selic ao ano, mensalizada, vigente no início do período de rendimento."
+   },
+   "gabarito": "E",
+   "resolucao": "Lei 8.177/1991, art. 12, II, b (redação da Lei 12.703/2012): \"70% (setenta por cento) da meta da taxa Selic ao ano, definida pelo Banco Central do Brasil, mensalizada, vigente na data de início do período de rendimento, nos demais casos.\"",
+   "comentarios": {
+    "A": "O 0,5% ao mês só vale com a meta Selic acima de 8,5% ao ano.",
+    "B": "O percentual é 70%.",
+    "C": "São 70%, mensalizados.",
+    "D": "A referência é a meta Selic, não a inflação."
+   },
+   "topico": "Poupança",
+   "conceito": "Selic baixa (até 8,5% a.a.): a poupança paga 70% dela (mais a remuneração básica).",
+   "explicar": "Como a poupança rende: qual parte depende da meta Selic, qual é a regra quando a Selic está acima e abaixo de 8,5% ao ano, e sobre qual saldo se calcula?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Segundo a Lei nº 8.177/1991, a remuneração da poupança de pessoa física é calculada",
+   "alternativas": {
+    "A": "sobre o maior saldo do mês, e creditada no último dia útil do mês.",
+    "B": "sobre o menor saldo apresentado em cada período de rendimento, e creditada mensalmente na data de aniversário da conta.",
+    "C": "sobre o saldo médio diário, e creditada a cada trimestre.",
+    "D": "sobre o saldo do primeiro dia do mês, e creditada no dia 1º.",
+    "E": "sobre o saldo de cada dia, e creditada diariamente."
+   },
+   "gabarito": "B",
+   "resolucao": "Lei 8.177/1991, art. 12, § 1º: \"A remuneração será calculada sobre o menor saldo apresentado em cada período de rendimento.\" § 2º, I: o período é \"o mês corrido, a partir da data de aniversário da conta\". § 4º, I: crédito \"mensalmente, na data de aniversário da conta, para os depósitos de pessoa física\".",
+   "comentarios": {
+    "A": "É sobre o MENOR saldo, na data de aniversário.",
+    "C": "É sobre o menor saldo, e o crédito é mensal.",
+    "D": "O período conta da data de aniversário da conta.",
+    "E": "O crédito é mensal, no aniversário."
+   },
+   "topico": "Poupança",
+   "conceito": "Sacou antes do aniversário? Perde o rendimento daquele dinheiro no período (conta o menor saldo).",
+   "explicar": "Como a poupança rende: qual parte depende da meta Selic, qual é a regra quando a Selic está acima e abaixo de 8,5% ao ano, e sobre qual saldo se calcula?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Nos termos da Lei nº 11.033/2004, a remuneração produzida por letras de crédito imobiliário (LCI) e por letras de crédito do agronegócio (LCA), para a pessoa física,",
+   "alternativas": {
+    "A": "sofre imposto de renda pela tabela regressiva, de 22,5% a 15%.",
+    "B": "sofre imposto de renda à alíquota fixa de 15%.",
+    "C": "é isenta do imposto de renda.",
+    "D": "só é isenta se o investidor tiver mais de 65 anos.",
+    "E": "é isenta apenas na LCA; a LCI é tributada."
+   },
+   "gabarito": "C",
+   "resolucao": "Lei 11.033/2004, art. 3º: \"Ficam isentos do imposto de renda: (...) II - na fonte e na declaração de ajuste anual das pessoas físicas, a remuneração produzida por letras hipotecárias, certificados de recebíveis imobiliários e letras de crédito imobiliário\"; IV - a remuneração produzida por (...) \"Letra de Crédito do Agronegócio - LCA\" e CRA. (No texto compilado, a referência à MP 1.303/2025 aparece com “vigência encerrada”.)",
+   "comentarios": {
+    "A": "Para a pessoa física, a lei isenta LCI e LCA.",
+    "B": "Para a pessoa física, a lei isenta LCI e LCA.",
+    "D": "Não há essa condição.",
+    "E": "As duas estão no art. 3º (incisos II e IV)."
+   },
+   "topico": "Investimentos: LCI, LCA e ações",
+   "conceito": "LCI e LCA: isentas de IR para pessoa física; e são cobertas pelo FGC (Res. CMN 4.222).",
+   "explicar": "Por que LCI e LCA atraem a pessoa física? E qual a diferença entre ação ordinária e preferencial?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Segundo a Lei nº 6.404/1976, conforme a natureza dos direitos ou vantagens que conferem aos titulares, as ações são",
+   "alternativas": {
+    "A": "ordinárias, preferenciais ou debêntures.",
+    "B": "nominativas, ao portador ou escriturais.",
+    "C": "ordinárias e preferenciais, apenas.",
+    "D": "ordinárias, preferenciais ou de fruição.",
+    "E": "de controle, de mercado ou de tesouraria."
+   },
+   "gabarito": "D",
+   "resolucao": "Lei 6.404/1976, art. 15: \"As ações, conforme a natureza dos direitos ou vantagens que confiram a seus titulares, são ordinárias, preferenciais, ou de fruição.\"",
+   "comentarios": {
+    "A": "Debênture não é espécie de ação: é outro valor mobiliário.",
+    "B": "Essas não são as espécies do art. 15.",
+    "C": "Falta a de fruição.",
+    "E": "Não são as espécies do art. 15."
+   },
+   "topico": "Investimentos: LCI, LCA e ações",
+   "conceito": "Espécies de ação: ordinária (voto), preferencial (vantagem, pode não ter voto) e de fruição.",
+   "explicar": "Por que LCI e LCA atraem a pessoa física? E qual a diferença entre ação ordinária e preferencial?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Conforme a Lei nº 6.404/1976, com redação da Lei nº 10.303/2001, o número de ações preferenciais sem direito a voto, ou com restrição a esse direito, não pode ultrapassar",
+   "alternativas": {
+    "A": "2/3 do total das ações emitidas.",
+    "B": "1/3 do total das ações emitidas.",
+    "C": "25% do total das ações emitidas.",
+    "D": "50% do total das ações emitidas.",
+    "E": "o número de ações ordinárias com voto, sem outro limite."
+   },
+   "gabarito": "D",
+   "resolucao": "Lei 6.404/1976, art. 15, § 2º (redação da Lei 10.303/2001): \"O número de ações preferenciais sem direito a voto, ou sujeitas a restrição no exercício desse direito, não pode ultrapassar 50% (cinquenta por cento) do total das ações emitidas.\" (Antes era 2/3: pegadinha clássica.)",
+   "comentarios": {
+    "A": "Era a regra antiga; a redação atual (Lei 10.303/2001) é 50%.",
+    "B": "O limite é 50%.",
+    "C": "O limite é 50%.",
+    "E": "O limite é 50% do total."
+   },
+   "topico": "Investimentos: LCI, LCA e ações",
+   "conceito": "Preferenciais sem voto: no máximo 50% do total (era 2/3 antes de 2001).",
+   "explicar": "Por que LCI e LCA atraem a pessoa física? E qual a diferença entre ação ordinária e preferencial?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Pela Lei nº 9.532/1997, as deduções relativas às contribuições para entidades de previdência privada, cujo ônus seja da própria pessoa física, ficam",
+   "alternativas": {
+    "A": "limitadas a 20% da renda bruta, sem outra condição.",
+    "B": "limitadas a 12% do total dos rendimentos computados na base de cálculo do imposto, e condicionadas a contribuir também para o regime geral (ou o próprio) de previdência.",
+    "C": "ilimitadas, desde que o plano seja de longo prazo.",
+    "D": "limitadas a 12%, sem necessidade de contribuir para a previdência oficial.",
+    "E": "vedadas para quem faz a declaração completa."
+   },
+   "gabarito": "B",
+   "resolucao": "Lei 9.532/1997, art. 11 (redação da Lei 10.887/2004): as deduções das contribuições para entidades de previdência privada cujo ônus seja da própria pessoa física \"ficam condicionadas ao recolhimento, também, de contribuições para o regime geral de previdência social\" (ou regime próprio) e \"limitadas a 12% (doze por cento) do total dos rendimentos computados na determinação da base de cálculo do imposto devido na declaração de rendimentos\".",
+   "comentarios": {
+    "A": "O limite é 12% e há a condição de contribuir para a previdência oficial.",
+    "C": "Há limite: 12%.",
+    "D": "A lei condiciona ao recolhimento também para o regime geral (ou próprio).",
+    "E": "A lei permite a dedução, com limite."
+   },
+   "topico": "Previdência: dedução e tabela regressiva",
+   "conceito": "Dedução de contribuições à previdência privada: até 12% da renda tributável, e só para quem também contribui para o regime geral ou o próprio.",
+   "explicar": "Explique para um cliente a dedução de até 12% das contribuições à previdência privada e como a tabela regressiva premia quem deixa o dinheiro mais tempo.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "No regime de tributação regressivo da Lei nº 11.053/2004, recursos de previdência com prazo de acumulação superior a 10 anos sofrem imposto de renda na fonte de",
+   "alternativas": {
+    "A": "10%.",
+    "B": "15%.",
+    "C": "20%.",
+    "D": "22,5%.",
+    "E": "35%."
+   },
+   "gabarito": "A",
+   "resolucao": "Lei 11.053/2004, art. 1º: alíquotas de 35% (até 2 anos), 30% (2 a 4), 25% (4 a 6), 20% (6 a 8), 15% (8 a 10) e \"10% (dez por cento), para recursos com prazo de acumulação superior a 10 (dez) anos\".",
+   "comentarios": {
+    "B": "15% é para prazo de 8 a 10 anos.",
+    "C": "20% é para prazo de 6 a 8 anos.",
+    "D": "22,5% não é faixa da tabela da Lei 11.053.",
+    "E": "35% é para até 2 anos: o mais caro."
+   },
+   "topico": "Previdência: dedução e tabela regressiva",
+   "conceito": "Tabela regressiva: começa em 35% e cai 5 pontos a cada 2 anos, até 10% depois de 10 anos.",
+   "explicar": "Explique para um cliente a dedução de até 12% das contribuições à previdência privada e como a tabela regressiva premia quem deixa o dinheiro mais tempo.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Um participante que optou pelo regime regressivo da Lei nº 11.053/2004 resgata recursos acumulados há 3 anos. A alíquota do imposto de renda na fonte é de",
+   "alternativas": {
+    "A": "10%.",
+    "B": "15%.",
+    "C": "25%.",
+    "D": "35%.",
+    "E": "30%."
+   },
+   "gabarito": "E",
+   "resolucao": "Lei 11.053/2004, art. 1º, II: \"30% (trinta por cento), para recursos com prazo de acumulação superior a 2 (dois) anos e inferior ou igual a 4 (quatro) anos\". 3 anos está nessa faixa.",
+   "comentarios": {
+    "A": "Só depois de 10 anos.",
+    "B": "De 8 a 10 anos.",
+    "C": "De 4 a 6 anos.",
+    "D": "Até 2 anos; 3 anos já passou dessa faixa."
+   },
+   "topico": "Previdência: dedução e tabela regressiva",
+   "conceito": "Faixas de 2 em 2 anos: 35, 30, 25, 20, 15, 10.",
+   "explicar": "Explique para um cliente a dedução de até 12% das contribuições à previdência privada e como a tabela regressiva premia quem deixa o dinheiro mais tempo.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Segundo a Lei nº 14.690/2023, se os limites de juros e encargos do crédito rotativo e do parcelado do cartão não fossem aprovados pelo CMN em 90 dias, o total cobrado a título de juros e encargos financeiros",
+   "alternativas": {
+    "A": "não poderia exceder 8% ao mês.",
+    "B": "ficaria livre, a critério de cada instituição.",
+    "C": "não poderia exceder o valor original da dívida.",
+    "D": "não poderia exceder 50% do valor original da dívida.",
+    "E": "seria fixado pelo Procon de cada estado."
+   },
+   "gabarito": "C",
+   "resolucao": "Lei 14.690/2023, art. 28, § 1º: \"Se os limites referidos no caput deste artigo não forem aprovados no prazo máximo de 90 (noventa) dias, contado da data da publicação desta Lei, o total cobrado em cada caso a título de juros e encargos financeiros não poderá exceder o valor original da dívida.\"",
+   "comentarios": {
+    "A": "8% ao mês é o teto do cheque especial (Res. CMN 4.765), não do cartão.",
+    "B": "A lei fixou um teto supletivo.",
+    "D": "O teto é o valor original da dívida (100%).",
+    "E": "Não há essa previsão."
+   },
+   "topico": "Crédito: cheque especial e cartão",
+   "conceito": "Cartão: juros e encargos do rotativo/parcelado limitados ao valor original da dívida (não dobra mais).",
+   "explicar": "Explique as regras do cheque especial e do rotativo do cartão que protegem o cliente: o que é limitado e por quanto tempo o rotativo pode durar?",
+   "habilidade": "reconhecer"
+  }
+ ],
+ "fontes": [
+  "Resolução CMN 4.765/2019, arts. 1º e 3º; Resolução CMN 4.549/2017, arts. 1º e 2º; Regulamento do Pix (anexo à Resolução BCB 1/2020), definição de pagamento instantâneo — bcb.gov.br (busca de normas), lidos em 25/11/2026",
+  "Lei 8.177/1991, art. 12 (redação da Lei 12.703/2012); Lei 11.033/2004, art. 3º; Lei 6.404/1976, art. 15; Lei 9.532/1997, art. 11; Lei 11.053/2004, art. 1º; Lei 14.690/2023, art. 28 — planalto.gov.br, lidos em 25/11/2026",
+  "Fora deste simulado por não terem sido conferidos no texto: debêntures (Lei 6.404, art. 52) e as siglas PGBL/VGBL, que não aparecem nas leis lidas"
+ ]
+}

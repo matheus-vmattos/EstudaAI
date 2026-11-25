@@ -1,0 +1,232 @@
+{
+ "tema": "Atualidades: Open Finance, ativos virtuais e educação financeira",
+ "materia": "Atualidades do Mercado Financeiro",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "Segundo a Resolução Conjunta BCB/CMN nº 1/2020, que trata do Sistema Financeiro Aberto, constituem seus objetivos, entre outros,",
+   "alternativas": {
+    "A": "garantir os depósitos dos clientes e fixar as taxas de juros.",
+    "B": "substituir o Pix e unificar os bancos públicos.",
+    "C": "incentivar a inovação, promover a concorrência e promover a cidadania financeira.",
+    "D": "dispensar o consentimento do cliente para agilizar o crédito.",
+    "E": "eliminar a concorrência entre as instituições participantes."
+   },
+   "gabarito": "C",
+   "resolucao": "Resolução Conjunta BCB/CMN nº 1/2020, art. 3º: \"Constituem objetivos do Open Banking: I - incentivar a inovação; II - promover a concorrência; III - aumentar a eficiência do Sistema Financeiro Nacional e do Sistema de Pagamentos Brasileiro; e IV - promover a cidadania financeira.\" (O texto original usa o nome Open Banking.)",
+   "comentarios": {
+    "A": "Garantia de depósitos é do FGC; juros não são objetivo do art. 3º.",
+    "B": "Não está no art. 3º.",
+    "D": "O consentimento é exigido (art. 5º, § 3º).",
+    "E": "É o contrário: promover a concorrência."
+   },
+   "topico": "Open Finance (Sistema Financeiro Aberto)",
+   "conceito": "Objetivos: inovação, concorrência, eficiência (SFN e SPB) e cidadania financeira.",
+   "explicar": "Explique o Open Finance para um cliente: o que é compartilhado, com qual autorização dele, e como ele desiste.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Para a Resolução Conjunta BCB/CMN nº 1/2020, o consentimento do cliente para o compartilhamento de dados é a manifestação",
+   "alternativas": {
+    "A": "livre, informada, prévia e inequívoca de vontade, feita por meio eletrônico, para finalidades determinadas.",
+    "B": "tácita, presumida pela abertura da conta.",
+    "C": "verbal, feita ao gerente na agência.",
+    "D": "genérica, válida para qualquer finalidade futura.",
+    "E": "posterior ao compartilhamento, para regularizá-lo."
+   },
+   "gabarito": "A",
+   "resolucao": "Resolução Conjunta BCB/CMN nº 1/2020, art. 2º, VIII: \"consentimento: manifestação livre, informada, prévia e inequívoca de vontade, feita por meio eletrônico, pela qual o cliente concorda com o compartilhamento de dados ou de serviços para finalidades determinadas\".",
+   "comentarios": {
+    "B": "Tem de ser prévia e inequívoca, não presumida.",
+    "C": "É feita por meio eletrônico.",
+    "D": "É para finalidades determinadas.",
+    "E": "É PRÉVIA ao compartilhamento."
+   },
+   "topico": "Open Finance (Sistema Financeiro Aberto)",
+   "conceito": "Consentimento: livre, informado, prévio, inequívoco, eletrônico e com finalidade definida.",
+   "explicar": "Explique o Open Finance para um cliente: o que é compartilhado, com qual autorização dele, e como ele desiste.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "De acordo com a Resolução Conjunta BCB/CMN nº 1/2020, o cliente que deu consentimento para compartilhar seus dados",
+   "alternativas": {
+    "A": "só pode revogá-lo após 12 meses.",
+    "B": "não pode revogá-lo, pois o consentimento é irrevogável.",
+    "C": "só pode revogá-lo por escrito, na agência de origem.",
+    "D": "deve ser estimulado pela instituição transmissora a revogá-lo.",
+    "E": "pode revogá-lo a qualquer tempo, ao menos pelo mesmo canal em que o concedeu, caso ainda exista."
+   },
+   "gabarito": "E",
+   "resolucao": "Resolução Conjunta BCB/CMN nº 1/2020, art. 15: as instituições \"devem assegurar a possibilidade da revogação do respectivo consentimento, a qualquer tempo, mediante solicitação do cliente\"; § 1º: \"ao menos pelo mesmo canal de atendimento no qual foi concedido, caso ainda existente\"; § 2º: \"É vedado à instituição transmissora de dados ou detentora de conta propor ao cliente a revogação de consentimento\", salvo exceção da norma.",
+   "comentarios": {
+    "A": "A revogação é a qualquer tempo.",
+    "B": "O art. 15 assegura a revogação a qualquer tempo.",
+    "C": "Deve haver ao menos o mesmo canal em que foi concedido.",
+    "D": "É vedado à transmissora propor a revogação (salvo suspeita, nas hipóteses da norma)."
+   },
+   "topico": "Open Finance (Sistema Financeiro Aberto)",
+   "conceito": "Revogar: quando quiser, pelo mesmo canal. E o banco não pode ficar pedindo para revogar.",
+   "explicar": "Explique o Open Finance para um cliente: o que é compartilhado, com qual autorização dele, e como ele desiste.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Entre os princípios que as instituições devem observar no Sistema Financeiro Aberto, segundo a Resolução Conjunta BCB/CMN nº 1/2020, estão",
+   "alternativas": {
+    "A": "sigilo absoluto, exclusividade e livre fixação de tarifas.",
+    "B": "transparência, segurança e privacidade dos dados, qualidade dos dados, tratamento não discriminatório, reciprocidade e interoperabilidade.",
+    "C": "legalidade, impessoalidade, moralidade e publicidade.",
+    "D": "lucratividade, exclusividade e confidencialidade comercial.",
+    "E": "anonimato, irreversibilidade e descentralização."
+   },
+   "gabarito": "B",
+   "resolucao": "Resolução Conjunta BCB/CMN nº 1/2020, art. 4º: as instituições devem observar os princípios de \"I - transparência; II - segurança e privacidade de dados e de informações sobre serviços compartilhados (...); III - qualidade dos dados; IV - tratamento não discriminatório; V - reciprocidade; e VI - interoperabilidade.\"",
+   "comentarios": {
+    "A": "Não são os princípios do art. 4º.",
+    "C": "São os princípios da administração pública (CF, art. 37).",
+    "D": "Não são os princípios do art. 4º.",
+    "E": "Não são os princípios do art. 4º."
+   },
+   "topico": "Open Finance (Sistema Financeiro Aberto)",
+   "conceito": "Princípios: transparência, segurança/privacidade, qualidade, não discriminação, reciprocidade, interoperabilidade.",
+   "explicar": "Explique o Open Finance para um cliente: o que é compartilhado, com qual autorização dele, e como ele desiste.",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Nos termos da Lei nº 14.478/2022, considera-se ativo virtual",
+   "alternativas": {
+    "A": "qualquer saldo em conta corrente movimentado pelo aplicativo do banco.",
+    "B": "a moeda eletrônica das contas de pagamento pré-pagas.",
+    "C": "os pontos de programas de fidelidade de cartões.",
+    "D": "a representação digital de valor que pode ser negociada ou transferida por meios eletrônicos e utilizada para pagamentos ou com propósito de investimento.",
+    "E": "as ações negociadas em bolsa."
+   },
+   "gabarito": "D",
+   "resolucao": "Lei 14.478/2022, art. 3º: \"considera-se ativo virtual a representação digital de valor que pode ser negociada ou transferida por meios eletrônicos e utilizada para realização de pagamentos ou com propósito de investimento, não incluídos: I - moeda nacional e moedas estrangeiras; II - moeda eletrônica (...); III - (...) pontos e recompensas de programas de fidelidade; e IV - (...) valores mobiliários e (...) ativos financeiros.\"",
+   "comentarios": {
+    "A": "Moeda nacional está fora do conceito (art. 3º, I).",
+    "B": "Moeda eletrônica (Lei 12.865) está fora (art. 3º, II).",
+    "C": "Pontos de fidelidade estão fora (art. 3º, III).",
+    "E": "Valores mobiliários estão fora (art. 3º, IV)."
+   },
+   "topico": "Ativos virtuais (criptoativos)",
+   "conceito": "Ativo virtual: valor digital para pagar ou investir. Fora: moeda oficial, moeda eletrônica, pontos de fidelidade, valores mobiliários.",
+   "explicar": "O que a Lei 14.478/2022 considera ativo virtual, o que fica de fora, e quem autoriza e supervisiona as corretoras de cripto?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "A Lei nº 14.478/2022 NÃO inclui no conceito de ativo virtual",
+   "alternativas": {
+    "A": "a representação digital de valor usada para investimento.",
+    "B": "a representação digital de valor usada para pagamentos.",
+    "C": "a moeda nacional e as moedas estrangeiras.",
+    "D": "o valor digital transferido por meios eletrônicos.",
+    "E": "o valor digital negociado em plataforma eletrônica."
+   },
+   "gabarito": "C",
+   "resolucao": "Lei 14.478/2022, art. 3º, I: não se incluem \"moeda nacional e moedas estrangeiras\". Também ficam fora a moeda eletrônica, os pontos de fidelidade e os valores mobiliários e ativos financeiros (incisos II a IV).",
+   "comentarios": {
+    "A": "Isso está DENTRO do conceito.",
+    "B": "Isso está DENTRO do conceito.",
+    "D": "Isso está DENTRO do conceito.",
+    "E": "Isso está DENTRO do conceito."
+   },
+   "topico": "Ativos virtuais (criptoativos)",
+   "conceito": "Real e dólar não são ativo virtual, mesmo digitais.",
+   "explicar": "O que a Lei 14.478/2022 considera ativo virtual, o que fica de fora, e quem autoriza e supervisiona as corretoras de cripto?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Segundo a Lei nº 14.478/2022, as prestadoras de serviços de ativos virtuais",
+   "alternativas": {
+    "A": "somente podem funcionar no País mediante prévia autorização de órgão ou entidade da Administração Pública federal.",
+    "B": "podem funcionar livremente, sem autorização.",
+    "C": "dependem apenas de registro na junta comercial.",
+    "D": "só podem ser pessoas físicas.",
+    "E": "são autorizadas pelos Procons estaduais."
+   },
+   "gabarito": "A",
+   "resolucao": "Lei 14.478/2022, art. 2º: \"As prestadoras de serviços de ativos virtuais somente poderão funcionar no País mediante prévia autorização de órgão ou entidade da Administração Pública federal.\" Art. 5º: prestadora é \"a pessoa jurídica que executa, em nome de terceiros, pelo menos um dos serviços de ativos virtuais\" (troca, transferência, custódia etc.).",
+   "comentarios": {
+    "B": "Exige-se prévia autorização (art. 2º).",
+    "C": "Exige-se autorização de órgão/entidade federal.",
+    "D": "São pessoas jurídicas (art. 5º).",
+    "E": "A autorização é federal."
+   },
+   "topico": "Ativos virtuais (criptoativos)",
+   "conceito": "Corretora de cripto: pessoa jurídica, só funciona com autorização federal prévia.",
+   "explicar": "O que a Lei 14.478/2022 considera ativo virtual, o que fica de fora, e quem autoriza e supervisiona as corretoras de cripto?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "O Decreto nº 11.563/2023, ao regulamentar a Lei nº 14.478/2022, atribuiu a disciplina do funcionamento e a supervisão das prestadoras de serviços de ativos virtuais",
+   "alternativas": {
+    "A": "à Comissão de Valores Mobiliários.",
+    "B": "à Receita Federal do Brasil.",
+    "C": "ao Conselho de Controle de Atividades Financeiras (Coaf).",
+    "D": "à Superintendência de Seguros Privados.",
+    "E": "ao Banco Central do Brasil."
+   },
+   "gabarito": "E",
+   "resolucao": "Decreto 11.563/2023, art. 2º: \"Para fins do disposto no art. 6º da Lei nº 14.478, de 2022, o Banco Central do Brasil disciplinará o funcionamento das prestadoras de serviços de ativos virtuais e será responsável pela supervisão das referidas prestadoras.\"",
+   "comentarios": {
+    "A": "O Decreto designou o Banco Central.",
+    "B": "O Decreto designou o Banco Central.",
+    "C": "O Decreto designou o Banco Central.",
+    "D": "O Decreto designou o Banco Central."
+   },
+   "topico": "Ativos virtuais (criptoativos)",
+   "conceito": "Prestadoras de ativos virtuais: disciplina e supervisão do Banco Central.",
+   "explicar": "O que a Lei 14.478/2022 considera ativo virtual, o que fica de fora, e quem autoriza e supervisiona as corretoras de cripto?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "O Decreto nº 10.393/2020 instituiu a nova Estratégia Nacional de Educação Financeira (ENEF), com a finalidade de promover",
+   "alternativas": {
+    "A": "a venda de produtos de investimento pelos bancos públicos.",
+    "B": "a educação financeira, securitária, previdenciária e fiscal no País.",
+    "C": "apenas a educação financeira nas escolas de ensino médio.",
+    "D": "a fiscalização das instituições financeiras.",
+    "E": "o controle da inflação."
+   },
+   "gabarito": "B",
+   "resolucao": "Decreto 10.393/2020, art. 1º: \"Ficam instituídos: I - a nova Estratégia Nacional de Educação Financeira - ENEF, com a finalidade de promover a educação financeira, securitária, previdenciária e fiscal no País; e II - o Fórum Brasileiro de Educação Financeira - FBEF.\"",
+   "comentarios": {
+    "A": "Não é a finalidade do art. 1º.",
+    "C": "A finalidade é mais ampla: financeira, securitária, previdenciária e fiscal.",
+    "D": "Fiscalização não é finalidade da ENEF.",
+    "E": "Isso é objetivo do Banco Central (LC 179/2021), não da ENEF."
+   },
+   "topico": "Educação financeira (ENEF)",
+   "conceito": "ENEF: educação financeira, securitária, previdenciária e fiscal. Quem a coordena é o FBEF.",
+   "explicar": "Qual a finalidade da Estratégia Nacional de Educação Financeira e por que ela importa para quem atende clientes no banco?",
+   "habilidade": "reconhecer"
+  },
+  {
+   "enunciado": "Nos termos do Decreto nº 10.393/2020, o Fórum Brasileiro de Educação Financeira (FBEF) é um colegiado de articulação ao qual compete, entre outras atribuições,",
+   "alternativas": {
+    "A": "autorizar o funcionamento de instituições financeiras.",
+    "B": "fixar a meta da taxa Selic.",
+    "C": "aplicar multas a bancos que não ofereçam educação financeira.",
+    "D": "implementar e estabelecer os princípios da ENEF e divulgar as ações de educação financeira, securitária, previdenciária e fiscal.",
+    "E": "julgar reclamações de clientes contra instituições financeiras."
+   },
+   "gabarito": "D",
+   "resolucao": "Decreto 10.393/2020, art. 2º: \"O FBEF é colegiado de articulação, ao qual compete: I - implementar e estabelecer os princípios da ENEF; II - divulgar as ações de educação financeira, securitária, previdenciária e fiscal (...); III - compartilhar as informações (...); e IV - promover a interlocução entre os órgãos ou as entidades públicas e as instituições privadas\". Integram o FBEF, entre outros, Banco Central, CVM, Susep e Previc (art. 3º).",
+   "comentarios": {
+    "A": "Não está no art. 2º.",
+    "B": "Não está no art. 2º.",
+    "C": "Não está no art. 2º.",
+    "E": "Não está no art. 2º."
+   },
+   "topico": "Educação financeira (ENEF)",
+   "conceito": "FBEF articula a ENEF; não fiscaliza nem pune.",
+   "explicar": "Qual a finalidade da Estratégia Nacional de Educação Financeira e por que ela importa para quem atende clientes no banco?",
+   "habilidade": "reconhecer"
+  }
+ ],
+ "fontes": [
+  "Resolução Conjunta BCB/CMN nº 1/2020, arts. 2º, 3º, 4º, 5º e 15 — bcb.gov.br (busca de normas), lida em 25/11/2026",
+  "Lei 14.478/2022, arts. 2º, 3º e 5º; Decreto 11.563/2023, art. 2º; Decreto 10.393/2020, arts. 1º a 3º — planalto.gov.br, lidos em 25/11/2026",
+  "Sem números que mudam (Selic do dia, cotações): fica de fora de propósito"
+ ]
+}
