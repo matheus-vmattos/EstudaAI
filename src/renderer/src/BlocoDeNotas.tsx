@@ -92,8 +92,8 @@ export function BlocoDeNotas() {
   }
 
   return (
-    <div className={`bloco ${travado ? '' : 'destravado'}`}>
-      <header className="cabeca-bloco">
+    <div className={`bn ${travado ? '' : 'destravado'}`}>
+      <header className="bn-cabeca">
         {nota ? (
           <button
             type="button"
@@ -110,7 +110,7 @@ export function BlocoDeNotas() {
         ) : (
           <Icone nome="lapis" tamanho={16} />
         )}
-        <span className="titulo-bloco">
+        <span className="bn-titulo">
           {nota ? nota.titulo || 'Sem título' : 'Bloco de notas'}
         </span>
         <button
@@ -144,13 +144,13 @@ export function BlocoDeNotas() {
         </button>
       </header>
       {!travado && (
-        <p className="meta dica-bloco">
+        <p className="meta bn-dica">
           Arraste pela barra de cima; puxe a borda para mudar o tamanho.
         </p>
       )}
 
       {ajustes && config && (
-        <label className="ajuste-bloco">
+        <label className="bn-ajuste">
           <span className="meta">Opacidade</span>
           <input
             type="range"
@@ -166,13 +166,13 @@ export function BlocoDeNotas() {
 
       {notas && !nota && (
         <>
-          <button type="button" className="botao principal nova-nota" onClick={nova}>
+          <button type="button" className="botao principal bn-nova" onClick={nova}>
             <Icone nome="mais" tamanho={16} />
             Nova nota
           </button>
-          <div className="lista-bloco">
+          <div className="bn-lista">
             {lista.length === 0 && (
-              <p className="meta vazio-bloco">
+              <p className="meta bn-vazio">
                 Anote aqui as dúvidas: elas ficam salvas e o Claude lê no check-in.
               </p>
             )}
@@ -180,7 +180,7 @@ export function BlocoDeNotas() {
               <button
                 key={n.id}
                 type="button"
-                className="item-bloco"
+                className="bn-item"
                 onClick={() => setAberta(n.id)}
               >
                 <span className="nome">{n.titulo || 'Sem título'}</span>
@@ -192,7 +192,7 @@ export function BlocoDeNotas() {
       )}
 
       {notas && nota && (
-        <div className="nota-bloco">
+        <div className="bn-nota">
           <input
             aria-label="Título"
             placeholder="Título"
@@ -208,7 +208,7 @@ export function BlocoDeNotas() {
             onChange={(e) => editar({ texto: e.target.value })}
           />
           {apagando ? (
-            <div className="acoes-bloco">
+            <div className="bn-acoes">
               <span className="meta">Apagar esta nota?</span>
               <button
                 type="button"
@@ -226,7 +226,7 @@ export function BlocoDeNotas() {
               </button>
             </div>
           ) : (
-            <button type="button" className="botao apagar-nota" onClick={() => setApagando(true)}>
+            <button type="button" className="botao bn-apagar" onClick={() => setApagando(true)}>
               <Icone nome="lixo" tamanho={14} />
               Apagar nota
             </button>

@@ -2646,10 +2646,6 @@ dialog.colar-edital section {
   font-size: 15px;
   color: var(--texto-forte);
 }
-.numero-pequeno {
-  font-family: var(--mono);
-  font-size: 14px;
-}
 .trilho {
   height: 8px;
   background: #0c1a20;
@@ -2706,13 +2702,12 @@ dialog.colar-edital section {
   background: rgb(255 107 122 / 16%);
   cursor: pointer;
 }
-.erros-raio-x,
-.inseguras-raio-x {
+.erros-raio-x {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.linha-erro {
+.raiox-erro {
   display: grid;
   grid-template-columns: 48px minmax(0, 1.2fr) minmax(0, 1.4fr) auto;
   align-items: center;
@@ -2721,7 +2716,7 @@ dialog.colar-edital section {
   border: 1px solid var(--linha-2);
   background: var(--cartao);
 }
-.linha-erro.rapido {
+.raiox-erro.rapido {
   border-color: var(--vermelho-linha);
 }
 .numero-erro {
@@ -2740,6 +2735,9 @@ dialog.colar-edital section {
   font-size: 15px;
 }
 .inseguras-raio-x {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   padding: 14px 18px;
   border: 1px solid var(--ambar-linha);
   background: rgb(255 181 71 / 3%);
@@ -2758,7 +2756,7 @@ dialog.colar-edital section {
 }
 
 /* Bloco de notas flutuante (sistema do esquecAI, 0.1.24) */
-.bloco {
+.bn {
   box-sizing: border-box;
   height: 100vh;
   display: flex;
@@ -2769,10 +2767,10 @@ dialog.colar-edital section {
   border: 1px solid var(--linha-viva);
   overflow: hidden;
 }
-.bloco.destravado {
+.bn.destravado {
   border-color: var(--ciano);
 }
-.cabeca-bloco {
+.bn-cabeca {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -2781,14 +2779,14 @@ dialog.colar-edital section {
   user-select: none;
 }
 /* destravado, a barra de cima arrasta a janela (frameless); os botões não */
-.bloco.destravado .cabeca-bloco {
+.bn.destravado .bn-cabeca {
   -webkit-app-region: drag;
   cursor: move;
 }
-.bloco.destravado .cabeca-bloco button {
+.bn.destravado .bn-cabeca button {
   -webkit-app-region: no-drag;
 }
-.titulo-bloco {
+.bn-titulo {
   flex: 1;
   min-width: 0;
   overflow: hidden;
@@ -2800,22 +2798,22 @@ dialog.colar-edital section {
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-.dica-bloco {
+.bn-dica {
   margin: 0;
 }
-.ajuste-bloco {
+.bn-ajuste {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.ajuste-bloco input {
+.bn-ajuste input {
   flex: 1;
   accent-color: var(--ciano);
 }
-.nova-nota {
+.bn-nova {
   justify-content: center;
 }
-.lista-bloco {
+.bn-lista {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
@@ -2823,11 +2821,11 @@ dialog.colar-edital section {
   flex-direction: column;
   gap: 6px;
 }
-.vazio-bloco {
+.bn-vazio {
   padding-top: 16px;
   text-align: center;
 }
-.item-bloco {
+.bn-item {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -2838,25 +2836,25 @@ dialog.colar-edital section {
   text-align: left;
   cursor: pointer;
 }
-.item-bloco:hover,
-.item-bloco:focus-visible {
+.bn-item:hover,
+.bn-item:focus-visible {
   border-color: var(--ciano);
 }
-.item-bloco .nome,
-.item-bloco .meta {
+.bn-item .nome,
+.bn-item .meta {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.nota-bloco {
+.bn-nota {
   flex: 1;
   min-height: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-.nota-bloco input,
-.nota-bloco textarea {
+.bn-nota input,
+.bn-nota textarea {
   box-sizing: border-box;
   width: 100%;
   padding: 8px 10px;
@@ -2866,24 +2864,24 @@ dialog.colar-edital section {
   font-family: var(--sans);
   font-size: 15px;
 }
-.nota-bloco input {
+.bn-nota input {
   font-weight: 600;
 }
-.nota-bloco textarea {
+.bn-nota textarea {
   flex: 1;
   min-height: 0;
   resize: none;
   line-height: 1.5;
 }
-.acoes-bloco {
+.bn-acoes {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.apagar-nota {
+.bn-apagar {
   align-self: flex-start;
 }
-.item-bloco .previa {
+.bn-item .previa {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

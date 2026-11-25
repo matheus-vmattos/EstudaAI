@@ -918,7 +918,7 @@ function RaioXDoSimulado({
               <span className="meta">O que você marcou e qual engano dá aquela resposta</span>
             </div>
             {erros.map((x) => (
-              <div key={x.indice} className={`linha-erro ${x.rapido ? 'rapido' : ''}`}>
+              <div key={x.indice} className={`raiox-erro ${x.rapido ? 'rapido' : ''}`}>
                 <span className="numero-erro">{x.indice + 1}</span>
                 <div className="erro-questao">
                   <span>{resumo(x.indice)}</span>
