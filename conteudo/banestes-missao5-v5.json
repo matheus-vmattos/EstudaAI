@@ -164,9 +164,9 @@
    "id": "notas-banc",
    "tipo": "anotacoes",
    "titulo": "Ler: anotações de Bancários",
-   "detalhe": "8 anotações no seu mapa, cada uma com o artigo da lei",
+   "detalhe": "12 anotações no seu mapa, cada uma com o artigo da lei",
    "pontos": 30,
-   "item": "banestes-bancarios-anotacoes-v1"
+   "item": "banestes-bancarios-anotacoes-v2"
   },
   {
    "id": "notas-atual",
