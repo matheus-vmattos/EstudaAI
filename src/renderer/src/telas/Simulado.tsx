@@ -13,7 +13,8 @@ import type { Dados, Id, Simulado as TipoSimulado } from '../../../shared/tipos'
 import { EstudarErros } from './EstudarErros'
 import { Explique } from '../Explique'
 import { explicacaoDoConceito, pedidosDeExplicar, situacaoDe } from '../../../shared/explicar'
-import { raioX, ritmoDaProva, type Faixa } from '../../../shared/raioX'
+import { diagnostico, raioX, ritmoDaProva } from '../../../shared/raioX'
+import { notaDeDuvida } from '../../../shared/bloco'
 import { notaDaProva, type NotaDaProva } from '../../../shared/provaCompleta'
 import { idsAbaixo } from '../../../shared/arvore'
 import {
@@ -523,7 +524,7 @@ function Resultado({
           </div>
           <div>
             <span className="meta">Média/questão</span>
-            <span className="numero">{formatarTempo(s.decorridoMs / total)}</span>
+            <span className="numero">{formatarTempo(raioX(s).ritmo ?? s.decorridoMs / total)}</span>
           </div>
         </div>
       </header>
@@ -552,13 +553,34 @@ function Resultado({
       ) : (
         <div className="corpo-prova" ref={corpo}>
           <main className="questao">
-            <div className="meta">
-              Questão {atual + 1} de {total} ·{' '}
-              {minha === null ? 'em branco' : minha === q.gabarito ? 'você acertou' : 'você errou'}
-              {s.revisar[atual] && (
-                <span style={{ color: 'var(--ambar)' }}> · ■ marcada p/ revisar</span>
-              )}{' '}
-              · {formatarTempo(s.tempoPorQuestao[atual])} nela
+            <div className="linha-duvida">
+              <div className="meta">
+                Questão {atual + 1} de {total} ·{' '}
+                {minha === null
+                  ? 'em branco'
+                  : minha === q.gabarito
+                    ? 'você acertou'
+                    : 'você errou'}
+                {s.revisar[atual] && (
+                  <span style={{ color: 'var(--ambar)' }}> · ■ marcada p/ revisar</span>
+                )}{' '}
+                · {formatarTempo(s.tempoPorQuestao[atual])} nela
+              </div>
+              <button
+                type="button"
+                className="botao"
+                title="Cria uma nota com esta questão no bloco de notas flutuante"
+                onClick={() => {
+                  const nota = notaDeDuvida(q, atual + 1, s.config.tema, novoId())
+                  mudar((d) => {
+                    d.blocoDeNotas = [nota, ...(d.blocoDeNotas ?? [])]
+                  })
+                  void window.api.bloco.abrir(nota.id)
+                }}
+              >
+                <Icone nome="lapis" tamanho={14} />
+                Anotar dúvida
+              </button>
             </div>
             <p className="enunciado">
               <Texto texto={q.enunciado} />
@@ -758,20 +780,14 @@ function Resultado({
   )
 }
 
-const FAIXAS: { faixa: Faixa; nome: string; detalhe: string }[] = [
-  { faixa: 'domina', nome: 'Domina', detalhe: 'Certa, no seu ritmo, sem dúvida' },
-  { faixa: 'fragil', nome: 'Frágil', detalhe: 'Certa, mas demorou ou marcou dúvida' },
-  { faixa: 'engano', nome: 'Engano', detalhe: 'Errou rápido: acha que sabe' },
-  { faixa: 'lacuna', nome: 'Lacuna', detalhe: 'Errou e demorou, ou em branco: não sabia' }
-]
-
 const tempo = (ms: number): string => {
   const seg = Math.round(ms / 1000)
   return `${Math.floor(seg / 60)}:${String(seg % 60).padStart(2, '0')}`
 }
 
-/** O que o placar esconde: cada questão pelo tempo e pelo acerto, a frase do
- *  que mais pede atenção e o "Será que você sabe?" das frágeis. */
+/** O Raio-X (mockup "Raio-X polido", aprovado em 25/11): o padrão com a prova,
+ *  cada erro com o engano que deu aquele número, o conceito para explicar e os
+ *  acertos inseguros. Um número de tempo só: o seu tempo médio. */
 function RaioXDoSimulado({
   simulado: s,
   dados,
@@ -784,11 +800,11 @@ function RaioXDoSimulado({
   irPara: (indice: number) => void
 }) {
   const r = raioX(s)
-  const [explicando, setExplicando] = useState<number | null>(null)
+  const d = diagnostico(s, r)
   const [pulados, setPulados] = useState<number[]>([])
+  const [todosOsErros, setTodosOsErros] = useState(false)
   const pedidos = pedidosDeExplicar(s, r, dados)
   const pedidosVisiveis = pedidos.filter((p) => !pulados.includes(p.indice))
-  const naLista = new Set(pedidos.flatMap((p) => p.indices))
   const explicacoesDaqui = pedidos
     .map((p) => explicacaoDoConceito(dados, p.pergunta, p.legado))
     .filter((x): x is NonNullable<typeof x> => !!x?.texto.trim())
@@ -803,25 +819,149 @@ function RaioXDoSimulado({
       : s.config.tempoMin
         ? ritmoDaProva(s.config.tempoMin, s.questoes.length)
         : null
-  const item = explicando === null ? null : r.itens[explicando]
+  const total = s.questoes.length
+  const erros = todosOsErros ? d.erros : d.erros.slice(0, 6)
+  const resumo = (i: number): string => {
+    const t = s.questoes[i].enunciado.replace(/\s+/g, ' ').trim()
+    return t.length > 90 ? `${t.slice(0, 88).trimEnd()}…` : t
+  }
+  const irParaSecao = (id: string): void =>
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   return (
     <div className="corpo-prova">
       <main className="questao raio-x">
-        <p className="frase-raio-x">{r.frase}</p>
-        {r.ritmo !== null && (
-          <span className="meta">
-            Seu ritmo: {tempo(r.ritmo)} por questão
-            {naProva !== null && ` · a prova dá ${tempo(naProva)}`}
-          </span>
+        <section aria-labelledby="t-diag" className="diagnostico">
+          <div className="diag-principal">
+            <h2 id="t-diag" className="secao">
+              O que este {s.questoes.length >= 30 ? 'treino' : 'simulado'} mostrou
+            </h2>
+            <p className="frase-raio-x">{d.frase}</p>
+            {d.pontos.length > 0 && (
+              <ul className="pontos-diag">
+                {d.pontos.map((p) => (
+                  <li key={p}>{p}</li>
+                ))}
+              </ul>
+            )}
+            {r.ritmo !== null && (
+              <span className="meta">
+                Seu tempo médio: {tempo(r.ritmo)} por questão
+                {naProva !== null && ` · a prova dá ${tempo(naProva)}`}
+              </span>
+            )}
+          </div>
+          <div className="diag-lado">
+            <h3 className="secao">Por tópico</h3>
+            {d.topicos.slice(0, 6).map((t) => {
+              const pct = t.certas / t.total
+              return (
+                <div key={t.topico} className="barra-topico">
+                  <div>
+                    <span>{t.topico}</span>
+                    <span
+                      className={`numero-pequeno ${pct >= 0.9 ? 'nota-boa' : pct >= 0.7 ? 'nota-media' : 'nota-ruim'}`}
+                    >
+                      {t.certas}/{t.total}
+                    </span>
+                  </div>
+                  <div className="trilho" aria-hidden="true">
+                    <span
+                      className={pct >= 0.9 ? 'boa' : pct >= 0.7 ? 'media' : 'ruim'}
+                      style={{ width: `${pct * 100}%` }}
+                    />
+                  </div>
+                </div>
+              )
+            })}
+            <div className="como-acertou">
+              <span className="meta">Como você acertou</span>
+              <div className="faixa-acertos">
+                {d.firmes > 0 && (
+                  <span className="firmes" style={{ flexGrow: d.firmes }}>
+                    {d.firmes} firmes
+                  </span>
+                )}
+                {d.inseguras.length > 0 && (
+                  <button
+                    type="button"
+                    className="inseguras"
+                    style={{ flexGrow: d.inseguras.length }}
+                    onClick={() => irParaSecao('t-inseguras')}
+                  >
+                    {d.inseguras.length} {d.inseguras.length === 1 ? 'insegura' : 'inseguras'}
+                  </button>
+                )}
+                {d.erros.length > 0 && (
+                  <button
+                    type="button"
+                    className="erradas"
+                    style={{ flexGrow: d.erros.length }}
+                    onClick={() => irParaSecao('t-erros')}
+                  >
+                    {d.erros.length}
+                  </button>
+                )}
+              </div>
+              <span className="meta">
+                Insegura = acertou, mas levou mais que o dobro do seu tempo médio ou marcou dúvida.
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {d.erros.length > 0 && (
+          <section aria-labelledby="t-erros" className="erros-raio-x">
+            <div className="cabeca-dia">
+              <h2 id="t-erros" className="secao">
+                {d.erros.length === 1 ? 'Seu erro' : `Seus ${d.erros.length} erros`}
+              </h2>
+              <span className="meta">O que você marcou e qual engano dá aquela resposta</span>
+            </div>
+            {erros.map((x) => (
+              <div key={x.indice} className={`linha-erro ${x.rapido ? 'rapido' : ''}`}>
+                <span className="numero-erro">{x.indice + 1}</span>
+                <div className="erro-questao">
+                  <span>{resumo(x.indice)}</span>
+                  <span className="meta">
+                    {x.marcada === null ? 'Em branco' : `Marcou ${x.marcada}`} · certa {x.certa}
+                    {x.ms > 0 && ` · ${tempo(x.ms)}${x.rapido ? ', rápido' : ''}`}
+                  </span>
+                </div>
+                <span className="erro-motivo">
+                  {x.motivo ??
+                    (x.rapido
+                      ? 'Errou abaixo do seu tempo médio: leia o que a questão pede antes de marcar.'
+                      : 'Veja a resolução passo a passo.')}
+                </span>
+                <button type="button" className="botao passo" onClick={() => irPara(x.indice)}>
+                  Ver questão
+                  <Icone nome="direita" tamanho={14} />
+                </button>
+              </div>
+            ))}
+            {d.erros.length > 6 && (
+              <button
+                type="button"
+                className="botao"
+                style={{ alignSelf: 'flex-start' }}
+                aria-expanded={todosOsErros}
+                onClick={() => setTodosOsErros(!todosOsErros)}
+              >
+                {todosOsErros ? 'Mostrar menos' : `Ver todos os ${d.erros.length} erros`}
+              </button>
+            )}
+          </section>
         )}
+
         {pedidosVisiveis.length > 0 && (
           <section aria-labelledby="t-agora" className="agora-explique">
             <div className="cabeca-dia">
               <h2 id="t-agora" className="secao">
-                Agora explique com suas palavras
+                Explique o conceito
               </h2>
               <span className="meta">
-                {pedidos.length} {pedidos.length === 1 ? 'conceito' : 'conceitos'} deste treino
+                {pedidos.length} {pedidos.length === 1 ? 'conceito' : 'conceitos'} deste treino · a
+                mesma pergunta volta até ficar certa
                 {explicacoesDaqui.length > 0 &&
                   ` · ${avaliadas} ${avaliadas === 1 ? 'avaliado' : 'avaliados'} · ${explicacoesDaqui.length - avaliadas} esperando o Claude`}
               </span>
@@ -842,71 +982,35 @@ function RaioXDoSimulado({
             ))}
           </section>
         )}
-        <div className="quadrantes">
-          {FAIXAS.map(({ faixa, nome, detalhe }) => {
-            const lista = r.porFaixa[faixa]
-            return (
-              <section key={faixa} className={`quadrante ${faixa}`} aria-label={nome}>
-                <div className="cabeca-quadrante">
-                  <h2 className="secao">{nome}</h2>
-                  <span className="meta">{detalhe}</span>
-                  <span className="numero">{lista.length}</span>
-                </div>
-                {faixa === 'domina'
-                  ? lista.length > 0 && (
-                      <span className="meta">
-                        {[...new Set(lista.map((x) => x.topico))].slice(0, 8).join(' · ')}
-                      </span>
-                    )
-                  : lista.map((x) => (
-                      <div key={x.indice} className="linha-quadrante">
-                        <span>{x.topico}</span>
-                        <span className="meta">
-                          {x.ms > 0 ? tempo(x.ms) : 'sem tempo'}
-                          {x.vezes !== null && x.vezes > 2 ? ` · ${x.vezes.toFixed(0)}×` : ''}
-                          {x.duvida ? ' · dúvida' : ''}
-                        </span>
-                        {naLista.has(x.indice) && !pulados.includes(x.indice) ? (
-                          <span className="meta">Explique acima</span>
-                        ) : faixa === 'fragil' ? (
-                          <button
-                            type="button"
-                            className={
-                              explicando === x.indice ? 'botao passo pendente' : 'botao passo'
-                            }
-                            aria-pressed={explicando === x.indice}
-                            onClick={() => setExplicando(explicando === x.indice ? null : x.indice)}
-                          >
-                            Explicar
-                            <Icone nome="direita" tamanho={14} />
-                          </button>
-                        ) : (
-                          <button
-                            type="button"
-                            className="botao passo"
-                            onClick={() => irPara(x.indice)}
-                          >
-                            {faixa === 'engano' ? 'Ver a certa' : 'Estudar'}
-                            <Icone nome="direita" tamanho={14} />
-                          </button>
-                        )}
-                      </div>
-                    ))}
-              </section>
-            )
-          })}
-        </div>
-        {item && (
-          <Explique
-            key={item.indice}
-            dados={dados}
-            mudar={mudar}
-            topico={item.topico}
-            pergunta={`O que você sabe sobre ${item.topico}? Explique com suas palavras, como se fosse para um cliente.`}
-            detalhe={`Acertou${item.ms > 0 ? ` em ${tempo(item.ms)}` : ''}${item.duvida ? ', com dúvida' : ''}`}
-            questao={s.questoes[item.indice]}
-            origem={{ simuladoId: s.id, indice: item.indice }}
-          />
+
+        {d.inseguras.length > 0 && (
+          <section aria-labelledby="t-inseguras" className="inseguras-raio-x">
+            <div className="cabeca-dia">
+              <h2 id="t-inseguras" className="secao">
+                {d.inseguras.length}{' '}
+                {d.inseguras.length === 1 ? 'acerto inseguro' : 'acertos inseguros'}
+              </h2>
+              <span className="meta">Reveja antes de virar erro</span>
+            </div>
+            <div className="chips">
+              {d.inseguras.map((x) => (
+                <button
+                  key={x.indice}
+                  type="button"
+                  className="chip inseguro"
+                  onClick={() => irPara(x.indice)}
+                >
+                  {x.indice + 1}
+                  {x.ms > 0 && ` · ${tempo(x.ms)}`}
+                  {x.vezes !== null && x.vezes >= 2 && ` (${x.vezes.toFixed(0)}× seu tempo)`}
+                  {x.duvida && ' · dúvida'}
+                </button>
+              ))}
+            </div>
+          </section>
+        )}
+        {total > 0 && d.erros.length === 0 && d.inseguras.length === 0 && (
+          <p className="meta">Nada para rever aqui: todas firmes.</p>
         )}
       </main>
     </div>

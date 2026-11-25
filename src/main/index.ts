@@ -4,6 +4,7 @@ import { is } from '@electron-toolkit/utils'
 import { fazerBackup, lerDados, pastaDosDados, salvarDados } from './dados'
 import { iniciarAtualizador } from './atualizador'
 import { iniciarCaixa } from './caixa'
+import { iniciarBloco } from './bloco'
 import { antesDeFechar, iniciarNuvem, precisaSubir, salvouNoPc } from './nuvem'
 import type { Dados } from '../shared/tipos'
 
@@ -101,6 +102,7 @@ app.whenReady().then(() => {
   iniciarAtualizador(() => principal)
   iniciarCaixa()
   iniciarNuvem(() => principal)
+  iniciarBloco(() => principal)
 
   criarJanela()
   app.on('activate', () => {

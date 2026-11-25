@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { mesclarRetornos } from '../../shared/explicar'
+import { lerNotasDoBloco } from '../../shared/bloco'
 import { Icone, type NomeDoIcone } from './Icone'
 import { useDados } from './useDados'
 import { Atualizacao } from './Atualizacao'
@@ -102,6 +103,22 @@ export function App() {
     }
   }, [mudar])
 
+  // bloco de notas flutuante: a janelinha manda a lista, a principal grava
+  // (é a dona do estado) e devolve o que ficou valendo
+  useEffect(
+    () =>
+      window.api.bloco.aoAplicar((notas) =>
+        mudar((d) => {
+          d.blocoDeNotas = lerNotasDoBloco(notas)
+        })
+      ),
+    [mudar]
+  )
+  const notasDoBloco = dados?.blocoDeNotas
+  useEffect(() => {
+    if (notasDoBloco) window.api.bloco.publicar(notasDoBloco)
+  }, [notasDoBloco])
+
   // com edital, o app abre nele: é o "por onde começo hoje"
   const abriuNoEdital = useRef(false)
   useEffect(() => {
@@ -186,6 +203,15 @@ export function App() {
             )}
           </button>
         ))}
+        <button
+          type="button"
+          className="item-menu"
+          title="Abre uma janelinha por cima de tudo, para anotar dúvidas"
+          onClick={() => void window.api.bloco.abrir()}
+        >
+          <Icone nome="lapis" />
+          BLOCO DE NOTAS
+        </button>
         <div className="rodape-menu">
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <div style={{ flex: 1 }}>

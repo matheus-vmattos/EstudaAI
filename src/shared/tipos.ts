@@ -196,6 +196,8 @@ export interface Dados {
   notasDoClaude?: Record<Id, string>
   /** o retorno do Claude para cada explicação (v0.1.22+), vindo da nuvem */
   retornos?: Retorno[]
+  /** o bloco de notas flutuante (v0.1.24+): dúvidas e anotações rápidas */
+  blocoDeNotas?: NotaDoBloco[]
   /** baralhos com a seta ao contrário do padrão (matéria aberta, nós fechados) */
   baralhosInvertidos?: Id[]
   /** itens da caixa "Do Claude" já importados */
@@ -243,6 +245,22 @@ export type EstadoDaAtualizacao =
   | { estado: 'baixando'; versao: string; porcento: number }
   | { estado: 'pronta'; versao: string }
   | { estado: 'erro'; mensagem: string }
+
+/** Uma nota do bloco de notas flutuante (v0.1.24+) */
+export interface NotaDoBloco {
+  id: Id
+  titulo: string
+  texto: string
+  criadoEm: number
+  atualizadoEm: number
+}
+
+/** onde fica a janelinha do bloco, a opacidade e se ela está travada */
+export interface ConfigDoBloco {
+  bounds: { x: number; y: number; width: number; height: number } | null
+  opacidade: number
+  travado: boolean
+}
 
 export type Veredito = 'certo' | 'quase' | 'revisar'
 
