@@ -272,6 +272,19 @@ export interface Retorno {
   texto: string
   textoAvaliado: string
   criadoEm: number
+  /** a resposta do Claude em partes (v0.1.26+): o que acertou, o que pode ter
+   *  escapado e um teste rápido. Sem ela, vale o `texto`. */
+  licao?: Licao
+}
+
+export interface Licao {
+  /** uma linha: o que a explicação acertou */
+  acertou: string
+  /** os pontos que podem ter escapado, cada um com o porquê */
+  pontos: { titulo: string; texto: string }[]
+  /** 1 ou 2 questões só sobre esses pontos (acertar fecha o assunto) */
+  teste: Questao[]
+  fontes: string[]
 }
 
 export interface Explicacao {
@@ -285,6 +298,9 @@ export interface Explicacao {
   /** de onde veio: a questão do simulado (quando veio do Raio-X) */
   simuladoId?: Id
   indice?: number
+  /** o que você fez com a resposta do Claude (a de `retornoEm`): leu e, se
+   *  tinha teste, as letras que marcou (v0.1.26+) */
+  licao?: { retornoEm: number; respostas: string[]; em: number }
 }
 
 /** Uma tarefa da missão. As de simulado e cartões apontam para um item da

@@ -688,8 +688,7 @@ describe('Explique depois dos exercícios e retorno do Claude', () => {
     ])
   })
   it('o retorno vale só para o texto avaliado; reescreveu, volta a esperar', async () => {
-    const { mesclarRetornos, situacaoDe, placarDeExplicacoes } =
-      await import('../src/shared/explicar')
+    const { mesclarRetornos, situacaoDe } = await import('../src/shared/explicar')
     const d = dadosDoEdital()
     d.explicacoes = [
       { id: 'x1', criadoEm: 1, topico: 'MDC', pergunta: 'p', texto: 'o maior divisor comum' }
@@ -707,7 +706,6 @@ describe('Explique depois dos exercícios e retorno do Claude', () => {
     expect(situacaoDe(d, d.explicacoes[0])).toBe('quase')
     d.explicacoes[0].texto = 'o maior número que divide os dois sem sobra'
     expect(situacaoDe(d, d.explicacoes[0])).toBe('esperando')
-    expect(placarDeExplicacoes(d)).toEqual({ certo: 0, quase: 0, revisar: 0, esperando: 1 })
   })
 })
 
@@ -962,5 +960,105 @@ describe('Codex no PR 31: o bloco não perde nem sobrescreve notas', () => {
       ['a', 'digitando…'],
       ['duvida', 'anotada no gabarito']
     ])
+  })
+})
+
+describe('resposta do Claude em partes (0.1.26)', () => {
+  const questao = {
+    enunciado: 'Na regra de três, o que decide se é direta ou inversa?',
+    alternativas: {
+      A: 'O tamanho dos números.',
+      B: 'O que fica fixo na situação.',
+      C: 'A ordem das colunas.',
+      D: 'A unidade de medida.',
+      E: 'A quantidade de grandezas.'
+    },
+    gabarito: 'B',
+    resolucao: 'Fixa a hora, mais máquinas embalam mais caixas: direta.',
+    comentarios: { A: 'Não.', B: 'Sim.', C: 'Não.', D: 'Não.', E: 'Não.' }
+  }
+  const licao = {
+    acertou: 'Direta é quando as duas andam no mesmo sentido.',
+    pontos: [{ titulo: 'O que fica fixo', texto: 'É ele que decide o sentido.' }],
+    teste: [questao],
+    fontes: ['conta conferida em Python']
+  }
+
+  it('lê a lição da nuvem só inteira e no formato', async () => {
+    const { lerLicao } = await import('../src/shared/explicar')
+    const l = lerLicao(licao)!
+    expect(l.pontos).toHaveLength(1)
+    expect(l.teste[0].gabarito).toBe('B')
+    expect(l.teste[0].alternativas.map((a) => a.letra).join('')).toBe('ABCDE')
+    expect(lerLicao(null)).toBeUndefined()
+    expect(lerLicao({ ...licao, acertou: '' })).toBeUndefined()
+    expect(lerLicao({ ...licao, pontos: [{ titulo: 'x' }] })).toBeUndefined()
+    // questão quebrada: a lição inteira fica de fora (não mostra teste pela metade)
+    expect(lerLicao({ ...licao, teste: [{ ...questao, gabarito: 'F' }] })).toBeUndefined()
+    // sem teste é válida (só leitura)
+    expect(lerLicao({ ...licao, teste: undefined })?.teste).toEqual([])
+  })
+
+  it('nova até fazer o teste; acertou fecha, errou fica para rever', async () => {
+    const { estadoDaResposta, conceitoFechado, lerLicao } = await import('../src/shared/explicar')
+    const d = dadosDoEdital()
+    d.explicacoes = [{ id: 'x1', criadoEm: 1, topico: 'Regra de três', pergunta: 'p', texto: 't' }]
+    const x = d.explicacoes[0]
+    expect(estadoDaResposta(d, x)).toBe('esperando')
+    d.retornos = [
+      {
+        explicacaoId: 'x1',
+        veredito: 'quase',
+        texto: 'r',
+        textoAvaliado: 't',
+        criadoEm: 5,
+        licao: lerLicao(licao)
+      }
+    ]
+    expect(estadoDaResposta(d, x)).toBe('nova')
+    expect(conceitoFechado(d, x)).toBe(false)
+    x.licao = { retornoEm: 5, respostas: ['C'], em: 6 }
+    expect(estadoDaResposta(d, x)).toBe('rever')
+    expect(conceitoFechado(d, x)).toBe(false)
+    x.licao = { retornoEm: 5, respostas: ['B'], em: 6 }
+    expect(estadoDaResposta(d, x)).toBe('entendeu')
+    expect(conceitoFechado(d, x)).toBe(true)
+    // resposta nova do Claude (outra data): volta a ser nova
+    d.retornos.push({ ...d.retornos[0], criadoEm: 9 })
+    expect(estadoDaResposta(d, x)).toBe('nova')
+  })
+
+  it('sem lição: certo já fecha; quase vira "rever" depois de lido', async () => {
+    const { estadoDaResposta, conceitoFechado } = await import('../src/shared/explicar')
+    const d = dadosDoEdital()
+    d.explicacoes = [
+      { id: 'a', criadoEm: 1, topico: 'A', pergunta: 'pa', texto: 'ta' },
+      { id: 'b', criadoEm: 1, topico: 'B', pergunta: 'pb', texto: 'tb' }
+    ]
+    d.retornos = [
+      { explicacaoId: 'a', veredito: 'certo', texto: 'isso', textoAvaliado: 'ta', criadoEm: 2 },
+      { explicacaoId: 'b', veredito: 'quase', texto: 'faltou', textoAvaliado: 'tb', criadoEm: 2 }
+    ]
+    const [a, b] = d.explicacoes
+    expect(estadoDaResposta(d, a)).toBe('entendeu')
+    expect(conceitoFechado(d, a)).toBe(true)
+    expect(estadoDaResposta(d, b)).toBe('nova')
+    b.licao = { retornoEm: 2, respostas: [], em: 3 }
+    expect(estadoDaResposta(d, b)).toBe('rever')
+  })
+
+  it('a mesma resposta com lição nova (mesma data) também entra', async () => {
+    const { mesclarRetornos, lerLicao } = await import('../src/shared/explicar')
+    const d = dadosDoEdital()
+    const r = {
+      explicacaoId: 'x1',
+      veredito: 'quase' as const,
+      texto: 'r',
+      textoAvaliado: 't',
+      criadoEm: 5
+    }
+    expect(mesclarRetornos(d, [r])).toBe(true)
+    expect(mesclarRetornos(d, [{ ...r, licao: lerLicao(licao) }])).toBe(true)
+    expect(d.retornos?.[0].licao?.pontos).toHaveLength(1)
   })
 })

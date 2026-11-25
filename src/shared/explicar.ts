@@ -1,6 +1,7 @@
 import type { RaioX } from './raioX'
-import type { Dados, Explicacao, Id, Questao, Retorno, Simulado, Veredito } from './tipos'
+import type { Dados, Explicacao, Id, Licao, Questao, Retorno, Simulado, Veredito } from './tipos'
 import { semAcento } from './texto'
+import { lerRespostaDaIa } from './questoes'
 
 export type SituacaoDaExplicacao = 'esperando' | Veredito
 
@@ -18,10 +19,49 @@ export function situacaoDe(d: Dados, x: Explicacao): SituacaoDaExplicacao {
   return retornoDe(d, x)?.veredito ?? 'esperando'
 }
 
-export function placarDeExplicacoes(d: Dados): Record<SituacaoDaExplicacao, number> {
-  const p: Record<SituacaoDaExplicacao, number> = { certo: 0, quase: 0, revisar: 0, esperando: 0 }
-  for (const x of d.explicacoes ?? []) if (x.texto.trim()) p[situacaoDe(d, x)]++
-  return p
+/** O que a resposta do Claude pede de você agora:
+ *  - esperando: o Claude ainda não leu este texto;
+ *  - nova: chegou e você ainda não leu (ou não fez o teste);
+ *  - entendeu: acertou o teste (ou a explicação já estava certa);
+ *  - rever: errou o teste (ou leu uma correção sem teste): o assunto volta. */
+export type EstadoDaResposta = 'esperando' | 'nova' | 'entendeu' | 'rever'
+
+export function estadoDaResposta(d: Dados, x: Explicacao): EstadoDaResposta {
+  const r = retornoDe(d, x)
+  if (!r) return 'esperando'
+  const feito = x.licao?.retornoEm === r.criadoEm ? x.licao : undefined
+  const teste = r.licao?.teste ?? []
+  // certa e sem nada a mais para ler: nada a fazer
+  if (!feito) return r.veredito === 'certo' && !r.licao ? 'entendeu' : 'nova'
+  if (!teste.length) return r.veredito === 'certo' ? 'entendeu' : 'rever'
+  return teste.every((q, i) => feito.respostas[i] === q.gabarito) ? 'entendeu' : 'rever'
+}
+
+/** O conceito está fechado: a explicação veio certa ou você passou no teste */
+export const conceitoFechado = (d: Dados, x: Explicacao): boolean =>
+  retornoDe(d, x)?.veredito === 'certo' || estadoDaResposta(d, x) === 'entendeu'
+
+/** A lição que vem da nuvem é texto de fora: só entra inteira e no formato
+ *  (as questões passam pelo mesmo leitor dos simulados). */
+export function lerLicao(b: unknown): Licao | undefined {
+  if (!b || typeof b !== 'object') return undefined
+  const x = b as Record<string, unknown>
+  const txt = (v: unknown): v is string => typeof v === 'string' && v.trim() !== ''
+  if (!txt(x.acertou) || !Array.isArray(x.pontos)) return undefined
+  const pontos: Licao['pontos'] = []
+  for (const p of x.pontos) {
+    const y = p as Record<string, unknown>
+    if (!y || !txt(y.titulo) || !txt(y.texto)) return undefined
+    pontos.push({ titulo: y.titulo.trim(), texto: y.texto.trim() })
+  }
+  let teste: Questao[] = []
+  if (Array.isArray(x.teste) && x.teste.length) {
+    const lido = lerRespostaDaIa(JSON.stringify({ questoes: x.teste }))
+    if (!lido.ok) return undefined
+    teste = lido.questoes
+  }
+  const fontes = Array.isArray(x.fontes) ? x.fontes.filter(txt).map((f) => f.trim()) : []
+  return { acertou: x.acertou.trim(), pontos, teste, fontes }
 }
 
 /** Junta os retornos que chegaram da nuvem (sem repetir). Devolve se mudou. */
@@ -36,7 +76,10 @@ export function mesclarRetornos(d: Dados, novos: Retorno[]): boolean {
     if (
       ja &&
       (ja.criadoEm > r.criadoEm ||
-        (ja.criadoEm === r.criadoEm && ja.veredito === r.veredito && ja.texto === r.texto))
+        (ja.criadoEm === r.criadoEm &&
+          ja.veredito === r.veredito &&
+          ja.texto === r.texto &&
+          JSON.stringify(ja.licao) === JSON.stringify(r.licao)))
     )
       continue
     vistos.set(chave(r), r)
@@ -133,7 +176,7 @@ export function pedidosDeExplicar(s: Simulado, r: RaioX, d?: Dados, max = 3): Pe
           ja = velha
         }
       }
-      return !(ja && situacaoDe(d, ja) === 'certo')
+      return !(ja && conceitoFechado(d, ja))
     })
   }
   return lista.slice(0, max).map(({ faixas, ...p }) => {

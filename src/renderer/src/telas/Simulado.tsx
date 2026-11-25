@@ -533,6 +533,7 @@ function Resultado({
         <ResumoDaProva nota={nota} />
       ) : vista === 'raiox' && !estudando ? (
         <RaioXDoSimulado
+          key={s.id}
           simulado={s}
           dados={dados}
           mudar={mudar}
@@ -803,7 +804,9 @@ function RaioXDoSimulado({
   const d = diagnostico(s, r)
   const [pulados, setPulados] = useState<number[]>([])
   const [todosOsErros, setTodosOsErros] = useState(false)
-  const pedidos = pedidosDeExplicar(s, r, dados)
+  // os pedidos desta visita ficam: passar no teste fecha o conceito, mas a
+  // lição (o comentário da última resposta, o "Entendido") continua na tela
+  const [pedidos] = useState(() => pedidosDeExplicar(s, r, dados))
   const pedidosVisiveis = pedidos.filter((p) => !pulados.includes(p.indice))
   const explicacoesDaqui = pedidos
     .map((p) => explicacaoDoConceito(dados, p.pergunta, p.legado))
