@@ -3,7 +3,7 @@ import { Icone } from './Icone'
 import { Texto } from './Texto'
 import type { Mudar } from './useDados'
 import { estadoDaResposta, retornoDe, type EstadoDaResposta } from '../../shared/explicar'
-import type { Dados, Explicacao, Id } from '../../shared/tipos'
+import type { Dados, Explicacao, Id, Retorno } from '../../shared/tipos'
 
 export const NOME_DO_ESTADO: Record<EstadoDaResposta, string> = {
   esperando: 'Esperando o Claude',
@@ -19,19 +19,25 @@ export function EstadoDaResposta({ estado }: { estado: EstadoDaResposta }) {
 /** A resposta do Claude a uma explicação: o que você acertou, o que pode ter
  *  escapado (com o porquê) e um teste rápido só sobre isso. Acertar o teste
  *  fecha o assunto; errar deixa para rever (volta no próximo simulado). */
-export function RespostaDoClaude({
+export function RespostaDoClaude(props: { dados: Dados; mudar: Mudar; explicacao: Explicacao }) {
+  const r = retornoDe(props.dados, props.explicacao)
+  // resposta nova do Claude (outra data) é outro teste: começa do zero
+  return r ? <Licao key={`${props.explicacao.id}-${r.criadoEm}`} {...props} r={r} /> : null
+}
+
+function Licao({
   dados,
   mudar,
-  explicacao: x
+  explicacao: x,
+  r
 }: {
   dados: Dados
   mudar: Mudar
   explicacao: Explicacao
+  r: Retorno
 }) {
-  const r = retornoDe(dados, x)
-  const feito = r && x.licao?.retornoEm === r.criadoEm ? x.licao : undefined
+  const feito = x.licao?.retornoEm === r.criadoEm ? x.licao : undefined
   const [escolhas, setEscolhas] = useState<string[]>(feito?.respostas ?? [])
-  if (!r) return null
   const l = r.licao
   const teste = l?.teste ?? []
   const estado = estadoDaResposta(dados, x)
@@ -179,22 +185,15 @@ export function ListaDeRespostas({
   todas?: boolean
 }) {
   const [aberta, setAberta] = useState<Id | null>(null)
-  // a que era nova ao abrir a tela fica até você sair: fazer o teste não a
-  // tira da frente antes de você ler o resultado
-  const [daVez] = useState(
-    () =>
-      new Set(
-        (dados.explicacoes ?? [])
-          .filter((x) => estadoDaResposta(dados, x) === 'nova')
-          .map((x) => x.id)
-      )
-  )
+  // a que você abriu fica até sair da tela: fazer o teste (ou "Entendi") não a
+  // tira da frente antes de você ler o resultado, chegue ela quando chegar
+  const [abertas, setAbertas] = useState<ReadonlySet<Id>>(new Set())
   const ORDEM: EstadoDaResposta[] = ['nova', 'rever', 'entendeu']
   const itens = (dados.explicacoes ?? [])
     .filter((x) => x.texto.trim())
     .map((x) => ({ x, estado: estadoDaResposta(dados, x) }))
     .filter(({ x, estado }) =>
-      todas ? estado !== 'esperando' : estado === 'nova' || daVez.has(x.id)
+      todas ? estado !== 'esperando' : estado === 'nova' || abertas.has(x.id)
     )
     .sort(
       (a, b) =>
@@ -223,7 +222,10 @@ export function ListaDeRespostas({
             type="button"
             className="linha-resposta"
             aria-expanded={aberta === x.id}
-            onClick={() => setAberta(aberta === x.id ? null : x.id)}
+            onClick={() => {
+              setAberta(aberta === x.id ? null : x.id)
+              setAbertas((a) => new Set(a).add(x.id))
+            }}
           >
             <span className="nome">{x.topico}</span>
             <EstadoDaResposta estado={estado} />
