@@ -26,7 +26,7 @@ import {
 } from '../../../shared/estudoDoDia'
 import { ProvaCompleta } from './ProvaCompleta'
 import { Explique } from '../Explique'
-import { SuasExplicacoes } from '../SuasExplicacoes'
+import { ListaDeRespostas } from '../RespostaDoClaude'
 import { semAcento } from '../../../shared/texto'
 import { importarDaCaixa } from '../importarDaCaixa'
 import { chanceDeAprovacao, fraseDaChance, NOME_DO_NIVEL } from '../../../shared/chance'
@@ -413,7 +413,7 @@ export function MeuEdital({
               </section>
             )}
 
-            <SuasExplicacoes dados={dados} mudar={mudar} />
+            <ListaDeRespostas dados={dados} mudar={mudar} />
 
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
               <button

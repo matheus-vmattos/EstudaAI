@@ -5,6 +5,8 @@ import { novoId, type Mudar } from '../useDados'
 import { agendaNova, lacunaDaAnotacao, mostrarLacuna } from '../../../shared/flashcards'
 import { renderizarMarkdown } from '../markdown'
 import { LinksDoLugar } from '../LinksDoLugar'
+import { ListaDeRespostas } from '../RespostaDoClaude'
+import { retornoDe } from '../../../shared/explicar'
 import { haQuantoTempo, semAcento } from '../../../shared/texto'
 import type { Dados, Id } from '../../../shared/tipos'
 import {
@@ -34,6 +36,10 @@ export function Anotacoes({
   const [editando, setEditando] = useState<Editando>(null)
   const [apagando, setApagando] = useState<Apagando>(null)
   const buscaRef = useRef<HTMLInputElement>(null)
+  // as respostas do Claude às suas explicações, para reler (no Meu edital só aparecem as novas)
+  const [vendoRespostas, setVendoRespostas] = useState(false)
+  const comResposta = (dados.explicacoes ?? []).filter((x) => retornoDe(dados, x)).length
+  useEffect(() => setVendoRespostas(false), [assuntoId])
 
   // Ctrl+K vai para a busca
   useEffect(() => {
@@ -286,17 +292,36 @@ export function Anotacoes({
           {termo && arvore.length === 0 && <p className="meta">Nada encontrado.</p>}
         </div>
 
-        <button
-          type="button"
-          className="botao tracejado"
-          style={{ marginTop: 'auto', minHeight: 44 }}
-          onClick={novaMateria}
-        >
-          + Nova matéria
-        </button>
+        <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {comResposta > 0 && (
+            <button
+              type="button"
+              className="botao respostas"
+              style={{ minHeight: 44 }}
+              aria-pressed={vendoRespostas}
+              onClick={() => setVendoRespostas(!vendoRespostas)}
+            >
+              <Icone nome="check" tamanho={16} />
+              Respostas do Claude
+              <span className="conta">{comResposta}</span>
+            </button>
+          )}
+          <button
+            type="button"
+            className="botao tracejado"
+            style={{ minHeight: 44 }}
+            onClick={novaMateria}
+          >
+            + Nova matéria
+          </button>
+        </div>
       </aside>
 
-      {atual ? (
+      {vendoRespostas ? (
+        <main className="conteudo">
+          <ListaDeRespostas dados={dados} mudar={mudar} todas />
+        </main>
+      ) : atual ? (
         <Editor key={atual.id} dados={dados} mudar={mudar} no={atual} />
       ) : (
         <main className="conteudo">

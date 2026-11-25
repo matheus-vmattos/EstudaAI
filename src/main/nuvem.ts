@@ -11,6 +11,7 @@ import {
   type EstadoDaNuvem,
   type MemoriaDaNuvem
 } from '../shared/sincronizar'
+import { lerLicao } from '../shared/explicar'
 import type { Dados, Retorno } from '../shared/tipos'
 
 /** Sincronização entre PCs: os dados de cada conta numa linha do Supabase
@@ -425,7 +426,7 @@ export function iniciarNuvem(obterJanela: () => BrowserWindow | null): void {
     if (!memoria?.renovar) return null
     try {
       const r = await pedir(
-        '/rest/v1/estudaai_retornos?select=explicacao_id,veredito,texto,texto_avaliado,criado_em&order=criado_em.desc&limit=500'
+        '/rest/v1/estudaai_retornos?select=explicacao_id,veredito,texto,texto_avaliado,criado_em,licao&order=criado_em.desc&limit=500'
       )
       if (!r.ok) return null
       const linhas = (await r.json()) as {
@@ -434,16 +435,21 @@ export function iniciarNuvem(obterJanela: () => BrowserWindow | null): void {
         texto: string
         texto_avaliado: string
         criado_em: string
+        licao?: unknown
       }[]
       return linhas
         .filter((l) => ['certo', 'quase', 'revisar'].includes(l.veredito))
-        .map((l) => ({
-          explicacaoId: l.explicacao_id,
-          veredito: l.veredito as Retorno['veredito'],
-          texto: l.texto,
-          textoAvaliado: l.texto_avaliado,
-          criadoEm: Date.parse(l.criado_em) || 0
-        }))
+        .map((l) => {
+          const licao = lerLicao(l.licao)
+          return {
+            explicacaoId: l.explicacao_id,
+            veredito: l.veredito as Retorno['veredito'],
+            texto: l.texto,
+            textoAvaliado: l.texto_avaliado,
+            criadoEm: Date.parse(l.criado_em) || 0,
+            ...(licao ? { licao } : {})
+          }
+        })
     } catch {
       return null
     }

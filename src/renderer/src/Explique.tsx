@@ -2,14 +2,16 @@ import { useId, useState } from 'react'
 import { Icone } from './Icone'
 import { novoId, type Mudar } from './useDados'
 import { promptDeConferir } from '../../shared/missao'
-import { explicacaoDoConceito, retornoDe, type SituacaoDaExplicacao } from '../../shared/explicar'
+import { estadoDaResposta, explicacaoDoConceito, retornoDe } from '../../shared/explicar'
+import { EstadoDaResposta, RespostaDoClaude } from './RespostaDoClaude'
 import type { Dados, Id, Questao } from '../../shared/tipos'
 
 /** "Será que você sabe?": explicar com suas palavras. A explicação fica
  *  guardada (sincroniza; o Claude lê no check-in) e pode ir para a IA
  *  corrigir. Serve ao Raio-X do simulado e à tarefa "Explique" da missão.
- *  Quando o Claude avalia (v0.1.22+), o veredito e o retorno aparecem aqui;
- *  reescrever volta a "esperando" (o retorno era do texto antigo). */
+ *  Quando o Claude responde, a resposta (o que pode ter escapado e um teste
+ *  rápido) aparece aqui; reescrever só quando o teste mostrou que não fechou,
+ *  e volta a "esperando" (a resposta era do texto antigo). */
 export function Explique({
   dados,
   mudar,
@@ -49,7 +51,7 @@ export function Explique({
   const [aviso, setAviso] = useState('')
   const [editando, setEditando] = useState(!ja?.texto.trim())
   const retorno = ja ? retornoDe(dados, ja) : null
-  const situacao: SituacaoDaExplicacao = retorno?.veredito ?? 'esperando'
+  const estado = ja ? estadoDaResposta(dados, ja) : 'esperando'
   const guardar = (): void =>
     mudar((d) => {
       const lista = d.explicacoes ?? []
@@ -82,13 +84,13 @@ export function Explique({
     <section
       aria-label={numero ? pergunta : undefined}
       aria-labelledby={numero ? undefined : `${idCampo}-t`}
-      className={numero ? `explique item ${editando ? '' : situacao}` : 'explique'}
+      className={numero ? `explique item ${editando ? '' : estado}` : 'explique'}
     >
       {numero ? (
         <div className="cabeca-explique">
           <span className="meta">{numero}</span>
           {rotulo}
-          {!editando && <Veredito situacao={situacao} />}
+          {!editando && <EstadoDaResposta estado={estado} />}
         </div>
       ) : (
         <>
@@ -97,19 +99,14 @@ export function Explique({
               Será que você sabe?
             </h2>
             {detalhe && <span className="meta">{detalhe}</span>}
-            {ja?.texto.trim() && !editando && <Veredito situacao={situacao} />}
+            {ja?.texto.trim() && !editando && <EstadoDaResposta estado={estado} />}
           </div>
           {rotulo}
         </>
       )}
       {numero !== undefined && detalhe && <span className="meta recuo">{detalhe}</span>}
       {!editando && ja && <p className="sua-explicacao">“{ja.texto}”</p>}
-      {retorno && (
-        <div className={`retorno ${retorno.veredito}`}>
-          <span className="rotulo-retorno">Retorno do Claude</span>
-          <span>{retorno.texto}</span>
-        </div>
-      )}
+      {retorno && ja && <RespostaDoClaude dados={dados} mudar={mudar} explicacao={ja} />}
       {editando ? (
         <>
           <textarea
@@ -162,38 +159,25 @@ export function Explique({
             {pontos ? <span className="meta pontos">+{pontos} pts na missão</span> : null}
           </div>
         </>
-      ) : (
+      ) : estado === 'esperando' || estado === 'rever' ? (
         <div className="acoes-explique">
           <button
             type="button"
-            className={
-              situacao === 'esperando' || situacao === 'certo' ? 'botao' : 'botao pendente'
-            }
+            className={estado === 'rever' ? 'botao pendente' : 'botao'}
             onClick={() => {
               setEditando(true)
               setAviso('')
             }}
           >
-            {situacao === 'esperando' ? 'Editar' : 'Tentar de novo'}
+            {estado === 'esperando' ? 'Editar' : 'Explicar de novo'}
           </button>
-          {aviso && situacao === 'esperando' && (
+          {aviso && estado === 'esperando' && (
             <span className="meta nota-boa" role="status">
               {aviso}
             </span>
           )}
         </div>
-      )}
+      ) : null}
     </section>
   )
-}
-
-export const NOME_DO_VEREDITO: Record<SituacaoDaExplicacao, string> = {
-  certo: 'Certo',
-  quase: 'Quase lá',
-  revisar: 'Revisar',
-  esperando: 'Esperando o Claude'
-}
-
-export function Veredito({ situacao }: { situacao: SituacaoDaExplicacao }) {
-  return <span className={`veredito ${situacao}`}>{NOME_DO_VEREDITO[situacao]}</span>
 }

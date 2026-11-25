@@ -2536,44 +2536,12 @@ dialog.colar-edital section {
   border-color: var(--vermelho);
   color: var(--vermelho);
 }
-.retorno {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 12px 14px;
-  border-left: 2px solid var(--ciano);
-  background: var(--ciano-fundo);
-  color: #e9f7fb;
-  font-size: 15px;
-  white-space: pre-wrap;
-}
-.retorno.certo {
-  border-left-color: var(--verde);
-  background: rgb(57 245 154 / 5%);
-}
-.retorno.quase {
-  border-left-color: var(--ambar);
-  background: rgb(255 181 71 / 5%);
-}
-.retorno.revisar {
-  border-left-color: var(--vermelho);
-  background: rgb(255 107 122 / 5%);
-}
 .rotulo-retorno {
   font-family: var(--display);
   font-weight: 600;
   font-size: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-}
-.retorno.certo .rotulo-retorno {
-  color: var(--verde);
-}
-.retorno.quase .rotulo-retorno {
-  color: var(--ambar);
-}
-.retorno.revisar .rotulo-retorno {
-  color: var(--vermelho);
 }
 .agora-explique {
   display: flex;
@@ -2583,15 +2551,6 @@ dialog.colar-edital section {
   border: 1px solid var(--linha-viva);
   background: rgb(63 224 245 / 4%);
   box-shadow: inset 3px 0 0 var(--ciano);
-}
-.linha-explicacao {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 150px auto;
-  align-items: center;
-  gap: 14px;
-  min-height: 44px;
-  padding: 0 14px;
-  border: 1px solid var(--linha-2);
 }
 
 /* Raio-X polido (mockup aprovado em 25/11) */
@@ -2887,4 +2846,156 @@ dialog.colar-edital section {
   white-space: nowrap;
   color: var(--texto-medio);
   font-size: 13px;
+}
+
+/* Resposta do Claude em partes: acertou, o que pode ter escapado, teste (2026-11-25) */
+.veredito.entendeu {
+  border-color: var(--verde);
+  color: var(--verde);
+}
+.veredito.nova {
+  border-color: var(--ciano);
+  color: var(--ciano);
+}
+.veredito.rever {
+  border-color: var(--ambar);
+  color: var(--ambar);
+}
+.explique.item.entendeu {
+  border-color: var(--verde-linha);
+}
+.explique.item.nova {
+  border-color: var(--linha-viva);
+}
+.explique.item.rever {
+  border-color: var(--ambar-linha);
+}
+.resposta-claude {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px 16px;
+  border-left: 2px solid var(--ciano);
+  background: var(--ciano-fundo);
+  color: #e9f7fb;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.resp-acertou {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+}
+.resp-acertou > svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--verde);
+}
+.resp-texto {
+  margin: 0;
+  white-space: pre-wrap;
+}
+.resp-bloco {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.resp-bloco .rotulo-retorno {
+  margin: 0;
+  color: var(--ciano);
+}
+.resp-pontos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding-left: 22px;
+}
+.resp-pontos li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.resp-pontos strong {
+  color: var(--texto);
+}
+.resp-questao {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.resp-questao .enunciado {
+  margin: 0;
+}
+.resp-alternativas {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.resp-alternativas .alternativa {
+  min-height: 44px;
+  padding: 8px 14px;
+}
+.alternativa.apagada {
+  opacity: 0.55;
+}
+.resp-comentario {
+  margin: 0;
+  padding: 10px 14px;
+  border-left: 2px solid var(--verde);
+  color: #bff5d8;
+}
+.resp-comentario.ruim {
+  border-left-color: var(--vermelho);
+  color: #ffd0d6;
+}
+.resp-rever {
+  color: var(--ambar);
+}
+.item-resposta {
+  border: 1px solid var(--linha-2);
+}
+.item-resposta.aberto {
+  border-color: var(--linha-viva);
+}
+.linha-resposta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 0;
+  background: none;
+  color: var(--texto);
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+.linha-resposta:hover {
+  background: rgb(63 224 245 / 4%);
+}
+.corpo-resposta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px 14px 14px;
+}
+.corpo-resposta .pergunta-explique {
+  margin: 0;
+}
+.botao.respostas[aria-pressed='true'] {
+  border-color: var(--ciano);
+  color: var(--ciano);
+}
+.resposta-claude .meta {
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: normal;
+  text-transform: none;
+}
+.resposta-claude .resp-fontes {
+  font-size: 12px;
+  color: var(--texto-meta);
 }
