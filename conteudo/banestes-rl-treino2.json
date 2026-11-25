@@ -1,0 +1,470 @@
+{
+ "tema": "Raciocínio Lógico: equivalências e negações (treino 2)",
+ "materia": "Matemática e Raciocínio Lógico",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "Uma proposição logicamente equivalente a \"Se a Selic sobe, então o crédito fica mais caro\" é:",
+   "alternativas": {
+    "A": "Se o crédito fica mais caro, então a Selic sobe.",
+    "B": "A Selic não sobe ou o crédito fica mais caro.",
+    "C": "A Selic sobe e o crédito fica mais caro.",
+    "D": "Se a Selic não sobe, então o crédito não fica mais caro.",
+    "E": "A Selic sobe e o crédito não fica mais caro."
+   },
+   "gabarito": "B",
+   "resolucao": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q. Aqui: \"A Selic não sobe ou o crédito fica mais caro\". A recíproca e a inversa não são equivalentes.",
+   "comentarios": {
+    "A": "É a RECÍPROCA (troca de lugar sem negar): NÃO equivale. Com p falsa e q verdadeira, a original é verdadeira e esta é falsa.",
+    "B": "Certa: \"se p, então q\" ≡ \"não p ou q\".",
+    "C": "\"p e q\" exige as duas verdadeiras; a condicional também é verdadeira quando p é falsa.",
+    "D": "É a INVERSA (nega sem trocar de lugar): NÃO equivale. Com p falsa e q verdadeira, a original é verdadeira e esta é falsa.",
+    "E": "Isso é a NEGAÇÃO da condicional (p e não q), o oposto do pedido."
+   },
+   "topico": "Equivalências lógicas",
+   "conceito": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q. A recíproca (q → p) e a inversa (~p → ~q) NÃO são equivalentes. p ↔ q ≡ (p → q) ∧ (q → p).",
+   "explicar": "Por que \"se p, então q\" equivale a \"se não q, então não p\", mas NÃO equivale a \"se q, então p\"? Use um exemplo do dia a dia.",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Sabe-se que a proposição \"Se o gerente aprova, então a proposta segue\" é FALSA. Então, é necessariamente verdadeira a proposição:",
+   "alternativas": {
+    "A": "O gerente não aprova e a proposta segue.",
+    "B": "O gerente aprova se, e somente se, a proposta segue.",
+    "C": "O gerente aprova e a proposta não segue.",
+    "D": "O gerente aprova e a proposta segue.",
+    "E": "O gerente não aprova e a proposta não segue."
+   },
+   "gabarito": "C",
+   "resolucao": "\"Se p, então q\" só é falsa em um caso: p verdadeira e q falsa. Logo vale \"p e não q\".",
+   "comentarios": {
+    "A": "Falsa nessa situação: com a condicional falsa, a 1ª parte é verdadeira e a 2ª é falsa.",
+    "B": "Falsa nessa situação: com a condicional falsa, a 1ª parte é verdadeira e a 2ª é falsa.",
+    "C": "Certa: a condicional só é falsa com a 1ª parte verdadeira e a 2ª falsa.",
+    "D": "Falsa nessa situação: com a condicional falsa, a 1ª parte é verdadeira e a 2ª é falsa.",
+    "E": "Falsa nessa situação: com a condicional falsa, a 1ª parte é verdadeira e a 2ª é falsa."
+   },
+   "topico": "Negação de proposições",
+   "conceito": "Negações: ~(p ∧ q) ≡ ~p ∨ ~q; ~(p ∨ q) ≡ ~p ∧ ~q; ~(p → q) ≡ p ∧ ~q. \"Se p, então q\" só é falsa quando p é verdadeira e q é falsa.",
+   "explicar": "Como se nega \"p e q\", \"p ou q\" e \"se p, então q\"? Explique por que a negação de \"se p, então q\" não é outro \"se… então\".",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Considere a proposição \"Se a meta é batida, então a equipe recebe bônus\". NÃO é logicamente equivalente a ela:",
+   "alternativas": {
+    "A": "A meta não é batida ou a equipe recebe bônus.",
+    "B": "Se a equipe não recebe bônus, então a meta não é batida.",
+    "C": "Não é verdade que a meta é batida e a equipe não recebe bônus.",
+    "D": "Se a meta não é batida, então a equipe não recebe bônus.",
+    "E": "A equipe recebe bônus sempre que a meta é batida."
+   },
+   "gabarito": "D",
+   "resolucao": "Equivalem à original: a contrapositiva, \"não p ou q\", \"não é verdade que p e não q\" e \"q sempre que p\". A inversa (se não p, então não q) não equivale.",
+   "comentarios": {
+    "A": "Equivale à original.",
+    "B": "Equivale à original.",
+    "C": "Equivale: a condicional só é falsa com p verdadeira e q falsa, e esta frase nega exatamente isso.",
+    "D": "Certa (é a que NÃO equivale): É a INVERSA (nega sem trocar de lugar): NÃO equivale. Com p falsa e q verdadeira, a original é verdadeira e esta é falsa.",
+    "E": "Equivale: \"q sempre que p\" é outra forma de dizer \"se p, então q\"."
+   },
+   "topico": "Equivalências lógicas",
+   "conceito": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q. A recíproca (q → p) e a inversa (~p → ~q) NÃO são equivalentes. p ↔ q ≡ (p → q) ∧ (q → p).",
+   "explicar": "Por que \"se p, então q\" equivale a \"se não q, então não p\", mas NÃO equivale a \"se q, então p\"? Use um exemplo do dia a dia.",
+   "habilidade": "identificar exceção ou pegadinha"
+  },
+  {
+   "enunciado": "A negação lógica da proposição \"A taxa cai e as vendas aumentam\" é:",
+   "alternativas": {
+    "A": "A taxa cai ou as vendas não aumentam.",
+    "B": "A taxa cai ou as vendas aumentam.",
+    "C": "A taxa não cai e as vendas não aumentam.",
+    "D": "A taxa cai e as vendas aumentam.",
+    "E": "A taxa não cai ou as vendas não aumentam."
+   },
+   "gabarito": "E",
+   "resolucao": "~(p ∧ q) ≡ ~p ∨ ~q (De Morgan: troca o conectivo e nega as duas). Aqui: \"A taxa não cai ou as vendas não aumentam\".",
+   "comentarios": {
+    "A": "Negou só uma das partes.",
+    "B": "Trocou o conectivo sem negar as partes.",
+    "C": "Negou as duas mas manteve o \"e\": De Morgan troca o conectivo.",
+    "D": "É a própria afirmação, não a negação.",
+    "E": "Certa: ~(p ∧ q) ≡ ~p ∨ ~q (troca o \"e\" por \"ou\" e nega as duas)."
+   },
+   "topico": "Negação de proposições",
+   "conceito": "Negações: ~(p ∧ q) ≡ ~p ∨ ~q; ~(p ∨ q) ≡ ~p ∧ ~q; ~(p → q) ≡ p ∧ ~q. \"Se p, então q\" só é falsa quando p é verdadeira e q é falsa.",
+   "explicar": "Como se nega \"p e q\", \"p ou q\" e \"se p, então q\"? Explique por que a negação de \"se p, então q\" não é outro \"se… então\".",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Uma proposição logicamente equivalente a \"Se Paula é aprovada, então Paula toma posse\" é:",
+   "alternativas": {
+    "A": "Se Paula não é aprovada, então Paula não toma posse.",
+    "B": "Paula não é aprovada ou Paula toma posse.",
+    "C": "Se Paula toma posse, então Paula é aprovada.",
+    "D": "Paula é aprovada e Paula não toma posse.",
+    "E": "Paula é aprovada e Paula toma posse."
+   },
+   "gabarito": "B",
+   "resolucao": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q. Aqui: \"Paula não é aprovada ou Paula toma posse\". A recíproca e a inversa não são equivalentes.",
+   "comentarios": {
+    "A": "É a INVERSA (nega sem trocar de lugar): NÃO equivale. Com p falsa e q verdadeira, a original é verdadeira e esta é falsa.",
+    "B": "Certa: \"se p, então q\" ≡ \"não p ou q\".",
+    "C": "É a RECÍPROCA (troca de lugar sem negar): NÃO equivale. Com p falsa e q verdadeira, a original é verdadeira e esta é falsa.",
+    "D": "Isso é a NEGAÇÃO da condicional (p e não q), o oposto do pedido.",
+    "E": "\"p e q\" exige as duas verdadeiras; a condicional também é verdadeira quando p é falsa."
+   },
+   "topico": "Equivalências lógicas",
+   "conceito": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q. A recíproca (q → p) e a inversa (~p → ~q) NÃO são equivalentes. p ↔ q ≡ (p → q) ∧ (q → p).",
+   "explicar": "Por que \"se p, então q\" equivale a \"se não q, então não p\", mas NÃO equivale a \"se q, então p\"? Use um exemplo do dia a dia.",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "A negação lógica da proposição \"A Selic sobe ou o crédito fica mais caro\" é:",
+   "alternativas": {
+    "A": "A Selic sobe e o crédito fica mais caro.",
+    "B": "A Selic não sobe ou o crédito não fica mais caro.",
+    "C": "A Selic não sobe e o crédito não fica mais caro.",
+    "D": "A Selic não sobe e o crédito fica mais caro.",
+    "E": "A Selic sobe e o crédito não fica mais caro."
+   },
+   "gabarito": "C",
+   "resolucao": "~(p ∨ q) ≡ ~p ∧ ~q (De Morgan: troca o conectivo e nega as duas). Aqui: \"A Selic não sobe e o crédito não fica mais caro\".",
+   "comentarios": {
+    "A": "Trocou o conectivo sem negar as partes.",
+    "B": "Negou as duas mas manteve o \"ou\": De Morgan troca o conectivo.",
+    "C": "Certa: ~(p ∨ q) ≡ ~p ∧ ~q (troca o \"ou\" por \"e\" e nega as duas).",
+    "D": "Negou só uma das partes.",
+    "E": "Negou só uma das partes; com p verdadeira a original continua verdadeira."
+   },
+   "topico": "Negação de proposições",
+   "conceito": "Negações: ~(p ∧ q) ≡ ~p ∨ ~q; ~(p ∨ q) ≡ ~p ∧ ~q; ~(p → q) ≡ p ∧ ~q. \"Se p, então q\" só é falsa quando p é verdadeira e q é falsa.",
+   "explicar": "Como se nega \"p e q\", \"p ou q\" e \"se p, então q\"? Explique por que a negação de \"se p, então q\" não é outro \"se… então\".",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "A negação lógica da proposição \"Se o contrato é assinado, então o crédito é liberado\" é:",
+   "alternativas": {
+    "A": "Se o contrato é assinado, então o crédito não é liberado.",
+    "B": "O contrato não é assinado e o crédito é liberado.",
+    "C": "O contrato não é assinado ou o crédito é liberado.",
+    "D": "Se o contrato não é assinado, então o crédito não é liberado.",
+    "E": "O contrato é assinado e o crédito não é liberado."
+   },
+   "gabarito": "E",
+   "resolucao": "~(p → q) ≡ p ∧ ~q: a condicional só é falsa quando a primeira parte acontece e a segunda não. Aqui: \"O contrato é assinado e o crédito não é liberado\".",
+   "comentarios": {
+    "A": "Não é a negação: a negação de um \"se… então\" é um \"e\" (p e não q).",
+    "B": "Com p falsa a condicional é verdadeira; isso não a nega.",
+    "C": "Isso é EQUIVALENTE à original (não p ou q), não a negação.",
+    "D": "É a INVERSA, não a negação: a negação de um \"se… então\" não é outro \"se… então\".",
+    "E": "Certa: ~(p → q) ≡ p ∧ ~q — a única situação em que a condicional é falsa."
+   },
+   "topico": "Negação de proposições",
+   "conceito": "Negações: ~(p ∧ q) ≡ ~p ∨ ~q; ~(p ∨ q) ≡ ~p ∧ ~q; ~(p → q) ≡ p ∧ ~q. \"Se p, então q\" só é falsa quando p é verdadeira e q é falsa.",
+   "explicar": "Como se nega \"p e q\", \"p ou q\" e \"se p, então q\"? Explique por que a negação de \"se p, então q\" não é outro \"se… então\".",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "A negação lógica da proposição \"Se chove, então o evento é adiado\" é:",
+   "alternativas": {
+    "A": "Não chove ou o evento é adiado.",
+    "B": "Não chove e o evento é adiado.",
+    "C": "Se não chove, então o evento não é adiado.",
+    "D": "Chove e o evento não é adiado.",
+    "E": "Se chove, então o evento não é adiado."
+   },
+   "gabarito": "D",
+   "resolucao": "~(p → q) ≡ p ∧ ~q: a condicional só é falsa quando a primeira parte acontece e a segunda não. Aqui: \"Chove e o evento não é adiado\".",
+   "comentarios": {
+    "A": "Isso é EQUIVALENTE à original (não p ou q), não a negação.",
+    "B": "Com p falsa a condicional é verdadeira; isso não a nega.",
+    "C": "É a INVERSA, não a negação: a negação de um \"se… então\" não é outro \"se… então\".",
+    "D": "Certa: ~(p → q) ≡ p ∧ ~q — a única situação em que a condicional é falsa.",
+    "E": "Não é a negação: a negação de um \"se… então\" é um \"e\" (p e não q)."
+   },
+   "topico": "Negação de proposições",
+   "conceito": "Negações: ~(p ∧ q) ≡ ~p ∨ ~q; ~(p ∨ q) ≡ ~p ∧ ~q; ~(p → q) ≡ p ∧ ~q. \"Se p, então q\" só é falsa quando p é verdadeira e q é falsa.",
+   "explicar": "Como se nega \"p e q\", \"p ou q\" e \"se p, então q\"? Explique por que a negação de \"se p, então q\" não é outro \"se… então\".",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "A negação lógica da proposição \"Rui estuda e Rui passa na prova\" é:",
+   "alternativas": {
+    "A": "Rui não estuda ou Rui não passa na prova.",
+    "B": "Rui estuda ou Rui passa na prova.",
+    "C": "Rui não estuda e Rui não passa na prova.",
+    "D": "Rui estuda ou Rui não passa na prova.",
+    "E": "Rui estuda e Rui passa na prova."
+   },
+   "gabarito": "A",
+   "resolucao": "~(p ∧ q) ≡ ~p ∨ ~q (De Morgan: troca o conectivo e nega as duas). Aqui: \"Rui não estuda ou Rui não passa na prova\".",
+   "comentarios": {
+    "A": "Certa: ~(p ∧ q) ≡ ~p ∨ ~q (troca o \"e\" por \"ou\" e nega as duas).",
+    "B": "Trocou o conectivo sem negar as partes.",
+    "C": "Negou as duas mas manteve o \"e\": De Morgan troca o conectivo.",
+    "D": "Negou só uma das partes.",
+    "E": "É a própria afirmação, não a negação."
+   },
+   "topico": "Negação de proposições",
+   "conceito": "Negações: ~(p ∧ q) ≡ ~p ∨ ~q; ~(p ∨ q) ≡ ~p ∧ ~q; ~(p → q) ≡ p ∧ ~q. \"Se p, então q\" só é falsa quando p é verdadeira e q é falsa.",
+   "explicar": "Como se nega \"p e q\", \"p ou q\" e \"se p, então q\"? Explique por que a negação de \"se p, então q\" não é outro \"se… então\".",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "A negação lógica de \"Algum gerente é economista\" é:",
+   "alternativas": {
+    "A": "Nenhum gerente é economista.",
+    "B": "Algum gerente não é economista.",
+    "C": "Todo gerente é economista.",
+    "D": "Algum economista não é gerente.",
+    "E": "Todo economista é gerente."
+   },
+   "gabarito": "A",
+   "resolucao": "A negação de \"algum\" é \"nenhum\". Aqui: \"Nenhum gerente é economista\".",
+   "comentarios": {
+    "A": "Certa: a negação de \"algum\" é \"nenhum\".",
+    "B": "Não é a negação: a negação de \"algum\" é \"nenhum\".",
+    "C": "Não é a negação: a negação de \"algum\" é \"nenhum\".",
+    "D": "Troca a ordem dos termos; isso muda o sentido, não nega.",
+    "E": "Troca a ordem dos termos; isso muda o sentido, não nega."
+   },
+   "topico": "Quantificadores",
+   "conceito": "~(todo A é B) = algum A não é B. ~(algum A é B) = nenhum A é B. ~(nenhum A é B) = algum A é B. ~(algum A não é B) = todo A é B.",
+   "explicar": "Qual é a negação de \"todo A é B\" e de \"nenhum A é B\"? Por que \"todo A não é B\" não serve?",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Considere a proposição \"Se o sistema cai, então a agência atende no caixa\". NÃO é logicamente equivalente a ela:",
+   "alternativas": {
+    "A": "O sistema não cai ou a agência atende no caixa.",
+    "B": "Não é verdade que o sistema cai e a agência não atende no caixa.",
+    "C": "Se a agência atende no caixa, então o sistema cai.",
+    "D": "A agência atende no caixa sempre que o sistema cai.",
+    "E": "Se a agência não atende no caixa, então o sistema não cai."
+   },
+   "gabarito": "C",
+   "resolucao": "Equivalem à original: a contrapositiva, \"não p ou q\", \"não é verdade que p e não q\" e \"q sempre que p\". A recíproca (se q, então p) não equivale.",
+   "comentarios": {
+    "A": "Equivale à original.",
+    "B": "Equivale: a condicional só é falsa com p verdadeira e q falsa, e esta frase nega exatamente isso.",
+    "C": "Certa (é a que NÃO equivale): É a RECÍPROCA (troca de lugar sem negar): NÃO equivale. Com p falsa e q verdadeira, a original é verdadeira e esta é falsa.",
+    "D": "Equivale: \"q sempre que p\" é outra forma de dizer \"se p, então q\".",
+    "E": "Equivale à original."
+   },
+   "topico": "Equivalências lógicas",
+   "conceito": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q. A recíproca (q → p) e a inversa (~p → ~q) NÃO são equivalentes. p ↔ q ≡ (p → q) ∧ (q → p).",
+   "explicar": "Por que \"se p, então q\" equivale a \"se não q, então não p\", mas NÃO equivale a \"se q, então p\"? Use um exemplo do dia a dia.",
+   "habilidade": "identificar exceção ou pegadinha"
+  },
+  {
+   "enunciado": "A proposição \"O sistema cai se, e somente se, a agência atende no caixa\" é logicamente equivalente a:",
+   "alternativas": {
+    "A": "Se o sistema cai, então a agência atende no caixa.",
+    "B": "Se o sistema cai, então a agência atende no caixa, e se a agência atende no caixa, então o sistema cai.",
+    "C": "Se o sistema não cai, então a agência atende no caixa.",
+    "D": "O sistema cai ou a agência atende no caixa.",
+    "E": "O sistema cai e a agência atende no caixa."
+   },
+   "gabarito": "B",
+   "resolucao": "p ↔ q ≡ (p → q) ∧ (q → p): é verdadeira quando as duas partes têm o mesmo valor.",
+   "comentarios": {
+    "A": "Só um dos sentidos; o \"somente se\" exige também a volta.",
+    "B": "Certa: p ↔ q ≡ (p → q) ∧ (q → p): vale nos dois sentidos.",
+    "C": "Não equivale: com as duas falsas o bicondicional é verdadeiro e esta é falsa.",
+    "D": "Basta uma verdadeira; o bicondicional exige que as duas tenham o mesmo valor.",
+    "E": "Exige as duas verdadeiras; o bicondicional também é verdadeiro com as duas falsas."
+   },
+   "topico": "Equivalências lógicas",
+   "conceito": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q. A recíproca (q → p) e a inversa (~p → ~q) NÃO são equivalentes. p ↔ q ≡ (p → q) ∧ (q → p).",
+   "explicar": "Por que \"se p, então q\" equivale a \"se não q, então não p\", mas NÃO equivale a \"se q, então p\"? Use um exemplo do dia a dia.",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Sabe-se que a proposição \"Paula é aprovada ou Paula toma posse\" é FALSA. Então, é necessariamente verdadeira a proposição:",
+   "alternativas": {
+    "A": "Paula é aprovada ou Paula toma posse.",
+    "B": "Paula é aprovada e Paula toma posse.",
+    "C": "Paula é aprovada e Paula não toma posse.",
+    "D": "Paula não é aprovada e Paula não toma posse.",
+    "E": "Paula não é aprovada e Paula toma posse."
+   },
+   "gabarito": "D",
+   "resolucao": "\"p ou q\" só é falsa quando as duas partes são falsas. Logo vale \"não p e não q\".",
+   "comentarios": {
+    "A": "Falsa nessa situação: com \"p ou q\" falsa, as duas partes são falsas.",
+    "B": "Falsa nessa situação: com \"p ou q\" falsa, as duas partes são falsas.",
+    "C": "Falsa nessa situação: com \"p ou q\" falsa, as duas partes são falsas.",
+    "D": "Certa: \"p ou q\" só é falsa quando as duas são falsas.",
+    "E": "Falsa nessa situação: com \"p ou q\" falsa, as duas partes são falsas."
+   },
+   "topico": "Negação de proposições",
+   "conceito": "Negações: ~(p ∧ q) ≡ ~p ∨ ~q; ~(p ∨ q) ≡ ~p ∧ ~q; ~(p → q) ≡ p ∧ ~q. \"Se p, então q\" só é falsa quando p é verdadeira e q é falsa.",
+   "explicar": "Como se nega \"p e q\", \"p ou q\" e \"se p, então q\"? Explique por que a negação de \"se p, então q\" não é outro \"se… então\".",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "A negação lógica de \"Todo cliente é investidor\" é:",
+   "alternativas": {
+    "A": "Algum investidor não é cliente.",
+    "B": "Todo investidor é cliente.",
+    "C": "Nenhum cliente é investidor.",
+    "D": "Algum cliente não é investidor.",
+    "E": "Algum cliente é investidor."
+   },
+   "gabarito": "D",
+   "resolucao": "A negação de \"todo\" é \"algum… não\" (basta um que não seja). Aqui: \"Algum cliente não é investidor\".",
+   "comentarios": {
+    "A": "Troca a ordem dos termos; isso muda o sentido, não nega.",
+    "B": "Troca a ordem dos termos; isso muda o sentido, não nega.",
+    "C": "Não é a negação: a negação de \"todo\" é \"algum… não\" (basta um que não seja).",
+    "D": "Certa: a negação de \"todo\" é \"algum… não\" (basta um que não seja).",
+    "E": "Não é a negação: a negação de \"todo\" é \"algum… não\" (basta um que não seja)."
+   },
+   "topico": "Quantificadores",
+   "conceito": "~(todo A é B) = algum A não é B. ~(algum A é B) = nenhum A é B. ~(nenhum A é B) = algum A é B. ~(algum A não é B) = todo A é B.",
+   "explicar": "Qual é a negação de \"todo A é B\" e de \"nenhum A é B\"? Por que \"todo A não é B\" não serve?",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "A negação lógica da proposição \"Se o cliente paga em dia, então o cliente recebe desconto\" é:",
+   "alternativas": {
+    "A": "O cliente não paga em dia e o cliente recebe desconto.",
+    "B": "O cliente paga em dia e o cliente não recebe desconto.",
+    "C": "Se o cliente não paga em dia, então o cliente não recebe desconto.",
+    "D": "Se o cliente paga em dia, então o cliente não recebe desconto.",
+    "E": "O cliente não paga em dia ou o cliente recebe desconto."
+   },
+   "gabarito": "B",
+   "resolucao": "~(p → q) ≡ p ∧ ~q: a condicional só é falsa quando a primeira parte acontece e a segunda não. Aqui: \"O cliente paga em dia e o cliente não recebe desconto\".",
+   "comentarios": {
+    "A": "Com p falsa a condicional é verdadeira; isso não a nega.",
+    "B": "Certa: ~(p → q) ≡ p ∧ ~q — a única situação em que a condicional é falsa.",
+    "C": "É a INVERSA, não a negação: a negação de um \"se… então\" não é outro \"se… então\".",
+    "D": "Não é a negação: a negação de um \"se… então\" é um \"e\" (p e não q).",
+    "E": "Isso é EQUIVALENTE à original (não p ou q), não a negação."
+   },
+   "topico": "Negação de proposições",
+   "conceito": "Negações: ~(p ∧ q) ≡ ~p ∨ ~q; ~(p ∨ q) ≡ ~p ∧ ~q; ~(p → q) ≡ p ∧ ~q. \"Se p, então q\" só é falsa quando p é verdadeira e q é falsa.",
+   "explicar": "Como se nega \"p e q\", \"p ou q\" e \"se p, então q\"? Explique por que a negação de \"se p, então q\" não é outro \"se… então\".",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Uma proposição logicamente equivalente a \"Se o gerente aprova, então a proposta segue\" é:",
+   "alternativas": {
+    "A": "O gerente aprova e a proposta segue.",
+    "B": "Se a proposta segue, então o gerente aprova.",
+    "C": "Se a proposta não segue, então o gerente não aprova.",
+    "D": "O gerente aprova e a proposta não segue.",
+    "E": "Se o gerente não aprova, então a proposta não segue."
+   },
+   "gabarito": "C",
+   "resolucao": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q. Aqui: \"Se a proposta não segue, então o gerente não aprova\". A recíproca e a inversa não são equivalentes.",
+   "comentarios": {
+    "A": "\"p e q\" exige as duas verdadeiras; a condicional também é verdadeira quando p é falsa.",
+    "B": "É a RECÍPROCA (troca de lugar sem negar): NÃO equivale. Com p falsa e q verdadeira, a original é verdadeira e esta é falsa.",
+    "C": "Certa: é a contrapositiva (troca de lugar e nega as duas).",
+    "D": "Isso é a NEGAÇÃO da condicional (p e não q), o oposto do pedido.",
+    "E": "É a INVERSA (nega sem trocar de lugar): NÃO equivale. Com p falsa e q verdadeira, a original é verdadeira e esta é falsa."
+   },
+   "topico": "Equivalências lógicas",
+   "conceito": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q. A recíproca (q → p) e a inversa (~p → ~q) NÃO são equivalentes. p ↔ q ≡ (p → q) ∧ (q → p).",
+   "explicar": "Por que \"se p, então q\" equivale a \"se não q, então não p\", mas NÃO equivale a \"se q, então p\"? Use um exemplo do dia a dia.",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Uma proposição logicamente equivalente a \"Se a taxa cai, então as vendas aumentam\" é:",
+   "alternativas": {
+    "A": "A taxa cai e as vendas não aumentam.",
+    "B": "A taxa cai e as vendas aumentam.",
+    "C": "Se as vendas aumentam, então a taxa cai.",
+    "D": "Se a taxa não cai, então as vendas não aumentam.",
+    "E": "Se as vendas não aumentam, então a taxa não cai."
+   },
+   "gabarito": "E",
+   "resolucao": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q. Aqui: \"Se as vendas não aumentam, então a taxa não cai\". A recíproca e a inversa não são equivalentes.",
+   "comentarios": {
+    "A": "Isso é a NEGAÇÃO da condicional (p e não q), o oposto do pedido.",
+    "B": "\"p e q\" exige as duas verdadeiras; a condicional também é verdadeira quando p é falsa.",
+    "C": "É a RECÍPROCA (troca de lugar sem negar): NÃO equivale. Com p falsa e q verdadeira, a original é verdadeira e esta é falsa.",
+    "D": "É a INVERSA (nega sem trocar de lugar): NÃO equivale. Com p falsa e q verdadeira, a original é verdadeira e esta é falsa.",
+    "E": "Certa: é a contrapositiva (troca de lugar e nega as duas)."
+   },
+   "topico": "Equivalências lógicas",
+   "conceito": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q. A recíproca (q → p) e a inversa (~p → ~q) NÃO são equivalentes. p ↔ q ≡ (p → q) ∧ (q → p).",
+   "explicar": "Por que \"se p, então q\" equivale a \"se não q, então não p\", mas NÃO equivale a \"se q, então p\"? Use um exemplo do dia a dia.",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "A negação lógica de \"Algum caixa não é treinado\" é:",
+   "alternativas": {
+    "A": "Nenhum caixa é treinado.",
+    "B": "Algum caixa é treinado.",
+    "C": "Todo treinado é caixa.",
+    "D": "Algum treinado não é caixa.",
+    "E": "Todo caixa é treinado."
+   },
+   "gabarito": "E",
+   "resolucao": "A negação de \"algum… não\" é \"todo\". Aqui: \"Todo caixa é treinado\".",
+   "comentarios": {
+    "A": "Não é a negação: a negação de \"algum… não\" é \"todo\".",
+    "B": "Não é a negação: a negação de \"algum… não\" é \"todo\".",
+    "C": "Troca a ordem dos termos; isso muda o sentido, não nega.",
+    "D": "Troca a ordem dos termos; isso muda o sentido, não nega.",
+    "E": "Certa: a negação de \"algum… não\" é \"todo\"."
+   },
+   "topico": "Quantificadores",
+   "conceito": "~(todo A é B) = algum A não é B. ~(algum A é B) = nenhum A é B. ~(nenhum A é B) = algum A é B. ~(algum A não é B) = todo A é B.",
+   "explicar": "Qual é a negação de \"todo A é B\" e de \"nenhum A é B\"? Por que \"todo A não é B\" não serve?",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "A negação lógica de \"Nenhum contrato é renegociado\" é:",
+   "alternativas": {
+    "A": "Algum contrato é renegociado.",
+    "B": "Todo contrato é renegociado.",
+    "C": "Algum contrato não é renegociado.",
+    "D": "Todo renegociado é contrato.",
+    "E": "Algum renegociado não é contrato."
+   },
+   "gabarito": "A",
+   "resolucao": "A negação de \"nenhum\" é \"algum… é\" (basta um). Aqui: \"Algum contrato é renegociado\".",
+   "comentarios": {
+    "A": "Certa: a negação de \"nenhum\" é \"algum… é\" (basta um).",
+    "B": "Não é a negação: a negação de \"nenhum\" é \"algum… é\" (basta um).",
+    "C": "Não é a negação: a negação de \"nenhum\" é \"algum… é\" (basta um).",
+    "D": "Troca a ordem dos termos; isso muda o sentido, não nega.",
+    "E": "Troca a ordem dos termos; isso muda o sentido, não nega."
+   },
+   "topico": "Quantificadores",
+   "conceito": "~(todo A é B) = algum A não é B. ~(algum A é B) = nenhum A é B. ~(nenhum A é B) = algum A é B. ~(algum A não é B) = todo A é B.",
+   "explicar": "Qual é a negação de \"todo A é B\" e de \"nenhum A é B\"? Por que \"todo A não é B\" não serve?",
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Uma proposição logicamente equivalente a \"Se Rui estuda, então Rui passa na prova\" é:",
+   "alternativas": {
+    "A": "Se Rui não passa na prova, então Rui não estuda.",
+    "B": "Se Rui passa na prova, então Rui estuda.",
+    "C": "Se Rui não estuda, então Rui não passa na prova.",
+    "D": "Rui estuda e Rui passa na prova.",
+    "E": "Rui estuda e Rui não passa na prova."
+   },
+   "gabarito": "A",
+   "resolucao": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q. Aqui: \"Se Rui não passa na prova, então Rui não estuda\". A recíproca e a inversa não são equivalentes.",
+   "comentarios": {
+    "A": "Certa: é a contrapositiva (troca de lugar e nega as duas).",
+    "B": "É a RECÍPROCA (troca de lugar sem negar): NÃO equivale. Com p falsa e q verdadeira, a original é verdadeira e esta é falsa.",
+    "C": "É a INVERSA (nega sem trocar de lugar): NÃO equivale. Com p falsa e q verdadeira, a original é verdadeira e esta é falsa.",
+    "D": "\"p e q\" exige as duas verdadeiras; a condicional também é verdadeira quando p é falsa.",
+    "E": "Isso é a NEGAÇÃO da condicional (p e não q), o oposto do pedido."
+   },
+   "topico": "Equivalências lógicas",
+   "conceito": "p → q ≡ ~q → ~p (contrapositiva) ≡ ~p ∨ q. A recíproca (q → p) e a inversa (~p → ~q) NÃO são equivalentes. p ↔ q ≡ (p → q) ∧ (q → p).",
+   "explicar": "Por que \"se p, então q\" equivale a \"se não q, então não p\", mas NÃO equivale a \"se q, então p\"? Use um exemplo do dia a dia.",
+   "habilidade": "aplicar regra"
+  }
+ ],
+ "fontes": [
+  "Lógica conferida em Python: cada alternativa pela tabela-verdade (só a certa coincide com a equivalência ou a negação pedida); quantificadores por força bruta em todos os pares de subconjuntos de um universo de 3 elementos"
+ ]
+}

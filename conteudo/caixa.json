@@ -483,6 +483,23 @@
       "arquivo": "banestes-missao5-v5.json",
       "data": "2026-11-25",
       "versaoMinima": "0.1.23"
+    },
+    {
+      "id": "banestes-rl-treino2-v1",
+      "tipo": "simulado",
+      "titulo": "Raciocínio Lógico: equivalências e negações (treino 2)",
+      "descricao": "20 questões: equivalente ou não, negação do \"se… então\", De Morgan, quantificadores e valor lógico. Cada alternativa conferida por tabela-verdade.",
+      "arquivo": "banestes-rl-treino2.json",
+      "data": "2026-11-25"
+    },
+    {
+      "id": "banestes-missao5-v6",
+      "tipo": "missao",
+      "titulo": "Missão: + Lógica, equivalências e negações (23/11 a 06/12)",
+      "descricao": "A Missão 5 com o treino de equivalências e negações. O que você já fez continua marcado.",
+      "arquivo": "banestes-missao5-v6.json",
+      "data": "2026-11-25",
+      "versaoMinima": "0.1.23"
     }
   ]
 }
