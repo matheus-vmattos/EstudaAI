@@ -3,7 +3,7 @@ import { nosDaMateria } from './arvore'
 import { semAcento } from './texto'
 import { temNotaPropria } from './anotacoesDoClaude'
 import type { LeituraDaIa } from './questoes'
-import type { Dados, Edital, Id, Simulado } from './tipos'
+import type { Dados, Edital, Id, MateriaNaProva, Questao, Simulado } from './tipos'
 
 /** Quanto cada matéria vale na nota final (0 a 1).
  *  As matérias com o mesmo peso formam uma prova (Gerais ×1, Específicos
@@ -220,6 +220,33 @@ export function acharMateria(d: Dados, nome: string): Id | null {
   return m?.id ?? null
 }
 
+/** Prova completa pela caixa (v0.1.27): cada questão diz a matéria do edital,
+ *  em blocos seguidos. Com o edital ligado e todas as matérias dele, vira
+ *  prova (nota com os pesos, como a banca calcula); senão, simulado comum. */
+export function provaDaCaixa(d: Dados, questoes: Questao[]): Simulado['prova'] | undefined {
+  const e = d.edital
+  if (!e || !questoes.length) return undefined
+  const materias: MateriaNaProva[] = []
+  for (const [i, q] of questoes.entries()) {
+    const id = q.materia ? acharMateria(d, q.materia) : null
+    const doEdital = id ? e.materias.find((m) => m.materiaId === id) : undefined
+    if (!id || !doEdital) return undefined
+    const ultima = materias.at(-1)
+    if (ultima?.materiaId === id) ultima.ate = i + 1
+    else if (materias.some((m) => m.materiaId === id))
+      return undefined // matéria espalhada
+    else
+      materias.push({
+        materiaId: id,
+        nome: d.materias.find((m) => m.id === id)?.nome ?? q.materia!,
+        peso: doEdital.peso,
+        de: i,
+        ate: i + 1
+      })
+  }
+  return { materias, ...(e.notaMinima !== undefined ? { notaMinima: e.notaMinima } : {}) }
+}
+
 /** O simulado pronto que veio da caixa "Do Claude". Entra na matéria que o
  *  arquivo indica (conta no Meu edital) e com a banca dele; sem matéria
  *  reconhecida, fica solto como antes. */
@@ -231,7 +258,8 @@ export function simuladoDaCaixa(
   agora: number
 ): Simulado {
   const n = leitura.questoes.length
-  const materiaId = leitura.materia ? acharMateria(d, leitura.materia) : null
+  const prova = provaDaCaixa(d, leitura.questoes)
+  const materiaId = !prova && leitura.materia ? acharMateria(d, leitura.materia) : null
   return {
     id,
     config: {
@@ -241,8 +269,8 @@ export function simuladoDaCaixa(
       nivel: 'medio',
       tipo: leitura.tipo,
       quantidade: n,
-      // padrão de prova: 3 min por questão
-      tempoMin: n * 3,
+      // a prova completa tem a duração do edital; o resto, 3 min por questão
+      tempoMin: prova && d.edital?.duracaoMin ? d.edital.duracaoMin : n * 3,
       banca: leitura.banca ?? ''
     },
     questoes: leitura.questoes,
@@ -252,7 +280,8 @@ export function simuladoDaCaixa(
     decorridoMs: 0,
     atual: 0,
     criadoEm: agora,
-    entregueEm: null
+    entregueEm: null,
+    ...(prova ? { prova } : {})
   }
 }
 
