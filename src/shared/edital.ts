@@ -221,8 +221,9 @@ export function acharMateria(d: Dados, nome: string): Id | null {
 }
 
 /** Prova completa pela caixa (v0.1.27): cada questão diz a matéria do edital,
- *  em blocos seguidos. Com o edital ligado e todas as matérias dele, vira
- *  prova (nota com os pesos, como a banca calcula); senão, simulado comum. */
+ *  em blocos seguidos, cobrindo todas as matérias na quantidade do edital.
+ *  Assim vira prova (nota com os pesos, como a banca calcula); senão,
+ *  simulado comum. */
 export function provaDaCaixa(d: Dados, questoes: Questao[]): Simulado['prova'] | undefined {
   const e = d.edital
   if (!e || !questoes.length) return undefined
@@ -244,6 +245,15 @@ export function provaDaCaixa(d: Dados, questoes: Questao[]): Simulado['prova'] |
         ate: i + 1
       })
   }
+  // só é prova se cobrir o edital inteiro, com a quantidade de cada matéria:
+  // um simulado de uma matéria só (ou incompleto) daria uma nota que não é a da prova
+  const completa =
+    materias.length === e.materias.length &&
+    e.materias.every((m) => {
+      const x = materias.find((y) => y.materiaId === m.materiaId)
+      return x !== undefined && x.ate - x.de === m.questoes
+    })
+  if (!completa) return undefined
   return { materias, ...(e.notaMinima !== undefined ? { notaMinima: e.notaMinima } : {}) }
 }
 

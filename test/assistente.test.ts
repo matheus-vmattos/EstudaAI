@@ -1074,7 +1074,14 @@ describe('prova completa pela caixa (0.1.27)', () => {
   it('matérias do edital em blocos seguidos viram prova, com peso e duração', async () => {
     const { simuladoDaCaixa } = await import('../src/shared/edital')
     const d = dadosDoEdital()
-    d.edital = { ...EDITAL, duracaoMin: 240 }
+    d.edital = {
+      ...EDITAL,
+      duracaoMin: 240,
+      materias: [
+        { materiaId: 'port', questoes: 2, peso: 1, texto: '' },
+        { materiaId: 'banc', questoes: 3, peso: 2, texto: '' }
+      ]
+    }
     const questoes = [q('port'), q('port'), q('banc'), q('banc'), q('banc')]
     const s = simuladoDaCaixa(
       d,
@@ -1097,5 +1104,16 @@ describe('prova completa pela caixa (0.1.27)', () => {
     expect(provaDaCaixa(d, [q('port'), q()])).toBeUndefined()
     expect(provaDaCaixa(d, [q('port'), q('banc'), q('port')])).toBeUndefined()
     expect(provaDaCaixa({ ...d, edital: undefined }, [q('port')])).toBeUndefined()
+  })
+  it('só vira prova se cobrir o edital inteiro, na quantidade de cada matéria (Codex no PR 36)', async () => {
+    const { provaDaCaixa } = await import('../src/shared/edital')
+    const d = dadosDoEdital()
+    const so = (m: string, n: number) => Array.from({ length: n }, () => q(m))
+    // uma matéria só, ou faltando questões: simulado comum
+    expect(provaDaCaixa(d, [q('port')])).toBeUndefined()
+    expect(provaDaCaixa(d, so('banc', 15))).toBeUndefined()
+    const inteira = EDITAL.materias.flatMap((m) => so(m.materiaId, m.questoes))
+    expect(provaDaCaixa(d, inteira)?.materias).toHaveLength(9)
+    expect(provaDaCaixa(d, inteira.slice(1))).toBeUndefined()
   })
 })
