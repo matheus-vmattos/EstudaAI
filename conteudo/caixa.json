@@ -518,6 +518,23 @@
       "arquivo": "banestes-missao5-v7.json",
       "data": "2026-11-26",
       "versaoMinima": "0.1.27"
+    },
+    {
+      "id": "banestes-lacunas1-v1",
+      "tipo": "simulado",
+      "titulo": "Lacunas 1: desconto, SAC/Price, valor presente, dispersão, lógica e MDC",
+      "descricao": "25 questões dos pontos que você errou em 26/11, misturadas; as erradas imitam os seus enganos. Contas conferidas em Python.",
+      "arquivo": "banestes-lacunas1.json",
+      "data": "2026-11-26"
+    },
+    {
+      "id": "banestes-missao5-v8",
+      "tipo": "missao",
+      "titulo": "Missão: + Lacunas 1 (23/11 a 06/12)",
+      "descricao": "A Missão 5 com o treino das lacunas de 26/11. O que você já fez continua marcado.",
+      "arquivo": "banestes-missao5-v8.json",
+      "data": "2026-11-26",
+      "versaoMinima": "0.1.27"
     }
   ]
 }
