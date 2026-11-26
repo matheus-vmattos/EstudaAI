@@ -1,8 +1,9 @@
 import type { NotaDoBloco, Questao } from './tipos'
 
 const MAX_NOTAS = 500
-const MAX_TITULO = 200
-const MAX_TEXTO = 20000
+/** os mesmos limites na janelinha, na tela do app e no que passa entre elas */
+export const MAX_TITULO = 200
+export const MAX_TEXTO = 20000
 
 /** A lista que chega da janelinha (outra janela, outro processo): só passa o
  *  que tem a forma de uma nota, com limite de tamanho. */

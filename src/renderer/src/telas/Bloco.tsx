@@ -3,6 +3,7 @@ import { Icone } from '../Icone'
 import { Confirmar } from '../Confirmar'
 import { novoId, type Mudar } from '../useDados'
 import { semAcento } from '../../../shared/texto'
+import { MAX_TEXTO, MAX_TITULO } from '../../../shared/bloco'
 import type { Dados, Id, NotaDoBloco } from '../../../shared/tipos'
 
 const quando = (ms: number): string =>
@@ -25,15 +26,24 @@ export function Bloco({ dados, mudar }: { dados: Dados; mudar: Mudar }) {
   const termo = semAcento(busca.trim())
   const lista = [...notas]
     .sort((a, b) => b.atualizadoEm - a.atualizadoEm)
-    .filter((n) => !termo || semAcento(`${n.titulo}\n${n.texto}`).includes(termo))
+    .filter(
+      (n) => !termo || n.id === aberta || semAcento(`${n.titulo}\n${n.texto}`).includes(termo)
+    )
   // sem escolha, abre a mais recente
   const nota = notas.find((n) => n.id === aberta) ?? lista[0] ?? null
 
   const editar = (patch: Partial<Pick<NotaDoBloco, 'titulo' | 'texto'>>): void => {
     if (!nota) return
+    // a nota aberta pela busca fica presa: editar não troca de nota se o texto
+    // deixar de bater com o que se buscou
+    setAberta(nota.id)
+    const limitado = {
+      ...(patch.titulo !== undefined ? { titulo: patch.titulo.slice(0, MAX_TITULO) } : {}),
+      ...(patch.texto !== undefined ? { texto: patch.texto.slice(0, MAX_TEXTO) } : {})
+    }
     mudar((d) => {
       const x = d.blocoDeNotas?.find((n) => n.id === nota.id)
-      if (x) Object.assign(x, patch, { atualizadoEm: Date.now() })
+      if (x) Object.assign(x, limitado, { atualizadoEm: Date.now() })
     })
   }
   const nova = (): void => {
@@ -106,6 +116,7 @@ export function Bloco({ dados, mudar }: { dados: Dados; mudar: Mudar }) {
               className="bt-titulo"
               aria-label="Título"
               placeholder="Título"
+              maxLength={MAX_TITULO}
               value={nota.titulo}
               onChange={(e) => editar({ titulo: e.target.value })}
             />
@@ -128,6 +139,7 @@ export function Bloco({ dados, mudar }: { dados: Dados; mudar: Mudar }) {
             className="bt-texto"
             aria-label="Texto da nota"
             placeholder="Escreva livremente…"
+            maxLength={MAX_TEXTO}
             value={nota.texto}
             onChange={(e) => editar({ texto: e.target.value })}
           />

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Icone } from './Icone'
-import { aplicarOps, type OpDoBloco } from '../../shared/bloco'
+import { MAX_TEXTO, MAX_TITULO, aplicarOps, type OpDoBloco } from '../../shared/bloco'
 import type { ConfigDoBloco, NotaDoBloco } from '../../shared/tipos'
 
 const novoId = (): string => crypto.randomUUID()
@@ -88,7 +88,11 @@ export function BlocoDeNotas() {
   }
   const editar = (patch: Partial<Pick<NotaDoBloco, 'titulo' | 'texto'>>): void => {
     if (!nota) return
-    operar({ tipo: 'salvar', nota: { ...nota, ...patch, atualizadoEm: Date.now() } })
+    const limitado = {
+      ...(patch.titulo !== undefined ? { titulo: patch.titulo.slice(0, MAX_TITULO) } : {}),
+      ...(patch.texto !== undefined ? { texto: patch.texto.slice(0, MAX_TEXTO) } : {})
+    }
+    operar({ tipo: 'salvar', nota: { ...nota, ...limitado, atualizadoEm: Date.now() } })
   }
 
   return (
@@ -110,9 +114,7 @@ export function BlocoDeNotas() {
         ) : (
           <Icone nome="lapis" tamanho={16} />
         )}
-        <span className="bn-titulo">
-          {nota ? nota.titulo || 'Sem título' : 'Bloco de notas'}
-        </span>
+        <span className="bn-titulo">{nota ? nota.titulo || 'Sem título' : 'Bloco de notas'}</span>
         <button
           type="button"
           className="botao-icone"
@@ -177,12 +179,7 @@ export function BlocoDeNotas() {
               </p>
             )}
             {lista.map((n) => (
-              <button
-                key={n.id}
-                type="button"
-                className="bn-item"
-                onClick={() => setAberta(n.id)}
-              >
+              <button key={n.id} type="button" className="bn-item" onClick={() => setAberta(n.id)}>
                 <span className="nome">{n.titulo || 'Sem título'}</span>
                 {n.texto.trim() && <span className="previa">{n.texto.trim().split('\n')[0]}</span>}
               </button>
@@ -196,6 +193,7 @@ export function BlocoDeNotas() {
           <input
             aria-label="Título"
             placeholder="Título"
+            maxLength={MAX_TITULO}
             value={nota.titulo}
             autoFocus={!nota.titulo}
             onChange={(e) => editar({ titulo: e.target.value })}
@@ -204,6 +202,7 @@ export function BlocoDeNotas() {
             ref={campo}
             aria-label="Texto da nota"
             placeholder="Escreva livremente…"
+            maxLength={MAX_TEXTO}
             value={nota.texto}
             onChange={(e) => editar({ texto: e.target.value })}
           />
