@@ -1,0 +1,610 @@
+{
+ "tema": "Lacunas 1: desconto, SAC/Price, valor presente, dispersão, lógica e MDC",
+ "banca": "FCC",
+ "questoes": [
+  {
+   "enunciado": "Duas peças de tecido de 240 m e 180 m serão cortadas em retalhos de mesmo comprimento, o MAIOR possível, sem sobra. O comprimento de cada retalho será",
+   "resolucao": "240 = 2⁴·3·5; 180 = 2²·3²·5 → MDC = 2²·3·5 = 60 m.",
+   "topico": "MDC",
+   "conceito": "MDC: \"dividir em partes iguais, do maior tamanho possível, sem sobra\" — fatores COMUNS com o MENOR expoente. MMC: \"quando voltam a coincidir\" — todos os fatores com o MAIOR expoente.",
+   "explicar": "Como você decide se a questão pede MDC ou MMC? Dê um exemplo de cada.",
+   "habilidade": "aplicar regra",
+   "materia": "Matemática e Raciocínio Lógico",
+   "alternativas": {
+    "A": "20 m.",
+    "B": "60 m.",
+    "C": "120 m.",
+    "D": "420 m.",
+    "E": "720 m."
+   },
+   "gabarito": "B",
+   "comentarios": {
+    "A": "Divisor comum, mas não o maior.",
+    "B": "Certa: MDC = 2²·3·5 = 60 m.",
+    "C": "É o dobro do valor certo: não sai da regra; confira a resolução.",
+    "D": "Somou as peças.",
+    "E": "Esse é o MMC; dividir em partes iguais pede MDC."
+   }
+  },
+  {
+   "enunciado": "Um empréstimo de R$ 12.000,00 será pago em 4 prestações mensais iguais (Tabela Price), à taxa de 3% ao mês. Dado o fator de valor atual a = 3,72 para 4 pagamentos a 3%, a prestação é, aproximadamente,",
+   "resolucao": "PMT = PV ÷ a = R$ 12.000,00 ÷ 3,72 → R$ 3.228,32.",
+   "topico": "Sistemas de amortização: Price",
+   "conceito": "Price: prestação fixa PMT = PV ÷ a, onde a (fator de valor atual) já embute os juros de todo o prazo. Juros da 1ª = i × PV; amortização da 1ª = PMT − juros.",
+   "explicar": "Na Tabela Price, por que a prestação é PV ÷ a, e não PV ÷ n mais um mês de juros?",
+   "habilidade": "aplicar regra",
+   "materia": "Matemática Financeira",
+   "alternativas": {
+    "A": "R$ 1.614,16.",
+    "B": "R$ 3.000,00.",
+    "C": "R$ 3.090,00.",
+    "D": "R$ 3.228,32.",
+    "E": "R$ 3.360,00."
+   },
+   "gabarito": "D",
+   "comentarios": {
+    "A": "É a metade do valor certo: não sai da regra; confira a resolução.",
+    "B": "Dividiu por n e esqueceu os juros.",
+    "C": "Pôs 1 mês de juros só sobre a parcela: não é assim que a Price calcula.",
+    "D": "Certa: R$ 3.228,32.",
+    "E": "Dividiu por n e somou 1 mês de juros; na Price o fator já embute os juros de todo o prazo."
+   }
+  },
+  {
+   "enunciado": "Um conjunto de dados tem média 12 e desvio padrão 3. Cada valor é transformado por y = 2x + 5. A nova média e o novo desvio padrão serão, respectivamente,",
+   "alternativas": {
+    "A": "17 e 3.",
+    "B": "24 e 6.",
+    "C": "29 e 3.",
+    "D": "29 e 6.",
+    "E": "29 e 11."
+   },
+   "gabarito": "D",
+   "resolucao": "y = 2x + 5: média = 2 × 12 + 5 = 29; desvio = 2 × 3 = 6 (o +5 não altera a dispersão).",
+   "comentarios": {
+    "A": "Esqueceu o ×2.",
+    "B": "Esqueceu o +5 na média.",
+    "C": "O ×2 dobra o desvio.",
+    "D": "Certa.",
+    "E": "O +5 não mexe no desvio."
+   },
+   "topico": "Propriedades da média e do desvio",
+   "conceito": "Somar uma constante a todos os dados: a média soma junto; o desvio NÃO muda (a distância entre eles é a mesma). Multiplicar por k: média × k e desvio × |k|.",
+   "explicar": "O que acontece com a média e o desvio padrão quando somamos uma constante a todos os dados? E quando multiplicamos?",
+   "habilidade": "aplicar regra",
+   "materia": "Probabilidade e Estatística"
+  },
+  {
+   "enunciado": "O desvio padrão populacional dos valores 12, 18, 12 e 18 é",
+   "resolucao": "Média 15; cada valor está a 3 da média → variância = (9 + 9 + 9 + 9) ÷ 4 = 9 → desvio = √9 = 3.",
+   "topico": "Dispersão: variância, desvio padrão e CV",
+   "conceito": "Variância populacional = média dos quadrados dos desvios (divide por n); amostral divide por n − 1. Desvio padrão = √variância. CV = desvio ÷ média. Amplitude = maior − menor (outra medida).",
+   "explicar": "O que o desvio padrão mede, e por que ele não é a amplitude nem a média? Quando se divide por n e quando por n − 1?",
+   "habilidade": "aplicar regra",
+   "materia": "Probabilidade e Estatística",
+   "alternativas": {
+    "A": "1,5.",
+    "B": "3.",
+    "C": "6.",
+    "D": "9.",
+    "E": "15."
+   },
+   "gabarito": "B",
+   "comentarios": {
+    "A": "Dividiu o desvio por 2 sem motivo.",
+    "B": "Certa: desvio = √9 = 3.",
+    "C": "6 é a amplitude (18 − 12), outra medida.",
+    "D": "9 é a variância; falta a raiz.",
+    "E": "15 é a média."
+   }
+  },
+  {
+   "enunciado": "Considere a regra: \"Se o cliente tem conta, então ele recebe o extrato\". Uma afirmação logicamente equivalente a essa regra é:",
+   "resolucao": "Contrapositiva: troque de lugar E negue as duas partes. Teste: quem NÃO recebe o extrato não pode ter conta (senão receberia).",
+   "topico": "Equivalências lógicas",
+   "conceito": "p → q ≡ ~q → ~p ≡ ~p ∨ q (a recíproca q → p e a inversa ~p → ~q NÃO equivalem). ~(p → q) ≡ p ∧ ~q. ~(p ∧ q) ≡ ~p ∨ ~q; ~(p ∨ q) ≡ ~p ∧ ~q.",
+   "explicar": "Por que \"se p, então q\" equivale a \"se não q, então não p\", mas NÃO equivale a \"se q, então p\"? Use um exemplo do dia a dia.",
+   "materia": "Matemática e Raciocínio Lógico",
+   "alternativas": {
+    "A": "Se o cliente não recebe o extrato, então ele não tem conta.",
+    "B": "O cliente tem conta e não recebe o extrato.",
+    "C": "Se o cliente não tem conta, então ele não recebe o extrato.",
+    "D": "Se o cliente recebe o extrato, então ele tem conta.",
+    "E": "O cliente tem conta e recebe o extrato."
+   },
+   "gabarito": "A",
+   "comentarios": {
+    "A": "Certa: contrapositiva (troca de lugar E nega as duas).",
+    "B": "Essa é a NEGAÇÃO da regra.",
+    "C": "Inversa (só negou): não equivale.",
+    "D": "Recíproca (só trocou de lugar): não equivale.",
+    "E": "\"e\" exige as duas; a regra também vale quando o cliente não tem conta."
+   },
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Um financiamento de R$ 30.000,00 será pago em 10 prestações mensais pelo SAC, à taxa de 2% ao mês. Os juros pagos na 4ª prestação são",
+   "resolucao": "A = R$ 30.000,00 ÷ 10 = R$ 3.000,00; saldo antes da 4ª = R$ 30.000,00 − 3 × R$ 3.000,00 = R$ 21.000,00 → juros = 2% × R$ 21.000,00 = R$ 420,00.",
+   "topico": "Sistemas de amortização: SAC",
+   "conceito": "SAC: amortização fixa A = P ÷ n. O saldo ANTES da k-ésima parcela é P − (k − 1)·A; os juros da k-ésima são i × esse saldo; a prestação k = A + juros k. As prestações caem.",
+   "explicar": "No SAC, por que os juros de cada parcela são calculados sobre o saldo ANTES dela, e por que as prestações diminuem?",
+   "habilidade": "aplicar regra",
+   "materia": "Matemática Financeira",
+   "alternativas": {
+    "A": "R$ 420,00.",
+    "B": "R$ 480,00.",
+    "C": "R$ 600,00.",
+    "D": "R$ 840,00.",
+    "E": "R$ 3.000,00."
+   },
+   "gabarito": "A",
+   "comentarios": {
+    "A": "Certa: juros = 2% × R$ 21.000,00 = R$ 420,00.",
+    "B": "Usou o saldo de uma parcela antes.",
+    "C": "São os juros da 1ª parcela (saldo cheio).",
+    "D": "É o dobro do valor certo: não sai da regra; confira a resolução.",
+    "E": "Essa é a amortização, não os juros."
+   }
+  },
+  {
+   "enunciado": "A negação de \"Se o sistema cai, então a agência fecha\" é:",
+   "resolucao": "Para desmentir \"se p, então q\", basta mostrar p acontecendo SEM q: \"o sistema cai e a agência não fecha\".",
+   "topico": "Negação de proposições",
+   "conceito": "p → q ≡ ~q → ~p ≡ ~p ∨ q (a recíproca q → p e a inversa ~p → ~q NÃO equivalem). ~(p → q) ≡ p ∧ ~q. ~(p ∧ q) ≡ ~p ∨ ~q; ~(p ∨ q) ≡ ~p ∧ ~q.",
+   "explicar": "Por que \"se p, então q\" equivale a \"se não q, então não p\", mas NÃO equivale a \"se q, então p\"? Use um exemplo do dia a dia.",
+   "materia": "Matemática e Raciocínio Lógico",
+   "alternativas": {
+    "A": "O sistema não cai ou a agência fecha.",
+    "B": "Se o sistema não cai, então a agência não fecha.",
+    "C": "Se a agência fecha, então o sistema cai.",
+    "D": "O sistema cai e a agência não fecha.",
+    "E": "O sistema não cai e a agência fecha."
+   },
+   "gabarito": "D",
+   "comentarios": {
+    "A": "Isso é EQUIVALENTE à regra, não a negação.",
+    "B": "Inversa: negar um \"se… então\" nunca dá outro \"se… então\".",
+    "C": "Recíproca, não negação.",
+    "D": "Certa: ~(p → q) ≡ p ∧ ~q — o único caso que desmente a regra.",
+    "E": "Esse caso não desmente a regra (ela só fala do que acontece quando o sistema cai)."
+   },
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Um mesmo título, no mesmo prazo e à mesma taxa simples, é descontado de duas formas: comercial (por fora) e racional (por dentro). É correto afirmar que",
+   "resolucao": "Comercial: D = N·i·n (base = nominal). Racional: D = A·i·n (base = valor atual, menor). Base maior, desconto maior: o comercial desconta mais.",
+   "topico": "Desconto simples: comercial x racional",
+   "conceito": "Comercial (por fora): D = N·i·n, sobre o NOMINAL; A = N − D. Racional (por dentro): A = N ÷ (1 + i·n), o desconto é calculado sobre o VALOR ATUAL; D = N − A. O comercial dá desconto maior.",
+   "explicar": "Explique a diferença entre desconto comercial (por fora) e racional (por dentro): sobre qual valor cada um calcula o desconto?",
+   "materia": "Matemática Financeira",
+   "alternativas": {
+    "A": "o valor atual comercial é maior que o racional.",
+    "B": "os dois descontos são sempre iguais.",
+    "C": "o desconto racional é maior, porque incide sobre o valor atual.",
+    "D": "o desconto comercial é calculado sobre o valor atual.",
+    "E": "o desconto comercial é maior, porque incide sobre o valor nominal, que é maior que o valor atual."
+   },
+   "gabarito": "E",
+   "comentarios": {
+    "A": "Desconto maior → valor atual MENOR: o comercial dá o menor valor atual.",
+    "B": "Só seriam iguais com taxa ou prazo zero.",
+    "C": "Inverteu: o racional incide sobre o valor atual, que é MENOR, então dá desconto menor.",
+    "D": "O comercial é calculado sobre o NOMINAL (por fora).",
+    "E": "Certa."
+   },
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Um cliente receberá R$ 12.100,00 daqui a 2 meses. A juros compostos de 10% ao mês, o valor presente (hoje) dessa quantia é",
+   "resolucao": "VP = R$ 12.100,00 ÷ 1,1² = R$ 12.100,00 ÷ 1,21 → R$ 10.000,00.",
+   "topico": "Valor presente e equivalência",
+   "conceito": "Dinheiro em datas diferentes só se compara levado para a MESMA data. Valor presente: VP = VF ÷ (1 + i)ⁿ. Na data de hoje, escolha o menor custo (ou o maior recebimento).",
+   "explicar": "O que significa dizer que R$ 1.000 hoje e R$ 1.100 daqui a um mês são \"equivalentes\" a 10% ao mês? Como você compara pagamentos em datas diferentes?",
+   "habilidade": "aplicar regra",
+   "materia": "Matemática Financeira",
+   "alternativas": {
+    "A": "R$ 5.000,00.",
+    "B": "R$ 9.680,00.",
+    "C": "R$ 10.000,00.",
+    "D": "R$ 10.083,33.",
+    "E": "R$ 11.000,00."
+   },
+   "gabarito": "C",
+   "comentarios": {
+    "A": "É a metade do valor certo: não sai da regra; confira a resolução.",
+    "B": "Descontou juros simples por fora (2 × 10% do valor futuro).",
+    "C": "Certa: R$ 10.000,00.",
+    "D": "Usou juros simples (1 + 0,10 × 2); o enunciado pede compostos.",
+    "E": "Trouxe só 1 mês; são 2."
+   }
+  },
+  {
+   "enunciado": "Um empréstimo de R$ 10.000,00 será pago em 5 prestações iguais pela Tabela Price, à taxa de 2% ao mês, com prestação de R$ 2.121,57. A amortização contida na 1ª prestação é",
+   "resolucao": "Juros da 1ª = 2% × R$ 10.000,00 = R$ 200,00 → amortização = R$ 2.121,57 − R$ 200,00 = R$ 1.921,57.",
+   "topico": "Sistemas de amortização: Price",
+   "conceito": "Price: prestação fixa PMT = PV ÷ a, onde a (fator de valor atual) já embute os juros de todo o prazo. Juros da 1ª = i × PV; amortização da 1ª = PMT − juros.",
+   "explicar": "Na Tabela Price, por que a prestação é PV ÷ a, e não PV ÷ n mais um mês de juros?",
+   "habilidade": "aplicar regra",
+   "materia": "Matemática Financeira",
+   "alternativas": {
+    "A": "R$ 1.921,57.",
+    "B": "R$ 1.961,57.",
+    "C": "R$ 2.000,00.",
+    "D": "R$ 2.121,57.",
+    "E": "R$ 3.843,14."
+   },
+   "gabarito": "A",
+   "comentarios": {
+    "A": "Certa: amortização = R$ 2.121,57 − R$ 200,00 = R$ 1.921,57.",
+    "B": "Calculou os juros sobre um saldo já reduzido; na 1ª o saldo é o PV inteiro.",
+    "C": "Isso seria a amortização do SAC; na Price a amortização começa menor e cresce.",
+    "D": "Essa é a prestação inteira.",
+    "E": "É o dobro do valor certo: não sai da regra; confira a resolução."
+   }
+  },
+  {
+   "enunciado": "A negação de \"O cliente pagou e recebeu o recibo\" é:",
+   "resolucao": "Para desmentir \"pagou E recebeu\", basta UMA parte falhar: \"não pagou OU não recebeu\".",
+   "topico": "Negação de proposições",
+   "conceito": "p → q ≡ ~q → ~p ≡ ~p ∨ q (a recíproca q → p e a inversa ~p → ~q NÃO equivalem). ~(p → q) ≡ p ∧ ~q. ~(p ∧ q) ≡ ~p ∨ ~q; ~(p ∨ q) ≡ ~p ∧ ~q.",
+   "explicar": "Por que \"se p, então q\" equivale a \"se não q, então não p\", mas NÃO equivale a \"se q, então p\"? Use um exemplo do dia a dia.",
+   "materia": "Matemática e Raciocínio Lógico",
+   "alternativas": {
+    "A": "O cliente pagou e não recebeu o recibo.",
+    "B": "Se o cliente pagou, então recebeu o recibo.",
+    "C": "O cliente pagou ou recebeu o recibo.",
+    "D": "O cliente não pagou e não recebeu o recibo.",
+    "E": "O cliente não pagou ou não recebeu o recibo."
+   },
+   "gabarito": "E",
+   "comentarios": {
+    "A": "É só um dos casos que desmentem; a negação completa é o \"ou\".",
+    "B": "Não é negação de um \"e\".",
+    "C": "Trocou o conectivo, mas não negou.",
+    "D": "Negou as duas mas manteve o \"e\": De Morgan troca o conectivo.",
+    "E": "Certa: ~(p ∧ q) ≡ ~p ∨ ~q (troca \"e\" por \"ou\" e nega as duas)."
+   },
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Um empréstimo de R$ 18.000,00 será pago em 6 prestações mensais pelo SAC, à taxa de 3% ao mês. O valor da 3ª prestação é",
+   "resolucao": "A = R$ 3.000,00; saldo antes da 3ª = R$ 12.000,00; juros = R$ 360,00 → prestação = R$ 3.000,00 + R$ 360,00 = R$ 3.360,00.",
+   "topico": "Sistemas de amortização: SAC",
+   "conceito": "SAC: amortização fixa A = P ÷ n. O saldo ANTES da k-ésima parcela é P − (k − 1)·A; os juros da k-ésima são i × esse saldo; a prestação k = A + juros k. As prestações caem.",
+   "explicar": "No SAC, por que os juros de cada parcela são calculados sobre o saldo ANTES dela, e por que as prestações diminuem?",
+   "habilidade": "aplicar regra",
+   "materia": "Matemática Financeira",
+   "alternativas": {
+    "A": "R$ 1.680,00.",
+    "B": "R$ 3.000,00.",
+    "C": "R$ 3.090,00.",
+    "D": "R$ 3.270,00.",
+    "E": "R$ 3.360,00."
+   },
+   "gabarito": "E",
+   "comentarios": {
+    "A": "É a metade do valor certo: não sai da regra; confira a resolução.",
+    "B": "Só a amortização; faltaram os juros.",
+    "C": "Somou 1 mês de juros à amortização: não é Price nem SAC.",
+    "D": "Juros sobre o saldo DEPOIS da parcela; o certo é antes.",
+    "E": "Certa: prestação = R$ 3.000,00 + R$ 360,00 = R$ 3.360,00."
+   }
+  },
+  {
+   "enunciado": "Um título de valor nominal R$ 6.000,00, com vencimento em 5 meses, é descontado hoje com desconto comercial simples (por fora) à taxa de 2% ao mês. O valor atual (o que se recebe hoje) é",
+   "resolucao": "Comercial: D = R$ 6.000,00 × 2% × 5 = R$ 600,00 → A = R$ 6.000,00 − R$ 600,00 = R$ 5.400,00.",
+   "topico": "Desconto simples: comercial x racional",
+   "conceito": "Comercial (por fora): D = N·i·n, sobre o NOMINAL; A = N − D. Racional (por dentro): A = N ÷ (1 + i·n), o desconto é calculado sobre o VALOR ATUAL; D = N − A. O comercial dá desconto maior.",
+   "explicar": "Explique a diferença entre desconto comercial (por fora) e racional (por dentro): sobre qual valor cada um calcula o desconto?",
+   "habilidade": "aplicar regra",
+   "materia": "Matemática Financeira",
+   "alternativas": {
+    "A": "R$ 5.400,00.",
+    "B": "R$ 5.454,55.",
+    "C": "R$ 5.880,00.",
+    "D": "R$ 6.000,00.",
+    "E": "R$ 10.800,00."
+   },
+   "gabarito": "A",
+   "comentarios": {
+    "A": "Certa: A = R$ 6.000,00 − R$ 600,00 = R$ 5.400,00.",
+    "B": "Esse é o valor atual RACIONAL (por dentro); aqui é comercial.",
+    "C": "Usou só 1 mês; são 5.",
+    "D": "Esse é o nominal: falta descontar.",
+    "E": "É o dobro do valor certo: não sai da regra; confira a resolução."
+   }
+  },
+  {
+   "enunciado": "Um conjunto de dados tem média 40 e desvio padrão 5. Se somarmos 7 a todos os valores, a nova média e o novo desvio padrão serão, respectivamente,",
+   "alternativas": {
+    "A": "40 e 5.",
+    "B": "40 e 12.",
+    "C": "47 e 5.",
+    "D": "47 e 12.",
+    "E": "280 e 5."
+   },
+   "gabarito": "C",
+   "resolucao": "Somar 7: média 40 + 7 = 47; desvio continua 5.",
+   "comentarios": {
+    "A": "A média sobe 7.",
+    "B": "Inverteu: a média muda, o desvio não.",
+    "C": "Certa.",
+    "D": "Somar desloca tudo junto: a distância entre os dados (o desvio) não muda.",
+    "E": "Somar não é multiplicar."
+   },
+   "topico": "Propriedades da média e do desvio",
+   "conceito": "Somar uma constante a todos os dados: a média soma junto; o desvio NÃO muda (a distância entre eles é a mesma). Multiplicar por k: média × k e desvio × |k|.",
+   "explicar": "O que acontece com a média e o desvio padrão quando somamos uma constante a todos os dados? E quando multiplicamos?",
+   "habilidade": "aplicar regra",
+   "materia": "Probabilidade e Estatística"
+  },
+  {
+   "enunciado": "Um conjunto de dados tem média 80 e desvio padrão 12. O coeficiente de variação é",
+   "resolucao": "CV = desvio ÷ média = 12 ÷ 80 = 0,15 → 15%.",
+   "topico": "Dispersão: variância, desvio padrão e CV",
+   "conceito": "Variância populacional = média dos quadrados dos desvios (divide por n); amostral divide por n − 1. Desvio padrão = √variância. CV = desvio ÷ média. Amplitude = maior − menor (outra medida).",
+   "explicar": "O que o desvio padrão mede, e por que ele não é a amplitude nem a média? Quando se divide por n e quando por n − 1?",
+   "habilidade": "aplicar regra",
+   "materia": "Probabilidade e Estatística",
+   "alternativas": {
+    "A": "12%.",
+    "B": "15%.",
+    "C": "30%.",
+    "D": "68%.",
+    "E": "666,67%."
+   },
+   "gabarito": "B",
+   "comentarios": {
+    "A": "Esse é o próprio desvio, sem dividir pela média.",
+    "B": "Certa: 15%.",
+    "C": "É o dobro do valor certo: não sai da regra; confira a resolução.",
+    "D": "Subtraiu desvio da média.",
+    "E": "Inverteu: CV = desvio ÷ média, não média ÷ desvio."
+   }
+  },
+  {
+   "enunciado": "Uma agência tem 84 cartilhas de crédito e 126 de investimentos e quer montar o maior número possível de kits idênticos, usando todas as cartilhas, sem sobra. O número de kits será",
+   "resolucao": "84 = 2²·3·7; 126 = 2·3²·7 → MDC = 2·3·7 = 42 kits (cada um com 2 de crédito e 3 de investimentos).",
+   "topico": "MDC",
+   "conceito": "MDC: \"dividir em partes iguais, do maior tamanho possível, sem sobra\" — fatores COMUNS com o MENOR expoente. MMC: \"quando voltam a coincidir\" — todos os fatores com o MAIOR expoente.",
+   "explicar": "Como você decide se a questão pede MDC ou MMC? Dê um exemplo de cada.",
+   "habilidade": "aplicar regra",
+   "materia": "Matemática e Raciocínio Lógico",
+   "alternativas": {
+    "A": "14.",
+    "B": "21.",
+    "C": "42.",
+    "D": "210.",
+    "E": "252."
+   },
+   "gabarito": "C",
+   "comentarios": {
+    "A": "É um divisor comum, mas não o MAIOR.",
+    "B": "É um divisor comum, mas não o MAIOR.",
+    "C": "Certa: MDC = 2·3·7 = 42 kits (cada um com 2 de crédito e 3 de investimentos).",
+    "D": "Somou as cartilhas.",
+    "E": "Esse é o MMC; para dividir em partes iguais, é o MDC."
+   }
+  },
+  {
+   "enunciado": "A variância populacional dos valores 8, 10, 14 e 16 é",
+   "resolucao": "Média 12; desvios −4, −2, 2, 4; quadrados 16, 4, 4, 16 (soma 40) → variância populacional = 40 ÷ 4 = 10.",
+   "topico": "Dispersão: variância, desvio padrão e CV",
+   "conceito": "Variância populacional = média dos quadrados dos desvios (divide por n); amostral divide por n − 1. Desvio padrão = √variância. CV = desvio ÷ média. Amplitude = maior − menor (outra medida).",
+   "explicar": "O que o desvio padrão mede, e por que ele não é a amplitude nem a média? Quando se divide por n e quando por n − 1?",
+   "habilidade": "aplicar regra",
+   "materia": "Probabilidade e Estatística",
+   "alternativas": {
+    "A": "10.",
+    "B": "12.",
+    "C": "13,33.",
+    "D": "20.",
+    "E": "40."
+   },
+   "gabarito": "A",
+   "comentarios": {
+    "A": "Certa: variância populacional = 40 ÷ 4 = 10.",
+    "B": "12 é a média.",
+    "C": "Dividiu por n − 1 = 3: essa é a variância AMOSTRAL; a pedida é a populacional (divide por 4).",
+    "D": "É o dobro do valor certo: não sai da regra; confira a resolução.",
+    "E": "É a soma dos quadrados dos desvios (40), sem dividir."
+   }
+  },
+  {
+   "enunciado": "Um título de valor nominal R$ 6.600,00, com vencimento em 5 meses, é descontado hoje com desconto racional simples (por dentro) à taxa de 2% ao mês. O valor atual (o que se recebe hoje) é",
+   "resolucao": "Racional: A = R$ 6.600,00 ÷ (1 + 2% × 5) = R$ 6.600,00 ÷ 1,1 → R$ 6.000,00.",
+   "topico": "Desconto simples: comercial x racional",
+   "conceito": "Comercial (por fora): D = N·i·n, sobre o NOMINAL; A = N − D. Racional (por dentro): A = N ÷ (1 + i·n), o desconto é calculado sobre o VALOR ATUAL; D = N − A. O comercial dá desconto maior.",
+   "explicar": "Explique a diferença entre desconto comercial (por fora) e racional (por dentro): sobre qual valor cada um calcula o desconto?",
+   "habilidade": "aplicar regra",
+   "materia": "Matemática Financeira",
+   "alternativas": {
+    "A": "R$ 600,00.",
+    "B": "R$ 5.940,00.",
+    "C": "R$ 6.000,00.",
+    "D": "R$ 6.468,00.",
+    "E": "R$ 6.600,00."
+   },
+   "gabarito": "C",
+   "comentarios": {
+    "A": "Esse é o DESCONTO, não o valor atual.",
+    "B": "Esse é o valor atual COMERCIAL (desconto sobre o nominal).",
+    "C": "Certa: R$ 6.000,00.",
+    "D": "Usou só 1 mês; são 5.",
+    "E": "Esse é o nominal: falta descontar."
+   }
+  },
+  {
+   "enunciado": "Um conjunto de dados tem média 25 e desvio padrão 6. Se multiplicarmos todos os valores por 3, a nova média e o novo desvio padrão serão, respectivamente,",
+   "alternativas": {
+    "A": "25 e 18.",
+    "B": "28 e 6.",
+    "C": "75 e 6.",
+    "D": "75 e 18.",
+    "E": "75 e 54."
+   },
+   "gabarito": "D",
+   "resolucao": "Multiplicar por 3: média 25 × 3 = 75; desvio 6 × 3 = 18.",
+   "comentarios": {
+    "A": "A média também fica × 3.",
+    "B": "Multiplicar não é somar.",
+    "C": "O desvio também fica × 3.",
+    "D": "Certa.",
+    "E": "Multiplicou o desvio por k²: isso acontece com a VARIÂNCIA, não com o desvio."
+   },
+   "topico": "Propriedades da média e do desvio",
+   "conceito": "Somar uma constante a todos os dados: a média soma junto; o desvio NÃO muda (a distância entre eles é a mesma). Multiplicar por k: média × k e desvio × |k|.",
+   "explicar": "O que acontece com a média e o desvio padrão quando somamos uma constante a todos os dados? E quando multiplicamos?",
+   "habilidade": "aplicar regra",
+   "materia": "Probabilidade e Estatística"
+  },
+  {
+   "enunciado": "Um financiamento de R$ 36.000,00 será pago em 12 prestações mensais pelo SAC, à taxa de 1% ao mês. O saldo devedor logo após o pagamento da 5ª prestação é",
+   "resolucao": "Cada parcela amortiza R$ 3.000,00; após 5 parcelas → saldo = R$ 36.000,00 − 5 × R$ 3.000,00 = R$ 21.000,00.",
+   "topico": "Sistemas de amortização: SAC",
+   "conceito": "SAC: amortização fixa A = P ÷ n. O saldo ANTES da k-ésima parcela é P − (k − 1)·A; os juros da k-ésima são i × esse saldo; a prestação k = A + juros k. As prestações caem.",
+   "explicar": "No SAC, por que os juros de cada parcela são calculados sobre o saldo ANTES dela, e por que as prestações diminuem?",
+   "habilidade": "aplicar regra",
+   "materia": "Matemática Financeira",
+   "alternativas": {
+    "A": "R$ 19.200,00.",
+    "B": "R$ 21.000,00.",
+    "C": "R$ 24.000,00.",
+    "D": "R$ 36.000,00.",
+    "E": "R$ 42.000,00."
+   },
+   "gabarito": "B",
+   "comentarios": {
+    "A": "Abateu as prestações inteiras; no SAC só a amortização reduz o saldo.",
+    "B": "Certa: saldo = R$ 36.000,00 − 5 × R$ 3.000,00 = R$ 21.000,00.",
+    "C": "Esse é o saldo ANTES da parcela.",
+    "D": "O saldo cai a cada parcela.",
+    "E": "É o dobro do valor certo: não sai da regra; confira a resolução."
+   }
+  },
+  {
+   "enunciado": "Uma loja oferece duas formas de pagamento: R$ 1.900,00 à vista ou duas parcelas de R$ 1.050,00 (uma hoje e outra daqui a 1 mês). Se o dinheiro do cliente rende 5% ao mês, é correto afirmar que",
+   "resolucao": "Leve tudo para hoje: 1.050 + 1.050 ÷ 1,05 = 1.050 + 1.000 = 2.050. Comparado com 1.900 à vista, o à vista custa menos.",
+   "topico": "Valor presente e equivalência",
+   "conceito": "Dinheiro em datas diferentes só se compara levado para a MESMA data. Valor presente: VP = VF ÷ (1 + i)ⁿ. Na data de hoje, escolha o menor custo (ou o maior recebimento).",
+   "explicar": "O que significa dizer que R$ 1.000 hoje e R$ 1.100 daqui a um mês são \"equivalentes\" a 10% ao mês? Como você compara pagamentos em datas diferentes?",
+   "materia": "Matemática Financeira",
+   "alternativas": {
+    "A": "não é possível comparar, pois os pagamentos ocorrem em datas diferentes.",
+    "B": "as parcelas são melhores, pois somam R$ 2.100,00 e o dinheiro rende 5%.",
+    "C": "as parcelas são melhores, pois a segunda parcela vale mais no futuro.",
+    "D": "as duas opções são equivalentes, porque a diferença é pequena.",
+    "E": "as parcelas valem hoje cerca de R$ 2.050,00, mais que o preço à vista; o à vista é melhor."
+   },
+   "gabarito": "E",
+   "comentarios": {
+    "A": "É possível: leva-se tudo para a mesma data (hoje).",
+    "B": "Somou valores de datas diferentes sem trazê-los para hoje; mesmo trazendo, 2.050 > 1.900.",
+    "C": "Um valor futuro vale MENOS hoje, não mais.",
+    "D": "Equivalentes só se tivessem o mesmo valor na mesma data: 2.050 ≠ 1.900.",
+    "E": "Certa: VP das parcelas = 1.050 + 1.050 ÷ 1,05 = 2.050 > 1.900."
+   },
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Uma amostra de 4 clientes gastou 8, 10, 14 e 16 (em R$ mil). A variância AMOSTRAL desses gastos é",
+   "resolucao": "Soma dos quadrados dos desvios = 40; amostral divide por n − 1 = 3 → 40/3 ≈ 13,33.",
+   "topico": "Dispersão: variância, desvio padrão e CV",
+   "conceito": "Variância populacional = média dos quadrados dos desvios (divide por n); amostral divide por n − 1. Desvio padrão = √variância. CV = desvio ÷ média. Amplitude = maior − menor (outra medida).",
+   "explicar": "O que o desvio padrão mede, e por que ele não é a amplitude nem a média? Quando se divide por n e quando por n − 1?",
+   "habilidade": "aplicar regra",
+   "materia": "Probabilidade e Estatística",
+   "alternativas": {
+    "A": "6,67.",
+    "B": "8.",
+    "C": "10.",
+    "D": "12.",
+    "E": "13,33."
+   },
+   "gabarito": "E",
+   "comentarios": {
+    "A": "É a metade do valor certo: não sai da regra; confira a resolução.",
+    "B": "8 é a amplitude.",
+    "C": "Dividiu por n = 4: essa é a populacional; na amostral divide por n − 1 = 3.",
+    "D": "12 é a média.",
+    "E": "Certa: 40/3 ≈ 13,33."
+   }
+  },
+  {
+   "enunciado": "Um título de valor nominal R$ 5.000,00, com vencimento em 4 meses, é descontado hoje com desconto comercial simples (por fora) à taxa de 3% ao mês. O valor do desconto é",
+   "resolucao": "Comercial: D = N·i·n = R$ 5.000,00 × 3% × 4 → R$ 600,00.",
+   "topico": "Desconto simples: comercial x racional",
+   "conceito": "Comercial (por fora): D = N·i·n, sobre o NOMINAL; A = N − D. Racional (por dentro): A = N ÷ (1 + i·n), o desconto é calculado sobre o VALOR ATUAL; D = N − A. O comercial dá desconto maior.",
+   "explicar": "Explique a diferença entre desconto comercial (por fora) e racional (por dentro): sobre qual valor cada um calcula o desconto?",
+   "habilidade": "aplicar regra",
+   "materia": "Matemática Financeira",
+   "alternativas": {
+    "A": "R$ 535,71.",
+    "B": "R$ 600,00.",
+    "C": "R$ 750,00.",
+    "D": "R$ 1.200,00.",
+    "E": "R$ 4.400,00."
+   },
+   "gabarito": "B",
+   "comentarios": {
+    "A": "Esse é o desconto RACIONAL; aqui é comercial (sobre o nominal).",
+    "B": "Certa: R$ 600,00.",
+    "C": "Contou um mês a mais.",
+    "D": "É o dobro do valor certo: não sai da regra; confira a resolução.",
+    "E": "Esse é o VALOR ATUAL, não o desconto."
+   }
+  },
+  {
+   "enunciado": "A agência A tem saldo médio de R$ 2.000 com desvio padrão de R$ 400; a agência B, saldo médio de R$ 10.000 com desvio padrão de R$ 1.000. Em termos relativos, é correto afirmar que",
+   "resolucao": "Para comparar dispersão de grupos com médias diferentes, use o CV (desvio ÷ média): A = 20%, B = 10%.",
+   "topico": "Dispersão: variância, desvio padrão e CV",
+   "conceito": "Variância populacional = média dos quadrados dos desvios (divide por n); amostral divide por n − 1. Desvio padrão = √variância. CV = desvio ÷ média. Amplitude = maior − menor (outra medida).",
+   "explicar": "O que o desvio padrão mede, e por que ele não é a amplitude nem a média? Quando se divide por n e quando por n − 1?",
+   "materia": "Probabilidade e Estatística",
+   "alternativas": {
+    "A": "não é possível comparar, pois as médias são diferentes.",
+    "B": "B tem dispersão relativa maior, porque seu desvio padrão é maior.",
+    "C": "A tem dispersão relativa maior (CV de 20% contra 10%).",
+    "D": "as duas têm a mesma dispersão relativa.",
+    "E": "A tem dispersão relativa menor, porque seu desvio padrão é menor."
+   },
+   "gabarito": "C",
+   "comentarios": {
+    "A": "É exatamente para isso que serve o CV.",
+    "B": "Desvio maior em valor absoluto não quer dizer dispersão relativa maior; compare o CV.",
+    "C": "Certa: CV A = 400 ÷ 2.000 = 20%; CV B = 1.000 ÷ 10.000 = 10%.",
+    "D": "Os CVs são diferentes: 20% e 10%.",
+    "E": "O desvio de A é menor, mas, relativo à média, é maior."
+   },
+   "habilidade": "aplicar regra"
+  },
+  {
+   "enunciado": "Um título de valor nominal R$ 4.800,00, com vencimento em 4 meses, é descontado hoje com desconto racional simples (por dentro) à taxa de 3% ao mês. O valor do desconto é",
+   "resolucao": "Racional: A = R$ 4.800,00 ÷ 1,12 = R$ 4.285,71; D = N − A → R$ 514,29.",
+   "topico": "Desconto simples: comercial x racional",
+   "conceito": "Comercial (por fora): D = N·i·n, sobre o NOMINAL; A = N − D. Racional (por dentro): A = N ÷ (1 + i·n), o desconto é calculado sobre o VALOR ATUAL; D = N − A. O comercial dá desconto maior.",
+   "explicar": "Explique a diferença entre desconto comercial (por fora) e racional (por dentro): sobre qual valor cada um calcula o desconto?",
+   "habilidade": "aplicar regra",
+   "materia": "Matemática Financeira",
+   "alternativas": {
+    "A": "R$ 144,00.",
+    "B": "R$ 257,14.",
+    "C": "R$ 288,00.",
+    "D": "R$ 514,29.",
+    "E": "R$ 576,00."
+   },
+   "gabarito": "D",
+   "comentarios": {
+    "A": "Usou só 1 mês; são 4.",
+    "B": "É a metade do valor certo: não sai da regra; confira a resolução.",
+    "C": "Não sai da regra.",
+    "D": "Certa: R$ 514,29.",
+    "E": "Esse é o desconto COMERCIAL (sobre o nominal); o racional é menor."
+   }
+  }
+ ],
+ "fontes": [
+  "Contas conferidas em Python (fractions, math): desconto comercial D = N·i·n e racional A = N/(1 + i·n); SAC e Price pelas fórmulas; variância populacional (÷ n) e amostral (÷ n − 1); lógica por tabela-verdade",
+  "Erradas montadas a partir dos erros do Matheus nos treinos de Matemática Financeira e de Estatística (26/11)"
+ ]
+}
