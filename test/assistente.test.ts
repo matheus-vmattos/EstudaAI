@@ -1117,3 +1117,14 @@ describe('prova completa pela caixa (0.1.27)', () => {
     expect(provaDaCaixa(d, inteira.slice(1))).toBeUndefined()
   })
 })
+
+describe('tempo do simulado colado (0.1.28)', () => {
+  it('mantém o ritmo escolhido para a quantidade que veio', async () => {
+    const { tempoDoColado } = await import('../src/shared/questoes')
+    expect(tempoDoColado(30, 10, 55)).toBe(165) // prova colada de 55: 3 min por questão
+    expect(tempoDoColado(30, 10, 10)).toBe(30)
+    expect(tempoDoColado(0, 10, 55)).toBe(0) // sem limite continua sem limite
+    expect(tempoDoColado(20, 10, 3)).toBe(6)
+    expect(tempoDoColado(10, 10, 1)).toBe(1)
+  })
+})
