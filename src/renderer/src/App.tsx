@@ -3,6 +3,7 @@ import { mesclarRetornos } from '../../shared/explicar'
 import { aplicarOps } from '../../shared/bloco'
 import { Icone, type NomeDoIcone } from './Icone'
 import { useDados } from './useDados'
+import { Bloco } from './telas/Bloco'
 import { Atualizacao } from './Atualizacao'
 import { Configuracoes } from './Configuracoes'
 import { OndeEstaSalvo } from './Sincronizar'
@@ -19,7 +20,8 @@ import { diasAte } from '../../shared/edital'
 import { MeuEdital } from './telas/MeuEdital'
 import type { Id } from '../../shared/tipos'
 
-export type Tela = 'edital' | 'anotacoes' | 'flashcards' | 'mapa' | 'links' | 'questoes' | 'caixa'
+export type Tela =
+  'edital' | 'anotacoes' | 'flashcards' | 'mapa' | 'links' | 'questoes' | 'caixa' | 'bloco'
 
 const MENU: { tela: Tela; nome: string; icone: NomeDoIcone }[] = [
   { tela: 'edital', nome: 'Meu edital', icone: 'alvo' },
@@ -28,7 +30,8 @@ const MENU: { tela: Tela; nome: string; icone: NomeDoIcone }[] = [
   { tela: 'mapa', nome: 'Mapa mental', icone: 'mapa' },
   { tela: 'links', nome: 'Links', icone: 'link' },
   { tela: 'questoes', nome: 'Questões', icone: 'relogio' },
-  { tela: 'caixa', nome: 'Do Claude', icone: 'enviar' }
+  { tela: 'caixa', nome: 'Do Claude', icone: 'enviar' },
+  { tela: 'bloco', nome: 'Bloco de notas', icone: 'lapis' }
 ]
 
 /** quais assuntos a revisão cobre (null = todos) */
@@ -206,15 +209,6 @@ export function App() {
             )}
           </button>
         ))}
-        <button
-          type="button"
-          className="item-menu"
-          title="Abre uma janelinha por cima de tudo, para anotar dúvidas"
-          onClick={() => void window.api.bloco.abrir()}
-        >
-          <Icone nome="lapis" />
-          BLOCO DE NOTAS
-        </button>
         <div className="rodape-menu">
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <div style={{ flex: 1 }}>
@@ -249,6 +243,7 @@ export function App() {
         <Mapa dados={dados} mudar={mudar} abrirAnotacao={abrirAnotacao} estudar={setRevisao} />
       )}
       {tela === 'links' && <Links dados={dados} mudar={mudar} />}
+      {tela === 'bloco' && <Bloco dados={dados} mudar={mudar} />}
       {tela === 'edital' && (
         <MeuEdital
           dados={dados}
