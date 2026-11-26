@@ -7,7 +7,8 @@ import {
   formatarTempo,
   lerRespostaDaIa,
   montarPrompt,
-  refazerEmbaralhado
+  refazerEmbaralhado,
+  tempoDoColado
 } from '../../../shared/questoes'
 import { acharNo } from '../../../shared/arvore'
 import { EscolherLugar } from '../EscolherLugar'
@@ -136,6 +137,9 @@ export function Questoes({
       : montarPrompt(config, ia)
   const temaOk = configEfetiva.tema.trim() !== '' && configEfetiva.quantidade >= 1
   const leitura = useMemo(() => (resposta.trim() ? lerRespostaDaIa(resposta) : null), [resposta])
+  const tempoColado = leitura?.ok
+    ? tempoDoColado(configEfetiva.tempoMin, configEfetiva.quantidade, leitura.questoes.length)
+    : configEfetiva.tempoMin
 
   const copiar = async (): Promise<void> => {
     await window.api.copiar(prompt)
@@ -182,7 +186,8 @@ export function Questoes({
         ...configEfetiva,
         tema: configEfetiva.tema.trim() || leitura.tema || 'Simulado',
         tipo: leitura.tipo,
-        quantidade: n
+        quantidade: n,
+        tempoMin: tempoDoColado(configEfetiva.tempoMin, configEfetiva.quantidade, n)
       },
       questoes: leitura.questoes,
       respostas: Array(n).fill(null),
@@ -443,8 +448,7 @@ export function Questoes({
                   style={{ marginLeft: 'auto' }}
                   onClick={iniciar}
                 >
-                  Iniciar simulado ·{' '}
-                  {configEfetiva.tempoMin ? `${configEfetiva.tempoMin} min` : 'sem limite'}
+                  Iniciar simulado · {tempoColado ? `${tempoColado} min` : 'sem limite'}
                 </button>
               </div>
             )}

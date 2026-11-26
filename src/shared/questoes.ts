@@ -271,6 +271,16 @@ export function lerRespostaDaIa(texto: string): LeituraDaIa {
   }
 }
 
+/** O tempo do simulado colado: o ritmo que você escolheu (minutos por
+ *  questão pedida) vezes as questões que vieram. Colar uma prova de 55 com o
+ *  formulário em "10 questões, 30 min" dá 165 min, e não 30. Sem limite (0)
+ *  continua sem limite. */
+export function tempoDoColado(tempoMin: number, pedidas: number, vieram: number): number {
+  if (!tempoMin) return 0
+  if (pedidas < 1 || vieram === pedidas) return tempoMin
+  return Math.max(1, Math.round((tempoMin / pedidas) * vieram))
+}
+
 /** 3725000 → "01:02:05" */
 export function formatarTempo(ms: number): string {
   const total = Math.max(0, Math.round(ms / 1000))
