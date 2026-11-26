@@ -90,6 +90,12 @@ function Prova({
   const restante = limiteMs - decorrido.current
   const total = s.questoes.length
   const q = s.questoes[s.atual]
+  // conferir na hora: na prova completa não (é a prova de verdade)
+  const podeConferir = !s.prova
+  const conferida = !!s.conferidas?.[s.atual]
+  // conferida, o relógio da questão para: ler a explicação não é lentidão
+  const parado = useRef(conferida)
+  parado.current = conferida
 
   /** grava o tempo e aplica a mudança junto */
   const gravar = useCallback(
@@ -124,7 +130,7 @@ function Prova({
       const delta = agora - ultimoTique.current
       ultimoTique.current = agora
       decorrido.current += delta
-      naQuestao.current += delta
+      if (!parado.current) naQuestao.current += delta
       if (limiteMs > 0 && decorrido.current >= limiteMs) {
         decorrido.current = limiteMs
         entregar()
@@ -140,8 +146,16 @@ function Prova({
     if (i < 0 || i >= total || i === s.atual) return
     gravar((x) => (x.atual = i))
   }
-  const responder = (letra: string): void =>
-    gravar((x) => (x.respostas[x.atual] = x.respostas[x.atual] === letra ? null : letra))
+  const responder = (letra: string): void => {
+    if (conferida) return // conferida, a letra fica
+    if (podeConferir && s.conferir)
+      gravar((x) => {
+        x.respostas[x.atual] = letra
+        x.conferidas ??= Array(x.questoes.length).fill(false)
+        x.conferidas[x.atual] = true
+      })
+    else gravar((x) => (x.respostas[x.atual] = x.respostas[x.atual] === letra ? null : letra))
+  }
   const alternarRevisar = (): void => gravar((x) => (x.revisar[x.atual] = !x.revisar[x.atual]))
 
   // teclado: letras respondem, setas navegam, espaço pausa
@@ -168,6 +182,10 @@ function Prova({
   }, [])
 
   const emBranco = s.respostas.filter((r) => r === null).length
+  const conferidasAqui = (s.conferidas ?? []).filter(Boolean).length
+  const certasConferidas = s.questoes.filter(
+    (x, i) => s.conferidas?.[i] && s.respostas[i] === x.gabarito
+  ).length
   const respondidas = total - emBranco
   const acabando = limiteMs > 0 && restante < Math.min(5 * 60000, limiteMs * 0.1)
   const tempoNaQuestao = s.tempoPorQuestao[s.atual] + naQuestao.current
@@ -204,6 +222,19 @@ function Prova({
           </span>
         </div>
 
+        {podeConferir && (
+          <button
+            type="button"
+            role="switch"
+            aria-checked={!!s.conferir}
+            className="interruptor-conferir"
+            title="Ao marcar a letra, mostra o gabarito e a resolução (a letra fica travada)"
+            onClick={() => gravar((x) => (x.conferir = !x.conferir))}
+          >
+            <span className="chave" aria-hidden="true" />
+            Conferir na hora
+          </button>
+        )}
         <div
           role="timer"
           aria-label={limiteMs ? 'Tempo restante' : 'Tempo corrido'}
@@ -272,7 +303,16 @@ function Prova({
                     type="button"
                     role="radio"
                     aria-checked={s.respostas[s.atual] === a.letra}
-                    className="alternativa"
+                    disabled={conferida}
+                    className={`alternativa ${
+                      !conferida
+                        ? ''
+                        : a.letra === q.gabarito
+                          ? 'certa'
+                          : a.letra === s.respostas[s.atual]
+                            ? 'errada'
+                            : 'apagada'
+                    }`}
                     onClick={() => responder(a.letra)}
                   >
                     <span className="letra">{a.letra}</span>
@@ -282,6 +322,19 @@ function Prova({
                   </button>
                 ))}
               </div>
+              {conferida && (
+                <Conferencia
+                  questao={q}
+                  minha={s.respostas[s.atual]}
+                  anotar={() => {
+                    const nota = notaDeDuvida(q, s.atual + 1, s.config.tema, novoId())
+                    mudar((d) => {
+                      d.blocoDeNotas = [nota, ...(d.blocoDeNotas ?? [])]
+                    })
+                    void window.api.bloco.abrir(nota.id)
+                  }}
+                />
+              )}
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
                 <button
                   type="button"
@@ -337,7 +390,17 @@ function Prova({
                     type="button"
                     aria-label={`Questão ${i + 1}`}
                     aria-current={i === s.atual ? 'step' : undefined}
-                    className={s.revisar[i] ? 'revisar' : s.respostas[i] ? 'respondida' : ''}
+                    className={
+                      s.conferidas?.[i]
+                        ? s.respostas[i] === s.questoes[i].gabarito
+                          ? 'certa'
+                          : 'errada'
+                        : s.revisar[i]
+                          ? 'revisar'
+                          : s.respostas[i]
+                            ? 'respondida'
+                            : ''
+                    }
                     onClick={() => irPara(i)}
                   >
                     {i + 1}
@@ -353,6 +416,18 @@ function Prova({
                   {s.revisar.filter(Boolean).length})
                 </span>
                 <span>□ Em branco ({emBranco})</span>
+                {conferidasAqui > 0 && (
+                  <>
+                    <span>
+                      <span style={{ color: 'var(--verde)' }}>■</span> Certa, conferida (
+                      {certasConferidas})
+                    </span>
+                    <span>
+                      <span style={{ color: 'var(--vermelho)' }}>■</span> Errada, conferida (
+                      {conferidasAqui - certasConferidas})
+                    </span>
+                  </>
+                )}
               </div>
               <button
                 type="button"
@@ -384,6 +459,46 @@ function Prova({
         />
       )}
     </div>
+  )
+}
+
+/** Conferir na hora: o gabarito logo abaixo da questão, com o porquê */
+function Conferencia({
+  questao: q,
+  minha,
+  anotar
+}: {
+  questao: TipoSimulado['questoes'][number]
+  minha: string | null
+  anotar: () => void
+}) {
+  const { porLetra, resto } = resolucaoPorLetra(q)
+  const certo = minha === q.gabarito
+  const porQueNao = !certo && minha ? porLetra[minha] : undefined
+  const resolucao = resto || porLetra[q.gabarito] || q.resolucao
+  return (
+    <section className={`conferencia ${certo ? 'certo' : 'errado'}`} aria-live="polite">
+      <span className="rotulo-retorno">{certo ? 'Certo' : `Era ${q.gabarito}`}</span>
+      {porQueNao && (
+        <p>
+          <b>Por que não {minha}:</b> <Texto texto={porQueNao} />
+        </p>
+      )}
+      <p>
+        <b>Resolução:</b> <Texto texto={resolucao} />
+      </p>
+      {q.conceito && (
+        <p className="meta-conceito">
+          <b>Conceito:</b> <Texto texto={q.conceito} />
+        </p>
+      )}
+      <div>
+        <button type="button" className="botao" onClick={anotar}>
+          <Icone nome="lapis" tamanho={14} />
+          Anotar dúvida
+        </button>
+      </div>
+    </section>
   )
 }
 
@@ -928,6 +1043,7 @@ function RaioXDoSimulado({
                   <span className="meta">
                     {x.marcada === null ? 'Em branco' : `Marcou ${x.marcada}`} · certa {x.certa}
                     {x.ms > 0 && ` · ${tempo(x.ms)}${x.rapido ? ', rápido' : ''}`}
+                    {s.conferidas?.[x.indice] && ' · conferida na hora'}
                   </span>
                 </div>
                 <span className="erro-motivo">

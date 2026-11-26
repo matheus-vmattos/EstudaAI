@@ -1062,3 +1062,58 @@ describe('resposta do Claude em partes (0.1.26)', () => {
     expect(d.retornos?.[0].licao?.pontos).toHaveLength(1)
   })
 })
+
+describe('prova completa pela caixa (0.1.27)', () => {
+  const q = (materia?: string) => ({
+    enunciado: 'e',
+    alternativas: 'ABCDE'.split('').map((letra) => ({ letra, texto: letra })),
+    gabarito: 'A',
+    resolucao: 'r',
+    ...(materia ? { materia } : {})
+  })
+  it('matérias do edital em blocos seguidos viram prova, com peso e duração', async () => {
+    const { simuladoDaCaixa } = await import('../src/shared/edital')
+    const d = dadosDoEdital()
+    d.edital = {
+      ...EDITAL,
+      duracaoMin: 240,
+      materias: [
+        { materiaId: 'port', questoes: 2, peso: 1, texto: '' },
+        { materiaId: 'banc', questoes: 3, peso: 2, texto: '' }
+      ]
+    }
+    const questoes = [q('port'), q('port'), q('banc'), q('banc'), q('banc')]
+    const s = simuladoDaCaixa(
+      d,
+      { ok: true, tema: 'Prova', tipo: 'multipla', questoes },
+      't',
+      'id',
+      1
+    )
+    expect(s.config.tempoMin).toBe(240)
+    expect(s.prova?.materias).toEqual([
+      { materiaId: 'port', nome: 'port', peso: 1, de: 0, ate: 2 },
+      { materiaId: 'banc', nome: 'banc', peso: 2, de: 2, ate: 5 }
+    ])
+    expect(s.prova?.notaMinima).toBe(6)
+  })
+  it('matéria fora do edital, sem matéria ou espalhada: simulado comum', async () => {
+    const { provaDaCaixa } = await import('../src/shared/edital')
+    const d = dadosDoEdital()
+    expect(provaDaCaixa(d, [q('port'), q('geografia')])).toBeUndefined()
+    expect(provaDaCaixa(d, [q('port'), q()])).toBeUndefined()
+    expect(provaDaCaixa(d, [q('port'), q('banc'), q('port')])).toBeUndefined()
+    expect(provaDaCaixa({ ...d, edital: undefined }, [q('port')])).toBeUndefined()
+  })
+  it('só vira prova se cobrir o edital inteiro, na quantidade de cada matéria (Codex no PR 36)', async () => {
+    const { provaDaCaixa } = await import('../src/shared/edital')
+    const d = dadosDoEdital()
+    const so = (m: string, n: number) => Array.from({ length: n }, () => q(m))
+    // uma matéria só, ou faltando questões: simulado comum
+    expect(provaDaCaixa(d, [q('port')])).toBeUndefined()
+    expect(provaDaCaixa(d, so('banc', 15))).toBeUndefined()
+    const inteira = EDITAL.materias.flatMap((m) => so(m.materiaId, m.questoes))
+    expect(provaDaCaixa(d, inteira)?.materias).toHaveLength(9)
+    expect(provaDaCaixa(d, inteira.slice(1))).toBeUndefined()
+  })
+})

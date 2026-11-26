@@ -500,6 +500,24 @@
       "arquivo": "banestes-missao5-v6.json",
       "data": "2026-11-25",
       "versaoMinima": "0.1.23"
+    },
+    {
+      "id": "banestes-prova1-v1",
+      "tipo": "simulado",
+      "titulo": "Prova modelo 1: Banestes TB (70 questões, 4 h)",
+      "descricao": "Prova completa no formato do edital 2026 (FCC), com os temas que caíram no TB Banestes 2023. A nota sai como a banca calcula: Gerais ×1, Específicos ×2.",
+      "arquivo": "banestes-prova1.json",
+      "data": "2026-11-26",
+      "versaoMinima": "0.1.27"
+    },
+    {
+      "id": "banestes-missao5-v7",
+      "tipo": "missao",
+      "titulo": "Missão: + Prova modelo 1 (23/11 a 06/12)",
+      "descricao": "A Missão 5 com a prova modelo de 70 questões. O que você já fez continua marcado.",
+      "arquivo": "banestes-missao5-v7.json",
+      "data": "2026-11-26",
+      "versaoMinima": "0.1.27"
     }
   ]
 }

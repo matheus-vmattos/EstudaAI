@@ -126,6 +126,10 @@ export interface Simulado {
   entregueEm: number | null
   /** prova completa no formato do edital (v0.1.16+): onde está cada matéria */
   prova?: { materias: MateriaNaProva[]; notaMinima?: number }
+  /** "Conferir na hora" ligado (v0.1.27): ao marcar, vê o gabarito e a letra trava */
+  conferir?: boolean
+  /** as questões que você conferiu na hora (o tempo delas para ao marcar) */
+  conferidas?: boolean[]
 }
 
 export type TipoDeCartao = 'basico' | 'lacuna'
