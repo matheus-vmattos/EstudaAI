@@ -1,0 +1,143 @@
+{
+ "materia": "Vendas, Negociação e Atendimento",
+ "notas": [
+  {
+   "lugar": [
+    "Atendimento"
+   ],
+   "texto": "## Serviço tem 4 características (cai sempre)\n\n| Característica | O que quer dizer | Consequência no banco |\n|---|---|---|\n| **Intangibilidade** (imaterialidade) | não se vê nem se toca | o cliente julga a qualidade pelo que é tangível: agência, pessoas, equipamentos |\n| **Inseparabilidade** | é produzido e consumido ao mesmo tempo, com quem presta e muitas vezes com o cliente presente | o atendente **faz parte** do serviço |\n| **Variabilidade** | depende de quem presta, onde e quando | não é padronizado |\n| **Perecibilidade** | não pode ser estocado | se não acontece na hora certa, perde a finalidade |\n\n**Como a banca cobrou:**\n- Banestes 2018 (FGV), q. 77, gabarito E: a alternativa errada chamava de \"imaterialidade\" o que é **inseparabilidade** (produzido e consumido ao mesmo tempo, com o cliente participando).\n- Banestes 2018 (FGV), q. 80, gabarito B: por ser intangível, **o serviço não pode ser experimentado antes da compra**. Erradas: \"o cliente não julga os aspectos físicos\", \"pode ser armazenado\", \"é uniforme\".\n\n> **PEGADINHA** Trocar uma característica pela definição de outra é o erro mais cobrado."
+  },
+  {
+   "lugar": [
+    "Atendimento",
+    "Qualidade e excelência"
+   ],
+   "texto": "## Excelência no atendimento, pelo Guia Banestes\n\n- **Visão do Banestes (3.2):** ser o melhor banco de varejo do ES, reconhecido por solidez, segurança, capilaridade, **excelência de atendimento** e profissionalismo.\n- **Atender (6.1.2):** com **dignidade, cortesia, eficiência e respeito**, com informações **claras, precisas, transparentes e em linguagem simples**.\n- **Responder sempre (6.1.3):** mesmo que a resposta seja negativa, de maneira **adequada e tempestiva**.\n- **Ouvir o cliente (6.1.5):** levar as opiniões às áreas certas para melhorar produtos e serviços.\n- **Excelência como princípio (4.24):** elevar a qualidade dos produtos e serviços de forma contínua.\n\n**Como a banca cobrou:** Banestes 2023 (FGV), q. 57, gabarito C. A boa prática que vale \"tanto no passado quanto hoje\" é **ter um projeto bem estruturado de atendimento**. Concentrar a atenção em indecisos ou só nos de maior potencial **não** foi aceito."
+  },
+  {
+   "lugar": [
+    "Atendimento",
+    "Satisfação do cliente"
+   ],
+   "texto": "## Satisfação e valor: as duas definições que a banca usa\n\n**Satisfação = percebido × esperado.** Banestes 2018 (FGV), q. 74, gabarito E: satisfação é **a relação entre o que o cliente percebeu do serviço e o que ele esperava**.\n- Erradas: \"julgamento do colaborador\", \"criar expectativa alta\", \"encantamento\".\n\n**Valor = benefícios > custos.** Banestes 2018 (FGV), q. 75, gabarito D: o serviço tem valor quando **o somatório de benefícios é maior que os custos financeiros e emocionais**.\n- Errada: \"benefícios percebidos como satisfatórios\", porque não compara com os custos.\n\n**Valor gera vantagem.** Banestes 2023 (FGV), q. 69, gabarito A: quando a empresa direciona a estratégia para criar valor, conquista **vantagem competitiva**.\n\n> **PEGADINHA** Satisfação compara com a EXPECTATIVA; valor compara com os CUSTOS (financeiros e emocionais)."
+  },
+  {
+   "lugar": [
+    "Atendimento",
+    "Comunicação interpessoal"
+   ],
+   "texto": "## Comunicar com clareza (regra, não só técnica)\n\n**Res. CMN 4.949/2021, art. 4º:**\n- III: informar de forma **clara e precisa** o necessário à **livre escolha**: direitos e deveres, custos, penalidades e **riscos**.\n- IV: **redação clara e objetiva** em contratos, recibos, extratos e comprovantes, permitindo identificar prazos, valores, encargos e multas.\n\n**Guia Banestes (6.1.2):** informações claras, precisas, transparentes e **em linguagem simples**. **Tolerância (4.6):** ser paciente frente a críticas de clientes e do público.\n\n**Como a banca cobrou:** Banestes 2023 (FGV), q. 59, gabarito E. As normas de conduta no trato com pares, sociedade e clientes, registradas em códigos, foram chamadas de **etiqueta empresarial**."
+  },
+  {
+   "lugar": [
+    "Atendimento",
+    "Canais e transformação digital"
+   ],
+   "texto": "## Digital não substitui o presencial\n\n**Res. CMN 4.949/2021, art. 5º:** é **vedado** impedir, recusar, dificultar ou restringir o **atendimento presencial**, inclusive no **guichê de caixa**, **mesmo quando houver atendimento em outros canais**. Exceções (§ 1º), entre outras: arrecadação e cobrança de terceiros sem convênio que preveja o recebimento no guichê, boleto fora do padrão e **pagamento com cheque**.\n\n**Guia Banestes (6.1.4):** direcionar o cliente ao canal mais adequado, sendo **vedado bloquear ou dificultar** o acesso aos setores de atendimento.\n\n**Res. 4.949, art. 4º, VII:** sem barreiras nem procedimentos desarrazoados para atender demandas, **cancelar contratos** e **transferir o relacionamento** para outra instituição.\n\n> **PEGADINHA** \"O banco pode exigir que o cliente use o app se o serviço estiver disponível nele\": ERRADO."
+  },
+  {
+   "lugar": [
+    "Atendimento",
+    "Presencial e digital"
+   ],
+   "texto": "## SAC: o decreto novo (Decreto 13.135/2026, que revogou o 11.034/2022)\n\n**Quem está sujeito (art. 1º, parágrafo único):** fornecedores regulados pelo Executivo federal que atendam aos critérios do órgão regulador, e quem oferece **por plataforma digital serviços financeiros, de pagamento ou de crédito regulados pelo Banco Central**.\n\n- **Canal eletrônico 24 h, 7 dias** (art. 12); atendimento **humano** no eletrônico e no telefone **das 8h às 20h, todos os dias** (arts. 12, § 1º, e 14, § 1º).\n- **Espera:** até **20 segundos** em pelo menos 80% das demandas e até **300 segundos** nas demais (art. 15, I).\n- **Caiu a ligação** com o atendente? Retorno em até **300 segundos** (art. 14, § 3º).\n- **Resposta:** até **7 dias corridos** do registro (art. 21). Cobrança indevida ou serviço não pedido: **suspender na hora** e concluir em até **48 horas** (§ 3º).\n- **Cancelamento:** em todos os níveis do atendimento, com **efeito imediato** (art. 20).\n- **Protocolo** para acompanhar a demanda (art. 18).\n- **Gravações guardadas por 90 dias** (art. 19); **histórico por 6 meses** após a resolução (art. 18, § 4º).\n\n> **PEGADINHA** Prova antiga usa o decreto de 2022 (2 anos de histórico, atendente humano por 8 h por dia). O vigente é o 13.135/2026."
+  },
+  {
+   "lugar": [
+    "Comportamento do consumidor",
+    "Perfil e necessidades"
+   ],
+   "texto": "## Conhecer o perfil é obrigação\n\n**Res. CMN 4.949/2021:**\n- **Art. 3º, II:** tratamento **justo e equitativo**, considerando os **perfis** de relacionamento e as **vulnerabilidades** dos clientes.\n- **Art. 7º, § 1º:** para conceber e ofertar produtos, a instituição define o **perfil dos clientes do público-alvo** de cada produto, considerando suas características e complexidade.\n\n**Como a banca cobrou:**\n- Banestes 2018 (FGV), q. 71, gabarito A: ao apresentar um produto, o técnico deve **focar na necessidade do cliente**.\n- Banestes 2023 (FGV), q. 63, gabarito D: para ampliar resultados na carteira, o gestor **segmenta a base de clientes** por características comuns (econômicas, sociais etc.)."
+  },
+  {
+   "lugar": [
+    "Comportamento do consumidor",
+    "Adequação de produtos ao perfil"
+   ],
+   "texto": "## Adequação (suitability) na regra do BCB\n\n**Res. CMN 4.949/2021:**\n- **Art. 4º, I:** assegurar a **adequação dos produtos e serviços ofertados ou recomendados às necessidades, aos interesses e aos objetivos** dos clientes.\n- **Art. 8º:** **equilibrar as metas e os incentivos** dos funcionários com as diretrizes da política de relacionamento, e tratar os desvios.\n\n**CDC (Lei 8.078/1990, art. 39):** é prática abusiva:\n- I: **venda casada** (condicionar um produto a outro);\n- IV: **prevalecer-se da fraqueza ou ignorância** do consumidor, pela idade, saúde, conhecimento ou condição social, para vender.\n\n**Guia Banestes (6.1.2.1):** é vedado **induzir a erro**, **garantir resultado futuro** ou sugerir **isenção de risco**. Caiu na Banestes 2023 (FGV), q. 51, gabarito E: as três afirmativas sobre o relacionamento com o cliente no Guia (esta entre elas) estavam corretas.\n\n> **PEGADINHA** Meta comercial não justifica oferecer produto inadequado: a norma manda equilibrar metas com a política de relacionamento."
+  },
+  {
+   "lugar": [
+    "Vendas",
+    "Técnicas de vendas"
+   ],
+   "texto": "## O que a banca considera técnica de venda\n\n- **Conhecer o produto** dá **segurança e habilidade para responder objeções** (Banestes 2018 (FGV), q. 79, gabarito C).\n- **Focar na necessidade do cliente** ao apresentar o produto (Banestes 2018 (FGV), q. 71, gabarito A).\n- **O processo não acaba no fechamento:** as etapas posteriores visam **reter e fidelizar** (Banestes 2023 (FGV), q. 64, gabarito A).\n- **Promoção** é o \"P\" do mix de marketing que oferece **incentivos e vantagens** para aumentar as vendas (Banestes 2018 (FGV), q. 76, gabarito A; Banestes 2023 (FGV), q. 65, gabarito A).\n- **Metas** são **valores a atingir em um espaço de tempo definido** (Banestes 2023 (FGV), q. 67, gabarito D).\n- **Motivação da equipe:** estimular **competições sadias**; potencializar conflitos internos NÃO (Banestes 2023 (FGV), q. 68, gabarito B).\n\n**Limite legal:** venda casada é prática abusiva (CDC, art. 39, I)."
+  },
+  {
+   "lugar": [
+    "Vendas",
+    "Prospecção"
+   ],
+   "texto": "## Prospectar, manter e reativar\n\n**Como a banca cobrou:** Banestes 2023 (FGV), q. 56, gabarito C. Além de prospectar novos clientes e manter os ativos, a empresa tenta **reativar clientes perdidos**. A ação que sustenta isso é **manter atualizados os cadastros de clientes**.\n\n**Segmentar antes de abordar:** Banestes 2023 (FGV), q. 63, gabarito D. Dividir a base por características comuns (econômicas, sociais etc.) para definir a estratégia de cada grupo.\n\n**Limite legal (Res. CMN 4.949/2021, art. 4º, VI):** só enviar ou habilitar **cartão ou outro instrumento de pagamento** com **solicitação ou autorização expressa** do cliente. O CDC também proíbe enviar produto ou serviço não solicitado (art. 39, III)."
+  },
+  {
+   "lugar": [
+    "Vendas",
+    "Fidelização e retenção"
+   ],
+   "texto": "## Fidelizar é etapa da venda\n\n- Banestes 2023 (FGV), q. 64, gabarito A: as técnicas de vendas incluem etapas **posteriores ao fechamento**, que visam **reter e fidelizar** os clientes.\n- Banestes 2023 (FGV), q. 58, gabarito E: bancos de dados com o histórico de contatos e transações viram informação para um planejamento comercial **voltado a cada cliente**, base do **marketing de relacionamento**.\n- Banestes 2023 (FGV), q. 66, gabarito E: a **reclamação**, usada corretamente, é **oportunidade de melhoria** e de manter o cliente.\n\n**Guia Banestes (6.1.8):** evitar transferir contas de clientes quando gerentes mudam de agência, para não quebrar o relacionamento."
+  },
+  {
+   "lugar": [
+    "Vendas",
+    "Pós-venda"
+   ],
+   "texto": "## Depois da venda: direitos do cliente\n\n- **Arrependimento (CDC, art. 49):** contratação **fora do estabelecimento** (telefone, internet, em casa) pode ser desfeita em **7 dias** da assinatura ou do recebimento, com devolução imediata e corrigida do que foi pago.\n- **Sair e levar o relacionamento (Res. CMN 4.949/2021, art. 4º, VII):** sem barreiras para **cancelar contratos** e para **transferir o relacionamento** a outra instituição.\n- **Cancelamento pelo SAC (Decreto 13.135/2026, art. 20):** com **efeito imediato**.\n- **Oferta e publicidade obrigam (CDC, art. 30):** o que foi anunciado com precisão integra o contrato.\n\n> **PEGADINHA** Os 7 dias valem para contratação FORA do estabelecimento. Na agência não há esse prazo legal."
+  },
+  {
+   "lugar": [
+    "Negociação",
+    "Conceitos e etapas"
+   ],
+   "texto": "## Negociação por princípios (Harvard)\n\nFisher, Ury e Patton (*Getting to Yes*), segundo o Program on Negotiation da Harvard Law School:\n- **Interesses, não posições:** a negociação integrativa olha os **interesses por trás** das posições fixas.\n- **Critérios objetivos:** resolver as diferenças com **padrões objetivos**, tratando cada ponto como uma **busca conjunta** desses critérios.\n\n**BATNA**: *Best Alternative to a Negotiated Agreement*, a **melhor alternativa a um acordo negociado**, ou seja, o que você fará se não houver acordo."
+  },
+  {
+   "lugar": [
+    "Negociação",
+    "Estratégias e técnicas"
+   ],
+   "texto": "## Na prática do atendimento\n\n- **Comece pelos interesses:** pergunte o que o cliente precisa resolver (por exemplo, parcela que caiba no orçamento) antes de discutir a posição (\"quero isenção de juros\").\n- **Use critério objetivo:** tabela de tarifas, regra do produto, simulação no sistema. Assim a conversa sai do \"eu quero × você não pode\".\n- **Tenha alternativas:** saber o que oferecer se a primeira proposta não servir, como outro prazo ou outro produto adequado ao perfil.\n\n**Limite das normas:** não garantir resultado nem omitir risco (Guia Banestes, 6.1.2.1); só decidir em nome do cliente com **autorização formal** dele (6.1.10).\n\n> As três ideias vêm do método de negociação por princípios (Program on Negotiation, Harvard). Os exemplos são ilustrativos."
+  },
+  {
+   "lugar": [
+    "Relacionamento com o cliente",
+    "CRM"
+   ],
+   "texto": "## CRM: dados do cliente a serviço do relacionamento\n\n**Como a banca cobrou:** Banestes 2023 (FGV), q. 58, gabarito E. Bancos de dados com **registros de contatos, assuntos tratados e histórico de transações** viram informação para um planejamento comercial **voltado a cada cliente**, o **marketing de relacionamento**.\n\n**Os limites da regra:**\n- **Res. CMN 4.949/2021, art. 7º, VII:** coleta, tratamento e manutenção de dados dos clientes seguem a política de relacionamento.\n- **LGPD (Lei 13.709/2018, art. 6º):** os dados são usados para **finalidade** informada, de forma **adequada** e **necessária**.\n- **Guia Banestes (4.13):** não consultar cadastro e contas **sem necessidade do serviço**; garantir a privacidade **mesmo depois** que a pessoa deixa de ser cliente (4.13.2)."
+  },
+  {
+   "lugar": [
+    "Relacionamento com o cliente",
+    "Marketing de relacionamento"
+   ],
+   "texto": "## Marketing no banco: o que a FGV cobrou\n\n- **Mix de marketing (4 Ps):** produto, preço, praça, **promoção**. A **promoção** é a oferta de incentivos e vantagens para aumentar as vendas (Banestes 2018 (FGV), q. 76; Banestes 2023 (FGV), q. 65; gabarito A nas duas).\n- **Variável incontrolável:** a **situação social, econômica e cultural do país** (Banestes 2018 (FGV), q. 78, gabarito E). Mix de marketing, localização das filiais e site são controláveis.\n- **Análise ambiental:** estudar a concorrência e as influências externas (oportunidades e ameaças) para conhecer os pontos fortes e fracos (Banestes 2023 (FGV), q. 70, gabarito D).\n- **Produto** = bem + serviço; serviços também são produtos, e o que o banco vende é um **produto financeiro** (Banestes 2023 (FGV), q. 60, gabarito D).\n- **Marketing de relacionamento:** usar o histórico de cada cliente para planejar a abordagem (Banestes 2023 (FGV), q. 58, gabarito E)."
+  },
+  {
+   "lugar": [
+    "Relacionamento com o cliente",
+    "Experiência do cliente"
+   ],
+   "texto": "## Momentos da verdade\n\nSão **todos os contatos** entre o cliente e a empresa: atendimento, ações comerciais, dúvidas, reclamações.\n\n**Como a banca cobrou:**\n- Banestes 2023 (FGV), q. 61, gabarito B: nesses momentos, os clientes **julgam a qualidade** dos produtos e serviços.\n- Banestes 2018 (FGV), q. 72, gabarito C: são preciosos porque **podem favorecer uma venda, se forem de boa qualidade**. Erradas: \"só os primeiros momentos contam\", \"só o atendente constrói\", \"podem ser uniformizados\".\n\n**Ligação com o Guia Banestes:** \"Em cada gesto, em cada atitude e em cada silêncio desenhamos a imagem do Sistema Financeiro Banestes\" (Apresentação)."
+  },
+  {
+   "lugar": [
+    "Conflitos e reclamações"
+   ],
+   "texto": "## Ouvidoria (Res. CMN 4.860/2020)\n\n- **Finalidade (art. 3º):** atender **em última instância** o que não foi resolvido no **atendimento primário** (agência, correspondente, **SAC**) e **mediar conflitos**.\n- **Prazo (art. 6º, § 2º):** resposta em até **10 dias úteis**, prorrogável **uma vez**, por igual período, de forma justificada, limitado a **10% das demandas do mês**.\n- **Independência (art. 4º, parágrafo único):** não pode estar vinculada a negociação de produtos, riscos, auditoria interna ou compliance.\n- **Compartilhamento (art. 5º, I):** conglomerado com pelo menos duas instituições pode ter **ouvidoria única**.\n- **Acesso gratuito**, inclusive por telefone (art. 7º, III).\n\n**Reclamação é oportunidade:** Banestes 2023 (FGV), q. 66, gabarito E. Usadas corretamente, as reclamações são **oportunidade de melhoria dos processos comerciais**.\n\n> **PEGADINHA** Primeiro o SAC ou a agência; a ouvidoria é a ÚLTIMA instância. Prazo: 10 dias ÚTEIS (o SAC tem 7 dias corridos)."
+  },
+  {
+   "lugar": [
+    "Ética e educação financeira no atendimento"
+   ],
+   "texto": "## Ética na oferta\n\n- **Guia Banestes (6.1.2.1):** é vedado **induzir o cliente a erro**, **assegurar ou sugerir garantia de resultados futuros** ou **isenção de risco**.\n- **CDC (Lei 8.078/1990):** **informação adequada e clara**, inclusive sobre riscos (art. 6º, III); oferta precisa **vincula** o fornecedor (art. 30); **publicidade enganosa** é a que induz a erro, inclusive **por omissão** de dado essencial (art. 37, §§ 1º e 3º).\n- **Res. CMN 4.949/2021, art. 4º, III:** informar custos, penalidades e **riscos** para a livre escolha.\n\n## Educação financeira\n**Decreto 10.393/2020, art. 1º:** institui a nova **ENEF** (Estratégia Nacional de Educação Financeira), para promover a educação **financeira, securitária, previdenciária e fiscal**, e o **FBEF** (Fórum Brasileiro de Educação Financeira).\n\n**No Guia (4.26):** o próprio profissional deve respeitar sua capacidade de endividamento.\n\n> **PEGADINHA** \"Esta aplicação não tem risco\" ou \"o retorno é garantido\" na fala do atendente é infração ao Guia, mesmo que o produto seja conservador."
+  }
+ ],
+ "fontes": [
+  "Res. CMN 4.949/2021, arts. 2º a 9º; Res. CMN 4.860/2020, arts. 3º a 7º — bcb.gov.br (busca de normas, redação vigente)",
+  "Lei 8.078/1990 (CDC), arts. 6º, 30, 31, 37, 39 e 49; Decreto 13.135/2026 (SAC), arts. 1º, 12, 14, 15, 18 a 21 e 24; Decreto 10.393/2020, art. 1º; Lei 13.709/2018, art. 6º — planalto.gov.br",
+  "Guia de Conduta Ética do Sistema Financeiro Banestes (OCR do PDF oficial): Apresentação e itens 3.2, 4.6, 4.13, 4.24, 4.26, 6.1.2 a 6.1.10",
+  "Program on Negotiation, Harvard Law School (pon.harvard.edu): artigos sobre negociação por princípios e BATNA",
+  "Gabaritos oficiais das provas Banestes 2018 (FGV, q. 71, 72, 74 a 80) e Banestes 2023 (FGV, q. 51, 56 a 61, 63 a 70). A banca desta prova é a FCC, mas os conceitos são os mesmos.",
+  "Ficou de fora por não ter sido conferido em fonte primária: suitability da CVM (Res. CVM 30), definições de cidadania financeira do BCB (página não carregou) e técnicas de venda de manual (SPIN, AIDA)"
+ ]
+}
