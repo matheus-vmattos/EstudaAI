@@ -1,15 +1,7 @@
 import { useEffect, useMemo, useState, type DragEvent } from 'react'
 import { Icone } from '../Icone'
-import { Confirmar } from '../Confirmar'
 import { novoId, type Mudar } from '../useDados'
-import {
-  acertos,
-  formatarTempo,
-  lerRespostaDaIa,
-  montarPrompt,
-  refazerEmbaralhado,
-  tempoDoColado
-} from '../../../shared/questoes'
+import { lerRespostaDaIa, montarPrompt, tempoDoColado } from '../../../shared/questoes'
 import { acharNo } from '../../../shared/arvore'
 import { EscolherLugar } from '../EscolherLugar'
 import {
@@ -21,6 +13,7 @@ import {
 } from '../../../shared/adaptado'
 import { semAcento } from '../../../shared/texto'
 import { PainelAdaptado } from './PainelAdaptado'
+import { SeusSimulados } from './SeusSimulados'
 import type {
   ConfigDoSimulado,
   Dados,
@@ -78,6 +71,12 @@ export function Questoes({
     }))
   }, [pedido?.chave]) // eslint-disable-line react-hooks/exhaustive-deps
   const base = adaptarDe ? (dados.simulados.find((x) => x.id === adaptarDe) ?? null) : null
+  // a tela abre na lista; o gerador abre por "+ Novo simulado", "Colar", adaptar
+  // ou pelo pedido do Meu edital
+  const [gerando, setGerando] = useState(() => !!base || !!pedido)
+  useEffect(() => {
+    if (pedido || base) setGerando(true)
+  }, [pedido?.chave, base?.id]) // eslint-disable-line react-hooks/exhaustive-deps
   const diagnostico = useMemo(() => (base ? diagnosticar(base) : null), [base])
   const [opcoes, setOpcoes] = useState<OpcoesAdaptadas | null>(null)
   // ao entrar no modo adaptado, começa pela sugestão e pelo tamanho do último
@@ -105,7 +104,6 @@ export function Questoes({
   const [resposta, setResposta] = useState('')
   const [origem, setOrigem] = useState('')
   const [arrastando, setArrastando] = useState(false)
-  const [apagando, setApagando] = useState<Simulado | null>(null)
 
   const muda = <K extends keyof ConfigDoSimulado>(k: K, v: ConfigDoSimulado[K]): void => {
     setConfig((c) => ({ ...c, [k]: v }))
@@ -149,6 +147,7 @@ export function Questoes({
   const receber = (texto: string, de: string): void => {
     setResposta(texto)
     setOrigem(texto.trim() ? de : '')
+    if (texto.trim()) setGerando(true)
   }
   const lerArquivo = async (arquivo: File | undefined): Promise<void> => {
     if (arquivo) receber(await arquivo.text(), arquivo.name)
@@ -207,7 +206,17 @@ export function Questoes({
     abrirSimulado(id)
   }
 
-  const historico = [...dados.simulados].sort((a, b) => b.criadoEm - a.criadoEm)
+  if (!gerando)
+    return (
+      <SeusSimulados
+        dados={dados}
+        mudar={mudar}
+        abrirSimulado={abrirSimulado}
+        adaptar={adaptar}
+        novo={() => setGerando(true)}
+        colar={() => void colar()}
+      />
+    )
 
   return (
     <div className="tela">
@@ -219,11 +228,17 @@ export function Questoes({
             </div>
             <h1 className="titulo">{base ? base.config.tema : 'Gerador de questões'}</h1>
           </div>
-          {base && (
-            <button type="button" className="botao" onClick={() => adaptar(null)}>
-              Voltar ao gerador normal
-            </button>
-          )}
+          <button
+            type="button"
+            className="botao"
+            onClick={() => {
+              adaptar(null)
+              setGerando(false)
+            }}
+          >
+            <Icone nome="esquerda" tamanho={14} />
+            Seus simulados
+          </button>
           <ol className="etapas" aria-label="Etapas">
             <li className={temaOk ? 'feita' : ''}>1 Configurar</li>
             <li className={copiado ? 'feita' : ''}>2 Copiar prompt</li>
@@ -454,101 +469,7 @@ export function Questoes({
             )}
           </section>
         </div>
-
-        {historico.length > 0 && (
-          <section
-            aria-labelledby="titulo-historico"
-            style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 10 }}
-          >
-            <h2 id="titulo-historico" className="secao">
-              Meus simulados
-            </h2>
-            <div className="historico">
-              {historico.map((s) => {
-                const total = s.questoes.length
-                const certas = acertos(s.questoes, s.respostas)
-                const pct = Math.round((certas / total) * 100)
-                return (
-                  <div key={s.id} className="linha-historico">
-                    <span className="nome">{s.config.tema}</span>
-                    <span className="meta">{new Date(s.criadoEm).toLocaleDateString('pt-BR')}</span>
-                    <span className="meta">
-                      {total} questões · {formatarTempo(s.decorridoMs)}
-                    </span>
-                    {s.entregueEm ? (
-                      <span
-                        style={{ fontFamily: 'var(--mono)' }}
-                        className={pct >= 70 ? 'nota-boa' : pct >= 50 ? 'nota-media' : 'nota-ruim'}
-                      >
-                        {certas}/{total} · {pct}%
-                      </span>
-                    ) : (
-                      <span className="meta" style={{ color: 'var(--ambar)' }}>
-                        Em andamento
-                      </span>
-                    )}
-                    {s.entregueEm && (
-                      <button
-                        type="button"
-                        className="botao"
-                        title="Gerar o próximo simulado com base neste desempenho"
-                        onClick={() => adaptar(s.id)}
-                      >
-                        Adaptar
-                      </button>
-                    )}
-                    <button type="button" className="botao" onClick={() => abrirSimulado(s.id)}>
-                      {s.entregueEm ? 'Ver gabarito' : 'Continuar'}
-                    </button>
-                    {s.entregueEm && (
-                      <button
-                        type="button"
-                        className="botao"
-                        title="Mesmas questões, em outra ordem"
-                        onClick={() => {
-                          const novo = refazerEmbaralhado(s, novoId(), Date.now())
-                          mudar((d) => {
-                            d.simulados.push(novo)
-                          })
-                          abrirSimulado(novo.id)
-                        }}
-                      >
-                        <Icone nome="atualizar" tamanho={15} />
-                        Refazer
-                      </button>
-                    )}
-                    <button
-                      type="button"
-                      className="botao-icone"
-                      aria-label={`Apagar simulado ${s.config.tema}`}
-                      title="Apagar"
-                      onClick={() => setApagando(s)}
-                    >
-                      <Icone nome="lixo" tamanho={15} />
-                    </button>
-                  </div>
-                )
-              })}
-            </div>
-          </section>
-        )}
       </main>
-
-      {apagando && (
-        <Confirmar
-          titulo="Apagar este simulado?"
-          texto={`“${apagando.config.tema}” e as respostas dele somem do histórico.`}
-          botao="Apagar"
-          aoConfirmar={() => {
-            const id = apagando.id
-            setApagando(null)
-            mudar((d) => {
-              d.simulados = d.simulados.filter((s) => s.id !== id)
-            })
-          }}
-          aoCancelar={() => setApagando(null)}
-        />
-      )}
     </div>
   )
 }

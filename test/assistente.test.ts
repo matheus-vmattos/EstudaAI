@@ -1,6 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import { raioX } from '../src/shared/raioX'
-import { chanceDeAprovacao, fraseDaChance, respostasDaMateria } from '../src/shared/chance'
+import {
+  chanceDeAprovacao,
+  fraseDaChance,
+  notaEstimada,
+  respostasDaMateria
+} from '../src/shared/chance'
+import { historico } from '../src/shared/historico'
 import {
   feitaPelosDados,
   lerPacoteDeMissao,
@@ -1126,5 +1132,77 @@ describe('tempo do simulado colado (0.1.28)', () => {
     expect(tempoDoColado(0, 10, 55)).toBe(0) // sem limite continua sem limite
     expect(tempoDoColado(20, 10, 3)).toBe(6)
     expect(tempoDoColado(10, 10, 1)).toBe(1)
+  })
+})
+
+describe('Nota estimada (prova real pesa o dobro)', () => {
+  // prova real: questões com a matéria escrita, como as convertidas do PDF
+  const provaReal = (
+    materia: string,
+    certas: number,
+    total: number,
+    respondidas = total
+  ): Simulado => {
+    const s = sim(
+      Array.from({ length: total }, (_, i): [string, boolean, number] => ['x', i < certas, 20])
+    )
+    return {
+      ...s,
+      id: `real-${materia}`,
+      entregueEm: respondidas === total ? 2 : null,
+      config: { ...s.config, tema: `Prova real · ${materia}` },
+      questoes: s.questoes.map((x) => ({ ...x, materia })),
+      respostas: s.respostas.map((r, i) => (i < respondidas ? r : null))
+    }
+  }
+  it('sem prova real, é a nota do treino', () => {
+    const d = dadosDoEdital()
+    for (const m of EDITAL.materias) d.simulados.push(daMateria(m.materiaId, 8, 10))
+    const n = notaEstimada(d, EDITAL)
+    expect(n.nota).toBeCloseTo(8)
+    expect(n.notaDoTreino).toBeCloseTo(8)
+    expect(n.fontes).toEqual([])
+  })
+  it('Bancários 90% no treino e 40% na prova real: (9 + 2×4) / (10 + 2×10)', () => {
+    const d = dadosDoEdital()
+    for (const m of EDITAL.materias) d.simulados.push(daMateria(m.materiaId, 9, 10))
+    d.simulados.push(provaReal('banc', 4, 10))
+    const n = notaEstimada(d, EDITAL)
+    expect(n.acertoReal.get('banc')).toEqual({ acerto: 0.4, questoes: 10 })
+    // Bancários vale 25% da nota; as outras seguem em 90%
+    const banc = (9 + 2 * 4) / (10 + 2 * 10)
+    expect(n.nota).toBeCloseTo((0.75 * 0.9 + 0.25 * banc) * 10)
+    expect(n.notaDoTreino).toBeCloseTo(9)
+    expect(n.fontes).toMatchObject([{ tipo: 'real', acerto: 0.4, respondidas: 10 }])
+  })
+  it('prova real em andamento entra com o que já foi respondido', () => {
+    const d = dadosDoEdital()
+    d.simulados.push(provaReal('banc', 3, 10, 5))
+    const n = notaEstimada(d, EDITAL)
+    expect(n.acertoReal.get('banc')).toEqual({ acerto: 0.6, questoes: 5 })
+    expect(n.fontes[0]).toMatchObject({ respondidas: 5, total: 10, acerto: 0.6 })
+  })
+})
+
+describe('Seus simulados: em andamento, provas, treinos por matéria', () => {
+  it('separa e agrupa', () => {
+    const d = dadosDoEdital()
+    const a = { ...daMateria('banc', 5, 10, 1), criadoEm: 1 }
+    const b = { ...daMateria('banc', 8, 10, 3), criadoEm: 3 }
+    const c = { ...daMateria('port', 2, 10, 2), criadoEm: 2 }
+    const real = {
+      ...sim([['x', true, 10]]),
+      id: 'r',
+      criadoEm: 4,
+      config: { ...a.config, tema: 'Prova real · X' }
+    }
+    const meio = { ...sim([['x', true, 10]]), id: 'm', criadoEm: 5, entregueEm: null }
+    d.simulados.push(a, b, c, real, meio)
+    const h = historico(d)
+    expect(h.emAndamento.map((s) => s.id)).toEqual(['m'])
+    expect(h.provas.map((s) => s.id)).toEqual(['r'])
+    // a matéria treinada por último primeiro; dentro dela, do mais antigo ao mais novo
+    expect(h.treinos.map((g) => g.nome)).toEqual(['banc', 'port'])
+    expect(h.treinos[0].pcts).toEqual([50, 80])
   })
 })

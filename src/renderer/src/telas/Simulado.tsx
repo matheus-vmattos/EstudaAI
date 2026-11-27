@@ -638,6 +638,7 @@ function Resultado({
   const [vista, setVista] = useState<'resumo' | 'raiox' | 'gabarito'>(nota ? 'resumo' : 'raiox')
   const [filtro, setFiltro] = useState<'todas' | 'estudar'>('todas')
   const [estudando, setEstudando] = useState(false)
+  const [apagando, setApagando] = useState(false)
   const paraEstudar = questoesParaEstudar(s).map((x) => x.indice)
   const visiveis = filtro === 'todas' ? s.questoes.map((_, i) => i) : paraEstudar
   const posicao = visiveis.indexOf(atual)
@@ -735,6 +736,31 @@ function Resultado({
           <Icone nome="atualizar" tamanho={16} />
           Refazer embaralhado
         </button>
+        <button
+          type="button"
+          className="botao-icone"
+          aria-label="Apagar este simulado"
+          title="Apagar este simulado"
+          onClick={() => setApagando(true)}
+        >
+          <Icone nome="lixo" tamanho={15} />
+        </button>
+        {apagando && (
+          <Confirmar
+            titulo="Apagar este simulado?"
+            texto={`“${s.config.tema}” e as respostas dele somem do histórico.`}
+            botao="Apagar"
+            aoConfirmar={() => {
+              const id = s.id
+              setApagando(false)
+              sair()
+              mudar((d) => {
+                d.simulados = d.simulados.filter((x) => x.id !== id)
+              })
+            }}
+            aoCancelar={() => setApagando(false)}
+          />
+        )}
         <div className="placar">
           <div>
             <span className="meta">Acertos</span>

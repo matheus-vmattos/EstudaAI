@@ -26,10 +26,10 @@ import {
 } from '../../../shared/estudoDoDia'
 import { ProvaCompleta } from './ProvaCompleta'
 import { Explique } from '../Explique'
-import { ListaDeRespostas } from '../RespostaDoClaude'
+import { estadoDaResposta } from '../../../shared/explicar'
 import { semAcento } from '../../../shared/texto'
 import { importarDaCaixa } from '../importarDaCaixa'
-import { chanceDeAprovacao, fraseDaChance, NOME_DO_NIVEL } from '../../../shared/chance'
+import { chanceDeAprovacao, notaEstimada } from '../../../shared/chance'
 import {
   feitaPelosDados,
   pontosDaMissao,
@@ -38,6 +38,64 @@ import {
 import type { Dados, Id, ItemDaCaixa, TarefaDaMissao, TarefaDoDia } from '../../../shared/tipos'
 
 const pct = (x: number): string => `${Math.round(x * 100)}%`
+const um = (x: number): string =>
+  x.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
+const corDe = (x: number | null): string =>
+  x === null ? 'sem' : x >= 0.7 ? 'nota-boa' : x >= 0.5 ? 'nota-media' : 'nota-ruim'
+const MATERIAS_NO_TOPO = 4
+
+/** uma tarefa da missão no Hoje (com os pontos) */
+function TarefaDaMissaoLinha({
+  t,
+  feita,
+  explicando,
+  marcar,
+  fazer
+}: {
+  t: TarefaDaMissao
+  feita: boolean
+  explicando: boolean
+  marcar: () => void
+  fazer: () => void
+}) {
+  return (
+    <div className={`tarefa-dia com-pontos ${feita ? 'feita' : ''}`}>
+      <button
+        type="button"
+        className="marca-tarefa"
+        aria-pressed={feita}
+        aria-label={feita ? `Desmarcar: ${t.titulo}` : `Marcar como feito: ${t.titulo}`}
+        onClick={marcar}
+      >
+        {feita && <Icone nome="check" tamanho={14} />}
+      </button>
+      <span className="corpo-tarefa">
+        <span className="titulo-tarefa">{t.titulo}</span>
+        <span className="meta">Missão · {t.detalhe}</span>
+      </span>
+      <span className={`pontos ${feita ? 'nota-boa' : ''}`}>+{t.pontos} pts</span>
+      {!feita ? (
+        <button
+          type="button"
+          className="botao passo"
+          aria-pressed={t.tipo === 'explicar' ? explicando : undefined}
+          onClick={fazer}
+        >
+          {t.tipo === 'explicar'
+            ? 'Explicar'
+            : t.tipo === 'simulado'
+              ? 'Começar'
+              : t.tipo === 'anotacoes'
+                ? 'Ler'
+                : 'Abrir'}
+          <Icone nome="direita" tamanho={14} />
+        </button>
+      ) : (
+        <span />
+      )}
+    </div>
+  )
+}
 
 /** O concurso numa tela: quanto falta, quanto cada matéria vale e o próximo
  *  passo de cada uma, da que mais precisa de estudo para a que menos. */
@@ -93,6 +151,8 @@ export function MeuEdital({
     })
   }, [vistasFeitas.map((t) => t.id).join()]) // eslint-disable-line react-hooks/exhaustive-deps
   const [naProva, setNaProva] = useState(false)
+  const [verFeitas, setVerFeitas] = useState(false)
+  const [todasMaterias, setTodasMaterias] = useState(false)
   // o plano do dia é fixado na primeira vez que a tela abre no dia
   const hoje = diaDe(agora)
   useEffect(() => {
@@ -156,6 +216,14 @@ export function MeuEdital({
   }
   const e = dados.edital
   const chance = e ? chanceDeAprovacao(dados, e) : null
+  const nota = e ? notaEstimada(dados, e) : null
+  const pontos = missao ? pontosDaMissao(missao) : null
+  // a missão entra no Hoje: o que falta fica na lista; as feitas, recolhidas
+  const pendentes = missao ? missao.tarefas.filter((t) => !feitaNaMissao(missao, t)) : []
+  const concluidas = missao ? missao.tarefas.filter((t) => feitaNaMissao(missao, t)) : []
+  const respostasNovas = (dados.explicacoes ?? []).filter(
+    (x) => x.texto.trim() && estadoDaResposta(dados, x) === 'nova'
+  ).length
   const situacao = situacaoDoEdital(dados, agora)
   const dias = e ? diasAte(e.dataProva, agora) : null
 
@@ -229,55 +297,14 @@ export function MeuEdital({
               </button>
             </header>
 
-            {chance && (
-              <section aria-labelledby="t-chance" className="chance">
-                <h2 id="t-chance" className="secao">
-                  Chance de aprovação
-                </h2>
-                {chance.nota === null ? (
-                  <span className="frase-chance">
-                    Ainda não sei: nenhuma matéria foi medida em simulado. O primeiro simulado de
-                    cada matéria já dá o número.
-                  </span>
-                ) : (
-                  <>
-                    <div className="nota-chance">
-                      <span
-                        className={`numero ${chance.notaMinima === null ? '' : chance.nota < chance.notaMinima ? 'nota-ruim' : 'nota-boa'}`}
-                      >
-                        {chance.nota.toLocaleString('pt-BR', {
-                          minimumFractionDigits: 1,
-                          maximumFractionDigits: 1
-                        })}
-                      </span>
-                      <span className="meta">
-                        nota projetada
-                        {chance.notaMinima !== null &&
-                          ` · mínimo ${chance.notaMinima.toLocaleString('pt-BR', { minimumFractionDigits: 1 })}`}
-                      </span>
-                    </div>
-                    <span className="barra">
-                      <span style={{ width: `${(1 - chance.faltaMedir) * 100}%` }} />
-                    </span>
-                    <span className={`meta ${chance.faltaMedir > 0.001 ? 'nota-media' : ''}`}>
-                      Medido em {chance.medidas} de {chance.total} questões
-                      {chance.faltaMedir > 0.001 &&
-                        ` · faltam ${chance.materias.filter((m) => m.acerto === null).length} matérias`}
-                    </span>
-                    <span className="frase-chance">{fraseDaChance(chance)}</span>
-                  </>
-                )}
-              </section>
-            )}
-
-            {plano.tarefas.length > 0 && (
-              <section aria-labelledby="t-hoje" className="estudo-do-dia">
+            <div className="edital-topo">
+              <section aria-labelledby="t-hoje" className="estudo-do-dia hoje">
                 <div className="cabeca-dia">
                   <h2 id="t-hoje" className="secao">
-                    Estudo de hoje
+                    Hoje
                   </h2>
                   <span className="meta">
-                    {feitas.length} de {plano.tarefas.length} feito · ~{minutos} min
+                    {feitas.length} de {plano.tarefas.length + pendentes.length} · ~{minutos} min
                   </span>
                   {sequencia > 0 && (
                     <span className="meta sequencia">
@@ -285,6 +312,16 @@ export function MeuEdital({
                     </span>
                   )}
                 </div>
+                {pendentes.map((t) => (
+                  <TarefaDaMissaoLinha
+                    key={t.id}
+                    t={t}
+                    feita={false}
+                    explicando={explicando === t.id}
+                    marcar={() => marcarNaMissao(t)}
+                    fazer={() => void fazerNaMissao(t)}
+                  />
+                ))}
                 {plano.tarefas.map((t) => {
                   const feita = feitas.includes(t)
                   return (
@@ -323,79 +360,56 @@ export function MeuEdital({
                     </div>
                   )
                 })}
-              </section>
-            )}
-
-            {missao && (
-              <section aria-labelledby="t-missao" className="estudo-do-dia missao">
-                <div className="cabeca-dia">
-                  <h2 id="t-missao" className="secao">
-                    Missão da semana
-                  </h2>
-                  <span className="meta">
-                    Do Claude · {missao.de.split('-').reverse().slice(0, 2).join('/')} a{' '}
-                    {missao.ate.split('-').reverse().slice(0, 2).join('/')}
-                  </span>
-                  <span className="meta sequencia pontos-missao">
+                {missao && (
+                  <div className="linha-missao">
+                    <span className="meta">
+                      Missão da semana · {missao.de.split('-').reverse().slice(0, 2).join('/')} a{' '}
+                      {missao.ate.split('-').reverse().slice(0, 2).join('/')}
+                    </span>
                     <span className="barra">
                       <span
                         style={{
-                          width: `${(pontosDaMissao(missao).feitos / Math.max(1, pontosDaMissao(missao).total)) * 100}%`
+                          width: `${(pontos!.feitos / Math.max(1, pontos!.total)) * 100}%`
                         }}
                       />
                     </span>
-                    {pontosDaMissao(missao).feitos} / {pontosDaMissao(missao).total} pts
-                  </span>
-                </div>
-                {missao.frase && <p className="frase-missao">{missao.frase}</p>}
-                {missao.tarefas.map((t) => {
-                  const feita = feitaNaMissao(missao, t)
-                  return (
-                    <div key={t.id} className={`tarefa-dia com-pontos ${feita ? 'feita' : ''}`}>
+                    <span className="meta pontos-missao">
+                      {pontos!.feitos} / {pontos!.total} pts
+                    </span>
+                    {concluidas.length > 0 && (
                       <button
                         type="button"
-                        className="marca-tarefa"
-                        aria-pressed={feita}
-                        aria-label={
-                          feita ? `Desmarcar: ${t.titulo}` : `Marcar como feito: ${t.titulo}`
-                        }
-                        onClick={() => marcarNaMissao(t)}
+                        className="botao discreto"
+                        aria-expanded={verFeitas}
+                        onClick={() => setVerFeitas((v) => !v)}
                       >
-                        {feita && <Icone nome="check" tamanho={14} />}
+                        {concluidas.length} {concluidas.length === 1 ? 'feita' : 'feitas'}
+                        <Icone nome={verFeitas ? 'abaixo' : 'direita'} tamanho={14} />
                       </button>
-                      <span className="corpo-tarefa">
-                        <span className="titulo-tarefa">{t.titulo}</span>
-                        <span className="meta">{t.detalhe}</span>
-                      </span>
-                      <span className={`pontos ${feita ? 'nota-boa' : ''}`}>+{t.pontos} pts</span>
-                      {!feita ? (
-                        <button
-                          type="button"
-                          className="botao passo"
-                          aria-pressed={t.tipo === 'explicar' ? explicando === t.id : undefined}
-                          onClick={() => void fazerNaMissao(t)}
-                        >
-                          {t.tipo === 'explicar'
-                            ? 'Explicar'
-                            : t.tipo === 'simulado'
-                              ? 'Começar'
-                              : t.tipo === 'anotacoes'
-                                ? 'Ler'
-                                : 'Abrir'}
-                          <Icone nome="direita" tamanho={14} />
-                        </button>
-                      ) : (
-                        <span />
-                      )}
-                    </div>
-                  )
-                })}
+                    )}
+                  </div>
+                )}
+                {missao && verFeitas && (
+                  <>
+                    {missao.frase && <p className="frase-missao">{missao.frase}</p>}
+                    {concluidas.map((t) => (
+                      <TarefaDaMissaoLinha
+                        key={t.id}
+                        t={t}
+                        feita
+                        explicando={false}
+                        marcar={() => marcarNaMissao(t)}
+                        fazer={() => void fazerNaMissao(t)}
+                      />
+                    ))}
+                  </>
+                )}
                 {avisoMissao && (
                   <div className="aviso erro" role="alert">
                     {avisoMissao}
                   </div>
                 )}
-                {missao.tarefas.map(
+                {missao?.tarefas.map(
                   (t) =>
                     t.tipo === 'explicar' &&
                     explicando === t.id && (
@@ -411,62 +425,116 @@ export function MeuEdital({
                     )
                 )}
               </section>
-            )}
 
-            <ListaDeRespostas dados={dados} mudar={mudar} />
-
-            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <button
-                type="button"
-                className="botao passo pendente"
-                onClick={() => setNaProva(true)}
-              >
-                {dados.provaEmMontagem && montagemDaProva(dados, e) === dados.provaEmMontagem
-                  ? 'Continuar prova completa'
-                  : 'Prova completa'}{' '}
-                · {e.materias.reduce((n, m) => n + m.questoes, 0)} questões
-                <Icone nome="direita" tamanho={14} />
-              </button>
+              {nota && (
+                <section aria-labelledby="t-nota" className="chance">
+                  <h2 id="t-nota" className="secao">
+                    Nota estimada
+                  </h2>
+                  {nota.nota === null ? (
+                    <span className="frase-chance">
+                      Ainda não sei: nenhuma matéria foi medida. O primeiro simulado de cada matéria
+                      já dá o número.
+                    </span>
+                  ) : (
+                    <>
+                      <div className="nota-chance">
+                        <span
+                          className={`numero ${nota.notaMinima === null ? '' : nota.nota < nota.notaMinima ? 'nota-ruim' : nota.nota < nota.notaMinima + 1 ? 'nota-media' : 'nota-boa'}`}
+                        >
+                          {um(nota.nota)}
+                        </span>
+                        <span className="meta">
+                          {nota.notaMinima !== null && `mínimo ${um(nota.notaMinima)}`}
+                          {nota.faltaMedir > 0.001 &&
+                            ` · falta medir ${Math.round(nota.faltaMedir * 100)}% da nota`}
+                        </span>
+                      </div>
+                      <div className="fontes-da-nota">
+                        {nota.fontes.map((f) => (
+                          <button
+                            key={f.id}
+                            type="button"
+                            className="fonte-da-nota"
+                            onClick={() => abrirSimulado(f.id)}
+                          >
+                            <span>
+                              {f.titulo}
+                              {f.respondidas < f.total && ` (${f.respondidas} de ${f.total})`}
+                            </span>
+                            <span className="meta">{pct(f.acerto)}</span>
+                            <span className={`meta ${f.tipo === 'real' ? 'nota-boa' : ''}`}>
+                              {f.tipo === 'real' ? 'pesa o dobro' : 'treino'}
+                            </span>
+                          </button>
+                        ))}
+                        {nota.notaDoTreino !== null && (
+                          <div className="fonte-da-nota">
+                            <span>Só com os treinos</span>
+                            <span className="meta">{um(nota.notaDoTreino)}</span>
+                            <span className="meta" />
+                          </div>
+                        )}
+                      </div>
+                      <span className="frase-chance">
+                        {nota.fontes.some((f) => f.tipo === 'real')
+                          ? 'A prova real da banca conta o dobro do treino: é o que mais se parece com o dia da prova.'
+                          : 'Ainda sem prova real: o número vem dos treinos e tende a ser otimista.'}
+                      </span>
+                    </>
+                  )}
+                </section>
+              )}
             </div>
 
             <section aria-labelledby="t-prioridade" className="lista-edital">
-              <h2 id="t-prioridade" className="secao">
-                Onde estudar primeiro
-              </h2>
+              <div className="cabeca-dia">
+                <h2 id="t-prioridade" className="secao">
+                  Onde estudar primeiro
+                </h2>
+                <span className="meta">Peso na nota × o que falta</span>
+                <button
+                  type="button"
+                  className="botao passo pendente"
+                  style={{ marginLeft: 'auto' }}
+                  onClick={() => setNaProva(true)}
+                >
+                  {dados.provaEmMontagem && montagemDaProva(dados, e) === dados.provaEmMontagem
+                    ? 'Continuar prova completa'
+                    : 'Prova completa'}{' '}
+                  · {e.materias.reduce((n, m) => n + m.questoes, 0)} questões
+                  <Icone nome="direita" tamanho={14} />
+                </button>
+              </div>
               <div className="linha-edital cabeca" aria-hidden="true">
                 <span>Matéria</span>
-                <span>Questões</span>
                 <span>Peso na nota</span>
-                <span>Estudado</span>
-                <span>Nível</span>
-                <span>Acerto</span>
+                <span>Acerto em treino</span>
+                <span>Em prova real</span>
                 <span />
               </div>
-              {situacao.map((s) => {
+              {(todasMaterias ? situacao : situacao.slice(0, MATERIAS_NO_TOPO)).map((s) => {
                 const passo = proximoPasso(s)
-                const nivel =
-                  chance?.materias.find((m) => m.materiaId === s.materiaId)?.nivel ?? 'nunca'
+                const treino =
+                  chance?.materias.find((m) => m.materiaId === s.materiaId)?.acerto ?? null
+                const real = nota?.acertoReal.get(s.materiaId)
                 return (
                   <div key={s.materiaId} className="linha-edital">
                     <span className="nome">{s.nome}</span>
-                    <span className="numero-pequeno">{s.questoes}</span>
                     <span className="medidor">
                       <span className="valor ciano">{pct(s.peso)}</span>
                       <span className="barra">
                         <span style={{ width: `${Math.min(100, s.peso * 400)}%` }} />
                       </span>
                     </span>
-                    <span className="medidor">
-                      <span className="valor">{pct(s.estudado)}</span>
-                      <span className="barra verde">
-                        <span style={{ width: `${s.estudado * 100}%` }} />
-                      </span>
+                    <span className={`numero-pequeno ${corDe(treino)}`}>
+                      {treino === null ? 'sem treino' : pct(treino)}
                     </span>
-                    <span className={`nivel ${nivel}`}>{NOME_DO_NIVEL[nivel]}</span>
                     <span
-                      className={`numero-pequeno ${s.acerto === null ? 'sem' : s.acerto >= 0.7 ? 'nota-boa' : 'nota-media'}`}
+                      className={`numero-pequeno ${corDe(real?.acerto ?? null)}`}
+                      title={real ? `${real.questoes} questões de prova real` : undefined}
                     >
-                      {s.acerto === null ? 'sem simulado' : pct(s.acerto)}
+                      {real ? pct(real.acerto) : '—'}
                     </span>
                     <button
                       type="button"
@@ -479,7 +547,31 @@ export function MeuEdital({
                   </div>
                 )
               })}
+              {situacao.length > MATERIAS_NO_TOPO && (
+                <button
+                  type="button"
+                  className="ss-mais"
+                  onClick={() => setTodasMaterias((v) => !v)}
+                >
+                  {todasMaterias
+                    ? 'Mostrar só as primeiras'
+                    : `+ ${situacao.length - MATERIAS_NO_TOPO} matérias`}
+                </button>
+              )}
             </section>
+
+            {respostasNovas > 0 && (
+              <button type="button" className="aviso-respostas" onClick={abrirCaixa}>
+                <span className="ponto" aria-hidden="true" />
+                <span style={{ flex: 1 }}>
+                  {respostasNovas === 1
+                    ? '1 resposta nova do Claude a uma explicação sua'
+                    : `${respostasNovas} respostas novas do Claude às suas explicações`}
+                </span>
+                <span className="meta">Abrir em Do Claude</span>
+                <Icone nome="direita" tamanho={14} />
+              </button>
+            )}
           </>
         )}
       </main>

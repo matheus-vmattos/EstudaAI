@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Icone } from '../Icone'
 import type { Mudar } from '../useDados'
 import { importarDaCaixa, type ResultadoDaCaixa } from '../importarDaCaixa'
+import { ListaDeRespostas } from '../RespostaDoClaude'
 import type { Dados, Id, ItemDaCaixa } from '../../../shared/tipos'
 
 export type EstadoDaCaixa = { carregando: boolean; itens: ItemDaCaixa[]; erro: string }
@@ -69,6 +70,9 @@ export function Caixa({
             {caixa.carregando ? 'Buscando…' : 'Atualizar'}
           </button>
         </header>
+
+        {/* as respostas às suas explicações moram aqui (antes ficavam no Meu edital) */}
+        <ListaDeRespostas dados={dados} mudar={mudar} />
 
         {caixa.erro && <div className="aviso erro">{caixa.erro}</div>}
         {!caixa.erro && !caixa.carregando && todos.length > 0 && itens.length === 0 && (

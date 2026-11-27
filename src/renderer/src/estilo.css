@@ -3350,3 +3350,200 @@ strong.comando {
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+
+/* ---------- seus simulados (v0.1.30, mockup "Questões enxuto" de 27/11) ---------- */
+.ss-secao {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ss-secao > .secao {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.ss-cartoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+.ss-cartao {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px;
+  border: 1px solid var(--linha-2);
+  background: var(--cartao);
+}
+.ss-cartao .nome {
+  font-size: 16px;
+  font-weight: 500;
+}
+.ss-linha {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 64px 16px;
+  align-items: center;
+  gap: 16px;
+  min-height: 52px;
+  padding: 6px 16px;
+  border: 1px solid var(--linha-2);
+  background: var(--cartao);
+  color: var(--texto);
+  text-align: left;
+}
+.ss-linha:hover,
+.ss-mais:hover {
+  border-color: var(--linha-viva);
+}
+.ss-linha.sub {
+  min-height: 42px;
+  padding-left: 42px;
+  border-top: 0;
+  font-size: 14px;
+}
+.ss-nota {
+  font-family: var(--mono);
+  font-size: 14px;
+  text-align: right;
+}
+.ss-grupo {
+  display: flex;
+  flex-direction: column;
+}
+.ss-materia {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(120px, 1fr) 90px auto;
+  align-items: center;
+  gap: 16px;
+  min-height: 56px;
+  padding: 6px 16px;
+  border: 1px solid var(--linha-2);
+  background: var(--cartao);
+}
+.ss-materia.aberta {
+  border-color: var(--linha-viva);
+}
+.ss-abrir {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--texto);
+  text-align: left;
+}
+.ss-abrir .nome {
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ss-barras {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 26px;
+}
+.ss-barras i {
+  display: block;
+  width: 8px;
+}
+.ss-mais {
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px dashed var(--linha-2);
+  background: transparent;
+  color: var(--texto-fraco);
+  text-align: left;
+}
+.ss-mais.sub {
+  padding-left: 42px;
+  border-top: 0;
+}
+
+/* ---------- meu edital enxuto (v0.1.30, mockup de 27/11) ---------- */
+.edital-topo {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+@media (max-width: 1100px) {
+  .edital-topo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.edital-topo .chance {
+  margin: 0;
+}
+.linha-missao {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  padding-top: 6px;
+}
+.linha-missao > .meta:first-child {
+  color: var(--ambar);
+}
+.linha-missao .barra {
+  width: 90px;
+}
+.linha-missao .botao {
+  margin-left: auto;
+}
+.fontes-da-nota {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.fonte-da-nota {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 48px 96px;
+  align-items: center;
+  gap: 10px;
+  min-height: 32px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--texto);
+  font-size: 14px;
+  text-align: left;
+}
+button.fonte-da-nota:hover > span:first-child {
+  text-decoration: underline;
+}
+.fonte-da-nota > .meta {
+  text-align: right;
+}
+.lista-edital > .linha-edital {
+  grid-template-columns: minmax(0, 1fr) 140px 120px 120px 200px;
+}
+.lista-edital > .linha-edital > :nth-child(2) {
+  text-align: left;
+}
+.aviso-respostas {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 52px;
+  padding: 0 16px;
+  border: 1px solid var(--linha-viva);
+  background: var(--cartao);
+  color: var(--texto);
+  text-align: left;
+}
+.aviso-respostas .ponto {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ciano);
+  box-shadow: 0 0 8px var(--ciano);
+}
+.botao.discreto {
+  border-color: transparent;
+  background: transparent;
+  color: var(--texto-fraco);
+}
