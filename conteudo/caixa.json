@@ -553,6 +553,24 @@
       "arquivo": "banestes-vendas-anotacoes.json",
       "data": "2026-11-27",
       "versaoMinima": "0.1.19"
+    },
+    {
+      "id": "banestes-bancarios-anotacoes-3",
+      "tipo": "anotacoes",
+      "titulo": "Anotações: Bancários parte 3 (SFN, Copom e metas, IPs, seguros pelo Marco Legal, portabilidade, contas, suitability, Res. 4.966)",
+      "descricao": "17 anotações para os tópicos vazios de Bancários. Novidades que derrubam questão antiga: o seguro saiu do Código Civil (Lei 15.040/2024, em vigor) e a meta de inflação agora é contínua (6 meses seguidos fora = descumprimento). Cada uma com o artigo. Só entram onde está vazio.",
+      "arquivo": "banestes-bancarios-anotacoes-3.json",
+      "data": "2026-11-27",
+      "versaoMinima": "0.1.19"
+    },
+    {
+      "id": "banestes-mf-anotacoes-2",
+      "tipo": "anotacoes",
+      "titulo": "Anotações: Matemática Financeira parte 2 (fundamentos, desconto composto, séries, SAM, VPL, TIR, payback, IR)",
+      "descricao": "14 anotações para os tópicos vazios de Matemática Financeira, cada uma com fórmula, exemplo resolvido (contas conferidas) e pegadinha. Inclui a tabela regressiva do IR da renda fixa. Só entram onde está vazio.",
+      "arquivo": "banestes-mf-anotacoes-2.json",
+      "data": "2026-11-27",
+      "versaoMinima": "0.1.19"
     }
   ]
 }
