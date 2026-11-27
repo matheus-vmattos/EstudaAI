@@ -1,6 +1,6 @@
 {
   "name": "estudaai",
-  "version": "0.1.28",
+  "version": "0.1.29",
   "description": "App de estudos para concurso: anotações, links, gerador de questões por IA e simulados",
   "main": "./out/main/index.js",
   "author": "matheus-vmattos",

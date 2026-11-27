@@ -130,6 +130,10 @@ export interface Simulado {
   conferir?: boolean
   /** as questões que você conferiu na hora (o tempo delas para ao marcar) */
   conferidas?: boolean[]
+  /** alternativas riscadas em cada questão (v0.1.29): só ajuda, não é resposta */
+  riscadas?: string[][]
+  /** trechos marcados no texto de apoio [início, fim), por texto (chaveDoTexto) */
+  marcas?: Record<string, [number, number][]>
 }
 
 export type TipoDeCartao = 'basico' | 'lacuna'

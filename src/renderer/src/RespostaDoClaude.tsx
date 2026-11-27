@@ -97,7 +97,7 @@ function Licao({
             return (
               <div key={i} className="resp-questao">
                 <p className="enunciado">
-                  <Texto texto={q.enunciado} />
+                  <Texto texto={q.enunciado} comando />
                 </p>
                 <div
                   role="radiogroup"

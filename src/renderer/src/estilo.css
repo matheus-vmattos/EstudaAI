@@ -868,6 +868,8 @@ button:disabled {
   align-content: flex-start;
   gap: 32px;
   padding: 32px 40px;
+  /* A−/A+ troca pelo estilo da própria tela */
+  --letra-questao: 18px;
 }
 .questao {
   flex: 999 1 560px;
@@ -3148,4 +3150,203 @@ dialog.colar-edital section {
   font: inherit;
   font-size: 18px;
   line-height: 1.7;
+}
+
+/* ---------- leitura da questão (v0.1.29, mockup aprovado em 27/11) ---------- */
+/* ~65 caracteres por linha (era ~100): o tamanho acompanha o A−/A+ */
+.prova .questao:not(.raio-x) {
+  font-size: var(--letra-questao);
+  max-width: 62ch;
+}
+.prova .enunciado {
+  font-size: 1em;
+}
+.prova .alternativa,
+.prova .cabeca-alternativa {
+  font-size: 0.94em;
+}
+.enunciado p {
+  margin: 0 0 0.6em;
+}
+.enunciado p:last-child {
+  margin: 0;
+}
+.enunciado u {
+  text-decoration-color: var(--ciano);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+strong.comando {
+  color: var(--ambar);
+  font-weight: 600;
+}
+.itens-da-questao {
+  list-style: none;
+  margin: 0.2em 0 0.7em;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.itens-da-questao li {
+  display: grid;
+  grid-template-columns: 2.6em 1fr;
+}
+.itens-da-questao b {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 0.85em;
+  color: var(--ciano);
+  padding-top: 0.15em;
+}
+.alternativa.riscada {
+  opacity: 0.45;
+}
+.alternativa.riscada > span:last-child {
+  text-decoration: line-through;
+}
+.ferramentas-prova {
+  margin-left: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.ferramentas-prova ~ .cronometro {
+  margin-left: 0;
+}
+.botoes-letra {
+  display: flex;
+  gap: 4px;
+}
+.linha-duvida .botoes-letra {
+  margin-left: auto;
+}
+.botao.marca-texto[aria-pressed='true'] {
+  border-color: #ffd666;
+  color: #ffd666;
+  background: rgb(255 214 102 / 8%);
+}
+.marca-texto .tinta {
+  width: 4px;
+  height: 14px;
+  background: #ffd666;
+}
+
+/* texto à esquerda, questão à direita: cada lado rola sozinho */
+.corpo-prova.dupla {
+  flex-wrap: nowrap;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.corpo-prova.dupla .texto-apoio {
+  flex: 1 1 0;
+  max-width: 760px;
+  overflow: auto;
+  padding: 28px 36px 28px 40px;
+  border-right: 1px solid var(--linha);
+}
+.corpo-prova.dupla .questao:not(.raio-x) {
+  flex: 1 1 0;
+  max-width: none;
+  overflow: auto;
+  padding: 28px 40px;
+}
+.corpo-prova.dupla .questao > * {
+  max-width: 62ch;
+}
+.texto-apoio .secao {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+.texto-apoio .secao .meta {
+  letter-spacing: 0.06em;
+}
+.paragrafos {
+  font-size: var(--letra-questao);
+  line-height: 1.7;
+  color: #e3eef3;
+  max-width: 66ch;
+}
+.paragrafos p {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 10px;
+  margin: 0 0 14px;
+}
+.paragrafos p > b {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 12px;
+  color: #4f6f7c;
+  text-align: right;
+  padding-top: 0.45em;
+  user-select: none;
+}
+.paragrafos mark {
+  background: rgb(255 214 102 / 22%);
+  border-bottom: 1px solid #ffd666;
+  color: #fff3cf;
+}
+.paragrafos.marcando ::selection {
+  background: rgb(255 214 102 / 40%);
+}
+.paragrafos.marcando mark {
+  cursor: pointer;
+}
+.apoio-no-gabarito summary {
+  cursor: pointer;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ciano);
+}
+.apoio-no-gabarito .texto-apoio {
+  padding-top: 12px;
+}
+.apoio-no-gabarito .texto-apoio .secao {
+  display: none;
+}
+.fundo-mapa {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: flex-end;
+  background: rgb(0 0 0 / 55%);
+}
+.mapa.flutuante {
+  width: 340px;
+  max-width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 24px;
+  background: var(--fundo);
+  border-left: 1px solid var(--linha-viva);
+}
+.prova .topo-prova {
+  gap: 16px;
+}
+.ferramentas-prova .botao {
+  min-height: 36px;
+  padding: 0 10px;
+}
+/* com as ferramentas, o título cede espaço (até 2 linhas) e o cronômetro
+   não desce para uma segunda linha */
+.prova .topo-prova:has(.ferramentas-prova) {
+  flex-wrap: nowrap;
+}
+.prova .topo-prova:has(.ferramentas-prova) > div:nth-child(2) {
+  flex: 1 1 0;
+}
+.prova .topo-prova:has(.ferramentas-prova) > div:nth-child(2) > span:last-child {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
