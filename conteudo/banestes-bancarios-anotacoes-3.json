@@ -1,0 +1,130 @@
+{
+ "materia": "Conhecimentos Bancários",
+ "notas": [
+  {
+   "lugar": [
+    "Sistema Financeiro Nacional",
+    "Estrutura"
+   ],
+   "texto": "## As três camadas do SFN (página oficial do BCB)\n\n| Normativos | Supervisores | Operadores (exemplos) |\n|---|---|---|\n| **CMN** | **Banco Central** e **CVM** | bancos, caixas econômicas, cooperativas de crédito, administradoras de consórcio; bolsas; corretoras e distribuidoras |\n| **CNSP** | **Susep** | seguradoras e resseguradores, entidades **abertas** de previdência, sociedades de **capitalização** |\n| **CNPC** | **Previc** | entidades **fechadas** de previdência complementar (fundos de pensão) |\n\n- **CMN:** formula a política da moeda e do crédito e define a **meta de inflação**; o BC faz cumprir as normas do CMN.\n- **CRSFN:** órgão do Ministério da Fazenda que julga, **em última instância administrativa**, os recursos contra sanções do BC e da CVM.\n- **Instituições de pagamento** **não compõem o SFN**, mas são reguladas e fiscalizadas pelo BC, conforme diretrizes do CMN.\n\n> **PEGADINHA** Previdência ABERTA fica com CNSP/Susep; a FECHADA, com CNPC/Previc. Capitalização é Susep."
+  },
+  {
+   "lugar": [
+    "Sistema Financeiro Nacional",
+    "Operadores"
+   ],
+   "texto": "## Quem é instituição financeira (Lei 4.595/1964)\n\n**Art. 17:** pessoas jurídicas públicas ou privadas com atividade principal ou acessória de **coleta, intermediação ou aplicação de recursos financeiros** próprios ou de terceiros, em moeda nacional ou estrangeira, e a **custódia** de valor de terceiros. O parágrafo único equipara a elas as **pessoas físicas** que exerçam essas atividades, de forma permanente ou eventual.\n\n**Art. 18:** só funcionam no País com **prévia autorização do Banco Central**, ou por **decreto do Poder Executivo**, se forem **estrangeiras**.\n\n**Supervisão dos operadores (página do SFN do BCB):**\n- **Banco Central:** bancos, caixas econômicas, cooperativas de crédito, administradoras de consórcio e demais instituições não bancárias.\n- **CVM, conforme a atividade:** corretoras e distribuidoras, que também estão sob o BC.\n\n> **PEGADINHA** Banco estrangeiro: decreto do Poder Executivo, não só autorização do BC."
+  },
+  {
+   "lugar": [
+    "Mercado financeiro e de capitais",
+    "Política monetária e Copom"
+   ],
+   "texto": "## Copom (Regulamento: Resolução BCB 61/2021)\n\n- **Quem são (art. 2º):** o **Presidente e os Diretores do Banco Central**.\n- **O que faz (art. 1º):** define a **meta para a Taxa Selic**, define orientações estratégicas da política monetária e divulga o relatório trimestral (o regulamento de 2021 o chama de Relatório de Inflação; o Decreto 12.079/2024 fala em Relatório de Política Monetária).\n- **Reuniões ordinárias (art. 3º):** **oito por ano**. O calendário sai até o fim de junho do ano anterior.\n- **Decisão (art. 6º):** maioria simples, com **voto de qualidade do Presidente**.\n- **Vigência da meta (art. 1º, § 2º):** a partir do **dia útil seguinte** ao fim da reunião.\n- **Comunicado:** no dia da 2ª sessão, a partir das 18h30 (art. 7º).\n- **Ata:** em até **4 dias úteis** (art. 8º, parágrafo único).\n- **Período de silêncio:** da quarta-feira da semana anterior até a publicação da ata (art. 11).\n\n> **PEGADINHA** O Copom define a META da Selic, não a meta de INFLAÇÃO, que é do CMN."
+  },
+  {
+   "lugar": [
+    "Mercado financeiro e de capitais",
+    "Juros, inflação e indicadores"
+   ],
+   "texto": "## Selic e o sistema de metas para a inflação\n\n**Taxa Selic (Regulamento do Copom, art. 1º, § 1º):** a **taxa média ajustada dos financiamentos diários** apurados no Selic **para títulos públicos federais**.\n\n**Meta de inflação (Decreto 12.079/2024, em vigor desde 1º/1/2025):**\n- A meta vale para a inflação **acumulada em 12 meses**, apurada **mês a mês** (art. 1º).\n- O **CMN** fixa a meta e o intervalo de tolerância, por proposta do Ministro da Fazenda; mudanças pedem **36 meses** de antecedência (art. 2º, §§ 1º e 2º). O **CMN** também escolhe o índice de preços (art. 4º).\n- **Descumprimento (art. 2º):** inflação fora do intervalo por **6 meses consecutivos**.\n- **No descumprimento (art. 6º):** o BC explica em **nota no Relatório de Política Monetária** e em **carta aberta ao Ministro da Fazenda**: causas, medidas e prazo para voltar à meta.\n- **Relatório de Política Monetária:** até o último dia de cada trimestre (art. 5º).\n\n> **PEGADINHA** A meta é olhada todo mês, sobre os últimos 12 meses: 6 meses SEGUIDOS fora da tolerância já é descumprimento."
+  },
+  {
+   "lugar": [
+    "Instituições financeiras e de pagamento",
+    "Instituições de pagamento"
+   ],
+   "texto": "## Instituição de pagamento (Lei 12.865/2013)\n\n**O que é (art. 6º, III):** pessoa jurídica que, aderindo a arranjos de pagamento, tem como atividade, por exemplo:\n- disponibilizar serviço de aporte ou saque em **conta de pagamento**;\n- executar ou facilitar ordens de pagamento e transferências;\n- **gerir conta de pagamento**;\n- **emitir instrumento de pagamento**;\n- **credenciar** a aceitação de instrumento de pagamento (as \"maquininhas\");\n- executar remessa de fundos;\n- converter moeda física em eletrônica.\n\n**Limite (art. 6º, § 2º):** é **vedado** à IP fazer atividades **privativas de instituição financeira**.\n\n**O dinheiro do cliente fica protegido (art. 12):** recursos em conta de pagamento são **patrimônio separado**, não respondem por dívidas da IP, **não podem ser penhorados** por elas, **não entram na falência** nem na liquidação da IP e não podem ser dados em garantia.\n\n**Fora do SFN, sob o BC:** pela página oficial, as IPs não compõem o SFN, mas são reguladas e fiscalizadas pelo Banco Central."
+  },
+  {
+   "lugar": [
+    "Instituições financeiras e de pagamento",
+    "Tipos e funções"
+   ],
+   "texto": "## Instituição financeira × instituição de pagamento\n\n| | Instituição financeira | Instituição de pagamento |\n|---|---|---|\n| **Base** | Lei 4.595/1964, art. 17 | Lei 12.865/2013, art. 6º, III |\n| **Faz** | **capta, intermedeia e aplica** recursos (recebe depósito e empresta) | movimenta e paga: conta de pagamento, cartão, credenciamento, transferência |\n| **Pode fazer o que é privativo de IF?** | sim | **não** (art. 6º, § 2º) |\n| **Saldo do cliente** | depósito (com FGC, conforme o produto) | **patrimônio separado** da IP (art. 12) |\n\n**Autorização:** a instituição financeira só funciona com **prévia autorização do Banco Central**, ou por **decreto**, se estrangeira (Lei 4.595, art. 18).\n\n**Sujeitos à lei de lavagem (Lei 9.613/1998, art. 9º):** tanto quem capta, intermedeia e aplica recursos de terceiros quanto, entre outros, administradoras de cartões, seguradoras, entidades de previdência complementar e capitalização, e prestadores de serviços de **ativos virtuais**."
+  },
+  {
+   "lugar": [
+    "Instituições financeiras e de pagamento",
+    "Captação, intermediação e aplicação de recursos"
+   ],
+   "texto": "## O coração da instituição financeira\n\n**Lei 4.595/1964, art. 17:** é instituição financeira quem tem como atividade principal ou acessória a **coleta, a intermediação ou a aplicação de recursos financeiros** próprios ou de terceiros, além da **custódia** de valor de terceiros.\n\nNa prática:\n- **coletar (captar):** depósitos à vista, poupança, CDB, LCI, LCA;\n- **intermediar:** ligar quem tem dinheiro sobrando a quem precisa;\n- **aplicar:** empréstimos, financiamentos, títulos.\n\n**Mesmo pessoa física (art. 17, parágrafo único):** quem faz isso, de forma permanente ou eventual, é equiparada a instituição financeira e precisa de autorização.\n\n> **PEGADINHA** A definição fala em atividade \"principal OU acessória\": não precisa ser o negócio principal da empresa."
+  },
+  {
+   "lugar": [
+    "Inovação nos pagamentos",
+    "Meios eletrônicos de pagamento"
+   ],
+   "texto": "## Arranjo, instituidor e conta de pagamento (Lei 12.865/2013, art. 6º)\n\n- **Arranjo de pagamento (I):** conjunto de **regras** de um serviço de pagamento ao público, aceito por **mais de um recebedor**, com acesso direto dos usuários.\n- **Instituidor de arranjo (II):** a pessoa jurídica responsável pelo arranjo e, se houver, pela marca.\n- **Conta de pagamento (IV):** conta de registro em nome do usuário, usada para pagamentos.\n\n**Objetivos da regulação (Res. CMN 4.282/2013, art. 3º), entre outros:** **interoperabilidade** dentro do arranjo e entre arranjos, **inovação** e diversidade de modelos de negócio, **solidez e eficiência**.\n\n> **PEGADINHA** O arranjo é o conjunto de REGRAS; quem executa o pagamento é a instituição de pagamento ou a financeira que participa dele."
+  },
+  {
+   "lugar": [
+    "Prevenção à lavagem de dinheiro (PLD/FT)",
+    "Lavagem de dinheiro e financiamento do terrorismo"
+   ],
+   "texto": "## O crime de lavagem (Lei 9.613/1998)\n\n**Art. 1º:** ocultar ou dissimular a natureza, origem, localização, disposição, movimentação ou propriedade de bens, direitos ou valores provenientes, direta ou indiretamente, de **infração penal**. **Pena: reclusão de 3 a 10 anos e multa.**\n- Desde a Lei 12.683/2012, **qualquer infração penal** serve de antecedente: a lista fechada de crimes acabou.\n- **Mesmas penas (§§ 1º e 2º):** quem converte em ativos lícitos, adquire, guarda, movimenta, importa ou exporta com valor falso; quem usa esses bens na atividade econômica.\n- **Aumento de 1/3 a 2/3 (§ 4º):** crime reiterado, por **organização criminosa** ou por meio de **ativos virtuais**.\n- **Redução de 1/3 a 2/3 (§ 5º):** para quem colabora com as autoridades.\n\n**Coaf (art. 14):** recebe, examina e identifica as ocorrências suspeitas, regula e aplica penas administrativas.\n\n**As \"fases\" (colocação, ocultação, integração)** são um modelo didático: **não estão na lei**. A banca cobra a ideia, mas a definição legal é a do art. 1º.\n\n> Comunicações ao Coaf (24 h, R$ 50 mil em espécie): veja a nota em COAF."
+  },
+  {
+   "lugar": [
+    "Seguros, previdência e capitalização",
+    "Noções de seguros"
+   ],
+   "texto": "## Marco Legal dos Seguros (Lei 15.040/2024)\n\n**Mudou a base legal:** a lei **revogou os arts. 757 a 802 do Código Civil** (o capítulo do seguro) e os arts. 9º a 14 do DL 73/1966 (art. 133). Entrou em vigor **1 ano após a publicação** (art. 134), e a publicação foi em 10/12/2024.\n\n- **O contrato (art. 1º):** pelo prêmio, a seguradora garante interesse legítimo do segurado ou beneficiário contra riscos predeterminados.\n- **Boa-fé (art. 56):** o contrato é interpretado e executado segundo a boa-fé.\n- **Agravar o risco de propósito (art. 13):** o segurado perde a garantia.\n- **Sinistro (art. 66, II):** o segurado deve avisar a seguradora logo.\n- **Seguro de dano (art. 89):** garantia e indenização **não podem superar o valor do interesse**.\n- **Seguro de vida:**\n  - capital **livremente estipulado** (art. 112);\n  - o capital por morte **não é herança** (art. 116) e é **impenhorável** (art. 122);\n  - **suicídio nos 2 primeiros anos** de vigência: o beneficiário não recebe o capital (art. 120), mas tem direito à **reserva matemática** formada; **é nula** a cláusula que exclua o suicídio depois disso.\n\n> **PEGADINHA** Questão antiga cita \"art. 798 do Código Civil\" para o suicídio. A regra dos 2 anos continua, mas hoje está no art. 120 da Lei 15.040/2024."
+  },
+  {
+   "lugar": [
+    "Seguros, previdência e capitalização",
+    "Títulos de capitalização"
+   ],
+   "texto": "## Capitalização (Decreto-Lei 261/1967)\n\n- **O que é (art. 1º, parágrafo único):** a sociedade de capitalização oferece ao público, por planos aprovados, a **formação de um capital mínimo**, pago em dinheiro ao titular do título dentro de um prazo máximo previsto no plano.\n- **Sistema Nacional de Capitalização (art. 3º):** **CNSP**, **Susep** e as sociedades autorizadas.\n  - **CNSP:** fixa, **privativamente**, as diretrizes e normas da política de capitalização (§ 1º).\n  - **Susep:** é o **órgão executor** dessa política e fiscaliza as sociedades (§ 2º).\n- **Objetivo do controle estatal (art. 2º):** proteger os titulares dos títulos e manter as sociedades líquidas e solventes.\n\n> **PEGADINHA** Capitalização NÃO é supervisionada pelo Banco Central nem pela CVM: é Susep (sob o CNSP)."
+  },
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Portabilidade"
+   ],
+   "texto": "## Portabilidade de crédito (Res. CMN 5.057/2022)\n\n- **O que é (art. 2º, I):** transferência da operação de crédito da **instituição credora original** para a **instituição proponente**, **a pedido do devedor**.\n- **Obrigação (art. 3º):** a credora original **deve garantir** a portabilidade quando o devedor pede, recebendo os recursos da proponente.\n- **Proibido contornar (art. 4º, parágrafo único):** é vedado usar procedimento alternativo para chegar ao mesmo resultado.\n- **Limites (art. 6º):** na nova instituição, **valor e prazo não podem ser maiores** que o saldo devedor e o prazo remanescente. Se a **prestação** ficar maior, é preciso **concordância formal** do devedor (§ 1º).\n- **Prazos:** a credora pede a transferência dos recursos em **5 ou 3 dias úteis**, conforme o meio de troca de informações (art. 8º, redação da Res. 5.265/2025). Recebidos os recursos, manda o documento de quitação em **2 dias úteis** (art. 11).\n- **Também vale para:** cheque especial e saldo devedor da fatura do cartão (pós-pago), desde a Res. 5.112/2023.\n\n> **PEGADINHA** Portabilidade não é refinanciamento com dinheiro novo: o valor fica limitado ao saldo devedor."
+  },
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Contas"
+   ],
+   "texto": "## Abrir, manter e encerrar conta (Res. CMN 4.753/2019)\n\n- **Identificar e qualificar** o titular, e checar as informações em bancos de dados públicos ou privados (art. 2º). Pode haver **qualificação simplificada**, com limites de saldo e de movimentação (§ 2º).\n- **Abrir ou encerrar por qualquer canal** da instituição, **inclusive eletrônico**, mas **não por telefone de voz** (art. 3º).\n- **Encerrar** quando houver irregularidade **grave** nas informações prestadas (art. 6º).\n\n## Serviços essenciais: tarifa proibida (Res. CMN 3.919/2010, art. 2º, I)\nNa **conta corrente de pessoa natural**, por mês:\n- cartão de débito (e a 2ª via, salvo perda, roubo ou dano por culpa do cliente);\n- **4 saques**;\n- **2 transferências** entre contas da própria instituição;\n- **2 extratos** dos últimos 30 dias;\n- **10 folhas de cheque**;\n- consultas pela internet e compensação de cheques.\n\n**Poupança (inciso II):** 2 saques, 2 transferências para conta do mesmo titular, 2 extratos por mês.\n\n> **PEGADINHA** Os números: 4 saques na conta corrente, 2 na poupança. E conta só por telefone de voz não se abre."
+  },
+  {
+   "lugar": [
+    "Produtos e serviços bancários",
+    "Canais de atendimento"
+   ],
+   "texto": "## Canais: quando pode cobrar e quando não pode recusar\n\n- **Atendimento presencial é garantido (Res. CMN 4.949/2021, art. 5º):** é vedado recusar ou dificultar o atendimento na agência, **inclusive no caixa**, mesmo que o serviço exista em outro canal. Exceções incluem pagamento com cheque e boleto fora do padrão.\n- **Conta só eletrônica (Res. 3.919/2010, art. 2º, § 1º):**\n  - a conta cujo contrato prevê só meios eletrônicos tem os serviços eletrônicos gratuitos;\n  - se o cliente **escolhe** a agência ou o correspondente quando o meio eletrônico está disponível, pode haver tarifa de saque, transferência e extrato **desde o 1º evento**;\n  - se o meio eletrônico **não está disponível**, o presencial não pode ser cobrado.\n- **SAC:** Decreto 13.135/2026, com canal eletrônico 24 h e humano das 8h às 20h. Detalhes em Vendas › Atendimento › Presencial e digital."
+  },
+  {
+   "lugar": [
+    "Regulação e consumidor",
+    "Adequação ao perfil do cliente"
+   ],
+   "texto": "## Suitability (Res. CVM 30/2021)\n\n**Quem (art. 2º):** integrantes do sistema de distribuição e consultores não podem recomendar produto, fazer operação ou prestar serviço **sem verificar a adequação ao perfil** do cliente.\n\n**O que verificar (art. 3º):**\n- **objetivos:** prazo que quer manter o investimento, preferência quanto a risco, finalidade;\n- **situação financeira:** renda regular, patrimônio, necessidade futura de recursos;\n- **conhecimento:** para entender os riscos do produto.\n\nO cliente é classificado em **categorias de perfil de risco** (art. 4º), e os produtos em **categorias** (art. 5º), olhando riscos, emissor, garantias e carência.\n\n**Vedado recomendar (art. 6º)** quando o produto é inadequado, sem informação de perfil ou com **perfil desatualizado**.\n**Se o cliente quiser mesmo assim (art. 7º):** antes da 1ª operação, **alertar** o cliente e obter **declaração expressa** de que está ciente.\n\n**Atualização (art. 9º):** perfil do cliente em no máximo **5 anos**; classificação dos produtos em no máximo **24 meses**.\n**Dispensa (art. 10, I):** investidor qualificado, com exceções.\n\n**No BCB:** a Res. CMN 4.949/2021, art. 4º, I, exige adequação dos produtos às necessidades, interesses e objetivos dos clientes."
+  },
+  {
+   "lugar": [
+    "Regulação e consumidor",
+    "Educação financeira e proteção do consumidor"
+   ],
+   "texto": "## As regras de proteção em um só lugar\n\n- **Princípios do relacionamento (Res. CMN 4.949/2021, art. 2º):** ética, responsabilidade, transparência e diligência.\n- **Informação clara** de custos, penalidades e riscos (Res. 4.949, art. 4º, III; CDC, art. 6º, III).\n- **Venda casada** e aproveitar a **fraqueza ou ignorância** do consumidor são práticas abusivas (CDC, art. 39, I e IV).\n- **Arrependimento em 7 dias** na contratação fora do estabelecimento (CDC, art. 49).\n- **Ouvidoria:** última instância, resposta em **10 dias úteis** (Res. CMN 4.860/2020, arts. 3º e 6º, § 2º).\n- **ENEF:** promove a educação **financeira, securitária, previdenciária e fiscal** (Decreto 10.393/2020, art. 1º).\n\n> Detalhes em Vendas › Conflitos e reclamações e › Ética e educação financeira no atendimento."
+  },
+  {
+   "lugar": [
+    "Resolução CMN 4.966/2021"
+   ],
+   "texto": "## A nova contabilidade do crédito (Res. CMN 4.966/2021)\n\n**O que regula (art. 1º):** classificação, mensuração e baixa de instrumentos financeiros e a **provisão para perdas esperadas** associadas ao risco de crédito. **Revogou a Res. 2.682/1999** (art. 80, I), a antiga norma de classificação das operações de crédito e de provisão.\n\n**Três categorias de ativo financeiro (art. 4º):**\n- **Custo amortizado:** o modelo de negócio é **manter para receber** os fluxos, que são só principal e juros.\n- **Valor justo em outros resultados abrangentes (VJORA):** receber os fluxos **e também vender**.\n- **Valor justo no resultado (VJR):** **os demais**.\n\n**Ativo problemático (art. 3º):** atraso **superior a 90 dias**, ou indício de que a dívida não será paga sem executar garantias.\n\n**Três estágios da perda esperada (art. 37):**\n1. sem aumento significativo do risco desde a contratação;\n2. **aumento significativo** do risco (ou deixou de ser problemático);\n3. **ativo com problema de recuperação** de crédito.\n\n**Vigência (art. 81):** **1º de janeiro de 2025** para a maior parte. As regras de **hedge** foram adiadas para **1º/1/2028** pela Res. CMN 5.346/2026.\n\n> **PEGADINHA** A provisão agora é pela perda ESPERADA (olha para frente), não só pela perda já ocorrida."
+  }
+ ],
+ "fontes": [
+  "Lei 4.595/1964, arts. 17 e 18; Lei 12.865/2013, arts. 6º e 12; Lei 9.613/1998 (compilada), arts. 1º, 9º e 14; Lei 15.040/2024, arts. 1º, 13, 56, 66, 89, 112, 116, 120, 122, 133 e 134; Decreto-Lei 261/1967, arts. 1º a 3º; Decreto 12.079/2024, arts. 1º a 6º; Lei 8.078/1990, arts. 6º, 39 e 49; Decreto 10.393/2020, art. 1º — planalto.gov.br",
+  "Res. CMN 4.966/2021, arts. 1º, 3º, 4º, 37, 80 e 81 (redações até a Res. 5.346/2026); Res. CMN 5.057/2022, arts. 2º a 11 (redações das Res. 5.112/2023 e 5.265/2025); Res. CMN 4.753/2019, arts. 2º, 3º e 6º; Res. CMN 3.919/2010, art. 2º (versão consolidada v7); Res. CMN 4.282/2013, art. 3º; Res. CMN 4.949/2021, arts. 2º, 4º e 5º; Res. CMN 4.860/2020 — bcb.gov.br (busca de normas)",
+  "Regulamento do Copom (Res. BCB 61/2021), arts. 1º a 3º, 6º a 8º e 11; página do Sistema Financeiro Nacional do BCB (bcb.gov.br/estabilidadefinanceira/sfn)",
+  "Res. CVM 30/2021 (texto consolidado, conteudo.cvm.gov.br), arts. 2º a 7º, 9º e 10",
+  "Ficou de fora por não ter sido conferido em fonte primária: bancassurance (sem norma específica encontrada) e regras de cartão além das já anotadas em Crédito"
+ ]
+}

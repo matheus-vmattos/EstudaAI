@@ -1,0 +1,108 @@
+{
+ "materia": "Matemática Financeira",
+ "notas": [
+  {
+   "lugar": [
+    "Fundamentos",
+    "Razão e proporção"
+   ],
+   "texto": "## Razão, proporção e divisão proporcional\n\n**Razão** é um quociente: $\\frac{a}{b}$. **Proporção** é a igualdade de duas razões: $\\frac{a}{b} = \\frac{c}{d}$.\n**Propriedade fundamental:** o produto dos meios é igual ao dos extremos, $a \\cdot d = b \\cdot c$.\n\n**Divisão proporcional:** some as partes e divida o total.\nExemplo: dividir R$ 1.200,00 entre duas pessoas na razão 2 : 3. São 5 partes de 240: uma recebe **R$ 480,00** e a outra **R$ 720,00**.\n\n> **PEGADINHA** \"Inversamente proporcional\" a 2 e 3 é diretamente proporcional a $\\frac{1}{2}$ e $\\frac{1}{3}$: quem tem o número MENOR recebe MAIS."
+  },
+  {
+   "lugar": [
+    "Fundamentos",
+    "Porcentagem"
+   ],
+   "texto": "## Porcentagem é multiplicar pelo fator\n\n- Aumento de $p\\%$: multiplique por $(1 + \\frac{p}{100})$. Desconto de $p\\%$: por $(1 - \\frac{p}{100})$.\n- **\"x% de quê?\"** A base é sempre o valor ANTES da mudança.\n\nExemplo: um produto de R$ 80,00 subiu 25% e foi para R$ 100,00. Para voltar a R$ 80,00, o desconto é **20%**, não 25%, porque agora a base é 100.\n\n> **PEGADINHA** Subir 25% e depois descer 25% não volta ao preço inicial: $1{,}25 \\times 0{,}75 = 0{,}9375$, ou seja, cai 6,25%."
+  },
+  {
+   "lugar": [
+    "Fundamentos",
+    "Regra de três"
+   ],
+   "texto": "## Direta ou inversa: o que fica fixo decide\n\n1. Monte a tabela com as grandezas lado a lado.\n2. Pergunte: se uma **aumenta**, a outra aumenta (**direta**) ou diminui (**inversa**)?\n3. Direta: multiplique em cruz. Inversa: inverta uma das razões antes (ou multiplique na mesma linha).\n\nExemplo (inversa): 6 máquinas embalam um lote em 162 min. Com 3 máquinas, o mesmo lote leva $\\frac{6 \\times 162}{3} = 324$ min.\n\n**Composta:** compare cada grandeza com a que se procura, uma de cada vez, mantendo as outras fixas.\n\n> **PEGADINHA** \"O mesmo lote\" ou \"a mesma obra\" indica inversa entre trabalhadores e tempo. \"Por hora\" ou \"por dia\" costuma indicar direta."
+  },
+  {
+   "lugar": [
+    "Fundamentos",
+    "Variação percentual"
+   ],
+   "texto": "## Variação percentual\n\n$$\\text{variação} = \\frac{\\text{valor final} - \\text{valor inicial}}{\\text{valor inicial}}$$\n\nExemplo: de R$ 120 para R$ 150, a variação é $\\frac{30}{120} = 25\\%$.\n\n**Variações sucessivas multiplicam os fatores, não somam:** +20% e depois −20% dá $1{,}2 \\times 0{,}8 = 0{,}96$, ou seja, **−4%**.\n\n> **PEGADINHA** Ponto percentual não é porcentagem: uma taxa que sobe de 10% para 12% subiu **2 pontos percentuais**, que são **20%** de aumento."
+  },
+  {
+   "lugar": [
+    "Juros simples",
+    "Juros comercial e exato"
+   ],
+   "texto": "## Comercial (ano de 360 dias) × exato (ano civil)\n\n- **Juro comercial (ordinário):** mês de 30 dias e **ano de 360 dias**.\n- **Juro exato:** dias do calendário e **ano de 365 dias** (366 no bissexto).\n\n$$J = C \\cdot i \\cdot \\frac{\\text{dias}}{360} \\quad \\text{ou} \\quad J = C \\cdot i \\cdot \\frac{\\text{dias}}{365}$$\n\nExemplo: R$ 10.000,00 a 36% ao ano por 73 dias.\n- Comercial: $10.000 \\times 0{,}36 \\times \\frac{73}{360} = 730$.\n- Exato: $10.000 \\times 0{,}36 \\times \\frac{73}{365} = 720$.\n\n> **PEGADINHA** Para o mesmo prazo em dias, o juro comercial é MAIOR que o exato, porque divide por um ano menor."
+  },
+  {
+   "lugar": [
+    "Descontos",
+    "Desconto composto"
+   ],
+   "texto": "## Desconto composto: racional × comercial\n\n- **Racional composto (por dentro):** é o mais cobrado. Trazer o nominal para hoje com juros compostos: $A = \\frac{N}{(1+i)^n}$.\n- **Comercial composto (por fora):** $A = N \\cdot (1-i)^n$.\n- Em ambos, o desconto é $D = N - A$.\n\nExemplo: título de R$ 10.000,00, 2 meses antes do vencimento, a 10% ao mês.\n- Racional: $A = \\frac{10.000}{1{,}1^2} \\approx 8.264{,}46$; desconto de **R$ 1.735,54**.\n- Comercial: $A = 10.000 \\times 0{,}9^2 = 8.100$; desconto de **R$ 1.900,00**.\n\n> **PEGADINHA** Como no simples, o comercial desconta MAIS. Se a questão diz só \"desconto composto\", em geral é o racional."
+  },
+  {
+   "lugar": [
+    "Séries de pagamentos",
+    "Valor presente e futuro"
+   ],
+   "texto": "## Série uniforme (n parcelas iguais)\n\n**Valor presente** (parcelas no fim de cada período):\n$$PV = PMT \\cdot \\frac{1 - (1+i)^{-n}}{i}$$\n\n**Valor futuro** (na data da última parcela):\n$$FV = PMT \\cdot \\frac{(1+i)^n - 1}{i}$$\n\nExemplo: 3 parcelas de R$ 1.000,00 a 2% ao mês.\n- Hoje valem $\\frac{1.000}{1{,}02} + \\frac{1.000}{1{,}02^2} + \\frac{1.000}{1{,}02^3} \\approx$ **R$ 2.883,88**.\n- Na data da 3ª parcela: $1.000 \\times 1{,}02^2 + 1.000 \\times 1{,}02 + 1.000 =$ **R$ 3.060,40**.\n\n> Se esquecer a fórmula, some parcela por parcela, levando cada uma para a mesma data. É o mesmo raciocínio da equivalência de capitais."
+  },
+  {
+   "lugar": [
+    "Séries de pagamentos",
+    "Antecipada e postecipada"
+   ],
+   "texto": "## Com entrada ou sem entrada\n\n- **Postecipada:** a 1ª parcela vem **1 período depois** (ex.: \"em 3 vezes, a primeira em 30 dias\").\n- **Antecipada:** a 1ª parcela é **na hora** (ex.: \"1 + 2\", \"com entrada\").\n\nA antecipada vale a postecipada multiplicada por $(1+i)$, porque cada parcela chega um período antes.\n\nExemplo: 3 parcelas de R$ 1.000,00 a 2% ao mês.\n- Postecipada: **R$ 2.883,88** hoje.\n- Antecipada: $2.883{,}88 \\times 1{,}02 \\approx$ **R$ 2.941,56** hoje, porque a 1ª parcela não é descontada.\n\n> **PEGADINHA** \"1 + 2\" são 3 parcelas, sendo a primeira à vista: antecipada."
+  },
+  {
+   "lugar": [
+    "Séries de pagamentos",
+    "Perpetuidade"
+   ],
+   "texto": "## Perpetuidade: parcelas para sempre\n\n$$PV = \\frac{PMT}{i}$$\n\nExemplo: um aluguel de R$ 500,00 por mês, para sempre, com o dinheiro rendendo 1% ao mês, vale hoje $\\frac{500}{0{,}01} =$ **R$ 50.000,00**.\n\nLeitura ao contrário: quem tem R$ 50.000,00 a 1% ao mês retira R$ 500,00 por mês sem nunca tocar no principal."
+  },
+  {
+   "lugar": [
+    "Amortização",
+    "SAM"
+   ],
+   "texto": "## SAM: o meio-termo entre SAC e Price\n\nNo **Sistema de Amortização Misto**, cada prestação é a **média aritmética** das prestações do SAC e da Price no mesmo período:\n$$P_{SAM} = \\frac{P_{SAC} + P_{Price}}{2}$$\n\nExemplo: R$ 10.000,00 em 2 meses a 10% ao mês.\n- 1ª do SAC: $5.000 + 1.000 = 6.000$.\n- Price: $\\frac{10.000 \\times 0{,}1}{1 - 1{,}1^{-2}} \\approx 5.761{,}90$.\n- 1ª do SAM: $\\frac{6.000 + 5.761{,}90}{2} \\approx$ **R$ 5.880,95**.\n\n> Os juros e as amortizações do SAM também são a média dos dois sistemas."
+  },
+  {
+   "lugar": [
+    "Análise de investimentos",
+    "VPL"
+   ],
+   "texto": "## VPL: traga tudo para hoje e subtraia o investimento\n\n$$VPL = -I_0 + \\sum_{t=1}^{n} \\frac{FC_t}{(1+i)^t}$$\n\n- **VPL > 0:** o projeto rende mais que a taxa mínima de atratividade (TMA): **aceita**.\n- **VPL < 0:** rende menos: **rejeita**.\n\nExemplo: investir R$ 1.000,00 para receber R$ 600,00 em 1 ano e R$ 600,00 em 2 anos, com TMA de 10% ao ano:\n$$VPL = -1.000 + \\frac{600}{1{,}1} + \\frac{600}{1{,}21} \\approx 41{,}32$$\nPositivo: vale a pena.\n\n> **PEGADINHA** Somar 600 + 600 = 1.200 e dizer \"lucro de 200\" ignora o tempo. O ganho real, em valor de hoje, é R$ 41,32."
+  },
+  {
+   "lugar": [
+    "Análise de investimentos",
+    "TIR"
+   ],
+   "texto": "## TIR: a taxa que zera o VPL\n\nA **taxa interna de retorno** é a taxa $i$ que faz $VPL = 0$.\n- **TIR > TMA:** aceita (equivale a VPL > 0).\n- **TIR < TMA:** rejeita.\n\nExemplo (o mesmo do VPL): investir 1.000 para receber 600 e 600. A taxa que zera o VPL é **≈ 13,07% ao ano**, maior que a TMA de 10%: aceita.\n\nNa prova a TIR costuma vir pronta ou ser testada por substituição: coloque cada alternativa na fórmula do VPL e veja qual dá zero.\n\n> **PEGADINHA** VPL positivo e TIR acima da TMA dizem a mesma coisa para um projeto só."
+  },
+  {
+   "lugar": [
+    "Análise de investimentos",
+    "Payback"
+   ],
+   "texto": "## Payback: em quanto tempo o dinheiro volta\n\n**Simples:** soma os fluxos, sem descontar, até cobrir o investimento.\nExemplo: investir 1.000 e receber 600 por ano. Depois do 1º ano faltam 400; no 2º ano entram 600. Payback $= 1 + \\frac{400}{600} \\approx$ **1,67 ano** (1 ano e 8 meses).\n\n**Descontado:** faz o mesmo com os fluxos trazidos a valor presente pela TMA, então é sempre **maior ou igual** ao simples.\n\n> **PEGADINHA** O payback não olha o que acontece DEPOIS que o dinheiro volta. Por isso pode escolher um projeto pior que o indicado pelo VPL."
+  },
+  {
+   "lugar": [
+    "Aplicações bancárias",
+    "Investimentos"
+   ],
+   "texto": "## Rendimento bruto × líquido: o IR da renda fixa\n\n**Tabela regressiva (Lei 11.033/2004, art. 1º),** pelo prazo da aplicação:\n| Prazo | IR sobre o rendimento |\n|---|---|\n| até 180 dias | **22,5%** |\n| de 181 a 360 dias | **20%** |\n| de 361 a 720 dias | **17,5%** |\n| acima de 720 dias | **15%** |\n\nO imposto incide **só sobre o rendimento**, não sobre o valor aplicado.\n\nExemplo: CDB de R$ 10.000,00 resgatado em 400 dias com rendimento bruto de R$ 1.000,00. IR de 17,5%: R$ 175,00. Rendimento líquido: **R$ 825,00**.\n\n**Isentos para pessoa física (art. 3º):** **LCI** (inciso II) e **LCA** (inciso IV), entre outros títulos imobiliários e do agronegócio.\n\n> **PEGADINHA** Para comparar um CDB com uma LCI, compare o rendimento LÍQUIDO: 10% bruto em CDB por 400 dias vira 8,25% líquido."
+  }
+ ],
+ "fontes": [
+  "Contas de todos os exemplos conferidas em Python (frações exatas; TIR por bisseção)",
+  "Lei 11.033/2004, arts. 1º e 3º — planalto.gov.br (tabela regressiva do IR e isenção de LCI e LCA)",
+  "Notas sem fato de lei: são conceitos e fórmulas da matemática financeira"
+ ]
+}
