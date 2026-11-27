@@ -535,6 +535,24 @@
       "arquivo": "banestes-missao5-v8.json",
       "data": "2026-11-26",
       "versaoMinima": "0.1.27"
+    },
+    {
+      "id": "banestes-etica-anotacoes-v1",
+      "tipo": "anotacoes",
+      "titulo": "Anotações: Ética, Compliance e ESG (Guia de Conduta do Banestes, LGPD, anticorrupção)",
+      "descricao": "20 anotações para a matéria que estava vazia: o Guia de Conduta Ética do Banestes (presentes até R$ 100 no ano, conflito de interesse, canais de denúncia), compliance, controles internos, riscos, Lei Anticorrupção, PRSAC, ODS e LGPD com a ANPD agora Agência. Cada uma com o item da norma. Só entram onde está vazio.",
+      "arquivo": "banestes-etica-anotacoes.json",
+      "data": "2026-11-27",
+      "versaoMinima": "0.1.19"
+    },
+    {
+      "id": "banestes-vendas-anotacoes-v1",
+      "tipo": "anotacoes",
+      "titulo": "Anotações: Vendas, Negociação e Atendimento (com o que a banca já cobrou)",
+      "descricao": "19 anotações: características dos serviços, satisfação × valor, momentos da verdade, 4 Ps, adequação ao perfil (Res. 4.949), SAC pelo decreto novo de 2026, ouvidoria, CDC e negociação por princípios. Os conceitos vêm com as questões e os gabaritos oficiais das provas Banestes 2018 e 2023. Só entram onde está vazio.",
+      "arquivo": "banestes-vendas-anotacoes.json",
+      "data": "2026-11-27",
+      "versaoMinima": "0.1.19"
     }
   ]
 }

@@ -1,5 +1,12 @@
 import { Texto } from '../Texto'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
+import { Enunciado, TextoDeApoio, useLetraDaQuestao } from '../LeituraDaQuestao'
+import {
+  chaveDoTexto,
+  faixaDoTexto,
+  lerEnunciado,
+  resumoDoEnunciado
+} from '../../../shared/leitura'
 import { Icone } from '../Icone'
 import { Confirmar } from '../Confirmar'
 import { novoId, type Mudar } from '../useDados'
@@ -78,6 +85,11 @@ function Prova({
 }) {
   const [pausado, setPausado] = useState(false)
   const [confirmarEntrega, setConfirmarEntrega] = useState(false)
+  const [marcando, setMarcando] = useState(false)
+  const [mapaAberto, setMapaAberto] = useState(false)
+  const [letra, botoesDaLetra] = useLetraDaQuestao()
+  // R e depois a letra: risca a alternativa (só ajuda a eliminar)
+  const riscarArmado = useRef(-Infinity)
   const [, setTique] = useState(0)
   // tempo corre em refs: o relógio redesenha a tela, mas só grava no PC
   // a cada 5 s ou quando algo muda (resposta, troca de questão, sair)
@@ -90,6 +102,10 @@ function Prova({
   const restante = limiteMs - decorrido.current
   const total = s.questoes.length
   const q = s.questoes[s.atual]
+  const lido = useMemo(() => lerEnunciado(q.enunciado), [q.enunciado])
+  const chave = lido.apoio ? chaveDoTexto(lido.apoio) : ''
+  const faixa = useMemo(() => faixaDoTexto(s.questoes, s.atual), [s.questoes, s.atual])
+  const riscadas = s.riscadas?.[s.atual] ?? []
   // conferir na hora: na prova completa não (é a prova de verdade)
   const podeConferir = !s.prova
   const conferida = !!s.conferidas?.[s.atual]
@@ -146,15 +162,38 @@ function Prova({
     if (i < 0 || i >= total || i === s.atual) return
     gravar((x) => (x.atual = i))
   }
+  const desriscar = (x: TipoSimulado, letra: string): void => {
+    const r = x.riscadas?.[x.atual]
+    if (r?.includes(letra)) x.riscadas![x.atual] = r.filter((l) => l !== letra)
+  }
+  const riscar = (letra: string): void => {
+    if (conferida) return
+    gravar((x) => {
+      x.riscadas ??= x.questoes.map(() => [])
+      x.riscadas[x.atual] ??= []
+      const r = x.riscadas[x.atual]
+      if (r.includes(letra)) desriscar(x, letra)
+      else {
+        r.push(letra)
+        // riscou a que tinha marcado: a marcação sai
+        if (x.respostas[x.atual] === letra) x.respostas[x.atual] = null
+      }
+    })
+  }
   const responder = (letra: string): void => {
     if (conferida) return // conferida, a letra fica
     if (podeConferir && s.conferir)
       gravar((x) => {
+        desriscar(x, letra)
         x.respostas[x.atual] = letra
         x.conferidas ??= Array(x.questoes.length).fill(false)
         x.conferidas[x.atual] = true
       })
-    else gravar((x) => (x.respostas[x.atual] = x.respostas[x.atual] === letra ? null : letra))
+    else
+      gravar((x) => {
+        desriscar(x, letra)
+        x.respostas[x.atual] = x.respostas[x.atual] === letra ? null : letra
+      })
   }
   const alternarRevisar = (): void => gravar((x) => (x.revisar[x.atual] = !x.revisar[x.atual]))
 
@@ -162,6 +201,10 @@ function Prova({
   const teclado = useRef<(e: KeyboardEvent) => void>(() => {})
   teclado.current = (e) => {
     if (confirmarEntrega || e.ctrlKey || e.altKey || e.metaKey) return
+    if (mapaAberto) {
+      if (e.key === 'Escape') setMapaAberto(false)
+      return
+    }
     if (e.key === ' ') {
       e.preventDefault()
       setPausado((p) => !p)
@@ -170,9 +213,13 @@ function Prova({
     if (pausado) return
     if (e.key === 'ArrowRight') irPara(s.atual + 1)
     else if (e.key === 'ArrowLeft') irPara(s.atual - 1)
+    else if (e.key.toLowerCase() === 'r') riscarArmado.current = performance.now()
     else {
       const letra = e.key.toUpperCase()
-      if (q.alternativas.some((a) => a.letra === letra)) responder(letra)
+      if (!q.alternativas.some((a) => a.letra === letra)) return
+      if (performance.now() - riscarArmado.current < 2000) riscar(letra)
+      else responder(letra)
+      riscarArmado.current = -Infinity
     }
   }
   useEffect(() => {
@@ -189,6 +236,73 @@ function Prova({
   const respondidas = total - emBranco
   const acabando = limiteMs > 0 && restante < Math.min(5 * 60000, limiteMs * 0.1)
   const tempoNaQuestao = s.tempoPorQuestao[s.atual] + naQuestao.current
+
+  const mapa = (
+    <>
+      <h2 className="secao" style={{ fontSize: 14 }}>
+        Questões
+      </h2>
+      <div className="mapa-grade">
+        {s.questoes.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            aria-label={`Questão ${i + 1}`}
+            aria-current={i === s.atual ? 'step' : undefined}
+            className={
+              s.conferidas?.[i]
+                ? s.respostas[i] === s.questoes[i].gabarito
+                  ? 'certa'
+                  : 'errada'
+                : s.revisar[i]
+                  ? 'revisar'
+                  : s.respostas[i]
+                    ? 'respondida'
+                    : ''
+            }
+            onClick={() => {
+              irPara(i)
+              setMapaAberto(false)
+            }}
+          >
+            {i + 1}
+          </button>
+        ))}
+      </div>
+      <div className="legenda meta">
+        <span>
+          <span style={{ color: 'var(--ciano)' }}>■</span> Respondida ({respondidas})
+        </span>
+        <span>
+          <span style={{ color: 'var(--ambar)' }}>■</span> P/ revisar (
+          {s.revisar.filter(Boolean).length})
+        </span>
+        <span>□ Em branco ({emBranco})</span>
+        {conferidasAqui > 0 && (
+          <>
+            <span>
+              <span style={{ color: 'var(--verde)' }}>■</span> Certa, conferida ({certasConferidas})
+            </span>
+            <span>
+              <span style={{ color: 'var(--vermelho)' }}>■</span> Errada, conferida (
+              {conferidasAqui - certasConferidas})
+            </span>
+          </>
+        )}
+      </div>
+      <button
+        type="button"
+        className="botao sucesso"
+        style={{ minHeight: 48 }}
+        onClick={() => {
+          setMapaAberto(false)
+          setConfirmarEntrega(true)
+        }}
+      >
+        Entregar e ver gabarito
+      </button>
+    </>
+  )
 
   return (
     <div className="prova">
@@ -209,6 +323,7 @@ function Prova({
           <span className="meta">
             Simulado · {NOME_DO_TIPO[s.config.tipo]}
             {s.config.banca && ` · ${s.config.banca}`}
+            {lido.numero && ` · nº ${lido.numero} no caderno`}
           </span>
           <span
             style={{
@@ -222,6 +337,26 @@ function Prova({
           </span>
         </div>
 
+        <div className="ferramentas-prova">
+          {botoesDaLetra}
+          {lido.apoio && (
+            <button
+              type="button"
+              className="botao marca-texto"
+              aria-pressed={marcando}
+              title="Ligado: selecione um trecho do texto para marcar; clique num trecho marcado para desmarcar"
+              onClick={() => setMarcando((m) => !m)}
+            >
+              <span className="tinta" aria-hidden="true" />
+              Marca-texto
+            </button>
+          )}
+          {lido.apoio && (
+            <button type="button" className="botao" onClick={() => setMapaAberto(true)}>
+              Questões {s.atual + 1}/{total}
+            </button>
+          )}
+        </div>
         {podeConferir && (
           <button
             type="button"
@@ -272,7 +407,10 @@ function Prova({
         <div style={{ width: `${(respondidas / total) * 100}%` }} />
       </div>
 
-      <div className="corpo-prova">
+      <div
+        className={`corpo-prova ${lido.apoio && !pausado ? 'dupla' : ''}`}
+        style={{ '--letra-questao': `${letra}px` } as CSSProperties}
+      >
         {pausado ? (
           <div className="vazio">
             <Icone nome="pausa" tamanho={40} cheio />
@@ -288,10 +426,22 @@ function Prova({
           </div>
         ) : (
           <>
+            {lido.apoio && (
+              <TextoDeApoio
+                key={chave}
+                apoio={lido.apoio}
+                faixa={faixa}
+                trechos={s.marcas?.[chave] ?? []}
+                marcando={marcando}
+                mudarTrechos={(t) =>
+                  gravar((x) => {
+                    x.marcas = { ...x.marcas, [chave]: t }
+                  })
+                }
+              />
+            )}
             <main className="questao">
-              <p className="enunciado">
-                <Texto texto={q.enunciado} />
-              </p>
+              <Enunciado lido={lido} />
               <div
                 role="radiogroup"
                 aria-label="Alternativas"
@@ -304,7 +454,11 @@ function Prova({
                     role="radio"
                     aria-checked={s.respostas[s.atual] === a.letra}
                     disabled={conferida}
-                    className={`alternativa ${
+                    onContextMenu={(e) => {
+                      e.preventDefault()
+                      riscar(a.letra)
+                    }}
+                    className={`alternativa ${riscadas.includes(a.letra) ? 'riscada' : ''} ${
                       !conferida
                         ? ''
                         : a.letra === q.gabarito
@@ -375,72 +529,31 @@ function Prova({
                 )}
               </div>
               <p className="meta" style={{ margin: 0 }}>
-                Atalhos: letra responde · ← → navega · espaço pausa
+                Atalhos: letra responde · R + letra (ou botão direito) risca · ← → navega · espaço
+                pausa
               </p>
             </main>
 
-            <aside className="mapa" aria-label="Mapa das questões">
-              <h2 className="secao" style={{ fontSize: 14 }}>
-                Questões
-              </h2>
-              <div className="mapa-grade">
-                {s.questoes.map((_, i) => (
-                  <button
-                    key={i}
-                    type="button"
-                    aria-label={`Questão ${i + 1}`}
-                    aria-current={i === s.atual ? 'step' : undefined}
-                    className={
-                      s.conferidas?.[i]
-                        ? s.respostas[i] === s.questoes[i].gabarito
-                          ? 'certa'
-                          : 'errada'
-                        : s.revisar[i]
-                          ? 'revisar'
-                          : s.respostas[i]
-                            ? 'respondida'
-                            : ''
-                    }
-                    onClick={() => irPara(i)}
-                  >
-                    {i + 1}
-                  </button>
-                ))}
-              </div>
-              <div className="legenda meta">
-                <span>
-                  <span style={{ color: 'var(--ciano)' }}>■</span> Respondida ({respondidas})
-                </span>
-                <span>
-                  <span style={{ color: 'var(--ambar)' }}>■</span> P/ revisar (
-                  {s.revisar.filter(Boolean).length})
-                </span>
-                <span>□ Em branco ({emBranco})</span>
-                {conferidasAqui > 0 && (
-                  <>
-                    <span>
-                      <span style={{ color: 'var(--verde)' }}>■</span> Certa, conferida (
-                      {certasConferidas})
-                    </span>
-                    <span>
-                      <span style={{ color: 'var(--vermelho)' }}>■</span> Errada, conferida (
-                      {conferidasAqui - certasConferidas})
-                    </span>
-                  </>
-                )}
-              </div>
-              <button
-                type="button"
-                className="botao sucesso"
-                style={{ minHeight: 48 }}
-                onClick={() => setConfirmarEntrega(true)}
-              >
-                Entregar e ver gabarito
-              </button>
-            </aside>
+            {lido.apoio ? null : (
+              <aside className="mapa" aria-label="Mapa das questões">
+                {mapa}
+              </aside>
+            )}
           </>
         )}
       </div>
+
+      {mapaAberto && (
+        <div className="fundo-mapa" onClick={() => setMapaAberto(false)}>
+          <aside
+            className="mapa flutuante"
+            aria-label="Mapa das questões"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {mapa}
+          </aside>
+        </div>
+      )}
 
       {confirmarEntrega && (
         <Confirmar
@@ -525,6 +638,7 @@ function Resultado({
   const [vista, setVista] = useState<'resumo' | 'raiox' | 'gabarito'>(nota ? 'resumo' : 'raiox')
   const [filtro, setFiltro] = useState<'todas' | 'estudar'>('todas')
   const [estudando, setEstudando] = useState(false)
+  const [apagando, setApagando] = useState(false)
   const paraEstudar = questoesParaEstudar(s).map((x) => x.indice)
   const visiveis = filtro === 'todas' ? s.questoes.map((_, i) => i) : paraEstudar
   const posicao = visiveis.indexOf(atual)
@@ -539,6 +653,8 @@ function Resultado({
   const pct = Math.round((certas / total) * 100)
   const q = s.questoes[atual]
   const minha = s.respostas[atual]
+  const lido = useMemo(() => lerEnunciado(q.enunciado), [q.enunciado])
+  const [letra, botoesDaLetra] = useLetraDaQuestao()
   const { porLetra, resto } = resolucaoPorLetra(q)
   const separada = Object.keys(porLetra).length > 0
   // ao trocar de questão, volta para o topo (a tela rola)
@@ -620,6 +736,31 @@ function Resultado({
           <Icone nome="atualizar" tamanho={16} />
           Refazer embaralhado
         </button>
+        <button
+          type="button"
+          className="botao-icone"
+          aria-label="Apagar este simulado"
+          title="Apagar este simulado"
+          onClick={() => setApagando(true)}
+        >
+          <Icone nome="lixo" tamanho={15} />
+        </button>
+        {apagando && (
+          <Confirmar
+            titulo="Apagar este simulado?"
+            texto={`“${s.config.tema}” e as respostas dele somem do histórico.`}
+            botao="Apagar"
+            aoConfirmar={() => {
+              const id = s.id
+              setApagando(false)
+              sair()
+              mudar((d) => {
+                d.simulados = d.simulados.filter((x) => x.id !== id)
+              })
+            }}
+            aoCancelar={() => setApagando(false)}
+          />
+        )}
         <div className="placar">
           <div>
             <span className="meta">Acertos</span>
@@ -667,11 +808,16 @@ function Resultado({
           abrirAnotacao={abrirAnotacao}
         />
       ) : (
-        <div className="corpo-prova" ref={corpo}>
+        <div
+          className="corpo-prova"
+          ref={corpo}
+          style={{ '--letra-questao': `${letra}px` } as CSSProperties}
+        >
           <main className="questao">
             <div className="linha-duvida">
               <div className="meta">
-                Questão {atual + 1} de {total} ·{' '}
+                Questão {atual + 1} de {total}
+                {lido.numero && ` (nº ${lido.numero} no caderno)`} ·{' '}
                 {minha === null
                   ? 'em branco'
                   : minha === q.gabarito
@@ -682,6 +828,7 @@ function Resultado({
                 )}{' '}
                 · {formatarTempo(s.tempoPorQuestao[atual])} nela
               </div>
+              {botoesDaLetra}
               <button
                 type="button"
                 className="botao"
@@ -698,9 +845,16 @@ function Resultado({
                 Anotar dúvida
               </button>
             </div>
-            <p className="enunciado">
-              <Texto texto={q.enunciado} />
-            </p>
+            {lido.apoio && (
+              <details className="apoio-no-gabarito">
+                <summary>Texto de apoio</summary>
+                <TextoDeApoio
+                  apoio={lido.apoio}
+                  trechos={s.marcas?.[chaveDoTexto(lido.apoio)] ?? []}
+                />
+              </details>
+            )}
+            <Enunciado lido={lido} />
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {q.alternativas.map((a) => {
                 const certa = a.letra === q.gabarito
@@ -939,10 +1093,7 @@ function RaioXDoSimulado({
         : null
   const total = s.questoes.length
   const erros = todosOsErros ? d.erros : d.erros.slice(0, 6)
-  const resumo = (i: number): string => {
-    const t = s.questoes[i].enunciado.replace(/\s+/g, ' ').trim()
-    return t.length > 90 ? `${t.slice(0, 88).trimEnd()}…` : t
-  }
+  const resumo = (i: number): string => resumoDoEnunciado(s.questoes[i].enunciado, 90)
   const irParaSecao = (id: string): void =>
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   return (

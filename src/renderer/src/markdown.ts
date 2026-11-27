@@ -53,3 +53,23 @@ export function textoComFormulas(texto: string): string {
     .join('')
   return DOMPurify.sanitize(html)
 }
+
+// NÃO, EXCETO, INCORRETA… em caixa alta: é onde a banca prende quem lê rápido
+const COMANDO =
+  /(^|[^\p{L}])(NÃO|EXCETO|INCORRET[AO]S?|CORRET[AO]S?|ERRAD[AO]S?|FALS[AO]S?|VERDADEIR[AO]S?|APENAS|SOMENTE|SEMPRE|NUNCA|MENOS|MAIOR|MENOR)(?!\p{L})/gu
+
+/** O enunciado: como `textoComFormulas`, com os comandos da banca em
+ *  destaque e o <u>sublinhado</u> do original de volta. */
+export function textoDaQuestao(texto: string): string {
+  const html = separarFormulas(texto)
+    .map((p) =>
+      typeof p === 'string'
+        ? escapar(p)
+            .replace(/&#60;u&#62;([^]*?)&#60;\/u&#62;/g, '<u>$1</u>')
+            .replace(COMANDO, '$1<strong class="comando">$2</strong>')
+            .replace(/\n/g, '<br>')
+        : desenhar(p)
+    )
+    .join('')
+  return DOMPurify.sanitize(html)
+}

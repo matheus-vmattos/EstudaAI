@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Icone } from '../Icone'
 import { Texto } from '../Texto'
+import { resumoDoEnunciado } from '../../../shared/leitura'
 import { EscolherLugar } from '../EscolherLugar'
 import type { Mudar } from '../useDados'
 import { acharNo, gravarNota, todosOsNos } from '../../../shared/arvore'
@@ -105,11 +106,7 @@ export function EstudarErros({
                     {q.topico && ` · ${q.topico}`}
                   </span>
                   <span className="enunciado-curto">
-                    <Texto
-                      texto={
-                        q.enunciado.length > 160 ? q.enunciado.slice(0, 160) + '…' : q.enunciado
-                      }
-                    />
+                    <Texto texto={resumoDoEnunciado(q.enunciado, 160)} />
                   </span>
                   <span className="meta">
                     {motivo !== 'duvida' && (

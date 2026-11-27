@@ -15,8 +15,8 @@ import { Flashcards } from './telas/Flashcards'
 import { Revisao } from './telas/Revisao'
 import { Mapa } from './telas/Mapa'
 import { Caixa, type EstadoDaCaixa } from './telas/Caixa'
-import { filaDoDia } from '../../shared/flashcards'
 import { diasAte } from '../../shared/edital'
+import { estadoDaResposta } from '../../shared/explicar'
 import { MeuEdital } from './telas/MeuEdital'
 import type { Id } from '../../shared/tipos'
 
@@ -162,9 +162,10 @@ export function App() {
     return <Revisao dados={dados} mudar={mudar} alvo={revisao} sair={() => setRevisao(null)} />
   }
 
-  const novidades = caixa.itens.filter((i) => !(dados.caixaImportados ?? []).includes(i.id)).length
-  const fila = filaDoDia(dados.cartoes, agora)
-  const paraHoje = fila.revisar.length + fila.novos.length
+  const novidades =
+    caixa.itens.filter((i) => !(dados.caixaImportados ?? []).includes(i.id)).length +
+    (dados.explicacoes ?? []).filter((x) => x.texto.trim() && estadoDaResposta(dados, x) === 'nova')
+      .length
   const diasParaProva = dados.edital ? diasAte(dados.edital.dataProva, agora) : null
   const abrirAnotacao = (assuntoId: Id): void => {
     setAssuntoAberto(assuntoId)
@@ -202,11 +203,8 @@ export function App() {
                 {diasParaProva} D
               </span>
             )}
-            {m.tela === 'flashcards' && paraHoje > 0 && (
-              <span className="contador" aria-label={`${paraHoje} para hoje`}>
-                {paraHoje}
-              </span>
-            )}
+            {/* sem número aceso no menu (dono, 27/11): o que revisar hoje já está
+                no Hoje do edital e no botão Estudar agora */}
           </button>
         ))}
         <div className="rodape-menu">

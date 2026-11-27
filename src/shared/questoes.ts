@@ -55,6 +55,7 @@ export function montarPrompt(
     '- topico: o subtema exato da questão, em poucas palavras (ex.: "Juros compostos"), sempre com o mesmo nome para o mesmo subtema;',
     `- habilidade: o que a questão exige, uma destas: ${HABILIDADES.join('; ')}.`,
     '- videoaula: "busca" com os termos para achar uma boa aula disso no YouTube (ex.: "juros compostos montante concurso") e "canais" com até 2 canais conhecidos de concurso que ensinam esse ponto; não escreva links.',
+    'Enunciado fácil de ler: com texto de apoio, comece por "Leia o texto:", uma linha em branco, o texto (um parágrafo por linha), outra linha em branco e a pergunta; afirmativas para julgar em itens "I.", "II.", "III." um por linha; palavras de comando em CAIXA ALTA (NÃO, EXCETO, INCORRETA, APENAS); o trecho que a pergunta manda observar entre <u> e </u>; lei ou norma citada sempre com o assunto dela (ex.: "Lei nº 9.613/1998, sobre lavagem de dinheiro"), nunca só o número.',
     'Fórmulas em LaTeX entre cifrões, ex.: $M = C(1+i)^n$ — no JSON, com a barra invertida dobrada (\\\\frac, \\\\cdot). Dinheiro como "R$ 1.000,00", com espaço depois do R$.',
     'Se a questão depender de dado que muda com o tempo (taxa Selic, inflação, normas recentes), use o mais recente que você conhece, diga no comentário o mês/ano de referência e nunca invente número.',
     'Varie os aspectos cobrados do tema e não repita questões.',
